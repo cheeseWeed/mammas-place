@@ -14,6 +14,7 @@ function ShopContent() {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [sortBy, setSortBy] = useState('featured');
   const [showSaleOnly, setShowSaleOnly] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const categories = getCategories();
   const allProducts = getAllProducts();
@@ -23,6 +24,7 @@ function ShopContent() {
     const cat = searchParams.get('category') ?? '';
     const sale = searchParams.get('sale') === 'true';
 
+    setSearchQuery(search);
     if (cat) setSelectedCategory(cat);
     if (sale) setShowSaleOnly(true);
 
@@ -47,11 +49,21 @@ function ShopContent() {
       {/* Page Header */}
       <div className="mb-6">
         <h1 className="text-3xl font-black text-purple-900">
-          {selectedCategory !== 'all'
-            ? `${selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)} 🐴`
-            : 'All Products ✨'}
+          {searchQuery
+            ? `Search Results`
+            : selectedCategory !== 'all'
+            ? selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)
+            : 'All Products'}
         </h1>
-        <p className="text-gray-500 mt-1">{filtered.length} items available</p>
+        <p className="text-gray-500 mt-1">
+          {searchQuery ? (
+            <>
+              {filtered.length} {filtered.length === 1 ? 'result' : 'results'} for <span className="font-bold text-purple-700">"{searchQuery}"</span>
+            </>
+          ) : (
+            `${filtered.length} items available`
+          )}
+        </p>
       </div>
 
       <div className="flex flex-col sm:flex-row gap-6">
@@ -70,15 +82,18 @@ function ShopContent() {
                 >
                   All Items
                 </button>
-                {categories.map((cat) => (
-                  <button
-                    key={cat}
-                    onClick={() => setSelectedCategory(cat)}
-                    className={`w-full text-left px-3 py-2 rounded-lg text-sm capitalize transition-colors ${selectedCategory === cat ? 'bg-purple-700 text-white font-bold' : 'text-gray-600 hover:bg-purple-50'}`}
-                  >
-                    {cat === 'ponies' ? '🐴' : cat === 'unicorns' ? '🦄' : '👑'} {cat}
-                  </button>
-                ))}
+                {categories.map((cat) => {
+                  const emoji = cat === 'ponies' ? '🐴' : cat === 'unicorns' ? '🦄' : cat === 'princesses' ? '👑' : cat === 'bow-and-arrow' ? '🏹' : cat === 'rock-collections' ? '💎' : cat === 'games' ? '🎮' : cat === 'audiobooks' ? '🎧' : '';
+                  return (
+                    <button
+                      key={cat}
+                      onClick={() => setSelectedCategory(cat)}
+                      className={`w-full text-left px-3 py-2 rounded-lg text-sm capitalize transition-colors ${selectedCategory === cat ? 'bg-purple-700 text-white font-bold' : 'text-gray-600 hover:bg-purple-50'}`}
+                    >
+                      {emoji && `${emoji} `}{cat.replace(/-/g, ' ')}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
@@ -125,8 +140,12 @@ function ShopContent() {
           ) : filtered.length === 0 ? (
             <div className="text-center py-20 text-gray-400">
               <div className="text-5xl mb-4">🔍</div>
-              <p className="text-xl font-bold">No products found</p>
-              <p className="text-sm mt-2">Try adjusting your filters</p>
+              <p className="text-xl font-bold">
+                {searchQuery ? `No results found for "${searchQuery}"` : 'No products found'}
+              </p>
+              <p className="text-sm mt-2">
+                {searchQuery ? 'Try a different search term or browse our categories' : 'Try adjusting your filters'}
+              </p>
             </div>
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4">

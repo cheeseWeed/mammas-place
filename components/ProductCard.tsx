@@ -41,22 +41,22 @@ export default function ProductCard({ product, compact = false }: ProductCardPro
 
       {/* Info */}
       <div className="p-3">
-        <div className="text-xs text-purple-500 uppercase font-semibold mb-1 capitalize">{product.category}</div>
+        <div className="text-xs sm:text-sm text-purple-500 uppercase font-semibold mb-1 capitalize">{product.category}</div>
         <h3 className={`font-bold text-gray-800 group-hover:text-purple-700 transition-colors leading-tight ${compact ? 'text-sm' : 'text-base'}`}>
           {product.name}
         </h3>
 
         {!compact && (
-          <p className="text-gray-500 text-xs mt-1 line-clamp-2">{product.shortDescription}</p>
+          <p className="text-gray-500 text-xs sm:text-sm mt-1 line-clamp-2">{product.shortDescription}</p>
         )}
 
         {/* Rating */}
         {!compact && (
           <div className="flex items-center gap-1 mt-2">
-            <div className="flex text-yellow-400 text-xs">
+            <div className="flex text-yellow-400 text-sm">
               {'★'.repeat(Math.round(product.rating))}{'☆'.repeat(5 - Math.round(product.rating))}
             </div>
-            <span className="text-gray-400 text-xs">({product.reviewCount})</span>
+            <span className="text-gray-400 text-xs sm:text-sm">({product.reviewCount})</span>
           </div>
         )}
 
@@ -67,7 +67,7 @@ export default function ProductCard({ product, compact = false }: ProductCardPro
               ${product.price.toFixed(2)}
             </span>
             {product.originalPrice && (
-              <span className="text-gray-400 text-xs line-through ml-2">
+              <span className="text-gray-400 text-xs sm:text-sm line-through ml-2">
                 ${product.originalPrice.toFixed(2)}
               </span>
             )}
@@ -79,9 +79,10 @@ export default function ProductCard({ product, compact = false }: ProductCardPro
           product.inStock ? (
             <button
               onClick={handleAddToCart}
+              aria-label={`Add ${product.name} to cart`}
               className="mt-3 w-full bg-purple-700 hover:bg-purple-600 active:bg-purple-800 text-white font-bold py-2 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
               Add to Cart
@@ -98,31 +99,14 @@ export default function ProductCard({ product, compact = false }: ProductCardPro
 }
 
 function ProductImage({ product }: { product: Product }) {
-  const emojiMap: Record<string, string> = {
-    ponies: '🐴',
-    unicorns: '🦄',
-    princesses: '👑',
-    'bow-and-arrow': '🏹',
-    'rock-collections': '💎',
-    games: '🎮',
-    audiobooks: '🎧',
-  };
-  const emoji = emojiMap[product.category] ?? '🛍️';
-
-  const colors: Record<string, string> = {
-    ponies: 'from-pink-200 to-purple-200',
-    unicorns: 'from-purple-200 to-blue-200',
-    princesses: 'from-yellow-100 to-pink-200',
-    'bow-and-arrow': 'from-green-100 to-yellow-100',
-    'rock-collections': 'from-gray-100 to-blue-100',
-    games: 'from-blue-100 to-purple-100',
-    audiobooks: 'from-purple-200 to-indigo-200',
-  };
-
   return (
-    <div className={`w-full h-full flex flex-col items-center justify-center bg-gradient-to-br ${colors[product.category] ?? 'from-purple-100 to-white'} rounded-xl`}>
-      <span className="text-6xl">{emoji}</span>
-      <span className="text-xs text-gray-500 mt-1 text-center px-2 font-medium">{product.name.split(' ')[0]}</span>
+    <div className="w-full h-full flex items-center justify-center rounded-xl overflow-hidden bg-white">
+      <img
+        src={product.imageUrl}
+        alt={product.name}
+        className="w-full h-full object-cover"
+        loading="lazy"
+      />
     </div>
   );
 }

@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useCart } from '@/context/CartContext';
 import { applyPromoCode } from '@/lib/cart';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import Confetti from 'react-confetti';
 
 export default function CheckoutPage() {
   const { cart, clearCart } = useCart();
@@ -15,6 +16,8 @@ export default function CheckoutPage() {
   const [promoDiscount, setPromoDiscount] = useState(0);
   const [promoError, setPromoError] = useState('');
   const [orderPlaced, setOrderPlaced] = useState(false);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
   const [form, setForm] = useState({
     email: '',
     firstName: '',
@@ -28,6 +31,32 @@ export default function CheckoutPage() {
     expiry: '',
     cvv: '',
   });
+
+  // Track window size for confetti
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    };
+
+    // Set initial size
+    handleResize();
+
+    // Add resize listener
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Trigger confetti when order is placed
+  useEffect(() => {
+    if (orderPlaced) {
+      setShowConfetti(true);
+      // Stop confetti after 5 seconds
+      const timer = setTimeout(() => {
+        setShowConfetti(false);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [orderPlaced]);
 
   if (cart.items.length === 0 && !orderPlaced) {
     return (
@@ -44,6 +73,22 @@ export default function CheckoutPage() {
   if (orderPlaced) {
     return (
       <div className="max-w-2xl mx-auto px-4 py-20 text-center">
+        {showConfetti && (
+          <Confetti
+            width={windowSize.width}
+            height={windowSize.height}
+            recycle={false}
+            numberOfPieces={300}
+          />
+        )}
+
+        {/* DEMO ORDER WARNING */}
+        <div className="mb-6 rounded-2xl p-5 border-4 border-blue-500 shadow-xl" style={{background: 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)'}}>
+          <div className="text-4xl mb-2">🎓</div>
+          <h2 className="text-2xl font-black text-blue-900 mb-2">DEMO ORDER - Nothing Actually Charged or Shipped!</h2>
+          <p className="text-blue-800 font-bold text-base">This is a practice/learning application. No real transaction occurred.</p>
+        </div>
+
         <div className="text-7xl mb-4">🎉</div>
         <h1 className="text-3xl font-black text-purple-900 mb-2">Order Confirmed!</h1>
         <p className="text-gray-600 mb-2">Thank you for shopping at Mamma&apos;s Place!</p>
@@ -97,6 +142,13 @@ export default function CheckoutPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-6">
+      {/* DEMO WARNING BANNER */}
+      <div className="mb-6 rounded-2xl p-5 text-center border-4 border-orange-500 shadow-xl" style={{background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)'}}>
+        <div className="text-3xl mb-2">🎓</div>
+        <h2 className="text-2xl font-black text-gray-900 mb-2">DEMO SITE - For Learning Purposes Only</h2>
+        <p className="text-gray-800 font-bold text-lg">This is a practice e-commerce application. No real purchases will be made.</p>
+      </div>
+
       <h1 className="text-3xl font-black text-purple-900 mb-6">Checkout 🛍️</h1>
 
       <form onSubmit={handlePlaceOrder}>
@@ -143,6 +195,20 @@ export default function CheckoutPage() {
                 <span className="w-7 h-7 bg-purple-700 text-white rounded-full flex items-center justify-center text-sm font-black">3</span>
                 Payment
               </h2>
+
+              {/* TEST CARD WARNING */}
+              <div className="mb-4 rounded-xl p-4 border-3 border-red-500" style={{background: 'linear-gradient(135deg, #fee2e2 0%, #fecaca 100%)'}}>
+                <div className="flex items-start gap-3">
+                  <span className="text-2xl">⚠️</span>
+                  <div>
+                    <p className="font-black text-red-900 text-base mb-1">DO NOT Enter Real Credit Card Information!</p>
+                    <p className="text-red-800 text-sm font-bold">This is a demo site. Use test card:</p>
+                    <p className="text-red-900 font-mono font-bold text-base mt-1">4111 1111 1111 1111</p>
+                    <p className="text-red-700 text-xs mt-1">Any future date and CVV will work</p>
+                  </div>
+                </div>
+              </div>
+
               <div className="space-y-3">
                 <input required type="text" placeholder="Name on card" value={form.cardName} onChange={(e) => updateForm('cardName', e.target.value)} className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400" />
                 <input required type="text" placeholder="Card number (e.g. 4111 1111 1111 1111)" value={form.cardNumber} onChange={(e) => updateForm('cardNumber', e.target.value)} maxLength={19} className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400" />

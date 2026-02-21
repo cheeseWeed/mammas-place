@@ -9,6 +9,7 @@ import Link from 'next/link';
 import ProductCard from '@/components/ProductCard';
 import SkeletonProductDetail from '@/components/SkeletonProductDetail';
 import AudioPlayer from '@/components/AudioPlayer';
+import { Review } from '@/types';
 
 export default function ProductDetailPage() {
   const params = useParams();
@@ -34,6 +35,34 @@ export default function ProductDetailPage() {
 
   const related = getRelatedProducts(product, 5);
 
+  // Mock customer reviews for demo purposes
+  const mockReviews: Review[] = [
+    {
+      id: '1',
+      author: 'Sarah M.',
+      rating: 5,
+      date: '2026-02-10',
+      comment: 'My kids absolutely love this! Best purchase I\'ve made in a while. Great quality and fast shipping.',
+      verified: true
+    },
+    {
+      id: '2',
+      author: 'Mike T.',
+      rating: 5,
+      date: '2026-02-05',
+      comment: 'Exceeded expectations! My daughter plays with this every day. Highly recommend!',
+      verified: true
+    },
+    {
+      id: '3',
+      author: 'Jennifer L.',
+      rating: 4,
+      date: '2026-01-28',
+      comment: 'Really good product, kids enjoy it. Only minor issue was packaging could be better.',
+      verified: true
+    },
+  ];
+
   const handleAddToCart = () => {
     addToCart(product, quantity);
     showToast(`${product.name} added!`, 'success', '🛒');
@@ -52,16 +81,6 @@ export default function ProductDetailPage() {
     'rock-collections': '💎',
     games: '🎮',
     audiobooks: '🎧',
-  };
-  const emoji = emojiMap[product.category] ?? '🛍️';
-  const gradColors: Record<string, string> = {
-    ponies: 'from-pink-100 to-purple-100',
-    unicorns: 'from-purple-100 to-blue-100',
-    princesses: 'from-yellow-50 to-pink-100',
-    'bow-and-arrow': 'from-green-100 to-yellow-100',
-    'rock-collections': 'from-gray-100 to-blue-100',
-    games: 'from-blue-100 to-purple-100',
-    audiobooks: 'from-purple-200 to-indigo-200',
   };
 
   return (
@@ -85,8 +104,13 @@ export default function ProductDetailPage() {
             <div className="space-y-3">
               {related.map((r) => (
                 <Link key={r.id} href={`/product/${r.id}`} className="flex gap-3 items-center group p-2 rounded-xl hover:bg-purple-50 transition-colors">
-                  <div className={`w-14 h-14 shrink-0 rounded-xl bg-gradient-to-br ${gradColors[r.category] ?? 'from-purple-100 to-white'} flex items-center justify-center text-2xl`}>
-                    {emojiMap[r.category] ?? '🛍️'}
+                  <div className="w-14 h-14 shrink-0 rounded-xl overflow-hidden bg-white">
+                    <img
+                      src={r.imageUrl}
+                      alt={r.name}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs font-bold text-gray-800 group-hover:text-purple-700 leading-tight line-clamp-2">{r.name}</p>
@@ -108,10 +132,13 @@ export default function ProductDetailPage() {
         <div className="flex-1 order-1 lg:order-2">
           <div className="bg-white rounded-2xl shadow-sm border border-purple-100 overflow-hidden">
             {/* Product Image */}
-            <div className={`bg-gradient-to-br ${gradColors[product.category] ?? 'from-purple-50 to-white'} p-10 flex items-center justify-center`}>
-              <div className="text-center">
-                <div className="text-9xl mb-2">{emoji}</div>
-                <p className="text-gray-500 text-sm font-medium">{product.name}</p>
+            <div className="bg-gradient-to-br from-purple-50 to-white p-10 flex items-center justify-center">
+              <div className="w-full max-w-md">
+                <img
+                  src={product.imageUrl}
+                  alt={product.name}
+                  className="w-full h-auto rounded-xl"
+                />
               </div>
             </div>
 
@@ -180,6 +207,7 @@ export default function ProductDetailPage() {
                 <div className="flex items-center gap-3">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                    aria-label="Decrease quantity"
                     className="w-9 h-9 rounded-full bg-purple-100 hover:bg-purple-200 text-purple-800 font-black text-lg flex items-center justify-center transition-colors"
                   >
                     −
@@ -187,6 +215,7 @@ export default function ProductDetailPage() {
                   <span className="text-xl font-black text-gray-900 w-8 text-center">{quantity}</span>
                   <button
                     onClick={() => setQuantity(Math.min(product.stockCount, quantity + 1))}
+                    aria-label="Increase quantity"
                     className="w-9 h-9 rounded-full bg-purple-100 hover:bg-purple-200 text-purple-800 font-black text-lg flex items-center justify-center transition-colors"
                   >
                     +
@@ -244,8 +273,69 @@ export default function ProductDetailPage() {
                   </div>
                 </div>
               </div>
+
+              {/* Customer Reviews Section */}
+              <div className="mt-6 border-t border-gray-100 pt-6">
+                <h3 className="text-lg font-black text-gray-900 mb-4">Customer Reviews</h3>
+
+                {/* Review Summary */}
+                <div className="bg-purple-50 rounded-xl p-4 mb-4 flex flex-col sm:flex-row items-center gap-4">
+                  <div className="text-center sm:text-left">
+                    <div className="text-4xl font-black text-purple-800">{product.rating}</div>
+                    <div className="flex text-yellow-400 text-lg mt-1">
+                      {'★'.repeat(Math.round(product.rating))}{'☆'.repeat(5 - Math.round(product.rating))}
+                    </div>
+                    <div className="text-xs text-gray-600 mt-1">{product.reviewCount} reviews</div>
+                  </div>
+                  <div className="flex-1 text-sm text-gray-600">
+                    <p className="font-semibold">Customers love this product!</p>
+                    <p className="text-xs mt-1">Based on verified purchases</p>
+                  </div>
+                </div>
+
+                {/* Individual Reviews */}
+                <div className="space-y-4">
+                  {mockReviews.map((review) => (
+                    <div key={review.id} className="border-b border-gray-100 pb-4 last:border-b-0">
+                      <div className="flex items-start gap-3">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="font-bold text-sm text-gray-900">{review.author}</span>
+                            {review.verified && (
+                              <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold">
+                                Verified Purchase
+                              </span>
+                            )}
+                          </div>
+                          <div className="flex items-center gap-2 mb-2">
+                            <div className="flex text-yellow-400 text-sm">
+                              {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
+                            </div>
+                            <span className="text-xs text-gray-500">
+                              {new Date(review.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                            </span>
+                          </div>
+                          <p className="text-sm text-gray-700 leading-relaxed">{review.comment}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
+
+          {/* Customers Also Bought Section */}
+          {related.length > 0 && (
+            <div className="mt-6">
+              <h3 className="text-lg font-black text-gray-900 mb-4">Customers Also Bought</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                {related.slice(0, 4).map((relatedProduct) => (
+                  <ProductCard key={relatedProduct.id} product={relatedProduct} />
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

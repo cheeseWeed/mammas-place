@@ -39,3 +39,18 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# claude/serena/playwright
+.claude/
+.serena/
+.playwright-mcp/
+
+# screenshots and demo docs
+*.png
+*-experience.md
+*-transcript.md
+demo-warnings*.md
+warning-locations.md
+
+# Windows reserved filename
+nul

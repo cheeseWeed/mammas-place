@@ -34,18 +34,17 @@ export default function CartPage() {
         {/* Cart Items */}
         <div className="flex-1 space-y-4">
           {cart.items.map((item) => {
-            const emoji = item.product.category === 'ponies' ? '🐴' : item.product.category === 'unicorns' ? '🦄' : '👑';
-            const gradColors: Record<string, string> = {
-              ponies: 'from-pink-100 to-purple-100',
-              unicorns: 'from-purple-100 to-blue-100',
-              princesses: 'from-yellow-50 to-pink-100',
-            };
             return (
               <div key={item.productId} className="bg-white rounded-2xl shadow-sm border border-purple-100 p-4 flex gap-4 items-start">
                 {/* Product Image */}
                 <Link href={`/product/${item.productId}`}>
-                  <div className={`w-20 h-20 sm:w-28 sm:h-28 rounded-xl bg-gradient-to-br ${gradColors[item.product.category] ?? 'from-purple-50 to-white'} flex items-center justify-center text-4xl sm:text-5xl shrink-0`}>
-                    {emoji}
+                  <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-xl overflow-hidden bg-white shrink-0">
+                    <img
+                      src={item.product.imageUrl}
+                      alt={item.product.name}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
                   </div>
                 </Link>
 

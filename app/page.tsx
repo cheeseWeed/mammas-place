@@ -12,20 +12,20 @@ export default function HomePage() {
       {/* Hero Banner */}
       <section className="bg-gradient-to-br from-purple-900 via-purple-700 to-purple-500 text-white py-16 px-4">
         <div className="max-w-5xl mx-auto text-center">
-          <div className="text-6xl mb-4">🦄👑🐴</div>
+          <div className="text-6xl mb-4">🏹🎮💎</div>
           <h1 className="text-4xl sm:text-6xl font-black mb-4 drop-shadow-lg">
             Welcome to<br />
             <span className="text-yellow-300">Mamma&apos;s Place!</span>
           </h1>
           <p className="text-purple-200 text-lg sm:text-xl mb-8 max-w-2xl mx-auto">
-            Magical toys for magical kids. Shop our enchanted collection of ponies, unicorns, and princess treasures!
+            Amazing toys for every kid. Shop our exciting collection of toys for adventure, imagination, and discovery!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/shop" className="bg-yellow-400 hover:bg-yellow-300 text-purple-900 font-black text-lg px-8 py-3 rounded-full shadow-lg transition-all hover:scale-105">
-              Shop Now ✨
+              Shop Now
             </Link>
             <Link href="/shop?sale=true" className="border-2 border-white text-white hover:bg-white hover:text-purple-900 font-bold text-lg px-8 py-3 rounded-full transition-all hover:scale-105">
-              View Sales 🏷️
+              View Sales
             </Link>
           </div>
         </div>
@@ -34,20 +34,24 @@ export default function HomePage() {
       {/* Category Banners */}
       <section className="max-w-7xl mx-auto px-4 py-10">
         <h2 className="text-2xl font-black text-purple-900 mb-6 text-center">Shop by Category</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-4">
           {[
             { label: 'Ponies', emoji: '🐴', color: 'from-pink-400 to-purple-400', cat: 'ponies' },
             { label: 'Unicorns', emoji: '🦄', color: 'from-purple-400 to-blue-400', cat: 'unicorns' },
             { label: 'Princesses', emoji: '👑', color: 'from-yellow-300 to-pink-400', cat: 'princesses' },
+            { label: 'Bow & Arrow', emoji: '🏹', color: 'from-green-500 to-blue-600', cat: 'bow-and-arrow' },
+            { label: 'Rock Collections', emoji: '💎', color: 'from-blue-500 to-purple-600', cat: 'rock-collections' },
+            { label: 'Games', emoji: '🎮', color: 'from-red-500 to-orange-500', cat: 'games' },
+            { label: 'Audiobooks', emoji: '🎧', color: 'from-indigo-500 to-purple-500', cat: 'audiobooks' },
           ].map((c) => (
             <Link
               key={c.cat}
               href={`/shop?category=${c.cat}`}
-              className={`bg-gradient-to-br ${c.color} rounded-2xl p-8 text-white text-center shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300`}
+              className={`bg-gradient-to-br ${c.color} rounded-2xl p-6 text-white text-center shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300`}
             >
-              <div className="text-5xl mb-3">{c.emoji}</div>
-              <div className="text-2xl font-black">{c.label}</div>
-              <div className="text-sm opacity-80 mt-1">Shop all {c.label.toLowerCase()} →</div>
+              <div className="text-4xl mb-2">{c.emoji}</div>
+              <div className="text-lg font-black">{c.label}</div>
+              <div className="text-xs sm:text-sm opacity-80 mt-1">Shop all →</div>
             </Link>
           ))}
         </div>
@@ -94,12 +98,16 @@ export default function HomePage() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             {comingSoon.map((product) => {
-              const emoji = product.category === 'ponies' ? '🐴' : product.category === 'unicorns' ? '🦄' : product.category === 'princesses' ? '👑' : product.category === 'bow-and-arrow' ? '🏹' : product.category === 'rock-collections' ? '💎' : product.category === 'games' ? '🎮' : '🛍️';
               return (
                 <div key={product.id} className="bg-white rounded-2xl shadow-md border border-purple-100 overflow-hidden relative">
                   <div className="absolute top-2 right-2 z-10 bg-purple-700 text-white text-xs font-black px-2 py-1 rounded-full">COMING SOON</div>
-                  <div className="h-40 bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center text-6xl opacity-60 blur-[1px]">
-                    {emoji}
+                  <div className="h-40 bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center overflow-hidden opacity-60 blur-[1px]">
+                    <img
+                      src={product.imageUrl}
+                      alt={product.name}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
                   </div>
                   <div className="p-3">
                     <p className="font-black text-gray-800 text-sm">{product.name}</p>
@@ -123,7 +131,7 @@ export default function HomePage() {
         <h2 className="text-3xl font-black mb-2">Free Shipping on Orders Over $50!</h2>
         <p className="text-purple-300 mb-4">Use promo codes at checkout for extra savings</p>
         <div className="flex flex-wrap justify-center gap-3">
-          {['MAMMA10', 'PRINCESS20', 'UNICORN15', 'PONY25', 'SAVE30'].map((code) => (
+          {['MAMMA10', 'ADVENTURE20', 'DISCOVER15', 'PLAY25', 'SAVE30'].map((code) => (
             <span key={code} className="bg-yellow-400 text-purple-900 font-black px-4 py-2 rounded-full text-sm">
               {code}
             </span>

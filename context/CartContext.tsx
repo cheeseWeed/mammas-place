@@ -16,16 +16,14 @@ interface CartContextType {
 const CartContext = createContext<CartContextType | null>(null);
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
-  const [cart, setCart] = useState<Cart>({
-    items: [],
-    subtotal: 0,
-    discount: 0,
-    tax: 0,
-    shipping: 0,
-    total: 0,
+  const [cart, setCart] = useState<Cart>(() => {
+    // Initialize state with cart from localStorage on first render (client-side only)
+    // On server, this will return empty cart (window is undefined)
+    return cartLib.getCart();
   });
 
   useEffect(() => {
+    // Re-sync on mount to handle any SSR/hydration edge cases
     setCart(cartLib.getCart());
   }, []);
 

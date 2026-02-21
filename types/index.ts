@@ -1,3 +1,12 @@
+export interface Review {
+  id: string;
+  author: string;
+  rating: number;
+  date: string;
+  comment: string;
+  verified?: boolean;
+}
+
 export interface Product {
   id: string;
   name: string;
@@ -22,6 +31,7 @@ export interface Product {
   sku: string;
   audioPreviewUrl?: string;
   isAudiobook?: boolean;
+  reviews?: Review[];
 }
 
 export interface CartItem {

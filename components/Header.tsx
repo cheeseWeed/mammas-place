@@ -33,8 +33,13 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 shadow-xl" style={{background: 'linear-gradient(135deg, #1a0533 0%, #3b0764 40%, #581c87 70%, #2d0550 100%)'}}>
-      {/* Top promo bar */}
-      <div className="text-white text-xs text-center py-1 px-4 hidden sm:block" style={{background: 'rgba(0,0,0,0.4)'}}>
+      {/* DEMO SITE WARNING */}
+      <div className="text-gray-900 font-black text-xs sm:text-sm text-center py-2 px-4 border-b-2 border-orange-600" style={{background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)'}}>
+        🎓 DEMO SITE - For Learning & Portfolio Purposes Only - No Real Transactions
+      </div>
+
+      {/* Top promo bar - now visible on mobile too */}
+      <div className="text-white text-xs sm:text-sm text-center py-1 px-4" style={{background: 'rgba(0,0,0,0.4)'}}>
         Free shipping on orders over $50! Use code <span className="font-bold text-yellow-300">MAMMA10</span> for 10% off
       </div>
 
@@ -94,10 +99,11 @@ export default function Header() {
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search ponies, unicorns, princesses..."
+              placeholder="Search toys, games, and more..."
+              aria-label="Search products"
               className="flex-1 px-4 py-2 text-sm text-gray-900 placeholder:text-gray-400 outline-none bg-white"
             />
-            <button type="submit" className="bg-yellow-400 hover:bg-yellow-300 px-4 py-2 font-bold text-purple-900 transition-colors">
+            <button type="submit" aria-label="Submit search" className="bg-yellow-400 hover:bg-yellow-300 px-4 py-2 font-bold text-purple-900 transition-colors">
               Search
             </button>
           </div>
@@ -145,9 +151,10 @@ export default function Header() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search products..."
+            aria-label="Search products"
             className="flex-1 px-4 py-2 text-sm text-gray-900 placeholder:text-gray-400 outline-none bg-white"
           />
-          <button type="submit" className="bg-yellow-400 hover:bg-yellow-300 px-4 py-2 font-bold text-purple-900">
+          <button type="submit" aria-label="Submit search" className="bg-yellow-400 hover:bg-yellow-300 px-4 py-2 font-bold text-purple-900">
             Go
           </button>
         </div>
