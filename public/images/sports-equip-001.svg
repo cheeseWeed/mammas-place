@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <!-- Metallic weight plate gradient -->
+    <linearGradient id="weight-metal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#525252"/>
+      <stop offset="25%" style="stop-color:#404040"/>
+      <stop offset="50%" style="stop-color:#262626"/>
+      <stop offset="75%" style="stop-color:#404040"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+    <!-- Rubber grip coating -->
+    <linearGradient id="rubber-coat" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1f1f1f"/>
+      <stop offset="50%" style="stop-color:#171717"/>
+      <stop offset="100%" style="stop-color:#0a0a0a"/>
+    </linearGradient>
+    <!-- Chrome handle gradient -->
+    <linearGradient id="chrome-handle" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e5e5e5"/>
+      <stop offset="20%" style="stop-color:#a3a3a3"/>
+      <stop offset="50%" style="stop-color:#737373"/>
+      <stop offset="80%" style="stop-color:#a3a3a3"/>
+      <stop offset="100%" style="stop-color:#d4d4d4"/>
+    </linearGradient>
+    <!-- Red accent color -->
+    <linearGradient id="red-accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="50%" style="stop-color:#dc2626"/>
+      <stop offset="100%" style="stop-color:#b91c1c"/>
+    </linearGradient>
+    <!-- Drop shadow filter -->
+    <filter id="equip-shadow" x="-20%" y="-10%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
+      <feOffset dx="3" dy="8" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.4"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Specular highlight -->
+    <radialGradient id="metal-spec" cx="30%" cy="20%">
+      <stop offset="0%" style="stop-color:#fff;stop-opacity:0.6"/>
+      <stop offset="50%" style="stop-color:#fff;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#fff;stop-opacity:0"/>
+    </radialGradient>
+    <!-- Ground shadow -->
+    <radialGradient id="ground-shadow" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#000;stop-opacity:0.35"/>
+      <stop offset="80%" style="stop-color:#000;stop-opacity:0.05"/>
+      <stop offset="100%" style="stop-color:#000;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Studio background -->
+  <rect width="400" height="400" fill="#f5f5f5"/>
+
+  <!-- Ground shadow -->
+  <ellipse cx="200" cy="340" rx="130" ry="25" fill="url(#ground-shadow)"/>
+
+  <!-- Left dumbbell head - stacked weight plates -->
+  <g filter="url(#equip-shadow)">
+    <!-- Outer plate -->
+    <ellipse cx="85" cy="200" rx="50" ry="65" fill="url(#weight-metal)"/>
+    <ellipse cx="85" cy="200" rx="48" ry="63" fill="#2a2a2a" opacity="0.4"/>
+    <!-- Inner plate detail -->
+    <ellipse cx="85" cy="200" rx="35" ry="45" fill="#1f1f1f"/>
+    <!-- Center hole -->
+    <ellipse cx="85" cy="200" rx="12" ry="16" fill="url(#chrome-handle)"/>
+    <!-- Weight marking ring -->
+    <ellipse cx="85" cy="200" rx="42" ry="55" fill="none" stroke="url(#red-accent)" stroke-width="4"/>
+  </g>
+
+  <!-- Right dumbbell head - stacked weight plates -->
+  <g filter="url(#equip-shadow)">
+    <!-- Outer plate -->
+    <ellipse cx="315" cy="200" rx="50" ry="65" fill="url(#weight-metal)"/>
+    <ellipse cx="315" cy="200" rx="48" ry="63" fill="#2a2a2a" opacity="0.4"/>
+    <!-- Inner plate detail -->
+    <ellipse cx="315" cy="200" rx="35" ry="45" fill="#1f1f1f"/>
+    <!-- Center hole -->
+    <ellipse cx="315" cy="200" rx="12" ry="16" fill="url(#chrome-handle)"/>
+    <!-- Weight marking ring -->
+    <ellipse cx="315" cy="200" rx="42" ry="55" fill="none" stroke="url(#red-accent)" stroke-width="4"/>
+  </g>
+
+  <!-- Center handle bar -->
+  <g filter="url(#equip-shadow)">
+    <rect x="130" y="182" width="140" height="36" rx="18" fill="url(#chrome-handle)"/>
+    <!-- Knurled grip texture -->
+    <rect x="145" y="184" width="110" height="32" rx="16" fill="url(#rubber-coat)"/>
+  </g>
+
+  <!-- Knurling pattern on grip -->
+  <g stroke="#333" stroke-width="1" opacity="0.6">
+    <line x1="155" y1="185" x2="155" y2="215"/>
+    <line x1="165" y1="185" x2="165" y2="215"/>
+    <line x1="175" y1="185" x2="175" y2="215"/>
+    <line x1="185" y1="185" x2="185" y2="215"/>
+    <line x1="195" y1="185" x2="195" y2="215"/>
+    <line x1="205" y1="185" x2="205" y2="215"/>
+    <line x1="215" y1="185" x2="215" y2="215"/>
+    <line x1="225" y1="185" x2="225" y2="215"/>
+    <line x1="235" y1="185" x2="235" y2="215"/>
+    <line x1="245" y1="185" x2="245" y2="215"/>
+  </g>
+
+  <!-- Weight labels -->
+  <text x="85" y="208" font-size="20" font-weight="bold" fill="#fff" text-anchor="middle" font-family="Arial, sans-serif">50</text>
+  <text x="85" y="225" font-size="10" fill="#a3a3a3" text-anchor="middle" font-family="Arial, sans-serif">LB</text>
+  <text x="315" y="208" font-size="20" font-weight="bold" fill="#fff" text-anchor="middle" font-family="Arial, sans-serif">50</text>
+  <text x="315" y="225" font-size="10" fill="#a3a3a3" text-anchor="middle" font-family="Arial, sans-serif">LB</text>
+
+  <!-- Specular highlights -->
+  <ellipse cx="60" cy="160" rx="25" ry="35" fill="url(#metal-spec)"/>
+  <ellipse cx="340" cy="160" rx="25" ry="35" fill="url(#metal-spec)"/>
+
+  <!-- Handle chrome highlight -->
+  <rect x="145" y="186" width="110" height="8" rx="4" fill="#fff" opacity="0.15"/>
+
+  <!-- Adjustment mechanism indicators -->
+  <circle cx="135" cy="200" r="8" fill="#333"/>
+  <circle cx="265" cy="200" r="8" fill="#333"/>
+  <circle cx="135" cy="200" r="5" fill="url(#red-accent)"/>
+  <circle cx="265" cy="200" r="5" fill="url(#red-accent)"/>
+</svg>

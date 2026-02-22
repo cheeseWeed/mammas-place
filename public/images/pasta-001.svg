@@ -1,0 +1,161 @@
+<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Box gradient -->
+    <linearGradient id="boxFront" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1e3a5f;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2c5282;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e3a5f;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="boxSide" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#152d4a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a3654;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="boxTop" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#3d6491;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4a7ab0;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Gold accent -->
+    <linearGradient id="goldBand" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#B8860B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DAA520;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Pasta color -->
+    <linearGradient id="pastaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5DEB3;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#DEB887;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D2B48C;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Shadow filter -->
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="10" dy="15" stdDeviation="12" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+
+    <!-- Window transparency -->
+    <linearGradient id="windowGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#f5f5dc;stop-opacity:0.85" />
+    </linearGradient>
+
+    <!-- Red accent stripe -->
+    <linearGradient id="redStripe" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#c41e3a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8b0000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c41e3a;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Glossy highlight -->
+    <linearGradient id="glossy" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.4" />
+      <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="500" fill="#f0ebe3"/>
+
+  <!-- Shadow on surface -->
+  <ellipse cx="200" cy="470" rx="140" ry="20" fill="#000000" opacity="0.2"/>
+
+  <!-- Box group with shadow -->
+  <g filter="url(#dropShadow)">
+    <!-- Box side (3D effect) -->
+    <polygon points="300,60 340,40 340,440 300,460" fill="url(#boxSide)"/>
+
+    <!-- Box top (3D effect) -->
+    <polygon points="80,60 300,60 340,40 120,40" fill="url(#boxTop)"/>
+
+    <!-- Box front -->
+    <rect x="80" y="60" width="220" height="400" fill="url(#boxFront)"/>
+
+    <!-- Front highlight strip -->
+    <rect x="80" y="60" width="30" height="400" fill="#ffffff" opacity="0.05"/>
+  </g>
+
+  <!-- Red decorative stripe at top -->
+  <rect x="80" y="60" width="220" height="25" fill="url(#redStripe)"/>
+  <polygon points="300,60 340,40 340,65 300,85" fill="#8b0000"/>
+
+  <!-- Gold band -->
+  <rect x="80" y="82" width="220" height="8" fill="url(#goldBand)"/>
+  <polygon points="300,82 340,62 340,70 300,90" fill="#B8860B"/>
+
+  <!-- Brand area -->
+  <rect x="95" y="100" width="190" height="60" fill="#0a1628" rx="4"/>
+  <rect x="95" y="100" width="190" height="30" fill="url(#glossy)" rx="4"/>
+
+  <!-- Brand name -->
+  <text x="190" y="125" font-family="Times New Roman, serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#FFD700" font-style="italic" letter-spacing="2">
+    ITALIAN
+  </text>
+  <text x="190" y="150" font-family="Times New Roman, serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#FFFFFF" letter-spacing="4">
+    PASTA
+  </text>
+
+  <!-- Window showing pasta -->
+  <rect x="100" y="175" width="180" height="200" fill="url(#windowGradient)" rx="8" stroke="#d4af37" stroke-width="3"/>
+
+  <!-- Pasta strands in window - realistic spaghetti -->
+  <g transform="translate(190, 275)">
+    <!-- Multiple spaghetti strands with varying curves -->
+    <path d="M-70,-80 Q-60,-30 -65,70" stroke="url(#pastaGradient)" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M-70,-80 Q-60,-30 -65,70" stroke="#c4a76c" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.3"/>
+
+    <path d="M-55,-85 Q-50,-20 -48,75" stroke="url(#pastaGradient)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M-40,-82 Q-35,-25 -30,72" stroke="url(#pastaGradient)" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M-25,-88 Q-15,-35 -18,78" stroke="url(#pastaGradient)" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+    <path d="M-10,-80 Q0,-20 5,70" stroke="url(#pastaGradient)" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M5,-84 Q12,-28 15,75" stroke="url(#pastaGradient)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+    <path d="M20,-86 Q28,-30 25,72" stroke="url(#pastaGradient)" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M35,-82 Q40,-25 42,78" stroke="url(#pastaGradient)" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+    <path d="M50,-85 Q55,-30 52,74" stroke="url(#pastaGradient)" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M65,-80 Q62,-25 60,70" stroke="url(#pastaGradient)" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+
+    <!-- Additional strands for fullness -->
+    <path d="M-62,-78 Q-55,-25 -58,68" stroke="#E8D4A0" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M-48,-83 Q-42,-30 -45,72" stroke="#E8D4A0" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+    <path d="M-32,-79 Q-28,-22 -25,70" stroke="#E8D4A0" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M-18,-85 Q-8,-28 -12,75" stroke="#E8D4A0" stroke-width="2.7" fill="none" stroke-linecap="round"/>
+    <path d="M-2,-81 Q5,-25 2,68" stroke="#E8D4A0" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M12,-78 Q18,-22 20,72" stroke="#E8D4A0" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+    <path d="M28,-84 Q32,-28 30,74" stroke="#E8D4A0" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M42,-80 Q48,-25 45,70" stroke="#E8D4A0" stroke-width="2.7" fill="none" stroke-linecap="round"/>
+    <path d="M58,-82 Q58,-30 55,72" stroke="#E8D4A0" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Product info section -->
+  <rect x="100" y="385" width="180" height="55" fill="#0a1628" rx="4"/>
+
+  <!-- Italian flag colors -->
+  <rect x="100" y="385" width="15" height="55" fill="#009246"/>
+  <rect x="265" y="385" width="15" height="55" fill="#ce2b37"/>
+
+  <!-- Product text -->
+  <text x="190" y="408" font-family="Georgia, serif" font-size="14" text-anchor="middle" fill="#FFD700" font-style="italic">
+    Spaghetti
+  </text>
+  <text x="190" y="428" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#FFFFFF">
+    Premium Durum Wheat
+  </text>
+
+  <!-- Weight -->
+  <ellipse cx="190" cy="450" rx="30" ry="12" fill="#FFD700"/>
+  <text x="190" y="454" font-family="Arial Black, sans-serif" font-size="12" text-anchor="middle" fill="#0a1628">
+    1 LB
+  </text>
+
+  <!-- Quality seal -->
+  <circle cx="320" cy="420" r="28" fill="#c41e3a"/>
+  <circle cx="320" cy="420" r="24" fill="#0a1628"/>
+  <circle cx="320" cy="420" r="20" fill="none" stroke="#FFD700" stroke-width="1"/>
+  <text x="320" y="416" font-family="Arial, sans-serif" font-size="7" font-weight="bold" text-anchor="middle" fill="#FFD700">IMPORTED</text>
+  <text x="320" y="426" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#FFFFFF">ITALY</text>
+
+  <!-- Glossy overlay on box -->
+  <rect x="80" y="60" width="220" height="200" fill="url(#glossy)" opacity="0.3"/>
+</svg>

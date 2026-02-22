@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <!-- Boutique wall gradient -->
+    <linearGradient id="boutiqueWall" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8f0f0"/>
+      <stop offset="100%" style="stop-color:#e8d8d8"/>
+    </linearGradient>
+    <!-- Floor gradient -->
+    <linearGradient id="floor" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4c4b8"/>
+      <stop offset="100%" style="stop-color:#b8a898"/>
+    </linearGradient>
+    <!-- Skin tones -->
+    <linearGradient id="skin" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8c4a0"/>
+      <stop offset="100%" style="stop-color:#d4a574"/>
+    </linearGradient>
+    <linearGradient id="clientSkin" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#deb896"/>
+      <stop offset="100%" style="stop-color:#c8a080"/>
+    </linearGradient>
+    <!-- Mirror frame -->
+    <linearGradient id="mirrorFrame" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#d4af37"/>
+      <stop offset="50%" style="stop-color:#f5d742"/>
+      <stop offset="100%" style="stop-color:#b8960b"/>
+    </linearGradient>
+    <!-- Mirror glass -->
+    <linearGradient id="mirrorGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8f0f8"/>
+      <stop offset="50%" style="stop-color:#d0e0f0"/>
+      <stop offset="100%" style="stop-color:#c0d4e8"/>
+    </linearGradient>
+    <!-- Shadow filter -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Boutique background -->
+  <rect width="400" height="320" fill="url(#boutiqueWall)"/>
+  <rect y="320" width="400" height="80" fill="url(#floor)"/>
+
+  <!-- Decorative molding -->
+  <rect x="0" y="0" width="400" height="15" fill="#e0d0d0"/>
+  <rect x="0" y="305" width="400" height="15" fill="#e0d0d0"/>
+
+  <!-- Large full-length mirror -->
+  <g filter="url(#shadow)" transform="translate(50, 50)">
+    <rect x="0" y="0" width="100" height="230" fill="url(#mirrorFrame)" rx="5"/>
+    <rect x="8" y="8" width="84" height="214" fill="url(#mirrorGlass)"/>
+    <!-- Reflection hint -->
+    <rect x="12" y="12" width="20" height="80" fill="#fff" opacity="0.3" rx="2"/>
+  </g>
+
+  <!-- Clothing rack -->
+  <g filter="url(#shadow)" transform="translate(270, 80)">
+    <!-- Rack frame -->
+    <rect x="0" y="0" width="8" height="200" fill="#c0c0c0"/>
+    <rect x="100" y="0" width="8" height="200" fill="#c0c0c0"/>
+    <rect x="-5" y="0" width="118" height="8" fill="#d0d0d0" rx="3"/>
+    <!-- Base -->
+    <rect x="-10" y="195" width="20" height="8" fill="#a0a0a0"/>
+    <rect x="98" y="195" width="20" height="8" fill="#a0a0a0"/>
+
+    <!-- Hanging clothes -->
+    <g>
+      <!-- Dress 1 -->
+      <path d="M 20 8 L 15 80 L 35 80 L 30 8" fill="#9b59b6"/>
+      <rect x="22" y="5" width="6" height="8" fill="#666"/>
+      <!-- Dress 2 -->
+      <path d="M 45 8 L 38 90 L 62 90 L 55 8" fill="#e74c3c"/>
+      <rect x="47" y="5" width="6" height="8" fill="#666"/>
+      <!-- Blazer -->
+      <rect x="70" y="12" width="25" height="50" fill="#2c3e50" rx="3"/>
+      <rect x="77" y="5" width="6" height="10" fill="#666"/>
+      <rect x="72" y="12" width="8" height="30" fill="#34495e"/>
+      <rect x="85" y="12" width="8" height="30" fill="#34495e"/>
+    </g>
+  </g>
+
+  <!-- Stylist professional -->
+  <g filter="url(#shadow)">
+    <!-- Body -->
+    <ellipse cx="230" cy="230" rx="28" ry="45" fill="#e67e22"/>
+    <rect x="202" y="220" width="56" height="70" fill="#e67e22" rx="5"/>
+
+    <!-- Head -->
+    <circle cx="230" cy="175" r="26" fill="url(#skin)"/>
+
+    <!-- Stylish hair -->
+    <ellipse cx="230" cy="155" rx="28" ry="16" fill="#4a3a2a"/>
+    <path d="M 204 165 Q 200 180 210 190" stroke="#4a3a2a" stroke-width="6" fill="none"/>
+
+    <!-- Glasses (fashionable) -->
+    <rect x="212" y="170" width="16" height="10" rx="5" fill="none" stroke="#2c3e50" stroke-width="2"/>
+    <rect x="232" y="170" width="16" height="10" rx="5" fill="none" stroke="#2c3e50" stroke-width="2"/>
+    <line x1="228" y1="175" x2="232" y2="175" stroke="#2c3e50" stroke-width="2"/>
+
+    <!-- Measuring tape around neck -->
+    <path d="M 210 195 Q 230 210 250 195" stroke="#f1c40f" stroke-width="4" fill="none"/>
+
+    <!-- Arms gesturing -->
+    <path d="M 258 230 Q 280 210 300 220" stroke="url(#skin)" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <path d="M 202 230 Q 180 240 170 260" stroke="url(#skin)" stroke-width="12" fill="none" stroke-linecap="round"/>
+
+    <!-- Hands -->
+    <ellipse cx="302" cy="222" rx="10" ry="8" fill="url(#skin)"/>
+    <ellipse cx="168" cy="262" rx="10" ry="8" fill="url(#skin)"/>
+
+    <!-- Holding fabric swatch -->
+    <rect x="295" y="210" width="30" height="25" fill="#9b59b6" rx="2"/>
+
+    <!-- Legs -->
+    <rect x="215" y="285" width="12" height="50" fill="#2c3e50" rx="4"/>
+    <rect x="233" y="285" width="12" height="50" fill="#2c3e50" rx="4"/>
+
+    <!-- Heels -->
+    <ellipse cx="221" cy="340" rx="10" ry="5" fill="#e74c3c"/>
+    <ellipse cx="239" cy="340" rx="10" ry="5" fill="#e74c3c"/>
+  </g>
+
+  <!-- Client trying outfit -->
+  <g filter="url(#shadow)" transform="translate(110, 0)">
+    <!-- Body in stylish outfit -->
+    <ellipse cx="60" cy="230" rx="26" ry="45" fill="#3498db"/>
+    <rect x="34" y="220" width="52" height="70" fill="#3498db" rx="5"/>
+
+    <!-- Head -->
+    <circle cx="60" cy="175" r="24" fill="url(#clientSkin)"/>
+
+    <!-- Hair -->
+    <ellipse cx="60" cy="157" rx="26" ry="14" fill="#8b4513"/>
+    <path d="M 34 165 Q 30 185 40 200" stroke="#8b4513" stroke-width="6" fill="none"/>
+    <path d="M 86 165 Q 90 185 80 200" stroke="#8b4513" stroke-width="6" fill="none"/>
+
+    <!-- Looking in mirror, pleased expression -->
+    <ellipse cx="52" cy="175" rx="4" ry="3" fill="#2d1b0e"/>
+    <ellipse cx="68" cy="175" rx="4" ry="3" fill="#2d1b0e"/>
+    <path d="M 52 188 Q 60 195 68 188" stroke="#c9a080" stroke-width="2" fill="none"/>
+
+    <!-- Arms at sides admiring -->
+    <path d="M 34 230 Q 20 250 25 270" stroke="url(#clientSkin)" stroke-width="11" fill="none" stroke-linecap="round"/>
+    <path d="M 86 230 Q 100 250 95 270" stroke="url(#clientSkin)" stroke-width="11" fill="none" stroke-linecap="round"/>
+
+    <!-- Hands -->
+    <ellipse cx="23" cy="272" rx="8" ry="6" fill="url(#clientSkin)"/>
+    <ellipse cx="97" cy="272" rx="8" ry="6" fill="url(#clientSkin)"/>
+
+    <!-- Legs -->
+    <rect x="47" y="285" width="11" height="50" fill="#2c3e50" rx="3"/>
+    <rect x="62" y="285" width="11" height="50" fill="#2c3e50" rx="3"/>
+
+    <!-- Shoes -->
+    <ellipse cx="53" cy="340" rx="10" ry="5" fill="#1a1a1a"/>
+    <ellipse cx="68" cy="340" rx="10" ry="5" fill="#1a1a1a"/>
+  </g>
+
+  <!-- Accessory table -->
+  <g filter="url(#shadow)" transform="translate(20, 300)">
+    <rect x="0" y="20" width="80" height="40" fill="#8b7355" rx="3"/>
+    <!-- Jewelry/accessories -->
+    <ellipse cx="25" cy="18" rx="10" ry="6" fill="#d4af37"/>
+    <rect x="50" y="10" width="15" height="20" fill="#e74c3c" rx="2"/>
+  </g>
+
+  <!-- Professional text overlay -->
+  <rect x="20" y="365" width="360" height="30" rx="4" fill="#ffffff" opacity="0.95"/>
+  <text x="200" y="386" font-size="14" font-weight="bold" text-anchor="middle" fill="#e67e22" font-family="Arial, sans-serif">Personal Styling Consultation</text>
+</svg>

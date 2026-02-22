@@ -1,0 +1,199 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Studio background gradient -->
+    <linearGradient id="studioBg1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f8f8f8"/>
+      <stop offset="70%" stop-color="#e8e8e8"/>
+      <stop offset="100%" stop-color="#d0d0d0"/>
+    </linearGradient>
+
+    <!-- Pony body gradient for 3D depth -->
+    <radialGradient id="ponyBody1" cx="40%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ffb8d0"/>
+      <stop offset="40%" stop-color="#ff9ec0"/>
+      <stop offset="70%" stop-color="#e87aa0"/>
+      <stop offset="100%" stop-color="#c55a80"/>
+    </radialGradient>
+
+    <!-- Glitter hoof gradient -->
+    <radialGradient id="glitterHoof" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#fff8e0"/>
+      <stop offset="30%" stop-color="#ffd700"/>
+      <stop offset="60%" stop-color="#daa520"/>
+      <stop offset="100%" stop-color="#b8860b"/>
+    </radialGradient>
+
+    <!-- Rainbow mane gradients -->
+    <linearGradient id="rainbowMane" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff3333"/>
+      <stop offset="20%" stop-color="#ff8800"/>
+      <stop offset="40%" stop-color="#ffdd00"/>
+      <stop offset="60%" stop-color="#33dd33"/>
+      <stop offset="80%" stop-color="#3388ff"/>
+      <stop offset="100%" stop-color="#aa33ff"/>
+    </linearGradient>
+
+    <!-- Eye shine gradient -->
+    <radialGradient id="eyeShine" cx="35%" cy="25%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="30%" stop-color="#4488ff"/>
+      <stop offset="100%" stop-color="#1a1a3a"/>
+    </radialGradient>
+
+    <!-- Soft shadow filter -->
+    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="3" dy="8" stdDeviation="6" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+
+    <!-- Ambient occlusion for depth -->
+    <filter id="innerShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"/>
+      <feOffset dx="2" dy="2"/>
+      <feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.3 0"/>
+      <feBlend in2="SourceGraphic"/>
+    </filter>
+
+    <!-- Glitter sparkle effect -->
+    <filter id="glitter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0"/>
+      <feBlend in="SourceGraphic" in2="noise" mode="overlay"/>
+    </filter>
+
+    <!-- Plastic material shine -->
+    <linearGradient id="plasticShine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.6)"/>
+      <stop offset="50%" stop-color="rgba(255,255,255,0)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0.1)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Studio backdrop -->
+  <rect width="400" height="400" fill="url(#studioBg1)"/>
+
+  <!-- Floor reflection area -->
+  <ellipse cx="200" cy="385" rx="120" ry="15" fill="rgba(0,0,0,0.08)"/>
+
+  <!-- Main shadow on floor -->
+  <ellipse cx="210" cy="375" rx="85" ry="12" fill="rgba(0,0,0,0.15)" filter="url(#softShadow)"/>
+
+  <!-- PONY BODY - Main torso with 3D shading -->
+  <ellipse cx="200" cy="260" rx="78" ry="58" fill="url(#ponyBody1)" filter="url(#softShadow)"/>
+
+  <!-- Body highlight for plastic sheen -->
+  <ellipse cx="180" cy="240" rx="45" ry="30" fill="rgba(255,255,255,0.25)"/>
+  <ellipse cx="175" cy="235" rx="25" ry="15" fill="rgba(255,255,255,0.35)"/>
+
+  <!-- Neck with gradual shading -->
+  <path d="M 155 225 Q 140 190 145 150 Q 150 145 170 145 Q 175 190 165 230"
+        fill="url(#ponyBody1)" filter="url(#softShadow)"/>
+
+  <!-- Neck highlight -->
+  <path d="M 150 200 Q 145 175 148 155" stroke="rgba(255,255,255,0.4)" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+  <!-- HEAD - Main shape with depth -->
+  <ellipse cx="160" cy="120" rx="48" ry="45" fill="url(#ponyBody1)" filter="url(#softShadow)"/>
+
+  <!-- Head highlight -->
+  <ellipse cx="145" cy="105" rx="25" ry="20" fill="rgba(255,255,255,0.3)"/>
+
+  <!-- EARS with realistic shading -->
+  <ellipse cx="125" cy="80" rx="16" ry="32" fill="url(#ponyBody1)" transform="rotate(-20 125 80)"/>
+  <ellipse cx="125" cy="80" rx="9" ry="22" fill="#ffcce0" transform="rotate(-20 125 80)"/>
+  <ellipse cx="195" cy="75" rx="16" ry="32" fill="url(#ponyBody1)" transform="rotate(20 195 75)"/>
+  <ellipse cx="195" cy="75" rx="9" ry="22" fill="#ffcce0" transform="rotate(20 195 75)"/>
+
+  <!-- EYES - Detailed anime-style toy eyes -->
+  <ellipse cx="140" cy="115" rx="12" ry="14" fill="url(#eyeShine)"/>
+  <ellipse cx="180" cy="115" rx="12" ry="14" fill="url(#eyeShine)"/>
+  <!-- Eye highlights -->
+  <circle cx="136" cy="110" r="4" fill="white"/>
+  <circle cx="144" cy="118" r="2" fill="white" opacity="0.8"/>
+  <circle cx="176" cy="110" r="4" fill="white"/>
+  <circle cx="184" cy="118" r="2" fill="white" opacity="0.8"/>
+  <!-- Eyelashes -->
+  <path d="M 128 108 Q 125 105 122 103" stroke="#2a1a30" stroke-width="1.5" fill="none"/>
+  <path d="M 130 105 Q 128 101 126 98" stroke="#2a1a30" stroke-width="1.5" fill="none"/>
+  <path d="M 168 108 Q 165 105 162 103" stroke="#2a1a30" stroke-width="1.5" fill="none"/>
+  <path d="M 170 105 Q 168 101 166 98" stroke="#2a1a30" stroke-width="1.5" fill="none"/>
+
+  <!-- MUZZLE with soft gradient -->
+  <ellipse cx="160" cy="145" rx="22" ry="18" fill="#ffe8f0"/>
+  <ellipse cx="160" cy="145" rx="18" ry="14" fill="#fff0f5"/>
+  <!-- Nostrils -->
+  <ellipse cx="153" cy="148" rx="3" ry="2" fill="#e8a0b8"/>
+  <ellipse cx="167" cy="148" rx="3" ry="2" fill="#e8a0b8"/>
+  <!-- Smile -->
+  <path d="M 150 155 Q 160 162 170 155" stroke="#d08090" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- RAINBOW MANE - Multiple flowing strands with depth -->
+  <!-- Red strand -->
+  <path d="M 155 75 Q 135 40 150 15 Q 165 25 160 55" fill="#ff4444" filter="url(#softShadow)"/>
+  <path d="M 158 72 Q 140 42 152 20" stroke="#ff6666" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- Orange strand -->
+  <path d="M 168 70 Q 155 30 170 5 Q 185 18 175 50" fill="#ff8833" filter="url(#softShadow)"/>
+  <path d="M 170 68 Q 158 35 172 12" stroke="#ffaa55" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- Yellow strand -->
+  <path d="M 182 72 Q 175 25 195 0 Q 210 15 195 48" fill="#ffdd33" filter="url(#softShadow)"/>
+  <path d="M 184 70 Q 178 30 196 8" stroke="#ffee66" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- Green strand -->
+  <path d="M 195 80 Q 200 35 220 15 Q 232 32 215 60" fill="#44dd44" filter="url(#softShadow)"/>
+  <path d="M 197 78 Q 202 40 218 22" stroke="#66ee66" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Blue strand -->
+  <path d="M 200 92 Q 215 55 240 40 Q 248 58 228 85" fill="#4488ff"/>
+  <path d="M 202 90 Q 218 58 238 45" stroke="#66aaff" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Purple strand -->
+  <path d="M 198 105 Q 225 75 250 68 Q 255 88 235 108" fill="#aa44ff"/>
+  <path d="M 200 103 Q 225 78 248 72" stroke="#cc66ff" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- FRONT LEGS with 3D modeling -->
+  <path d="M 175 305 L 172 355 Q 170 368 180 370 L 190 370 Q 200 368 198 355 L 195 305"
+        fill="url(#ponyBody1)" filter="url(#softShadow)"/>
+  <path d="M 205 305 L 202 355 Q 200 368 210 370 L 220 370 Q 230 368 228 355 L 225 305"
+        fill="url(#ponyBody1)" filter="url(#softShadow)"/>
+
+  <!-- BACK LEGS -->
+  <path d="M 145 300 L 140 350 Q 138 363 148 365 L 158 365 Q 168 363 166 350 L 161 300"
+        fill="url(#ponyBody1)" filter="url(#softShadow)"/>
+  <path d="M 235 300 L 232 350 Q 230 363 240 365 L 250 365 Q 260 363 258 350 L 253 300"
+        fill="url(#ponyBody1)" filter="url(#softShadow)"/>
+
+  <!-- GLITTER HOOVES - Golden sparkle effect -->
+  <ellipse cx="185" cy="370" rx="12" ry="6" fill="url(#glitterHoof)" filter="url(#glitter)"/>
+  <ellipse cx="215" cy="370" rx="12" ry="6" fill="url(#glitterHoof)" filter="url(#glitter)"/>
+  <ellipse cx="153" cy="365" rx="12" ry="6" fill="url(#glitterHoof)" filter="url(#glitter)"/>
+  <ellipse cx="245" cy="365" rx="12" ry="6" fill="url(#glitterHoof)" filter="url(#glitter)"/>
+
+  <!-- Glitter sparkle dots on hooves -->
+  <circle cx="182" cy="368" r="1.5" fill="white"/>
+  <circle cx="188" cy="372" r="1" fill="white"/>
+  <circle cx="212" cy="368" r="1.5" fill="white"/>
+  <circle cx="218" cy="372" r="1" fill="white"/>
+  <circle cx="150" cy="363" r="1.5" fill="white"/>
+  <circle cx="156" cy="367" r="1" fill="white"/>
+  <circle cx="242" cy="363" r="1.5" fill="white"/>
+  <circle cx="248" cy="367" r="1" fill="white"/>
+
+  <!-- RAINBOW TAIL - Flowing strands -->
+  <path d="M 275 250 Q 320 200 340 120 Q 350 125 335 205 Q 320 255 280 265" fill="#ff4444" filter="url(#softShadow)"/>
+  <path d="M 278 255 Q 325 205 348 130 Q 358 138 343 215 Q 328 265 283 272" fill="#ff8833"/>
+  <path d="M 280 260 Q 328 215 352 145 Q 362 155 347 225 Q 332 275 285 280" fill="#ffdd33"/>
+  <path d="M 278 268 Q 322 228 345 165 Q 355 175 340 240 Q 325 285 280 290" fill="#44dd44"/>
+  <path d="M 275 275 Q 315 240 335 185 Q 345 195 330 255 Q 318 295 277 298" fill="#4488ff"/>
+
+  <!-- Tail highlights -->
+  <path d="M 310 160 Q 320 170 315 185" stroke="rgba(255,255,255,0.5)" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Overall plastic sheen overlay -->
+  <ellipse cx="185" cy="235" rx="65" ry="45" fill="url(#plasticShine)" opacity="0.4"/>
+
+  <!-- Studio lighting reflection spots -->
+  <ellipse cx="145" cy="100" rx="15" ry="10" fill="rgba(255,255,255,0.15)"/>
+  <circle cx="200" cy="220" r="8" fill="rgba(255,255,255,0.1)"/>
+</svg>

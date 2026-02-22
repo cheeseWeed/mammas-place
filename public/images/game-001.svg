@@ -1,0 +1,241 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <!-- CASTLE QUEST ADVENTURE - Photorealistic Product Photography -->
+  <defs>
+    <!-- Studio lighting gradient -->
+    <linearGradient id="studioBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fafafa"/>
+      <stop offset="60%" style="stop-color:#ffffff"/>
+      <stop offset="100%" style="stop-color:#e5e5e5"/>
+    </linearGradient>
+
+    <!-- Box face gradient - rich burgundy/maroon -->
+    <linearGradient id="boxFace" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7b2d4e"/>
+      <stop offset="40%" style="stop-color:#5a1f38"/>
+      <stop offset="100%" style="stop-color:#3d1525"/>
+    </linearGradient>
+
+    <!-- Side depth -->
+    <linearGradient id="boxSide" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2d0f18"/>
+      <stop offset="100%" style="stop-color:#4a1a2c"/>
+    </linearGradient>
+
+    <!-- Gold metallic -->
+    <linearGradient id="goldMetal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700"/>
+      <stop offset="30%" style="stop-color:#ffec8b"/>
+      <stop offset="60%" style="stop-color:#daa520"/>
+      <stop offset="100%" style="stop-color:#b8860b"/>
+    </linearGradient>
+
+    <!-- Castle stone -->
+    <linearGradient id="stoneWall" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8a0a0"/>
+      <stop offset="50%" style="stop-color:#8a8282"/>
+      <stop offset="100%" style="stop-color:#6e6666"/>
+    </linearGradient>
+
+    <!-- Sky background -->
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87ceeb"/>
+      <stop offset="60%" style="stop-color:#add8e6"/>
+      <stop offset="100%" style="stop-color:#f0e68c"/>
+    </linearGradient>
+
+    <!-- Realistic drop shadow -->
+    <filter id="boxShadow" x="-30%" y="-30%" width="180%" height="180%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+      <feOffset dx="4" dy="10" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Subtle gloss -->
+    <linearGradient id="gloss" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.2"/>
+      <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0"/>
+    </linearGradient>
+
+    <!-- Card paper texture -->
+    <filter id="paperTexture">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
+      <feDiffuseLighting in="noise" lighting-color="white" surfaceScale="1">
+        <feDistantLight azimuth="45" elevation="60"/>
+      </feDiffuseLighting>
+    </filter>
+  </defs>
+
+  <!-- Studio backdrop -->
+  <rect width="400" height="500" fill="url(#studioBg)"/>
+
+  <!-- Soft ground shadow -->
+  <ellipse cx="200" cy="440" rx="160" ry="35" fill="rgba(0,0,0,0.08)"/>
+  <ellipse cx="200" cy="440" rx="120" ry="25" fill="rgba(0,0,0,0.06)"/>
+
+  <!-- Main Game Box with 3D perspective -->
+  <g filter="url(#boxShadow)">
+    <!-- Box right side depth -->
+    <polygon points="285,95 310,105 310,305 285,295" fill="url(#boxSide)"/>
+
+    <!-- Box top surface -->
+    <polygon points="75,95 100,80 310,80 285,95" fill="#9c4465" opacity="0.9"/>
+    <polygon points="75,95 100,80 310,80 285,95" fill="url(#gloss)"/>
+
+    <!-- Front face of box -->
+    <rect x="75" y="95" width="210" height="200" fill="url(#boxFace)" rx="2"/>
+
+    <!-- Glossy overlay -->
+    <rect x="75" y="95" width="210" height="100" fill="url(#gloss)" rx="2"/>
+
+    <!-- Ornate gold frame -->
+    <rect x="82" y="102" width="196" height="186" fill="none" stroke="url(#goldMetal)" stroke-width="3" rx="2"/>
+    <rect x="86" y="106" width="188" height="178" fill="none" stroke="#b8860b" stroke-width="1" rx="1"/>
+
+    <!-- Art panel with sky background -->
+    <rect x="92" y="115" width="176" height="120" fill="url(#skyGrad)" rx="1"/>
+
+    <!-- Majestic Castle Illustration -->
+    <!-- Mountains in background -->
+    <polygon points="92,235 130,180 168,235" fill="#6b8e9f" opacity="0.5"/>
+    <polygon points="150,235 200,165 250,235" fill="#5a7d8e" opacity="0.5"/>
+    <polygon points="220,235 268,190 268,235" fill="#6b8e9f" opacity="0.4"/>
+
+    <!-- Castle base wall -->
+    <rect x="125" y="175" width="110" height="60" fill="url(#stoneWall)"/>
+
+    <!-- Left tower -->
+    <rect x="115" y="140" width="25" height="95" fill="#807070"/>
+    <polygon points="115,140 127.5,118 140,140" fill="#5a4a4a"/>
+    <rect x="117" y="142" width="6" height="8" fill="#3a3030"/>
+    <rect x="127" y="142" width="6" height="8" fill="#3a3030"/>
+    <rect x="120" y="170" width="10" height="15" fill="#2a2020" rx="5" ry="0"/>
+
+    <!-- Center main tower -->
+    <rect x="155" y="125" width="50" height="110" fill="#908585"/>
+    <polygon points="155,125 180,95 205,125" fill="#6a5a5a"/>
+    <rect x="158" y="128" width="8" height="10" fill="#3a3030"/>
+    <rect x="170" y="128" width="8" height="10" fill="#3a3030"/>
+    <rect x="182" y="128" width="8" height="10" fill="#3a3030"/>
+    <rect x="196" y="128" width="8" height="10" fill="#3a3030"/>
+    <!-- Large arched entrance -->
+    <rect x="165" y="200" width="30" height="35" fill="#1a1515" rx="15" ry="0"/>
+    <ellipse cx="180" cy="200" rx="15" ry="12" fill="#1a1515"/>
+
+    <!-- Right tower -->
+    <rect x="220" y="150" width="25" height="85" fill="#807575"/>
+    <polygon points="220,150 232.5,125 245,150" fill="#5a4a4a"/>
+    <rect x="223" y="152" width="6" height="8" fill="#3a3030"/>
+    <rect x="233" y="152" width="6" height="8" fill="#3a3030"/>
+
+    <!-- Castle flags -->
+    <line x1="127.5" y1="118" x2="127.5" y2="105" stroke="#4a3a3a" stroke-width="1.5"/>
+    <polygon points="127.5,105 142,110 127.5,115" fill="#c41e3a"/>
+
+    <line x1="180" y1="95" x2="180" y2="78" stroke="#4a3a3a" stroke-width="2"/>
+    <polygon points="180,78 200,85 180,92" fill="#ffd700"/>
+
+    <line x1="232.5" y1="125" x2="232.5" y2="112" stroke="#4a3a3a" stroke-width="1.5"/>
+    <polygon points="232.5,112 247,117 232.5,122" fill="#1e90ff"/>
+
+    <!-- Green foreground -->
+    <ellipse cx="180" cy="242" rx="90" ry="12" fill="#228b22"/>
+    <ellipse cx="180" cy="242" rx="70" ry="8" fill="#2e8b2e"/>
+
+    <!-- Game Title - embossed gold -->
+    <text x="180" y="257" font-family="Georgia, serif" font-size="15" font-weight="bold" text-anchor="middle" fill="url(#goldMetal)">
+      CASTLE QUEST
+    </text>
+    <text x="180" y="272" font-family="Georgia, serif" font-size="11" text-anchor="middle" fill="#f4d9a8">
+      ADVENTURE
+    </text>
+    <text x="180" y="285" font-family="Arial, sans-serif" font-size="7" text-anchor="middle" fill="#d4b88a" letter-spacing="2">
+      EPIC FANTASY BOARD GAME
+    </text>
+
+    <!-- Age badge -->
+    <circle cx="250" cy="270" r="14" fill="#c41e3a" stroke="#8b1428" stroke-width="1.5"/>
+    <text x="250" y="267" font-size="6" font-weight="bold" text-anchor="middle" fill="white">AGES</text>
+    <text x="250" y="278" font-size="10" font-weight="bold" text-anchor="middle" fill="white">8+</text>
+
+    <!-- Player count badge -->
+    <circle cx="108" cy="270" r="14" fill="#2e5a88" stroke="#1a3a5c" stroke-width="1.5"/>
+    <text x="108" y="267" font-size="6" text-anchor="middle" fill="white">PLAYERS</text>
+    <text x="108" y="278" font-size="10" font-weight="bold" text-anchor="middle" fill="white">2-6</text>
+  </g>
+
+  <!-- Game Components Display -->
+  <!-- Wooden knight tokens -->
+  <g transform="translate(100, 320)">
+    <ellipse cx="0" cy="22" rx="10" ry="3" fill="rgba(0,0,0,0.15)"/>
+    <rect x="-8" y="5" width="16" height="17" fill="#8b4513" rx="2"/>
+    <polygon points="0,-8 -8,5 8,5" fill="#a0522d"/>
+    <circle cx="0" cy="0" r="5" fill="#cd853f"/>
+  </g>
+
+  <g transform="translate(145, 325)">
+    <ellipse cx="0" cy="22" rx="10" ry="3" fill="rgba(0,0,0,0.15)"/>
+    <rect x="-8" y="5" width="16" height="17" fill="#2f4f4f" rx="2"/>
+    <polygon points="0,-8 -8,5 8,5" fill="#3a5f5f"/>
+    <circle cx="0" cy="0" r="5" fill="#5f9ea0"/>
+  </g>
+
+  <g transform="translate(190, 330)">
+    <ellipse cx="0" cy="22" rx="10" ry="3" fill="rgba(0,0,0,0.15)"/>
+    <rect x="-8" y="5" width="16" height="17" fill="#8b0000" rx="2"/>
+    <polygon points="0,-8 -8,5 8,5" fill="#a52a2a"/>
+    <circle cx="0" cy="0" r="5" fill="#dc143c"/>
+  </g>
+
+  <!-- Quest cards fanned -->
+  <g transform="translate(250, 315)">
+    <rect x="0" y="0" width="32" height="45" fill="#f5f0e6" stroke="#c9b896" stroke-width="0.8" rx="2" transform="rotate(-15 16 22)"/>
+    <rect x="5" y="0" width="32" height="45" fill="#f8f4ec" stroke="#c9b896" stroke-width="0.8" rx="2" transform="rotate(-5 16 22)"/>
+    <rect x="10" y="0" width="32" height="45" fill="#faf7f0" stroke="#c9b896" stroke-width="0.8" rx="2" transform="rotate(5 16 22)"/>
+    <rect x="15" y="0" width="32" height="45" fill="#fcfaf5" stroke="#c9b896" stroke-width="0.8" rx="2" transform="rotate(15 16 22)"/>
+    <!-- Card design hint -->
+    <circle cx="31" cy="22" r="8" fill="#daa520" opacity="0.5" transform="rotate(15 16 22)"/>
+  </g>
+
+  <!-- Custom dice with castle emblems -->
+  <g transform="translate(70, 355)">
+    <rect x="0" y="0" width="22" height="22" fill="#f0e6d2" stroke="#b8a882" stroke-width="1" rx="3" transform="rotate(-8)"/>
+    <circle cx="5" cy="5" r="2" fill="#8b4513"/>
+    <circle cx="11" cy="11" r="2" fill="#8b4513"/>
+    <circle cx="17" cy="17" r="2" fill="#8b4513"/>
+  </g>
+
+  <g transform="translate(95, 360)">
+    <rect x="0" y="0" width="22" height="22" fill="#c41e3a" stroke="#8b1428" stroke-width="1" rx="3" transform="rotate(12)"/>
+    <circle cx="11" cy="5" r="2" fill="#ffd700"/>
+    <circle cx="5" cy="17" r="2" fill="#ffd700"/>
+    <circle cx="17" cy="17" r="2" fill="#ffd700"/>
+  </g>
+
+  <!-- Product info card -->
+  <g transform="translate(50, 400)">
+    <rect x="0" y="0" width="300" height="85" fill="white" stroke="#e0e0e0" stroke-width="1" rx="6"/>
+    <rect x="0" y="0" width="300" height="85" fill="url(#gloss)" rx="6"/>
+
+    <!-- Price section -->
+    <text x="20" y="28" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#c41e3a">$34.99</text>
+    <text x="110" y="28" font-family="Arial, sans-serif" font-size="13" fill="#999" text-decoration="line-through">$44.99</text>
+
+    <!-- Sale badge -->
+    <rect x="170" y="12" width="55" height="22" fill="#c41e3a" rx="3"/>
+    <text x="197" y="27" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="white">SAVE 22%</text>
+
+    <!-- Description -->
+    <text x="20" y="50" font-family="Arial, sans-serif" font-size="10" fill="#555">Epic fantasy board game for the whole family</text>
+    <text x="20" y="65" font-family="Arial, sans-serif" font-size="9" fill="#888">60-90 min play time | Includes 180 cards, 6 figures, game board</text>
+
+    <!-- Rating -->
+    <text x="250" y="55" font-size="14" fill="#ffa500">&#9733;&#9733;&#9733;&#9733;&#9733;</text>
+    <text x="250" y="70" font-family="Arial, sans-serif" font-size="8" fill="#666">4.8 (234 reviews)</text>
+  </g>
+</svg>

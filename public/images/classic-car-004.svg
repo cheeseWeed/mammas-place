@@ -1,0 +1,337 @@
+<svg viewBox="0 0 500 350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Pearl Orange metallic paint -->
+    <linearGradient id="orangePaint" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff8c42"/>
+      <stop offset="12%" style="stop-color:#ff7830"/>
+      <stop offset="40%" style="stop-color:#f06020"/>
+      <stop offset="70%" style="stop-color:#d85010"/>
+      <stop offset="100%" style="stop-color:#a83808"/>
+    </linearGradient>
+    <linearGradient id="orangeHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffaa68;stop-opacity:0.6"/>
+      <stop offset="50%" style="stop-color:#ffcc98;stop-opacity:0.35"/>
+      <stop offset="100%" style="stop-color:#ff9858;stop-opacity:0.25"/>
+    </linearGradient>
+    <linearGradient id="orangeShadow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d85010"/>
+      <stop offset="100%" style="stop-color:#702808"/>
+    </linearGradient>
+
+    <!-- Carbon fiber texture -->
+    <pattern id="carbonFiber" patternUnits="userSpaceOnUse" width="4" height="4">
+      <rect width="4" height="4" fill="#1a1a1a"/>
+      <rect width="2" height="2" fill="#252525"/>
+      <rect x="2" y="2" width="2" height="2" fill="#252525"/>
+    </pattern>
+
+    <!-- Chrome effects -->
+    <linearGradient id="chrome4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="15%" style="stop-color:#e8e8e8"/>
+      <stop offset="32%" style="stop-color:#a0a0a0"/>
+      <stop offset="50%" style="stop-color:#f0f0f0"/>
+      <stop offset="68%" style="stop-color:#858585"/>
+      <stop offset="85%" style="stop-color:#c0c0c0"/>
+      <stop offset="100%" style="stop-color:#606060"/>
+    </linearGradient>
+    <radialGradient id="chromeRadial4" cx="28%" cy="28%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="48%" style="stop-color:#c0c0c0"/>
+      <stop offset="100%" style="stop-color:#707070"/>
+    </radialGradient>
+
+    <!-- Low profile tire rubber -->
+    <radialGradient id="tire4" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#303030"/>
+      <stop offset="55%" style="stop-color:#181818"/>
+      <stop offset="85%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#000000"/>
+    </radialGradient>
+
+    <!-- Glass reflections -->
+    <linearGradient id="glass4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8ad0e8;stop-opacity:0.82"/>
+      <stop offset="38%" style="stop-color:#60b0d0;stop-opacity:0.62"/>
+      <stop offset="68%" style="stop-color:#4090b0;stop-opacity:0.52"/>
+      <stop offset="100%" style="stop-color:#307080;stop-opacity:0.72"/>
+    </linearGradient>
+
+    <!-- Ground shadow -->
+    <radialGradient id="shadow4" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:0.52"/>
+      <stop offset="58%" style="stop-color:#000000;stop-opacity:0.25"/>
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- LED headlight -->
+    <radialGradient id="ledLight" cx="35%" cy="35%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="35%" style="stop-color:#f8f8ff"/>
+      <stop offset="70%" style="stop-color:#e0e0f0"/>
+      <stop offset="100%" style="stop-color:#b0b0c0"/>
+    </radialGradient>
+
+    <!-- Taillight LED -->
+    <radialGradient id="taillightLed" cx="35%" cy="35%">
+      <stop offset="0%" style="stop-color:#ff6060"/>
+      <stop offset="50%" style="stop-color:#dd0000"/>
+      <stop offset="100%" style="stop-color:#880000"/>
+    </radialGradient>
+
+    <!-- Alloy wheel -->
+    <radialGradient id="alloyWheel" cx="35%" cy="35%">
+      <stop offset="0%" style="stop-color:#d0d0d0"/>
+      <stop offset="50%" style="stop-color:#909090"/>
+      <stop offset="100%" style="stop-color:#505050"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="500" height="170" fill="#87ceeb"/>
+  <rect y="170" width="500" height="180" fill="#a8a8a8"/>
+
+  <!-- Ground shadow -->
+  <ellipse cx="250" cy="285" rx="165" ry="38" fill="url(#shadow4)"/>
+
+  <!-- ===== 2008 LAMBORGHINI GALLARDO SPYDER - PEARL ORANGE ===== -->
+
+  <!-- Main body - ultra-low aggressive supercar -->
+  <g id="gallardoBody">
+    <!-- Lower body section -->
+    <path d="M 75 225
+             L 75 175
+             Q 75 155 100 145
+             L 400 145
+             Q 425 155 425 175
+             L 425 225"
+          fill="url(#orangePaint)" stroke="#702808" stroke-width="1.2"/>
+
+    <!-- Body side sculpture -->
+    <path d="M 80 185 Q 250 175 420 185" fill="none" stroke="#a83808" stroke-width="2.2" opacity="0.5"/>
+  </g>
+
+  <!-- Front wedge section -->
+  <path d="M 100 145
+           L 75 128
+           Q 65 118 78 108
+           L 175 95
+           Q 195 90 215 95
+           L 215 145"
+        fill="url(#orangePaint)" stroke="#702808" stroke-width="1.2"/>
+
+  <!-- Hood with air intakes -->
+  <path d="M 215 145 L 215 95 Q 240 90 265 95 L 265 145" fill="url(#orangePaint)" stroke="#702808" stroke-width="1"/>
+  <!-- Hood V-line crease -->
+  <path d="M 100 135 Q 185 105 265 135" fill="none" stroke="#702808" stroke-width="1.5" opacity="0.45"/>
+
+  <!-- Hood highlight -->
+  <path d="M 90 140 Q 175 100 260 140" fill="url(#orangeHighlight)" opacity="0.38"/>
+
+  <!-- Engine air intake vents on hood -->
+  <g id="hoodVents">
+    <path d="M 140 110 L 155 105 L 155 120 L 140 125 Z" fill="url(#carbonFiber)" stroke="#333" stroke-width="0.5"/>
+    <path d="M 205 110 L 190 105 L 190 120 L 205 125 Z" fill="url(#carbonFiber)" stroke="#333" stroke-width="0.5"/>
+  </g>
+
+  <!-- Rear deck/engine cover -->
+  <path d="M 350 145
+           L 405 125
+           Q 428 118 435 132
+           L 425 145"
+        fill="url(#orangePaint)" stroke="#702808" stroke-width="1.2"/>
+
+  <!-- Engine bay vents (Gallardo signature) -->
+  <g id="engineVents">
+    <rect x="355" y="128" width="50" height="18" rx="2" fill="url(#carbonFiber)" stroke="#1a1a1a" stroke-width="0.8"/>
+    <g stroke="#2a2a2a" stroke-width="1.2">
+      <line x1="360" y1="132" x2="360" y2="142"/>
+      <line x1="368" y1="132" x2="368" y2="142"/>
+      <line x1="376" y1="132" x2="376" y2="142"/>
+      <line x1="384" y1="132" x2="384" y2="142"/>
+      <line x1="392" y1="132" x2="392" y2="142"/>
+      <line x1="400" y1="132" x2="400" y2="142"/>
+    </g>
+  </g>
+
+  <!-- SPYDER - Convertible with no roof (top down) -->
+  <!-- Roll bar area -->
+  <path d="M 265 145
+           L 280 105
+           Q 288 88 315 82
+           L 348 82
+           Q 375 88 382 105
+           L 395 145"
+        fill="url(#orangePaint)" stroke="#702808" stroke-width="1.2"/>
+
+  <!-- Interior visible (top down) -->
+  <path d="M 285 140
+           Q 285 110 315 100
+           L 348 100
+           Q 378 110 378 140"
+        fill="#1a1a1a" stroke="#0a0a0a" stroke-width="1"/>
+  <!-- Seats visible -->
+  <ellipse cx="310" cy="118" rx="15" ry="12" fill="#0a0a0a" stroke="#252525" stroke-width="0.5"/>
+  <ellipse cx="352" cy="118" rx="15" ry="12" fill="#0a0a0a" stroke="#252525" stroke-width="0.5"/>
+  <!-- Headrests -->
+  <ellipse cx="310" cy="105" rx="8" ry="6" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+  <ellipse cx="352" cy="105" rx="8" ry="6" fill="#1a1a1a" stroke="#333" stroke-width="0.5"/>
+
+  <!-- Windshield - steeply raked -->
+  <path d="M 275 145
+           L 285 108
+           Q 290 95 310 90
+           L 355 90
+           Q 375 95 380 108
+           L 388 145"
+        fill="url(#glass4)" stroke="#4a6878" stroke-width="1.5"/>
+  <!-- Windshield reflection -->
+  <path d="M 292 138 Q 315 105 350 98" stroke="#ffffff" stroke-width="2.2" fill="none" opacity="0.45"/>
+
+  <!-- Side air intakes (large Gallardo vents) -->
+  <g id="sideIntakes">
+    <!-- Front intake -->
+    <path d="M 85 170 L 105 155 L 105 190 L 85 200 Z" fill="url(#carbonFiber)" stroke="#1a1a1a" stroke-width="1"/>
+    <g stroke="#2a2a2a" stroke-width="0.8">
+      <line x1="90" y1="168" x2="102" y2="160"/>
+      <line x1="90" y1="178" x2="102" y2="170"/>
+      <line x1="90" y1="188" x2="102" y2="180"/>
+    </g>
+    <!-- Rear intake (larger) -->
+    <path d="M 380 155 L 412 145 L 412 195 L 380 200 Z" fill="url(#carbonFiber)" stroke="#1a1a1a" stroke-width="1"/>
+    <g stroke="#2a2a2a" stroke-width="0.8">
+      <line x1="385" y1="160" x2="408" y2="152"/>
+      <line x1="385" y1="172" x2="408" y2="164"/>
+      <line x1="385" y1="184" x2="408" y2="176"/>
+      <line x1="385" y1="195" x2="408" y2="188"/>
+    </g>
+  </g>
+
+  <!-- Door seam -->
+  <path d="M 280 145 L 280 218" stroke="#702808" stroke-width="1.2" opacity="0.48"/>
+
+  <!-- Door handle (flush Lambo style) -->
+  <rect x="290" y="172" width="22" height="5" rx="1" fill="url(#chrome4)" stroke="#555" stroke-width="0.4"/>
+
+  <!-- Side skirts / rocker panels -->
+  <rect x="100" y="215" width="295" height="12" fill="#1a1a1a" stroke="#0a0a0a" stroke-width="0.5"/>
+
+  <!-- Front splitter -->
+  <path d="M 68 218 L 220 218 L 220 228 L 68 228 Q 62 225 68 218" fill="url(#carbonFiber)" stroke="#0a0a0a" stroke-width="1"/>
+
+  <!-- Rear diffuser -->
+  <path d="M 380 218 L 432 218 Q 440 222 432 228 L 380 228 Z" fill="url(#carbonFiber)" stroke="#0a0a0a" stroke-width="1"/>
+  <!-- Diffuser fins -->
+  <g stroke="#2a2a2a" stroke-width="1">
+    <line x1="390" y1="220" x2="390" y2="226"/>
+    <line x1="402" y1="220" x2="402" y2="226"/>
+    <line x1="414" y1="220" x2="414" y2="226"/>
+  </g>
+
+  <!-- Angular LED headlights -->
+  <g id="headlights">
+    <!-- Left headlight cluster -->
+    <path d="M 88 140 L 110 128 L 130 128 L 130 155 L 88 155 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+    <path d="M 92 142 L 108 132 L 126 132 L 126 152 L 92 152 Z" fill="url(#ledLight)"/>
+    <!-- LED strip -->
+    <path d="M 95 148 L 122 148" stroke="#aaccff" stroke-width="2" opacity="0.8"/>
+    <ellipse cx="100" cy="142" rx="5" ry="4" fill="#ffffff" opacity="0.75"/>
+
+    <!-- Right headlight cluster -->
+    <path d="M 412 140 L 390 128 L 370 128 L 370 155 L 412 155 Z" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+    <path d="M 408 142 L 392 132 L 374 132 L 374 152 L 408 152 Z" fill="url(#ledLight)"/>
+    <path d="M 378 148 L 405 148" stroke="#aaccff" stroke-width="2" opacity="0.8"/>
+    <ellipse cx="400" cy="142" rx="5" ry="4" fill="#ffffff" opacity="0.75"/>
+  </g>
+
+  <!-- LED taillights -->
+  <g id="taillights">
+    <!-- Left taillight -->
+    <rect x="408" y="158" width="18" height="45" rx="2" fill="#1a1a1a" stroke="#333" stroke-width="0.8"/>
+    <rect x="410" y="162" width="14" height="38" rx="1" fill="url(#taillightLed)"/>
+    <!-- LED pattern -->
+    <g fill="#ff4040" opacity="0.6">
+      <rect x="412" y="165" width="10" height="3"/>
+      <rect x="412" y="172" width="10" height="3"/>
+      <rect x="412" y="179" width="10" height="3"/>
+      <rect x="412" y="186" width="10" height="3"/>
+      <rect x="412" y="193" width="10" height="3"/>
+    </g>
+  </g>
+
+  <!-- Wheels - forged alloy multi-spoke -->
+  <!-- Front wheel -->
+  <g id="frontWheel">
+    <circle cx="150" cy="250" r="35" fill="url(#tire4)"/>
+    <circle cx="150" cy="250" r="32" fill="none" stroke="#080808" stroke-width="3"/>
+    <circle cx="150" cy="250" r="29" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+    <!-- Alloy wheel face -->
+    <circle cx="150" cy="250" r="25" fill="url(#alloyWheel)" stroke="#404040" stroke-width="0.8"/>
+    <!-- 10-spoke design -->
+    <g stroke="#2a2a2a" stroke-width="3" fill="none">
+      <line x1="150" y1="228" x2="150" y2="238"/>
+      <line x1="150" y1="262" x2="150" y2="272"/>
+      <line x1="128" y1="250" x2="138" y2="250"/>
+      <line x1="162" y1="250" x2="172" y2="250"/>
+      <line x1="135" y1="235" x2="142" y2="242"/>
+      <line x1="165" y1="265" x2="158" y2="258"/>
+      <line x1="165" y1="235" x2="158" y2="242"/>
+      <line x1="135" y1="265" x2="142" y2="258"/>
+    </g>
+    <!-- Center hub -->
+    <circle cx="150" cy="250" r="10" fill="url(#chromeRadial4)" stroke="#404040" stroke-width="0.5"/>
+    <!-- Lamborghini bull center -->
+    <circle cx="150" cy="250" r="7" fill="#1a1a1a"/>
+    <circle cx="150" cy="250" r="5" fill="#f0a030" opacity="0.8"/>
+    <!-- Brake caliper visible -->
+    <rect x="162" y="244" width="10" height="14" rx="1" fill="#ff6600" stroke="#cc4400" stroke-width="0.5"/>
+  </g>
+
+  <!-- Rear wheel (wider) -->
+  <g id="rearWheel">
+    <circle cx="360" cy="250" r="38" fill="url(#tire4)"/>
+    <circle cx="360" cy="250" r="35" fill="none" stroke="#080808" stroke-width="3.5"/>
+    <circle cx="360" cy="250" r="31" fill="none" stroke="#1a1a1a" stroke-width="1.5"/>
+    <circle cx="360" cy="250" r="27" fill="url(#alloyWheel)" stroke="#404040" stroke-width="0.8"/>
+    <g stroke="#2a2a2a" stroke-width="3.2" fill="none">
+      <line x1="360" y1="226" x2="360" y2="238"/>
+      <line x1="360" y1="262" x2="360" y2="274"/>
+      <line x1="336" y1="250" x2="348" y2="250"/>
+      <line x1="372" y1="250" x2="384" y2="250"/>
+      <line x1="343" y1="233" x2="352" y2="242"/>
+      <line x1="377" y1="267" x2="368" y2="258"/>
+      <line x1="377" y1="233" x2="368" y2="242"/>
+      <line x1="343" y1="267" x2="352" y2="258"/>
+    </g>
+    <circle cx="360" cy="250" r="11" fill="url(#chromeRadial4)" stroke="#404040" stroke-width="0.5"/>
+    <circle cx="360" cy="250" r="8" fill="#1a1a1a"/>
+    <circle cx="360" cy="250" r="5.5" fill="#f0a030" opacity="0.8"/>
+    <!-- Rear brake caliper -->
+    <rect x="373" y="243" width="11" height="16" rx="1" fill="#ff6600" stroke="#cc4400" stroke-width="0.5"/>
+  </g>
+
+  <!-- Fender arches -->
+  <path d="M 105 222 Q 118 205 150 205 Q 182 205 195 222" fill="url(#orangeShadow)" stroke="#702808" stroke-width="0.8"/>
+  <path d="M 315 222 Q 330 202 360 202 Q 390 202 405 222" fill="url(#orangeShadow)" stroke="#702808" stroke-width="0.8"/>
+
+  <!-- Quad exhaust tips -->
+  <g id="exhausts">
+    <ellipse cx="388" cy="228" rx="5" ry="3.5" fill="#4a4a4a" stroke="#333" stroke-width="0.8"/>
+    <ellipse cx="388" cy="228" rx="3" ry="2" fill="#1a1a1a"/>
+    <ellipse cx="400" cy="228" rx="5" ry="3.5" fill="#4a4a4a" stroke="#333" stroke-width="0.8"/>
+    <ellipse cx="400" cy="228" rx="3" ry="2" fill="#1a1a1a"/>
+    <ellipse cx="412" cy="228" rx="5" ry="3.5" fill="#4a4a4a" stroke="#333" stroke-width="0.8"/>
+    <ellipse cx="412" cy="228" rx="3" ry="2" fill="#1a1a1a"/>
+    <ellipse cx="424" cy="228" rx="5" ry="3.5" fill="#4a4a4a" stroke="#333" stroke-width="0.8"/>
+    <ellipse cx="424" cy="228" rx="3" ry="2" fill="#1a1a1a"/>
+  </g>
+
+  <!-- License plate -->
+  <rect x="185" y="282" width="130" height="28" rx="2" fill="#f5f5f5" stroke="#333" stroke-width="1.5"/>
+  <text x="250" y="290" font-size="6" text-anchor="middle" fill="#1a1a1a" font-family="sans-serif">ITALIA</text>
+  <text x="250" y="304" font-size="12" font-weight="bold" text-anchor="middle" fill="#1a1a1a" font-family="monospace">GALLARDO</text>
+
+  <!-- Title text -->
+  <text x="250" y="325" font-size="16" font-weight="bold" text-anchor="middle" fill="#333333" font-family="Georgia, serif">Lamborghini Gallardo Spyder</text>
+  <text x="250" y="340" font-size="10" text-anchor="middle" fill="#666666" font-family="Arial, sans-serif">2008 V10 | Pearl Orange | 18,000 Miles</text>
+</svg>

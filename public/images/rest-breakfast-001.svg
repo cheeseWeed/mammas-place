@@ -1,0 +1,176 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Complex shadow filters for depth -->
+    <filter id="plateShd" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8" result="blur"/>
+      <feOffset in="blur" dx="4" dy="8" result="offsetBlur"/>
+      <feComposite in="SourceGraphic" in2="offsetBlur" operator="over"/>
+    </filter>
+    <filter id="foodShd" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-opacity="0.35"/>
+    </filter>
+    <filter id="steamBlur">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+
+    <!-- Plate gradients for 3D effect -->
+    <radialGradient id="plateGrad" cx="35%" cy="35%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#f8f8f5"/>
+      <stop offset="100%" stop-color="#e8e5dc"/>
+    </radialGradient>
+    <radialGradient id="plateRim" cx="50%" cy="50%">
+      <stop offset="85%" stop-color="#fafaf7"/>
+      <stop offset="95%" stop-color="#d8d5cc"/>
+      <stop offset="100%" stop-color="#c0bdb5"/>
+    </radialGradient>
+
+    <!-- Egg yolk gradient -->
+    <radialGradient id="yolkGrad" cx="40%" cy="35%">
+      <stop offset="0%" stop-color="#ffe066"/>
+      <stop offset="50%" stop-color="#ffcc00"/>
+      <stop offset="100%" stop-color="#e6a800"/>
+    </radialGradient>
+
+    <!-- Bacon gradient -->
+    <linearGradient id="baconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a52a2a"/>
+      <stop offset="30%" stop-color="#cd5c5c"/>
+      <stop offset="50%" stop-color="#8b2323"/>
+      <stop offset="70%" stop-color="#cd5c5c"/>
+      <stop offset="100%" stop-color="#a52a2a"/>
+    </linearGradient>
+
+    <!-- Toast gradient -->
+    <linearGradient id="toastGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#daa520"/>
+      <stop offset="50%" stop-color="#cd853f"/>
+      <stop offset="100%" stop-color="#8b4513"/>
+    </linearGradient>
+
+    <!-- Hash brown texture -->
+    <pattern id="hashTex" patternUnits="userSpaceOnUse" width="8" height="8">
+      <circle cx="2" cy="2" r="1.5" fill="#8b6914" opacity="0.4"/>
+      <circle cx="6" cy="6" r="1" fill="#6b4914" opacity="0.3"/>
+    </pattern>
+  </defs>
+
+  <!-- Warm restaurant background -->
+  <rect width="400" height="400" fill="#2c2416"/>
+  <rect x="0" y="0" width="400" height="400" fill="url(#tableWood)" opacity="0.3"/>
+
+  <!-- Wooden table texture simulation -->
+  <rect width="400" height="400" fill="#3d3020"/>
+  <line x1="0" y1="50" x2="400" y2="52" stroke="#4a3c28" stroke-width="2" opacity="0.5"/>
+  <line x1="0" y1="120" x2="400" y2="118" stroke="#5a4c38" stroke-width="1.5" opacity="0.4"/>
+  <line x1="0" y1="200" x2="400" y2="202" stroke="#4a3c28" stroke-width="2" opacity="0.5"/>
+  <line x1="0" y1="280" x2="400" y2="278" stroke="#5a4c38" stroke-width="1.5" opacity="0.4"/>
+  <line x1="0" y1="350" x2="400" y2="352" stroke="#4a3c28" stroke-width="2" opacity="0.5"/>
+
+  <!-- Ambient table reflection -->
+  <ellipse cx="200" cy="380" rx="180" ry="25" fill="#1a140c" opacity="0.6"/>
+
+  <!-- Main plate with 3D rim effect -->
+  <g filter="url(#plateShd)">
+    <ellipse cx="200" cy="220" rx="145" ry="145" fill="url(#plateRim)"/>
+    <ellipse cx="200" cy="218" rx="140" ry="140" fill="url(#plateGrad)"/>
+    <ellipse cx="200" cy="216" rx="125" ry="125" fill="#fefefe"/>
+    <!-- Inner plate shadow -->
+    <ellipse cx="200" cy="225" rx="120" ry="115" fill="#f5f5f0" opacity="0.8"/>
+    <!-- Plate highlight -->
+    <ellipse cx="165" cy="140" rx="60" ry="25" fill="#ffffff" opacity="0.4"/>
+  </g>
+
+  <!-- Hash browns - crispy golden -->
+  <g filter="url(#foodShd)">
+    <ellipse cx="120" cy="270" rx="42" ry="28" fill="#c4922d"/>
+    <ellipse cx="120" cy="268" rx="40" ry="26" fill="#d4a23d"/>
+    <ellipse cx="120" cy="266" rx="38" ry="24" fill="#ddb24d"/>
+    <!-- Crispy texture -->
+    <rect x="82" y="248" width="76" height="40" fill="url(#hashTex)" opacity="0.6"/>
+    <!-- Golden highlight -->
+    <ellipse cx="105" cy="255" rx="15" ry="8" fill="#eec25d" opacity="0.6"/>
+    <!-- Crispy edges -->
+    <path d="M 85 258 Q 88 262 92 260" fill="#8b6914" opacity="0.5"/>
+    <path d="M 145 265 Q 150 268 152 264" fill="#8b6914" opacity="0.5"/>
+  </g>
+
+  <!-- Bacon strips - crispy wavy -->
+  <g filter="url(#foodShd)">
+    <!-- Strip 1 -->
+    <path d="M 160 150 Q 175 145 190 152 Q 205 158 220 150 Q 235 142 250 148"
+          stroke="url(#baconGrad)" stroke-width="14" fill="none" stroke-linecap="round"/>
+    <path d="M 162 150 Q 177 145 192 152 Q 207 158 222 150 Q 237 142 252 148"
+          stroke="#cd5c5c" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.4"/>
+    <!-- Fat marbling -->
+    <path d="M 170 150 L 175 151" stroke="#f5deb3" stroke-width="3" opacity="0.6"/>
+    <path d="M 200 152 L 207 150" stroke="#f5deb3" stroke-width="3" opacity="0.6"/>
+    <path d="M 235 146 L 242 148" stroke="#f5deb3" stroke-width="3" opacity="0.6"/>
+
+    <!-- Strip 2 -->
+    <path d="M 155 180 Q 170 175 185 182 Q 200 188 215 180 Q 230 172 245 178"
+          stroke="url(#baconGrad)" stroke-width="14" fill="none" stroke-linecap="round"/>
+    <path d="M 157 180 Q 172 175 187 182 Q 202 188 217 180 Q 232 172 247 178"
+          stroke="#cd5c5c" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.4"/>
+    <path d="M 168 180 L 173 181" stroke="#f5deb3" stroke-width="3" opacity="0.6"/>
+    <path d="M 195 184 L 202 182" stroke="#f5deb3" stroke-width="3" opacity="0.6"/>
+
+    <!-- Strip 3 -->
+    <path d="M 150 205 Q 165 200 180 207 Q 195 213 210 205"
+          stroke="url(#baconGrad)" stroke-width="12" fill="none" stroke-linecap="round"/>
+    <path d="M 165 205 L 172 206" stroke="#f5deb3" stroke-width="2.5" opacity="0.5"/>
+  </g>
+
+  <!-- Sunny side up eggs -->
+  <g filter="url(#foodShd)">
+    <!-- Egg white with natural irregular shape -->
+    <path d="M 220 220 Q 195 200 210 230 Q 200 260 230 280 Q 270 290 300 265 Q 315 240 295 215 Q 275 195 250 200 Q 230 205 220 220"
+          fill="#fffef8" stroke="#f5f0dc" stroke-width="1"/>
+    <!-- Egg white inner highlight -->
+    <path d="M 225 225 Q 205 215 215 240 Q 210 265 240 275 Q 275 280 295 260 Q 305 240 290 220 Q 270 205 250 210 Q 235 215 225 225"
+          fill="#ffffff" opacity="0.7"/>
+
+    <!-- Yolk with 3D effect -->
+    <ellipse cx="260" cy="245" rx="22" ry="20" fill="#e6a800"/>
+    <ellipse cx="260" cy="243" rx="21" ry="19" fill="url(#yolkGrad)"/>
+    <ellipse cx="260" cy="241" rx="19" ry="17" fill="#ffcc00"/>
+    <!-- Yolk highlight -->
+    <ellipse cx="252" cy="235" rx="8" ry="6" fill="#ffe066" opacity="0.8"/>
+    <ellipse cx="250" cy="233" rx="4" ry="3" fill="#ffffff" opacity="0.9"/>
+
+    <!-- Subtle egg white edge browning -->
+    <path d="M 300 265 Q 310 258 305 248" stroke="#ddc" stroke-width="2" fill="none" opacity="0.3"/>
+  </g>
+
+  <!-- Toast triangles -->
+  <g filter="url(#foodShd)">
+    <polygon points="280,290 320,290 300,250" fill="url(#toastGrad)"/>
+    <polygon points="282,288 318,288 300,252" fill="#daa520" opacity="0.6"/>
+    <!-- Toast texture -->
+    <circle cx="295" cy="272" r="2" fill="#8b4513" opacity="0.4"/>
+    <circle cx="305" cy="280" r="1.5" fill="#8b4513" opacity="0.3"/>
+    <circle cx="300" cy="265" r="1" fill="#8b4513" opacity="0.3"/>
+    <!-- Butter melting -->
+    <ellipse cx="300" cy="265" rx="10" ry="6" fill="#f4d03f" opacity="0.7"/>
+    <ellipse cx="300" cy="266" rx="6" ry="3" fill="#fae596" opacity="0.8"/>
+  </g>
+
+  <!-- Fresh parsley garnish -->
+  <g opacity="0.9">
+    <path d="M 90 200 Q 85 190 95 185 Q 105 182 108 192" fill="#228b22"/>
+    <path d="M 92 198 Q 88 192 96 188" fill="#2ecc40" opacity="0.7"/>
+    <circle cx="95" cy="195" r="3" fill="#27ae60"/>
+    <circle cx="102" cy="190" r="2.5" fill="#2ecc71"/>
+  </g>
+
+  <!-- Steam rising from hot food -->
+  <g filter="url(#steamBlur)" opacity="0.25">
+    <path d="M 180 120 Q 175 100 185 80 Q 190 65 182 50" stroke="#ffffff" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M 200 125 Q 205 105 195 85 Q 190 70 200 55" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M 220 118 Q 225 98 215 78" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M 260 130 Q 265 110 255 90" stroke="#ffffff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Ambient lighting glow -->
+  <ellipse cx="200" cy="200" rx="160" ry="140" fill="#ffd700" opacity="0.03"/>
+</svg>

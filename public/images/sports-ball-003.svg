@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <!-- Classic black and white soccer ball -->
+    <radialGradient id="soccer-white" cx="30%" cy="25%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="60%" style="stop-color:#f5f5f5"/>
+      <stop offset="100%" style="stop-color:#e0e0e0"/>
+    </radialGradient>
+    <!-- Pentagon black panels -->
+    <radialGradient id="soccer-black" cx="40%" cy="30%">
+      <stop offset="0%" style="stop-color:#3a3a3a"/>
+      <stop offset="60%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#0a0a0a"/>
+    </radialGradient>
+    <!-- Ball texture -->
+    <pattern id="ball-texture" patternUnits="userSpaceOnUse" width="4" height="4">
+      <circle cx="2" cy="2" r="0.5" fill="#000" opacity="0.03"/>
+    </pattern>
+    <!-- Drop shadow -->
+    <filter id="soccer-shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="7"/>
+      <feOffset dx="4" dy="10" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.4"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Specular highlight -->
+    <radialGradient id="soccer-spec" cx="25%" cy="20%">
+      <stop offset="0%" style="stop-color:#fff;stop-opacity:0.7"/>
+      <stop offset="40%" style="stop-color:#fff;stop-opacity:0.25"/>
+      <stop offset="100%" style="stop-color:#fff;stop-opacity:0"/>
+    </radialGradient>
+    <!-- Ground shadow gradient -->
+    <radialGradient id="floor-shadow" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#000;stop-opacity:0.3"/>
+      <stop offset="80%" style="stop-color:#000;stop-opacity:0.05"/>
+      <stop offset="100%" style="stop-color:#000;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Studio background -->
+  <rect width="400" height="400" fill="#f8f8f8"/>
+
+  <!-- Ground shadow -->
+  <ellipse cx="200" cy="350" rx="90" ry="22" fill="url(#floor-shadow)"/>
+
+  <!-- Main soccer ball -->
+  <g filter="url(#soccer-shadow)">
+    <!-- White base sphere -->
+    <circle cx="200" cy="195" r="115" fill="url(#soccer-white)"/>
+    <!-- Subtle texture -->
+    <circle cx="200" cy="195" r="115" fill="url(#ball-texture)"/>
+  </g>
+
+  <!-- Black pentagon panels with 3D effect -->
+  <!-- Center pentagon -->
+  <polygon points="200,150 230,175 220,210 180,210 170,175" fill="url(#soccer-black)" stroke="#0a0a0a" stroke-width="1"/>
+  <polygon points="200,152 228,176 218,208 182,208 172,176" fill="#2a2a2a" opacity="0.3"/>
+
+  <!-- Top pentagon -->
+  <polygon points="200,85 220,105 215,130 185,130 180,105" fill="url(#soccer-black)" stroke="#0a0a0a" stroke-width="1"/>
+
+  <!-- Upper left pentagon -->
+  <polygon points="120,115 145,100 165,120 155,150 125,145" fill="url(#soccer-black)" stroke="#0a0a0a" stroke-width="1"/>
+
+  <!-- Upper right pentagon -->
+  <polygon points="280,115 255,100 235,120 245,150 275,145" fill="url(#soccer-black)" stroke="#0a0a0a" stroke-width="1"/>
+
+  <!-- Left pentagon -->
+  <polygon points="90,195 110,165 140,175 140,215 110,225" fill="url(#soccer-black)" stroke="#0a0a0a" stroke-width="1"/>
+
+  <!-- Right pentagon -->
+  <polygon points="310,195 290,165 260,175 260,215 290,225" fill="url(#soccer-black)" stroke="#0a0a0a" stroke-width="1"/>
+
+  <!-- Lower left pentagon -->
+  <polygon points="125,265 145,290 175,280 165,250 135,245" fill="url(#soccer-black)" stroke="#0a0a0a" stroke-width="1"/>
+
+  <!-- Lower right pentagon -->
+  <polygon points="275,265 255,290 225,280 235,250 265,245" fill="url(#soccer-black)" stroke="#0a0a0a" stroke-width="1"/>
+
+  <!-- Bottom pentagon -->
+  <polygon points="200,305 220,285 215,260 185,260 180,285" fill="url(#soccer-black)" stroke="#0a0a0a" stroke-width="1"/>
+
+  <!-- Panel seam lines for hexagons -->
+  <g stroke="#cccccc" stroke-width="1.5" fill="none" opacity="0.7">
+    <!-- Top connecting lines -->
+    <line x1="200" y1="85" x2="200" y2="150"/>
+    <line x1="165" y1="120" x2="170" y2="175"/>
+    <line x1="235" y1="120" x2="230" y2="175"/>
+
+    <!-- Side connecting lines -->
+    <line x1="140" y1="175" x2="170" y2="175"/>
+    <line x1="260" y1="175" x2="230" y2="175"/>
+    <line x1="140" y1="215" x2="180" y2="210"/>
+    <line x1="260" y1="215" x2="220" y2="210"/>
+
+    <!-- Bottom connecting lines -->
+    <line x1="165" y1="250" x2="180" y2="210"/>
+    <line x1="235" y1="250" x2="220" y2="210"/>
+    <line x1="200" y1="260" x2="200" y2="305"/>
+  </g>
+
+  <!-- Specular highlight -->
+  <ellipse cx="155" cy="130" rx="50" ry="40" fill="url(#soccer-spec)"/>
+
+  <!-- Secondary rim light -->
+  <ellipse cx="275" cy="250" rx="25" ry="35" fill="#fff" opacity="0.1"/>
+
+  <!-- Edge definition -->
+  <circle cx="200" cy="195" r="114" fill="none" stroke="#ddd" stroke-width="1" opacity="0.5"/>
+</svg>

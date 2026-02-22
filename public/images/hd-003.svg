@@ -1,0 +1,267 @@
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Studio background gradient -->
+    <linearGradient id="studioGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8f6f3"/>
+      <stop offset="60%" style="stop-color:#f0ebe5"/>
+      <stop offset="100%" style="stop-color:#e8e0d5"/>
+    </linearGradient>
+
+    <!-- Luxury glass jar gradient - left candle (amber/honey) -->
+    <linearGradient id="jar1Glass" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8b6914;stop-opacity:0.4"/>
+      <stop offset="30%" style="stop-color:#daa520;stop-opacity:0.5"/>
+      <stop offset="50%" style="stop-color:#f4d03f;stop-opacity:0.6"/>
+      <stop offset="70%" style="stop-color:#daa520;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#8b6914;stop-opacity:0.4"/>
+    </linearGradient>
+
+    <!-- Center candle - rose/blush -->
+    <linearGradient id="jar2Glass" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8b4557;stop-opacity:0.35"/>
+      <stop offset="30%" style="stop-color:#d4a5a5;stop-opacity:0.5"/>
+      <stop offset="50%" style="stop-color:#f5c6c6;stop-opacity:0.55"/>
+      <stop offset="70%" style="stop-color:#d4a5a5;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#8b4557;stop-opacity:0.35"/>
+    </linearGradient>
+
+    <!-- Right candle - eucalyptus/sage -->
+    <linearGradient id="jar3Glass" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2d5a4a;stop-opacity:0.35"/>
+      <stop offset="30%" style="stop-color:#6b9080;stop-opacity:0.45"/>
+      <stop offset="50%" style="stop-color:#a8c5b5;stop-opacity:0.5"/>
+      <stop offset="70%" style="stop-color:#6b9080;stop-opacity:0.45"/>
+      <stop offset="100%" style="stop-color:#2d5a4a;stop-opacity:0.35"/>
+    </linearGradient>
+
+    <!-- Wax surfaces -->
+    <radialGradient id="wax1" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" style="stop-color:#f5e6c8"/>
+      <stop offset="70%" style="stop-color:#e8d4a8"/>
+      <stop offset="100%" style="stop-color:#d4bc82"/>
+    </radialGradient>
+
+    <radialGradient id="wax2" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" style="stop-color:#fce4ec"/>
+      <stop offset="70%" style="stop-color:#f8bbd9"/>
+      <stop offset="100%" style="stop-color:#e8a0b8"/>
+    </radialGradient>
+
+    <radialGradient id="wax3" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" style="stop-color:#c8e6c9"/>
+      <stop offset="70%" style="stop-color:#a5d6a7"/>
+      <stop offset="100%" style="stop-color:#7cb87e"/>
+    </radialGradient>
+
+    <!-- Flame gradients -->
+    <radialGradient id="flameOuter" cx="50%" cy="80%" r="80%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:0"/>
+      <stop offset="40%" style="stop-color:#ff8c42;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#ffa500;stop-opacity:0"/>
+    </radialGradient>
+
+    <linearGradient id="flameInner" x1="50%" y1="100%" x2="50%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff6b35"/>
+      <stop offset="30%" style="stop-color:#ff8c42"/>
+      <stop offset="60%" style="stop-color:#ffd700"/>
+      <stop offset="100%" style="stop-color:#fffacd"/>
+    </linearGradient>
+
+    <!-- Soft shadow filter -->
+    <filter id="candleShadow" x="-50%" y="-20%" width="200%" height="150%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+      <feOffset dx="2" dy="8" result="offsetblur"/>
+      <feFlood flood-color="#3d3021" flood-opacity="0.3"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Glass reflection filter -->
+    <filter id="glassShine">
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Lid metallic gradient -->
+    <linearGradient id="lidMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4af37"/>
+      <stop offset="25%" style="stop-color:#f4e4bc"/>
+      <stop offset="50%" style="stop-color:#e8c860"/>
+      <stop offset="75%" style="stop-color:#c9a227"/>
+      <stop offset="100%" style="stop-color:#a08020"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="300" height="300" fill="url(#studioGrad)"/>
+
+  <!-- Marble-like surface -->
+  <rect x="0" y="235" width="300" height="65" fill="#f5f2ed"/>
+  <path d="M 0 240 Q 50 238 100 240 Q 150 242 200 239 Q 250 241 300 240"
+        stroke="#e0d8cc" stroke-width="1" fill="none" opacity="0.4"/>
+  <path d="M 0 250 Q 75 248 150 251 Q 225 249 300 250"
+        stroke="#d4ccc0" stroke-width="0.5" fill="none" opacity="0.3"/>
+
+  <!-- Surface edge highlight -->
+  <line x1="0" y1="235" x2="300" y2="235" stroke="#d8cfc0" stroke-width="1"/>
+
+  <!-- Shadows on surface -->
+  <g opacity="0.25">
+    <ellipse cx="65" cy="262" rx="40" ry="10" fill="#4a4035"/>
+    <ellipse cx="150" cy="260" rx="45" ry="12" fill="#4a4035"/>
+    <ellipse cx="235" cy="258" rx="35" ry="9" fill="#4a4035"/>
+  </g>
+
+  <!-- LEFT CANDLE - Amber/Honey luxury jar -->
+  <g filter="url(#candleShadow)">
+    <!-- Glass jar body -->
+    <path d="M 30 260
+             Q 25 250 25 220
+             L 25 145
+             Q 25 135 35 130
+             L 95 130
+             Q 105 135 105 145
+             L 105 220
+             Q 105 250 100 260
+             Z"
+          fill="url(#jar1Glass)"/>
+
+    <!-- Wax inside -->
+    <rect x="30" y="145" width="70" height="60" fill="#e8d4a8" opacity="0.9"/>
+    <ellipse cx="65" cy="145" rx="35" ry="8" fill="url(#wax1)"/>
+
+    <!-- Glass highlights -->
+    <path d="M 35 150 Q 33 180 35 220 Q 36 240 38 255"
+          stroke="#ffffff" stroke-width="4" fill="none" opacity="0.4" stroke-linecap="round"/>
+    <path d="M 45 160 Q 43 185 45 210"
+          stroke="#ffffff" stroke-width="2" fill="none" opacity="0.25"/>
+
+    <!-- Wick -->
+    <line x1="65" y1="145" x2="65" y2="125" stroke="#3d3021" stroke-width="2"/>
+
+    <!-- Flame glow -->
+    <ellipse cx="65" cy="115" rx="15" ry="20" fill="url(#flameOuter)"/>
+
+    <!-- Flame -->
+    <path d="M 65 130 Q 58 115 65 95 Q 72 115 65 130 Z" fill="url(#flameInner)"/>
+    <ellipse cx="65" cy="120" rx="3" ry="5" fill="#fff8dc" opacity="0.8"/>
+
+    <!-- Gold lid (positioned above) -->
+    <rect x="25" y="125" width="80" height="8" rx="2" fill="url(#lidMetal)"/>
+    <ellipse cx="65" cy="125" rx="40" ry="5" fill="url(#lidMetal)" opacity="0.9"/>
+    <line x1="28" y1="125" x2="102" y2="125" stroke="#f4e4bc" stroke-width="1" opacity="0.5"/>
+
+    <!-- Label band -->
+    <rect x="32" y="180" width="66" height="40" fill="#ffffff" opacity="0.85" rx="2"/>
+    <rect x="34" y="182" width="62" height="36" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.6"/>
+    <line x1="40" y1="195" x2="90" y2="195" stroke="#d4af37" stroke-width="0.5" opacity="0.5"/>
+    <line x1="45" y1="205" x2="85" y2="205" stroke="#c4a030" stroke-width="0.3" opacity="0.4"/>
+  </g>
+
+  <!-- CENTER CANDLE - Rose/Blush (taller) -->
+  <g filter="url(#candleShadow)">
+    <!-- Glass jar body -->
+    <path d="M 110 260
+             Q 105 248 105 210
+             L 105 120
+             Q 105 108 118 103
+             L 182 103
+             Q 195 108 195 120
+             L 195 210
+             Q 195 248 190 260
+             Z"
+          fill="url(#jar2Glass)"/>
+
+    <!-- Wax inside -->
+    <rect x="112" y="125" width="76" height="55" fill="#f0c8d0" opacity="0.85"/>
+    <ellipse cx="150" cy="125" rx="38" ry="9" fill="url(#wax2)"/>
+
+    <!-- Glass highlights -->
+    <path d="M 118 135 Q 115 175 118 220 Q 120 240 122 255"
+          stroke="#ffffff" stroke-width="5" fill="none" opacity="0.45" stroke-linecap="round"/>
+    <path d="M 130 145 Q 128 180 130 210"
+          stroke="#ffffff" stroke-width="2.5" fill="none" opacity="0.3"/>
+
+    <!-- Wick -->
+    <line x1="150" y1="125" x2="150" y2="100" stroke="#5c4040" stroke-width="2.5"/>
+
+    <!-- Flame glow -->
+    <ellipse cx="150" cy="88" rx="18" ry="25" fill="url(#flameOuter)"/>
+
+    <!-- Flame -->
+    <path d="M 150 105 Q 141 85 150 60 Q 159 85 150 105 Z" fill="url(#flameInner)"/>
+    <ellipse cx="150" cy="92" rx="4" ry="7" fill="#fffacd" opacity="0.85"/>
+
+    <!-- Rose gold lid -->
+    <rect x="105" y="97" width="90" height="10" rx="2" fill="url(#lidMetal)"/>
+    <ellipse cx="150" cy="97" rx="45" ry="6" fill="url(#lidMetal)" opacity="0.9"/>
+    <line x1="108" y1="97" x2="192" y2="97" stroke="#fce4bc" stroke-width="1" opacity="0.6"/>
+
+    <!-- Elegant label -->
+    <rect x="118" y="165" width="64" height="50" fill="#ffffff" opacity="0.9" rx="2"/>
+    <rect x="120" y="167" width="60" height="46" fill="none" stroke="#c4947a" stroke-width="1" opacity="0.5"/>
+    <ellipse cx="150" cy="182" rx="15" ry="8" fill="none" stroke="#d4a5a5" stroke-width="0.5" opacity="0.6"/>
+    <line x1="130" y1="198" x2="170" y2="198" stroke="#c4947a" stroke-width="0.5" opacity="0.5"/>
+  </g>
+
+  <!-- RIGHT CANDLE - Eucalyptus/Sage -->
+  <g filter="url(#candleShadow)">
+    <!-- Glass jar body -->
+    <path d="M 205 258
+             Q 200 248 200 215
+             L 200 150
+             Q 200 140 210 135
+             L 260 135
+             Q 270 140 270 150
+             L 270 215
+             Q 270 248 265 258
+             Z"
+          fill="url(#jar3Glass)"/>
+
+    <!-- Wax inside -->
+    <rect x="205" y="155" width="60" height="45" fill="#a5d6a7" opacity="0.8"/>
+    <ellipse cx="235" cy="155" rx="30" ry="7" fill="url(#wax3)"/>
+
+    <!-- Glass highlights -->
+    <path d="M 210 165 Q 208 195 210 230 Q 212 245 214 255"
+          stroke="#ffffff" stroke-width="4" fill="none" opacity="0.4" stroke-linecap="round"/>
+    <path d="M 220 175 Q 218 200 220 225"
+          stroke="#ffffff" stroke-width="2" fill="none" opacity="0.25"/>
+
+    <!-- Wick -->
+    <line x1="235" y1="155" x2="235" y2="135" stroke="#2d4a3a" stroke-width="2"/>
+
+    <!-- Flame glow -->
+    <ellipse cx="235" cy="125" rx="14" ry="18" fill="url(#flameOuter)"/>
+
+    <!-- Flame -->
+    <path d="M 235 140 Q 229 125 235 108 Q 241 125 235 140 Z" fill="url(#flameInner)"/>
+    <ellipse cx="235" cy="130" rx="3" ry="5" fill="#fffacd" opacity="0.8"/>
+
+    <!-- Brass lid -->
+    <rect x="200" y="130" width="70" height="8" rx="2" fill="url(#lidMetal)"/>
+    <ellipse cx="235" cy="130" rx="35" ry="5" fill="url(#lidMetal)" opacity="0.9"/>
+    <line x1="203" y1="130" x2="267" y2="130" stroke="#f4e4bc" stroke-width="1" opacity="0.5"/>
+
+    <!-- Minimalist label -->
+    <rect x="210" y="185" width="50" height="35" fill="#ffffff" opacity="0.85" rx="2"/>
+    <line x1="218" y1="198" x2="252" y2="198" stroke="#6b9080" stroke-width="0.5" opacity="0.6"/>
+    <line x1="222" y1="208" x2="248" y2="208" stroke="#4a6a5a" stroke-width="0.3" opacity="0.4"/>
+  </g>
+
+  <!-- Ambient glow from all flames -->
+  <ellipse cx="150" cy="150" rx="100" ry="50" fill="#ffd700" opacity="0.03"/>
+
+  <!-- Surface reflections -->
+  <g opacity="0.08">
+    <ellipse cx="65" cy="268" rx="35" ry="8" fill="#f4d03f"/>
+    <ellipse cx="150" cy="270" rx="40" ry="10" fill="#f5c6c6"/>
+    <ellipse cx="235" cy="266" rx="30" ry="7" fill="#a8c5b5"/>
+  </g>
+</svg>

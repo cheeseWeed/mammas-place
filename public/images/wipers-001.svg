@@ -1,0 +1,149 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Metal wiper arm -->
+    <linearGradient id="wiperArm" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6b7280"/>
+      <stop offset="30%" stop-color="#4b5563"/>
+      <stop offset="70%" stop-color="#374151"/>
+      <stop offset="100%" stop-color="#1f2937"/>
+    </linearGradient>
+
+    <!-- Rubber blade -->
+    <linearGradient id="rubberBlade" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1f1f1f"/>
+      <stop offset="50%" stop-color="#0f0f0f"/>
+      <stop offset="100%" stop-color="#050505"/>
+    </linearGradient>
+
+    <!-- Plastic connector housing -->
+    <linearGradient id="connectorPlastic" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="30%" stop-color="#2d2d2d"/>
+      <stop offset="70%" stop-color="#2d2d2d"/>
+      <stop offset="100%" stop-color="#1a1a1a"/>
+    </linearGradient>
+
+    <!-- Chrome highlight -->
+    <linearGradient id="chromeHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e5e7eb"/>
+      <stop offset="50%" stop-color="#9ca3af"/>
+      <stop offset="100%" stop-color="#6b7280"/>
+    </linearGradient>
+
+    <!-- Blue accent for premium -->
+    <linearGradient id="blueAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1d4ed8"/>
+      <stop offset="50%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#1d4ed8"/>
+    </linearGradient>
+
+    <!-- Shadow filter -->
+    <filter id="wiperShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="3" dy="5"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.25"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Rain droplet -->
+    <radialGradient id="raindrop" cx="30%" cy="30%">
+      <stop offset="0%" stop-color="#93c5fd"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="#f5f5f5"/>
+
+  <!-- Ground shadow -->
+  <ellipse cx="200" cy="360" rx="150" ry="18" fill="#000" opacity="0.1"/>
+
+  <!-- WIPER BLADE 1 - Main display (angled) -->
+  <g transform="rotate(-15 200 200)" filter="url(#wiperShadow)">
+    <!-- Full wiper arm and blade assembly -->
+
+    <!-- Main wiper blade housing -->
+    <rect x="50" y="175" width="300" height="18" rx="3" fill="url(#connectorPlastic)"/>
+
+    <!-- Rubber blade edge -->
+    <rect x="45" y="193" width="310" height="6" rx="1" fill="url(#rubberBlade)"/>
+    <rect x="45" y="196" width="310" height="3" rx="1" fill="#000"/>
+
+    <!-- Blade squeegee detail -->
+    <line x1="45" y1="199" x2="355" y2="199" stroke="#1a1a1a" stroke-width="1"/>
+
+    <!-- Multiple connector points along blade -->
+    <g fill="url(#connectorPlastic)" stroke="#1a1a1a" stroke-width="0.5">
+      <rect x="75" y="165" width="25" height="28" rx="3"/>
+      <rect x="130" y="165" width="25" height="28" rx="3"/>
+      <rect x="185" y="165" width="30" height="28" rx="4"/>
+      <rect x="245" y="165" width="25" height="28" rx="3"/>
+      <rect x="300" y="165" width="25" height="28" rx="3"/>
+    </g>
+
+    <!-- Center mounting bracket (main connector) -->
+    <rect x="178" y="140" width="44" height="35" rx="4" fill="url(#connectorPlastic)" stroke="#333" stroke-width="1"/>
+    <rect x="183" y="145" width="34" height="25" rx="3" fill="#3f3f3f"/>
+
+    <!-- J-hook connector detail -->
+    <path d="M 192 145 L 192 130 Q 192 120 202 120 Q 212 120 212 130 L 212 145" fill="none" stroke="url(#chromeHighlight)" stroke-width="4"/>
+    <path d="M 194 145 L 194 132 Q 194 124 202 124 Q 210 124 210 132 L 210 145" fill="none" stroke="#9ca3af" stroke-width="2"/>
+
+    <!-- Blue premium accent strip -->
+    <rect x="50" y="175" width="300" height="3" rx="1" fill="url(#blueAccent)"/>
+
+    <!-- Size marking on blade -->
+    <rect x="260" y="178" width="60" height="12" rx="2" fill="#333"/>
+    <text x="290" y="188" font-family="Arial Black, sans-serif" font-size="9" text-anchor="middle" fill="#fff">22"</text>
+  </g>
+
+  <!-- WIPER BLADE 2 - Second blade (showing it's a pair) -->
+  <g transform="translate(20, 80) rotate(-15 200 200) scale(0.7)" opacity="0.6">
+    <rect x="70" y="175" width="260" height="15" rx="3" fill="url(#connectorPlastic)"/>
+    <rect x="65" y="190" width="270" height="5" rx="1" fill="url(#rubberBlade)"/>
+    <rect x="180" y="155" width="40" height="30" rx="4" fill="url(#connectorPlastic)"/>
+  </g>
+
+  <!-- Rain droplets for context -->
+  <g opacity="0.6">
+    <ellipse cx="80" cy="100" rx="4" ry="6" fill="url(#raindrop)"/>
+    <ellipse cx="320" cy="85" rx="3" ry="5" fill="url(#raindrop)"/>
+    <ellipse cx="150" cy="75" rx="3.5" ry="5.5" fill="url(#raindrop)"/>
+    <ellipse cx="280" cy="120" rx="3" ry="4.5" fill="url(#raindrop)"/>
+    <ellipse cx="100" cy="140" rx="2.5" ry="4" fill="url(#raindrop)"/>
+    <ellipse cx="340" cy="145" rx="3" ry="4.5" fill="url(#raindrop)"/>
+  </g>
+
+  <!-- Product info card -->
+  <rect x="55" y="280" width="290" height="65" rx="6" fill="#fff" stroke="#e5e7eb" stroke-width="1"/>
+
+  <!-- Brand name -->
+  <text x="200" y="302" font-family="Arial Black, sans-serif" font-size="14" text-anchor="middle" fill="#1f2937">CLEAR VIEW PRO</text>
+
+  <!-- Features line -->
+  <g transform="translate(70, 315)">
+    <circle cx="0" cy="0" r="4" fill="#22c55e"/>
+    <text x="8" y="4" font-family="Arial, sans-serif" font-size="9" fill="#6b7280">All-Weather</text>
+
+    <circle cx="85" cy="0" r="4" fill="#22c55e"/>
+    <text x="93" y="4" font-family="Arial, sans-serif" font-size="9" fill="#6b7280">Streak-Free</text>
+
+    <circle cx="170" cy="0" r="4" fill="#22c55e"/>
+    <text x="178" y="4" font-family="Arial, sans-serif" font-size="9" fill="#6b7280">Easy Install</text>
+  </g>
+
+  <!-- Size indicator -->
+  <rect x="270" y="310" width="60" height="25" rx="4" fill="url(#blueAccent)"/>
+  <text x="300" y="320" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#93c5fd">Length</text>
+  <text x="300" y="331" font-family="Arial Black, sans-serif" font-size="12" text-anchor="middle" fill="#fff">22"</text>
+
+  <!-- Product label -->
+  <rect x="85" y="365" width="230" height="28" rx="4" fill="#1f2937" stroke="#374151" stroke-width="1"/>
+  <text x="200" y="382" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#fff">Windshield Wipers 22"</text>
+  <text x="200" y="395" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#9ca3af">Premium Beam Design | Universal Fit</text>
+</svg>

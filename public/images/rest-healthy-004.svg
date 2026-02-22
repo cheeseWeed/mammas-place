@@ -1,0 +1,63 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#bbf7d0"/>
+
+  <!-- Bowl -->
+  <ellipse cx="200" cy="240" rx="135" ry="80" fill="#e8d5c4" stroke="#d4b5a0" stroke-width="2"/>
+  <ellipse cx="200" cy="235" rx="130" ry="75" fill="#f5ede3"/>
+
+  <!-- Kale base -->
+  <ellipse cx="200" cy="190" rx="125" ry="70" fill="#2a4839"/>
+  <ellipse cx="200" cy="185" rx="120" ry="65" fill="#1a8348"/>
+
+  <!-- Kale leaf texture -->
+  <g opacity="0.6">
+    <path d="M 130 180 Q 140 165 150 180" stroke="#0f3616" stroke-width="0.5" fill="none"/>
+    <path d="M 270 190 Q 280 175 290 190" stroke="#0f3616" stroke-width="0.5" fill="none"/>
+    <path d="M 160 210 Q 175 200 190 210" stroke="#0f3616" stroke-width="0.5" fill="none"/>
+  </g>
+
+  <!-- Chickpeas (golden) -->
+  <circle cx="160" cy="170" r="8" fill="#f5d547"/>
+  <circle cx="180" cy="160" r="8" fill="#ffd700"/>
+  <circle cx="210" cy="165" r="8" fill="#f5d547"/>
+  <circle cx="230" cy="175" r="8" fill="#ffd700"/>
+
+  <!-- Roasted beets (deep red/purple) -->
+  <ellipse cx="140" cy="200" rx="15" ry="18" fill="#8b3a3a"/>
+  <ellipse cx="140" cy="200" rx="12" ry="15" fill="#a0453d"/>
+
+  <ellipse cx="260" cy="210" rx="15" ry="18" fill="#4a1a4a"/>
+  <ellipse cx="260" cy="210" rx="12" ry="15" fill="#6b3d6b"/>
+
+  <!-- Avocado slices -->
+  <ellipse cx="200" cy="225" rx="20" ry="18" fill="#6b8e23"/>
+  <ellipse cx="200" cy="225" rx="16" ry="14" fill="#9acd32"/>
+  <path d="M 200 210 L 200 240" stroke="#6b8e23" stroke-width="1"/>
+
+  <!-- Cherry tomatoes (vibrant red) -->
+  <circle cx="180" cy="195" r="7" fill="#e74c3c"/>
+  <circle cx="220" cy="200" r="7" fill="#c41e3a"/>
+
+  <!-- Tahini-lemon dressing drizzle -->
+  <path d="M 130 210 Q 150 225 170 235" stroke="#d4a574" stroke-width="2" fill="none" opacity="0.7" stroke-linecap="round"/>
+  <path d="M 270 210 Q 250 225 230 235" stroke="#d4a574" stroke-width="2" fill="none" opacity="0.7" stroke-linecap="round"/>
+
+  <!-- Fork -->
+  <g opacity="0.5">
+    <line x1="80" y1="140" x2="95" y2="200" stroke="#888" stroke-width="2.5"/>
+    <line x1="90" y1="200" x2="95" y2="185"/>
+    <line x1="95" y1="200" x2="100" y2="185"/>
+    <line x1="100" y1="200" x2="105" y2="185"/>
+  </g>
+
+  <!-- Shine effect -->
+  <ellipse cx="200" cy="165" rx="60" ry="50" fill="white" opacity="0.08"/>
+
+  <!-- Vegan indicator -->
+  <text x="200" y="350" font-size="12" font-family="sans-serif" text-anchor="middle" fill="#047857" opacity="0.4">Certified Vegan</text>
+
+  <!-- Plate edge detail -->
+  <circle cx="145" cy="210" r="1.5" fill="#d4af37" opacity="0.5"/>
+  <circle cx="255" cy="220" r="1.5" fill="#d4af37" opacity="0.5"/>
+</svg>

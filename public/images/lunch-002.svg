@@ -1,0 +1,120 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#fff8f0"/>
+
+  <!-- Wooden plate -->
+  <rect x="50" y="100" width="300" height="200" rx="10" fill="#8b7355" stroke="#6b5344" stroke-width="2"/>
+  <rect x="55" y="105" width="290" height="190" fill="#a0826d"/>
+
+  <!-- Wood grain texture -->
+  <line x1="60" y1="120" x2="330" y2="125" stroke="#6b5344" stroke-width="1" opacity="0.3"/>
+  <line x1="60" y1="150" x2="330" y2="155" stroke="#6b5344" stroke-width="1" opacity="0.3"/>
+  <line x1="60" y1="180" x2="330" y2="185" stroke="#6b5344" stroke-width="1" opacity="0.3"/>
+  <line x1="60" y1="210" x2="330" y2="215" stroke="#6b5344" stroke-width="1" opacity="0.3"/>
+  <line x1="60" y1="240" x2="330" y2="245" stroke="#6b5344" stroke-width="1" opacity="0.3"/>
+
+  <!-- Taco 1 - Left -->
+  <g>
+    <!-- Corn tortilla shell -->
+    <path d="M 120 180 Q 110 160 120 140 Q 130 150 125 180" fill="#e8d08f" stroke="#d4a373" stroke-width="1.5"/>
+    <path d="M 125 180 Q 115 165 125 140 Q 135 155 130 185" fill="#f5dfa8"/>
+
+    <!-- Tortilla texture -->
+    <ellipse cx="122" cy="160" rx="8" ry="5" fill="#d4a373" opacity="0.3"/>
+    <ellipse cx="118" cy="170" rx="6" ry="4" fill="#d4a373" opacity="0.3"/>
+
+    <!-- Shredded carnitas (pulled pork) -->
+    <g opacity="0.95">
+      <path d="M 125 165 L 145 155" stroke="#a0522d" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M 128 170 L 148 165" stroke="#8b4513" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M 122 175 L 142 170" stroke="#a0522d" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M 130 168 L 150 162" stroke="#cd853f" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Diced onions -->
+    <circle cx="135" cy="165" r="2" fill="#e6e6e6"/>
+    <circle cx="140" cy="170" r="2" fill="#f5f5f5"/>
+    <circle cx="138" cy="175" r="2" fill="#e6e6e6"/>
+
+    <!-- Fresh cilantro -->
+    <ellipse cx="142" cy="168" rx="6" ry="4" fill="#2e7d32" transform="rotate(-30 142 168)"/>
+  </g>
+
+  <!-- Taco 2 - Center -->
+  <g>
+    <!-- Corn tortilla -->
+    <path d="M 200 185 Q 190 165 200 145 Q 210 155 205 185" fill="#e8d08f" stroke="#d4a373" stroke-width="1.5"/>
+    <path d="M 205 185 Q 195 170 205 145 Q 215 160 210 190" fill="#f5dfa8"/>
+
+    <!-- Tortilla texture -->
+    <ellipse cx="202" cy="165" rx="8" ry="5" fill="#d4a373" opacity="0.3"/>
+    <ellipse cx="198" cy="175" rx="6" ry="4" fill="#d4a373" opacity="0.3"/>
+
+    <!-- Al pastor meat (marinated) -->
+    <g opacity="0.95">
+      <path d="M 205 170 L 225 160" stroke="#c41e3a" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M 208 175 L 228 170" stroke="#b91c1c" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M 202 180 L 222 175" stroke="#c41e3a" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M 210 173 L 230 167" stroke="#dc2626" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Diced onions -->
+    <circle cx="215" cy="170" r="2" fill="#e6e6e6"/>
+    <circle cx="220" cy="175" r="2" fill="#f5f5f5"/>
+    <circle cx="218" cy="180" r="2" fill="#e6e6e6"/>
+
+    <!-- Cilantro leaf -->
+    <ellipse cx="222" cy="173" rx="6" ry="4" fill="#2e7d32" transform="rotate(30 222 173)"/>
+  </g>
+
+  <!-- Taco 3 - Right -->
+  <g>
+    <!-- Corn tortilla -->
+    <path d="M 280 180 Q 270 160 280 140 Q 290 150 285 180" fill="#e8d08f" stroke="#d4a373" stroke-width="1.5"/>
+    <path d="M 285 180 Q 275 165 285 140 Q 295 155 290 185" fill="#f5dfa8"/>
+
+    <!-- Tortilla texture -->
+    <ellipse cx="282" cy="160" rx="8" ry="5" fill="#d4a373" opacity="0.3"/>
+    <ellipse cx="278" cy="170" rx="6" ry="4" fill="#d4a373" opacity="0.3"/>
+
+    <!-- Fish (grilled) -->
+    <g opacity="0.95">
+      <path d="M 285 165 L 305 155" stroke="#e8a76e" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M 288 170 L 308 165" stroke="#d4956e" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M 282 175 L 302 170" stroke="#e8a76e" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M 290 168 L 310 162" stroke="#c98560" stroke-width="1.5" stroke-linecap="round"/>
+    </g>
+
+    <!-- Diced onions -->
+    <circle cx="295" cy="165" r="2" fill="#e6e6e6"/>
+    <circle cx="300" cy="170" r="2" fill="#f5f5f5"/>
+    <circle cx="298" cy="175" r="2" fill="#e6e6e6"/>
+
+    <!-- Cilantro -->
+    <ellipse cx="302" cy="168" rx="6" ry="4" fill="#2e7d32" transform="rotate(-20 302 168)"/>
+  </g>
+
+  <!-- Lime wedges on the side -->
+  <g>
+    <circle cx="95" cy="230" r="15" fill="#a4de6c"/>
+    <circle cx="95" cy="230" r="13" fill="#c8e6c9"/>
+    <path d="M 95 217 L 95 243" stroke="#7cb342" stroke-width="1" opacity="0.4"/>
+    <path d="M 82 230 L 108 230" stroke="#7cb342" stroke-width="1" opacity="0.4"/>
+
+    <circle cx="320" cy="230" r="15" fill="#a4de6c"/>
+    <circle cx="320" cy="230" r="13" fill="#c8e6c9"/>
+    <path d="M 320 217 L 320 243" stroke="#7cb342" stroke-width="1" opacity="0.4"/>
+    <path d="M 307 230 L 333 230" stroke="#7cb342" stroke-width="1" opacity="0.4"/>
+  </g>
+
+  <!-- Salsa bowl on side -->
+  <circle cx="330" cy="120" r="12" fill="#b71c1c"/>
+  <ellipse cx="330" cy="118" rx="11" ry="8" fill="#d32f2f"/>
+
+  <!-- Pickled onions container -->
+  <circle cx="75" cy="130" r="12" fill="#e8d08f"/>
+  <ellipse cx="75" cy="128" rx="11" ry="8" fill="#f5dfa8"/>
+
+  <!-- Shadow -->
+  <ellipse cx="200" cy="310" rx="150" ry="25" fill="rgba(0,0,0,0.1)"/>
+</svg>

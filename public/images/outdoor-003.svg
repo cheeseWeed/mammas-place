@@ -1,0 +1,118 @@
+<svg viewBox="0 0 400 450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8f0f8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d8e8f0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="bagGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e5f8f;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2a7ba5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a4a70;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="zipperGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#e8c8a0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c49060;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="liningGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff8c42;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e67e22;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow3" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="3" dy="5" stdDeviation="4" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="450" fill="url(#bgGrad3)"/>
+
+  <!-- Shadow on ground -->
+  <ellipse cx="200" cy="420" rx="100" ry="22" fill="#000" opacity="0.12"/>
+
+  <!-- Sleeping bag rolled form (main body) -->
+  <ellipse cx="200" cy="240" rx="110" ry="140" fill="url(#bagGrad)" filter="url(#shadow3)"/>
+
+  <!-- Right side shadowing for depth -->
+  <ellipse cx="215" cy="240" rx="30" ry="140" fill="#0f3a58" opacity="0.5"/>
+
+  <!-- Sleeping bag top opening -->
+  <path d="M 100 120 Q 100 80 200 70 Q 300 80 300 120"
+        fill="#2a7ba5" opacity="0.9"/>
+
+  <!-- Inner lining visible at opening -->
+  <path d="M 110 115 Q 110 90 200 82 Q 290 90 290 115"
+        fill="url(#liningGrad)" opacity="0.8"/>
+
+  <!-- Zipper track left -->
+  <path d="M 150 110 Q 155 180 160 340"
+        stroke="url(#zipperGrad)" stroke-width="5" fill="none" opacity="0.9"/>
+
+  <!-- Zipper track right -->
+  <path d="M 250 110 Q 245 180 240 340"
+        stroke="url(#zipperGrad)" stroke-width="5" fill="none" opacity="0.9"/>
+
+  <!-- Zipper pull tabs -->
+  <g opacity="0.8">
+    <circle cx="155" cy="125" r="5" fill="#c49060"/>
+    <circle cx="245" cy="125" r="5" fill="#c49060"/>
+  </g>
+
+  <!-- Stitching along edges -->
+  <g stroke="#0f3a58" stroke-width="1" opacity="0.4" stroke-dasharray="3,2">
+    <path d="M 105 120 Q 100 200 105 350"/>
+    <path d="M 295 120 Q 300 200 295 350"/>
+  </g>
+
+  <!-- Quilted sections (diamond pattern) -->
+  <g stroke="#1a4a70" stroke-width="0.8" opacity="0.3">
+    <!-- Left diamond quilt section -->
+    <line x1="140" y1="150" x2="165" y2="180"/>
+    <line x1="165" y1="150" x2="140" y2="180"/>
+    <line x1="140" y1="210" x2="165" y2="240"/>
+    <line x1="165" y1="210" x2="140" y2="240"/>
+    <line x1="140" y1="270" x2="165" y2="300"/>
+    <line x1="165" y1="270" x2="140" y2="300"/>
+    <!-- Right diamond quilt section -->
+    <line x1="235" y1="150" x2="260" y2="180"/>
+    <line x1="260" y1="150" x2="235" y2="180"/>
+    <line x1="235" y1="210" x2="260" y2="240"/>
+    <line x1="260" y1="210" x2="235" y2="240"/>
+    <line x1="235" y1="270" x2="260" y2="300"/>
+    <line x1="260" y1="270" x2="235" y2="300"/>
+  </g>
+
+  <!-- Compression strap -->
+  <g>
+    <rect x="145" y="200" width="110" height="8" fill="#c49060" opacity="0.7" rx="2"/>
+    <rect x="145" y="280" width="110" height="8" fill="#c49060" opacity="0.7" rx="2"/>
+  </g>
+
+  <!-- Strap adjustment rings -->
+  <g opacity="0.6">
+    <circle cx="260" cy="204" r="4" fill="#8b6f47"/>
+    <circle cx="260" cy="284" r="4" fill="#8b6f47"/>
+  </g>
+
+  <!-- Foot box section -->
+  <ellipse cx="200" cy="360" rx="85" ry="35" fill="#1e5f8f" opacity="0.9"/>
+
+  <!-- Footbox reinforced stitching -->
+  <ellipse cx="200" cy="360" rx="85" ry="35" fill="none" stroke="#0f3a58" stroke-width="2" opacity="0.4"/>
+
+  <!-- Highlights for 3D effect -->
+  <g opacity="0.12">
+    <ellipse cx="145" cy="200" rx="35" ry="80" fill="#fff"/>
+    <ellipse cx="270" cy="250" rx="25" ry="70" fill="#fff"/>
+  </g>
+
+  <!-- Fabric fold/crease details -->
+  <g stroke="#0f3a58" stroke-width="1" opacity="0.2">
+    <path d="M 180 140 Q 175 200 180 280"/>
+    <path d="M 220 140 Q 225 200 220 280"/>
+  </g>
+
+  <!-- Reflection on glossy fabric -->
+  <path d="M 120 160 Q 130 220 125 300"
+        stroke="#fff" stroke-width="3" fill="none" opacity="0.08"/>
+</svg>

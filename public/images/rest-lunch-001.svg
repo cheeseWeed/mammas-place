@@ -1,0 +1,125 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="pizzaShd" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="3" dy="5" stdDeviation="5" flood-opacity="0.45"/>
+    </filter>
+    <filter id="steamPz">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+
+    <!-- Cheese gradient -->
+    <radialGradient id="cheeseGradPz" cx="45%" cy="40%">
+      <stop offset="0%" stop-color="#ffd700"/>
+      <stop offset="50%" stop-color="#f5a623"/>
+      <stop offset="100%" stop-color="#e69500"/>
+    </radialGradient>
+
+    <!-- Sauce gradient -->
+    <radialGradient id="sauceGrad" cx="50%" cy="50%">
+      <stop offset="0%" stop-color="#e74c3c"/>
+      <stop offset="100%" stop-color="#c0392b"/>
+    </radialGradient>
+
+    <!-- Crust gradient -->
+    <linearGradient id="crustGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4a046"/>
+      <stop offset="50%" stop-color="#c8923a"/>
+      <stop offset="100%" stop-color="#8b5a2b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Warm restaurant background -->
+  <rect width="400" height="400" fill="#2a2015"/>
+  <!-- Wood grain -->
+  <line x1="0" y1="50" x2="400" y2="52" stroke="#3d3020" stroke-width="2.5" opacity="0.5"/>
+  <line x1="0" y1="130" x2="400" y2="128" stroke="#4a3c28" stroke-width="2" opacity="0.4"/>
+  <line x1="0" y1="220" x2="400" y2="222" stroke="#3d3020" stroke-width="2.5" opacity="0.5"/>
+  <line x1="0" y1="310" x2="400" y2="308" stroke="#4a3c28" stroke-width="2" opacity="0.4"/>
+
+  <!-- Table shadow -->
+  <ellipse cx="200" cy="375" rx="170" ry="30" fill="#1a1408" opacity="0.7"/>
+
+  <!-- Pizza stone/board -->
+  <g filter="url(#pizzaShd)">
+    <circle cx="200" cy="200" r="155" fill="#4a4035"/>
+    <circle cx="200" cy="198" r="152" fill="#5a5045"/>
+  </g>
+
+  <!-- Pizza crust -->
+  <g filter="url(#pizzaShd)">
+    <circle cx="200" cy="200" r="130" fill="#8b5a2b"/>
+    <circle cx="200" cy="198" r="128" fill="url(#crustGrad)"/>
+    <!-- Crust char marks -->
+    <path d="M 75 180 Q 80 185 78 195" stroke="#6b4420" stroke-width="3" fill="none" opacity="0.4"/>
+    <path d="M 310 200 Q 320 195 325 205" stroke="#6b4420" stroke-width="3" fill="none" opacity="0.4"/>
+  </g>
+
+  <!-- Tomato sauce -->
+  <circle cx="200" cy="200" r="115" fill="url(#sauceGrad)"/>
+  <circle cx="200" cy="198" r="113" fill="#d9534f" opacity="0.8"/>
+
+  <!-- Mozzarella cheese layer with melting effect -->
+  <g filter="url(#pizzaShd)">
+    <circle cx="200" cy="200" r="108" fill="url(#cheeseGradPz)"/>
+    <circle cx="200" cy="198" r="105" fill="#f5b041" opacity="0.7"/>
+    <!-- Cheese bubbles and texture -->
+    <ellipse cx="165" cy="170" rx="12" ry="10" fill="#ffd700" opacity="0.7"/>
+    <ellipse cx="230" cy="180" rx="10" ry="8" fill="#ffd700" opacity="0.6"/>
+    <ellipse cx="195" cy="230" rx="14" ry="11" fill="#ffd700" opacity="0.7"/>
+    <ellipse cx="250" cy="220" rx="10" ry="8" fill="#ffd700" opacity="0.6"/>
+    <ellipse cx="150" cy="210" rx="11" ry="9" fill="#ffd700" opacity="0.7"/>
+  </g>
+
+  <!-- Fresh basil leaves -->
+  <g filter="url(#pizzaShd)">
+    <ellipse cx="160" cy="190" rx="18" ry="12" fill="#228b22" transform="rotate(-25 160 190)"/>
+    <ellipse cx="158" cy="188" rx="14" ry="9" fill="#27ae60" transform="rotate(-25 158 188)" opacity="0.6"/>
+    <line x1="155" y1="195" x2="165" y2="183" stroke="#1a6b1a" stroke-width="0.8"/>
+
+    <ellipse cx="245" cy="175" rx="16" ry="11" fill="#228b22" transform="rotate(30 245 175)"/>
+    <ellipse cx="243" cy="173" rx="12" ry="8" fill="#27ae60" transform="rotate(30 243 173)" opacity="0.6"/>
+    <line x1="240" y1="180" x2="250" y2="168" stroke="#1a6b1a" stroke-width="0.8"/>
+
+    <ellipse cx="200" cy="220" rx="14" ry="10" fill="#228b22" transform="rotate(-10 200 220)"/>
+    <ellipse cx="198" cy="218" rx="11" ry="7" fill="#27ae60" transform="rotate(-10 198 218)" opacity="0.6"/>
+  </g>
+
+  <!-- Roasted peppers -->
+  <g filter="url(#pizzaShd)">
+    <ellipse cx="190" cy="165" rx="14" ry="10" fill="#c0392b"/>
+    <ellipse cx="188" cy="163" rx="10" ry="7" fill="#e74c3c" opacity="0.6"/>
+    <ellipse cx="150" cy="205" rx="12" ry="9" fill="#c0392b"/>
+    <ellipse cx="240" cy="205" rx="13" ry="10" fill="#c0392b"/>
+    <ellipse cx="210" cy="240" rx="11" ry="8" fill="#c0392b"/>
+  </g>
+
+  <!-- Black olives -->
+  <g>
+    <circle cx="210" cy="185" r="6" fill="#1a1a1a"/>
+    <circle cx="209" cy="184" r="3" fill="#2a2a2a" opacity="0.6"/>
+    <circle cx="180" cy="210" r="6" fill="#1a1a1a"/>
+    <circle cx="179" cy="209" r="3" fill="#2a2a2a" opacity="0.6"/>
+    <circle cx="225" cy="225" r="5" fill="#1a1a1a"/>
+    <circle cx="165" cy="175" r="5" fill="#1a1a1a"/>
+  </g>
+
+  <!-- Pizza slice lines -->
+  <line x1="200" y1="200" x2="200" y2="72" stroke="rgba(0,0,0,0.08)" stroke-width="2"/>
+  <line x1="200" y1="200" x2="328" y2="200" stroke="rgba(0,0,0,0.08)" stroke-width="2"/>
+  <line x1="200" y1="200" x2="290" y2="110" stroke="rgba(0,0,0,0.06)" stroke-width="1.5"/>
+  <line x1="200" y1="200" x2="110" y2="110" stroke="rgba(0,0,0,0.06)" stroke-width="1.5"/>
+
+  <!-- Crust edge detail -->
+  <path d="M 280 165 Q 300 170 315 190" stroke="#a0622d" stroke-width="3" fill="none" opacity="0.4"/>
+  <path d="M 85 190 Q 70 210 78 235" stroke="#a0622d" stroke-width="3" fill="none" opacity="0.4"/>
+
+  <!-- Oil/shine -->
+  <ellipse cx="180" cy="160" rx="60" ry="50" fill="white" opacity="0.1"/>
+
+  <!-- Steam rising -->
+  <g filter="url(#steamPz)" opacity="0.2">
+    <path d="M 180 70 Q 175 50 185 30" stroke="#fff" stroke-width="3.5" fill="none"/>
+    <path d="M 200 65 Q 205 45 195 25" stroke="#fff" stroke-width="3" fill="none"/>
+    <path d="M 220 70 Q 225 50 215 30" stroke="#fff" stroke-width="3.5" fill="none"/>
+  </g>
+</svg>

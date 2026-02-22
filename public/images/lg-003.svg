@@ -1,0 +1,251 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background gradient - sunny garden feel -->
+    <linearGradient id="bgGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#87CEEB"/>
+      <stop offset="60%" style="stop-color:#B3E5FC"/>
+      <stop offset="100%" style="stop-color:#E1F5FE"/>
+    </linearGradient>
+
+    <!-- Seed packet kraft paper -->
+    <linearGradient id="kraftPaper" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8D5B7"/>
+      <stop offset="30%" style="stop-color:#D4B896"/>
+      <stop offset="70%" style="stop-color:#C9A97C"/>
+      <stop offset="100%" style="stop-color:#B8956A"/>
+    </linearGradient>
+
+    <!-- White label area -->
+    <linearGradient id="labelGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF"/>
+      <stop offset="100%" style="stop-color:#F5F5F5"/>
+    </linearGradient>
+
+    <!-- Soil gradient -->
+    <linearGradient id="soilGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B7355"/>
+      <stop offset="50%" style="stop-color:#6B4423"/>
+      <stop offset="100%" style="stop-color:#4E3524"/>
+    </linearGradient>
+
+    <!-- Grass gradient -->
+    <linearGradient id="grassGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#66BB6A"/>
+      <stop offset="100%" style="stop-color:#388E3C"/>
+    </linearGradient>
+
+    <!-- Shadow filter -->
+    <filter id="dropShadow3" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="3" dy="5" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Flower petal gradients -->
+    <radialGradient id="purpleFlower" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#E1BEE7"/>
+      <stop offset="50%" style="stop-color:#9C27B0"/>
+      <stop offset="100%" style="stop-color:#6A1B9A"/>
+    </radialGradient>
+
+    <radialGradient id="yellowFlower" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#FFF9C4"/>
+      <stop offset="50%" style="stop-color:#FFEB3B"/>
+      <stop offset="100%" style="stop-color:#FBC02D"/>
+    </radialGradient>
+
+    <radialGradient id="orangeFlower" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#FFE0B2"/>
+      <stop offset="50%" style="stop-color:#FF9800"/>
+      <stop offset="100%" style="stop-color:#E65100"/>
+    </radialGradient>
+
+    <radialGradient id="pinkFlower" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#FCE4EC"/>
+      <stop offset="50%" style="stop-color:#E91E63"/>
+      <stop offset="100%" style="stop-color:#AD1457"/>
+    </radialGradient>
+
+    <radialGradient id="blueFlower" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#BBDEFB"/>
+      <stop offset="50%" style="stop-color:#2196F3"/>
+      <stop offset="100%" style="stop-color:#1565C0"/>
+    </radialGradient>
+
+    <radialGradient id="redFlower" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#FFCDD2"/>
+      <stop offset="50%" style="stop-color:#F44336"/>
+      <stop offset="100%" style="stop-color:#C62828"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="url(#bgGradient3)"/>
+
+  <!-- Ground/grass area -->
+  <ellipse cx="200" cy="385" rx="220" ry="40" fill="url(#grassGradient3)"/>
+
+  <!-- Wildflowers in background -->
+  <!-- Purple flowers -->
+  <g>
+    <line x1="45" y1="360" x2="45" y2="300" stroke="#2E7D32" stroke-width="2"/>
+    <ellipse cx="45" cy="295" rx="12" ry="10" fill="url(#purpleFlower)"/>
+    <ellipse cx="40" cy="290" rx="8" ry="7" fill="url(#purpleFlower)"/>
+    <ellipse cx="50" cy="290" rx="8" ry="7" fill="url(#purpleFlower)"/>
+    <circle cx="45" cy="295" r="4" fill="#FFC107"/>
+  </g>
+
+  <!-- Yellow sunflower -->
+  <g>
+    <line x1="80" y1="370" x2="80" y2="280" stroke="#558B2F" stroke-width="3"/>
+    <ellipse cx="80" cy="270" rx="18" ry="16" fill="url(#yellowFlower)"/>
+    <ellipse cx="72" cy="260" rx="10" ry="8" fill="url(#yellowFlower)"/>
+    <ellipse cx="88" cy="260" rx="10" ry="8" fill="url(#yellowFlower)"/>
+    <ellipse cx="68" cy="272" rx="8" ry="10" fill="url(#yellowFlower)"/>
+    <ellipse cx="92" cy="272" rx="8" ry="10" fill="url(#yellowFlower)"/>
+    <circle cx="80" cy="270" r="8" fill="#795548"/>
+  </g>
+
+  <!-- Orange marigold -->
+  <g>
+    <line x1="320" y1="365" x2="320" y2="290" stroke="#33691E" stroke-width="2"/>
+    <circle cx="320" cy="280" r="15" fill="url(#orangeFlower)"/>
+    <circle cx="312" cy="275" r="8" fill="url(#orangeFlower)"/>
+    <circle cx="328" cy="275" r="8" fill="url(#orangeFlower)"/>
+    <circle cx="320" cy="268" r="7" fill="url(#orangeFlower)"/>
+    <circle cx="320" cy="280" r="5" fill="#FF5722"/>
+  </g>
+
+  <!-- Pink cosmos -->
+  <g>
+    <line x1="355" y1="370" x2="355" y2="305" stroke="#388E3C" stroke-width="2"/>
+    <ellipse cx="355" cy="295" rx="14" ry="12" fill="url(#pinkFlower)"/>
+    <ellipse cx="348" cy="288" rx="8" ry="9" fill="url(#pinkFlower)"/>
+    <ellipse cx="362" cy="288" rx="8" ry="9" fill="url(#pinkFlower)"/>
+    <circle cx="355" cy="295" r="4" fill="#FFEB3B"/>
+  </g>
+
+  <!-- Blue cornflower -->
+  <g>
+    <line x1="380" y1="380" x2="380" y2="330" stroke="#2E7D32" stroke-width="2"/>
+    <circle cx="380" cy="322" r="10" fill="url(#blueFlower)"/>
+    <circle cx="375" cy="316" r="5" fill="url(#blueFlower)"/>
+    <circle cx="385" cy="316" r="5" fill="url(#blueFlower)"/>
+    <circle cx="380" cy="322" r="3" fill="#E1BEE7"/>
+  </g>
+
+  <!-- Main seed packet with shadow -->
+  <g filter="url(#dropShadow3)">
+    <!-- Packet back (slightly visible) -->
+    <rect x="98" y="72" width="204" height="270" rx="8" fill="#B8956A"/>
+
+    <!-- Main packet front -->
+    <rect x="100" y="70" width="200" height="270" rx="8" fill="url(#kraftPaper)"/>
+
+    <!-- Top fold/flap -->
+    <path d="M100 85 Q100 70 115 70 L285 70 Q300 70 300 85 L300 95 L100 95 Z" fill="#D4B896"/>
+    <line x1="100" y1="95" x2="300" y2="95" stroke="#A67C52" stroke-width="1"/>
+
+    <!-- Packet crease lines for realism -->
+    <line x1="130" y1="95" x2="130" y2="340" stroke="#A67C52" stroke-width="0.5" opacity="0.4"/>
+    <line x1="270" y1="95" x2="270" y2="340" stroke="#A67C52" stroke-width="0.5" opacity="0.4"/>
+
+    <!-- White label area -->
+    <rect x="115" y="105" width="170" height="100" rx="5" fill="url(#labelGradient)"/>
+    <rect x="115" y="105" width="170" height="100" rx="5" fill="none" stroke="#DDD" stroke-width="1"/>
+
+    <!-- Label content -->
+    <text x="200" y="130" font-size="14" font-weight="bold" fill="#2E7D32" text-anchor="middle" font-family="Georgia, serif">WILDFLOWER</text>
+    <text x="200" y="150" font-size="16" font-weight="bold" fill="#1B5E20" text-anchor="middle" font-family="Georgia, serif">SEED MIX</text>
+
+    <!-- Decorative line -->
+    <line x1="130" y1="160" x2="270" y2="160" stroke="#81C784" stroke-width="2"/>
+
+    <!-- Coverage info -->
+    <text x="200" y="180" font-size="10" fill="#555" text-anchor="middle" font-family="Arial, sans-serif">Covers up to 200 sq ft</text>
+    <text x="200" y="195" font-size="9" fill="#777" text-anchor="middle" font-family="Arial, sans-serif">25+ Varieties</text>
+
+    <!-- Flower illustration on packet -->
+    <!-- Purple coneflower -->
+    <g transform="translate(135, 230)">
+      <line x1="0" y1="30" x2="0" y2="0" stroke="#388E3C" stroke-width="2"/>
+      <ellipse cx="0" cy="-5" rx="12" ry="10" fill="url(#purpleFlower)"/>
+      <ellipse cx="-6" cy="-10" rx="6" ry="8" fill="url(#purpleFlower)"/>
+      <ellipse cx="6" cy="-10" rx="6" ry="8" fill="url(#purpleFlower)"/>
+      <circle cx="0" cy="-5" r="4" fill="#FF8F00"/>
+    </g>
+
+    <!-- Yellow daisy -->
+    <g transform="translate(175, 245)">
+      <line x1="0" y1="25" x2="0" y2="0" stroke="#33691E" stroke-width="2"/>
+      <ellipse cx="0" cy="-8" rx="10" ry="8" fill="url(#yellowFlower)"/>
+      <ellipse cx="-7" cy="-12" rx="6" ry="7" fill="url(#yellowFlower)"/>
+      <ellipse cx="7" cy="-12" rx="6" ry="7" fill="url(#yellowFlower)"/>
+      <ellipse cx="-10" cy="-5" rx="5" ry="7" fill="url(#yellowFlower)"/>
+      <ellipse cx="10" cy="-5" rx="5" ry="7" fill="url(#yellowFlower)"/>
+      <circle cx="0" cy="-8" r="5" fill="#795548"/>
+    </g>
+
+    <!-- Pink flower -->
+    <g transform="translate(215, 225)">
+      <line x1="0" y1="35" x2="0" y2="5" stroke="#2E7D32" stroke-width="2"/>
+      <ellipse cx="0" cy="0" rx="11" ry="9" fill="url(#pinkFlower)"/>
+      <ellipse cx="-6" cy="-5" rx="7" ry="6" fill="url(#pinkFlower)"/>
+      <ellipse cx="6" cy="-5" rx="7" ry="6" fill="url(#pinkFlower)"/>
+      <circle cx="0" cy="0" r="3" fill="#FFC107"/>
+    </g>
+
+    <!-- Blue flower -->
+    <g transform="translate(255, 240)">
+      <line x1="0" y1="30" x2="0" y2="5" stroke="#388E3C" stroke-width="2"/>
+      <circle cx="0" cy="0" r="10" fill="url(#blueFlower)"/>
+      <circle cx="-5" cy="-6" r="5" fill="url(#blueFlower)"/>
+      <circle cx="5" cy="-6" r="5" fill="url(#blueFlower)"/>
+      <circle cx="0" cy="0" r="3" fill="#FFFFFF"/>
+    </g>
+
+    <!-- Small leaves -->
+    <ellipse cx="145" cy="255" rx="8" ry="4" fill="#4CAF50" transform="rotate(-30, 145, 255)"/>
+    <ellipse cx="245" cy="250" rx="7" ry="3" fill="#66BB6A" transform="rotate(25, 245, 250)"/>
+
+    <!-- Bottom info strip -->
+    <rect x="115" y="295" width="170" height="35" rx="3" fill="#F5F5F5"/>
+    <text x="200" y="310" font-size="8" fill="#666" text-anchor="middle" font-family="Arial, sans-serif">NET WT 4 OZ (113g)</text>
+    <text x="200" y="322" font-size="7" fill="#888" text-anchor="middle" font-family="Arial, sans-serif">PERENNIAL &amp; ANNUAL MIX</text>
+
+    <!-- Shine/highlight -->
+    <ellipse cx="140" cy="120" rx="30" ry="20" fill="white" opacity="0.3"/>
+
+    <!-- Packet edge highlight -->
+    <rect x="100" y="70" width="5" height="270" rx="3" fill="white" opacity="0.15"/>
+  </g>
+
+  <!-- Scattered seeds on surface -->
+  <g fill="#5D4037">
+    <ellipse cx="80" cy="345" rx="2" ry="1.5" transform="rotate(30, 80, 345)"/>
+    <ellipse cx="85" cy="352" rx="1.5" ry="1" transform="rotate(-15, 85, 352)"/>
+    <ellipse cx="320" cy="348" rx="2" ry="1.5" transform="rotate(45, 320, 348)"/>
+    <ellipse cx="328" cy="355" rx="1.5" ry="1" transform="rotate(-20, 328, 355)"/>
+    <ellipse cx="200" cy="365" rx="2" ry="1.5"/>
+    <ellipse cx="210" cy="370" rx="1.5" ry="1" transform="rotate(60, 210, 370)"/>
+  </g>
+
+  <!-- Bee for extra life -->
+  <g transform="translate(290, 120)">
+    <ellipse cx="0" cy="0" rx="8" ry="6" fill="#FFC107"/>
+    <rect x="-6" y="-4" width="3" height="8" fill="#212121"/>
+    <rect x="0" y="-4" width="3" height="8" fill="#212121"/>
+    <ellipse cx="8" cy="0" rx="4" ry="3" fill="#FFC107"/>
+    <ellipse cx="-4" cy="-6" rx="6" ry="4" fill="rgba(255,255,255,0.6)" transform="rotate(-30, -4, -6)"/>
+    <ellipse cx="2" cy="-6" rx="6" ry="4" fill="rgba(255,255,255,0.6)" transform="rotate(30, 2, -6)"/>
+  </g>
+
+  <!-- Ground shadow under packet -->
+  <ellipse cx="200" cy="355" rx="100" ry="12" fill="rgba(0,0,0,0.15)"/>
+</svg>

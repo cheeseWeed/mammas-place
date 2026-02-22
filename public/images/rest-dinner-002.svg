@@ -1,0 +1,138 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="cheeseShd" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="3" dy="5" stdDeviation="4" flood-opacity="0.4"/>
+    </filter>
+
+    <!-- Board gradient -->
+    <linearGradient id="boardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a0826d"/>
+      <stop offset="50%" stop-color="#8b6f47"/>
+      <stop offset="100%" stop-color="#704214"/>
+    </linearGradient>
+
+    <!-- Cheese gradients -->
+    <radialGradient id="brie" cx="45%" cy="40%">
+      <stop offset="0%" stop-color="#fffef5"/>
+      <stop offset="100%" stop-color="#f5ede3"/>
+    </radialGradient>
+    <radialGradient id="cheddarG" cx="40%" cy="35%">
+      <stop offset="0%" stop-color="#f5a623"/>
+      <stop offset="100%" stop-color="#d4a046"/>
+    </radialGradient>
+    <radialGradient id="blueG" cx="45%" cy="40%">
+      <stop offset="0%" stop-color="#e8e5dc"/>
+      <stop offset="100%" stop-color="#c8c5bc"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Warm restaurant background -->
+  <rect width="400" height="400" fill="#2a2015"/>
+  <!-- Wood grain -->
+  <line x1="0" y1="50" x2="400" y2="52" stroke="#3d3020" stroke-width="2.5" opacity="0.5"/>
+  <line x1="0" y1="140" x2="400" y2="138" stroke="#4a3c28" stroke-width="2" opacity="0.4"/>
+  <line x1="0" y1="240" x2="400" y2="242" stroke="#3d3020" stroke-width="2.5" opacity="0.5"/>
+  <line x1="0" y1="340" x2="400" y2="338" stroke="#4a3c28" stroke-width="2" opacity="0.4"/>
+
+  <!-- Table shadow -->
+  <ellipse cx="200" cy="378" rx="175" ry="28" fill="#1a1408" opacity="0.7"/>
+
+  <!-- Wooden serving board -->
+  <g filter="url(#cheeseShd)">
+    <rect x="60" y="110" width="280" height="210" rx="8" fill="#704214"/>
+    <rect x="65" y="115" width="270" height="200" rx="6" fill="url(#boardGrad)"/>
+    <!-- Wood grain texture -->
+    <line x1="70" y1="140" x2="330" y2="142" stroke="#5a4c38" stroke-width="1.5" opacity="0.3"/>
+    <line x1="68" y1="200" x2="332" y2="198" stroke="#5a4c38" stroke-width="1.5" opacity="0.3"/>
+    <line x1="70" y1="260" x2="330" y2="262" stroke="#5a4c38" stroke-width="1.5" opacity="0.3"/>
+  </g>
+
+  <!-- Aged Brie wedge -->
+  <g filter="url(#cheeseShd)">
+    <path d="M 100 160 L 160 140 L 160 200 L 100 180 Z" fill="#f5ede3"/>
+    <path d="M 103 163 L 157 145 L 157 195 L 103 177 Z" fill="url(#brie)"/>
+    <!-- Brie rind -->
+    <path d="M 100 160 L 160 140 L 160 145 L 100 165 Z" fill="#d4c4b0"/>
+    <!-- Cut texture -->
+    <line x1="130" y1="155" x2="130" y2="185" stroke="#e8e5dc" stroke-width="1" opacity="0.4"/>
+  </g>
+
+  <!-- Aged Cheddar block -->
+  <g filter="url(#cheeseShd)">
+    <rect x="175" y="145" width="60" height="50" rx="3" fill="#c8923a"/>
+    <rect x="178" y="148" width="54" height="44" rx="2" fill="url(#cheddarG)"/>
+    <!-- Cheese texture -->
+    <ellipse cx="195" cy="165" rx="5" ry="3" fill="#e8b85c" opacity="0.5"/>
+    <ellipse cx="215" cy="175" rx="4" ry="2" fill="#e8b85c" opacity="0.4"/>
+  </g>
+
+  <!-- Blue cheese crumbles -->
+  <g filter="url(#cheeseShd)">
+    <ellipse cx="280" cy="165" rx="35" ry="28" fill="url(#blueG)"/>
+    <!-- Blue veins -->
+    <path d="M 265 155 Q 275 165 285 155" stroke="#5a6a7a" stroke-width="1.5" fill="none" opacity="0.6"/>
+    <path d="M 270 175 Q 280 168 290 175" stroke="#5a6a7a" stroke-width="1.5" fill="none" opacity="0.6"/>
+    <circle cx="275" cy="162" r="2" fill="#5a6a7a" opacity="0.5"/>
+    <circle cx="285" cy="170" r="2" fill="#5a6a7a" opacity="0.5"/>
+  </g>
+
+  <!-- Artisan crackers -->
+  <g filter="url(#cheeseShd)">
+    <rect x="90" y="220" width="30" height="25" rx="3" fill="#dab896" transform="rotate(-15 105 232)"/>
+    <rect x="93" y="223" width="24" height="19" rx="2" fill="#e8c9a0" transform="rotate(-15 105 232)"/>
+
+    <rect x="140" y="235" width="28" height="22" rx="3" fill="#c9a878" transform="rotate(10 154 246)"/>
+    <rect x="143" y="238" width="22" height="16" rx="2" fill="#dab896" transform="rotate(10 154 246)"/>
+
+    <rect x="240" y="225" width="30" height="25" rx="3" fill="#dab896" transform="rotate(-20 255 237)"/>
+    <rect x="290" y="230" width="28" height="22" rx="3" fill="#e8c9a0" transform="rotate(12 304 241)"/>
+  </g>
+
+  <!-- Fig jam in small bowl -->
+  <g filter="url(#cheeseShd)">
+    <ellipse cx="200" cy="210" rx="25" ry="18" fill="#4a2c1a"/>
+    <ellipse cx="200" cy="207" rx="22" ry="15" fill="#6b4423"/>
+    <ellipse cx="200" cy="204" rx="18" ry="12" fill="#8b5a3c"/>
+    <!-- Jam highlight -->
+    <ellipse cx="195" cy="200" rx="6" ry="4" fill="#a0724d" opacity="0.5"/>
+  </g>
+
+  <!-- Dried fruits -->
+  <g filter="url(#cheeseShd)">
+    <!-- Apricots -->
+    <circle cx="130" cy="200" r="8" fill="#e8964f"/>
+    <circle cx="128" cy="198" r="3" fill="#ffa54f" opacity="0.6"/>
+
+    <!-- Figs -->
+    <circle cx="250" cy="200" r="9" fill="#4a2c1a"/>
+    <path d="M 250 191 L 250 209" stroke="#2a1810" stroke-width="1.5"/>
+
+    <!-- Raisins -->
+    <circle cx="310" cy="195" r="5" fill="#2a1810"/>
+    <circle cx="320" cy="202" r="5" fill="#2a1810"/>
+  </g>
+
+  <!-- Almonds -->
+  <g opacity="0.9">
+    <ellipse cx="170" cy="270" rx="6" ry="10" fill="#d4a574" transform="rotate(25 170 270)"/>
+    <ellipse cx="168" cy="268" rx="3" ry="6" fill="#e8b85c" transform="rotate(25 168 268)" opacity="0.5"/>
+
+    <ellipse cx="280" cy="265" rx="6" ry="10" fill="#d4a574" transform="rotate(-30 280 265)"/>
+    <ellipse cx="278" cy="263" rx="3" ry="6" fill="#e8b85c" transform="rotate(-30 278 263)" opacity="0.5"/>
+  </g>
+
+  <!-- Honey drizzle -->
+  <g opacity="0.6">
+    <path d="M 145 185 Q 155 195 165 188" stroke="#f4d03f" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M 230 180 Q 240 190 250 183" stroke="#f4d03f" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Grapes -->
+  <g filter="url(#cheeseShd)">
+    <circle cx="85" cy="280" r="7" fill="#6b2c5a"/>
+    <circle cx="83" cy="278" r="2.5" fill="#8b3c6a" opacity="0.5"/>
+    <circle cx="97" cy="285" r="7" fill="#5b2c4a"/>
+    <circle cx="95" cy="283" r="2.5" fill="#7b3c5a" opacity="0.5"/>
+    <circle cx="88" cy="292" r="6" fill="#6b2c5a"/>
+  </g>
+</svg>

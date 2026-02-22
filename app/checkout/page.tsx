@@ -92,7 +92,7 @@ export default function CheckoutPage() {
         <div className="text-7xl mb-4">🎉</div>
         <h1 className="text-3xl font-black text-purple-900 mb-2">Order Confirmed!</h1>
         <p className="text-gray-600 mb-2">Thank you for shopping at Mamma&apos;s Place!</p>
-        <p className="text-gray-500 mb-8">A confirmation will be sent to <strong>{form.email}</strong></p>
+        <p className="text-gray-700 mb-8">A confirmation will be sent to <strong>{form.email}</strong></p>
         <div className="bg-purple-50 border border-purple-200 rounded-2xl p-6 mb-8 text-left">
           <h2 className="font-black text-purple-900 mb-3">Order Summary</h2>
           <div className="space-y-2 text-sm">
@@ -204,7 +204,7 @@ export default function CheckoutPage() {
                     <p className="font-black text-red-900 text-base mb-1">DO NOT Enter Real Credit Card Information!</p>
                     <p className="text-red-800 text-sm font-bold">This is a demo site. Use test card:</p>
                     <p className="text-red-900 font-mono font-bold text-base mt-1">4111 1111 1111 1111</p>
-                    <p className="text-red-700 text-xs mt-1">Any future date and CVV will work</p>
+                    <p className="text-red-700 text-sm mt-1">Any future date and CVV will work</p>
                   </div>
                 </div>
               </div>
@@ -217,7 +217,7 @@ export default function CheckoutPage() {
                   <input required type="text" placeholder="CVV" value={form.cvv} onChange={(e) => updateForm('cvv', e.target.value)} maxLength={4} className="border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400" />
                 </div>
               </div>
-              <p className="text-xs text-gray-400 mt-3 flex items-center gap-1">
+              <p className="text-sm text-gray-700 mt-3 flex items-center gap-1">
                 🔒 Your payment info is secure and encrypted
               </p>
             </section>
@@ -237,7 +237,7 @@ export default function CheckoutPage() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="font-semibold text-gray-800 truncate">{item.product.name}</p>
-                      <p className="text-gray-400 text-xs">Qty: {item.quantity}</p>
+                      <p className="text-gray-700 text-sm">Qty: {item.quantity}</p>
                     </div>
                     <span className="font-bold text-purple-800 shrink-0">${(item.product.price * item.quantity).toFixed(2)}</span>
                   </div>
@@ -247,7 +247,7 @@ export default function CheckoutPage() {
               <div className="border-t border-gray-100 pt-4 space-y-2">
                 {/* Promo Code */}
                 <div className="mb-3">
-                  <label className="text-xs font-bold text-gray-600 uppercase tracking-wide mb-1 block">Promo Code</label>
+                  <label className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-1 block">Promo Code</label>
                   <div className="flex gap-2">
                     <input
                       type="text"
@@ -264,8 +264,8 @@ export default function CheckoutPage() {
                       Apply
                     </button>
                   </div>
-                  {promoError && <p className="text-red-500 text-xs mt-1">{promoError}</p>}
-                  {appliedPromo && <p className="text-green-600 text-xs mt-1 font-bold">✅ {appliedPromo} applied! {(promoDiscount * 100).toFixed(0)}% off</p>}
+                  {promoError && <p className="text-red-600 text-sm mt-1">{promoError}</p>}
+                  {appliedPromo && <p className="text-green-600 text-sm mt-1 font-bold">✅ {appliedPromo} applied! {(promoDiscount * 100).toFixed(0)}% off</p>}
                 </div>
 
                 {/* Price Breakdown */}
@@ -317,12 +317,12 @@ export default function CheckoutPage() {
                   Place Order — ${finalTotal.toFixed(2)} 🎉
                 </button>
 
-                <p className="text-center text-xs text-gray-400 mt-2">
+                <p className="text-center text-sm text-gray-700 mt-2">
                   🔒 Secure checkout · 30-day returns · SSL encrypted
                 </p>
 
                 <div className="text-center mt-2">
-                  <Link href="/cart" className="text-xs text-purple-500 hover:underline">← Back to cart</Link>
+                  <Link href="/cart" className="text-sm text-purple-600 hover:underline font-medium">← Back to cart</Link>
                 </div>
               </div>
             </div>

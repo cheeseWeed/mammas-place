@@ -89,7 +89,7 @@ export default function PortalLoginPage() {
           </button>
 
           <div className="mt-4 text-center">
-            <Link href="/" className="text-gray-500 hover:text-gray-400 text-xs">← Back to store</Link>
+            <Link href="/" className="text-gray-300 hover:text-gray-200 text-xs">← Back to store</Link>
           </div>
         </form>
 

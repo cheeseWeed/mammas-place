@@ -33,7 +33,7 @@ export default function FAQPage() {
       questions: [
         {
           q: 'What is your return policy?',
-          a: 'We want you to be completely satisfied! You can return most items within 30 days of delivery for a full refund. Items must be unused, in original packaging, and in resellable condition. Some items (audiobooks, opened games) may not be returnable for hygiene reasons.',
+          a: 'We want you to be completely satisfied! You can return most items within 30 days of delivery for a full refund. Items must be unused, in original packaging, and in resellable condition. Some items (perishable food, opened electronics, personalized items) may not be returnable for safety or hygiene reasons.',
         },
         {
           q: 'How do I start a return?',
@@ -74,12 +74,12 @@ export default function FAQPage() {
       category: 'Products & Safety',
       questions: [
         {
-          q: 'What age groups are your toys suitable for?',
-          a: 'Each product listing includes recommended age ranges. Most of our toys are designed for children ages 3 and up. Items with small parts are clearly marked and include choking hazard warnings for children under 3.',
+          q: 'What types of products do you sell?',
+          a: 'We sell everything! From automotive supplies and tires to groceries, home goods, tools, clothing, electronics, toys, and more. If you need it, we probably have it. Check our category pages or use our search feature to find what you\'re looking for.',
         },
         {
-          q: 'Are your products safe?',
-          a: 'Absolutely! All our toys meet or exceed US safety standards and are tested for safety. We only carry products from reputable manufacturers who comply with CPSC regulations and ASTM toy safety standards.',
+          q: 'Are your products safe and certified?',
+          a: 'Absolutely! All our products meet or exceed applicable US safety standards and regulations. We only carry products from reputable manufacturers and suppliers who comply with industry-specific regulations and quality standards.',
         },
         {
           q: 'Do you offer gift wrapping?',
@@ -179,7 +179,7 @@ export default function FAQPage() {
         {/* Bottom CTA */}
         <div className="mt-12 bg-yellow-50 border-2 border-yellow-300 rounded-2xl p-8 text-center">
           <h2 className="text-2xl font-bold text-purple-900 mb-3">Ready to Shop?</h2>
-          <p className="text-gray-700 mb-6">Explore our amazing collection of toys and gifts for every kid!</p>
+          <p className="text-gray-700 mb-6">Explore our complete marketplace - whatever you want, we got it!</p>
           <a href="/shop" className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold px-8 py-4 rounded-full text-lg transition-colors shadow-lg">
             Browse All Products
           </a>

@@ -1,0 +1,127 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bgTruck" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5f5f5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e0e0e0;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="truckTire" cx="28%" cy="28%">
+      <stop offset="0%" style="stop-color:#4a4a4a;stop-opacity:1" />
+      <stop offset="35%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000;stop-opacity:1" />
+    </radialGradient>
+    <radialGradient id="rimTruck" cx="40%" cy="40%">
+      <stop offset="0%" style="stop-color:#f0f0f0;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#c0c0c0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#808080;stop-opacity:1" />
+    </radialGradient>
+    <filter id="shadowTruck" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="8" stdDeviation="5" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="300" fill="url(#bgTruck)"/>
+
+  <!-- Heavy shadow (truck tire sits lower) -->
+  <ellipse cx="200" cy="250" rx="115" ry="18" fill="#000" opacity="0.15"/>
+
+  <!-- Main tire - larger, more rugged -->
+  <circle cx="200" cy="150" r="98" fill="url(#truckTire)" stroke="#000" stroke-width="3" filter="url(#shadowTruck)"/>
+
+  <!-- Sidewall text - heavy duty designation -->
+  <path id="truckPath" d="M 105 150 A 95 95 0 0 1 295 150" fill="none"/>
+  <text font-size="15" font-weight="bold" fill="#888" letter-spacing="1.5">
+    <textPath href="#truckPath" startOffset="50%" text-anchor="middle">
+      22 INCH LT TRUCK HD
+    </textPath>
+  </text>
+
+  <!-- Heavy-duty tread pattern (very deep, aggressive) -->
+  <circle cx="200" cy="150" r="82" fill="none" stroke="#1a1a1a" stroke-width="9"/>
+  <circle cx="200" cy="150" r="64" fill="none" stroke="#222" stroke-width="7"/>
+  <circle cx="200" cy="150" r="48" fill="none" stroke="#333" stroke-width="5"/>
+  <circle cx="200" cy="150" r="32" fill="none" stroke="#444" stroke-width="3"/>
+
+  <!-- Heavy tread blocks - blocky, rugged appearance -->
+  <g id="truckTread" opacity="0.85">
+    <g transform="rotate(0 200 150)">
+      <rect x="196" y="56" width="8" height="24" fill="#222" opacity="0.9"/>
+      <rect x="196" y="84" width="8" height="18" fill="#333" opacity="0.7"/>
+      <line x1="200" y1="108" x2="240" y2="125" stroke="#222" stroke-width="3" opacity="0.65"/>
+      <line x1="240" y1="80" x2="268" y2="110" stroke="#333" stroke-width="2.5" opacity="0.55"/>
+    </g>
+    <g transform="rotate(36 200 150)">
+      <rect x="196" y="56" width="8" height="24" fill="#222" opacity="0.9"/>
+      <rect x="196" y="84" width="8" height="18" fill="#333" opacity="0.7"/>
+      <line x1="200" y1="108" x2="240" y2="125" stroke="#222" stroke-width="3" opacity="0.65"/>
+    </g>
+    <g transform="rotate(72 200 150)">
+      <rect x="196" y="56" width="8" height="24" fill="#222" opacity="0.9"/>
+      <rect x="196" y="84" width="8" height="18" fill="#333" opacity="0.7"/>
+      <line x1="200" y1="108" x2="240" y2="125" stroke="#222" stroke-width="3" opacity="0.65"/>
+      <line x1="240" y1="80" x2="268" y2="110" stroke="#333" stroke-width="2.5" opacity="0.55"/>
+    </g>
+    <g transform="rotate(108 200 150)">
+      <rect x="196" y="56" width="8" height="24" fill="#222" opacity="0.9"/>
+      <rect x="196" y="84" width="8" height="18" fill="#333" opacity="0.7"/>
+      <line x1="200" y1="108" x2="240" y2="125" stroke="#222" stroke-width="3" opacity="0.65"/>
+    </g>
+    <g transform="rotate(144 200 150)">
+      <rect x="196" y="56" width="8" height="24" fill="#222" opacity="0.9"/>
+      <rect x="196" y="84" width="8" height="18" fill="#333" opacity="0.7"/>
+      <line x1="200" y1="108" x2="240" y2="125" stroke="#222" stroke-width="3" opacity="0.65"/>
+      <line x1="240" y1="80" x2="268" y2="110" stroke="#333" stroke-width="2.5" opacity="0.55"/>
+    </g>
+    <g transform="rotate(180 200 150)">
+      <rect x="196" y="56" width="8" height="24" fill="#222" opacity="0.9"/>
+      <rect x="196" y="84" width="8" height="18" fill="#333" opacity="0.7"/>
+      <line x1="200" y1="108" x2="240" y2="125" stroke="#222" stroke-width="3" opacity="0.65"/>
+    </g>
+    <g transform="rotate(216 200 150)">
+      <rect x="196" y="56" width="8" height="24" fill="#222" opacity="0.9"/>
+      <rect x="196" y="84" width="8" height="18" fill="#333" opacity="0.7"/>
+      <line x1="200" y1="108" x2="240" y2="125" stroke="#222" stroke-width="3" opacity="0.65"/>
+      <line x1="240" y1="80" x2="268" y2="110" stroke="#333" stroke-width="2.5" opacity="0.55"/>
+    </g>
+    <g transform="rotate(252 200 150)">
+      <rect x="196" y="56" width="8" height="24" fill="#222" opacity="0.9"/>
+      <rect x="196" y="84" width="8" height="18" fill="#333" opacity="0.7"/>
+      <line x1="200" y1="108" x2="240" y2="125" stroke="#222" stroke-width="3" opacity="0.65"/>
+    </g>
+    <g transform="rotate(288 200 150)">
+      <rect x="196" y="56" width="8" height="24" fill="#222" opacity="0.9"/>
+      <rect x="196" y="84" width="8" height="18" fill="#333" opacity="0.7"/>
+      <line x1="200" y1="108" x2="240" y2="125" stroke="#222" stroke-width="3" opacity="0.65"/>
+      <line x1="240" y1="80" x2="268" y2="110" stroke="#333" stroke-width="2.5" opacity="0.55"/>
+    </g>
+    <g transform="rotate(324 200 150)">
+      <rect x="196" y="56" width="8" height="24" fill="#222" opacity="0.9"/>
+      <rect x="196" y="84" width="8" height="18" fill="#333" opacity="0.7"/>
+      <line x1="200" y1="108" x2="240" y2="125" stroke="#222" stroke-width="3" opacity="0.65"/>
+    </g>
+  </g>
+
+  <!-- Tire wall texture/reflection -->
+  <ellipse cx="130" cy="125" rx="18" ry="25" fill="#444" opacity="0.22"/>
+
+  <!-- Heavy steel rim -->
+  <circle cx="200" cy="150" r="40" fill="url(#rimTruck)" stroke="#666" stroke-width="3"/>
+  <circle cx="200" cy="150" r="33" fill="#d8d8d8" stroke="#888" stroke-width="1.5"/>
+
+  <!-- Heavy-duty rim design (thicker spokes) -->
+  <g stroke="#999" stroke-width="2.5" opacity="0.65">
+    <line x1="200" y1="118" x2="200" y2="150"/>
+    <line x1="228" y1="131" x2="216" y2="153"/>
+    <line x1="228" y1="169" x2="216" y2="147"/>
+    <line x1="172" y1="169" x2="184" y2="147"/>
+    <line x1="172" y1="131" x2="184" y2="153"/>
+  </g>
+
+  <!-- Heavy center hub cap -->
+  <circle cx="200" cy="150" r="15" fill="#b0b0b0" stroke="#555" stroke-width="2"/>
+  <circle cx="200" cy="150" r="11" fill="#d0d0d0" opacity="0.65"/>
+
+  <!-- Product info - emphasizing heavy duty -->
+  <text x="200" y="270" font-size="18" font-weight="bold" text-anchor="middle" fill="#1a1a1a">Truck Tire LT 22"</text>
+  <text x="200" y="290" font-size="11" text-anchor="middle" fill="#555">Heavy Duty Off-Road Capability</text>
+</svg>

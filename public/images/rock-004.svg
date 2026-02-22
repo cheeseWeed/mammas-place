@@ -1,0 +1,433 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" width="500" height="600">
+  <!-- PREMIUM MINERAL SET - 20 RARE SPECIMENS - PHOTOREALISTIC PRODUCT PHOTOGRAPHY -->
+  <defs>
+    <!-- Studio lighting -->
+    <radialGradient id="studioLight4" cx="40%" cy="30%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.95" />
+      <stop offset="50%" style="stop-color:#f8f5f0;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#e0d8c8;stop-opacity:0.3" />
+    </radialGradient>
+
+    <!-- Soft shadow filter -->
+    <filter id="softShadow4">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2.5"/>
+      <feOffset dx="0" dy="5" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.22"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Premium mineral gradients -->
+    <radialGradient id="malachite" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#50d080;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#208848;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#084020;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="labradorite" cx="35%" cy="35%">
+      <stop offset="0%" style="stop-color:#88c8e0;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#5090b0;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#304860;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#182830;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="tigers_eye" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#d4a030;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#a06820;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#583010;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="lapis" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#4080d0;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1848a0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#082050;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="rhodonite" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#e080a0;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#b04870;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#602040;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="amazonite" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#70d8c0;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#40a090;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#186050;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="fluorite" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#c8a0f0;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8060c0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#402080;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="sodalite" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#6080c0;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#304880;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#102040;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="carnelian" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#f08040;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#c04020;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#702010;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="hematite" cx="25%" cy="25%">
+      <stop offset="0%" style="stop-color:#808088;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#484850;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#181820;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="aventurine" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#80c880;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#408040;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#184018;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="jasper" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#c06040;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#803828;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#401810;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="moonstone" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#f0f0ff;stop-opacity:0.9" />
+      <stop offset="50%" style="stop-color:#c8c8e0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9090b0;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="turquoise" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#70d0d8;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#30a0a8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#106068;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="obsidianSnow" cx="25%" cy="25%">
+      <stop offset="0%" style="stop-color:#505058;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#282830;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#101018;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="agate" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#e8d8c0;stop-opacity:1" />
+      <stop offset="40%" style="stop-color:#c0a080;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#906848;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#584030;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="jade" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#90d8a0;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#50a060;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#206030;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="onyx" cx="25%" cy="25%">
+      <stop offset="0%" style="stop-color:#404040;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#202020;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#080808;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="opal" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#f8f0ff;stop-opacity:0.85" />
+      <stop offset="30%" style="stop-color:#e0d0f0;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#c0e0f8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a0c0d8;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="garnet" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#d02040;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#901030;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#500818;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="500" height="600" fill="url(#studioLight4)"/>
+
+  <!-- Soft shadow base -->
+  <ellipse cx="250" cy="485" rx="210" ry="45" fill="rgba(0,0,0,0.08)"/>
+
+  <!-- PREMIUM WOODEN DISPLAY CASE -->
+  <g filter="url(#softShadow4)">
+    <!-- Case frame - darker mahogany -->
+    <rect x="30" y="50" width="440" height="420" rx="6" fill="#5a3020" stroke="#3a1810" stroke-width="3"/>
+    <!-- Wood grain highlights -->
+    <line x1="40" y1="62" x2="460" y2="62" stroke="rgba(100,60,30,0.3)" stroke-width="0.5"/>
+    <line x1="40" y1="458" x2="460" y2="458" stroke="rgba(100,60,30,0.3)" stroke-width="0.5"/>
+    <!-- Velvet interior -->
+    <rect x="45" y="65" width="410" height="395" fill="#0a0a18" rx="3"/>
+  </g>
+
+  <!-- ROW 1: 5 specimens -->
+  <!-- 1. Malachite -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(85, 105)">
+      <ellipse cx="0" cy="0" rx="22" ry="17" fill="url(#malachite)"/>
+      <path d="M -15,-8 Q -8,0 -12,8 M -8,-10 Q 0,-2 -5,10 M 0,-12 Q 8,0 2,12" stroke="rgba(80,200,120,0.5)" stroke-width="1.5" fill="none"/>
+      <ellipse cx="-6" cy="-5" rx="5" ry="3" fill="rgba(150,255,180,0.25)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Malachite</text>
+    </g>
+  </g>
+
+  <!-- 2. Labradorite -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(165, 105)">
+      <ellipse cx="0" cy="0" rx="21" ry="16" fill="url(#labradorite)"/>
+      <ellipse cx="-3" cy="-2" rx="8" ry="6" fill="rgba(100,180,220,0.4)"/>
+      <ellipse cx="5" cy="4" rx="5" ry="4" fill="rgba(80,220,180,0.3)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Labradorite</text>
+    </g>
+  </g>
+
+  <!-- 3. Tiger's Eye -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(250, 105)">
+      <ellipse cx="0" cy="0" rx="20" ry="16" fill="url(#tigers_eye)"/>
+      <line x1="-12" y1="-8" x2="12" y2="8" stroke="rgba(255,200,100,0.5)" stroke-width="2"/>
+      <line x1="-10" y1="-4" x2="10" y2="10" stroke="rgba(255,180,80,0.4)" stroke-width="1.5"/>
+      <ellipse cx="-5" cy="-4" rx="4" ry="3" fill="rgba(255,220,150,0.3)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Tiger's Eye</text>
+    </g>
+  </g>
+
+  <!-- 4. Lapis Lazuli -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(335, 105)">
+      <ellipse cx="0" cy="0" rx="21" ry="17" fill="url(#lapis)"/>
+      <circle cx="-6" cy="-4" r="1.5" fill="#ffd700" opacity="0.7"/>
+      <circle cx="4" cy="2" r="1" fill="#ffd700" opacity="0.6"/>
+      <circle cx="-2" cy="6" r="1.2" fill="#ffd700" opacity="0.55"/>
+      <circle cx="8" cy="-3" r="0.8" fill="#ffd700" opacity="0.5"/>
+      <ellipse cx="-4" cy="-6" rx="5" ry="3" fill="rgba(100,160,255,0.2)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Lapis Lazuli</text>
+    </g>
+  </g>
+
+  <!-- 5. Rhodonite -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(415, 105)">
+      <ellipse cx="0" cy="0" rx="20" ry="16" fill="url(#rhodonite)"/>
+      <path d="M -8,-6 Q 0,0 8,6 M -5,8 Q 5,-5 10,-2" stroke="rgba(30,20,30,0.5)" stroke-width="1" fill="none"/>
+      <ellipse cx="-5" cy="-4" rx="4" ry="3" fill="rgba(255,150,180,0.25)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Rhodonite</text>
+    </g>
+  </g>
+
+  <!-- ROW 2: 5 specimens -->
+  <!-- 6. Amazonite -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(85, 175)">
+      <ellipse cx="0" cy="0" rx="21" ry="16" fill="url(#amazonite)"/>
+      <ellipse cx="-5" cy="-4" rx="6" ry="4" fill="rgba(200,255,240,0.25)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Amazonite</text>
+    </g>
+  </g>
+
+  <!-- 7. Fluorite -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(165, 175)">
+      <polygon points="0,-18 16,-5 12,15 -12,15 -16,-5" fill="url(#fluorite)"/>
+      <polygon points="-4,-10 0,-15 6,-8 2,-2" fill="rgba(220,180,255,0.4)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Fluorite</text>
+    </g>
+  </g>
+
+  <!-- 8. Sodalite -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(250, 175)">
+      <ellipse cx="0" cy="0" rx="20" ry="16" fill="url(#sodalite)"/>
+      <path d="M -10,-5 Q 0,5 10,-3" stroke="rgba(200,200,220,0.35)" stroke-width="2" fill="none"/>
+      <ellipse cx="-4" cy="-5" rx="5" ry="3" fill="rgba(120,160,220,0.25)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Sodalite</text>
+    </g>
+  </g>
+
+  <!-- 9. Carnelian -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(335, 175)">
+      <ellipse cx="0" cy="0" rx="19" ry="15" fill="url(#carnelian)"/>
+      <ellipse cx="-4" cy="-4" rx="5" ry="3" fill="rgba(255,180,120,0.35)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Carnelian</text>
+    </g>
+  </g>
+
+  <!-- 10. Hematite -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(415, 175)">
+      <ellipse cx="0" cy="0" rx="20" ry="16" fill="url(#hematite)"/>
+      <ellipse cx="-6" cy="-5" rx="6" ry="4" fill="rgba(180,180,190,0.35)"/>
+      <ellipse cx="4" cy="2" rx="4" ry="3" fill="rgba(150,150,160,0.2)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Hematite</text>
+    </g>
+  </g>
+
+  <!-- ROW 3: 5 specimens -->
+  <!-- 11. Aventurine -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(85, 245)">
+      <ellipse cx="0" cy="0" rx="20" ry="16" fill="url(#aventurine)"/>
+      <circle cx="-5" cy="-3" r="1" fill="rgba(255,255,200,0.4)"/>
+      <circle cx="3" cy="2" r="0.8" fill="rgba(255,255,200,0.35)"/>
+      <circle cx="-2" cy="5" r="0.6" fill="rgba(255,255,200,0.3)"/>
+      <ellipse cx="-4" cy="-5" rx="5" ry="3" fill="rgba(180,255,180,0.2)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Aventurine</text>
+    </g>
+  </g>
+
+  <!-- 12. Red Jasper -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(165, 245)">
+      <ellipse cx="0" cy="0" rx="21" ry="17" fill="url(#jasper)"/>
+      <ellipse cx="-5" cy="-4" rx="5" ry="3" fill="rgba(220,140,100,0.25)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Red Jasper</text>
+    </g>
+  </g>
+
+  <!-- 13. Moonstone -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(250, 245)">
+      <ellipse cx="0" cy="0" rx="19" ry="15" fill="url(#moonstone)"/>
+      <ellipse cx="-3" cy="-2" rx="6" ry="5" fill="rgba(220,230,255,0.5)"/>
+      <ellipse cx="4" cy="3" rx="4" ry="3" fill="rgba(200,210,240,0.3)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Moonstone</text>
+    </g>
+  </g>
+
+  <!-- 14. Turquoise -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(335, 245)">
+      <ellipse cx="0" cy="0" rx="20" ry="16" fill="url(#turquoise)"/>
+      <path d="M -10,-5 L -6,0 L -12,5 M 2,-8 L 6,-2 L 0,4 M 8,0 L 12,6" stroke="rgba(40,60,50,0.4)" stroke-width="0.8" fill="none"/>
+      <ellipse cx="-5" cy="-4" rx="4" ry="3" fill="rgba(180,255,250,0.25)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Turquoise</text>
+    </g>
+  </g>
+
+  <!-- 15. Snowflake Obsidian -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(415, 245)">
+      <ellipse cx="0" cy="0" rx="20" ry="16" fill="url(#obsidianSnow)"/>
+      <circle cx="-6" cy="-4" r="3" fill="rgba(220,220,230,0.5)"/>
+      <circle cx="4" cy="3" r="2.5" fill="rgba(200,200,210,0.45)"/>
+      <circle cx="-2" cy="6" r="2" fill="rgba(210,210,220,0.4)"/>
+      <circle cx="8" cy="-2" r="1.5" fill="rgba(190,190,200,0.35)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Snowflake Obs.</text>
+    </g>
+  </g>
+
+  <!-- ROW 4: 5 specimens -->
+  <!-- 16. Banded Agate -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(85, 315)">
+      <ellipse cx="0" cy="0" rx="20" ry="16" fill="url(#agate)"/>
+      <ellipse cx="0" cy="0" rx="14" ry="11" fill="none" stroke="rgba(180,140,100,0.5)" stroke-width="1.5"/>
+      <ellipse cx="0" cy="0" rx="9" ry="7" fill="none" stroke="rgba(200,160,120,0.45)" stroke-width="1.2"/>
+      <ellipse cx="0" cy="0" rx="4" ry="3" fill="rgba(240,220,180,0.5)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Banded Agate</text>
+    </g>
+  </g>
+
+  <!-- 17. Jade -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(165, 315)">
+      <ellipse cx="0" cy="0" rx="21" ry="16" fill="url(#jade)"/>
+      <ellipse cx="-5" cy="-4" rx="6" ry="4" fill="rgba(200,255,210,0.25)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Jade</text>
+    </g>
+  </g>
+
+  <!-- 18. Black Onyx -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(250, 315)">
+      <ellipse cx="0" cy="0" rx="19" ry="15" fill="url(#onyx)"/>
+      <ellipse cx="-5" cy="-4" rx="5" ry="3" fill="rgba(100,100,100,0.35)"/>
+      <ellipse cx="3" cy="2" rx="3" ry="2" fill="rgba(80,80,80,0.25)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Black Onyx</text>
+    </g>
+  </g>
+
+  <!-- 19. Opal -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(335, 315)">
+      <ellipse cx="0" cy="0" rx="18" ry="14" fill="url(#opal)"/>
+      <ellipse cx="-4" cy="-3" rx="4" ry="3" fill="rgba(255,180,200,0.3)"/>
+      <ellipse cx="3" cy="2" rx="3" ry="2" fill="rgba(180,220,255,0.35)"/>
+      <ellipse cx="-2" cy="4" rx="2" ry="1.5" fill="rgba(200,255,200,0.25)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Opal</text>
+    </g>
+  </g>
+
+  <!-- 20. Garnet -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(415, 315)">
+      <polygon points="0,-16 14,-5 10,14 -10,14 -14,-5" fill="url(#garnet)"/>
+      <polygon points="-3,-8 0,-14 5,-6 1,0" fill="rgba(255,100,120,0.4)"/>
+      <text x="0" y="28" font-family="Arial" font-size="6" fill="#888" text-anchor="middle">Garnet</text>
+    </g>
+  </g>
+
+  <!-- PREMIUM CERTIFICATE -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(85, 400)">
+      <rect x="-35" y="0" width="70" height="50" rx="2" fill="#f8f0e0" stroke="#c8a868" stroke-width="1.5"/>
+      <rect x="-32" y="3" width="64" height="44" fill="none" stroke="#d4b878" stroke-width="0.5"/>
+      <text x="0" y="16" font-family="Georgia, serif" font-size="6" font-weight="bold" fill="#8a6a30" text-anchor="middle">CERTIFICATE</text>
+      <text x="0" y="26" font-family="Georgia, serif" font-size="5" fill="#6a5020" text-anchor="middle">of Authenticity</text>
+      <circle cx="0" cy="38" r="6" fill="none" stroke="#c8a040" stroke-width="1"/>
+      <text x="0" y="40" font-family="Arial" font-size="5" fill="#c8a040" text-anchor="middle">P</text>
+    </g>
+  </g>
+
+  <!-- COLLECTOR'S GUIDE BOOK -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(250, 400)">
+      <rect x="-45" y="0" width="90" height="60" rx="3" fill="#1a3050" stroke="#0a1830" stroke-width="2"/>
+      <rect x="-42" y="3" width="84" height="54" fill="#2a4060" opacity="0.6"/>
+      <rect x="-38" y="10" width="76" height="22" fill="rgba(255,255,255,0.9)"/>
+      <text x="0" y="22" font-family="Georgia, serif" font-size="8" font-weight="bold" fill="#1a3050" text-anchor="middle">MINERAL</text>
+      <text x="0" y="30" font-family="Georgia, serif" font-size="6" fill="#1a3050" text-anchor="middle">COLLECTOR'S GUIDE</text>
+      <!-- Decorative gems -->
+      <circle cx="-20" cy="45" r="4" fill="#4080d0" opacity="0.6"/>
+      <circle cx="0" cy="48" r="5" fill="#50d080" opacity="0.5"/>
+      <circle cx="20" cy="44" r="4" fill="#d02040" opacity="0.55"/>
+    </g>
+  </g>
+
+  <!-- VELVET POUCH -->
+  <g filter="url(#softShadow4)">
+    <g transform="translate(400, 405)">
+      <ellipse cx="0" cy="20" rx="28" ry="12" fill="#2a1040"/>
+      <path d="M -25,20 Q -28,0 -15,-15 Q 0,-25 15,-15 Q 28,0 25,20" fill="#3a1858"/>
+      <path d="M -20,-10 Q -10,-18 0,-20 Q 10,-18 20,-10" stroke="#c8a040" stroke-width="1.2" fill="none"/>
+      <line x1="-8" y1="-15" x2="-5" y2="-25" stroke="#c8a040" stroke-width="0.8"/>
+      <line x1="8" y1="-15" x2="5" y2="-25" stroke="#c8a040" stroke-width="0.8"/>
+      <ellipse cx="0" cy="5" rx="12" ry="8" fill="rgba(80,40,100,0.3)"/>
+    </g>
+  </g>
+
+  <!-- PRODUCT TITLE -->
+  <text x="250" y="525" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#1a1a1a" text-anchor="middle">
+    Premium Mineral Set
+  </text>
+
+  <!-- PRODUCT DESCRIPTION -->
+  <text x="250" y="552" font-family="Arial, sans-serif" font-size="11" fill="#555" text-anchor="middle">
+    20 Rare Specimens | Mahogany Display Case | Collector's Guide
+  </text>
+
+  <!-- HIGHLIGHT TEXT -->
+  <text x="250" y="575" font-family="Arial, sans-serif" font-size="10" fill="#888" text-anchor="middle">
+    Certificate of Authenticity | Museum Quality | Gift Ready
+  </text>
+
+  <!-- PREMIUM BADGE -->
+  <g transform="translate(455, 75)">
+    <circle cx="0" cy="0" r="18" fill="#c8a040" stroke="#a08020" stroke-width="1.5"/>
+    <text x="0" y="3" font-family="Arial" font-size="8" font-weight="bold" fill="#fff" text-anchor="middle">PREMIUM</text>
+  </g>
+</svg>

@@ -19,9 +19,9 @@ interface AuthContextType {
 
 // Hardcoded credentials (in production these would be in a database)
 const USERS: Array<AuthUser & { password: string }> = [
-  { username: 'manager', password: 'mamma2026!', role: 'manager', name: 'Store Manager' },
-  { username: 'agent1', password: 'agent2026!', role: 'agent', name: 'Sales Agent 1' },
-  { username: 'agent2', password: 'staff2026!', role: 'agent', name: 'Sales Agent 2' },
+  { username: 'manager', password: 'manager', role: 'manager', name: 'Store Manager' },
+  { username: 'agent1', password: 'agent1', role: 'agent', name: 'Sales Agent 1' },
+  { username: 'agent2', password: 'agent2', role: 'agent', name: 'Sales Agent 2' },
 ];
 
 const AUTH_KEY = 'mammas-place-auth';

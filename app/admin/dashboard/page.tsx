@@ -304,14 +304,14 @@ export default function AdminDashboardPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
       {/* Admin Header */}
-      <header className="bg-gray-900 border-b border-gray-800 px-6 py-4 flex items-center justify-between">
+      <header className="bg-gray-900 border-b border-gray-800 px-6 py-4 flex items-center justify-between sticky top-0 z-[60]">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center text-xs font-black">
             MP
           </div>
           <div>
             <div className="font-black text-sm">Mamma&apos;s Place Admin Portal</div>
-            <div className="text-gray-400 text-xs">Product Management Dashboard</div>
+            <div className="text-gray-300 text-xs">Product Management Dashboard</div>
           </div>
         </div>
         <div className="flex items-center gap-4">
@@ -321,7 +321,7 @@ export default function AdminDashboardPage() {
           <Link href="/shop" className="text-xs bg-gray-700 hover:bg-gray-600 px-3 py-1.5 rounded-lg transition-colors">
             View Store
           </Link>
-          <span className="text-gray-400 text-sm">Admin: {adminUser.username}</span>
+          <span className="text-gray-300 text-sm">Admin: {adminUser.username}</span>
           <button
             onClick={handleLogout}
             className="text-xs bg-gray-700 hover:bg-gray-600 px-3 py-1.5 rounded-lg transition-colors"
@@ -343,7 +343,7 @@ export default function AdminDashboardPage() {
             <div key={stat.label} className="bg-gray-800 rounded-2xl p-4 border border-gray-700">
               <div className="text-2xl mb-1">{stat.icon}</div>
               <div className="text-2xl font-black text-white">{stat.value}</div>
-              <div className="text-gray-400 text-xs">{stat.label}</div>
+              <div className="text-gray-300 text-xs">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -394,7 +394,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* Loading/Error States */}
-        {loading && <div className="text-center text-gray-400 py-8">Loading products...</div>}
+        {loading && <div className="text-center text-gray-300 py-8">Loading products...</div>}
         {error && <div className="bg-red-900/30 border border-red-700 text-red-400 rounded-lg p-4 mb-6">{error}</div>}
 
         {/* Products Table */}
@@ -404,13 +404,13 @@ export default function AdminDashboardPage() {
               <table className="w-full">
                 <thead className="bg-gray-900 border-b border-gray-700">
                   <tr>
-                    <th className="text-left px-4 py-3 text-xs font-bold text-gray-400 uppercase">Product</th>
-                    <th className="text-left px-4 py-3 text-xs font-bold text-gray-400 uppercase">SKU</th>
-                    <th className="text-left px-4 py-3 text-xs font-bold text-gray-400 uppercase">Category</th>
-                    <th className="text-left px-4 py-3 text-xs font-bold text-gray-400 uppercase">Price</th>
-                    <th className="text-left px-4 py-3 text-xs font-bold text-gray-400 uppercase">Stock</th>
-                    <th className="text-center px-4 py-3 text-xs font-bold text-gray-400 uppercase">Toggles</th>
-                    <th className="text-right px-4 py-3 text-xs font-bold text-gray-400 uppercase">Actions</th>
+                    <th className="text-left px-4 py-3 text-xs font-bold text-gray-300 uppercase">Product</th>
+                    <th className="text-left px-4 py-3 text-xs font-bold text-gray-300 uppercase">SKU</th>
+                    <th className="text-left px-4 py-3 text-xs font-bold text-gray-300 uppercase">Category</th>
+                    <th className="text-left px-4 py-3 text-xs font-bold text-gray-300 uppercase">Price</th>
+                    <th className="text-left px-4 py-3 text-xs font-bold text-gray-300 uppercase">Stock</th>
+                    <th className="text-center px-4 py-3 text-xs font-bold text-gray-300 uppercase">Toggles</th>
+                    <th className="text-right px-4 py-3 text-xs font-bold text-gray-300 uppercase">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-700">
@@ -430,7 +430,7 @@ export default function AdminDashboardPage() {
                           />
                           <div>
                             <div className="font-bold text-sm">{product.name}</div>
-                            <div className="text-xs text-gray-400">{product.id}</div>
+                            <div className="text-xs text-gray-200">{product.id}</div>
                           </div>
                         </div>
                       </td>
@@ -502,7 +502,7 @@ export default function AdminDashboardPage() {
               </table>
 
               {filteredProducts.length === 0 && (
-                <div className="text-center py-12 text-gray-400">No products found matching filters.</div>
+                <div className="text-center py-12 text-gray-300">No products found matching filters.</div>
               )}
             </div>
           </div>
@@ -515,7 +515,7 @@ export default function AdminDashboardPage() {
           <div className="bg-gray-800 rounded-2xl border border-gray-700 w-full max-w-3xl my-8">
             <div className="bg-gray-900 px-6 py-4 border-b border-gray-700 flex items-center justify-between rounded-t-2xl">
               <h2 className="font-black text-lg">{editingProduct ? 'Edit Product' : 'Add New Product'}</h2>
-              <button onClick={closeForm} className="text-gray-400 hover:text-white text-2xl leading-none">
+              <button onClick={closeForm} className="text-gray-300 hover:text-white text-2xl leading-none">
                 &times;
               </button>
             </div>
@@ -692,7 +692,7 @@ export default function AdminDashboardPage() {
                     className="w-full bg-gray-900 border border-gray-600 rounded-lg px-3 py-2 text-sm"
                     placeholder="/images/product.svg"
                   />
-                  <p className="text-xs text-gray-400 mt-1">
+                  <p className="text-xs text-gray-300 mt-1">
                     Tip: Upload images first using the <Link href="/admin/upload" className="text-purple-400 hover:underline">Upload Images</Link> page
                   </p>
                 </div>
@@ -830,6 +830,116 @@ export default function AdminDashboardPage() {
           </div>
         </div>
       )}
+
+      {/* Category Visibility Management */}
+      <div className="mt-8 bg-gray-800 rounded-2xl border border-gray-700 p-6">
+        <h2 className="font-black text-xl mb-4 text-white">Category Visibility</h2>
+        <p className="text-gray-300 text-sm mb-6">
+          Control which categories are visible on the website. Hidden categories will not appear in navigation or product listings.
+        </p>
+
+        <CategoryVisibilityManager />
+      </div>
+    </div>
+  );
+}
+
+function CategoryVisibilityManager() {
+  const [allCategories, setAllCategories] = useState<string[]>([]);
+  const [hiddenCategories, setHiddenCategoriesState] = useState<string[]>([]);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    // Import the functions dynamically to avoid SSR issues
+    import('@/lib/products').then(({ getAllCategories, getHiddenCategories }) => {
+      setAllCategories(getAllCategories());
+      setHiddenCategoriesState(getHiddenCategories());
+    });
+  }, []);
+
+  const handleToggleCategory = async (category: string) => {
+    const { toggleCategoryVisibility, getHiddenCategories } = await import('@/lib/products');
+    toggleCategoryVisibility(category);
+    setHiddenCategoriesState(getHiddenCategories());
+
+    // Trigger a page refresh to update the category list everywhere
+    window.dispatchEvent(new Event('categoryVisibilityChanged'));
+  };
+
+  if (!mounted) {
+    return <div className="text-gray-400 text-sm">Loading categories...</div>;
+  }
+
+  const categoryEmojis: Record<string, string> = {
+    'automotive': '🚗',
+    'grocery': '🛒',
+    'home-garden': '🏡',
+    'sports': '🏀',
+    'toys-and-games': '🎮',
+    'audiobooks': '🎧',
+    'services': '🛠️',
+    'restaurant': '🍽️'
+  };
+
+  return (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+      {allCategories.sort().map((category) => {
+        const isHidden = hiddenCategories.includes(category);
+        const emoji = categoryEmojis[category] || '📦';
+
+        return (
+          <div
+            key={category}
+            className={`flex items-center justify-between p-4 rounded-lg border transition-all ${
+              isHidden
+                ? 'bg-gray-900 border-gray-600 opacity-60'
+                : 'bg-gray-700 border-gray-600'
+            }`}
+          >
+            <div className="flex items-center gap-3 flex-1">
+              <span className="text-2xl">{emoji}</span>
+              <div className="flex-1 min-w-0">
+                <div className="font-bold text-white text-sm capitalize">
+                  {category.replace(/-/g, ' ')}
+                </div>
+                {isHidden && (
+                  <span className="inline-block bg-red-600 text-white text-xs font-bold px-2 py-0.5 rounded mt-1">
+                    Hidden
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <button
+              onClick={() => handleToggleCategory(category)}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-colors ${
+                isHidden
+                  ? 'bg-green-600 hover:bg-green-500 text-white'
+                  : 'bg-gray-600 hover:bg-gray-500 text-white'
+              }`}
+              title={isHidden ? 'Click to show category' : 'Click to hide category'}
+            >
+              {isHidden ? (
+                <>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                  </svg>
+                  Show
+                </>
+              ) : (
+                <>
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                  </svg>
+                  Hide
+                </>
+              )}
+            </button>
+          </div>
+        );
+      })}
     </div>
   );
 }

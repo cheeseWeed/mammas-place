@@ -1,0 +1,89 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Decadent dark background -->
+  <defs>
+    <linearGradient id="bgGrad5" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#faf8f4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5f0ea;stop-opacity:1" />
+    </linearGradient>
+    <filter id="elegantShadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-opacity="0.11"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bgGrad5)"/>
+
+  <!-- Matte black plate for contrast -->
+  <circle cx="200" cy="270" r="135" fill="#2a2620" stroke="#0d0a07" stroke-width="1.5"/>
+  <circle cx="200" cy="270" r="131" fill="#3d3935"/>
+
+  <!-- Subtle plate rim -->
+  <circle cx="200" cy="270" r="130" fill="none" stroke="#4a4440" stroke-width="0.3" opacity="0.4"/>
+
+  <!-- Chocolate Lava Cake (Molten Center) -->
+  <!-- Cake base (dark chocolate) -->
+  <ellipse cx="200" cy="230" rx="70" ry="65" fill="#3d2817"/>
+  <ellipse cx="200" cy="228" rx="68" ry="62" fill="#5c3d28"/>
+
+  <!-- Cake top crust (darker, slightly cracked appearance) -->
+  <ellipse cx="200" cy="170" rx="65" ry="25" fill="#2d1b10"/>
+  <ellipse cx="200" cy="168" rx="63" ry="23" fill="#4a2f1a"/>
+
+  <!-- Molten center glow (liquid chocolate visible) -->
+  <ellipse cx="200" cy="190" rx="40" ry="35" fill="#b8860b" opacity="0.6"/>
+  <ellipse cx="200" cy="188" rx="38" ry="32" fill="#d4a537" opacity="0.5"/>
+
+  <!-- Center molten chocolate reflection -->
+  <ellipse cx="200" cy="185" rx="30" ry="25" fill="#ffc700" opacity="0.3"/>
+
+  <!-- Cake surface cracks/fissures -->
+  <path d="M 170 175 Q 185 180 200 178 Q 215 180 230 175" stroke="#6b4423" stroke-width="1.5" fill="none" opacity="0.4"/>
+  <path d="M 180 165 Q 195 168 210 166" stroke="#5c3d28" stroke-width="1" fill="none" opacity="0.3"/>
+
+  <!-- Powdered sugar dusting -->
+  <circle cx="155" cy="160" r="2" fill="#fef5e7" opacity="0.5"/>
+  <circle cx="175" cy="158" r="1.5" fill="#fef5e7" opacity="0.4"/>
+  <circle cx="245" cy="162" r="1.5" fill="#fef5e7" opacity="0.4"/>
+  <circle cx="225" cy="159" r="1" fill="#fef5e7" opacity="0.35"/>
+  <circle cx="200" cy="155" r="1.2" fill="#fef5e7" opacity="0.35"/>
+
+  <!-- Sugar dust streaks -->
+  <path d="M 155 160 L 165 161" stroke="#fef5e7" stroke-width="0.5" opacity="0.25"/>
+  <path d="M 245 162 L 235 163" stroke="#fef5e7" stroke-width="0.5" opacity="0.25"/>
+
+  <!-- Chocolate shine/gloss -->
+  <ellipse cx="190" cy="175" rx="40" ry="20" fill="#8b6434" opacity="0.2"/>
+  <ellipse cx="210" cy="180" rx="25" ry="15" fill="#fff" opacity="0.08"/>
+
+  <!-- Cake side detail -->
+  <path d="M 130 220 Q 125 250 130 270" stroke="#3d2817" stroke-width="1.5" opacity="0.2" fill="none"/>
+  <path d="M 270 220 Q 275 250 270 270" stroke="#3d2817" stroke-width="1.5" opacity="0.2" fill="none"/>
+
+  <!-- Whipped cream garnish on side -->
+  <ellipse cx="120" cy="250" rx="15" ry="18" fill="#fef9f6" opacity="0.8"/>
+  <ellipse cx="280" cy="250" rx="15" ry="18" fill="#fef9f6" opacity="0.8"/>
+
+  <!-- Cream detail peaks -->
+  <path d="M 115 235 Q 120 225 125 235" stroke="#f5f0eb" stroke-width="1" opacity="0.4" fill="none"/>
+  <path d="M 275 235 Q 280 225 285 235" stroke="#f5f0eb" stroke-width="1" opacity="0.4" fill="none"/>
+
+  <!-- Spoon suggestion on right -->
+  <g opacity="0.15" filter="url(#elegantShadow)">
+    <line x1="310" y1="200" x2="325" y2="290" stroke="#8b8b7f" stroke-width="2" stroke-linecap="round"/>
+    <ellipse cx="327" cy="295" rx="5" ry="7" fill="#8b8b7f"/>
+  </g>
+
+  <!-- Plate highlight edge -->
+  <circle cx="200" cy="270" r="131" fill="none" stroke="#5a5250" stroke-width="0.8" opacity="0.2"/>
+
+  <!-- Deep plate shadow -->
+  <ellipse cx="200" cy="360" rx="140" ry="32" fill="rgba(0,0,0,0.25)"/>
+
+  <!-- Realistic cake surface texture -->
+  <circle cx="140" cy="190" r="1" fill="#8b6434" opacity="0.15"/>
+  <circle cx="260" cy="200" r="1.2" fill="#8b6434" opacity="0.1"/>
+  <circle cx="200" cy="210" r="0.8" fill="#8b6434" opacity="0.12"/>
+
+  <!-- Micro highlights on molten center -->
+  <circle cx="185" cy="182" r="1" fill="#fff" opacity="0.2"/>
+  <circle cx="215" cy="186" r="0.8" fill="#fff" opacity="0.15"/>
+</svg>

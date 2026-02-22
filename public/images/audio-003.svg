@@ -1,0 +1,177 @@
+<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Photorealistic studio lighting -->
+    <linearGradient id="studioFloor3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e5e5e5;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#d0d0d0;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="cdCaseShine3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.45"/>
+      <stop offset="12%" style="stop-color:#ffffff;stop-opacity:0"/>
+      <stop offset="88%" style="stop-color:#ffffff;stop-opacity:0"/>
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.18"/>
+    </linearGradient>
+    <linearGradient id="coverGradRainbow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1"/>
+      <stop offset="20%" style="stop-color:#feca57;stop-opacity:1"/>
+      <stop offset="40%" style="stop-color:#48dbfb;stop-opacity:1"/>
+      <stop offset="60%" style="stop-color:#1dd1a1;stop-opacity:1"/>
+      <stop offset="80%" style="stop-color:#5f27cd;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#ff6b9d;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="spineGrad3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#383838;stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#585858;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#282828;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="cdDisc3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0f0f0;stop-opacity:1"/>
+      <stop offset="25%" style="stop-color:#e5e5e5;stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#d5d5d5;stop-opacity:1"/>
+      <stop offset="75%" style="stop-color:#e0e0e0;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#e8e8e8;stop-opacity:1"/>
+    </linearGradient>
+    <radialGradient id="cdHologram3" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:0.2"/>
+      <stop offset="25%" style="stop-color:#feca57;stop-opacity:0.18"/>
+      <stop offset="50%" style="stop-color:#48dbfb;stop-opacity:0.15"/>
+      <stop offset="75%" style="stop-color:#1dd1a1;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#5f27cd;stop-opacity:0.08"/>
+    </radialGradient>
+    <linearGradient id="rainbowArc" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff6b6b"/>
+      <stop offset="16%" style="stop-color:#ff9f43"/>
+      <stop offset="33%" style="stop-color:#feca57"/>
+      <stop offset="50%" style="stop-color:#1dd1a1"/>
+      <stop offset="66%" style="stop-color:#48dbfb"/>
+      <stop offset="83%" style="stop-color:#5f27cd"/>
+      <stop offset="100%" style="stop-color:#ff6b9d"/>
+    </linearGradient>
+    <filter id="softShadow3">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="6" dy="11" result="offsetblur"/>
+      <feFlood flood-color="#000000" flood-opacity="0.38"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Studio background -->
+  <rect width="400" height="500" fill="url(#studioFloor3)"/>
+
+  <!-- Reflection surface -->
+  <rect x="0" y="405" width="400" height="95" fill="#c5c5c5" opacity="0.28"/>
+
+  <!-- CD Case with realistic 3D depth -->
+  <g filter="url(#softShadow3)">
+    <!-- Spine -->
+    <rect x="54" y="63" width="13" height="282" fill="url(#spineGrad3)" rx="2"/>
+
+    <!-- Main case body -->
+    <rect x="65" y="58" width="262" height="292" fill="#191919" rx="4"/>
+
+    <!-- Clear plastic cover -->
+    <rect x="69" y="62" width="254" height="284" fill="#f3f3f3" opacity="0.95" rx="3"/>
+
+    <!-- Album artwork -->
+    <rect x="73" y="66" width="246" height="242" fill="url(#coverGradRainbow)" rx="2"/>
+
+    <!-- Case plastic shine -->
+    <rect x="65" y="58" width="262" height="292" fill="url(#cdCaseShine3)" rx="4"/>
+  </g>
+
+  <!-- Album Art - Adventures in Rainbow Valley -->
+  <!-- Rainbow arc -->
+  <g filter="url(#glow)">
+    <path d="M 90,200 Q 195,80 300,200" fill="none" stroke="url(#rainbowArc)" stroke-width="25" stroke-linecap="round" opacity="0.9"/>
+    <path d="M 100,195 Q 195,90 290,195" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.3"/>
+  </g>
+
+  <!-- Valley with hills -->
+  <ellipse cx="195" cy="250" rx="110" ry="35" fill="#2d5a27" opacity="0.9"/>
+  <ellipse cx="130" cy="245" rx="50" ry="25" fill="#3d7a37" opacity="0.8"/>
+  <ellipse cx="260" cy="248" rx="55" ry="22" fill="#4d8a47" opacity="0.75"/>
+
+  <!-- Trees -->
+  <g transform="translate(120, 225)">
+    <rect x="-3" y="0" width="6" height="15" fill="#5d4037"/>
+    <ellipse cx="0" cy="-8" rx="15" ry="18" fill="#2e7d32"/>
+    <ellipse cx="-5" cy="-5" rx="8" ry="10" fill="#43a047" opacity="0.6"/>
+  </g>
+  <g transform="translate(270, 228)">
+    <rect x="-2" y="0" width="4" height="12" fill="#5d4037"/>
+    <ellipse cx="0" cy="-6" rx="12" ry="14" fill="#2e7d32"/>
+    <ellipse cx="4" cy="-4" rx="6" ry="8" fill="#43a047" opacity="0.5"/>
+  </g>
+
+  <!-- Butterflies -->
+  <g transform="translate(150, 150)" opacity="0.85">
+    <ellipse cx="0" cy="0" rx="8" ry="5" fill="#ff6b9d"/>
+    <ellipse cx="0" cy="0" rx="5" ry="8" fill="#ff6b9d" transform="rotate(90)"/>
+    <circle cx="0" cy="0" r="2" fill="#333"/>
+  </g>
+  <g transform="translate(240, 130)" opacity="0.8">
+    <ellipse cx="0" cy="0" rx="6" ry="4" fill="#48dbfb"/>
+    <ellipse cx="0" cy="0" rx="4" ry="6" fill="#48dbfb" transform="rotate(90)"/>
+    <circle cx="0" cy="0" r="1.5" fill="#333"/>
+  </g>
+
+  <!-- Flowers in valley -->
+  <g opacity="0.9">
+    <circle cx="100" cy="258" r="4" fill="#ff6b6b"/>
+    <circle cx="115" cy="262" r="3" fill="#feca57"/>
+    <circle cx="180" cy="265" r="4" fill="#ff6b9d"/>
+    <circle cx="220" cy="260" r="3" fill="#48dbfb"/>
+    <circle cx="280" cy="258" r="4" fill="#5f27cd"/>
+    <circle cx="295" cy="265" r="3" fill="#1dd1a1"/>
+  </g>
+
+  <!-- Sun with rays -->
+  <g transform="translate(90, 95)">
+    <circle cx="0" cy="0" r="18" fill="#feca57" opacity="0.95"/>
+    <circle cx="-4" cy="-4" r="10" fill="#ffe066" opacity="0.5"/>
+    <!-- Rays -->
+    <g stroke="#feca57" stroke-width="2" stroke-linecap="round" opacity="0.6">
+      <line x1="0" y1="-25" x2="0" y2="-32"/>
+      <line x1="18" y1="-18" x2="23" y2="-23"/>
+      <line x1="25" y1="0" x2="32" y2="0"/>
+      <line x1="18" y1="18" x2="23" y2="23"/>
+    </g>
+  </g>
+
+  <!-- Title text with depth -->
+  <text x="195" y="282" font-size="18" font-weight="bold" text-anchor="middle" fill="#fff" font-family="Georgia, serif" stroke="#333" stroke-width="0.5">Adventures in</text>
+  <text x="195" y="304" font-size="18" font-weight="bold" text-anchor="middle" fill="#fff" font-family="Georgia, serif" stroke="#333" stroke-width="0.5">Rainbow Valley</text>
+
+  <!-- CD visible at bottom -->
+  <g transform="translate(195, 380)">
+    <circle cx="0" cy="0" r="48" fill="url(#cdDisc3)"/>
+    <circle cx="0" cy="0" r="48" fill="url(#cdHologram3)"/>
+    <circle cx="0" cy="0" r="46" fill="none" stroke="#b5b5b5" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="10" fill="#353535"/>
+    <circle cx="0" cy="0" r="8" fill="#4a4a4a"/>
+    <circle cx="0" cy="0" r="18" fill="none" stroke="#ccc" stroke-width="0.3"/>
+    <circle cx="0" cy="0" r="28" fill="none" stroke="#ccc" stroke-width="0.3"/>
+    <circle cx="0" cy="0" r="38" fill="none" stroke="#ccc" stroke-width="0.3"/>
+  </g>
+
+  <!-- Labels -->
+  <rect x="78" y="352" width="95" height="24" fill="#191919" rx="4"/>
+  <text x="125" y="369" font-size="11" font-weight="bold" text-anchor="middle" fill="#1dd1a1" font-family="Arial, sans-serif">AUDIOBOOK</text>
+
+  <rect x="218" y="352" width="88" height="24" fill="#191919" rx="4"/>
+  <text x="262" y="369" font-size="10" text-anchor="middle" fill="#feca57" font-family="Arial, sans-serif">3hr 00min</text>
+
+  <!-- Quality text -->
+  <text x="200" y="460" font-size="9" text-anchor="middle" fill="#5a5a5a" font-family="Arial, sans-serif">Magical Adventure | Professional Narration</text>
+</svg>

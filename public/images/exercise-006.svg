@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="medicine-ball-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#e74c3c;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#c0392b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a93226;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="3" dy="5" stdDeviation="5" flood-opacity="0.4"/>
+    </filter>
+    <filter id="inner-shadow">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="#f8f8f8"/>
+
+  <!-- Main medicine ball sphere -->
+  <circle cx="200" cy="200" r="100" fill="url(#medicine-ball-gradient)" filter="url(#shadow)"/>
+
+  <!-- 3D sphere depth - darker bottom portion -->
+  <ellipse cx="200" cy="280" rx="95" ry="35" fill="#7d2618" opacity="0.3"/>
+
+  <!-- Glossy highlight on upper left -->
+  <ellipse cx="160" cy="130" rx="45" ry="50" fill="#fff" opacity="0.22"/>
+
+  <!-- Secondary highlight right side -->
+  <ellipse cx="250" cy="180" rx="35" ry="40" fill="#fff" opacity="0.12"/>
+
+  <!-- Center seam line (quality stitching) -->
+  <path d="M 150 200 Q 200 240 250 200" stroke="#8b2e1f" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>
+
+  <!-- Texture pattern - horizontal bands -->
+  <g stroke="#b32816" stroke-width="0.8" opacity="0.4">
+    <path d="M 120 180 Q 200 175 280 180" fill="none" stroke-linecap="round"/>
+    <path d="M 115 200 Q 200 200 285 200" fill="none" stroke-linecap="round"/>
+    <path d="M 120 220 Q 200 225 280 220" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Weight marking indicators -->
+  <g font-size="16" font-weight="bold" fill="#fff" opacity="0.8" text-anchor="middle">
+    <text x="200" y="210">10</text>
+    <text x="200" y="225" font-size="10" opacity="0.6">LBS</text>
+  </g>
+
+  <!-- Surface grip texture dots -->
+  <g fill="#8b2e1f" opacity="0.3">
+    <circle cx="170" cy="150" r="2.5"/>
+    <circle cx="200" cy="130" r="2.5"/>
+    <circle cx="230" cy="145" r="2.5"/>
+    <circle cx="250" cy="170" r="2.5"/>
+    <circle cx="260" cy="200" r="2.5"/>
+    <circle cx="240" cy="235" r="2.5"/>
+    <circle cx="200" cy="260" r="2.5"/>
+    <circle cx="160" cy="250" r="2.5"/>
+    <circle cx="140" cy="210" r="2.5"/>
+    <circle cx="150" cy="170" r="2.5"/>
+  </g>
+
+  <!-- Additional shadow at bottom for depth -->
+  <ellipse cx="200" cy="300" rx="80" ry="20" fill="#000" opacity="0.08"/>
+
+  <!-- Subtle rim highlight -->
+  <circle cx="200" cy="200" r="98" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.15"/>
+</svg>

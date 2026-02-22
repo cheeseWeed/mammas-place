@@ -1,0 +1,137 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="tacoShd" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="3" dy="5" stdDeviation="4" flood-opacity="0.4"/>
+    </filter>
+
+    <!-- Tortilla gradient -->
+    <linearGradient id="tortillaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8c9a0"/>
+      <stop offset="50%" stop-color="#dab896"/>
+      <stop offset="100%" stop-color="#c9a878"/>
+    </linearGradient>
+
+    <!-- Meat gradient -->
+    <radialGradient id="meatGrad" cx="45%" cy="40%">
+      <stop offset="0%" stop-color="#8b5a2b"/>
+      <stop offset="100%" stop-color="#5c3d1e"/>
+    </radialGradient>
+
+    <!-- Plate gradient -->
+    <radialGradient id="plateGT" cx="40%" cy="35%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#f8f8f5"/>
+      <stop offset="100%" stop-color="#e0ddd5"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Restaurant background -->
+  <rect width="400" height="400" fill="#2c2318"/>
+  <!-- Wood grain -->
+  <line x1="0" y1="45" x2="400" y2="48" stroke="#3d3020" stroke-width="2.5" opacity="0.5"/>
+  <line x1="0" y1="120" x2="400" y2="118" stroke="#4a3c28" stroke-width="2" opacity="0.4"/>
+  <line x1="0" y1="210" x2="400" y2="212" stroke="#3d3020" stroke-width="2.5" opacity="0.5"/>
+  <line x1="0" y1="300" x2="400" y2="298" stroke="#4a3c28" stroke-width="2" opacity="0.4"/>
+
+  <!-- Table shadow -->
+  <ellipse cx="200" cy="378" rx="175" ry="28" fill="#1a1408" opacity="0.7"/>
+
+  <!-- Decorative plate -->
+  <g filter="url(#tacoShd)">
+    <ellipse cx="200" cy="250" rx="160" ry="95" fill="#d8d5cc"/>
+    <ellipse cx="200" cy="248" rx="155" ry="90" fill="url(#plateGT)"/>
+    <ellipse cx="200" cy="246" rx="145" ry="82" fill="#fefefe"/>
+    <!-- Gold rim -->
+    <ellipse cx="200" cy="250" rx="158" ry="93" fill="none" stroke="#d4af37" stroke-width="2.5"/>
+    <ellipse cx="160" cy="185" rx="50" ry="25" fill="#ffffff" opacity="0.25"/>
+  </g>
+
+  <!-- Taco 1 (left) -->
+  <g filter="url(#tacoShd)">
+    <!-- Tortilla shell -->
+    <path d="M 90 195 Q 120 150 150 195 Q 135 220 120 215 Z" fill="#c9a878"/>
+    <path d="M 93 192 Q 120 155 147 192" fill="url(#tortillaGrad)"/>
+    <path d="M 95 188 Q 120 158 145 188" fill="#e8c9a0" opacity="0.6"/>
+
+    <!-- Meat filling -->
+    <ellipse cx="120" cy="188" rx="22" ry="15" fill="url(#meatGrad)"/>
+    <circle cx="112" cy="185" r="3" fill="#a0724d" opacity="0.6"/>
+    <circle cx="128" cy="190" r="3" fill="#a0724d" opacity="0.6"/>
+
+    <!-- Toppings -->
+    <ellipse cx="115" cy="175" rx="12" ry="8" fill="#fffef5"/> <!-- Sour cream -->
+    <ellipse cx="130" cy="178" rx="10" ry="7" fill="#27ae60"/> <!-- Lettuce -->
+    <ellipse cx="128" cy="176" rx="6" ry="4" fill="#2ecc40" opacity="0.6"/>
+    <circle cx="118" cy="172" r="4" fill="#e74c3c"/> <!-- Tomato -->
+  </g>
+
+  <!-- Taco 2 (center, larger) -->
+  <g filter="url(#tacoShd)">
+    <path d="M 160 155 Q 200 105 240 155 Q 220 185 200 180 Z" fill="#c9a878"/>
+    <path d="M 165 150 Q 200 110 235 150" fill="url(#tortillaGrad)"/>
+    <path d="M 170 145 Q 200 115 230 145" fill="#e8c9a0" opacity="0.6"/>
+
+    <!-- Chicken filling -->
+    <ellipse cx="200" cy="150" rx="28" ry="18" fill="#d4a574"/>
+    <circle cx="190" cy="148" r="4" fill="#c9a878" opacity="0.6"/>
+    <circle cx="210" cy="152" r="4" fill="#c9a878" opacity="0.6"/>
+
+    <!-- Toppings -->
+    <ellipse cx="195" cy="138" rx="14" ry="10" fill="#fffef5"/>
+    <ellipse cx="210" cy="140" rx="12" ry="8" fill="#27ae60"/>
+    <ellipse cx="208" cy="138" rx="8" ry="5" fill="#2ecc40" opacity="0.6"/>
+    <ellipse cx="200" cy="132" rx="8" ry="6" fill="#e74c3c"/>
+    <ellipse cx="198" cy="130" rx="5" ry="3" fill="#ff6b6b" opacity="0.5"/>
+  </g>
+
+  <!-- Taco 3 (right) -->
+  <g filter="url(#tacoShd)">
+    <path d="M 250 195 Q 280 150 310 195 Q 295 220 280 215 Z" fill="#c9a878"/>
+    <path d="M 253 192 Q 280 155 307 192" fill="url(#tortillaGrad)"/>
+    <path d="M 255 188 Q 280 158 305 188" fill="#e8c9a0" opacity="0.6"/>
+
+    <!-- Carnitas filling -->
+    <ellipse cx="280" cy="188" rx="22" ry="15" fill="#d95e40"/>
+    <circle cx="272" cy="185" r="3" fill="#c9402f" opacity="0.6"/>
+    <circle cx="288" cy="190" r="3" fill="#c9402f" opacity="0.6"/>
+
+    <!-- Toppings -->
+    <ellipse cx="275" cy="175" rx="12" ry="8" fill="#fffef5"/>
+    <ellipse cx="290" cy="178" rx="10" ry="7" fill="#27ae60"/>
+  </g>
+
+  <!-- Lime wedge -->
+  <g filter="url(#tacoShd)">
+    <circle cx="85" cy="265" r="18" fill="#7cb342"/>
+    <circle cx="85" cy="263" r="16" fill="#8bc34a"/>
+    <path d="M 85 247 L 103 263 L 85 279 Z" fill="#ffffff" opacity="0.4"/>
+    <path d="M 86 250 L 100 263 L 86 276 Z" fill="#c5e1a5" opacity="0.3"/>
+  </g>
+
+  <!-- Pickled onions -->
+  <g filter="url(#tacoShd)">
+    <ellipse cx="315" cy="275" rx="35" ry="25" fill="#f39c12"/>
+    <ellipse cx="315" cy="272" rx="32" ry="22" fill="#e67e22"/>
+    <!-- Onion pieces -->
+    <ellipse cx="305" cy="268" rx="6" ry="4" fill="#ffcccc" transform="rotate(-20 305 268)"/>
+    <ellipse cx="320" cy="275" rx="5" ry="3" fill="#ffcccc" transform="rotate(15 320 275)"/>
+    <ellipse cx="310" cy="280" rx="6" ry="4" fill="#ffcccc"/>
+  </g>
+
+  <!-- Salsa bowl -->
+  <g filter="url(#tacoShd)">
+    <ellipse cx="340" cy="305" rx="30" ry="22" fill="#c0392b"/>
+    <ellipse cx="340" cy="302" rx="27" ry="19" fill="#d9534f"/>
+    <!-- Salsa texture -->
+    <circle cx="335" cy="300" r="3" fill="#fff9e6" opacity="0.5"/>
+    <circle cx="345" cy="305" r="2.5" fill="#fff9e6" opacity="0.5"/>
+    <circle cx="338" cy="308" r="2" fill="#27ae60" opacity="0.4"/>
+  </g>
+
+  <!-- Cilantro garnish -->
+  <g opacity="0.9">
+    <path d="M 150 220 Q 155 210 160 215 Q 165 205 170 212" fill="#228b22"/>
+    <circle cx="155" cy="212" r="3" fill="#27ae60"/>
+    <circle cx="165" cy="208" r="2.5" fill="#2ecc71"/>
+  </g>
+</svg>

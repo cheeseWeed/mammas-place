@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <!-- Neoprene/rubber coating gradient -->
+    <radialGradient id="neo-coating" cx="35%" cy="30%">
+      <stop offset="0%" style="stop-color:#a855f7"/>
+      <stop offset="40%" style="stop-color:#9333ea"/>
+      <stop offset="80%" style="stop-color:#7e22ce"/>
+      <stop offset="100%" style="stop-color:#6b21a8"/>
+    </radialGradient>
+    <!-- Chrome handle gradient -->
+    <linearGradient id="chrome-grip" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e5e5e5"/>
+      <stop offset="20%" style="stop-color:#b5b5b5"/>
+      <stop offset="50%" style="stop-color:#858585"/>
+      <stop offset="80%" style="stop-color:#b5b5b5"/>
+      <stop offset="100%" style="stop-color:#e5e5e5"/>
+    </linearGradient>
+    <!-- Rubber texture -->
+    <pattern id="rubber-tex" patternUnits="userSpaceOnUse" width="4" height="4">
+      <circle cx="2" cy="2" r="0.8" fill="#000" opacity="0.05"/>
+    </pattern>
+    <!-- Drop shadow -->
+    <filter id="dumbbell-shadow" x="-20%" y="-15%" width="140%" height="150%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
+      <feOffset dx="4" dy="10" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.4"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Specular highlight -->
+    <radialGradient id="spec-highlight" cx="30%" cy="25%">
+      <stop offset="0%" style="stop-color:#fff;stop-opacity:0.4"/>
+      <stop offset="50%" style="stop-color:#fff;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#fff;stop-opacity:0"/>
+    </radialGradient>
+    <!-- Ground shadow -->
+    <radialGradient id="floor-shadow" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#000;stop-opacity:0.35"/>
+      <stop offset="80%" style="stop-color:#000;stop-opacity:0.05"/>
+      <stop offset="100%" style="stop-color:#000;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Studio background -->
+  <rect width="400" height="400" fill="#fafafa"/>
+
+  <!-- Ground shadow -->
+  <ellipse cx="200" cy="340" rx="120" ry="20" fill="url(#floor-shadow)"/>
+
+  <!-- Adjustable dumbbell - hexagonal head design -->
+
+  <!-- Left weight head -->
+  <g filter="url(#dumbbell-shadow)">
+    <!-- Hexagonal shape for anti-roll -->
+    <polygon points="90,140 130,120 170,140 170,260 130,280 90,260" fill="url(#neo-coating)"/>
+    <!-- Rubber texture overlay -->
+    <polygon points="90,140 130,120 170,140 170,260 130,280 90,260" fill="url(#rubber-tex)"/>
+    <!-- Weight face plate -->
+    <polygon points="92,142 128,124 166,142 166,258 128,276 92,258" fill="#8b5cf6" opacity="0.3"/>
+    <!-- Center weight marking -->
+    <ellipse cx="130" cy="200" rx="30" ry="35" fill="#581c87" opacity="0.6"/>
+    <text x="130" y="195" font-size="28" font-weight="bold" fill="#fff" text-anchor="middle" font-family="Arial, sans-serif">15</text>
+    <text x="130" y="218" font-size="12" fill="#e9d5ff" text-anchor="middle" font-family="Arial, sans-serif">LB</text>
+    <!-- Highlight -->
+    <ellipse cx="115" cy="165" rx="25" ry="30" fill="url(#spec-highlight)"/>
+  </g>
+
+  <!-- Right weight head -->
+  <g filter="url(#dumbbell-shadow)">
+    <!-- Hexagonal shape -->
+    <polygon points="230,140 270,120 310,140 310,260 270,280 230,260" fill="url(#neo-coating)"/>
+    <!-- Rubber texture overlay -->
+    <polygon points="230,140 270,120 310,140 310,260 270,280 230,260" fill="url(#rubber-tex)"/>
+    <!-- Weight face plate -->
+    <polygon points="232,142 268,124 306,142 306,258 268,276 232,258" fill="#8b5cf6" opacity="0.3"/>
+    <!-- Center weight marking -->
+    <ellipse cx="270" cy="200" rx="30" ry="35" fill="#581c87" opacity="0.6"/>
+    <text x="270" y="195" font-size="28" font-weight="bold" fill="#fff" text-anchor="middle" font-family="Arial, sans-serif">15</text>
+    <text x="270" y="218" font-size="12" fill="#e9d5ff" text-anchor="middle" font-family="Arial, sans-serif">LB</text>
+    <!-- Highlight -->
+    <ellipse cx="255" cy="165" rx="25" ry="30" fill="url(#spec-highlight)"/>
+  </g>
+
+  <!-- Center chrome handle -->
+  <g filter="url(#dumbbell-shadow)">
+    <rect x="168" y="178" width="64" height="44" rx="22" fill="url(#chrome-grip)"/>
+    <!-- Handle texture lines -->
+    <g stroke="#6b7280" stroke-width="1" opacity="0.4">
+      <line x1="180" y1="180" x2="180" y2="220"/>
+      <line x1="190" y1="180" x2="190" y2="220"/>
+      <line x1="200" y1="180" x2="200" y2="220"/>
+      <line x1="210" y1="180" x2="210" y2="220"/>
+      <line x1="220" y1="180" x2="220" y2="220"/>
+    </g>
+    <!-- Chrome highlight -->
+    <rect x="170" y="182" width="60" height="10" rx="5" fill="#fff" opacity="0.25"/>
+  </g>
+
+  <!-- Adjustment dial/selector (showing it's adjustable) -->
+  <g>
+    <circle cx="130" cy="200" r="12" fill="#1f2937"/>
+    <circle cx="130" cy="200" r="10" fill="#374151"/>
+    <circle cx="130" cy="200" r="3" fill="#9333ea"/>
+
+    <circle cx="270" cy="200" r="12" fill="#1f2937"/>
+    <circle cx="270" cy="200" r="10" fill="#374151"/>
+    <circle cx="270" cy="200" r="3" fill="#9333ea"/>
+  </g>
+
+  <!-- Weight selection indicator marks -->
+  <g fill="#fff" opacity="0.4" font-size="6" font-family="Arial, sans-serif">
+    <text x="110" y="145" text-anchor="middle">5</text>
+    <text x="130" y="135" text-anchor="middle">10</text>
+    <text x="150" y="145" text-anchor="middle">15</text>
+
+    <text x="250" y="145" text-anchor="middle">5</text>
+    <text x="270" y="135" text-anchor="middle">10</text>
+    <text x="290" y="145" text-anchor="middle">15</text>
+  </g>
+
+  <!-- Ergonomic grip contours -->
+  <path d="M 168 200 Q 165 190 168 180" stroke="#737373" stroke-width="2" fill="none" opacity="0.3"/>
+  <path d="M 232 200 Q 235 190 232 180" stroke="#737373" stroke-width="2" fill="none" opacity="0.3"/>
+
+  <!-- Brand/Product label -->
+  <rect x="155" y="310" width="90" height="28" rx="5" fill="#1f2937" opacity="0.95"/>
+  <text x="200" y="328" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle" font-family="Arial, sans-serif">ADJUSTABLE</text>
+  <text x="200" y="336" font-size="7" fill="#9ca3af" text-anchor="middle" font-family="Arial, sans-serif">5-15 LB RANGE</text>
+</svg>

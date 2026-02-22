@@ -1,0 +1,262 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Studio background gradient - royal purple tint -->
+    <linearGradient id="studioBg2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f5f0fa"/>
+      <stop offset="70%" stop-color="#e8e0f0"/>
+      <stop offset="100%" stop-color="#d8d0e5"/>
+    </linearGradient>
+
+    <!-- White pony body gradient for 3D depth -->
+    <radialGradient id="whitePonyBody" cx="40%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="30%" stop-color="#f8f5fc"/>
+      <stop offset="60%" stop-color="#e8e0f0"/>
+      <stop offset="100%" stop-color="#c8c0d8"/>
+    </radialGradient>
+
+    <!-- Purple mane gradient -->
+    <linearGradient id="purpleMane" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9966cc"/>
+      <stop offset="30%" stop-color="#7744aa"/>
+      <stop offset="70%" stop-color="#552288"/>
+      <stop offset="100%" stop-color="#3a1166"/>
+    </linearGradient>
+
+    <!-- Purple mane highlight -->
+    <linearGradient id="purpleManeHighlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#bb88ee"/>
+      <stop offset="100%" stop-color="#8855cc"/>
+    </linearGradient>
+
+    <!-- Golden crown gradient -->
+    <linearGradient id="goldCrown" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fff8dc"/>
+      <stop offset="20%" stop-color="#ffd700"/>
+      <stop offset="50%" stop-color="#daa520"/>
+      <stop offset="80%" stop-color="#b8860b"/>
+      <stop offset="100%" stop-color="#8b6914"/>
+    </linearGradient>
+
+    <!-- Crown jewel gradient -->
+    <radialGradient id="crownJewel" cx="30%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#ff88cc"/>
+      <stop offset="40%" stop-color="#ff1493"/>
+      <stop offset="100%" stop-color="#8b0050"/>
+    </radialGradient>
+
+    <!-- Eye shine gradient - violet -->
+    <radialGradient id="eyeShineViolet" cx="35%" cy="25%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="25%" stop-color="#bb88ff"/>
+      <stop offset="60%" stop-color="#6622aa"/>
+      <stop offset="100%" stop-color="#1a0a30"/>
+    </radialGradient>
+
+    <!-- Soft shadow filter -->
+    <filter id="softShadow2" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="3" dy="8" stdDeviation="6" flood-color="#000000" flood-opacity="0.2"/>
+    </filter>
+
+    <!-- Crown glow -->
+    <filter id="crownGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Gold shimmer -->
+    <linearGradient id="goldShimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffd700"/>
+      <stop offset="25%" stop-color="#fff8dc"/>
+      <stop offset="50%" stop-color="#ffd700"/>
+      <stop offset="75%" stop-color="#fff8dc"/>
+      <stop offset="100%" stop-color="#ffd700"/>
+    </linearGradient>
+
+    <!-- Plastic material shine -->
+    <linearGradient id="plasticShine2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.7)"/>
+      <stop offset="50%" stop-color="rgba(255,255,255,0)"/>
+      <stop offset="100%" stop-color="rgba(100,80,120,0.15)"/>
+    </linearGradient>
+
+    <!-- Golden hoof gradient -->
+    <radialGradient id="goldHoof" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#fff8e0"/>
+      <stop offset="30%" stop-color="#ffd700"/>
+      <stop offset="60%" stop-color="#daa520"/>
+      <stop offset="100%" stop-color="#b8860b"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Studio backdrop -->
+  <rect width="400" height="400" fill="url(#studioBg2)"/>
+
+  <!-- Decorative star pattern in background (subtle) -->
+  <circle cx="50" cy="60" r="2" fill="#ffd700" opacity="0.4"/>
+  <circle cx="350" cy="80" r="2.5" fill="#ffd700" opacity="0.5"/>
+  <circle cx="70" cy="340" r="2" fill="#ffd700" opacity="0.3"/>
+  <circle cx="330" cy="330" r="3" fill="#ffd700" opacity="0.4"/>
+  <circle cx="380" cy="200" r="2" fill="#ffd700" opacity="0.3"/>
+
+  <!-- Floor reflection area -->
+  <ellipse cx="200" cy="385" rx="120" ry="15" fill="rgba(100,80,120,0.06)"/>
+
+  <!-- Main shadow on floor -->
+  <ellipse cx="210" cy="375" rx="85" ry="12" fill="rgba(80,60,100,0.12)" filter="url(#softShadow2)"/>
+
+  <!-- PONY BODY - Main torso with 3D shading (white/pearl) -->
+  <ellipse cx="200" cy="260" rx="78" ry="58" fill="url(#whitePonyBody)" filter="url(#softShadow2)"/>
+
+  <!-- Body highlight for pearlescent sheen -->
+  <ellipse cx="180" cy="240" rx="45" ry="30" fill="rgba(255,255,255,0.4)"/>
+  <ellipse cx="175" cy="235" rx="25" ry="15" fill="rgba(255,255,255,0.5)"/>
+
+  <!-- Subtle purple tint on body edges -->
+  <ellipse cx="230" cy="275" rx="35" ry="28" fill="rgba(150,100,200,0.08)"/>
+
+  <!-- Neck with gradual shading -->
+  <path d="M 155 225 Q 140 190 145 150 Q 150 145 170 145 Q 175 190 165 230"
+        fill="url(#whitePonyBody)" filter="url(#softShadow2)"/>
+
+  <!-- Neck highlight -->
+  <path d="M 150 200 Q 145 175 148 155" stroke="rgba(255,255,255,0.5)" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+  <!-- HEAD - Main shape with depth -->
+  <ellipse cx="160" cy="120" rx="48" ry="45" fill="url(#whitePonyBody)" filter="url(#softShadow2)"/>
+
+  <!-- Head highlight -->
+  <ellipse cx="145" cy="105" rx="25" ry="20" fill="rgba(255,255,255,0.4)"/>
+
+  <!-- EARS with realistic shading -->
+  <ellipse cx="125" cy="80" rx="16" ry="32" fill="url(#whitePonyBody)" transform="rotate(-20 125 80)"/>
+  <ellipse cx="125" cy="80" rx="9" ry="22" fill="#e8d0f0" transform="rotate(-20 125 80)"/>
+  <ellipse cx="195" cy="75" rx="16" ry="32" fill="url(#whitePonyBody)" transform="rotate(20 195 75)"/>
+  <ellipse cx="195" cy="75" rx="9" ry="22" fill="#e8d0f0" transform="rotate(20 195 75)"/>
+
+  <!-- EYES - Detailed violet-themed eyes -->
+  <ellipse cx="140" cy="115" rx="12" ry="14" fill="url(#eyeShineViolet)"/>
+  <ellipse cx="180" cy="115" rx="12" ry="14" fill="url(#eyeShineViolet)"/>
+  <!-- Eye highlights -->
+  <circle cx="136" cy="110" r="4" fill="white"/>
+  <circle cx="144" cy="118" r="2" fill="white" opacity="0.8"/>
+  <circle cx="176" cy="110" r="4" fill="white"/>
+  <circle cx="184" cy="118" r="2" fill="white" opacity="0.8"/>
+  <!-- Eyelashes -->
+  <path d="M 128 108 Q 125 105 122 103" stroke="#3a1a50" stroke-width="1.5" fill="none"/>
+  <path d="M 130 105 Q 128 101 126 98" stroke="#3a1a50" stroke-width="1.5" fill="none"/>
+  <path d="M 168 108 Q 165 105 162 103" stroke="#3a1a50" stroke-width="1.5" fill="none"/>
+  <path d="M 170 105 Q 168 101 166 98" stroke="#3a1a50" stroke-width="1.5" fill="none"/>
+
+  <!-- MUZZLE with soft gradient -->
+  <ellipse cx="160" cy="145" rx="22" ry="18" fill="#f5e8f8"/>
+  <ellipse cx="160" cy="145" rx="18" ry="14" fill="#faf0fc"/>
+  <!-- Nostrils -->
+  <ellipse cx="153" cy="148" rx="3" ry="2" fill="#d8b8e0"/>
+  <ellipse cx="167" cy="148" rx="3" ry="2" fill="#d8b8e0"/>
+  <!-- Smile -->
+  <path d="M 150 155 Q 160 162 170 155" stroke="#c090c8" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <!-- GOLDEN CROWN - Detailed royal tiara -->
+  <!-- Crown base band -->
+  <path d="M 118 72 Q 160 82 202 72" fill="url(#goldCrown)" stroke="#b8860b" stroke-width="1"/>
+  <path d="M 118 72 Q 160 78 202 72" fill="url(#goldShimmer)" opacity="0.4"/>
+
+  <!-- Crown spires -->
+  <path d="M 125 72 L 120 48 L 130 55 L 140 35 L 150 50 L 160 28 L 170 50 L 180 35 L 190 55 L 200 48 L 195 72"
+        fill="url(#goldCrown)" stroke="#8b6914" stroke-width="1.5" filter="url(#crownGlow)"/>
+
+  <!-- Crown highlight -->
+  <path d="M 135 50 L 140 40 L 145 48" stroke="#fff8dc" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.8"/>
+  <path d="M 155 38 L 160 30 L 165 38" stroke="#fff8dc" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.8"/>
+  <path d="M 175 50 L 180 40 L 185 48" stroke="#fff8dc" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.8"/>
+
+  <!-- Crown jewels -->
+  <ellipse cx="140" cy="45" rx="5" ry="6" fill="url(#crownJewel)"/>
+  <circle cx="138" cy="43" r="1.5" fill="white" opacity="0.8"/>
+  <ellipse cx="160" cy="38" rx="6" ry="7" fill="url(#crownJewel)"/>
+  <circle cx="158" cy="35" r="2" fill="white" opacity="0.8"/>
+  <ellipse cx="180" cy="45" rx="5" ry="6" fill="url(#crownJewel)"/>
+  <circle cx="178" cy="43" r="1.5" fill="white" opacity="0.8"/>
+
+  <!-- Small accent jewels -->
+  <circle cx="128" cy="55" r="3" fill="#ffd700"/>
+  <circle cx="127" cy="54" r="1" fill="white" opacity="0.7"/>
+  <circle cx="192" cy="55" r="3" fill="#ffd700"/>
+  <circle cx="191" cy="54" r="1" fill="white" opacity="0.7"/>
+
+  <!-- PURPLE MANE - Multiple flowing strands with depth -->
+  <!-- Mane flows from behind crown -->
+  <path d="M 205 75 Q 220 40 245 25 Q 260 45 245 80 Q 230 95 215 95" fill="url(#purpleMane)" filter="url(#softShadow2)"/>
+  <path d="M 210 80 Q 230 50 255 40 Q 268 60 250 95 Q 235 110 220 105" fill="#7744aa" filter="url(#softShadow2)"/>
+  <path d="M 208 90 Q 235 65 260 60 Q 270 80 255 110 Q 240 125 218 115" fill="#552288"/>
+  <path d="M 205 102 Q 230 85 250 85 Q 258 100 248 125 Q 235 140 215 125" fill="#3a1166"/>
+
+  <!-- Mane highlights -->
+  <path d="M 225 55 Q 235 50 240 55" stroke="#bb88ee" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M 235 75 Q 245 70 252 78" stroke="#9966cc" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Front mane wisps -->
+  <path d="M 115 85 Q 100 60 95 35" stroke="url(#purpleManeHighlight)" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#softShadow2)"/>
+  <path d="M 112 90 Q 95 70 88 50" stroke="#7744aa" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+  <!-- FRONT LEGS with 3D modeling -->
+  <path d="M 175 305 L 172 355 Q 170 368 180 370 L 190 370 Q 200 368 198 355 L 195 305"
+        fill="url(#whitePonyBody)" filter="url(#softShadow2)"/>
+  <path d="M 205 305 L 202 355 Q 200 368 210 370 L 220 370 Q 230 368 228 355 L 225 305"
+        fill="url(#whitePonyBody)" filter="url(#softShadow2)"/>
+
+  <!-- Leg highlights -->
+  <path d="M 178 320 L 176 350" stroke="rgba(255,255,255,0.4)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M 208 320 L 206 350" stroke="rgba(255,255,255,0.4)" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- BACK LEGS -->
+  <path d="M 145 300 L 140 350 Q 138 363 148 365 L 158 365 Q 168 363 166 350 L 161 300"
+        fill="url(#whitePonyBody)" filter="url(#softShadow2)"/>
+  <path d="M 235 300 L 232 350 Q 230 363 240 365 L 250 365 Q 260 363 258 350 L 253 300"
+        fill="url(#whitePonyBody)" filter="url(#softShadow2)"/>
+
+  <!-- GOLDEN HOOVES -->
+  <ellipse cx="185" cy="370" rx="12" ry="6" fill="url(#goldHoof)"/>
+  <ellipse cx="215" cy="370" rx="12" ry="6" fill="url(#goldHoof)"/>
+  <ellipse cx="153" cy="365" rx="12" ry="6" fill="url(#goldHoof)"/>
+  <ellipse cx="245" cy="365" rx="12" ry="6" fill="url(#goldHoof)"/>
+
+  <!-- Hoof highlights -->
+  <ellipse cx="182" cy="368" rx="4" ry="2" fill="rgba(255,255,255,0.5)"/>
+  <ellipse cx="212" cy="368" rx="4" ry="2" fill="rgba(255,255,255,0.5)"/>
+  <ellipse cx="150" cy="363" rx="4" ry="2" fill="rgba(255,255,255,0.5)"/>
+  <ellipse cx="242" cy="363" rx="4" ry="2" fill="rgba(255,255,255,0.5)"/>
+
+  <!-- PURPLE TAIL - Flowing with silver highlights -->
+  <path d="M 275 250 Q 320 200 340 110 Q 355 118 340 200 Q 325 260 285 270" fill="url(#purpleMane)" filter="url(#softShadow2)"/>
+  <path d="M 278 258 Q 325 210 350 125 Q 365 135 348 210 Q 332 272 288 280" fill="#7744aa"/>
+  <path d="M 280 268 Q 328 225 352 150 Q 365 162 350 228 Q 335 285 290 292" fill="#552288"/>
+  <path d="M 277 278 Q 320 245 342 180 Q 352 192 340 248 Q 325 298 285 302" fill="#3a1166"/>
+
+  <!-- Tail silver/shimmer highlights -->
+  <path d="M 320 160 Q 335 175 330 195" stroke="#c0c0c0" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.6"/>
+  <path d="M 315 200 Q 328 220 322 245" stroke="#d8d8e8" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.5"/>
+  <path d="M 335 130 Q 345 145 340 165" stroke="#e8e0f0" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- Sparkle saddle decoration -->
+  <ellipse cx="200" cy="260" rx="55" ry="25" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.4"/>
+  <circle cx="175" cy="255" r="3" fill="#ffd700" opacity="0.6"/>
+  <circle cx="225" cy="255" r="3" fill="#ffd700" opacity="0.6"/>
+  <circle cx="200" cy="240" r="3" fill="#ffd700" opacity="0.6"/>
+
+  <!-- Overall pearlescent sheen overlay -->
+  <ellipse cx="185" cy="235" rx="65" ry="45" fill="url(#plasticShine2)" opacity="0.5"/>
+
+  <!-- Studio lighting reflection spots -->
+  <ellipse cx="145" cy="100" rx="15" ry="10" fill="rgba(255,255,255,0.2)"/>
+  <circle cx="200" cy="220" r="8" fill="rgba(255,255,255,0.12)"/>
+
+  <!-- Royal sparkle effects -->
+  <circle cx="100" cy="150" r="2" fill="#ffd700" opacity="0.6"/>
+  <circle cx="300" cy="180" r="2.5" fill="#ffd700" opacity="0.5"/>
+  <circle cx="85" cy="250" r="1.5" fill="#ffd700" opacity="0.4"/>
+</svg>

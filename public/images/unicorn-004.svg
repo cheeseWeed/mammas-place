@@ -1,0 +1,329 @@
+<svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Warm sunset meadow backdrop -->
+    <linearGradient id="studioBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffecd2;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#fcb69f;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#ff9a8b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffecd2;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Sunset-toned body with peachy warmth -->
+    <radialGradient id="sunsetBody" cx="35%" cy="35%">
+      <stop offset="0%" style="stop-color:#fff5eb;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#ffe4d0;stop-opacity:1" />
+      <stop offset="55%" style="stop-color:#ffd4b8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5a882;stop-opacity:1" />
+    </radialGradient>
+
+    <!-- Body highlight -->
+    <radialGradient id="bodyHighlight" cx="25%" cy="25%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </radialGradient>
+
+    <!-- Sunset mane gradient -->
+    <linearGradient id="sunsetMane" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b6b;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#ff8e53;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#ffc93c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffdd59;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Flower colors -->
+    <radialGradient id="pinkFlower" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#ffb6c1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff69b4;stop-opacity:1" />
+    </radialGradient>
+    <radialGradient id="yellowFlower" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#fff5a0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffd700;stop-opacity:1" />
+    </radialGradient>
+    <radialGradient id="lavenderFlower" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#e6d5ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9370db;stop-opacity:1" />
+    </radialGradient>
+    <radialGradient id="peachFlower" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#ffecd2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fcb69f;stop-opacity:1" />
+    </radialGradient>
+
+    <!-- Golden horn gradient -->
+    <linearGradient id="goldHorn" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#ffec8b;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#fff8dc;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#daa520;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Realistic shadow -->
+    <filter id="shadow3D" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feOffset in="blur" dx="5" dy="8" result="offsetBlur"/>
+      <feFlood flood-color="#cd853f" flood-opacity="0.3"/>
+      <feComposite in2="offsetBlur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Warm glow filter -->
+    <filter id="warmGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3" result="glow"/>
+      <feFlood flood-color="#ffc93c" flood-opacity="0.4"/>
+      <feComposite in2="glow" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Soft ambient light -->
+    <filter id="softLight" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+      <feOffset in="blur" dx="1" dy="2" result="offsetBlur"/>
+      <feFlood flood-color="#ff8e53" flood-opacity="0.2"/>
+      <feComposite in2="offsetBlur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Fur texture -->
+    <pattern id="furTexture" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+      <rect width="6" height="6" fill="transparent"/>
+      <line x1="0" y1="0" x2="3" y2="3" stroke="#ffffff" stroke-width="0.3" opacity="0.12"/>
+      <line x1="3" y1="0" x2="6" y2="3" stroke="#ffd4b8" stroke-width="0.2" opacity="0.08"/>
+    </pattern>
+
+    <!-- Grass texture for ground -->
+    <pattern id="grassPattern" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+      <rect width="10" height="10" fill="transparent"/>
+      <path d="M 2 10 Q 2.5 5 2 0" stroke="#7cb342" stroke-width="1" fill="none" opacity="0.3"/>
+      <path d="M 5 10 Q 5.5 4 5 0" stroke="#8bc34a" stroke-width="1" fill="none" opacity="0.25"/>
+      <path d="M 8 10 Q 8.5 5 8 0" stroke="#7cb342" stroke-width="1" fill="none" opacity="0.3"/>
+    </pattern>
+  </defs>
+
+  <!-- Sunset meadow background -->
+  <rect width="500" height="600" fill="url(#studioBg)"/>
+
+  <!-- Sun glow effect -->
+  <ellipse cx="420" cy="80" rx="80" ry="80" fill="#ffdd59" opacity="0.3" filter="url(#warmGlow)"/>
+  <circle cx="420" cy="80" r="50" fill="#fff5a0" opacity="0.4"/>
+
+  <!-- Meadow grass floor -->
+  <rect x="0" y="480" width="500" height="120" fill="#9ccc65"/>
+  <rect x="0" y="480" width="500" height="120" fill="url(#grassPattern)"/>
+
+  <!-- Ground flowers scattered -->
+  <circle cx="80" cy="520" r="6" fill="url(#pinkFlower)"/>
+  <circle cx="80" cy="520" r="3" fill="#ffff88"/>
+  <circle cx="420" cy="530" r="5" fill="url(#lavenderFlower)"/>
+  <circle cx="420" cy="530" r="2.5" fill="#fff5a0"/>
+  <circle cx="350" cy="545" r="4" fill="url(#yellowFlower)"/>
+  <circle cx="350" cy="545" r="2" fill="#ff8e53"/>
+  <circle cx="150" cy="540" r="5" fill="url(#peachFlower)"/>
+  <circle cx="150" cy="540" r="2.5" fill="#fff"/>
+
+  <!-- Main ground shadow -->
+  <ellipse cx="250" cy="495" rx="130" ry="25" fill="#6b8e23" opacity="0.4"/>
+  <ellipse cx="250" cy="495" rx="100" ry="18" fill="#556b2f" opacity="0.25"/>
+
+  <!-- BACK LEGS -->
+  <ellipse cx="185" cy="420" rx="22" ry="75" fill="url(#sunsetBody)" filter="url(#softLight)"/>
+  <ellipse cx="185" cy="420" rx="18" ry="70" fill="url(#bodyHighlight)"/>
+  <ellipse cx="300" cy="420" rx="22" ry="75" fill="url(#sunsetBody)" filter="url(#softLight)"/>
+  <ellipse cx="300" cy="420" rx="18" ry="70" fill="url(#bodyHighlight)"/>
+
+  <!-- Back hooves -->
+  <ellipse cx="185" cy="490" rx="14" ry="10" fill="#e8a86d" filter="url(#softLight)"/>
+  <ellipse cx="185" cy="488" rx="10" ry="7" fill="#f5c090" opacity="0.7"/>
+  <ellipse cx="300" cy="490" rx="14" ry="10" fill="#e8a86d" filter="url(#softLight)"/>
+  <ellipse cx="300" cy="488" rx="10" ry="7" fill="#f5c090" opacity="0.7"/>
+
+  <!-- SUNSET TAIL - Warm flowing colors -->
+  <path d="M 315 340 Q 375 275 405 175 Q 425 105 410 55" stroke="#ff6b6b" stroke-width="22" fill="none" stroke-linecap="round" filter="url(#shadow3D)"/>
+  <path d="M 320 350 Q 382 285 415 185 Q 435 115 420 65" stroke="#ff8e53" stroke-width="18" fill="none" stroke-linecap="round" filter="url(#shadow3D)"/>
+  <path d="M 325 358 Q 388 295 422 195 Q 442 125 430 78" stroke="#ffc93c" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <path d="M 328 366 Q 392 305 428 205 Q 448 135 438 90" stroke="#ffdd59" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M 330 374 Q 395 312 432 215 Q 452 145 445 102" stroke="#fff5a0" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+  <!-- Tail highlights -->
+  <path d="M 332 378 Q 398 318 435 220" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- MAIN BODY -->
+  <ellipse cx="250" cy="355" rx="90" ry="100" fill="url(#sunsetBody)" filter="url(#shadow3D)"/>
+
+  <!-- Body fur texture -->
+  <ellipse cx="250" cy="355" rx="88" ry="98" fill="url(#furTexture)"/>
+
+  <!-- Body 3D highlights -->
+  <ellipse cx="215" cy="300" rx="55" ry="75" fill="url(#bodyHighlight)"/>
+
+  <!-- Sunset color accents on body -->
+  <ellipse cx="280" cy="380" rx="30" ry="45" fill="#ffb347" opacity="0.15"/>
+
+  <!-- Body contour -->
+  <path d="M 165 340 Q 175 415 205 450" stroke="#e8a86d" stroke-width="2" fill="none" opacity="0.3"/>
+
+  <!-- NECK -->
+  <path d="M 210 275 Q 185 245 175 195" stroke="url(#sunsetBody)" stroke-width="60" fill="none" stroke-linecap="round" filter="url(#shadow3D)"/>
+
+  <!-- Neck highlight -->
+  <path d="M 195 270 Q 172 238 165 190" stroke="#ffffff" stroke-width="18" fill="none" stroke-linecap="round" opacity="0.2"/>
+
+  <!-- HEAD -->
+  <circle cx="160" cy="148" r="55" fill="url(#sunsetBody)" filter="url(#shadow3D)"/>
+
+  <!-- Head highlight -->
+  <ellipse cx="135" cy="116" rx="32" ry="42" fill="url(#bodyHighlight)"/>
+
+  <!-- MUZZLE -->
+  <ellipse cx="128" cy="180" rx="36" ry="32" fill="#ffd4b8"/>
+  <ellipse cx="125" cy="176" rx="28" ry="25" fill="#ffe4d0"/>
+
+  <!-- Muzzle highlight -->
+  <ellipse cx="118" cy="170" rx="16" ry="13" fill="#ffffff" opacity="0.3"/>
+
+  <!-- Nostrils -->
+  <ellipse cx="108" cy="186" rx="7" ry="5" fill="#e8a86d"/>
+  <ellipse cx="106" cy="185" rx="4" ry="3" fill="#cd853f"/>
+  <ellipse cx="125" cy="186" rx="7" ry="5" fill="#e8a86d"/>
+  <ellipse cx="123" cy="185" rx="4" ry="3" fill="#cd853f"/>
+
+  <!-- EYES - Warm brown -->
+  <ellipse cx="138" cy="128" rx="13" ry="15" fill="#1a1a1a"/>
+  <ellipse cx="138" cy="130" rx="11" ry="12" fill="#4a3728"/>
+  <ellipse cx="138" cy="128" rx="8" ry="9" fill="#6b4423"/>
+  <ellipse cx="135" cy="125" rx="5" ry="6" fill="#ffffff" opacity="0.9"/>
+  <circle cx="141" cy="132" r="2" fill="#ffffff" opacity="0.5"/>
+
+  <ellipse cx="185" cy="123" rx="13" ry="15" fill="#1a1a1a"/>
+  <ellipse cx="185" cy="125" rx="11" ry="12" fill="#4a3728"/>
+  <ellipse cx="185" cy="123" rx="8" ry="9" fill="#6b4423"/>
+  <ellipse cx="182" cy="120" rx="5" ry="6" fill="#ffffff" opacity="0.9"/>
+  <circle cx="188" cy="127" r="2" fill="#ffffff" opacity="0.5"/>
+
+  <!-- Eyelashes -->
+  <path d="M 125 120 Q 121 115 117 118" stroke="#4a3728" stroke-width="1.5" fill="none"/>
+  <path d="M 172 115 Q 168 110 164 113" stroke="#4a3728" stroke-width="1.5" fill="none"/>
+
+  <!-- EARS -->
+  <ellipse cx="115" cy="85" rx="18" ry="45" fill="url(#sunsetBody)" transform="rotate(-25 115 85)" filter="url(#shadow3D)"/>
+  <ellipse cx="115" cy="90" rx="10" ry="30" fill="#ffb6c1" transform="rotate(-25 115 90)"/>
+  <ellipse cx="115" cy="92" rx="6" ry="20" fill="#ffa0b4" transform="rotate(-25 115 92)"/>
+
+  <ellipse cx="200" cy="75" rx="18" ry="45" fill="url(#sunsetBody)" transform="rotate(25 200 75)" filter="url(#shadow3D)"/>
+  <ellipse cx="200" cy="80" rx="10" ry="30" fill="#ffb6c1" transform="rotate(25 200 80)"/>
+  <ellipse cx="200" cy="82" rx="6" ry="20" fill="#ffa0b4" transform="rotate(25 200 82)"/>
+
+  <!-- FLOWER CROWN - Beautiful floral arrangement -->
+  <!-- Base greenery -->
+  <path d="M 100 75 Q 130 50 160 55 Q 190 50 220 75" stroke="#7cb342" stroke-width="4" fill="none"/>
+  <path d="M 105 70 Q 135 48 160 52 Q 185 48 215 70" stroke="#8bc34a" stroke-width="3" fill="none"/>
+
+  <!-- Small leaves -->
+  <ellipse cx="110" cy="68" rx="6" ry="10" fill="#8bc34a" transform="rotate(-30 110 68)"/>
+  <ellipse cx="135" cy="55" rx="5" ry="8" fill="#7cb342" transform="rotate(-15 135 55)"/>
+  <ellipse cx="185" cy="55" rx="5" ry="8" fill="#7cb342" transform="rotate(15 185 55)"/>
+  <ellipse cx="210" cy="68" rx="6" ry="10" fill="#8bc34a" transform="rotate(30 210 68)"/>
+
+  <!-- Main flowers -->
+  <!-- Pink flower left -->
+  <circle cx="118" cy="58" r="10" fill="url(#pinkFlower)"/>
+  <circle cx="118" cy="58" r="5" fill="#fff5a0"/>
+  <ellipse cx="110" cy="54" rx="5" ry="7" fill="#ff69b4" opacity="0.6"/>
+  <ellipse cx="126" cy="54" rx="5" ry="7" fill="#ff69b4" opacity="0.6"/>
+  <ellipse cx="118" cy="48" rx="5" ry="7" fill="#ff69b4" opacity="0.6"/>
+
+  <!-- Yellow flower center-left -->
+  <circle cx="145" cy="48" r="9" fill="url(#yellowFlower)"/>
+  <circle cx="145" cy="48" r="4" fill="#ff8e53"/>
+  <ellipse cx="138" cy="45" rx="4" ry="6" fill="#ffd700" opacity="0.6"/>
+  <ellipse cx="152" cy="45" rx="4" ry="6" fill="#ffd700" opacity="0.6"/>
+  <ellipse cx="145" cy="40" rx="4" ry="6" fill="#ffd700" opacity="0.6"/>
+
+  <!-- Lavender flower center -->
+  <circle cx="165" cy="45" r="11" fill="url(#lavenderFlower)"/>
+  <circle cx="165" cy="45" r="5" fill="#fff5a0"/>
+  <ellipse cx="156" cy="41" rx="5" ry="8" fill="#9370db" opacity="0.6"/>
+  <ellipse cx="174" cy="41" rx="5" ry="8" fill="#9370db" opacity="0.6"/>
+  <ellipse cx="165" cy="34" rx="5" ry="8" fill="#9370db" opacity="0.6"/>
+
+  <!-- Peach flower center-right -->
+  <circle cx="188" cy="50" r="9" fill="url(#peachFlower)"/>
+  <circle cx="188" cy="50" r="4" fill="#ff6b6b"/>
+  <ellipse cx="181" cy="47" rx="4" ry="6" fill="#fcb69f" opacity="0.6"/>
+  <ellipse cx="195" cy="47" rx="4" ry="6" fill="#fcb69f" opacity="0.6"/>
+  <ellipse cx="188" cy="42" rx="4" ry="6" fill="#fcb69f" opacity="0.6"/>
+
+  <!-- Pink flower right -->
+  <circle cx="208" cy="60" r="8" fill="url(#pinkFlower)"/>
+  <circle cx="208" cy="60" r="4" fill="#fff5a0"/>
+
+  <!-- Small accent flowers -->
+  <circle cx="128" cy="68" r="5" fill="#fff5a0"/>
+  <circle cx="128" cy="68" r="2.5" fill="#ffd700"/>
+  <circle cx="178" cy="58" r="4" fill="#ffb6c1"/>
+  <circle cx="178" cy="58" r="2" fill="#fff"/>
+
+  <!-- SUNSET MANE -->
+  <path d="M 138 95 Q 115 55 110 15 Q 108 -10 118 -30" stroke="#ff6b6b" stroke-width="18" fill="none" stroke-linecap="round" filter="url(#shadow3D)"/>
+  <path d="M 152 90 Q 140 50 140 10 Q 140 -15 150 -35" stroke="#ff8e53" stroke-width="16" fill="none" stroke-linecap="round" filter="url(#shadow3D)"/>
+  <path d="M 165 88 Q 168 48 175 8 Q 180 -15 175 -35" stroke="#ffc93c" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <path d="M 178 92 Q 190 55 200 15 Q 208 -10 200 -30" stroke="#ffdd59" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <path d="M 188 98 Q 205 62 218 22 Q 228 -5 218 -25" stroke="#fff5a0" stroke-width="10" fill="none" stroke-linecap="round"/>
+
+  <!-- Mane highlights -->
+  <path d="M 145 92 Q 125 52 122 12" stroke="#ffffff" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.4"/>
+  <path d="M 172 90 Q 175 50 180 10" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.35"/>
+
+  <!-- GOLDEN HORN (behind flower crown) -->
+  <ellipse cx="160" cy="70" rx="18" ry="25" fill="#ffd4b8" filter="url(#shadow3D)"/>
+
+  <!-- Main horn -->
+  <path d="M 160 65 Q 158 38 160 10 Q 162 -12 165 -35" stroke="url(#goldHorn)" stroke-width="16" fill="none" stroke-linecap="round" filter="url(#warmGlow)"/>
+
+  <!-- Horn spiral -->
+  <path d="M 152 60 Q 148 32 152 5 Q 156 -18 160 -32" stroke="#daa520" stroke-width="2.5" fill="none" opacity="0.5"/>
+  <path d="M 168 58 Q 172 30 170 2 Q 168 -20 168 -33" stroke="#daa520" stroke-width="2.5" fill="none" opacity="0.5"/>
+
+  <!-- Horn tip -->
+  <ellipse cx="165" cy="-35" rx="7" ry="9" fill="#ffec8b" filter="url(#warmGlow)"/>
+  <circle cx="165" cy="-35" r="3" fill="#ffffff" opacity="0.7"/>
+
+  <!-- FRONT LEGS -->
+  <ellipse cx="215" cy="420" rx="24" ry="78" fill="url(#sunsetBody)" filter="url(#shadow3D)"/>
+  <ellipse cx="215" cy="420" rx="20" ry="72" fill="url(#bodyHighlight)"/>
+
+  <ellipse cx="275" cy="420" rx="24" ry="78" fill="url(#sunsetBody)" filter="url(#shadow3D)"/>
+  <ellipse cx="275" cy="420" rx="20" ry="72" fill="url(#bodyHighlight)"/>
+
+  <!-- Front hooves -->
+  <ellipse cx="215" cy="495" rx="16" ry="12" fill="#e8a86d" filter="url(#softLight)"/>
+  <ellipse cx="215" cy="492" rx="11" ry="8" fill="#f5c090" opacity="0.7"/>
+  <ellipse cx="215" cy="490" rx="7" ry="5" fill="#ffffff" opacity="0.25"/>
+
+  <ellipse cx="275" cy="495" rx="16" ry="12" fill="#e8a86d" filter="url(#softLight)"/>
+  <ellipse cx="275" cy="492" rx="11" ry="8" fill="#f5c090" opacity="0.7"/>
+  <ellipse cx="275" cy="490" rx="7" ry="5" fill="#ffffff" opacity="0.25"/>
+
+  <!-- Floating petals -->
+  <ellipse cx="380" cy="150" rx="6" ry="10" fill="#ffb6c1" opacity="0.6" transform="rotate(30 380 150)"/>
+  <ellipse cx="100" cy="200" rx="5" ry="8" fill="#fff5a0" opacity="0.5" transform="rotate(-20 100 200)"/>
+  <ellipse cx="420" cy="280" rx="4" ry="7" fill="#fcb69f" opacity="0.5" transform="rotate(45 420 280)"/>
+
+  <!-- Sparkles -->
+  <circle cx="130" cy="30" r="2.5" fill="#ffffff" opacity="0.8"/>
+  <circle cx="195" cy="15" r="2" fill="#ffd700" opacity="0.7"/>
+  <circle cx="175" cy="-15" r="2" fill="#ffffff" opacity="0.9"/>
+
+  <!-- Product label -->
+  <rect x="100" y="545" width="300" height="50" fill="#fff5eb" opacity="0.95" rx="5" stroke="#ff8e53" stroke-width="1"/>
+  <text x="250" y="565" font-family="Georgia, serif" font-size="16" fill="#cd853f" text-anchor="middle" font-weight="bold">Sunset Meadow Unicorn</text>
+  <text x="250" y="585" font-family="Arial, sans-serif" font-size="11" fill="#e8a86d" text-anchor="middle">Sunset Colors | Flower Crown | Spring Collection</text>
+</svg>

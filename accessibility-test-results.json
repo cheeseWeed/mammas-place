@@ -1,0 +1,1831 @@
+{
+  "testDate": "2026-02-22T00:27:47.315Z",
+  "tester": "Jessica Torres, Accessibility Advocate",
+  "findings": [
+    {
+      "page": "Home",
+      "url": "http://localhost:3000",
+      "textElements": [
+        {
+          "tag": "SPAN",
+          "text": "MAMMA10",
+          "color": "lab(89.7033 -0.480324 84.4917)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px",
+          "fontWeight": "700"
+        },
+        {
+          "tag": "A",
+          "text": "MPMamma'sPLACE",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Search",
+          "color": "lab(24.9401 45.2703 -51.2728)",
+          "backgroundColor": "lab(83.2664 8.65132 106.895)",
+          "fontSize": "16px",
+          "fontWeight": "700"
+        },
+        {
+          "tag": "A",
+          "text": "Shop",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "500"
+        },
+        {
+          "tag": "A",
+          "text": "Sale 🏷️",
+          "color": "lab(89.7033 -0.480324 84.4917)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "700"
+        },
+        {
+          "tag": "A",
+          "text": "Cart",
+          "color": "lab(24.9401 45.2703 -51.2728)",
+          "backgroundColor": "lab(83.2664 8.65132 106.895)",
+          "fontSize": "14px",
+          "fontWeight": "700"
+        },
+        {
+          "tag": "SPAN",
+          "text": "Cart",
+          "color": "lab(24.9401 45.2703 -51.2728)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "900"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.2)",
+          "fontSize": "16px",
+          "fontWeight": "400"
+        },
+        {
+          "tag": "SPAN",
+          "text": "",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400"
+        },
+        {
+          "tag": "SPAN",
+          "text": "",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400"
+        },
+        {
+          "tag": "SPAN",
+          "text": "",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px",
+          "fontWeight": "400"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Go",
+          "color": "lab(24.9401 45.2703 -51.2728)",
+          "backgroundColor": "lab(83.2664 8.65132 106.895)",
+          "fontSize": "16px",
+          "fontWeight": "700"
+        },
+        {
+          "tag": "A",
+          "text": "All Products",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "500"
+        },
+        {
+          "tag": "A",
+          "text": "🐴 Ponies",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "500"
+        },
+        {
+          "tag": "A",
+          "text": "🦄 Unicorns",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "500"
+        },
+        {
+          "tag": "A",
+          "text": "👑 Princesses",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "500"
+        },
+        {
+          "tag": "A",
+          "text": "🏹 Bow & Arrow",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "500"
+        },
+        {
+          "tag": "A",
+          "text": "💎 Rock Collections",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "500"
+        },
+        {
+          "tag": "A",
+          "text": "🎮 Games",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "500"
+        },
+        {
+          "tag": "A",
+          "text": "🎧 Audiobooks",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "500"
+        },
+        {
+          "tag": "A",
+          "text": "🏷️ Sale Items",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px",
+          "fontWeight": "500"
+        },
+        {
+          "tag": "A",
+          "text": "🛒 View Cart",
+          "color": "lab(24.9401 45.2703 -51.2728)",
+          "backgroundColor": "lab(83.2664 8.65132 106.895)",
+          "fontSize": "14px",
+          "fontWeight": "900"
+        },
+        {
+          "tag": "H1",
+          "text": "Welcome toMamma's Place!",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "60px",
+          "fontWeight": "900"
+        },
+        {
+          "tag": "SPAN",
+          "text": "Mamma's Place!",
+          "color": "lab(89.7033 -0.480324 84.4917)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "60px",
+          "fontWeight": "900"
+        },
+        {
+          "tag": "P",
+          "text": "Amazing toys for every kid. Shop our exciting collection of ",
+          "color": "lab(87.8405 13.4282 -18.7159)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "20px",
+          "fontWeight": "400"
+        },
+        {
+          "tag": "A",
+          "text": "Shop Now",
+          "color": "lab(24.9401 45.2703 -51.2728)",
+          "backgroundColor": "lab(83.2664 8.65132 106.895)",
+          "fontSize": "18px",
+          "fontWeight": "900"
+        },
+        {
+          "tag": "A",
+          "text": "View Sales",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px",
+          "fontWeight": "700"
+        },
+        {
+          "tag": "H2",
+          "text": "Shop by Category",
+          "color": "lab(24.9401 45.2703 -51.2728)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "24px",
+          "fontWeight": "900"
+        },
+        {
+          "tag": "A",
+          "text": "🐴PoniesShop all →",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400"
+        },
+        {
+          "tag": "A",
+          "text": "🦄UnicornsShop all →",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px",
+          "fontWeight": "400"
+        }
+      ]
+    },
+    {
+      "page": "Shop",
+      "url": "http://localhost:3000/shop",
+      "textElements": [
+        {
+          "tag": "SPAN",
+          "text": "MAMMA10",
+          "color": "lab(89.7033 -0.480324 84.4917)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "A",
+          "text": "MPMamma'sPLACE",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Search",
+          "color": "lab(24.9401 45.2703 -51.2728)",
+          "backgroundColor": "lab(83.2664 8.65132 106.895)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "A",
+          "text": "Shop",
+          "color": "lab(89.7033 -0.480324 84.4917)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "Sale 🏷️",
+          "color": "lab(89.7033 -0.480324 84.4917)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "Cart",
+          "color": "lab(24.9401 45.2703 -51.2728)",
+          "backgroundColor": "lab(83.2664 8.65132 106.895)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "Cart",
+          "color": "lab(24.9401 45.2703 -51.2728)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.2)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Go",
+          "color": "lab(24.9401 45.2703 -51.2728)",
+          "backgroundColor": "lab(83.2664 8.65132 106.895)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "A",
+          "text": "All Products",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "🐴 Ponies",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "🦄 Unicorns",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "👑 Princesses",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "🏹 Bow & Arrow",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "💎 Rock Collections",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "🎮 Games",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "🎧 Audiobooks",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "🏷️ Sale Items",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "🛒 View Cart",
+          "color": "lab(24.9401 45.2703 -51.2728)",
+          "backgroundColor": "lab(83.2664 8.65132 106.895)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "H1",
+          "text": "All Products",
+          "color": "lab(24.9401 45.2703 -51.2728)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "30px"
+        },
+        {
+          "tag": "P",
+          "text": "23 items available",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H2",
+          "text": "Filters",
+          "color": "lab(24.9401 45.2703 -51.2728)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "H3",
+          "text": "Category",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "All Items",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "🐴 ponies",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "🦄 unicorns",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "👑 princesses",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "🏹 bow and arrow",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "💎 rock collections",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "🎮 games",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "🎧 audiobooks",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "H3",
+          "text": "Deals",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "LABEL",
+          "text": "Sale items only 🏷️",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "Sale items only 🏷️",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "H3",
+          "text": "Sort By",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "SALE 29% OFFponiesRainbow Sparkle PonyMagical pony with rain",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Rainbow Sparkle Pony",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "Magical pony with rainbow mane & glitter hooves",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(127)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$24.99",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$34.99",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "FEATUREDponiesCotton Candy PonySweet-smelling plush pony in ",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Cotton Candy Pony",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "Sweet-smelling plush pony in pink & blue",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(203)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$19.99",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "SALE 30% OFFunicornsEnchanted Twilight UnicornGlow-in-the-da",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Enchanted Twilight Unicorn",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "Glow-in-the-dark unicorn with LED color-changing horn",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(312)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$34.99",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$49.99",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "SALE 25% OFFunicornsGolden Dream UnicornLuxury unicorn with ",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Golden Dream Unicorn",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "Luxury unicorn with golden hooves & rainbow tail",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(156)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$44.99",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$59.99",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "SALE 27% OFFprincessesPrincess Aurora Dress-Up SetComplete p",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Princess Aurora Dress-Up Set",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "Complete princess costume with gown, tiara & wand",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(278)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$39.99",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$54.99",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "SALE 29% OFFbow-and-arrowAdventure Foam Bow & Arrow SetSafe ",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Adventure Foam Bow & Arrow Set",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "Safe foam-tip bow & arrow with 3 targets, ages 5+",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(112)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$19.99",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$27.99",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "FEATUREDbow-and-arrowRanger Pro Archery SetComplete archery ",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Ranger Pro Archery Set",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "Complete archery kit with stand, 6 arrows & quiver",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(87)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$34.99",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "FEATUREDgamesMamma's Place Family TriviaCustom trivia game w",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Mamma's Place Family Trivia",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "Custom trivia game with pony, princess & unicorn themes",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(113)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$21.99",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "FEATUREDgamesMamma's Place Family Trivia Shepherd styleCusto",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Mamma's Place Family Trivia Shepherd style",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "Custom trivia game with pony, princess & unicorn themes",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(113)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$14.99",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$51.99",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "A",
+          "text": "SALE 0% OFFaudiobooksThe Magical Pony Kingdom — Audiobook2hr",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "The Magical Pony Kingdom — Audiobook",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "2hr 15min narrated adventure in the Pony Kingdom",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(241)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$0.00",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "FEATUREDaudiobooksPrincess and the Unicorn Star — Audiobook1",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Princess and the Unicorn Star — Audiobook",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "1hr 45min full-cast audio story with original soundtrack",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(189)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$0.00",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "FEATUREDaudiobooksBedtime Stories: Unicorns & Dreams — Audio",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Bedtime Stories: Unicorns & Dreams — Audiobook",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "12 soothing bedtime stories — 1hr 40min total",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(412)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$0.00",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "SALE 25% OFFponiesPrincess Starlight PonyRoyal pony with gol",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Princess Starlight Pony",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "Royal pony with golden crown & purple mane",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(89)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$29.99",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$39.99",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "unicornsMini Unicorn Friends SetSet of 6 collectible mini un",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Mini Unicorn Friends Set",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "Set of 6 collectible mini unicorns in display case",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(445)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$27.99",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "princessesPrincess Jewelry Craft KitDIY jewelry kit with 200",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Princess Jewelry Craft Kit",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "DIY jewelry kit with 200+ beads & princess charms",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(167)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$22.99",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "SALE 24% OFFprincessesPrincess Story Book Collection5-book i",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Princess Story Book Collection",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "5-book illustrated princess story collection",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(334)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$18.99",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$24.99",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "SALE 24% OFFbow-and-arrowGlow-in-the-Dark Bow & ArrowLED glo",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Glow-in-the-Dark Bow & Arrow",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "LED glow arrows for exciting night play, ages 6+",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(145)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$24.99",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$32.99",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "SALE 24% OFFrock-collectionsCrystal Growing LabGrow 4 colour",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Crystal Growing Lab",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "Grow 4 colourful crystal types — science kit fun!",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(223)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$18.99",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$24.99",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "rock-collectionsDino Fossil & Rock Dig KitExcavate real foss",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Dino Fossil & Rock Dig Kit",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "Excavate real fossils from 3 dig blocks — ages 6+",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(156)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$16.99",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "gamesPuzzle Palace 1000pc1000-piece magical unicorn & pony k",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Puzzle Palace 1000pc",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "1000-piece magical unicorn & pony kingdom puzzle",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(89)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$17.99",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "SALE 25% OFFgamesCard Clash Battle GameFast-paced card battl",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Card Clash Battle Game",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "Fast-paced card battle game for 2-6 players",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(262)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$14.99",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$19.99",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "SALE 0% OFFaudiobooksRock Hunters: Gem Quest — Audiobook2hr ",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Rock Hunters: Gem Quest — Audiobook",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "2hr science adventure story with real geology facts",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(134)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$0.00",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "SALE 0% OFFaudiobooksThe Archery Champion — Audiobook2hr 30m",
+          "color": "rgb(237, 237, 237)",
+          "backgroundColor": "rgb(255, 255, 255)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "The Archery Champion — Audiobook",
+          "color": "lab(16.1051 -1.18239 -11.7533)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "P",
+          "text": "2hr 30min inspiring archery sports story, ages 7+",
+          "color": "lab(27.1134 -0.956401 -12.3224)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(97)",
+          "color": "lab(35.6337 -1.58697 -10.8425)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "$0.00",
+          "color": "lab(30.6017 56.7637 -64.4751)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Add to Cart",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "H3",
+          "text": "Archery Supplies",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "20px"
+        },
+        {
+          "tag": "P",
+          "text": "Bullseye deals on bows & arrows!",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "Learn More",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "oklab(0.999994 0.0000455678 0.0000200868 / 0.2)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Mamma's Services",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "🏹",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "20px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "Archery Supplies",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "🚗",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "20px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "New Tires",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "👟",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "20px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "Shoes",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "🌱",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "20px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "Lawn Care",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "BUTTON",
+          "text": "View All Services",
+          "color": "lab(24.9401 45.2703 -51.2728)",
+          "backgroundColor": "lab(83.2664 8.65132 106.895)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Special Offer!",
+          "color": "lab(24.9401 45.2703 -51.2728)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "P",
+          "text": "Get 15% off your first service booking!",
+          "color": "lab(24.9401 45.2703 -51.2728)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "CODE: FIRST15",
+          "color": "lab(83.2664 8.65132 106.895)",
+          "backgroundColor": "lab(24.9401 45.2703 -51.2728)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "P",
+          "text": "Magical toys for magical kids",
+          "color": "lab(78.3298 26.2195 -34.9499)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "A",
+          "text": "",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "A",
+          "text": "",
+          "color": "rgb(255, 255, 255)",
+          "backgroundColor": "lab(36.1758 69.8525 -80.0381)",
+          "fontSize": "16px"
+        },
+        {
+          "tag": "H3",
+          "text": "Customer Service",
+          "color": "lab(89.7033 -0.480324 84.4917)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "A",
+          "text": "Contact Us",
+          "color": "lab(78.3298 26.2195 -34.9499)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "FAQ",
+          "color": "lab(78.3298 26.2195 -34.9499)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "Shipping & Returns",
+          "color": "lab(78.3298 26.2195 -34.9499)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "About Us",
+          "color": "lab(78.3298 26.2195 -34.9499)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "H3",
+          "text": "Shop",
+          "color": "lab(89.7033 -0.480324 84.4917)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "A",
+          "text": "Ponies",
+          "color": "lab(78.3298 26.2195 -34.9499)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "Unicorns",
+          "color": "lab(78.3298 26.2195 -34.9499)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "Princesses",
+          "color": "lab(78.3298 26.2195 -34.9499)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "Sale Items",
+          "color": "lab(78.3298 26.2195 -34.9499)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "H3",
+          "text": "Get in Touch",
+          "color": "lab(89.7033 -0.480324 84.4917)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "18px"
+        },
+        {
+          "tag": "A",
+          "text": "support@mammasplace.com",
+          "color": "lab(78.3298 26.2195 -34.9499)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "1-800-MAMMAS-1(1-800-626-6271)",
+          "color": "lab(78.3298 26.2195 -34.9499)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "(1-800-626-6271)",
+          "color": "lab(78.3298 26.2195 -34.9499)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "Mon-Fri: 9am-5pm EST",
+          "color": "lab(78.3298 26.2195 -34.9499)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "Free Shipping Over $50",
+          "color": "lab(78.3298 26.2195 -34.9499)",
+          "backgroundColor": "oklab(0.495993 0.140111 -0.224897 / 0.5)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "SPAN",
+          "text": "Use Code: MAMMA10",
+          "color": "lab(89.7033 -0.480324 84.4917)",
+          "backgroundColor": "oklab(0.852004 -0.00672731 0.19889 / 0.2)",
+          "fontSize": "14px"
+        },
+        {
+          "tag": "A",
+          "text": "Admin",
+          "color": "lab(52.0183 66.11 -78.2316)",
+          "backgroundColor": "rgba(0, 0, 0, 0)",
+          "fontSize": "12px"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    "test-home.png",
+    "test-shop.png"
+  ],
+  "error": "SyntaxError: Failed to execute 'querySelector' on 'Document': 'button:has-text(\"Add to Cart\")' is not a valid selector."
+}

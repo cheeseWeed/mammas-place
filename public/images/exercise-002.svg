@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <!-- Rubber coated plate - black with color coding -->
+    <linearGradient id="plate-rubber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#404040"/>
+      <stop offset="30%" style="stop-color:#262626"/>
+      <stop offset="70%" style="stop-color:#1a1a1a"/>
+      <stop offset="100%" style="stop-color:#262626"/>
+    </linearGradient>
+    <!-- Red plate (55lb/25kg) -->
+    <linearGradient id="plate-red" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="50%" style="stop-color:#dc2626"/>
+      <stop offset="100%" style="stop-color:#b91c1c"/>
+    </linearGradient>
+    <!-- Blue plate (45lb/20kg) -->
+    <linearGradient id="plate-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="50%" style="stop-color:#2563eb"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    <!-- Yellow plate (35lb/15kg) -->
+    <linearGradient id="plate-yellow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="50%" style="stop-color:#f59e0b"/>
+      <stop offset="100%" style="stop-color:#d97706"/>
+    </linearGradient>
+    <!-- Green plate (25lb/10kg) -->
+    <linearGradient id="plate-green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="50%" style="stop-color:#16a34a"/>
+      <stop offset="100%" style="stop-color:#15803d"/>
+    </linearGradient>
+    <!-- Chrome center hole -->
+    <radialGradient id="center-hole" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#d4d4d4"/>
+      <stop offset="50%" style="stop-color:#a3a3a3"/>
+      <stop offset="100%" style="stop-color:#737373"/>
+    </radialGradient>
+    <!-- Drop shadow -->
+    <filter id="plate-shadow" x="-15%" y="-10%" width="130%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="3" dy="6" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.4"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Ground shadow -->
+    <radialGradient id="floor-shadow" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#000;stop-opacity:0.35"/>
+      <stop offset="80%" style="stop-color:#000;stop-opacity:0.05"/>
+      <stop offset="100%" style="stop-color:#000;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Studio background -->
+  <rect width="400" height="400" fill="#f5f5f5"/>
+
+  <!-- Ground shadow -->
+  <ellipse cx="200" cy="355" rx="160" ry="20" fill="url(#floor-shadow)"/>
+
+  <!-- Stacked weight plates arrangement - standing view -->
+
+  <!-- Back row - larger plates -->
+  <!-- 55lb Red plate (back left) -->
+  <g filter="url(#plate-shadow)">
+    <ellipse cx="130" cy="200" rx="75" ry="90" fill="url(#plate-red)"/>
+    <ellipse cx="130" cy="200" rx="70" ry="85" fill="none" stroke="#fca5a5" stroke-width="2" opacity="0.3"/>
+    <ellipse cx="130" cy="200" rx="12" ry="15" fill="url(#center-hole)"/>
+    <text x="130" y="205" font-size="18" font-weight="bold" fill="#fff" text-anchor="middle" font-family="Arial, sans-serif">55</text>
+    <text x="130" y="220" font-size="10" fill="#fecaca" text-anchor="middle" font-family="Arial, sans-serif">LB</text>
+  </g>
+
+  <!-- 55lb Red plate (back right) -->
+  <g filter="url(#plate-shadow)">
+    <ellipse cx="270" cy="200" rx="75" ry="90" fill="url(#plate-red)"/>
+    <ellipse cx="270" cy="200" rx="70" ry="85" fill="none" stroke="#fca5a5" stroke-width="2" opacity="0.3"/>
+    <ellipse cx="270" cy="200" rx="12" ry="15" fill="url(#center-hole)"/>
+    <text x="270" y="205" font-size="18" font-weight="bold" fill="#fff" text-anchor="middle" font-family="Arial, sans-serif">55</text>
+    <text x="270" y="220" font-size="10" fill="#fecaca" text-anchor="middle" font-family="Arial, sans-serif">LB</text>
+  </g>
+
+  <!-- Middle row -->
+  <!-- 45lb Blue plate (front center-left) -->
+  <g filter="url(#plate-shadow)">
+    <ellipse cx="165" cy="210" rx="65" ry="78" fill="url(#plate-blue)"/>
+    <ellipse cx="165" cy="210" rx="60" ry="73" fill="none" stroke="#93c5fd" stroke-width="2" opacity="0.3"/>
+    <ellipse cx="165" cy="210" rx="10" ry="12" fill="url(#center-hole)"/>
+    <text x="165" y="215" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle" font-family="Arial, sans-serif">45</text>
+  </g>
+
+  <!-- 45lb Blue plate (front center-right) -->
+  <g filter="url(#plate-shadow)">
+    <ellipse cx="235" cy="210" rx="65" ry="78" fill="url(#plate-blue)"/>
+    <ellipse cx="235" cy="210" rx="60" ry="73" fill="none" stroke="#93c5fd" stroke-width="2" opacity="0.3"/>
+    <ellipse cx="235" cy="210" rx="10" ry="12" fill="url(#center-hole)"/>
+    <text x="235" y="215" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle" font-family="Arial, sans-serif">45</text>
+  </g>
+
+  <!-- Front row - smaller plates -->
+  <!-- 25lb Green plate (front left) -->
+  <g filter="url(#plate-shadow)">
+    <ellipse cx="90" cy="235" rx="45" ry="55" fill="url(#plate-green)"/>
+    <ellipse cx="90" cy="235" rx="41" ry="51" fill="none" stroke="#86efac" stroke-width="2" opacity="0.3"/>
+    <ellipse cx="90" cy="235" rx="8" ry="10" fill="url(#center-hole)"/>
+    <text x="90" y="240" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle" font-family="Arial, sans-serif">25</text>
+  </g>
+
+  <!-- 35lb Yellow plate (front center) -->
+  <g filter="url(#plate-shadow)">
+    <ellipse cx="200" cy="245" rx="55" ry="65" fill="url(#plate-yellow)"/>
+    <ellipse cx="200" cy="245" rx="50" ry="60" fill="none" stroke="#fde047" stroke-width="2" opacity="0.3"/>
+    <ellipse cx="200" cy="245" rx="9" ry="11" fill="url(#center-hole)"/>
+    <text x="200" y="250" font-size="15" font-weight="bold" fill="#78350f" text-anchor="middle" font-family="Arial, sans-serif">35</text>
+  </g>
+
+  <!-- 25lb Green plate (front right) -->
+  <g filter="url(#plate-shadow)">
+    <ellipse cx="310" cy="235" rx="45" ry="55" fill="url(#plate-green)"/>
+    <ellipse cx="310" cy="235" rx="41" ry="51" fill="none" stroke="#86efac" stroke-width="2" opacity="0.3"/>
+    <ellipse cx="310" cy="235" rx="8" ry="10" fill="url(#center-hole)"/>
+    <text x="310" y="240" font-size="14" font-weight="bold" fill="#fff" text-anchor="middle" font-family="Arial, sans-serif">25</text>
+  </g>
+
+  <!-- Highlights -->
+  <g fill="#fff" opacity="0.1">
+    <ellipse cx="100" cy="165" rx="30" ry="35"/>
+    <ellipse cx="240" cy="165" rx="30" ry="35"/>
+  </g>
+
+  <!-- Total weight label -->
+  <rect x="150" y="70" width="100" height="35" rx="6" fill="#1f2937" opacity="0.95"/>
+  <text x="200" y="92" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle" font-family="Arial, sans-serif">255 LBS</text>
+  <text x="200" y="102" font-size="8" fill="#9ca3af" text-anchor="middle" font-family="Arial, sans-serif">TOTAL SET</text>
+</svg>

@@ -1,0 +1,183 @@
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Lighting gradients for photorealistic effect -->
+    <linearGradient id="studioLight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fafafa;stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#f0ebe6;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#e5ded5;stop-opacity:1"/>
+    </linearGradient>
+
+    <!-- Tall vase gradient - matte ceramic -->
+    <linearGradient id="vase1Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2d3436"/>
+      <stop offset="25%" style="stop-color:#636e72"/>
+      <stop offset="50%" style="stop-color:#b2bec3"/>
+      <stop offset="75%" style="stop-color:#636e72"/>
+      <stop offset="100%" style="stop-color:#2d3436"/>
+    </linearGradient>
+
+    <!-- Medium vase gradient - warm terracotta -->
+    <linearGradient id="vase2Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8b4513"/>
+      <stop offset="20%" style="stop-color:#cd853f"/>
+      <stop offset="50%" style="stop-color:#deb887"/>
+      <stop offset="80%" style="stop-color:#cd853f"/>
+      <stop offset="100%" style="stop-color:#8b4513"/>
+    </linearGradient>
+
+    <!-- Small vase gradient - white ceramic with blue accent -->
+    <linearGradient id="vase3Grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#d1d8e0"/>
+      <stop offset="30%" style="stop-color:#f5f6fa"/>
+      <stop offset="50%" style="stop-color:#ffffff"/>
+      <stop offset="70%" style="stop-color:#f5f6fa"/>
+      <stop offset="100%" style="stop-color:#d1d8e0"/>
+    </linearGradient>
+
+    <!-- Surface reflection -->
+    <linearGradient id="surfaceGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4c4b0;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#f5ede5;stop-opacity:0.3"/>
+    </linearGradient>
+
+    <!-- Soft shadow filter -->
+    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="3" dy="8" result="offsetblur"/>
+      <feFlood flood-color="#1a1a1a" flood-opacity="0.25"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Ceramic texture filter -->
+    <filter id="ceramicTexture">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
+      <feDiffuseLighting in="noise" lighting-color="white" surfaceScale="1" result="diffuse">
+        <feDistantLight azimuth="45" elevation="60"/>
+      </feDiffuseLighting>
+      <feComposite in="SourceGraphic" in2="diffuse" operator="arithmetic" k1="1" k2="0" k3="0" k4="0"/>
+    </filter>
+  </defs>
+
+  <!-- Studio background with gradient -->
+  <rect width="300" height="300" fill="url(#studioLight)"/>
+
+  <!-- Subtle vignette effect -->
+  <ellipse cx="150" cy="150" rx="200" ry="200" fill="none" stroke="#d4c4b0" stroke-width="80" opacity="0.15"/>
+
+  <!-- Surface/shelf -->
+  <rect x="0" y="240" width="300" height="60" fill="url(#surfaceGrad)"/>
+  <line x1="0" y1="240" x2="300" y2="240" stroke="#c4b4a0" stroke-width="1" opacity="0.5"/>
+
+  <!-- Shadow group for all vases -->
+  <g opacity="0.3">
+    <ellipse cx="85" cy="255" rx="35" ry="8" fill="#3d3d3d">
+      <animate attributeName="opacity" values="0.3;0.35;0.3" dur="4s" repeatCount="indefinite"/>
+    </ellipse>
+    <ellipse cx="155" cy="252" rx="28" ry="7" fill="#3d3d3d"/>
+    <ellipse cx="220" cy="250" rx="22" ry="6" fill="#3d3d3d"/>
+  </g>
+
+  <!-- TALL VASE (Left) - Modern minimalist charcoal ceramic -->
+  <g filter="url(#softShadow)">
+    <!-- Main body -->
+    <path d="M 60 240
+             Q 55 220 52 180
+             Q 50 140 55 100
+             Q 60 70 70 55
+             L 100 55
+             Q 110 70 115 100
+             Q 120 140 118 180
+             Q 115 220 110 240
+             Z"
+          fill="url(#vase1Grad)"/>
+
+    <!-- Rim highlight -->
+    <ellipse cx="85" cy="55" rx="22" ry="6" fill="#4a5568" stroke="#636e72" stroke-width="0.5"/>
+    <ellipse cx="85" cy="55" rx="18" ry="4" fill="#2d3436"/>
+
+    <!-- Specular highlight -->
+    <path d="M 68 80 Q 70 120 72 160 Q 74 180 73 200"
+          stroke="#ffffff" stroke-width="3" fill="none" opacity="0.35" stroke-linecap="round"/>
+
+    <!-- Subtle rim reflection -->
+    <path d="M 62 58 Q 75 52 90 58" stroke="#9ca3af" stroke-width="1" fill="none" opacity="0.5"/>
+
+    <!-- Matte texture overlay -->
+    <path d="M 60 240 Q 55 220 52 180 Q 50 140 55 100 Q 60 70 70 55 L 100 55 Q 110 70 115 100 Q 120 140 118 180 Q 115 220 110 240 Z"
+          fill="#ffffff" opacity="0.03"/>
+  </g>
+
+  <!-- MEDIUM VASE (Center) - Terracotta rounded pot -->
+  <g filter="url(#softShadow)">
+    <!-- Main body - organic rounded shape -->
+    <path d="M 125 240
+             Q 118 230 115 200
+             Q 112 170 120 140
+             Q 128 115 140 105
+             L 170 105
+             Q 182 115 190 140
+             Q 198 170 195 200
+             Q 192 230 185 240
+             Z"
+          fill="url(#vase2Grad)"/>
+
+    <!-- Rim -->
+    <ellipse cx="155" cy="105" rx="20" ry="5" fill="#d2691e" stroke="#a0522d" stroke-width="0.5"/>
+    <ellipse cx="155" cy="105" rx="16" ry="3.5" fill="#8b4513"/>
+
+    <!-- Highlight reflection -->
+    <path d="M 132 130 Q 130 160 133 190 Q 135 210 134 230"
+          stroke="#ffffff" stroke-width="4" fill="none" opacity="0.25" stroke-linecap="round"/>
+
+    <!-- Terracotta texture lines -->
+    <path d="M 128 150 Q 145 148 175 152" stroke="#a0522d" stroke-width="0.5" fill="none" opacity="0.4"/>
+    <path d="M 125 180 Q 150 178 180 182" stroke="#a0522d" stroke-width="0.5" fill="none" opacity="0.3"/>
+
+    <!-- Warm ambient reflection on right -->
+    <path d="M 178 140 Q 182 170 180 200" stroke="#deb887" stroke-width="2" fill="none" opacity="0.3"/>
+  </g>
+
+  <!-- SMALL VASE (Right) - White ceramic with blue band -->
+  <g filter="url(#softShadow)">
+    <!-- Main body -->
+    <path d="M 198 240
+             Q 195 225 193 200
+             Q 192 175 197 155
+             Q 202 140 210 130
+             L 230 130
+             Q 238 140 243 155
+             Q 248 175 247 200
+             Q 245 225 242 240
+             Z"
+          fill="url(#vase3Grad)"/>
+
+    <!-- Decorative blue band -->
+    <path d="M 194 175 Q 220 172 246 177" stroke="#3498db" stroke-width="6" fill="none" opacity="0.8"/>
+    <path d="M 195 172 Q 220 169 245 174" stroke="#5dade2" stroke-width="1" fill="none" opacity="0.5"/>
+
+    <!-- Rim -->
+    <ellipse cx="220" cy="130" rx="14" ry="4" fill="#f8f9fa" stroke="#dfe6e9" stroke-width="0.5"/>
+    <ellipse cx="220" cy="130" rx="11" ry="2.5" fill="#b2bec3"/>
+
+    <!-- Specular highlight -->
+    <path d="M 205 145 Q 203 170 205 195 Q 206 210 205 230"
+          stroke="#ffffff" stroke-width="2.5" fill="none" opacity="0.5" stroke-linecap="round"/>
+
+    <!-- Secondary highlight -->
+    <ellipse cx="212" cy="160" rx="4" ry="12" fill="#ffffff" opacity="0.15"/>
+  </g>
+
+  <!-- Reflection on surface -->
+  <g opacity="0.12">
+    <path d="M 60 260 Q 55 270 52 290 L 118 290 Q 115 270 110 260 Z" fill="url(#vase1Grad)"/>
+    <path d="M 125 258 Q 118 270 115 290 L 195 290 Q 192 270 185 258 Z" fill="url(#vase2Grad)"/>
+    <path d="M 198 256 Q 195 268 193 290 L 247 290 Q 245 268 242 256 Z" fill="url(#vase3Grad)"/>
+  </g>
+
+  <!-- Ambient light bloom -->
+  <ellipse cx="150" cy="180" rx="120" ry="60" fill="#ffffff" opacity="0.04"/>
+</svg>

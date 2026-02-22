@@ -1,0 +1,105 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <radialGradient id="bgGradient3" cx="50%" cy="40%">
+      <stop offset="0%" style="stop-color:#fef8f0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8dcd0;stop-opacity:1" />
+    </radialGradient>
+    <filter id="shadow3" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bgGradient3)"/>
+
+  <!-- Elegant white plate with gold rim -->
+  <circle cx="200" cy="220" r="145" fill="#f5f3f0" stroke="#c9a876" stroke-width="4"/>
+  <circle cx="200" cy="220" r="140" fill="#fcfaf8"/>
+  <circle cx="200" cy="220" r="135" fill="#fdfcfb"/>
+  <!-- Inner rim accent -->
+  <circle cx="200" cy="220" r="140" fill="none" stroke="#e8dcd0" stroke-width="1" opacity="0.6"/>
+
+  <!-- Prime Rib - Large, succulent cut -->
+  <g filter="url(#shadow3)">
+    <!-- Main meat body -->
+    <ellipse cx="200" cy="155" rx="85" ry="75" fill="#3d2817"/>
+    <ellipse cx="200" cy="150" rx="80" ry="70" fill="#5a3a25"/>
+
+    <!-- Seared crust detail -->
+    <path d="M 130 145 Q 145 125 160 140" fill="#2a1810" stroke="none"/>
+    <path d="M 170 135 Q 185 120 200 130" fill="#2a1810" stroke="none"/>
+    <path d="M 240 140 Q 260 125 275 145" fill="#2a1810" stroke="none"/>
+
+    <!-- Marbling/fat lines - realistic -->
+    <path d="M 145 160 Q 175 155 210 162" stroke="#b8956a" stroke-width="2" fill="none" opacity="0.7"/>
+    <path d="M 150 175 Q 180 170 220 178" stroke="#a88860" stroke-width="1.5" fill="none" opacity="0.6"/>
+    <path d="M 160 190 Q 190 188 225 195" stroke="#b8956a" stroke-width="1.5" fill="none" opacity="0.5"/>
+
+    <!-- Gloss/moisture effect -->
+    <ellipse cx="175" cy="145" rx="50" ry="45" fill="white" opacity="0.12"/>
+
+    <!-- Deeper shadows for depth -->
+    <ellipse cx="160" cy="165" rx="25" ry="20" fill="#2a1810" opacity="0.3"/>
+  </g>
+
+  <!-- Yorkshire Pudding - Left side -->
+  <g filter="url(#shadow3)">
+    <ellipse cx="95" cy="250" rx="42" ry="35" fill="#c9865c" stroke="#a8704a" stroke-width="1.5"/>
+    <ellipse cx="95" cy="245" rx="40" ry="32" fill="#dba070"/>
+    <!-- Puffed texture -->
+    <ellipse cx="80" cy="245" rx="15" ry="20" fill="#e8b88a" opacity="0.9"/>
+    <ellipse cx="110" cy="240" rx="12" ry="18" fill="#e8b88a" opacity="0.9"/>
+    <!-- Shine -->
+    <ellipse cx="95" cy="235" rx="20" ry="15" fill="white" opacity="0.15"/>
+  </g>
+
+  <!-- Creamed Horseradish - Right side -->
+  <g filter="url(#shadow3)">
+    <ellipse cx="305" cy="250" rx="38" ry="32" fill="#f8f6f3" stroke="#d9d3c9" stroke-width="1.5"/>
+    <ellipse cx="305" cy="247" rx="36" ry="30" fill="#fefdfb"/>
+    <!-- Dollop shape -->
+    <ellipse cx="305" cy="235" rx="22" ry="18" fill="#ffffff" opacity="0.95"/>
+    <!-- Shadow under dollop -->
+    <ellipse cx="305" cy="250" rx="30" ry="10" fill="#e8dcd0" opacity="0.3"/>
+  </g>
+
+  <!-- Au jus (brown sauce drizzle) -->
+  <path d="M 215 215 Q 240 225 270 235" stroke="#8b6b52" stroke-width="2.5" fill="none" opacity="0.7" stroke-linecap="round"/>
+  <path d="M 220 225 Q 245 232 265 245" stroke="#8b6b52" stroke-width="1.5" fill="none" opacity="0.5" stroke-linecap="round"/>
+
+  <!-- Rosemary sprig garnish -->
+  <g opacity="0.78">
+    <line x1="140" y1="250" x2="155" y2="235" stroke="#2d7a52" stroke-width="1.8" stroke-linecap="round"/>
+    <circle cx="142" cy="248" r="1.3" fill="#2d7a52"/>
+    <circle cx="147" cy="243" r="1.3" fill="#2d7a52"/>
+    <circle cx="152" cy="237" r="1.2" fill="#2d7a52"/>
+    <circle cx="155" cy="234" r="1.2" fill="#3a9561"/>
+  </g>
+
+  <!-- Thyme sprigs -->
+  <g opacity="0.65">
+    <path d="M 240 270 Q 248 260 255 250" stroke="#2d7a52" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    <circle cx="242" cy="267" r="0.9" fill="#2d7a52"/>
+    <circle cx="248" cy="258" r="0.9" fill="#2d7a52"/>
+    <circle cx="253" cy="250" r="0.8" fill="#2d7a52"/>
+  </g>
+
+  <!-- Black pepper garnish -->
+  <circle cx="200" cy="200" r="1.2" fill="#1a1a1a" opacity="0.6"/>
+  <circle cx="210" cy="195" r="1" fill="#1a1a1a" opacity="0.5"/>
+  <circle cx="190" cy="210" r="1.2" fill="#1a1a1a" opacity="0.6"/>
+
+  <!-- Plate decorative elements -->
+  <circle cx="110" cy="140" r="2.5" fill="#c9a876" opacity="0.4"/>
+  <circle cx="290" cy="155" r="2.5" fill="#c9a876" opacity="0.4"/>
+  <circle cx="85" cy="310" r="2" fill="#c9a876" opacity="0.3"/>
+
+  <!-- Fork and knife silhouettes -->
+  <g opacity="0.25">
+    <line x1="75" y1="170" x2="70" y2="280" stroke="#999" stroke-width="3" stroke-linecap="round"/>
+    <line x1="325" y1="190" x2="335" y2="290" stroke="#999" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Plate shine/reflection -->
+  <ellipse cx="200" cy="110" rx="75" ry="60" fill="white" opacity="0.07"/>
+</svg>

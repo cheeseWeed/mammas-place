@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <!-- Red band gradient -->
+    <linearGradient id="band-red" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f87171"/>
+      <stop offset="50%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    <!-- Orange band gradient -->
+    <linearGradient id="band-orange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fdba74"/>
+      <stop offset="50%" style="stop-color:#fb923c"/>
+      <stop offset="100%" style="stop-color:#f97316"/>
+    </linearGradient>
+    <!-- Yellow band gradient -->
+    <linearGradient id="band-yellow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fde047"/>
+      <stop offset="50%" style="stop-color:#facc15"/>
+      <stop offset="100%" style="stop-color:#eab308"/>
+    </linearGradient>
+    <!-- Green band gradient -->
+    <linearGradient id="band-green" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#86efac"/>
+      <stop offset="50%" style="stop-color:#4ade80"/>
+      <stop offset="100%" style="stop-color:#22c55e"/>
+    </linearGradient>
+    <!-- Blue band gradient -->
+    <linearGradient id="band-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#93c5fd"/>
+      <stop offset="50%" style="stop-color:#60a5fa"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+    <!-- Storage bag gradient -->
+    <linearGradient id="bag-mesh" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#404040"/>
+      <stop offset="50%" style="stop-color:#262626"/>
+      <stop offset="100%" style="stop-color:#171717"/>
+    </linearGradient>
+    <!-- Drop shadow -->
+    <filter id="band-shadow" x="-15%" y="-15%" width="130%" height="150%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="2" dy="4" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Ground shadow -->
+    <radialGradient id="ground-shadow" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#000;stop-opacity:0.25"/>
+      <stop offset="80%" style="stop-color:#000;stop-opacity:0.05"/>
+      <stop offset="100%" style="stop-color:#000;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Studio background -->
+  <rect width="400" height="400" fill="#fafafa"/>
+
+  <!-- Ground shadow -->
+  <ellipse cx="200" cy="355" rx="140" ry="22" fill="url(#ground-shadow)"/>
+
+  <!-- Storage/carry bag at bottom -->
+  <g filter="url(#band-shadow)">
+    <rect x="110" y="280" width="180" height="70" rx="10" fill="url(#bag-mesh)"/>
+    <!-- Mesh texture pattern -->
+    <g stroke="#555" stroke-width="0.5" opacity="0.4">
+      <line x1="120" y1="290" x2="280" y2="290"/>
+      <line x1="120" y1="300" x2="280" y2="300"/>
+      <line x1="120" y1="310" x2="280" y2="310"/>
+      <line x1="120" y1="320" x2="280" y2="320"/>
+      <line x1="120" y1="330" x2="280" y2="330"/>
+      <line x1="120" y1="340" x2="280" y2="340"/>
+    </g>
+    <!-- Bag label -->
+    <rect x="160" y="305" width="80" height="25" rx="4" fill="#1f1f1f"/>
+    <text x="200" y="322" font-size="11" font-weight="bold" fill="#fff" text-anchor="middle" font-family="Arial, sans-serif">RESISTANCE</text>
+  </g>
+
+  <!-- Band 1 - Red (Heavy) - coiled loop -->
+  <g filter="url(#band-shadow)">
+    <ellipse cx="80" cy="170" rx="40" ry="55" fill="url(#band-red)" opacity="0.95"/>
+    <ellipse cx="80" cy="170" rx="36" ry="50" fill="none" stroke="#fca5a5" stroke-width="3" opacity="0.4"/>
+    <ellipse cx="80" cy="170" rx="25" ry="35" fill="#f5f5f4"/>
+    <!-- Highlight -->
+    <ellipse cx="65" cy="145" rx="18" ry="25" fill="#fff" opacity="0.25"/>
+    <!-- Resistance label -->
+    <text x="80" y="175" font-size="10" font-weight="bold" fill="#7f1d1d" text-anchor="middle">40LB</text>
+  </g>
+
+  <!-- Band 2 - Orange (Medium-Heavy) -->
+  <g filter="url(#band-shadow)">
+    <ellipse cx="145" cy="130" rx="38" ry="52" fill="url(#band-orange)" opacity="0.95"/>
+    <ellipse cx="145" cy="130" rx="34" ry="47" fill="none" stroke="#fed7aa" stroke-width="3" opacity="0.4"/>
+    <ellipse cx="145" cy="130" rx="23" ry="32" fill="#f5f5f4"/>
+    <ellipse cx="130" cy="108" rx="16" ry="22" fill="#fff" opacity="0.25"/>
+    <text x="145" y="135" font-size="10" font-weight="bold" fill="#7c2d12" text-anchor="middle">30LB</text>
+  </g>
+
+  <!-- Band 3 - Yellow (Medium) -->
+  <g filter="url(#band-shadow)">
+    <ellipse cx="200" cy="105" rx="36" ry="50" fill="url(#band-yellow)" opacity="0.95"/>
+    <ellipse cx="200" cy="105" rx="32" ry="45" fill="none" stroke="#fef08a" stroke-width="3" opacity="0.4"/>
+    <ellipse cx="200" cy="105" rx="22" ry="30" fill="#f5f5f4"/>
+    <ellipse cx="185" cy="85" rx="15" ry="20" fill="#fff" opacity="0.25"/>
+    <text x="200" y="110" font-size="10" font-weight="bold" fill="#713f12" text-anchor="middle">20LB</text>
+  </g>
+
+  <!-- Band 4 - Green (Light) -->
+  <g filter="url(#band-shadow)">
+    <ellipse cx="255" cy="130" rx="38" ry="52" fill="url(#band-green)" opacity="0.95"/>
+    <ellipse cx="255" cy="130" rx="34" ry="47" fill="none" stroke="#bbf7d0" stroke-width="3" opacity="0.4"/>
+    <ellipse cx="255" cy="130" rx="23" ry="32" fill="#f5f5f4"/>
+    <ellipse cx="240" cy="108" rx="16" ry="22" fill="#fff" opacity="0.25"/>
+    <text x="255" y="135" font-size="10" font-weight="bold" fill="#14532d" text-anchor="middle">15LB</text>
+  </g>
+
+  <!-- Band 5 - Blue (Extra Light) -->
+  <g filter="url(#band-shadow)">
+    <ellipse cx="320" cy="170" rx="40" ry="55" fill="url(#band-blue)" opacity="0.95"/>
+    <ellipse cx="320" cy="170" rx="36" ry="50" fill="none" stroke="#bfdbfe" stroke-width="3" opacity="0.4"/>
+    <ellipse cx="320" cy="170" rx="25" ry="35" fill="#f5f5f4"/>
+    <ellipse cx="305" cy="145" rx="18" ry="25" fill="#fff" opacity="0.25"/>
+    <text x="320" y="175" font-size="10" font-weight="bold" fill="#1e3a8a" text-anchor="middle">10LB</text>
+  </g>
+
+  <!-- Handles visible in bag -->
+  <g fill="#1f1f1f">
+    <rect x="125" y="282" width="15" height="20" rx="3"/>
+    <rect x="180" y="282" width="15" height="20" rx="3"/>
+    <rect x="260" y="282" width="15" height="20" rx="3"/>
+  </g>
+</svg>

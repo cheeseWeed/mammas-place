@@ -1,0 +1,167 @@
+<svg viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients for realistic lighting -->
+    <linearGradient id="bodyGradient6" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4ade80;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#16a34a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d4d27;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="softTopGradient6" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#d2b48c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a89968;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="chromeGradient6">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+      <stop offset="50%" style="stop-color:#e8e8e8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#999999;stop-opacity:1" />
+    </radialGradient>
+    <radialGradient id="wheelGradient6">
+      <stop offset="0%" style="stop-color:#444444;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#222222;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#111111;stop-opacity:1" />
+    </radialGradient>
+    <linearGradient id="shadowGradient6" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:0" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.3" />
+    </linearGradient>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="500" height="200" fill="#87ceeb"/>
+  <rect y="200" width="500" height="120" fill="#d4d4d4"/>
+
+  <!-- Road/ground shadow -->
+  <ellipse cx="250" cy="285" rx="185" ry="25" fill="url(#shadowGradient6)"/>
+
+  <!-- 1985 Jeep CJ-7 - Forest Green with Tan Soft Top -->
+
+  <!-- Shadow under vehicle -->
+  <ellipse cx="250" cy="270" rx="150" ry="20" fill="#00000015"/>
+
+  <!-- Main body - boxy iconic Jeep shape -->
+  <g id="body">
+    <!-- Body panel -->
+    <rect x="100" y="155" width="300" height="100" rx="5" fill="url(#bodyGradient6)" stroke="#0d3d20" stroke-width="2"/>
+
+    <!-- Side panel contour -->
+    <path d="M 100 180 Q 95 195 100 210 L 400 210 Q 405 195 400 180" fill="#0d4d27" opacity="0.4" stroke="none"/>
+  </g>
+
+  <!-- Soft top (tan canvas) -->
+  <g id="softtop">
+    <!-- Top cover -->
+    <path d="M 110 130 Q 250 100 390 130 L 390 155 L 110 155 Z" fill="url(#softTopGradient6)" stroke="#8b7355" stroke-width="2" rx="3"/>
+
+    <!-- Soft top fabric texture -->
+    <line x1="140" y1="115" x2="360" y2="145" stroke="#a89968" stroke-width="0.5" opacity="0.3"/>
+    <line x1="150" y1="110" x2="370" y2="150" stroke="#a89968" stroke-width="0.5" opacity="0.3"/>
+    <line x1="160" y1="108" x2="380" y2="152" stroke="#a89968" stroke-width="0.5" opacity="0.3"/>
+  </g>
+
+  <!-- Windshield frame (divided windshield) -->
+  <path d="M 135 155 L 155 120 L 215 120 L 215 155" fill="#6dd5ed" stroke="#4a7a99" stroke-width="1.5" opacity="0.7"/>
+  <path d="M 135 155 L 155 120 L 215 120 L 215 155" fill="url(#chromeGradient6)" stroke="none" opacity="0.12"/>
+
+  <!-- Right windshield -->
+  <path d="M 285 155 L 285 120 L 345 120 L 365 155" fill="#6dd5ed" stroke="#4a7a99" stroke-width="1.5" opacity="0.7"/>
+  <path d="M 285 155 L 285 120 L 345 120 L 365 155" fill="url(#chromeGradient6)" stroke="none" opacity="0.12"/>
+
+  <!-- Windshield center bar -->
+  <line x1="250" y1="120" x2="250" y2="155" stroke="#333333" stroke-width="2.5"/>
+  <line x1="250" y1="155" x2="245" y2="155" stroke="#555555" stroke-width="1.5"/>
+
+  <!-- Roll bar (iconic Jeep feature) -->
+  <path d="M 160 135 Q 160 105 250 95 Q 340 105 340 135" fill="none" stroke="#333333" stroke-width="4" stroke-linecap="round"/>
+  <line x1="160" y1="135" x2="160" y2="150" stroke="#333333" stroke-width="3"/>
+  <line x1="340" y1="135" x2="340" y2="150" stroke="#333333" stroke-width="3"/>
+
+  <!-- Iconic 7-bar Jeep grille -->
+  <g id="grille">
+    <!-- Grille background -->
+    <rect x="115" y="185" width="50" height="35" fill="#222222" stroke="#333333" stroke-width="1.5" rx="2"/>
+    <!-- Vertical bars (7 bars) -->
+    <line x1="125" y1="185" x2="125" y2="220" stroke="#555555" stroke-width="1.5" opacity="0.8"/>
+    <line x1="133" y1="185" x2="133" y2="220" stroke="#555555" stroke-width="1.5" opacity="0.8"/>
+    <line x1="141" y1="185" x2="141" y2="220" stroke="#555555" stroke-width="1.5" opacity="0.8"/>
+    <line x1="149" y1="185" x2="149" y2="220" stroke="#555555" stroke-width="1.5" opacity="0.8"/>
+    <line x1="157" y1="185" x2="157" y2="220" stroke="#555555" stroke-width="1.5" opacity="0.8"/>
+    <!-- Horizontal cross bars -->
+    <line x1="120" y1="195" x2="160" y2="195" stroke="#555555" stroke-width="1" opacity="0.6"/>
+    <line x1="120" y1="210" x2="160" y2="210" stroke="#555555" stroke-width="1" opacity="0.6"/>
+  </g>
+
+  <!-- Round headlights (iconic Jeep style) -->
+  <g id="headlights">
+    <!-- Left headlight -->
+    <circle cx="105" cy="180" r="13" fill="#ffeb3b" stroke="#333333" stroke-width="1.5" opacity="0.95"/>
+    <circle cx="105" cy="180" r="11" fill="#fffacd" opacity="0.65"/>
+    <ellipse cx="103" cy="177" rx="4" ry="5" fill="#ffffff" opacity="0.75"/>
+
+    <!-- Right headlight -->
+    <circle cx="395" cy="180" r="13" fill="#ffeb3b" stroke="#333333" stroke-width="1.5" opacity="0.95"/>
+    <circle cx="395" cy="180" r="11" fill="#fffacd" opacity="0.65"/>
+    <ellipse cx="397" cy="177" rx="4" ry="5" fill="#ffffff" opacity="0.75"/>
+  </g>
+
+  <!-- Door seam (Jeep CJ has single door line) -->
+  <line x1="250" y1="155" x2="250" y2="255" stroke="#0d3d20" stroke-width="2.5" opacity="0.6"/>
+
+  <!-- Side mirrors (small classic style) -->
+  <rect x="95" y="185" width="10" height="18" fill="#333333" stroke="#222222" stroke-width="1" rx="1" opacity="0.9"/>
+  <rect x="395" y="185" width="10" height="18" fill="#333333" stroke="#222222" stroke-width="1" rx="1" opacity="0.9"/>
+
+  <!-- Chrome bumper (Jeep lifted look) -->
+  <rect x="90" y="250" width="320" height="12" rx="2" fill="url(#chromeGradient6)" stroke="#555555" stroke-width="1.5"/>
+  <rect x="93" y="253" width="314" height="6" fill="#ffffff" opacity="0.3" rx="1"/>
+
+  <!-- Tow hooks -->
+  <circle cx="115" cy="256" r="3" fill="#888888" stroke="#555555" stroke-width="0.5"/>
+  <circle cx="385" cy="256" r="3" fill="#888888" stroke="#555555" stroke-width="0.5"/>
+
+  <!-- Off-road wheels with chunky tires -->
+  <!-- Front wheel -->
+  <g id="wheelFront">
+    <!-- Tire -->
+    <circle cx="155" cy="280" r="32" fill="url(#wheelGradient6)" stroke="#1a1a1a" stroke-width="1.5"/>
+    <!-- Tire sidewall/tread -->
+    <circle cx="155" cy="280" r="28" fill="none" stroke="#333333" stroke-width="2.5" opacity="0.5"/>
+    <!-- Additional tread rings -->
+    <circle cx="155" cy="280" r="24" fill="none" stroke="#444444" stroke-width="1.5" opacity="0.4"/>
+    <!-- Hubcap base -->
+    <circle cx="155" cy="280" r="16" fill="#888888" stroke="#555555" stroke-width="1"/>
+    <!-- Chrome hubcap -->
+    <circle cx="155" cy="280" r="14" fill="url(#chromeGradient6)"/>
+    <!-- Center cap -->
+    <circle cx="155" cy="280" r="8" fill="#0d3d20" stroke="#999999" stroke-width="0.5"/>
+    <!-- Spoke details -->
+    <line x1="155" y1="264" x2="155" y2="296" stroke="#999999" stroke-width="1.5" opacity="0.5"/>
+    <line x1="139" y1="280" x2="171" y2="280" stroke="#999999" stroke-width="1.5" opacity="0.5"/>
+  </g>
+
+  <!-- Rear wheel -->
+  <g id="wheelRear">
+    <!-- Tire -->
+    <circle cx="345" cy="280" r="32" fill="url(#wheelGradient6)" stroke="#1a1a1a" stroke-width="1.5"/>
+    <!-- Tire sidewall/tread -->
+    <circle cx="345" cy="280" r="28" fill="none" stroke="#333333" stroke-width="2.5" opacity="0.5"/>
+    <!-- Additional tread rings -->
+    <circle cx="345" cy="280" r="24" fill="none" stroke="#444444" stroke-width="1.5" opacity="0.4"/>
+    <!-- Hubcap base -->
+    <circle cx="345" cy="280" r="16" fill="#888888" stroke="#555555" stroke-width="1"/>
+    <!-- Chrome hubcap -->
+    <circle cx="345" cy="280" r="14" fill="url(#chromeGradient6)"/>
+    <!-- Center cap -->
+    <circle cx="345" cy="280" r="8" fill="#0d3d20" stroke="#999999" stroke-width="0.5"/>
+    <!-- Spoke details -->
+    <line x1="345" y1="264" x2="345" y2="296" stroke="#999999" stroke-width="1.5" opacity="0.5"/>
+    <line x1="329" y1="280" x2="361" y2="280" stroke="#999999" stroke-width="1.5" opacity="0.5"/>
+  </g>
+
+  <!-- License plate -->
+  <rect x="180" y="290" width="140" height="26" rx="2" fill="#f5f5f5" stroke="#333333" stroke-width="1.5"/>
+  <text x="250" y="312" font-size="14" font-weight="bold" text-anchor="middle" fill="#333333" font-family="monospace">JEEP CJ7</text>
+
+  <!-- Title -->
+  <text x="250" y="315" font-size="18" font-weight="bold" text-anchor="middle" fill="#333333">1985 Jeep CJ-7</text>
+  <text x="250" y="335" font-size="11" text-anchor="middle" fill="#666666">Lifted 4WD • Forest Green • Fully Restored</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Bottle background gradient -->
+  <defs>
+    <linearGradient id="bottleGradient" x1="0%" y1="0%" x2="100%">
+      <stop offset="0%" style="stop-color:#2d5016;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3d6b1f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a3d0f;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="oilGradient" x1="0%" y1="0%" x2="100%">
+      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#c9965f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b8824a;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="highlight" cx="35%" cy="35%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Shadow -->
+  <ellipse cx="100" cy="280" rx="70" ry="12" fill="#00000020"/>
+
+  <!-- Main bottle body -->
+  <path d="M 70 50 L 65 120 Q 60 150 70 180 L 70 250 Q 70 260 80 260 L 120 260 Q 130 260 130 250 L 130 180 Q 140 150 135 120 L 130 50 Z" fill="url(#bottleGradient)" stroke="#1a3d0f" stroke-width="1.5"/>
+
+  <!-- Oil inside bottle -->
+  <path d="M 72 140 L 68 160 Q 67 180 72 200 L 128 200 Q 133 180 132 160 L 128 140 Z" fill="url(#oilGradient)" opacity="0.85"/>
+
+  <!-- Bottle highlight -->
+  <ellipse cx="80" cy="90" rx="12" ry="35" fill="url(#highlight)" opacity="0.7"/>
+
+  <!-- Neck -->
+  <rect x="85" y="35" width="30" height="18" fill="url(#bottleGradient)" stroke="#1a3d0f" stroke-width="1"/>
+
+  <!-- Cork/Cap -->
+  <rect x="80" y="25" width="40" height="12" fill="#c9a876" stroke="#8b7355" stroke-width="1"/>
+  <ellipse cx="100" cy="25" rx="20" ry="3" fill="#d4b896"/>
+  <ellipse cx="100" cy="37" rx="20" ry="4" fill="#8b7355" opacity="0.3"/>
+
+  <!-- Label background -->
+  <rect x="72" y="140" width="56" height="70" fill="#f5e6d3" stroke="#8b6914" stroke-width="1.5" opacity="0.95"/>
+
+  <!-- Label text -->
+  <text x="100" y="158" font-family="serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1a3d0f">OLIVE</text>
+  <text x="100" y="173" font-family="serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#1a3d0f">OIL</text>
+  <text x="100" y="185" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#8b6914">Extra Virgin</text>
+  <text x="100" y="197" font-family="sans-serif" font-size="7" text-anchor="middle" fill="#666">750ml</text>
+
+  <!-- Glass shine/refraction effect -->
+  <path d="M 75 60 Q 77 90 76 110" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.4"/>
+  <path d="M 125 70 Q 123 100 124 120" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.3"/>
+</svg>

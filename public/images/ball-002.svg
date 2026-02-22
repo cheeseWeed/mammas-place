@@ -1,0 +1,91 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <radialGradient id="ballGradient002" cx="32%" cy="32%">
+      <stop offset="0%" style="stop-color:#fefefe;stop-opacity:1" />
+      <stop offset="45%" style="stop-color:#f4f4f4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d8d8d8;stop-opacity:1" />
+    </radialGradient>
+    <radialGradient id="shadowGradient002" cx="50%" cy="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:0.25" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Studio background -->
+  <rect width="400" height="400" fill="#fafbfc"/>
+
+  <!-- Shadow under ball -->
+  <ellipse cx="200" cy="365" rx="95" ry="18" fill="url(#shadowGradient002)"/>
+
+  <!-- Main ball sphere -->
+  <circle cx="200" cy="200" r="140" fill="url(#ballGradient002)" stroke="#bfbfbf" stroke-width="0.8"/>
+
+  <!-- Soccer ball pattern - Pentagon and hexagon configuration -->
+  <!-- Black pentagon panels -->
+  <g fill="#0d0d0d" stroke="none">
+    <!-- Center top pentagon -->
+    <polygon points="200,75 235,110 220,155 180,155 165,110"/>
+
+    <!-- Left pentagon -->
+    <polygon points="100,210 85,165 110,135 140,145 135,190"/>
+
+    <!-- Right pentagon -->
+    <polygon points="300,210 315,165 290,135 260,145 265,190"/>
+
+    <!-- Bottom left pentagon -->
+    <polygon points="140,310 125,265 150,245 180,270 175,305"/>
+
+    <!-- Bottom right pentagon -->
+    <polygon points="260,310 275,265 250,245 220,270 225,305"/>
+  </g>
+
+  <!-- White hexagon borders -->
+  <g stroke="#0d0d0d" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Upper left hex -->
+    <polygon points="135,125 155,110 180,118 185,145 170,160 150,152"/>
+
+    <!-- Upper right hex -->
+    <polygon points="265,125 245,110 220,118 215,145 230,160 250,152"/>
+
+    <!-- Middle left hex -->
+    <polygon points="90,190 110,175 135,180 145,210 130,225 110,220"/>
+
+    <!-- Middle right hex -->
+    <polygon points="310,190 290,175 265,180 255,210 270,225 290,220"/>
+
+    <!-- Center hexagon -->
+    <polygon points="200,150 225,135 245,150 240,180 215,195 190,180"/>
+
+    <!-- Lower left hex -->
+    <polygon points="155,270 175,255 195,265 190,295 170,305 150,295"/>
+
+    <!-- Lower right hex -->
+    <polygon points="245,270 225,255 205,265 210,295 230,305 250,295"/>
+
+    <!-- Bottom hex -->
+    <polygon points="200,305 220,295 235,310 225,335 205,345 185,330"/>
+  </g>
+
+  <!-- 3D panel grooves for depth -->
+  <g stroke="#e8e8e8" stroke-width="1.5" fill="none" opacity="0.7" stroke-linecap="round">
+    <path d="M 200 75 Q 200 140 200 200"/>
+    <path d="M 140 145 Q 170 170 200 200"/>
+    <path d="M 260 145 Q 230 170 200 200"/>
+    <path d="M 110 190 Q 155 195 200 200"/>
+    <path d="M 290 190 Q 245 195 200 200"/>
+  </g>
+
+  <!-- Primary highlight gloss -->
+  <ellipse cx="165" cy="105" rx="38" ry="32" fill="#ffffff" opacity="0.38" />
+
+  <!-- Secondary light reflection -->
+  <ellipse cx="260" cy="145" rx="28" ry="22" fill="#ffffff" opacity="0.22" />
+
+  <!-- Tertiary micro shine -->
+  <circle cx="155" cy="95" r="7" fill="#ffffff" opacity="0.5"/>
+  <circle cx="280" cy="125" r="5" fill="#ffffff" opacity="0.35"/>
+
+  <!-- Realistic edge detail at bottom -->
+  <ellipse cx="200" cy="335" rx="20" ry="8" fill="#e0e0e0" opacity="0.3"/>
+</svg>

@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <!-- Cast iron kettlebell body gradient -->
+    <radialGradient id="iron-body" cx="35%" cy="30%">
+      <stop offset="0%" style="stop-color:#4a4a4a"/>
+      <stop offset="30%" style="stop-color:#333333"/>
+      <stop offset="60%" style="stop-color:#1f1f1f"/>
+      <stop offset="100%" style="stop-color:#0f0f0f"/>
+    </radialGradient>
+    <!-- Handle gradient -->
+    <linearGradient id="iron-handle" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#525252"/>
+      <stop offset="30%" style="stop-color:#3a3a3a"/>
+      <stop offset="70%" style="stop-color:#262626"/>
+      <stop offset="100%" style="stop-color:#404040"/>
+    </linearGradient>
+    <!-- Powder coat finish texture -->
+    <pattern id="powder-coat" patternUnits="userSpaceOnUse" width="4" height="4">
+      <circle cx="2" cy="2" r="0.5" fill="#000" opacity="0.08"/>
+    </pattern>
+    <!-- Drop shadow -->
+    <filter id="kettle-shadow" x="-20%" y="-10%" width="140%" height="150%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="4" dy="12" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.45"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Specular highlight -->
+    <radialGradient id="kettle-spec" cx="30%" cy="25%">
+      <stop offset="0%" style="stop-color:#fff;stop-opacity:0.35"/>
+      <stop offset="50%" style="stop-color:#fff;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#fff;stop-opacity:0"/>
+    </radialGradient>
+    <!-- Ground shadow -->
+    <radialGradient id="floor-shadow" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#000;stop-opacity:0.4"/>
+      <stop offset="70%" style="stop-color:#000;stop-opacity:0.1"/>
+      <stop offset="100%" style="stop-color:#000;stop-opacity:0"/>
+    </radialGradient>
+    <!-- Weight ring color -->
+    <linearGradient id="weight-ring" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="50%" style="stop-color:#16a34a"/>
+      <stop offset="100%" style="stop-color:#15803d"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Studio background -->
+  <rect width="400" height="400" fill="#f7f7f7"/>
+
+  <!-- Ground shadow -->
+  <ellipse cx="200" cy="355" rx="85" ry="20" fill="url(#floor-shadow)"/>
+
+  <!-- Kettlebell handle (curved top) -->
+  <g filter="url(#kettle-shadow)">
+    <path d="M 125 85 Q 125 50 200 50 Q 275 50 275 85" stroke="url(#iron-handle)" stroke-width="22" fill="none" stroke-linecap="round"/>
+    <!-- Handle highlight -->
+    <path d="M 127 82 Q 127 52 200 52 Q 273 52 273 82" stroke="#666" stroke-width="4" fill="none" opacity="0.3" stroke-linecap="round"/>
+    <!-- Handle shadow inside -->
+    <path d="M 130 88 Q 130 58 200 58 Q 270 58 270 88" stroke="#1a1a1a" stroke-width="3" fill="none" opacity="0.4" stroke-linecap="round"/>
+  </g>
+
+  <!-- Knurled grip texture on handle -->
+  <g stroke="#555" stroke-width="1" opacity="0.5">
+    <line x1="140" y1="55" x2="140" y2="80"/>
+    <line x1="155" y1="52" x2="155" y2="82"/>
+    <line x1="170" y1="50" x2="170" y2="83"/>
+    <line x1="185" y1="49" x2="185" y2="84"/>
+    <line x1="200" y1="48" x2="200" y2="84"/>
+    <line x1="215" y1="49" x2="215" y2="84"/>
+    <line x1="230" y1="50" x2="230" y2="83"/>
+    <line x1="245" y1="52" x2="245" y2="82"/>
+    <line x1="260" y1="55" x2="260" y2="80"/>
+  </g>
+
+  <!-- Main kettlebell body (bell) -->
+  <g filter="url(#kettle-shadow)">
+    <!-- Main sphere body -->
+    <ellipse cx="200" cy="220" rx="95" ry="105" fill="url(#iron-body)"/>
+    <!-- Powder coat texture -->
+    <ellipse cx="200" cy="220" rx="95" ry="105" fill="url(#powder-coat)"/>
+
+    <!-- Flat bottom for stability -->
+    <path d="M 115 295 Q 115 320 200 320 Q 285 320 285 295" fill="#1a1a1a"/>
+  </g>
+
+  <!-- Weight color coding ring (green = 20lb) -->
+  <ellipse cx="200" cy="220" rx="70" ry="78" fill="none" stroke="url(#weight-ring)" stroke-width="5"/>
+
+  <!-- Weight marking center -->
+  <circle cx="200" cy="220" r="50" fill="#1f1f1f"/>
+  <circle cx="200" cy="220" r="45" fill="#262626"/>
+
+  <!-- Weight number -->
+  <text x="200" y="210" font-size="42" font-weight="bold" fill="#fff" text-anchor="middle" font-family="Arial, sans-serif">20</text>
+  <text x="200" y="240" font-size="18" fill="#a3a3a3" text-anchor="middle" font-family="Arial, sans-serif">LB</text>
+
+  <!-- Specular highlight on body -->
+  <ellipse cx="150" cy="170" rx="45" ry="55" fill="url(#kettle-spec)"/>
+
+  <!-- Rim light on right side -->
+  <ellipse cx="275" cy="240" rx="20" ry="50" fill="#fff" opacity="0.08"/>
+
+  <!-- Handle connection points -->
+  <ellipse cx="135" cy="115" rx="15" ry="12" fill="url(#iron-body)"/>
+  <ellipse cx="265" cy="115" rx="15" ry="12" fill="url(#iron-body)"/>
+
+  <!-- Cast iron seam line -->
+  <line x1="200" y1="115" x2="200" y2="320" stroke="#1a1a1a" stroke-width="1" opacity="0.3"/>
+</svg>

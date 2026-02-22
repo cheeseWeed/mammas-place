@@ -1,0 +1,120 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Elegant light background -->
+  <defs>
+    <linearGradient id="bgGrad6" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fffbf7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fef8f3;stop-opacity:1" />
+    </linearGradient>
+    <filter id="delicateShadow">
+      <feDropShadow dx="0" dy="2.5" stdDeviation="2" flood-opacity="0.09"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bgGrad6)"/>
+
+  <!-- Fine china plate with subtle rose tint -->
+  <circle cx="200" cy="270" r="135" fill="#f0e8e0" stroke="#d9c9bc" stroke-width="0.7"/>
+  <circle cx="200" cy="270" r="132" fill="#f9f4f0"/>
+
+  <!-- Plate delicate rim -->
+  <circle cx="200" cy="270" r="131" fill="none" stroke="#e8ddd5" stroke-width="0.4" opacity="0.5"/>
+
+  <!-- Raspberry Panna Cotta -->
+  <!-- Glass or translucent container suggestion (subtle) -->
+  <ellipse cx="200" cy="240" rx="75" ry="70" fill="#fff" opacity="0.02" stroke="#e8d5d5" stroke-width="0.5" opacity="0.1"/>
+
+  <!-- Panna Cotta base (creamy vanilla) -->
+  <ellipse cx="200" cy="200" rx="72" ry="60" fill="#f9f1e8"/>
+  <ellipse cx="200" cy="198" rx="70" ry="57" fill="#fef8f4"/>
+
+  <!-- Panna cotta smooth sheen -->
+  <ellipse cx="200" cy="185" rx="55" ry="35" fill="#fff" opacity="0.18"/>
+
+  <!-- Raspberry coulis/sauce layer on top -->
+  <ellipse cx="200" cy="155" rx="70" ry="22" fill="#a84668" opacity="0.9"/>
+  <ellipse cx="200" cy="153" rx="68" ry="20" fill="#c85880"/>
+
+  <!-- Coulis shine -->
+  <ellipse cx="200" cy="148" rx="50" ry="14" fill="#e8a0b8" opacity="0.3"/>
+
+  <!-- Fresh raspberries on coulis -->
+  <!-- Raspberry 1 (left-center) -->
+  <ellipse cx="160" cy="150" rx="9" ry="11" fill="#a84668"/>
+  <ellipse cx="160" cy="148" rx="8" ry="10" fill="#c85880"/>
+  <!-- Raspberry segments/drupelets -->
+  <circle cx="155" cy="145" r="2" fill="#d96a8a" opacity="0.7"/>
+  <circle cx="160" cy="143" r="2" fill="#d96a8a" opacity="0.7"/>
+  <circle cx="165" cy="145" r="2" fill="#d96a8a" opacity="0.7"/>
+  <circle cx="158" cy="150" r="1.5" fill="#d96a8a" opacity="0.6"/>
+  <circle cx="162" cy="151" r="1.5" fill="#d96a8a" opacity="0.6"/>
+
+  <!-- Raspberry 2 (center-top) -->
+  <ellipse cx="200" cy="142" rx="10" ry="12" fill="#a84668"/>
+  <ellipse cx="200" cy="140" rx="9" ry="11" fill="#c85880"/>
+  <circle cx="194" cy="137" r="2" fill="#d96a8a" opacity="0.7"/>
+  <circle cx="200" cy="135" r="2.2" fill="#d96a8a" opacity="0.7"/>
+  <circle cx="206" cy="137" r="2" fill="#d96a8a" opacity="0.7"/>
+  <circle cx="197" cy="143" r="1.5" fill="#d96a8a" opacity="0.6"/>
+  <circle cx="203" cy="142" r="1.5" fill="#d96a8a" opacity="0.6"/>
+
+  <!-- Raspberry 3 (right-center) -->
+  <ellipse cx="240" cy="150" rx="9" ry="11" fill="#a84668"/>
+  <ellipse cx="240" cy="148" rx="8" ry="10" fill="#c85880"/>
+  <circle cx="235" cy="145" r="2" fill="#d96a8a" opacity="0.7"/>
+  <circle cx="240" cy="143" r="2" fill="#d96a8a" opacity="0.7"/>
+  <circle cx="245" cy="145" r="2" fill="#d96a8a" opacity="0.7"/>
+  <circle cx="238" cy="150" r="1.5" fill="#d96a8a" opacity="0.6"/>
+  <circle cx="242" cy="151" r="1.5" fill="#d96a8a" opacity="0.6"/>
+
+  <!-- Raspberry 4 (left edge) -->
+  <ellipse cx="145" cy="160" rx="8" ry="10" fill="#a84668"/>
+  <ellipse cx="145" cy="158" rx="7" ry="9" fill="#c85880"/>
+  <circle cx="140" cy="156" r="1.5" fill="#d96a8a" opacity="0.6"/>
+  <circle cx="145" cy="155" r="1.5" fill="#d96a8a" opacity="0.6"/>
+  <circle cx="150" cy="157" r="1.5" fill="#d96a8a" opacity="0.6"/>
+
+  <!-- Raspberry 5 (right edge) -->
+  <ellipse cx="255" cy="160" rx="8" ry="10" fill="#a84668"/>
+  <ellipse cx="255" cy="158" rx="7" ry="9" fill="#c85880"/>
+  <circle cx="250" cy="156" r="1.5" fill="#d96a8a" opacity="0.6"/>
+  <circle cx="255" cy="155" r="1.5" fill="#d96a8a" opacity="0.6"/>
+  <circle cx="260" cy="157" r="1.5" fill="#d96a8a" opacity="0.6"/>
+
+  <!-- Raspberry leaf garnish -->
+  <g opacity="0.6">
+    <ellipse cx="175" cy="135" rx="8" ry="6" fill="#2d7a4a" transform="rotate(-30 175 135)"/>
+    <path d="M 175 135 L 180 132 L 175 138" stroke="#1a4a2a" stroke-width="0.3" fill="none"/>
+  </g>
+
+  <g opacity="0.6">
+    <ellipse cx="225" cy="136" rx="8" ry="6" fill="#2d7a4a" transform="rotate(30 225 136)"/>
+    <path d="M 225 136 L 220 133 L 225 139" stroke="#1a4a2a" stroke-width="0.3" fill="none"/>
+  </g>
+
+  <!-- Mint leaf accent (optional) -->
+  <ellipse cx="200" cy="128" rx="7" ry="5" fill="#3d8a5a" opacity="0.7" transform="rotate(45 200 128)"/>
+
+  <!-- Coulis drip on panna cotta side -->
+  <path d="M 192 165 Q 190 180 192 195" stroke="#c85880" stroke-width="1.5" opacity="0.4" fill="none"/>
+  <path d="M 208 165 Q 210 180 208 195" stroke="#c85880" stroke-width="1.5" opacity="0.4" fill="none"/>
+
+  <!-- Delicate spoon on right -->
+  <g opacity="0.13" filter="url(#delicateShadow)">
+    <line x1="310" y1="190" x2="325" y2="290" stroke="#c0b0a0" stroke-width="2" stroke-linecap="round"/>
+    <ellipse cx="327" cy="295" rx="5.5" ry="7.5" fill="#c0b0a0"/>
+  </g>
+
+  <!-- Plate surface glow -->
+  <circle cx="200" cy="270" r="132" fill="none" stroke="#fff" stroke-width="1" opacity="0.15"/>
+
+  <!-- Soft plate shadow -->
+  <ellipse cx="200" cy="355" rx="138" ry="26" fill="rgba(0,0,0,0.05)"/>
+
+  <!-- Subtle panna cotta surface details -->
+  <circle cx="130" cy="200" r="1" fill="#fff" opacity="0.1"/>
+  <circle cx="270" cy="210" r="0.8" fill="#fff" opacity="0.08"/>
+
+  <!-- Berry juice stain realism -->
+  <circle cx="165" cy="220" r="1.5" fill="#d96a8a" opacity="0.15"/>
+  <circle cx="235" cy="225" r="1.2" fill="#d96a8a" opacity="0.12"/>
+</svg>

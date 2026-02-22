@@ -1,0 +1,86 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bg-007" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fafafa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8e8e8;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="metal-007" cx="40%" cy="30%">
+      <stop offset="0%" style="stop-color:#4a4a4a;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#2a2a2a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+    </radialGradient>
+    <filter id="fire-glow-007">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bg-007)"/>
+
+  <!-- Shadow -->
+  <ellipse cx="200" cy="330" rx="120" ry="30" fill="#000" opacity="0.1"/>
+
+  <!-- Fire pit bowl - outer ring -->
+  <circle cx="200" cy="240" r="100" fill="url(#metal-007)" stroke="#0a0a0a" stroke-width="2"/>
+
+  <!-- Fire pit rim -->
+  <circle cx="200" cy="240" r="95" fill="#3a3a3a" stroke="#1a1a1a" stroke-width="1"/>
+
+  <!-- Top rim highlight -->
+  <ellipse cx="200" cy="240" rx="95" ry="20" fill="#5a5a5a" opacity="0.5"/>
+
+  <!-- Inner fire bowl -->
+  <circle cx="200" cy="240" r="75" fill="#1a1a1a" stroke="#0a0a0a" stroke-width="1"/>
+
+  <!-- Fire glow effect -->
+  <circle cx="200" cy="240" r="70" fill="#ff6b35" opacity="0.3" filter="url(#fire-glow-007)"/>
+  <circle cx="200" cy="240" r="65" fill="#ffa500" opacity="0.25" filter="url(#fire-glow-007)"/>
+
+  <!-- Flames -->
+  <g filter="url(#fire-glow-007)">
+    <!-- Left flame -->
+    <path d="M 150 200 Q 140 160 145 120 Q 155 145 160 180 Q 165 200 170 220" fill="#ff4500" opacity="0.8"/>
+    <path d="M 155 200 Q 148 165 150 125 Q 158 155 160 195" fill="#ffa500" opacity="0.6"/>
+
+    <!-- Center flame -->
+    <path d="M 200 200 Q 190 140 200 80 Q 210 140 210 200" fill="#ff6347" opacity="0.85"/>
+    <path d="M 200 200 Q 195 155 200 110 Q 205 155 205 200" fill="#ffaa00" opacity="0.65"/>
+
+    <!-- Right flame -->
+    <path d="M 250 200 Q 260 160 255 120 Q 245 145 240 180 Q 235 200 230 220" fill="#ff4500" opacity="0.8"/>
+    <path d="M 245 200 Q 252 165 250 125 Q 242 155 240 195" fill="#ffa500" opacity="0.6"/>
+  </g>
+
+  <!-- Wood logs inside -->
+  <g fill="#3d2817" opacity="0.7">
+    <rect x="160" y="235" width="80" height="8" rx="4" transform="rotate(-25 200 240)"/>
+    <rect x="160" y="235" width="80" height="8" rx="4" transform="rotate(25 200 240)"/>
+  </g>
+
+  <!-- Legs/support structure -->
+  <g stroke="#2a2a2a" stroke-width="3" fill="none" stroke-linecap="round">
+    <line x1="140" y1="320" x2="140" y2="340"/>
+    <line x1="200" y1="325" x2="200" y2="345"/>
+    <line x1="260" y1="320" x2="260" y2="340"/>
+  </g>
+
+  <!-- Metal feet/base -->
+  <g fill="#3a3a3a" stroke="#1a1a1a" stroke-width="1">
+    <ellipse cx="140" cy="340" rx="8" ry="5"/>
+    <ellipse cx="200" cy="345" rx="8" ry="5"/>
+    <ellipse cx="260" cy="340" rx="8" ry="5"/>
+  </g>
+
+  <!-- Metal frame details -->
+  <g stroke="#4a4a4a" stroke-width="1.5" fill="none" opacity="0.6">
+    <path d="M 140 240 Q 160 280 140 330"/>
+    <path d="M 260 240 Q 240 280 260 330"/>
+  </g>
+
+  <!-- Spark highlights -->
+  <g fill="#ffff00" opacity="0.6" filter="url(#fire-glow-007)">
+    <circle cx="130" cy="150" r="1.5"/>
+    <circle cx="270" cy="160" r="1.5"/>
+    <circle cx="200" cy="120" r="2"/>
+  </g>
+</svg>

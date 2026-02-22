@@ -1,0 +1,176 @@
+<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Box front gradient -->
+    <linearGradient id="boxFront" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FBBF24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F59E0B;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Box side gradient -->
+    <linearGradient id="boxSide" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#D97706;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B45309;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Box top gradient -->
+    <linearGradient id="boxTop" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#FBBF24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FCD34D;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Honey drip gradient -->
+    <linearGradient id="honeyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#DAA520;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B8860B;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Cereal piece gradient -->
+    <radialGradient id="cerealGradient" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#F5DEB3;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#DEB887;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D2B48C;stop-opacity:1" />
+    </radialGradient>
+
+    <!-- Bowl gradient -->
+    <linearGradient id="bowlGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#F5F5F5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E5E5E5;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Milk gradient -->
+    <radialGradient id="milkGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F0F0F0;stop-opacity:1" />
+    </radialGradient>
+
+    <!-- Shadow filter -->
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="10" dy="15" stdDeviation="12" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+
+    <!-- Glossy overlay -->
+    <linearGradient id="glossy" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.4" />
+      <stop offset="30%" style="stop-color:#ffffff;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </linearGradient>
+
+    <!-- Brown accent -->
+    <linearGradient id="brownAccent" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#654321;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="500" fill="#f5f0e8"/>
+
+  <!-- Shadow beneath box -->
+  <ellipse cx="200" cy="470" rx="140" ry="20" fill="#000000" opacity="0.2"/>
+
+  <!-- Box group with shadow -->
+  <g filter="url(#dropShadow)">
+    <!-- Box side (3D effect) -->
+    <polygon points="300,55 345,35 345,440 300,460" fill="url(#boxSide)"/>
+
+    <!-- Box top (3D effect) -->
+    <polygon points="75,55 300,55 345,35 120,35" fill="url(#boxTop)"/>
+
+    <!-- Box front -->
+    <rect x="75" y="55" width="225" height="405" fill="url(#boxFront)"/>
+
+    <!-- Front highlight strip -->
+    <rect x="75" y="55" width="35" height="405" fill="#ffffff" opacity="0.08"/>
+  </g>
+
+  <!-- Brown header banner -->
+  <rect x="75" y="55" width="225" height="70" fill="url(#brownAccent)"/>
+  <polygon points="300,55 345,35 345,105 300,125" fill="#654321"/>
+
+  <!-- Brand text -->
+  <text x="187" y="85" font-family="Impact, sans-serif" font-size="28" text-anchor="middle" fill="#FFD700" letter-spacing="2">
+    HONEY OAT
+  </text>
+  <text x="187" y="115" font-family="Arial Black, sans-serif" font-size="20" text-anchor="middle" fill="#FFFFFF">
+    CEREAL
+  </text>
+
+  <!-- Honey drip decoration -->
+  <path d="M85,125 Q90,135 88,145 Q85,155 90,165" stroke="url(#honeyGradient)" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <circle cx="90" cy="170" r="8" fill="#DAA520"/>
+
+  <path d="M290,125 Q295,140 292,155 Q288,170 295,185" stroke="url(#honeyGradient)" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <circle cx="295" cy="190" r="7" fill="#DAA520"/>
+
+  <!-- Bowl illustration area -->
+  <ellipse cx="187" cy="290" rx="100" ry="85" fill="#FFF8E7" stroke="#D2B48C" stroke-width="3"/>
+
+  <!-- Bowl with cereal -->
+  <g transform="translate(187, 300)">
+    <!-- Bowl shape -->
+    <path d="M-80,20 Q-80,60 0,70 Q80,60 80,20 Q80,0 0,-5 Q-80,0 -80,20 Z" fill="url(#bowlGradient)" stroke="#CCCCCC" stroke-width="2"/>
+
+    <!-- Milk surface -->
+    <ellipse cx="0" cy="10" rx="72" ry="25" fill="url(#milkGradient)"/>
+
+    <!-- Cereal pieces floating -->
+    <ellipse cx="-50" cy="0" rx="14" ry="12" fill="url(#cerealGradient)"/>
+    <ellipse cx="-50" cy="0" rx="6" ry="5" fill="#D97706" opacity="0.3"/>
+
+    <ellipse cx="-25" cy="-15" rx="13" ry="11" fill="url(#cerealGradient)"/>
+    <ellipse cx="-25" cy="-15" rx="5" ry="4" fill="#D97706" opacity="0.3"/>
+
+    <ellipse cx="0" cy="5" rx="15" ry="13" fill="url(#cerealGradient)"/>
+    <ellipse cx="0" cy="5" rx="6" ry="5" fill="#D97706" opacity="0.3"/>
+
+    <ellipse cx="25" cy="-10" rx="14" ry="12" fill="url(#cerealGradient)"/>
+    <ellipse cx="25" cy="-10" rx="5" ry="4" fill="#D97706" opacity="0.3"/>
+
+    <ellipse cx="50" cy="5" rx="13" ry="11" fill="url(#cerealGradient)"/>
+    <ellipse cx="50" cy="5" rx="5" ry="4" fill="#D97706" opacity="0.3"/>
+
+    <ellipse cx="-35" cy="18" rx="12" ry="10" fill="url(#cerealGradient)"/>
+    <ellipse cx="35" cy="20" rx="11" ry="9" fill="url(#cerealGradient)"/>
+
+    <!-- Back row cereal -->
+    <ellipse cx="-40" cy="-25" rx="12" ry="10" fill="url(#cerealGradient)"/>
+    <ellipse cx="-10" cy="-28" rx="11" ry="9" fill="url(#cerealGradient)"/>
+    <ellipse cx="15" cy="-25" rx="13" ry="11" fill="url(#cerealGradient)"/>
+    <ellipse cx="45" cy="-22" rx="12" ry="10" fill="url(#cerealGradient)"/>
+
+    <!-- Milk splash highlights -->
+    <ellipse cx="-30" cy="8" rx="8" ry="3" fill="#ffffff" opacity="0.6"/>
+    <ellipse cx="20" cy="12" rx="6" ry="2" fill="#ffffff" opacity="0.5"/>
+  </g>
+
+  <!-- Health claims banner -->
+  <rect x="90" y="390" width="195" height="55" fill="url(#brownAccent)" rx="6"/>
+
+  <!-- Nutrition text -->
+  <text x="187" y="412" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#FFD700">
+    WHOLE GRAIN OATS
+  </text>
+  <text x="187" y="432" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#FFFFFF">
+    Heart Healthy - High Fiber - 8g Protein
+  </text>
+
+  <!-- Weight on box -->
+  <ellipse cx="290" cy="420" rx="30" ry="15" fill="#FFD700"/>
+  <text x="290" y="425" font-family="Arial Black, sans-serif" font-size="12" text-anchor="middle" fill="#654321">
+    18 OZ
+  </text>
+
+  <!-- Quality seal -->
+  <g transform="translate(320, 80)">
+    <circle r="25" fill="#228B22"/>
+    <circle r="21" fill="#006400"/>
+    <text y="-3" font-family="Arial, sans-serif" font-size="7" font-weight="bold" text-anchor="middle" fill="#90EE90">100%</text>
+    <text y="7" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#FFFFFF">NATURAL</text>
+  </g>
+
+  <!-- Glossy overlay on front -->
+  <rect x="75" y="55" width="225" height="200" fill="url(#glossy)" opacity="0.4"/>
+</svg>

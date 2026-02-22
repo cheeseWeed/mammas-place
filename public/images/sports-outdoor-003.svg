@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <!-- Inflatable kayak - bright orange for visibility -->
+    <linearGradient id="kayak-body" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fb923c"/>
+      <stop offset="40%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+    <!-- Kayak bottom/underside -->
+    <linearGradient id="kayak-bottom" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ea580c"/>
+      <stop offset="100%" style="stop-color:#c2410c"/>
+    </linearGradient>
+    <!-- Air chamber highlight -->
+    <radialGradient id="air-chamber" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#fdba74"/>
+      <stop offset="50%" style="stop-color:#fb923c"/>
+      <stop offset="100%" style="stop-color:#f97316"/>
+    </radialGradient>
+    <!-- Water background -->
+    <linearGradient id="water-bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c4a6e"/>
+      <stop offset="100%" style="stop-color:#164e63"/>
+    </linearGradient>
+    <!-- Paddle gradient -->
+    <linearGradient id="paddle-blade" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#171717"/>
+      <stop offset="50%" style="stop-color:#262626"/>
+      <stop offset="100%" style="stop-color:#171717"/>
+    </linearGradient>
+    <!-- Drop shadow -->
+    <filter id="kayak-shadow" x="-15%" y="-10%" width="130%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="2" dy="5" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.35"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Seat fabric -->
+    <linearGradient id="seat-fabric" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#404040"/>
+      <stop offset="100%" style="stop-color:#262626"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Water background -->
+  <rect width="400" height="400" fill="url(#water-bg)"/>
+
+  <!-- Water ripples -->
+  <g stroke="#22d3ee" stroke-width="1" fill="none" opacity="0.2">
+    <ellipse cx="200" cy="320" rx="160" ry="40"/>
+    <ellipse cx="200" cy="340" rx="180" ry="45"/>
+    <ellipse cx="200" cy="280" rx="140" ry="35"/>
+  </g>
+
+  <!-- Kayak main body - inflatable tube design -->
+  <g filter="url(#kayak-shadow)">
+    <!-- Outer tube (pontoon style) - left -->
+    <path d="M 50 200
+             Q 40 200 35 210
+             Q 30 220 35 230
+             Q 40 250 80 280
+             Q 120 300 200 300
+             Q 200 270 200 200
+             Q 120 200 50 200"
+          fill="url(#kayak-body)"/>
+    <!-- Outer tube - right -->
+    <path d="M 350 200
+             Q 360 200 365 210
+             Q 370 220 365 230
+             Q 360 250 320 280
+             Q 280 300 200 300
+             Q 200 270 200 200
+             Q 280 200 350 200"
+          fill="url(#kayak-body)"/>
+
+    <!-- Bow (front) - pointed inflatable -->
+    <path d="M 50 200 Q 30 180 50 160 Q 80 130 120 120 Q 160 115 200 115 Q 240 115 280 120 Q 320 130 350 160 Q 370 180 350 200"
+          fill="url(#air-chamber)"/>
+
+    <!-- Floor/bottom panel -->
+    <path d="M 80 200 L 320 200 L 300 280 Q 200 290 100 280 Z" fill="url(#kayak-bottom)" opacity="0.7"/>
+  </g>
+
+  <!-- Air chamber seams -->
+  <g stroke="#c2410c" stroke-width="2" fill="none" opacity="0.5">
+    <path d="M 70 170 Q 200 155 330 170"/>
+    <path d="M 55 200 Q 200 185 345 200"/>
+  </g>
+
+  <!-- Seat 1 (front) -->
+  <g filter="url(#kayak-shadow)">
+    <rect x="110" y="190" width="60" height="50" rx="8" fill="url(#seat-fabric)"/>
+    <rect x="115" y="170" width="50" height="25" rx="5" fill="#525252"/>
+  </g>
+
+  <!-- Seat 2 (rear) -->
+  <g filter="url(#kayak-shadow)">
+    <rect x="230" y="200" width="60" height="50" rx="8" fill="url(#seat-fabric)"/>
+    <rect x="235" y="180" width="50" height="25" rx="5" fill="#525252"/>
+  </g>
+
+  <!-- Grab handles -->
+  <g stroke="#1f2937" stroke-width="4" fill="none" stroke-linecap="round">
+    <path d="M 80 140 Q 90 130 100 140"/>
+    <path d="M 300 140 Q 310 130 320 140"/>
+  </g>
+
+  <!-- Paddle (resting across) -->
+  <g filter="url(#kayak-shadow)" transform="rotate(-10 200 100)">
+    <!-- Shaft -->
+    <rect x="60" y="95" width="280" height="10" rx="5" fill="#404040"/>
+    <!-- Left blade -->
+    <ellipse cx="45" cy="100" rx="25" ry="12" fill="url(#paddle-blade)"/>
+    <!-- Right blade -->
+    <ellipse cx="355" cy="100" rx="25" ry="12" fill="url(#paddle-blade)"/>
+    <!-- Grip areas -->
+    <rect x="140" y="93" width="40" height="14" rx="7" fill="#525252"/>
+    <rect x="220" y="93" width="40" height="14" rx="7" fill="#525252"/>
+  </g>
+
+  <!-- Inflation valves -->
+  <circle cx="90" cy="180" r="6" fill="#262626"/>
+  <circle cx="90" cy="180" r="4" fill="#525252"/>
+  <circle cx="310" cy="180" r="6" fill="#262626"/>
+  <circle cx="310" cy="180" r="4" fill="#525252"/>
+
+  <!-- D-rings for tie-downs -->
+  <g fill="#737373">
+    <circle cx="120" cy="150" r="4"/>
+    <circle cx="280" cy="150" r="4"/>
+  </g>
+
+  <!-- Highlights on tubes -->
+  <path d="M 60 180 Q 100 165 150 170" stroke="#fff" stroke-width="6" opacity="0.15" fill="none" stroke-linecap="round"/>
+  <path d="M 340 180 Q 300 165 250 170" stroke="#fff" stroke-width="6" opacity="0.15" fill="none" stroke-linecap="round"/>
+
+  <!-- 2-Person label -->
+  <rect x="160" y="250" width="80" height="22" rx="4" fill="#fff" opacity="0.95"/>
+  <text x="200" y="266" font-size="12" font-weight="bold" fill="#ea580c" text-anchor="middle" font-family="Arial, sans-serif">2-PERSON</text>
+
+  <!-- Water reflection -->
+  <ellipse cx="200" cy="330" rx="100" ry="20" fill="#fff" opacity="0.08"/>
+</svg>

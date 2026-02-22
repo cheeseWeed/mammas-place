@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <!-- Sleeping bag outer shell - cold weather blue -->
+    <linearGradient id="bag-shell" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="40%" style="stop-color:#2563eb"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    <!-- Inner lining gradient -->
+    <linearGradient id="bag-lining" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#93c5fd"/>
+      <stop offset="100%" style="stop-color:#60a5fa"/>
+    </linearGradient>
+    <!-- Hood/pillow section -->
+    <radialGradient id="hood-fill" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#60a5fa"/>
+      <stop offset="70%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#2563eb"/>
+    </radialGradient>
+    <!-- Insulation baffle pattern -->
+    <pattern id="baffle-pattern" patternUnits="userSpaceOnUse" width="20" height="30">
+      <path d="M 0 15 Q 10 5 20 15" fill="none" stroke="#1e40af" stroke-width="1" opacity="0.3"/>
+    </pattern>
+    <!-- Drop shadow -->
+    <filter id="bag-shadow" x="-15%" y="-10%" width="130%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
+      <feOffset dx="3" dy="8" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.35"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Ground shadow -->
+    <radialGradient id="floor-shadow" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#000;stop-opacity:0.25"/>
+      <stop offset="80%" style="stop-color:#000;stop-opacity:0.05"/>
+      <stop offset="100%" style="stop-color:#000;stop-opacity:0"/>
+    </radialGradient>
+    <!-- Zipper metallic -->
+    <linearGradient id="zipper-metal" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a3a3a3"/>
+      <stop offset="50%" style="stop-color:#d4d4d4"/>
+      <stop offset="100%" style="stop-color:#a3a3a3"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Studio background -->
+  <rect width="400" height="400" fill="#f5f5f5"/>
+
+  <!-- Ground shadow -->
+  <ellipse cx="200" cy="350" rx="150" ry="25" fill="url(#floor-shadow)"/>
+
+  <!-- Main sleeping bag body (mummy style) -->
+  <g filter="url(#bag-shadow)">
+    <!-- Outer shell -->
+    <path d="M 120 80
+             Q 80 100 70 180
+             Q 65 260 80 320
+             Q 100 350 200 355
+             Q 300 350 320 320
+             Q 335 260 330 180
+             Q 320 100 280 80
+             Q 240 60 200 60
+             Q 160 60 120 80"
+          fill="url(#bag-shell)"/>
+    <!-- Baffle quilting pattern -->
+    <path d="M 120 80
+             Q 80 100 70 180
+             Q 65 260 80 320
+             Q 100 350 200 355
+             Q 300 350 320 320
+             Q 335 260 330 180
+             Q 320 100 280 80
+             Q 240 60 200 60
+             Q 160 60 120 80"
+          fill="url(#baffle-pattern)"/>
+  </g>
+
+  <!-- Horizontal baffle seams -->
+  <g stroke="#1e40af" stroke-width="1.5" fill="none" opacity="0.4">
+    <path d="M 85 120 Q 200 110 315 120"/>
+    <path d="M 78 160 Q 200 150 322 160"/>
+    <path d="M 72 200 Q 200 190 328 200"/>
+    <path d="M 70 240 Q 200 230 330 240"/>
+    <path d="M 75 280 Q 200 270 325 280"/>
+    <path d="M 85 320 Q 200 310 315 320"/>
+  </g>
+
+  <!-- Hood/pillow opening -->
+  <g filter="url(#bag-shadow)">
+    <ellipse cx="200" cy="85" rx="70" ry="35" fill="url(#hood-fill)"/>
+    <!-- Inner opening -->
+    <ellipse cx="200" cy="85" rx="50" ry="25" fill="url(#bag-lining)"/>
+    <!-- Cinch cord opening -->
+    <ellipse cx="200" cy="85" rx="30" ry="15" fill="#1e3a8a" opacity="0.7"/>
+  </g>
+
+  <!-- Drawstring toggle -->
+  <circle cx="170" cy="75" r="5" fill="#1f2937"/>
+  <circle cx="230" cy="75" r="5" fill="#1f2937"/>
+  <path d="M 170 75 Q 200 65 230 75" stroke="#1f2937" stroke-width="2" fill="none"/>
+
+  <!-- Main zipper line -->
+  <g>
+    <path d="M 200 100 L 200 350" stroke="#1e40af" stroke-width="4"/>
+    <path d="M 200 100 L 200 350" stroke="url(#zipper-metal)" stroke-width="2"/>
+    <!-- Zipper teeth pattern -->
+    <g stroke="#6b7280" stroke-width="0.5" opacity="0.6">
+      <line x1="198" y1="110" x2="202" y2="110"/>
+      <line x1="198" y1="125" x2="202" y2="125"/>
+      <line x1="198" y1="140" x2="202" y2="140"/>
+      <line x1="198" y1="155" x2="202" y2="155"/>
+      <line x1="198" y1="170" x2="202" y2="170"/>
+      <line x1="198" y1="185" x2="202" y2="185"/>
+      <line x1="198" y1="200" x2="202" y2="200"/>
+    </g>
+    <!-- Zipper pull -->
+    <rect x="195" y="210" width="10" height="18" rx="2" fill="#52525b"/>
+    <rect x="197" y="212" width="6" height="14" rx="1" fill="#737373"/>
+  </g>
+
+  <!-- Insulation loft indicators (puffy effect) -->
+  <g fill="#fff" opacity="0.08">
+    <ellipse cx="130" cy="180" rx="30" ry="25"/>
+    <ellipse cx="270" cy="180" rx="30" ry="25"/>
+    <ellipse cx="120" cy="260" rx="25" ry="20"/>
+    <ellipse cx="280" cy="260" rx="25" ry="20"/>
+  </g>
+
+  <!-- Temperature rating label -->
+  <g>
+    <rect x="280" y="290" width="50" height="28" rx="5" fill="#fff" opacity="0.95"/>
+    <text x="305" y="308" font-size="14" font-weight="bold" fill="#1d4ed8" text-anchor="middle" font-family="Arial, sans-serif">20°F</text>
+    <text x="305" y="316" font-size="6" fill="#6b7280" text-anchor="middle" font-family="Arial, sans-serif">RATED</text>
+  </g>
+
+  <!-- Fabric highlight -->
+  <path d="M 120 80 Q 150 100 130 160" stroke="#fff" stroke-width="8" opacity="0.12" fill="none" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,160 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="salmonShd" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="3" dy="5" stdDeviation="5" flood-opacity="0.45"/>
+    </filter>
+    <filter id="steamSl">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+
+    <!-- Salmon gradient -->
+    <linearGradient id="salmonGd" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fa8072"/>
+      <stop offset="50%" stop-color="#e9967a"/>
+      <stop offset="100%" stop-color="#cd5c5c"/>
+    </linearGradient>
+
+    <!-- Crispy skin gradient -->
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8b6f47"/>
+      <stop offset="100%" stop-color="#6b4f37"/>
+    </linearGradient>
+
+    <!-- Mashed potato gradient -->
+    <radialGradient id="potatoGrad" cx="45%" cy="40%">
+      <stop offset="0%" stop-color="#fffff0"/>
+      <stop offset="100%" stop-color="#f5f5dc"/>
+    </radialGradient>
+
+    <!-- Plate gradient -->
+    <radialGradient id="plateGSl" cx="38%" cy="35%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#f8f8f5"/>
+      <stop offset="100%" stop-color="#e5e2da"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Elegant restaurant background -->
+  <rect width="400" height="400" fill="#1a1a20"/>
+  <!-- Subtle texture -->
+  <line x1="0" y1="50" x2="400" y2="52" stroke="#2a2a30" stroke-width="2.5" opacity="0.4"/>
+  <line x1="0" y1="140" x2="400" y2="138" stroke="#3a3a40" stroke-width="2" opacity="0.3"/>
+  <line x1="0" y1="240" x2="400" y2="242" stroke="#2a2a30" stroke-width="2.5" opacity="0.4"/>
+  <line x1="0" y1="340" x2="400" y2="338" stroke="#3a3a40" stroke-width="2" opacity="0.3"/>
+
+  <!-- Table shadow -->
+  <ellipse cx="200" cy="378" rx="175" ry="28" fill="#101015" opacity="0.7"/>
+
+  <!-- Elegant plate -->
+  <g filter="url(#salmonShd)">
+    <circle cx="200" cy="255" r="160" fill="#d8d5cc"/>
+    <circle cx="200" cy="253" r="155" fill="url(#plateGSl)"/>
+    <circle cx="200" cy="251" r="145" fill="#fefefe"/>
+    <!-- Gold rim -->
+    <circle cx="200" cy="255" r="158" fill="none" stroke="#d4af37" stroke-width="3.5"/>
+    <ellipse cx="155" cy="170" rx="55" ry="25" fill="#ffffff" opacity="0.25"/>
+  </g>
+
+  <!-- Pan-seared salmon fillet -->
+  <g filter="url(#salmonShd)">
+    <!-- Main salmon body -->
+    <rect x="120" y="155" width="160" height="75" rx="8" fill="#cd5c5c"/>
+    <rect x="123" y="158" width="154" height="69" rx="6" fill="url(#salmonGd)"/>
+    <rect x="126" y="161" width="148" height="63" rx="5" fill="#e9967a" opacity="0.6"/>
+
+    <!-- Crispy skin on top -->
+    <rect x="120" y="155" width="160" height="18" rx="4" fill="url(#skinGrad)"/>
+    <rect x="123" y="158" width="154" height="12" rx="3" fill="#a08060" opacity="0.6"/>
+    <!-- Crispy texture -->
+    <line x1="135" y1="163" x2="155" y2="163" stroke="#6b4f37" stroke-width="1.5" opacity="0.4"/>
+    <line x1="170" y1="165" x2="195" y2="165" stroke="#6b4f37" stroke-width="1.5" opacity="0.4"/>
+    <line x1="210" y1="163" x2="235" y2="163" stroke="#6b4f37" stroke-width="1.5" opacity="0.4"/>
+    <line x1="250" y1="165" x2="270" y2="165" stroke="#6b4f37" stroke-width="1.5" opacity="0.4"/>
+
+    <!-- Salmon flesh texture lines -->
+    <line x1="130" y1="190" x2="270" y2="188" stroke="#cd5c5c" stroke-width="2" opacity="0.4"/>
+    <line x1="132" y1="205" x2="268" y2="203" stroke="#cd5c5c" stroke-width="1.5" opacity="0.3"/>
+
+    <!-- Glaze/shine -->
+    <ellipse cx="180" cy="175" rx="40" ry="20" fill="white" opacity="0.12"/>
+  </g>
+
+  <!-- Creamy mashed potatoes -->
+  <g filter="url(#salmonShd)">
+    <ellipse cx="100" cy="280" rx="50" ry="40" fill="#f5f5dc"/>
+    <ellipse cx="100" cy="277" rx="47" ry="37" fill="url(#potatoGrad)"/>
+    <ellipse cx="100" cy="274" rx="43" ry="33" fill="#fffff0" opacity="0.8"/>
+    <!-- Swirl texture -->
+    <path d="M 75 270 Q 90 265 105 273 Q 115 278 110 285" stroke="#f5f5dc" stroke-width="2" fill="none" opacity="0.5"/>
+    <!-- Butter melting -->
+    <ellipse cx="95" cy="268" rx="12" ry="8" fill="#f4d03f" opacity="0.6"/>
+    <ellipse cx="93" cy="266" rx="6" ry="4" fill="#fef5c3" opacity="0.5"/>
+  </g>
+
+  <!-- Sauteed spinach -->
+  <g filter="url(#salmonShd)">
+    <ellipse cx="295" cy="275" rx="45" ry="35" fill="#2d4a35"/>
+    <ellipse cx="295" cy="272" rx="42" ry="32" fill="#3d5a45"/>
+    <!-- Spinach leaves -->
+    <path d="M 270 268 Q 280 260 290 270" fill="#4a7c59"/>
+    <path d="M 285 265 Q 295 258 305 268" fill="#5a8c69"/>
+    <path d="M 300 270 Q 310 262 320 272" fill="#4a7c59"/>
+    <path d="M 275 280 Q 285 275 295 282" fill="#5a8c69" opacity="0.8"/>
+    <path d="M 295 278 Q 305 272 315 280" fill="#4a7c59" opacity="0.8"/>
+    <!-- Garlic bits -->
+    <circle cx="282" cy="275" r="2" fill="#f5f5dc" opacity="0.6"/>
+    <circle cx="305" cy="270" r="2" fill="#f5f5dc" opacity="0.6"/>
+  </g>
+
+  <!-- Lemon dill sauce drizzle -->
+  <g opacity="0.7">
+    <path d="M 125 240 Q 150 250 180 245" stroke="#f4d03f" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M 200 248 Q 230 255 260 250" stroke="#f4d03f" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <ellipse cx="180" cy="248" rx="6" ry="4" fill="#f4d03f" opacity="0.5"/>
+  </g>
+
+  <!-- Fresh dill garnish -->
+  <g opacity="0.9">
+    <path d="M 285 185 Q 295 175 305 182" stroke="#228b22" stroke-width="1.5" fill="none"/>
+    <path d="M 287 183 Q 300 172 310 180" stroke="#27ae60" stroke-width="1" fill="none"/>
+    <path d="M 290 185 L 298 170" stroke="#228b22" stroke-width="1"/>
+
+    <path d="M 125 145 Q 120 135 128 130" stroke="#228b22" stroke-width="1.5" fill="none"/>
+    <path d="M 128 143 Q 122 133 130 128" stroke="#27ae60" stroke-width="1" fill="none"/>
+  </g>
+
+  <!-- Lemon slice -->
+  <g filter="url(#salmonShd)">
+    <circle cx="320" cy="200" r="22" fill="#ffd700"/>
+    <circle cx="320" cy="198" r="20" fill="#ffeb3b"/>
+    <!-- Lemon segments -->
+    <line x1="320" y1="180" x2="320" y2="216" stroke="#ffc107" stroke-width="1.5" opacity="0.5"/>
+    <line x1="302" y1="198" x2="338" y2="198" stroke="#ffc107" stroke-width="1.5" opacity="0.5"/>
+    <line x1="307" y1="185" x2="333" y2="211" stroke="#ffc107" stroke-width="1" opacity="0.4"/>
+    <line x1="307" y1="211" x2="333" y2="185" stroke="#ffc107" stroke-width="1" opacity="0.4"/>
+    <!-- Center -->
+    <circle cx="320" cy="198" r="6" fill="#fff8dc" opacity="0.6"/>
+  </g>
+
+  <!-- Cracked pepper -->
+  <g opacity="0.6">
+    <circle cx="145" cy="195" r="1" fill="#2c2c2c"/>
+    <circle cx="200" cy="188" r="1" fill="#2c2c2c"/>
+    <circle cx="255" cy="192" r="1" fill="#2c2c2c"/>
+    <circle cx="180" cy="205" r="0.8" fill="#2c2c2c"/>
+    <circle cx="230" cy="200" r="0.8" fill="#2c2c2c"/>
+  </g>
+
+  <!-- Decorative plating dots -->
+  <g opacity="0.6">
+    <circle cx="95" cy="320" r="3" fill="#f4d03f"/>
+    <circle cx="305" cy="320" r="3" fill="#f4d03f"/>
+  </g>
+
+  <!-- Steam rising -->
+  <g filter="url(#steamSl)" opacity="0.2">
+    <path d="M 170 130 Q 165 110 175 90" stroke="#fff" stroke-width="3.5" fill="none"/>
+    <path d="M 200 125 Q 205 105 195 85" stroke="#fff" stroke-width="3" fill="none"/>
+    <path d="M 230 128 Q 235 108 225 88" stroke="#fff" stroke-width="3" fill="none"/>
+  </g>
+</svg>

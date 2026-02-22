@@ -13,7 +13,7 @@ export default function CartPage() {
       <div className="max-w-2xl mx-auto px-4 py-20 text-center">
         <div className="text-7xl mb-4">🛒</div>
         <h1 className="text-3xl font-black text-purple-900 mb-4">Your cart is empty!</h1>
-        <p className="text-gray-500 mb-8">Add some magical items to get started.</p>
+        <p className="text-gray-700 mb-8">Add some magical items to get started.</p>
         <Link href="/shop" className="bg-purple-700 hover:bg-purple-600 text-white font-black px-8 py-4 rounded-2xl text-lg transition-colors inline-block">
           Start Shopping ✨
         </Link>
@@ -25,7 +25,7 @@ export default function CartPage() {
     <div className="max-w-6xl mx-auto px-4 py-6">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-black text-purple-900">My Cart 🛒</h1>
-        <button onClick={clearCart} className="text-sm text-red-400 hover:text-red-600 font-medium transition-colors">
+        <button onClick={clearCart} className="text-sm bg-red-100 text-red-700 border-2 border-red-300 hover:bg-red-200 hover:border-red-400 font-semibold px-4 py-2 rounded-lg transition-colors">
           Clear cart
         </button>
       </div>
@@ -53,7 +53,7 @@ export default function CartPage() {
                   <Link href={`/product/${item.productId}`}>
                     <h3 className="font-black text-gray-900 hover:text-purple-700 transition-colors leading-tight">{item.product.name}</h3>
                   </Link>
-                  <p className="text-xs text-gray-400 capitalize mt-0.5">{item.product.category}</p>
+                  <p className="text-sm text-gray-700 capitalize mt-0.5">{item.product.category}</p>
 
                   {item.product.isSale && (
                     <span className="text-xs bg-red-100 text-red-600 font-bold px-2 py-0.5 rounded-full inline-block mt-1">
@@ -83,7 +83,7 @@ export default function CartPage() {
                     <div className="text-right">
                       <p className="font-black text-purple-800 text-lg">${(item.product.price * item.quantity).toFixed(2)}</p>
                       {item.quantity > 1 && (
-                        <p className="text-xs text-gray-400">${item.product.price.toFixed(2)} each</p>
+                        <p className="text-sm text-gray-700">${item.product.price.toFixed(2)} each</p>
                       )}
                     </div>
                   </div>
@@ -141,7 +141,7 @@ export default function CartPage() {
               </div>
 
               {cart.shipping > 0 && (
-                <p className="text-xs text-purple-500 bg-purple-50 px-3 py-2 rounded-lg">
+                <p className="text-sm text-purple-600 bg-purple-50 px-3 py-2 rounded-lg">
                   Add ${(50 - cart.subtotal).toFixed(2)} more for free shipping!
                 </p>
               )}
@@ -159,7 +159,7 @@ export default function CartPage() {
               Proceed to Checkout →
             </button>
 
-            <p className="text-center text-xs text-gray-400 mt-3">
+            <p className="text-center text-sm text-gray-700 mt-3">
               🔒 Secure checkout · 30-day returns
             </p>
           </div>

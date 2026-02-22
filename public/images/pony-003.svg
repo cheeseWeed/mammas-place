@@ -1,0 +1,275 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Studio background gradient - soft pastel -->
+    <linearGradient id="studioBg3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#faf8fc"/>
+      <stop offset="70%" stop-color="#f0e8f5"/>
+      <stop offset="100%" stop-color="#e5dcea"/>
+    </linearGradient>
+
+    <!-- Pink plush body gradient for soft 3D depth -->
+    <radialGradient id="pinkPlush" cx="35%" cy="25%" r="75%">
+      <stop offset="0%" stop-color="#ffd0e8"/>
+      <stop offset="25%" stop-color="#ffb8d8"/>
+      <stop offset="50%" stop-color="#ff9cc8"/>
+      <stop offset="75%" stop-color="#e880b0"/>
+      <stop offset="100%" stop-color="#d06898"/>
+    </radialGradient>
+
+    <!-- Blue plush gradient -->
+    <radialGradient id="bluePlush" cx="35%" cy="25%" r="75%">
+      <stop offset="0%" stop-color="#d0f0ff"/>
+      <stop offset="25%" stop-color="#a8e0ff"/>
+      <stop offset="50%" stop-color="#80d0ff"/>
+      <stop offset="75%" stop-color="#58b8e8"/>
+      <stop offset="100%" stop-color="#3098c8"/>
+    </radialGradient>
+
+    <!-- Pink-blue mixed gradient for cotton candy effect -->
+    <linearGradient id="cottonCandy" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffb8d8"/>
+      <stop offset="30%" stop-color="#d8c8f0"/>
+      <stop offset="50%" stop-color="#c0d8ff"/>
+      <stop offset="70%" stop-color="#d8c8f0"/>
+      <stop offset="100%" stop-color="#ffb8d8"/>
+    </linearGradient>
+
+    <!-- Plush fur texture pattern -->
+    <pattern id="plushTexture" x="0" y="0" width="8" height="8" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="rgba(255,255,255,0.15)"/>
+      <circle cx="6" cy="6" r="1.5" fill="rgba(255,255,255,0.12)"/>
+      <circle cx="2" cy="6" r="1" fill="rgba(255,255,255,0.08)"/>
+      <circle cx="6" cy="2" r="1" fill="rgba(255,255,255,0.08)"/>
+    </pattern>
+
+    <!-- Eye shine gradient - warm brown -->
+    <radialGradient id="plushEye" cx="30%" cy="25%" r="55%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="20%" stop-color="#664422"/>
+      <stop offset="60%" stop-color="#442211"/>
+      <stop offset="100%" stop-color="#221100"/>
+    </radialGradient>
+
+    <!-- Soft plush shadow filter -->
+    <filter id="plushShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="6" stdDeviation="5" flood-color="#604060" flood-opacity="0.18"/>
+    </filter>
+
+    <!-- Fuzzy edge filter for plush texture -->
+    <filter id="fuzzyEdge" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="2" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+
+    <!-- Soft glow for cuddly appearance -->
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.5" result="glow"/>
+      <feMerge>
+        <feMergeNode in="glow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Pink mane strand gradient -->
+    <linearGradient id="pinkManeStrand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffcce8"/>
+      <stop offset="50%" stop-color="#ff99cc"/>
+      <stop offset="100%" stop-color="#e06090"/>
+    </linearGradient>
+
+    <!-- Blue mane strand gradient -->
+    <linearGradient id="blueManeStrand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c8e8ff"/>
+      <stop offset="50%" stop-color="#88ccff"/>
+      <stop offset="100%" stop-color="#4088c0"/>
+    </linearGradient>
+
+    <!-- Soft plush hoof -->
+    <radialGradient id="plushHoof" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#ffd8e8"/>
+      <stop offset="40%" stop-color="#ffb8d0"/>
+      <stop offset="100%" stop-color="#e890b0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Studio backdrop -->
+  <rect width="400" height="400" fill="url(#studioBg3)"/>
+
+  <!-- Soft candy decorations in background -->
+  <circle cx="55" cy="55" r="12" fill="#ffcce8" opacity="0.25"/>
+  <circle cx="345" cy="65" r="14" fill="#b8e8ff" opacity="0.25"/>
+  <circle cx="65" cy="345" r="10" fill="#b8e8ff" opacity="0.2"/>
+  <circle cx="340" cy="340" r="12" fill="#ffcce8" opacity="0.2"/>
+
+  <!-- Floor reflection area -->
+  <ellipse cx="200" cy="388" rx="125" ry="12" fill="rgba(180,150,200,0.05)"/>
+
+  <!-- Main soft shadow on floor -->
+  <ellipse cx="208" cy="378" rx="90" ry="10" fill="rgba(120,80,140,0.1)" filter="url(#plushShadow)"/>
+
+  <!-- PLUSH PONY BODY - Soft rounded torso with fuzzy appearance -->
+  <ellipse cx="200" cy="260" rx="82" ry="62" fill="url(#pinkPlush)" filter="url(#plushShadow)"/>
+
+  <!-- Plush texture overlay on body -->
+  <ellipse cx="200" cy="260" rx="82" ry="62" fill="url(#plushTexture)"/>
+
+  <!-- Body highlight for soft plush appearance -->
+  <ellipse cx="175" cy="235" rx="50" ry="35" fill="rgba(255,255,255,0.28)"/>
+  <ellipse cx="168" cy="228" rx="30" ry="20" fill="rgba(255,255,255,0.35)"/>
+
+  <!-- Blue patch on body (cotton candy mix) -->
+  <ellipse cx="235" cy="275" rx="28" ry="22" fill="url(#bluePlush)" opacity="0.5"/>
+  <ellipse cx="235" cy="275" rx="28" ry="22" fill="url(#plushTexture)"/>
+
+  <!-- Soft fur texture details on body -->
+  <circle cx="165" cy="270" r="6" fill="rgba(255,220,240,0.4)"/>
+  <circle cx="195" cy="250" r="5" fill="rgba(255,220,240,0.35)"/>
+  <circle cx="220" cy="265" r="6" fill="rgba(200,230,255,0.4)"/>
+  <circle cx="180" cy="295" r="5" fill="rgba(255,220,240,0.3)"/>
+  <circle cx="240" cy="252" r="4" fill="rgba(200,230,255,0.35)"/>
+
+  <!-- Neck with soft plush appearance -->
+  <path d="M 155 225 Q 138 188 145 145 Q 152 140 172 142 Q 178 190 168 230"
+        fill="url(#pinkPlush)" filter="url(#plushShadow)"/>
+  <path d="M 155 225 Q 138 188 145 145 Q 152 140 172 142 Q 178 190 168 230"
+        fill="url(#plushTexture)"/>
+
+  <!-- Neck highlight -->
+  <path d="M 150 195 Q 145 170 150 150" stroke="rgba(255,255,255,0.35)" stroke-width="10" fill="none" stroke-linecap="round"/>
+
+  <!-- HEAD - Rounded plush shape -->
+  <ellipse cx="160" cy="118" rx="52" ry="50" fill="url(#pinkPlush)" filter="url(#plushShadow)"/>
+  <ellipse cx="160" cy="118" rx="52" ry="50" fill="url(#plushTexture)"/>
+
+  <!-- Head highlight -->
+  <ellipse cx="142" cy="100" rx="28" ry="22" fill="rgba(255,255,255,0.32)"/>
+  <ellipse cx="138" cy="95" rx="15" ry="12" fill="rgba(255,255,255,0.4)"/>
+
+  <!-- Fluffy cheeks -->
+  <circle cx="130" cy="138" r="18" fill="rgba(255,200,220,0.5)" filter="url(#softGlow)"/>
+  <circle cx="190" cy="138" r="18" fill="rgba(255,200,220,0.5)" filter="url(#softGlow)"/>
+
+  <!-- EARS - Soft floppy plush ears -->
+  <ellipse cx="118" cy="72" rx="18" ry="36" fill="url(#pinkPlush)" transform="rotate(-25 118 72)" filter="url(#plushShadow)"/>
+  <ellipse cx="118" cy="72" rx="11" ry="26" fill="url(#bluePlush)" transform="rotate(-25 118 72)" opacity="0.6"/>
+  <ellipse cx="202" cy="68" rx="18" ry="36" fill="url(#pinkPlush)" transform="rotate(25 202 68)" filter="url(#plushShadow)"/>
+  <ellipse cx="202" cy="68" rx="11" ry="26" fill="url(#bluePlush)" transform="rotate(25 202 68)" opacity="0.6"/>
+
+  <!-- EYES - Button-style plush toy eyes -->
+  <circle cx="140" cy="112" r="14" fill="url(#plushEye)" filter="url(#softGlow)"/>
+  <circle cx="180" cy="112" r="14" fill="url(#plushEye)" filter="url(#softGlow)"/>
+  <!-- Eye highlights (button shine) -->
+  <circle cx="135" cy="106" r="5" fill="white"/>
+  <circle cx="143" cy="115" r="2.5" fill="white" opacity="0.7"/>
+  <circle cx="175" cy="106" r="5" fill="white"/>
+  <circle cx="183" cy="115" r="2.5" fill="white" opacity="0.7"/>
+  <!-- Eye stitching details -->
+  <circle cx="140" cy="112" r="14" fill="none" stroke="rgba(80,40,20,0.3)" stroke-width="1"/>
+  <circle cx="180" cy="112" r="14" fill="none" stroke="rgba(80,40,20,0.3)" stroke-width="1"/>
+
+  <!-- MUZZLE - Soft plush snout -->
+  <ellipse cx="160" cy="148" rx="25" ry="20" fill="#ffe8f2"/>
+  <ellipse cx="160" cy="148" rx="20" ry="15" fill="#fff2f8"/>
+  <!-- Stitched nose detail -->
+  <path d="M 155 152 Q 160 158 165 152" fill="#e890b0"/>
+  <ellipse cx="160" cy="153" rx="7" ry="5" fill="#e080a0"/>
+  <!-- Smile stitch -->
+  <path d="M 148 160 Q 160 168 172 160" stroke="#d07090" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-dasharray="2,2"/>
+
+  <!-- COTTON CANDY MANE - Pink and blue swirled strands -->
+  <!-- Pink strands -->
+  <path d="M 150 68 Q 125 30 138 5 Q 155 20 155 50" fill="url(#pinkManeStrand)" filter="url(#plushShadow)"/>
+  <path d="M 165 65 Q 150 20 165 -5 Q 182 15 178 48" fill="url(#pinkManeStrand)" filter="url(#plushShadow)"/>
+  <path d="M 190 75 Q 195 25 215 8 Q 228 28 212 62" fill="url(#pinkManeStrand)"/>
+
+  <!-- Blue strands interwoven -->
+  <path d="M 158 66 Q 138 22 150 0 Q 168 18 165 48" fill="url(#blueManeStrand)" filter="url(#plushShadow)"/>
+  <path d="M 178 70 Q 175 18 195 0 Q 212 22 198 58" fill="url(#blueManeStrand)"/>
+  <path d="M 200 85 Q 218 45 240 35 Q 248 55 230 88" fill="url(#blueManeStrand)"/>
+
+  <!-- Mane fluff texture -->
+  <circle cx="145" cy="35" r="5" fill="rgba(255,220,240,0.5)"/>
+  <circle cx="170" cy="28" r="4" fill="rgba(200,230,255,0.5)"/>
+  <circle cx="195" cy="40" r="5" fill="rgba(255,220,240,0.4)"/>
+  <circle cx="218" cy="55" r="4" fill="rgba(200,230,255,0.4)"/>
+
+  <!-- Mane highlights -->
+  <path d="M 142 30 Q 148 25 152 32" stroke="rgba(255,255,255,0.5)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M 175 22 Q 182 18 188 26" stroke="rgba(255,255,255,0.4)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+
+  <!-- FRONT LEGS - Soft plush legs -->
+  <path d="M 172 308 Q 168 340 170 365 Q 172 378 185 378 Q 198 378 198 365 Q 200 340 196 308"
+        fill="url(#pinkPlush)" filter="url(#plushShadow)"/>
+  <path d="M 204 308 Q 200 340 202 365 Q 204 378 217 378 Q 230 378 230 365 Q 232 340 228 308"
+        fill="url(#pinkPlush)" filter="url(#plushShadow)"/>
+
+  <!-- Leg texture -->
+  <path d="M 172 308 Q 168 340 170 365 Q 172 378 185 378 Q 198 378 198 365 Q 200 340 196 308"
+        fill="url(#plushTexture)"/>
+  <path d="M 204 308 Q 200 340 202 365 Q 204 378 217 378 Q 230 378 230 365 Q 232 340 228 308"
+        fill="url(#plushTexture)"/>
+
+  <!-- Leg highlights -->
+  <path d="M 178 320 Q 175 345 178 360" stroke="rgba(255,255,255,0.3)" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <path d="M 210 320 Q 207 345 210 360" stroke="rgba(255,255,255,0.3)" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+  <!-- BACK LEGS - Soft plush -->
+  <path d="M 140 305 Q 135 335 138 360 Q 140 372 152 372 Q 164 372 164 360 Q 166 335 162 305"
+        fill="url(#pinkPlush)" filter="url(#plushShadow)"/>
+  <path d="M 238 305 Q 234 335 236 360 Q 238 372 250 372 Q 262 372 262 360 Q 264 335 260 305"
+        fill="url(#pinkPlush)" filter="url(#plushShadow)"/>
+
+  <!-- Back leg texture -->
+  <path d="M 140 305 Q 135 335 138 360 Q 140 372 152 372 Q 164 372 164 360 Q 166 335 162 305"
+        fill="url(#plushTexture)"/>
+  <path d="M 238 305 Q 234 335 236 360 Q 238 372 250 372 Q 262 372 262 360 Q 264 335 260 305"
+        fill="url(#plushTexture)"/>
+
+  <!-- SOFT PLUSH HOOVES -->
+  <ellipse cx="185" cy="378" rx="14" ry="7" fill="url(#plushHoof)"/>
+  <ellipse cx="217" cy="378" rx="14" ry="7" fill="url(#plushHoof)"/>
+  <ellipse cx="152" cy="372" rx="13" ry="6" fill="url(#plushHoof)"/>
+  <ellipse cx="250" cy="372" rx="13" ry="6" fill="url(#plushHoof)"/>
+
+  <!-- Hoof highlights -->
+  <ellipse cx="182" cy="376" rx="5" ry="2.5" fill="rgba(255,255,255,0.4)"/>
+  <ellipse cx="214" cy="376" rx="5" ry="2.5" fill="rgba(255,255,255,0.4)"/>
+  <ellipse cx="149" cy="370" rx="4" ry="2" fill="rgba(255,255,255,0.4)"/>
+  <ellipse cx="247" cy="370" rx="4" ry="2" fill="rgba(255,255,255,0.4)"/>
+
+  <!-- COTTON CANDY TAIL - Fluffy pink and blue -->
+  <path d="M 278 252 Q 325 200 345 115 Q 360 125 345 205 Q 328 265 288 278" fill="url(#pinkManeStrand)" filter="url(#plushShadow)"/>
+  <path d="M 282 260 Q 332 212 355 135 Q 370 148 352 220 Q 335 280 295 290" fill="url(#blueManeStrand)"/>
+  <path d="M 280 270 Q 325 230 348 160 Q 362 175 345 238 Q 328 295 288 302" fill="url(#pinkManeStrand)"/>
+  <path d="M 276 282 Q 318 248 338 190 Q 350 205 335 260 Q 320 308 282 315" fill="url(#blueManeStrand)"/>
+
+  <!-- Tail fluff texture -->
+  <circle cx="330" cy="165" r="6" fill="rgba(255,220,240,0.4)"/>
+  <circle cx="340" cy="195" r="5" fill="rgba(200,230,255,0.4)"/>
+  <circle cx="325" cy="230" r="6" fill="rgba(255,220,240,0.35)"/>
+  <circle cx="315" cy="265" r="5" fill="rgba(200,230,255,0.35)"/>
+
+  <!-- Tail highlights -->
+  <path d="M 335 150 Q 345 160 340 175" stroke="rgba(255,255,255,0.4)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <path d="M 325 210 Q 335 225 328 245" stroke="rgba(255,255,255,0.35)" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Stitch detail on body (plush toy seam) -->
+  <path d="M 200 210 Q 200 260 200 310" stroke="rgba(220,180,200,0.25)" stroke-width="1" fill="none" stroke-dasharray="4,4"/>
+
+  <!-- Soft toy tag detail -->
+  <rect x="268" y="285" width="12" height="8" fill="#fff5f8" rx="1" opacity="0.6"/>
+  <rect x="270" y="287" width="8" height="4" fill="#ffb8d0" rx="0.5" opacity="0.5"/>
+
+  <!-- Overall soft glow overlay -->
+  <ellipse cx="185" cy="238" rx="70" ry="50" fill="rgba(255,255,255,0.08)"/>
+
+  <!-- Studio lighting spots -->
+  <ellipse cx="140" cy="95" rx="18" ry="12" fill="rgba(255,255,255,0.15)"/>
+  <circle cx="195" cy="230" r="10" fill="rgba(255,255,255,0.08)"/>
+
+  <!-- Sweet sparkle accents -->
+  <circle cx="95" cy="180" r="2" fill="#ffd0e0" opacity="0.5"/>
+  <circle cx="310" cy="160" r="2.5" fill="#c0e8ff" opacity="0.5"/>
+  <circle cx="80" cy="280" r="2" fill="#c0e8ff" opacity="0.4"/>
+  <circle cx="320" cy="290" r="2" fill="#ffd0e0" opacity="0.4"/>
+</svg>

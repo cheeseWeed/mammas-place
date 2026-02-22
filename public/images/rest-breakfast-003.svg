@@ -1,0 +1,161 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shd3" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="3" dy="5" stdDeviation="5" flood-opacity="0.45"/>
+    </filter>
+    <filter id="steamF3">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+    <filter id="innerGlow3">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Omelette gradient -->
+    <radialGradient id="omeletteGrad" cx="45%" cy="40%">
+      <stop offset="0%" stop-color="#fff4b3"/>
+      <stop offset="50%" stop-color="#f5d56a"/>
+      <stop offset="100%" stop-color="#d4a420"/>
+    </radialGradient>
+
+    <!-- Cheese gradient -->
+    <linearGradient id="cheeseGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd700"/>
+      <stop offset="50%" stop-color="#ffcc00"/>
+      <stop offset="100%" stop-color="#e6b800"/>
+    </linearGradient>
+
+    <!-- Spinach gradient -->
+    <radialGradient id="spinachGrad" cx="40%" cy="40%">
+      <stop offset="0%" stop-color="#4a7c59"/>
+      <stop offset="100%" stop-color="#2d4a35"/>
+    </radialGradient>
+
+    <!-- Tomato gradient -->
+    <radialGradient id="tomatoGrad" cx="35%" cy="30%">
+      <stop offset="0%" stop-color="#ff6347"/>
+      <stop offset="100%" stop-color="#c0392b"/>
+    </radialGradient>
+
+    <!-- Plate gradient -->
+    <radialGradient id="plateG3" cx="38%" cy="35%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#f8f8f5"/>
+      <stop offset="100%" stop-color="#e0ddd5"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Warm wood background -->
+  <rect width="400" height="400" fill="#2e251a"/>
+  <line x1="0" y1="35" x2="400" y2="38" stroke="#3f3425" stroke-width="2.5" opacity="0.5"/>
+  <line x1="0" y1="95" x2="400" y2="93" stroke="#4a3f30" stroke-width="2" opacity="0.4"/>
+  <line x1="0" y1="165" x2="400" y2="168" stroke="#3f3425" stroke-width="2" opacity="0.5"/>
+  <line x1="0" y1="240" x2="400" y2="238" stroke="#4a3f30" stroke-width="2.5" opacity="0.4"/>
+  <line x1="0" y1="320" x2="400" y2="322" stroke="#3f3425" stroke-width="2" opacity="0.5"/>
+
+  <!-- Table reflection -->
+  <ellipse cx="200" cy="378" rx="175" ry="28" fill="#1a150e" opacity="0.65"/>
+
+  <!-- Main plate -->
+  <g filter="url(#shd3)">
+    <ellipse cx="200" cy="225" rx="148" ry="148" fill="#d8d5cc"/>
+    <ellipse cx="200" cy="223" rx="145" ry="145" fill="url(#plateG3)"/>
+    <ellipse cx="200" cy="221" rx="130" ry="130" fill="#fefefe"/>
+    <ellipse cx="200" cy="225" rx="147" ry="147" fill="none" stroke="#bfbcb3" stroke-width="2"/>
+    <ellipse cx="160" cy="145" rx="50" ry="20" fill="#ffffff" opacity="0.3"/>
+  </g>
+
+  <!-- French omelette - folded style -->
+  <g filter="url(#shd3)">
+    <!-- Main omelette body -->
+    <ellipse cx="200" cy="240" rx="90" ry="45" fill="#c9a020"/>
+    <ellipse cx="200" cy="237" rx="88" ry="43" fill="url(#omeletteGrad)"/>
+    <ellipse cx="200" cy="234" rx="85" ry="40" fill="#f5d56a" opacity="0.8"/>
+
+    <!-- Folded top edge -->
+    <path d="M 115 220 Q 140 195 200 195 Q 260 195 285 220" fill="#e8c850" stroke="#d4b030" stroke-width="1"/>
+    <path d="M 120 218 Q 145 198 200 198 Q 255 198 280 218" fill="#f0d468" opacity="0.7"/>
+
+    <!-- Omelette surface texture -->
+    <ellipse cx="170" cy="230" rx="15" ry="8" fill="#e8c840" opacity="0.5"/>
+    <ellipse cx="220" cy="235" rx="12" ry="6" fill="#e8c840" opacity="0.4"/>
+    <ellipse cx="250" cy="225" rx="10" ry="5" fill="#e8c840" opacity="0.5"/>
+
+    <!-- Golden brown spots -->
+    <ellipse cx="145" cy="245" rx="8" ry="5" fill="#c49000" opacity="0.4"/>
+    <ellipse cx="255" cy="248" rx="7" ry="4" fill="#c49000" opacity="0.4"/>
+    <ellipse cx="200" cy="260" rx="10" ry="6" fill="#c49000" opacity="0.3"/>
+  </g>
+
+  <!-- Melted cheese oozing out -->
+  <g filter="url(#innerGlow3)">
+    <path d="M 285 235 Q 295 240 292 252 Q 288 262 295 270" fill="url(#cheeseGrad)" opacity="0.9"/>
+    <path d="M 115 238 Q 105 245 108 258 Q 112 268 105 275" fill="url(#cheeseGrad)" opacity="0.9"/>
+    <ellipse cx="293" cy="260" rx="8" ry="12" fill="#ffcc00" opacity="0.6"/>
+    <ellipse cx="107" cy="265" rx="7" ry="10" fill="#ffcc00" opacity="0.6"/>
+  </g>
+
+  <!-- Spinach peeking out -->
+  <g>
+    <ellipse cx="130" cy="250" rx="12" ry="6" fill="url(#spinachGrad)"/>
+    <ellipse cx="128" cy="248" rx="8" ry="4" fill="#5a8c69" opacity="0.6"/>
+    <ellipse cx="270" cy="252" rx="10" ry="5" fill="url(#spinachGrad)"/>
+  </g>
+
+  <!-- Sauteed mushrooms on side -->
+  <g filter="url(#shd3)">
+    <ellipse cx="310" cy="280" rx="18" ry="12" fill="#8b7355"/>
+    <ellipse cx="310" cy="278" rx="16" ry="10" fill="#a08060"/>
+    <ellipse cx="308" cy="276" rx="6" ry="3" fill="#c09070" opacity="0.6"/>
+
+    <ellipse cx="328" cy="295" rx="14" ry="9" fill="#7a6245"/>
+    <ellipse cx="328" cy="293" rx="12" ry="7" fill="#9a7a55"/>
+    <ellipse cx="326" cy="291" rx="5" ry="2.5" fill="#b89065" opacity="0.5"/>
+
+    <ellipse cx="295" cy="300" rx="12" ry="8" fill="#8b7355"/>
+    <ellipse cx="295" cy="298" rx="10" ry="6" fill="#a08060"/>
+  </g>
+
+  <!-- Fresh tomato slices -->
+  <g filter="url(#shd3)">
+    <ellipse cx="85" cy="275" rx="20" ry="15" fill="url(#tomatoGrad)"/>
+    <ellipse cx="83" cy="272" rx="8" ry="5" fill="#ff8566" opacity="0.5"/>
+    <!-- Tomato seeds -->
+    <ellipse cx="80" cy="278" rx="3" ry="2" fill="#ffcccc" opacity="0.6"/>
+    <ellipse cx="90" cy="273" rx="2.5" ry="1.5" fill="#ffcccc" opacity="0.6"/>
+
+    <ellipse cx="105" cy="295" rx="16" ry="12" fill="url(#tomatoGrad)"/>
+    <ellipse cx="103" cy="292" rx="6" ry="4" fill="#ff8566" opacity="0.5"/>
+    <ellipse cx="100" cy="297" rx="2" ry="1.5" fill="#ffcccc" opacity="0.5"/>
+  </g>
+
+  <!-- Fresh herbs garnish -->
+  <g>
+    <!-- Chives -->
+    <line x1="175" y1="195" x2="165" y2="175" stroke="#228b22" stroke-width="1.5"/>
+    <line x1="180" y1="198" x2="172" y2="180" stroke="#2ecc40" stroke-width="1.5"/>
+    <line x1="185" y1="196" x2="180" y2="178" stroke="#228b22" stroke-width="1.5"/>
+
+    <!-- Parsley -->
+    <path d="M 220 195 Q 225 185 230 190 Q 235 182 240 188" fill="#228b22"/>
+    <circle cx="225" cy="188" r="3" fill="#27ae60"/>
+    <circle cx="235" cy="185" r="2.5" fill="#2ecc71"/>
+  </g>
+
+  <!-- Cracked pepper -->
+  <g opacity="0.7">
+    <circle cx="190" cy="225" r="0.8" fill="#2c2c2c"/>
+    <circle cx="210" cy="235" r="0.7" fill="#2c2c2c"/>
+    <circle cx="175" cy="240" r="0.9" fill="#2c2c2c"/>
+    <circle cx="225" cy="228" r="0.7" fill="#2c2c2c"/>
+    <circle cx="195" cy="250" r="0.8" fill="#2c2c2c"/>
+  </g>
+
+  <!-- Steam -->
+  <g filter="url(#steamF3)" opacity="0.22">
+    <path d="M 170 175 Q 165 155 175 135 Q 180 120 172 105" stroke="#fff" stroke-width="4" fill="none"/>
+    <path d="M 195 170 Q 200 150 190 130 Q 185 115 195 100" stroke="#fff" stroke-width="3.5" fill="none"/>
+    <path d="M 220 172 Q 225 152 215 132" stroke="#fff" stroke-width="3" fill="none"/>
+    <path d="M 245 178 Q 250 158 240 138" stroke="#fff" stroke-width="2.5" fill="none"/>
+  </g>
+</svg>

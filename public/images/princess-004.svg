@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <!-- Warm tea party studio backdrop -->
+    <radialGradient id="teaStudio" cx="50%" cy="35%" r="70%">
+      <stop offset="0%" stop-color="#fff8f0"/>
+      <stop offset="50%" stop-color="#ffe4d4"/>
+      <stop offset="100%" stop-color="#f5d0c0"/>
+    </radialGradient>
+
+    <!-- Soft pink dress gradient -->
+    <linearGradient id="teaDressSatin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff0f5"/>
+      <stop offset="20%" stop-color="#ffe4ec"/>
+      <stop offset="40%" stop-color="#ffb6c1"/>
+      <stop offset="60%" stop-color="#ffc0cb"/>
+      <stop offset="80%" stop-color="#ffe4ec"/>
+      <stop offset="100%" stop-color="#fff0f5"/>
+    </linearGradient>
+
+    <!-- Porcelain white gradient -->
+    <linearGradient id="porcelain" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="30%" stop-color="#fafafa"/>
+      <stop offset="60%" stop-color="#f0f0f0"/>
+      <stop offset="100%" stop-color="#fafafa"/>
+    </linearGradient>
+
+    <!-- Gold rim accent -->
+    <linearGradient id="goldRim" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#daa520"/>
+      <stop offset="50%" stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#daa520"/>
+    </linearGradient>
+
+    <!-- Rose pattern pink -->
+    <radialGradient id="rosePink" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff69b4"/>
+      <stop offset="50%" stop-color="#ff1493"/>
+      <stop offset="100%" stop-color="#db7093"/>
+    </radialGradient>
+
+    <!-- Soft shadow filter -->
+    <filter id="teaShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="2" dy="4"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.25"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Delicate glow -->
+    <filter id="delicateGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1"/>
+      <feComposite in="SourceGraphic" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Warm studio background -->
+  <rect width="400" height="400" fill="url(#teaStudio)"/>
+
+  <!-- Floor shadow -->
+  <ellipse cx="200" cy="380" rx="150" ry="18" fill="#d4a090" opacity="0.25"/>
+
+  <!-- Tea party dress (main element) -->
+  <g filter="url(#teaShadow)">
+    <!-- Mannequin neck -->
+    <ellipse cx="160" cy="90" rx="8" ry="12" fill="#f5e0d0" stroke="#d4b8a0" stroke-width="0.5"/>
+
+    <!-- Bodice - sweetheart style with puff sleeves -->
+    <path d="M 130 100 Q 145 95 160 98 Q 175 95 190 100 L 185 135 Q 160 140 135 135 Z"
+          fill="url(#teaDressSatin)" stroke="#f48fb1" stroke-width="1"/>
+    <!-- Bodice highlight -->
+    <path d="M 138 102 Q 150 98 160 100 Q 170 98 182 102 L 180 125 Q 160 128 140 125 Z"
+          fill="#fff5f8" opacity="0.5"/>
+
+    <!-- Puff sleeves -->
+    <ellipse cx="125" cy="105" rx="14" ry="10" fill="url(#teaDressSatin)" stroke="#f48fb1" stroke-width="0.8"/>
+    <ellipse cx="125" cy="105" rx="9" ry="6" fill="#fff0f5" opacity="0.5"/>
+    <ellipse cx="195" cy="105" rx="14" ry="10" fill="url(#teaDressSatin)" stroke="#f48fb1" stroke-width="0.8"/>
+    <ellipse cx="195" cy="105" rx="9" ry="6" fill="#fff0f5" opacity="0.5"/>
+
+    <!-- Waist ribbon with bow -->
+    <rect x="130" y="135" width="60" height="8" fill="#ff69b4"/>
+    <ellipse cx="160" cy="139" rx="8" ry="4" fill="#ff1493"/>
+    <!-- Bow loops -->
+    <ellipse cx="145" cy="138" rx="8" ry="6" fill="#ff69b4" stroke="#db7093" stroke-width="0.5"/>
+    <ellipse cx="175" cy="138" rx="8" ry="6" fill="#ff69b4" stroke="#db7093" stroke-width="0.5"/>
+    <ellipse cx="145" cy="138" rx="5" ry="3" fill="#ff8fab" opacity="0.6"/>
+    <ellipse cx="175" cy="138" rx="5" ry="3" fill="#ff8fab" opacity="0.6"/>
+    <!-- Bow tails -->
+    <path d="M 145 144 Q 140 160 135 175" stroke="#ff69b4" stroke-width="4" fill="none"/>
+    <path d="M 175 144 Q 180 160 185 175" stroke="#ff69b4" stroke-width="4" fill="none"/>
+
+    <!-- Full tea-length skirt with layers -->
+    <ellipse cx="160" cy="230" rx="75" ry="90" fill="#ffc0cb"/>
+    <ellipse cx="160" cy="225" rx="70" ry="85" fill="url(#teaDressSatin)"/>
+    <!-- Lace trim layer -->
+    <ellipse cx="160" cy="220" rx="65" ry="78" fill="#fff5f8" opacity="0.6"/>
+
+    <!-- Skirt draping -->
+    <path d="M 90 180 Q 95 230 88 300" stroke="#f48fb1" stroke-width="1" fill="none" opacity="0.35"/>
+    <path d="M 115 165 Q 112 220 108 290" stroke="#f48fb1" stroke-width="0.8" fill="none" opacity="0.3"/>
+    <path d="M 205 165 Q 208 220 212 290" stroke="#f48fb1" stroke-width="0.8" fill="none" opacity="0.3"/>
+    <path d="M 230 180 Q 225 230 232 300" stroke="#f48fb1" stroke-width="1" fill="none" opacity="0.35"/>
+
+    <!-- Rose appliques on skirt -->
+    <g filter="url(#delicateGlow)">
+      <circle cx="120" cy="200" r="6" fill="url(#rosePink)"/>
+      <circle cx="118" cy="197" r="3" fill="#ff8fab"/>
+      <circle cx="200" cy="210" r="5" fill="url(#rosePink)"/>
+      <circle cx="199" cy="208" r="2.5" fill="#ff8fab"/>
+      <circle cx="155" cy="260" r="5.5" fill="url(#rosePink)"/>
+      <circle cx="154" cy="258" r="2.8" fill="#ff8fab"/>
+    </g>
+  </g>
+
+  <!-- Tea Set Display -->
+  <g filter="url(#teaShadow)" transform="translate(285, 160)">
+    <!-- Teapot -->
+    <ellipse cx="0" cy="30" rx="35" ry="25" fill="url(#porcelain)" stroke="#e0e0e0" stroke-width="1"/>
+    <!-- Teapot lid -->
+    <ellipse cx="0" cy="8" rx="18" ry="8" fill="url(#porcelain)" stroke="#e0e0e0" stroke-width="0.8"/>
+    <ellipse cx="0" cy="5" rx="12" ry="5" fill="#fafafa"/>
+    <circle cx="0" cy="0" r="4" fill="url(#goldRim)"/>
+    <!-- Spout -->
+    <path d="M 32 25 Q 50 15 55 20 Q 52 28 45 30" fill="url(#porcelain)" stroke="#e0e0e0" stroke-width="0.8"/>
+    <!-- Handle -->
+    <path d="M -32 20 Q -50 20 -50 35 Q -50 50 -35 45" fill="none" stroke="url(#porcelain)" stroke-width="6"/>
+    <path d="M -32 20 Q -48 20 -48 35 Q -48 48 -35 43" fill="none" stroke="#e8e8e8" stroke-width="4"/>
+    <!-- Rose decoration -->
+    <circle cx="10" cy="30" r="5" fill="#ff69b4"/>
+    <circle cx="8" cy="28" r="2.5" fill="#ff8fab"/>
+    <!-- Gold rim -->
+    <ellipse cx="0" cy="8" rx="18" ry="8" fill="none" stroke="url(#goldRim)" stroke-width="1.5"/>
+
+    <!-- Teacup 1 -->
+    <g transform="translate(-45, 60)">
+      <ellipse cx="0" cy="10" rx="18" ry="12" fill="url(#porcelain)" stroke="#e0e0e0" stroke-width="0.8"/>
+      <ellipse cx="0" cy="5" rx="15" ry="8" fill="#faf8f5"/>
+      <!-- Tea liquid -->
+      <ellipse cx="0" cy="6" rx="12" ry="6" fill="#deb887" opacity="0.7"/>
+      <!-- Handle -->
+      <path d="M 16 8 Q 26 5 26 12 Q 26 20 18 18" fill="none" stroke="url(#porcelain)" stroke-width="3"/>
+      <!-- Gold rim -->
+      <ellipse cx="0" cy="5" rx="15" ry="8" fill="none" stroke="url(#goldRim)" stroke-width="1"/>
+      <!-- Saucer -->
+      <ellipse cx="0" cy="22" rx="22" ry="6" fill="url(#porcelain)" stroke="#e0e0e0" stroke-width="0.5"/>
+    </g>
+
+    <!-- Teacup 2 -->
+    <g transform="translate(40, 65)">
+      <ellipse cx="0" cy="10" rx="16" ry="11" fill="url(#porcelain)" stroke="#e0e0e0" stroke-width="0.8"/>
+      <ellipse cx="0" cy="5" rx="13" ry="7" fill="#faf8f5"/>
+      <ellipse cx="0" cy="6" rx="10" ry="5" fill="#deb887" opacity="0.7"/>
+      <path d="M 14 8 Q 22 5 22 11 Q 22 18 15 16" fill="none" stroke="url(#porcelain)" stroke-width="2.5"/>
+      <ellipse cx="0" cy="5" rx="13" ry="7" fill="none" stroke="url(#goldRim)" stroke-width="0.8"/>
+      <ellipse cx="0" cy="20" rx="20" ry="5" fill="url(#porcelain)" stroke="#e0e0e0" stroke-width="0.5"/>
+    </g>
+  </g>
+
+  <!-- Accessories - pearl necklace and small tiara -->
+  <g filter="url(#delicateGlow)" transform="translate(75, 280)">
+    <!-- Small jewelry box -->
+    <rect x="0" y="0" width="45" height="35" rx="3" fill="#f8bbd9" stroke="#f48fb1" stroke-width="1"/>
+    <rect x="2" y="2" width="41" height="8" fill="#fce4ec"/>
+
+    <!-- Pearl strand -->
+    <circle cx="12" cy="20" r="3" fill="#fff8f0" stroke="#e8e0d8" stroke-width="0.5"/>
+    <circle cx="18" cy="22" r="3" fill="#fff8f0" stroke="#e8e0d8" stroke-width="0.5"/>
+    <circle cx="24" cy="24" r="3" fill="#fff8f0" stroke="#e8e0d8" stroke-width="0.5"/>
+    <circle cx="30" cy="22" r="3" fill="#fff8f0" stroke="#e8e0d8" stroke-width="0.5"/>
+    <circle cx="36" cy="20" r="3" fill="#fff8f0" stroke="#e8e0d8" stroke-width="0.5"/>
+
+    <!-- Mini tiara on box -->
+    <path d="M 10 8 L 15 2 L 22 6 L 29 0 L 36 8" fill="none" stroke="#ffd700" stroke-width="2"/>
+    <circle cx="15" cy="2" r="2" fill="#ff69b4"/>
+    <circle cx="29" cy="0" r="2.5" fill="#ff69b4"/>
+  </g>
+
+  <!-- Scattered rose petals -->
+  <g opacity="0.7">
+    <ellipse cx="50" cy="340" rx="8" ry="5" fill="#ffb6c1" transform="rotate(-20 50 340)"/>
+    <ellipse cx="320" cy="355" rx="7" ry="4" fill="#ffc0cb" transform="rotate(30 320 355)"/>
+    <ellipse cx="180" cy="365" rx="6" ry="4" fill="#ff8fab" transform="rotate(-10 180 365)"/>
+    <ellipse cx="260" cy="340" rx="5" ry="3" fill="#ffb6c1" transform="rotate(45 260 340)"/>
+  </g>
+
+  <!-- Product label -->
+  <rect x="50" y="362" width="300" height="30" rx="5" fill="#4a2c3d" opacity="0.9"/>
+  <text x="200" y="382" font-family="Georgia, serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#ffb6c1">PRINCESS TEA PARTY SET</text>
+</svg>

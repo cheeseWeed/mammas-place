@@ -1,0 +1,116 @@
+<svg viewBox="0 0 400 450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0e8d8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8dcc8;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="packGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2c3e50;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#34495e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a252f;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="stripeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c0392b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="strapGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#555;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#777;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#555;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow2" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="3" dy="5" stdDeviation="4" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="450" fill="url(#bgGrad2)"/>
+
+  <!-- Shadow on ground -->
+  <ellipse cx="200" cy="420" rx="95" ry="20" fill="#000" opacity="0.12"/>
+
+  <!-- Main backpack body -->
+  <path d="M 140 80 L 260 80 Q 270 90 270 110 L 270 340 Q 265 350 255 355 L 145 355 Q 135 350 130 340 L 130 110 Q 130 90 140 80 Z"
+        fill="url(#packGrad)" filter="url(#shadow2)"/>
+
+  <!-- Right side panel shadow -->
+  <path d="M 260 80 Q 270 90 270 110 L 270 340 Q 265 350 255 355 L 260 80 Z"
+        fill="#0a1217" opacity="0.6"/>
+
+  <!-- Main compartment -->
+  <path d="M 150 100 L 250 100 L 250 300 L 150 300 Z" fill="#1f3a52" opacity="0.8"/>
+
+  <!-- Front pocket -->
+  <rect x="155" y="190" width="90" height="70" fill="#2c3e50" opacity="0.9" rx="3"/>
+  <rect x="158" y="193" width="84" height="64" fill="#354d63" rx="2"/>
+
+  <!-- Pocket stitching details -->
+  <g stroke="#555" stroke-width="0.8" opacity="0.5">
+    <line x1="155" y1="190" x2="245" y2="190"/>
+    <line x1="155" y1="260" x2="245" y2="260"/>
+    <line x1="155" y1="190" x2="155" y2="260"/>
+    <line x1="245" y1="190" x2="245" y2="260"/>
+  </g>
+
+  <!-- Left shoulder strap -->
+  <path d="M 155 100 Q 130 120 125 180 L 120 360"
+        stroke="url(#strapGrad)" stroke-width="18" fill="none" stroke-linecap="round"/>
+
+  <!-- Right shoulder strap -->
+  <path d="M 245 100 Q 270 120 275 180 L 280 360"
+        stroke="url(#strapGrad)" stroke-width="18" fill="none" stroke-linecap="round"/>
+
+  <!-- Strap padding -->
+  <path d="M 155 100 Q 130 120 125 180"
+        stroke="#444" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- Top handle -->
+  <path d="M 160 75 Q 200 40 240 75"
+        stroke="#666" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+  <!-- Compression straps -->
+  <g>
+    <rect x="138" y="130" width="124" height="8" fill="#c0392b" rx="2" opacity="0.8"/>
+    <rect x="138" y="180" width="124" height="8" fill="#e74c3c" rx="2" opacity="0.7"/>
+    <rect x="138" y="230" width="124" height="8" fill="#c0392b" rx="2" opacity="0.8"/>
+  </g>
+
+  <!-- Strap buckles -->
+  <g opacity="0.7">
+    <rect x="138" y="128" width="12" height="12" fill="#888" rx="1"/>
+    <rect x="138" y="178" width="12" height="12" fill="#888" rx="1"/>
+    <rect x="138" y="228" width="12" height="12" fill="#888" rx="1"/>
+  </g>
+
+  <!-- Bottom compartment area -->
+  <rect x="145" y="300" width="110" height="50" fill="#1a2835" opacity="0.9" rx="2"/>
+
+  <!-- Ventilation mesh back panel (implied) -->
+  <g opacity="0.3" stroke="#555" stroke-width="0.5">
+    <circle cx="200" cy="120" r="3"/>
+    <circle cx="200" cy="140" r="3"/>
+    <circle cx="200" cy="160" r="3"/>
+    <circle cx="200" cy="180" r="3"/>
+    <circle cx="200" cy="200" r="3"/>
+    <circle cx="200" cy="220" r="3"/>
+  </g>
+
+  <!-- Highlight reflections -->
+  <g opacity="0.15">
+    <ellipse cx="160" cy="150" rx="20" ry="40" fill="#fff"/>
+    <ellipse cx="240" cy="200" rx="15" ry="35" fill="#fff" opacity="0.08"/>
+  </g>
+
+  <!-- Water bottle holder side pockets -->
+  <g opacity="0.6">
+    <rect x="130" y="150" width="8" height="80" fill="#1a252f" stroke="#555" stroke-width="1" rx="2"/>
+    <rect x="262" y="150" width="8" height="80" fill="#1a252f" stroke="#555" stroke-width="1" rx="2"/>
+  </g>
+
+  <!-- Seams and stitching -->
+  <g stroke="#555" stroke-width="0.5" opacity="0.3">
+    <line x1="140" y1="80" x2="260" y2="80"/>
+    <line x1="140" y1="355" x2="260" y2="355"/>
+  </g>
+</svg>

@@ -1,0 +1,79 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Premium background with warm tone -->
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#faf8f5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f3ede8;stop-opacity:1" />
+    </linearGradient>
+    <filter id="softshadow">
+      <feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bgGrad2)"/>
+
+  <!-- Elegant white plate -->
+  <circle cx="200" cy="270" r="130" fill="#ece8e3" stroke="#c5c0b8" stroke-width="1"/>
+  <circle cx="200" cy="270" r="127" fill="#f9f6f3"/>
+
+  <!-- Plate subtle rim -->
+  <circle cx="200" cy="270" r="125" fill="none" stroke="#e8e5e0" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- Chocolate Mousse Cake -->
+  <!-- Dark chocolate cookie crust (bottom) -->
+  <rect x="120" y="210" width="160" height="28" fill="#2d1b10" rx="3"/>
+  <ellipse cx="200" cy="210" rx="80" ry="9" fill="#1a0f06" opacity="0.5"/>
+
+  <!-- Chocolate ganache layer -->
+  <path d="M 120 210 Q 115 185 120 155 L 280 155 Q 285 185 280 210 Z" fill="#4a2f1a"/>
+  <path d="M 125 210 Q 122 186 125 156 L 275 156 Q 278 186 275 210 Z" fill="#5d3a22"/>
+
+  <!-- Rich chocolate shine -->
+  <ellipse cx="200" cy="170" rx="55" ry="25" fill="#8b5a2b" opacity="0.25"/>
+  <ellipse cx="200" cy="172" rx="50" ry="20" fill="#fff" opacity="0.08"/>
+
+  <!-- Mousse layer (fluffy texture) -->
+  <ellipse cx="200" cy="150" rx="78" ry="20" fill="#6b4423" opacity="0.9"/>
+  <ellipse cx="200" cy="148" rx="76" ry="18" fill="#8b6434"/>
+
+  <!-- Mousse texture with peaks -->
+  <path d="M 140 150 Q 145 138 150 148 Q 155 140 160 150" stroke="#a07c4d" stroke-width="1" fill="none" opacity="0.6"/>
+  <path d="M 240 150 Q 245 138 250 148 Q 255 140 260 150" stroke="#a07c4d" stroke-width="1" fill="none" opacity="0.6"/>
+  <path d="M 190 148 Q 195 135 200 147 Q 205 136 210 148" stroke="#a07c4d" stroke-width="1" fill="none" opacity="0.5"/>
+
+  <!-- Whipped cream topping -->
+  <ellipse cx="200" cy="135" rx="75" ry="22" fill="#fef9f6"/>
+  <ellipse cx="200" cy="133" rx="74" ry="20" fill="#fffbf9"/>
+
+  <!-- Cream swirl details -->
+  <path d="M 155 125 Q 160 115 165 125" stroke="#faf5f1" stroke-width="1.5" fill="none" opacity="0.7"/>
+  <path d="M 235 125 Q 240 115 245 125" stroke="#faf5f1" stroke-width="1.5" fill="none" opacity="0.7"/>
+  <path d="M 195 120 Q 200 108 205 120" stroke="#fef5f0" stroke-width="1.5" fill="none" opacity="0.6"/>
+
+  <!-- Chocolate shavings on cream -->
+  <path d="M 150 125 Q 155 120 160 125" fill="#3d2817" opacity="0.6"/>
+  <path d="M 240 128 Q 245 123 250 128" fill="#4a2f1a" opacity="0.5"/>
+  <path d="M 175 122 Q 180 117 185 122" fill="#3d2817" opacity="0.5"/>
+  <path d="M 215 120 Q 220 115 225 120" fill="#4a2f1a" opacity="0.55"/>
+
+  <!-- Cocoa powder dust -->
+  <circle cx="165" cy="300" r="2" fill="#3d2817" opacity="0.3"/>
+  <circle cx="235" cy="305" r="1.5" fill="#3d2817" opacity="0.25"/>
+  <circle cx="200" cy="310" r="1" fill="#3d2817" opacity="0.2"/>
+
+  <!-- Decorative spoon on right -->
+  <g opacity="0.2" filter="url(#softshadow)">
+    <line x1="295" y1="200" x2="315" y2="280" stroke="#b0b0a8" stroke-width="2.5" stroke-linecap="round"/>
+    <ellipse cx="318" cy="285" rx="6" ry="8" fill="#b0b0a8"/>
+  </g>
+
+  <!-- Subtle plate shadow -->
+  <ellipse cx="200" cy="360" rx="135" ry="28" fill="rgba(0,0,0,0.05)"/>
+
+  <!-- Light reflection on plate edge -->
+  <circle cx="200" cy="270" r="127" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.15"/>
+
+  <!-- Soft texture spots for realism -->
+  <circle cx="135" cy="170" r="1.5" fill="#fff" opacity="0.05"/>
+  <circle cx="265" cy="175" r="1" fill="#fff" opacity="0.04"/>
+</svg>

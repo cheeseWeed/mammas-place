@@ -27,16 +27,16 @@ export default function PortalDashboardPage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white">
       {/* Portal Header */}
-      <header className="bg-gray-900 border-b border-gray-800 px-6 py-4 flex items-center justify-between">
+      <header className="bg-gray-900 border-b border-gray-800 px-6 py-4 flex items-center justify-between sticky top-0 z-[60]">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 rounded-full bg-purple-700 flex items-center justify-center text-xs font-black">MP</div>
           <div>
             <div className="font-black text-sm">Mamma&apos;s Place Staff Portal</div>
-            <div className="text-gray-400 text-xs capitalize">{user.role} Dashboard</div>
+            <div className="text-gray-300 text-xs capitalize">{user.role} Dashboard</div>
           </div>
         </div>
         <div className="flex items-center gap-4">
-          <span className="text-gray-400 text-sm">👋 {user.name}</span>
+          <span className="text-gray-300 text-sm">👋 {user.name}</span>
           <button onClick={handleLogout} className="text-xs bg-gray-700 hover:bg-gray-600 px-3 py-1.5 rounded-lg transition-colors">
             Sign Out
           </button>
@@ -45,7 +45,7 @@ export default function PortalDashboardPage() {
 
       <main className="max-w-5xl mx-auto px-4 py-8">
         <h1 className="text-2xl font-black mb-2">Dashboard</h1>
-        <p className="text-gray-400 mb-8">Welcome back, {user.name}. You are signed in as <span className="text-purple-400 font-bold capitalize">{user.role}</span>.</p>
+        <p className="text-gray-300 mb-8">Welcome back, {user.name}. You are signed in as <span className="text-purple-400 font-bold capitalize">{user.role}</span>.</p>
 
         {/* Quick Stats */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
@@ -58,7 +58,7 @@ export default function PortalDashboardPage() {
             <div key={stat.label} className="bg-gray-800 rounded-2xl p-4 border border-gray-700">
               <div className="text-2xl mb-1">{stat.icon}</div>
               <div className="text-2xl font-black text-white">{stat.value}</div>
-              <div className="text-gray-400 text-xs">{stat.label}</div>
+              <div className="text-gray-300 text-xs">{stat.label}</div>
             </div>
           ))}
         </div>
@@ -68,10 +68,10 @@ export default function PortalDashboardPage() {
           <div className="bg-gray-800 rounded-2xl p-5 border border-gray-700">
             <h2 className="font-black text-lg mb-3">Product Management</h2>
             <div className="space-y-2">
-              <Link href="/admin/upload" className="flex items-center gap-3 bg-purple-700 hover:bg-purple-600 px-4 py-3 rounded-xl text-sm font-bold transition-colors">
-                📤 Upload Product Images
-              </Link>
-              <Link href="/shop" className="flex items-center gap-3 bg-gray-700 hover:bg-gray-600 px-4 py-3 rounded-xl text-sm font-medium transition-colors">
+              <div className="flex items-center gap-3 bg-gray-700 px-4 py-3 rounded-xl text-sm text-gray-300">
+                📤 Upload Product Images: Coming Soon
+              </div>
+              <Link href="/shop" className="flex items-center gap-3 bg-purple-700 hover:bg-purple-600 px-4 py-3 rounded-xl text-sm font-bold transition-colors">
                 🛍️ View Public Store
               </Link>
             </div>
@@ -81,13 +81,13 @@ export default function PortalDashboardPage() {
             <div className="bg-gray-800 rounded-2xl p-5 border border-gray-700">
               <h2 className="font-black text-lg mb-3">Manager Tools</h2>
               <div className="space-y-2">
-                <div className="bg-gray-700 px-4 py-3 rounded-xl text-sm text-gray-400">
+                <div className="bg-gray-700 px-4 py-3 rounded-xl text-sm text-gray-300">
                   🔐 Promo Codes: MAMMA10 · PRINCESS20 · UNICORN15 · PONY25 · SAVE30
                 </div>
-                <div className="bg-gray-700 px-4 py-3 rounded-xl text-sm text-gray-400">
+                <div className="bg-gray-700 px-4 py-3 rounded-xl text-sm text-gray-300">
                   📊 Analytics: Coming Soon
                 </div>
-                <div className="bg-gray-700 px-4 py-3 rounded-xl text-sm text-gray-400">
+                <div className="bg-gray-700 px-4 py-3 rounded-xl text-sm text-gray-300">
                   📋 Orders: Coming Soon
                 </div>
               </div>
@@ -101,7 +101,7 @@ export default function PortalDashboardPage() {
                 <Link href="/shop" className="flex items-center gap-3 bg-gray-700 hover:bg-gray-600 px-4 py-3 rounded-xl text-sm font-medium transition-colors">
                   🔍 Browse Products
                 </Link>
-                <div className="bg-gray-700 px-4 py-3 rounded-xl text-sm text-gray-400">
+                <div className="bg-gray-700 px-4 py-3 rounded-xl text-sm text-gray-300">
                   💬 Customer Support: Coming Soon
                 </div>
               </div>

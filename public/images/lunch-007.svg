@@ -1,0 +1,129 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#f5f5f5"/>
+
+  <!-- Ceramic bowl (earthy tone) -->
+  <ellipse cx="200" cy="250" rx="135" ry="85" fill="#e8d7c6" stroke="#c9b5a8" stroke-width="2"/>
+  <ellipse cx="200" cy="245" rx="130" ry="80" fill="#f0e5db"/>
+
+  <!-- Quinoa base (fluffy grain) -->
+  <ellipse cx="200" cy="205" rx="120" ry="70" fill="#c8a882"/>
+  <ellipse cx="200" cy="200" rx="115" ry="65" fill="#dbb89d"/>
+
+  <!-- Quinoa texture (individual grains) -->
+  <g opacity="0.6">
+    <circle cx="170" cy="190" r="1.5" fill="#8b7355"/>
+    <circle cx="185" cy="185" r="1.5" fill="#8b7355"/>
+    <circle cx="210" cy="180" r="1.5" fill="#8b7355"/>
+    <circle cx="230" cy="195" r="1.5" fill="#8b7355"/>
+    <circle cx="245" cy="210" r="1.5" fill="#8b7355"/>
+    <circle cx="160" cy="210" r="1.5" fill="#8b7355"/>
+    <circle cx="190" cy="220" r="1.5" fill="#8b7355"/>
+    <circle cx="220" cy="215" r="1.5" fill="#8b7355"/>
+    <circle cx="175" cy="205" r="1.5" fill="#8b7355"/>
+  </g>
+
+  <!-- Cherry tomatoes (halved, scattered) -->
+  <g>
+    <!-- Top left -->
+    <circle cx="155" cy="185" r="10" fill="#d32f2f"/>
+    <ellipse cx="155" cy="185" rx="8" ry="5" fill="#ff6f00" opacity="0.7"/>
+    <path d="M 145 185 L 165 185" stroke="#1a1a1a" stroke-width="0.5"/>
+
+    <!-- Top right -->
+    <circle cx="245" cy="190" r="10" fill="#d32f2f"/>
+    <ellipse cx="245" cy="190" rx="8" ry="5" fill="#ff6f00" opacity="0.7"/>
+    <path d="M 235 190 L 255 190" stroke="#1a1a1a" stroke-width="0.5"/>
+
+    <!-- Center -->
+    <circle cx="200" cy="170" r="10" fill="#c41e3a"/>
+    <ellipse cx="200" cy="170" rx="8" ry="5" fill="#ff6f00" opacity="0.7"/>
+    <path d="M 190 170 L 210 170" stroke="#1a1a1a" stroke-width="0.5"/>
+
+    <!-- Bottom -->
+    <circle cx="180" cy="220" r="9" fill="#d32f2f"/>
+    <ellipse cx="180" cy="220" rx="7" ry="4" fill="#ff6f00" opacity="0.7"/>
+
+    <circle cx="220" cy="225" r="9" fill="#c41e3a"/>
+    <ellipse cx="220" cy="225" rx="7" ry="4" fill="#ff6f00" opacity="0.7"/>
+  </g>
+
+  <!-- Cucumber slices (refreshing green) -->
+  <g opacity="0.85">
+    <ellipse cx="175" cy="200" rx="11" ry="8" fill="#a5d6a7" stroke="#7cb342" stroke-width="0.5"/>
+    <circle cx="175" cy="200" r="5" fill="#c8e6c9"/>
+    <circle cx="175" cy="200" r="2" fill="#558b2f"/>
+
+    <ellipse cx="225" cy="205" rx="11" ry="8" fill="#a5d6a7" stroke="#7cb342" stroke-width="0.5"/>
+    <circle cx="225" cy="205" r="5" fill="#c8e6c9"/>
+    <circle cx="225" cy="205" r="2" fill="#558b2f"/>
+
+    <ellipse cx="200" cy="215" rx="10" ry="7" fill="#a5d6a7" stroke="#7cb342" stroke-width="0.5"/>
+    <circle cx="200" cy="215" r="4" fill="#c8e6c9"/>
+    <circle cx="200" cy="215" r="1.5" fill="#558b2f"/>
+  </g>
+
+  <!-- Red onion slices (thin, purple) -->
+  <g opacity="0.7">
+    <ellipse cx="165" cy="210" rx="8" ry="6" fill="#d1c4e9"/>
+    <circle cx="165" cy="210" r="4" fill="#9575cd" opacity="0.5"/>
+
+    <ellipse cx="235" cy="215" rx="8" ry="6" fill="#d1c4e9"/>
+    <circle cx="235" cy="215" r="4" fill="#9575cd" opacity="0.5"/>
+  </g>
+
+  <!-- Feta cheese crumbles (white, scattered) -->
+  <g opacity="0.8">
+    <rect x="150" y="190" width="6" height="5" fill="#f5f5f5" rx="1"/>
+    <rect x="165" y="185" width="6" height="5" fill="#ffffff" rx="1"/>
+    <rect x="210" y="192" width="6" height="5" fill="#f5f5f5" rx="1"/>
+    <rect x="240" y="188" width="6" height="5" fill="#ffffff" rx="1"/>
+    <rect x="180" y="210" width="6" height="5" fill="#f5f5f5" rx="1"/>
+    <rect x="220" y="212" width="6" height="5" fill="#ffffff" rx="1"/>
+    <rect x="195" y="205" width="5" height="4" fill="#f5f5f5" rx="1"/>
+  </g>
+
+  <!-- Kalamata olives (dark, scattered) -->
+  <g>
+    <ellipse cx="170" cy="215" rx="5" ry="6" fill="#1a1a1a"/>
+    <ellipse cx="230" cy="195" rx="5" ry="6" fill="#1a1a1a"/>
+    <ellipse cx="210" cy="205" rx="5" ry="6" fill="#1a1a1a"/>
+    <ellipse cx="155" cy="205" rx="4" ry="5" fill="#1a1a1a"/>
+  </g>
+
+  <!-- Fresh parsley (bright green garnish) -->
+  <g>
+    <path d="M 155 175 Q 165 165 175 175" fill="#2e7d32" stroke="#1b5e20" stroke-width="1"/>
+    <path d="M 225 180 Q 235 170 245 180" fill="#2e7d32" stroke="#1b5e20" stroke-width="1"/>
+    <path d="M 190 160 Q 200 150 210 160" fill="#43a047" stroke="#1b5e20" stroke-width="1"/>
+  </g>
+
+  <!-- Lemon wedge (bright yellow accent) -->
+  <g opacity="0.8">
+    <circle cx="250" cy="170" r="12" fill="#ffeb3b"/>
+    <circle cx="250" cy="170" r="10" fill="#ffd54f"/>
+    <!-- Lemon wedge lines -->
+    <path d="M 250 158 L 250 182" stroke="#f57f17" stroke-width="1"/>
+    <path d="M 238 170 L 262 170" stroke="#f57f17" stroke-width="1"/>
+    <path d="M 242 165 L 258 175" stroke="#f57f17" stroke-width="1"/>
+    <path d="M 242 175 L 258 165" stroke="#f57f17" stroke-width="1"/>
+  </g>
+
+  <!-- Olive oil drizzle (glossy) -->
+  <g opacity="0.4" fill="none" stroke="#8b7355" stroke-width="1.5" stroke-linecap="round">
+    <path d="M 130 200 Q 150 210 170 200"/>
+    <path d="M 230 200 Q 250 210 270 200"/>
+  </g>
+
+  <!-- Shine/gloss on bowl -->
+  <ellipse cx="170" cy="185" rx="55" ry="50" fill="white" opacity="0.12"/>
+
+  <!-- Shadow on bowl -->
+  <ellipse cx="200" cy="330" rx="135" ry="30" fill="rgba(0,0,0,0.09)"/>
+
+  <!-- Wooden spoon leaning on bowl -->
+  <g opacity="0.35">
+    <line x1="80" y1="240" x2="95" y2="280" stroke="#8b7355" stroke-width="4" stroke-linecap="round"/>
+    <ellipse cx="100" cy="290" rx="8" ry="6" fill="#a0826d"/>
+  </g>
+</svg>

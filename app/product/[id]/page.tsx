@@ -86,7 +86,7 @@ export default function ProductDetailPage() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-6">
       {/* Breadcrumb */}
-      <nav className="text-sm text-gray-500 mb-4 flex gap-2 items-center">
+      <nav className="text-sm text-gray-700 mb-4 flex gap-2 items-center">
         <Link href="/" className="hover:text-purple-700">Home</Link>
         <span>›</span>
         <Link href="/shop" className="hover:text-purple-700">Shop</Link>
@@ -113,7 +113,7 @@ export default function ProductDetailPage() {
                     />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-xs font-bold text-gray-800 group-hover:text-purple-700 leading-tight line-clamp-2">{r.name}</p>
+                    <p className="text-sm font-bold text-gray-800 group-hover:text-purple-700 leading-tight line-clamp-2">{r.name}</p>
                     <p className="text-purple-700 font-black text-sm mt-1">${r.price.toFixed(2)}</p>
                     {r.isSale && (
                       <span className="text-xs bg-red-100 text-red-600 font-bold px-1.5 py-0.5 rounded-full">SALE</span>
@@ -122,7 +122,7 @@ export default function ProductDetailPage() {
                 </Link>
               ))}
             </div>
-            <Link href={`/shop?category=${product.category}`} className="mt-4 block text-center text-xs text-purple-600 font-bold hover:underline">
+            <Link href={`/shop?category=${product.category}`} className="mt-4 block text-center text-sm text-purple-600 font-bold hover:underline">
               See all {product.category} →
             </Link>
           </div>
@@ -146,9 +146,9 @@ export default function ProductDetailPage() {
             <div className="p-6">
               {/* Category & Sale Badge */}
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-xs text-purple-500 uppercase font-semibold capitalize bg-purple-50 px-2 py-1 rounded-full">{product.category}</span>
+                <span className="text-sm text-purple-500 uppercase font-semibold capitalize bg-purple-50 px-2 py-1 rounded-full">{product.category}</span>
                 {product.isSale && (
-                  <span className="text-xs bg-red-500 text-white font-bold px-2 py-1 rounded-full">
+                  <span className="text-sm bg-red-500 text-white font-bold px-2 py-1 rounded-full">
                     {product.discount}% OFF SALE!
                   </span>
                 )}
@@ -178,19 +178,19 @@ export default function ProductDetailPage() {
                   <span className="text-4xl font-black text-purple-800">${product.price.toFixed(2)}</span>
                   {product.originalPrice && (
                     <div className="mb-1">
-                      <span className="text-gray-400 text-xl line-through">${product.originalPrice.toFixed(2)}</span>
+                      <span className="text-gray-600 text-xl line-through">${product.originalPrice.toFixed(2)}</span>
                       <div className="text-green-600 text-sm font-bold">
                         You save ${(product.originalPrice - product.price).toFixed(2)}!
                       </div>
                     </div>
                   )}
                 </div>
-                <p className="text-xs text-gray-500 mt-1">
+                <p className="text-sm text-gray-700 mt-1">
                   {product.inStock
                     ? `✅ In Stock — ${product.stockCount} available`
                     : '❌ Out of Stock'}
                 </p>
-                <p className="text-xs text-green-600 font-medium mt-1">
+                <p className="text-sm text-green-600 font-medium mt-1">
                   🚚 {product.price >= 50 ? 'FREE shipping!' : `Add $${(50 - product.price).toFixed(2)} more for free shipping`}
                 </p>
               </div>
@@ -220,7 +220,7 @@ export default function ProductDetailPage() {
                   >
                     +
                   </button>
-                  <span className="text-sm text-gray-500">Total: <strong className="text-purple-800">${(product.price * quantity).toFixed(2)}</strong></span>
+                  <span className="text-sm text-gray-700">Total: <strong className="text-purple-800">${(product.price * quantity).toFixed(2)}</strong></span>
                 </div>
               </div>
 
@@ -229,14 +229,14 @@ export default function ProductDetailPage() {
                 <button
                   onClick={handleBuyNow}
                   disabled={!product.inStock}
-                  className="flex-1 bg-yellow-400 hover:bg-yellow-300 active:bg-yellow-500 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed disabled:hover:scale-100 text-purple-900 font-black py-4 rounded-2xl text-lg shadow-md transition-all hover:scale-105 flex items-center justify-center gap-2"
+                  className="flex-1 bg-yellow-400 hover:bg-yellow-300 active:bg-yellow-500 disabled:bg-gray-200 disabled:text-gray-600 disabled:cursor-not-allowed disabled:hover:scale-100 text-purple-900 font-black py-4 rounded-2xl text-lg shadow-md transition-all hover:scale-105 flex items-center justify-center gap-2"
                 >
                   ⚡ BUY NOW
                 </button>
                 <button
                   onClick={handleAddToCart}
                   disabled={!product.inStock}
-                  className="flex-1 bg-purple-700 hover:bg-purple-600 active:bg-purple-800 disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed disabled:hover:scale-100 text-white font-black py-4 rounded-2xl text-lg shadow-md transition-all hover:scale-105 flex items-center justify-center gap-2"
+                  className="flex-1 bg-purple-700 hover:bg-purple-600 active:bg-purple-800 disabled:bg-gray-200 disabled:text-gray-600 disabled:cursor-not-allowed disabled:hover:scale-100 text-white font-black py-4 rounded-2xl text-lg shadow-md transition-all hover:scale-105 flex items-center justify-center gap-2"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -256,19 +256,19 @@ export default function ProductDetailPage() {
                 <h3 className="text-sm font-black text-gray-700 mb-3 uppercase tracking-wide">Product Details</h3>
                 <div className="grid grid-cols-2 gap-3 text-sm">
                   <div>
-                    <span className="text-gray-500">Category</span>
+                    <span className="text-gray-700">Category</span>
                     <p className="font-semibold capitalize">{product.category}</p>
                   </div>
                   <div>
-                    <span className="text-gray-500">Tags</span>
+                    <span className="text-gray-700">Tags</span>
                     <p className="font-semibold">{product.tags.join(', ')}</p>
                   </div>
                   <div>
-                    <span className="text-gray-500">In Stock</span>
+                    <span className="text-gray-700">In Stock</span>
                     <p className="font-semibold">{product.stockCount} units</p>
                   </div>
                   <div>
-                    <span className="text-gray-500">Rating</span>
+                    <span className="text-gray-700">Rating</span>
                     <p className="font-semibold">{product.rating}/5.0</p>
                   </div>
                 </div>
@@ -285,11 +285,11 @@ export default function ProductDetailPage() {
                     <div className="flex text-yellow-400 text-lg mt-1">
                       {'★'.repeat(Math.round(product.rating))}{'☆'.repeat(5 - Math.round(product.rating))}
                     </div>
-                    <div className="text-xs text-gray-600 mt-1">{product.reviewCount} reviews</div>
+                    <div className="text-sm text-gray-700 mt-1">{product.reviewCount} reviews</div>
                   </div>
                   <div className="flex-1 text-sm text-gray-600">
                     <p className="font-semibold">Customers love this product!</p>
-                    <p className="text-xs mt-1">Based on verified purchases</p>
+                    <p className="text-sm mt-1">Based on verified purchases</p>
                   </div>
                 </div>
 
@@ -302,7 +302,7 @@ export default function ProductDetailPage() {
                           <div className="flex items-center gap-2 mb-1">
                             <span className="font-bold text-sm text-gray-900">{review.author}</span>
                             {review.verified && (
-                              <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold">
+                              <span className="text-sm bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold">
                                 Verified Purchase
                               </span>
                             )}
@@ -311,7 +311,7 @@ export default function ProductDetailPage() {
                             <div className="flex text-yellow-400 text-sm">
                               {'★'.repeat(review.rating)}{'☆'.repeat(5 - review.rating)}
                             </div>
-                            <span className="text-xs text-gray-500">
+                            <span className="text-sm text-gray-700">
                               {new Date(review.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
                             </span>
                           </div>

@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <!-- MAMMA'S PLACE FAMILY TRIVIA - Photorealistic Product Photography -->
+  <defs>
+    <!-- Warm studio lighting -->
+    <linearGradient id="studioBg4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fef9f3"/>
+      <stop offset="50%" style="stop-color:#ffffff"/>
+      <stop offset="100%" style="stop-color:#f5ebe0"/>
+    </linearGradient>
+
+    <!-- Warm burgundy/wine box -->
+    <linearGradient id="wineBox" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8b2252"/>
+      <stop offset="40%" style="stop-color:#722f37"/>
+      <stop offset="100%" style="stop-color:#4a0e0e"/>
+    </linearGradient>
+
+    <!-- Side depth -->
+    <linearGradient id="wineSide" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2a0808"/>
+      <stop offset="100%" style="stop-color:#3d1212"/>
+    </linearGradient>
+
+    <!-- Gold metallic frame -->
+    <linearGradient id="goldFrame" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700"/>
+      <stop offset="25%" style="stop-color:#ffec8b"/>
+      <stop offset="50%" style="stop-color:#daa520"/>
+      <stop offset="75%" style="stop-color:#b8860b"/>
+      <stop offset="100%" style="stop-color:#cd853f"/>
+    </linearGradient>
+
+    <!-- Cream parchment -->
+    <linearGradient id="parchment" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fef9ef"/>
+      <stop offset="50%" style="stop-color:#faf0dc"/>
+      <stop offset="100%" style="stop-color:#f5e6c8"/>
+    </linearGradient>
+
+    <!-- Drop shadow -->
+    <filter id="boxShadow4" x="-30%" y="-30%" width="180%" height="180%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+      <feOffset dx="4" dy="10" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Gloss effect -->
+    <linearGradient id="gloss4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.22"/>
+      <stop offset="45%" style="stop-color:#ffffff;stop-opacity:0.05"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0"/>
+    </linearGradient>
+
+    <!-- Category colors -->
+    <linearGradient id="categoryPink" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff69b4"/>
+      <stop offset="100%" style="stop-color:#db5a9c"/>
+    </linearGradient>
+    <linearGradient id="categoryGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700"/>
+      <stop offset="100%" style="stop-color:#daa520"/>
+    </linearGradient>
+    <linearGradient id="categoryPurple" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#9b59b6"/>
+      <stop offset="100%" style="stop-color:#8e44ad"/>
+    </linearGradient>
+    <linearGradient id="categoryBlue" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498db"/>
+      <stop offset="100%" style="stop-color:#2980b9"/>
+    </linearGradient>
+    <linearGradient id="categoryGreen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2ecc71"/>
+      <stop offset="100%" style="stop-color:#27ae60"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Studio backdrop -->
+  <rect width="400" height="500" fill="url(#studioBg4)"/>
+
+  <!-- Soft ground shadow -->
+  <ellipse cx="200" cy="440" rx="160" ry="35" fill="rgba(139,34,82,0.1)"/>
+  <ellipse cx="200" cy="440" rx="115" ry="24" fill="rgba(139,34,82,0.07)"/>
+
+  <!-- Main Game Box -->
+  <g filter="url(#boxShadow4)">
+    <!-- Box right side depth -->
+    <polygon points="285,90 310,100 310,300 285,290" fill="url(#wineSide)"/>
+
+    <!-- Box top surface -->
+    <polygon points="75,90 100,76 310,76 285,90" fill="#a84868" opacity="0.9"/>
+    <polygon points="75,90 100,76 310,76 285,90" fill="url(#gloss4)"/>
+
+    <!-- Front face of box -->
+    <rect x="75" y="90" width="210" height="200" fill="url(#wineBox)" rx="3"/>
+
+    <!-- Glossy overlay -->
+    <rect x="75" y="90" width="210" height="100" fill="url(#gloss4)" rx="3"/>
+
+    <!-- Ornate gold frame -->
+    <rect x="83" y="98" width="194" height="184" fill="none" stroke="url(#goldFrame)" stroke-width="4" rx="2"/>
+    <rect x="88" y="103" width="184" height="174" fill="none" stroke="#b8860b" stroke-width="1" rx="1"/>
+
+    <!-- Inner decorative corners -->
+    <path d="M88,103 L108,103 L108,108 L93,108 L93,123 L88,123 Z" fill="#daa520" opacity="0.6"/>
+    <path d="M272,103 L252,103 L252,108 L267,108 L267,123 L272,123 Z" fill="#daa520" opacity="0.6"/>
+    <path d="M88,277 L108,277 L108,272 L93,272 L93,257 L88,257 Z" fill="#daa520" opacity="0.6"/>
+    <path d="M272,277 L252,277 L252,272 L267,272 L267,257 L272,257 Z" fill="#daa520" opacity="0.6"/>
+
+    <!-- Title banner - parchment style -->
+    <rect x="100" y="115" width="160" height="55" fill="url(#parchment)" stroke="#d4b896" stroke-width="1" rx="3"/>
+
+    <!-- Decorative banner ribbon ends -->
+    <polygon points="95,115 100,115 100,135 90,125" fill="#faf0dc"/>
+    <polygon points="265,115 260,115 260,135 270,125" fill="#faf0dc"/>
+
+    <!-- Store name and game title -->
+    <text x="180" y="138" font-family="Georgia, serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#722f37">
+      MAMMA'S PLACE
+    </text>
+    <text x="180" y="156" font-family="Georgia, serif" font-size="11" text-anchor="middle" fill="#8b2252">
+      Family Trivia
+    </text>
+
+    <!-- Category wheel illustration -->
+    <g transform="translate(180, 210)">
+      <!-- Outer ring -->
+      <circle cx="0" cy="0" r="38" fill="none" stroke="#daa520" stroke-width="2"/>
+
+      <!-- Category pie slices -->
+      <path d="M0,0 L0,-35 A35,35 0 0,1 33.2,-10.8 Z" fill="url(#categoryPink)" stroke="#fff" stroke-width="1"/>
+      <path d="M0,0 L33.2,-10.8 A35,35 0 0,1 21.6,27.5 Z" fill="url(#categoryGold)" stroke="#fff" stroke-width="1"/>
+      <path d="M0,0 L21.6,27.5 A35,35 0 0,1 -21.6,27.5 Z" fill="url(#categoryPurple)" stroke="#fff" stroke-width="1"/>
+      <path d="M0,0 L-21.6,27.5 A35,35 0 0,1 -33.2,-10.8 Z" fill="url(#categoryBlue)" stroke="#fff" stroke-width="1"/>
+      <path d="M0,0 L-33.2,-10.8 A35,35 0 0,1 0,-35 Z" fill="url(#categoryGreen)" stroke="#fff" stroke-width="1"/>
+
+      <!-- Center hub -->
+      <circle cx="0" cy="0" r="12" fill="url(#goldFrame)" stroke="#b8860b" stroke-width="1"/>
+      <text x="0" y="4" font-family="Arial, sans-serif" font-size="6" font-weight="bold" text-anchor="middle" fill="#4a0e0e">500</text>
+
+      <!-- Category icons (simple shapes) -->
+      <circle cx="5" cy="-22" r="4" fill="white" opacity="0.8"/>
+      <circle cx="22" cy="8" r="4" fill="white" opacity="0.8"/>
+      <polygon points="0,22 -3,18 3,18" fill="white" opacity="0.8"/>
+      <rect x="-24" y="3" width="6" height="6" fill="white" opacity="0.8" rx="1"/>
+      <polygon points="-12,-18 -10,-22 -8,-18 -12,-16 -8,-16" fill="white" opacity="0.8"/>
+    </g>
+
+    <!-- Game Title below wheel -->
+    <text x="180" y="265" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#fef9ef" letter-spacing="2">
+      THE ULTIMATE FAMILY GAME
+    </text>
+
+    <!-- Feature badges -->
+    <rect x="100" y="272" width="50" height="14" fill="#daa520" rx="7"/>
+    <text x="125" y="282" font-family="Arial, sans-serif" font-size="7" font-weight="bold" text-anchor="middle" fill="#4a0e0e">500 Qs</text>
+
+    <rect x="155" y="272" width="50" height="14" fill="#daa520" rx="7"/>
+    <text x="180" y="282" font-family="Arial, sans-serif" font-size="7" font-weight="bold" text-anchor="middle" fill="#4a0e0e">5 Levels</text>
+
+    <rect x="210" y="272" width="50" height="14" fill="#daa520" rx="7"/>
+    <text x="235" y="282" font-family="Arial, sans-serif" font-size="7" font-weight="bold" text-anchor="middle" fill="#4a0e0e">Ages 6+</text>
+  </g>
+
+  <!-- Game Components Display -->
+  <!-- Question cards fanned -->
+  <g transform="translate(75, 315)">
+    <rect x="0" y="0" width="42" height="55" fill="url(#parchment)" stroke="#d4b896" stroke-width="1" rx="3" transform="rotate(-12 21 27)"/>
+    <rect x="0" y="0" width="42" height="55" fill="url(#categoryPink)" stroke="#db5a9c" stroke-width="1" rx="3" transform="rotate(-12 21 27)"/>
+    <text x="21" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="white" transform="rotate(-12 21 27)">?</text>
+  </g>
+
+  <g transform="translate(115, 318)">
+    <rect x="0" y="0" width="42" height="55" fill="url(#parchment)" stroke="#d4b896" stroke-width="1" rx="3" transform="rotate(-4 21 27)"/>
+    <rect x="0" y="0" width="42" height="55" fill="url(#categoryGold)" stroke="#daa520" stroke-width="1" rx="3" transform="rotate(-4 21 27)"/>
+    <text x="21" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="#4a0e0e" transform="rotate(-4 21 27)">?</text>
+  </g>
+
+  <g transform="translate(155, 320)">
+    <rect x="0" y="0" width="42" height="55" fill="url(#parchment)" stroke="#d4b896" stroke-width="1" rx="3" transform="rotate(4 21 27)"/>
+    <rect x="0" y="0" width="42" height="55" fill="url(#categoryPurple)" stroke="#8e44ad" stroke-width="1" rx="3" transform="rotate(4 21 27)"/>
+    <text x="21" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="white" transform="rotate(4 21 27)">?</text>
+  </g>
+
+  <g transform="translate(195, 316)">
+    <rect x="0" y="0" width="42" height="55" fill="url(#parchment)" stroke="#d4b896" stroke-width="1" rx="3" transform="rotate(12 21 27)"/>
+    <rect x="0" y="0" width="42" height="55" fill="url(#categoryBlue)" stroke="#2980b9" stroke-width="1" rx="3" transform="rotate(12 21 27)"/>
+    <text x="21" y="35" font-size="18" font-weight="bold" text-anchor="middle" fill="white" transform="rotate(12 21 27)">?</text>
+  </g>
+
+  <!-- Player tokens -->
+  <g transform="translate(260, 330)">
+    <ellipse cx="0" cy="28" rx="12" ry="4" fill="rgba(0,0,0,0.12)"/>
+    <circle cx="0" cy="12" r="12" fill="url(#categoryGreen)" stroke="#27ae60" stroke-width="1.5"/>
+    <circle cx="0" cy="12" r="8" fill="#2ecc71" opacity="0.7"/>
+  </g>
+
+  <g transform="translate(295, 340)">
+    <ellipse cx="0" cy="28" rx="12" ry="4" fill="rgba(0,0,0,0.12)"/>
+    <circle cx="0" cy="12" r="12" fill="url(#categoryPink)" stroke="#db5a9c" stroke-width="1.5"/>
+    <circle cx="0" cy="12" r="8" fill="#ff69b4" opacity="0.7"/>
+  </g>
+
+  <g transform="translate(330, 335)">
+    <ellipse cx="0" cy="28" rx="12" ry="4" fill="rgba(0,0,0,0.12)"/>
+    <circle cx="0" cy="12" r="12" fill="url(#categoryBlue)" stroke="#2980b9" stroke-width="1.5"/>
+    <circle cx="0" cy="12" r="8" fill="#3498db" opacity="0.7"/>
+  </g>
+
+  <!-- Product info card -->
+  <g transform="translate(50, 400)">
+    <rect x="0" y="0" width="300" height="85" fill="white" stroke="#d4b896" stroke-width="1" rx="6"/>
+    <rect x="0" y="0" width="300" height="85" fill="url(#gloss4)" rx="6"/>
+
+    <!-- Price section -->
+    <text x="20" y="28" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#8b2252">$29.99</text>
+    <text x="108" y="28" font-family="Arial, sans-serif" font-size="13" fill="#999" text-decoration="line-through">$39.99</text>
+
+    <!-- Sale badge -->
+    <rect x="168" y="12" width="58" height="22" fill="#8b2252" rx="11"/>
+    <text x="197" y="27" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="white">SAVE 25%</text>
+
+    <!-- Description -->
+    <text x="20" y="50" font-family="Arial, sans-serif" font-size="10" fill="#555">Custom family trivia game - made just for you!</text>
+    <text x="20" y="65" font-family="Arial, sans-serif" font-size="9" fill="#888">500 questions, game board, spinner, 6 tokens, instructions</text>
+
+    <!-- Rating -->
+    <text x="250" y="55" font-size="14" fill="#daa520">&#9733;&#9733;&#9733;&#9733;&#9733;</text>
+    <text x="250" y="70" font-family="Arial, sans-serif" font-size="8" fill="#666">4.9 (328 reviews)</text>
+  </g>
+</svg>

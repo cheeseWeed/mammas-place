@@ -1,0 +1,77 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bg-008" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5f5f5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e0e0e0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="metal-008" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#9a9a9a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#7a7a7a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6a6a6a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="handle-008" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8a7a6a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6a5a4a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bg-008)"/>
+
+  <!-- Shadow -->
+  <ellipse cx="200" cy="330" rx="110" ry="28" fill="#000" opacity="0.1"/>
+
+  <!-- Main watering can body -->
+  <ellipse cx="200" cy="260" rx="100" ry="60" fill="url(#metal-008)" stroke="#5a5a5a" stroke-width="2"/>
+
+  <!-- Can top/opening -->
+  <ellipse cx="200" cy="200" rx="85" ry="35" fill="#8a8a8a" stroke="#5a5a5a" stroke-width="1.5"/>
+  <ellipse cx="200" cy="205" rx="80" ry="30" fill="#9a9a9a" opacity="0.7"/>
+
+  <!-- Can spout -->
+  <path d="M 295 245 L 340 230 L 345 240 L 300 255" fill="url(#metal-008)" stroke="#5a5a5a" stroke-width="1.5"/>
+  <ellipse cx="343" cy="235" rx="5" ry="4" fill="#8a8a8a" stroke="#5a5a5a" stroke-width="1"/>
+
+  <!-- Spout holes for water effect -->
+  <g fill="#5a5a5a" opacity="0.6">
+    <circle cx="338" cy="232" r="1.2"/>
+    <circle cx="340" cy="236" r="1.2"/>
+    <circle cx="342" cy="234" r="1.2"/>
+  </g>
+
+  <!-- Water stream coming out -->
+  <g stroke="#5eb3e6" stroke-width="2" fill="none" opacity="0.7" stroke-linecap="round">
+    <path d="M 340 235 Q 350 245 355 270"/>
+    <path d="M 343 237 Q 352 248 357 272"/>
+  </g>
+
+  <!-- Metallic highlights on body -->
+  <ellipse cx="140" cy="240" rx="30" ry="40" fill="#b0b0b0" opacity="0.35"/>
+  <ellipse cx="200" cy="280" rx="40" ry="15" fill="#a0a0a0" opacity="0.25"/>
+
+  <!-- Handle - arched -->
+  <path d="M 180 205 Q 120 160 120 240" stroke="url(#handle-008)" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <path d="M 180 205 Q 120 160 120 240" stroke="#9a8a7a" stroke-width="10" fill="none" opacity="0.6" stroke-linecap="round"/>
+
+  <!-- Bottom rim/base -->
+  <ellipse cx="200" cy="310" rx="105" ry="22" fill="#7a7a7a" stroke="#5a5a5a" stroke-width="1.5"/>
+  <ellipse cx="200" cy="315" rx="100" ry="18" fill="#8a8a8a" opacity="0.5"/>
+
+  <!-- Decorative band on can -->
+  <ellipse cx="200" cy="270" rx="95" ry="8" fill="none" stroke="#5a5a5a" stroke-width="1.5" opacity="0.6"/>
+  <ellipse cx="200" cy="240" rx="90" ry="6" fill="none" stroke="#5a5a5a" stroke-width="1" opacity="0.4"/>
+
+  <!-- Rust spots for aged look -->
+  <g fill="#8a5a3a" opacity="0.2">
+    <ellipse cx="160" cy="280" rx="8" ry="6"/>
+    <ellipse cx="240" cy="265" rx="6" ry="5"/>
+    <ellipse cx="190" cy="310" rx="7" ry="4"/>
+  </g>
+
+  <!-- Water droplets on surface -->
+  <g fill="#5eb3e6" opacity="0.5">
+    <circle cx="250" cy="235" r="2"/>
+    <circle cx="270" cy="250" r="1.5"/>
+    <circle cx="260" cy="280" r="2"/>
+  </g>
+</svg>

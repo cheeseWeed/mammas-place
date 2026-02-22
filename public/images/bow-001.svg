@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <defs>
+    <!-- Realistic studio lighting -->
+    <linearGradient id="bgGradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8f8f8;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8e8e8;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Soft shadow -->
+    <filter id="shadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="4" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.15"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Material gradients -->
+    <linearGradient id="foamYellow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fef08a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#fcd34d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+    </linearGradient>
+
+    <radialGradient id="foamShine">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Studio white background with subtle floor -->
+  <rect width="400" height="500" fill="url(#bgGradient1)"/>
+
+  <!-- Subtle floor shadow -->
+  <ellipse cx="200" cy="460" rx="140" ry="25" fill="#000000" opacity="0.08"/>
+
+  <!-- Main foam bow - angled 3/4 view -->
+  <!-- Bow grip -->
+  <rect x="160" y="200" width="65" height="95" rx="15" fill="#8b5a2b" stroke="#5c3d1f" stroke-width="2" filter="url(#shadow)"/>
+
+  <!-- Grip texture -->
+  <rect x="165" y="205" width="55" height="85" rx="12" fill="#9d6434" opacity="0.3"/>
+
+  <!-- Foam bow limbs - curved design -->
+  <!-- Upper limb -->
+  <path d="M 175 200 Q 140 140 130 60" stroke="#fef08a" stroke-width="16" fill="none" stroke-linecap="round" filter="url(#shadow)"/>
+  <path d="M 175 200 Q 140 140 130 60" stroke="url(#foamYellow)" stroke-width="14" fill="none" stroke-linecap="round"/>
+
+  <!-- Lower limb -->
+  <path d="M 225 200 Q 260 140 270 60" stroke="#fef08a" stroke-width="16" fill="none" stroke-linecap="round" filter="url(#shadow)"/>
+  <path d="M 225 200 Q 260 140 270 60" stroke="url(#foamYellow)" stroke-width="14" fill="none" stroke-linecap="round"/>
+
+  <!-- String -->
+  <line x1="130" y1="60" x2="270" y2="60" stroke="#e8e8e8" stroke-width="2.5"/>
+  <line x1="130" y1="62" x2="270" y2="62" stroke="#d0d0d0" stroke-width="1"/>
+
+  <!-- Foam arrows - 3 with varied placement -->
+  <!-- Red arrow - top left -->
+  <g transform="translate(85, 160) rotate(-28)" filter="url(#shadow)">
+    <line x1="0" y1="0" x2="95" y2="0" stroke="#dc2626" stroke-width="6"/>
+    <polygon points="0,-8 0,8 -18,0" fill="#b91c1c"/>
+    <polygon points="95,0 108,-5 108,5" fill="#7c2d12"/>
+  </g>
+
+  <!-- Blue arrow - middle -->
+  <g transform="translate(90, 240) rotate(8)" filter="url(#shadow)">
+    <line x1="0" y1="0" x2="95" y2="0" stroke="#3b82f6" stroke-width="6"/>
+    <polygon points="0,-8 0,8 -18,0" fill="#1e40af"/>
+    <polygon points="95,0 108,-5 108,5" fill="#7c2d12"/>
+  </g>
+
+  <!-- Green arrow - bottom right -->
+  <g transform="translate(85, 320) rotate(35)" filter="url(#shadow)">
+    <line x1="0" y1="0" x2="95" y2="0" stroke="#22c55e" stroke-width="6"/>
+    <polygon points="0,-8 0,8 -18,0" fill="#15a34a"/>
+    <polygon points="95,0 108,-5 108,5" fill="#7c2d12"/>
+  </g>
+
+  <!-- Product label/badge -->
+  <rect x="250" y="380" width="130" height="50" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" filter="url(#shadow)"/>
+  <text x="315" y="400" font-size="13" font-weight="bold" text-anchor="middle" fill="#1e40af" font-family="Arial">Adventure Foam</text>
+  <text x="315" y="418" font-size="11" text-anchor="middle" fill="#64748b" font-family="Arial">Bow & Arrow Set</text>
+
+  <!-- Highlight shine on bow -->
+  <ellipse cx="185" cy="140" rx="8" ry="20" fill="url(#foamShine)" opacity="0.5"/>
+</svg>

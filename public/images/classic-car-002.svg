@@ -1,0 +1,305 @@
+<svg viewBox="0 0 500 350" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Highland Green metallic paint -->
+    <linearGradient id="highlandGreen" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3d6b4f"/>
+      <stop offset="20%" style="stop-color:#2d5a3f"/>
+      <stop offset="50%" style="stop-color:#1e4a30"/>
+      <stop offset="80%" style="stop-color:#163a25"/>
+      <stop offset="100%" style="stop-color:#0e2a1a"/>
+    </linearGradient>
+    <linearGradient id="greenHighlight" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#5d8b6f;stop-opacity:0.6"/>
+      <stop offset="50%" style="stop-color:#7dab8f;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#4d7b5f;stop-opacity:0.2"/>
+    </linearGradient>
+    <linearGradient id="greenShadow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e4a30"/>
+      <stop offset="100%" style="stop-color:#0a1a0f"/>
+    </linearGradient>
+
+    <!-- Chrome with realistic reflections -->
+    <linearGradient id="chrome2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="20%" style="stop-color:#e0e0e0"/>
+      <stop offset="40%" style="stop-color:#a8a8a8"/>
+      <stop offset="55%" style="stop-color:#f0f0f0"/>
+      <stop offset="70%" style="stop-color:#909090"/>
+      <stop offset="85%" style="stop-color:#c8c8c8"/>
+      <stop offset="100%" style="stop-color:#707070"/>
+    </linearGradient>
+    <radialGradient id="chromeRadial2" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="50%" style="stop-color:#c0c0c0"/>
+      <stop offset="100%" style="stop-color:#808080"/>
+    </radialGradient>
+
+    <!-- Tire rubber -->
+    <radialGradient id="tire2" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#2a2a2a"/>
+      <stop offset="65%" style="stop-color:#151515"/>
+      <stop offset="90%" style="stop-color:#0a0a0a"/>
+      <stop offset="100%" style="stop-color:#000000"/>
+    </radialGradient>
+
+    <!-- Glass reflections -->
+    <linearGradient id="glass2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8d8f0;stop-opacity:0.85"/>
+      <stop offset="40%" style="stop-color:#78b8d8;stop-opacity:0.65"/>
+      <stop offset="70%" style="stop-color:#5898b8;stop-opacity:0.55"/>
+      <stop offset="100%" style="stop-color:#487888;stop-opacity:0.75"/>
+    </linearGradient>
+
+    <!-- Ground shadow -->
+    <radialGradient id="shadow2" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:0.45"/>
+      <stop offset="65%" style="stop-color:#000000;stop-opacity:0.2"/>
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Headlight reflector -->
+    <radialGradient id="headlight2" cx="40%" cy="40%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="25%" style="stop-color:#ffffee"/>
+      <stop offset="60%" style="stop-color:#ffeecc"/>
+      <stop offset="100%" style="stop-color:#ccaa88"/>
+    </radialGradient>
+
+    <!-- Taillight red -->
+    <radialGradient id="taillight2" cx="40%" cy="40%">
+      <stop offset="0%" style="stop-color:#ff4444"/>
+      <stop offset="50%" style="stop-color:#cc0000"/>
+      <stop offset="100%" style="stop-color:#880000"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="500" height="175" fill="#87ceeb"/>
+  <rect y="175" width="500" height="175" fill="#b8b8b8"/>
+
+  <!-- Ground shadow -->
+  <ellipse cx="250" cy="290" rx="175" ry="40" fill="url(#shadow2)"/>
+
+  <!-- ===== 1967 FORD MUSTANG FASTBACK - HIGHLAND GREEN ===== -->
+
+  <!-- Main body - aggressive fastback profile -->
+  <g id="mustangBody">
+    <!-- Lower body section -->
+    <path d="M 70 230
+             L 70 175
+             Q 70 155 90 145
+             L 410 145
+             Q 430 155 430 175
+             L 430 230"
+          fill="url(#highlandGreen)" stroke="#0a1a0f" stroke-width="1.5"/>
+
+    <!-- Body side sculpting/crease -->
+    <path d="M 75 195 Q 250 188 425 195" fill="none" stroke="#163a25" stroke-width="2" opacity="0.6"/>
+  </g>
+
+  <!-- Hood - long classic muscle car hood -->
+  <path d="M 90 145
+           L 75 125
+           Q 70 115 85 105
+           L 200 95
+           Q 220 92 240 95
+           L 240 145"
+        fill="url(#highlandGreen)" stroke="#0a1a0f" stroke-width="1.5"/>
+
+  <!-- Hood scoop / power bulge -->
+  <path d="M 120 115 Q 160 108 200 115" fill="none" stroke="#0e2a1a" stroke-width="3" opacity="0.4"/>
+  <path d="M 125 120 Q 160 115 195 120" fill="none" stroke="#3d6b4f" stroke-width="1" opacity="0.5"/>
+
+  <!-- Trunk deck -->
+  <path d="M 360 145
+           L 420 130
+           Q 435 125 440 135
+           L 430 145"
+        fill="url(#highlandGreen)" stroke="#0a1a0f" stroke-width="1.5"/>
+
+  <!-- Fastback roofline - iconic sloping rear -->
+  <path d="M 240 145
+           L 255 95
+           Q 260 80 280 75
+           L 340 75
+           Q 365 80 380 100
+           L 395 145
+           L 395 195
+           Q 320 205 240 195
+           Z"
+        fill="url(#highlandGreen)" stroke="#0a1a0f" stroke-width="1.5"/>
+
+  <!-- Roof highlight -->
+  <path d="M 255 140
+           Q 265 95 295 85
+           L 355 85
+           Q 375 95 385 140"
+        fill="url(#greenHighlight)" opacity="0.35"/>
+
+  <!-- Windshield - steeply raked -->
+  <path d="M 250 145
+           L 260 100
+           Q 265 88 280 85
+           L 340 85
+           Q 355 88 360 100
+           L 370 145"
+        fill="url(#glass2)" stroke="#4a6a7a" stroke-width="1.5"/>
+  <!-- Windshield reflection -->
+  <path d="M 265 138 Q 280 105 310 95" stroke="#ffffff" stroke-width="2.5" fill="none" opacity="0.5"/>
+
+  <!-- Rear window (fastback sweep) -->
+  <path d="M 250 185
+           Q 320 200 390 185
+           L 390 145
+           Q 320 155 250 145
+           Z"
+        fill="url(#glass2)" stroke="#4a6a7a" stroke-width="1" opacity="0.8"/>
+  <!-- Louvers suggestion on rear window -->
+  <g stroke="#2a4a3a" stroke-width="0.8" opacity="0.3">
+    <path d="M 270 165 L 380 165"/>
+    <path d="M 265 172 L 385 172"/>
+    <path d="M 260 179 L 388 179"/>
+  </g>
+
+  <!-- Side quarter windows -->
+  <path d="M 245 145 L 245 185 Q 260 180 275 178 L 275 145 Z" fill="url(#glass2)" stroke="#4a6a7a" stroke-width="0.8"/>
+
+  <!-- Door panel seam -->
+  <path d="M 275 145 L 275 225" stroke="#0a1a0f" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Door handle - chrome -->
+  <rect x="285" y="175" width="18" height="7" rx="2" fill="url(#chrome2)" stroke="#555" stroke-width="0.5"/>
+  <rect x="286" y="177" width="16" height="3" fill="#ffffff" opacity="0.4"/>
+
+  <!-- Side scoop (behind door) -->
+  <path d="M 370 165 L 395 155 L 395 185 L 370 195 Z" fill="#0e2a1a" stroke="#0a1a0f" stroke-width="1"/>
+  <g stroke="#1e4a30" stroke-width="0.5" opacity="0.6">
+    <line x1="374" y1="170" x2="391" y2="162"/>
+    <line x1="374" y1="177" x2="391" y2="169"/>
+    <line x1="374" y1="184" x2="391" y2="176"/>
+  </g>
+
+  <!-- Chrome side trim -->
+  <path d="M 80 210 L 420 210" stroke="url(#chrome2)" stroke-width="4"/>
+  <path d="M 82 208 L 418 208" stroke="#ffffff" stroke-width="1" opacity="0.4"/>
+
+  <!-- Rocker panel -->
+  <rect x="75" y="220" width="350" height="15" fill="#0a1a0f"/>
+
+  <!-- Front bumper assembly -->
+  <g id="frontBumper">
+    <path d="M 55 225 Q 50 215 55 205 L 55 180 Q 55 170 70 165 L 95 165 L 95 225"
+          fill="url(#chrome2)" stroke="#555" stroke-width="1"/>
+    <path d="M 60 218 L 60 175" stroke="#ffffff" stroke-width="2" opacity="0.5"/>
+  </g>
+
+  <!-- Rear bumper -->
+  <g id="rearBumper">
+    <path d="M 405 225 L 405 165 Q 420 165 430 170 L 445 180 Q 450 190 450 205 Q 450 220 445 225"
+          fill="url(#chrome2)" stroke="#555" stroke-width="1"/>
+    <path d="M 440 218 L 440 178" stroke="#ffffff" stroke-width="2" opacity="0.5"/>
+  </g>
+
+  <!-- Grille - classic Mustang corral -->
+  <g id="grille">
+    <!-- Main grille opening -->
+    <rect x="78" y="150" width="55" height="35" rx="2" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+    <!-- Horizontal bars -->
+    <g stroke="#404040" stroke-width="1.5">
+      <line x1="80" y1="160" x2="131" y2="160"/>
+      <line x1="80" y1="168" x2="131" y2="168"/>
+      <line x1="80" y1="176" x2="131" y2="176"/>
+    </g>
+    <!-- Running horse emblem area -->
+    <ellipse cx="105" cy="168" rx="12" ry="10" fill="#2a2a2a" stroke="#555" stroke-width="0.5"/>
+  </g>
+
+  <!-- Headlights - dual round -->
+  <g id="headlights">
+    <!-- Outer left -->
+    <circle cx="90" cy="145" r="12" fill="#1a1a1a" stroke="#555" stroke-width="1.5"/>
+    <circle cx="90" cy="145" r="10" fill="url(#headlight2)"/>
+    <ellipse cx="87" cy="142" rx="4" ry="4.5" fill="#ffffff" opacity="0.8"/>
+    <circle cx="90" cy="145" r="12" fill="none" stroke="url(#chrome2)" stroke-width="2"/>
+
+    <!-- Inner left -->
+    <circle cx="115" cy="145" r="10" fill="#1a1a1a" stroke="#555" stroke-width="1"/>
+    <circle cx="115" cy="145" r="8" fill="url(#headlight2)"/>
+    <ellipse cx="113" cy="143" rx="3" ry="3.5" fill="#ffffff" opacity="0.7"/>
+    <circle cx="115" cy="145" r="10" fill="none" stroke="url(#chrome2)" stroke-width="1.5"/>
+  </g>
+
+  <!-- Front turn signals / parking lights -->
+  <rect x="85" y="192" width="28" height="8" rx="2" fill="#ffcc00" stroke="#cc9900" stroke-width="0.5"/>
+  <rect x="87" y="194" width="8" height="4" fill="#ffffff" opacity="0.4"/>
+
+  <!-- Taillights - triple element Mustang style -->
+  <g id="taillights">
+    <!-- Left taillight cluster -->
+    <rect x="410" y="155" width="25" height="55" rx="3" fill="#1a1a1a" stroke="#333" stroke-width="1"/>
+    <!-- Three sequential lights -->
+    <rect x="413" y="160" width="19" height="14" rx="2" fill="url(#taillight2)"/>
+    <rect x="413" y="178" width="19" height="14" rx="2" fill="url(#taillight2)"/>
+    <rect x="413" y="196" width="19" height="10" rx="2" fill="#ffcc00"/>
+    <!-- Reflection highlights -->
+    <rect x="415" y="162" width="6" height="4" fill="#ff6666" opacity="0.6"/>
+    <rect x="415" y="180" width="6" height="4" fill="#ff6666" opacity="0.6"/>
+  </g>
+
+  <!-- Wheels - Styled Steel with Mustang center caps -->
+  <!-- Front wheel -->
+  <g id="frontWheel">
+    <circle cx="150" cy="255" r="38" fill="url(#tire2)"/>
+    <circle cx="150" cy="255" r="35" fill="none" stroke="#0a0a0a" stroke-width="4"/>
+    <circle cx="150" cy="255" r="31" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+    <!-- Wheel rim -->
+    <circle cx="150" cy="255" r="26" fill="#3a3a3a" stroke="#555" stroke-width="1"/>
+    <circle cx="150" cy="255" r="23" fill="url(#chromeRadial2)"/>
+    <!-- Styled steel slots -->
+    <g fill="#2a2a2a" stroke="#444" stroke-width="0.5">
+      <ellipse cx="150" cy="238" rx="4" ry="8" transform="rotate(0 150 255)"/>
+      <ellipse cx="150" cy="238" rx="4" ry="8" transform="rotate(72 150 255)"/>
+      <ellipse cx="150" cy="238" rx="4" ry="8" transform="rotate(144 150 255)"/>
+      <ellipse cx="150" cy="238" rx="4" ry="8" transform="rotate(216 150 255)"/>
+      <ellipse cx="150" cy="238" rx="4" ry="8" transform="rotate(288 150 255)"/>
+    </g>
+    <!-- Center cap -->
+    <circle cx="150" cy="255" r="10" fill="url(#chrome2)" stroke="#555" stroke-width="0.5"/>
+    <circle cx="150" cy="255" r="7" fill="#cc0000"/>
+  </g>
+
+  <!-- Rear wheel -->
+  <g id="rearWheel">
+    <circle cx="355" cy="255" r="38" fill="url(#tire2)"/>
+    <circle cx="355" cy="255" r="35" fill="none" stroke="#0a0a0a" stroke-width="4"/>
+    <circle cx="355" cy="255" r="31" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+    <circle cx="355" cy="255" r="26" fill="#3a3a3a" stroke="#555" stroke-width="1"/>
+    <circle cx="355" cy="255" r="23" fill="url(#chromeRadial2)"/>
+    <g fill="#2a2a2a" stroke="#444" stroke-width="0.5">
+      <ellipse cx="355" cy="238" rx="4" ry="8" transform="rotate(0 355 255)"/>
+      <ellipse cx="355" cy="238" rx="4" ry="8" transform="rotate(72 355 255)"/>
+      <ellipse cx="355" cy="238" rx="4" ry="8" transform="rotate(144 355 255)"/>
+      <ellipse cx="355" cy="238" rx="4" ry="8" transform="rotate(216 355 255)"/>
+      <ellipse cx="355" cy="238" rx="4" ry="8" transform="rotate(288 355 255)"/>
+    </g>
+    <circle cx="355" cy="255" r="10" fill="url(#chrome2)" stroke="#555" stroke-width="0.5"/>
+    <circle cx="355" cy="255" r="7" fill="#cc0000"/>
+  </g>
+
+  <!-- Fender arches -->
+  <path d="M 100 230 Q 110 215 150 215 Q 190 215 200 230" fill="url(#greenShadow)" stroke="#0a1a0f" stroke-width="1"/>
+  <path d="M 305 230 Q 315 215 355 215 Q 395 215 405 230" fill="url(#greenShadow)" stroke="#0a1a0f" stroke-width="1"/>
+
+  <!-- Exhaust tips -->
+  <ellipse cx="425" cy="232" rx="6" ry="4" fill="#505050" stroke="#333" stroke-width="1"/>
+  <ellipse cx="425" cy="232" rx="4" ry="2.5" fill="#1a1a1a"/>
+
+  <!-- License plate -->
+  <rect x="195" y="290" width="110" height="26" rx="2" fill="#f5f5f5" stroke="#333" stroke-width="1.5"/>
+  <text x="250" y="298" font-size="6" text-anchor="middle" fill="#0066cc" font-family="sans-serif">CALIFORNIA</text>
+  <text x="250" y="310" font-size="11" font-weight="bold" text-anchor="middle" fill="#1a1a1a" font-family="monospace">BULLITT</text>
+
+  <!-- Title text -->
+  <text x="250" y="330" font-size="16" font-weight="bold" text-anchor="middle" fill="#333333" font-family="Georgia, serif">1967 Ford Mustang Fastback</text>
+  <text x="250" y="345" font-size="10" text-anchor="middle" fill="#666666" font-family="Arial, sans-serif">289 V8 | Highland Green | 4-Speed Manual</text>
+</svg>

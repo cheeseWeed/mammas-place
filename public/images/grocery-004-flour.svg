@@ -1,0 +1,61 @@
+<svg viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="flourBagGradient" x1="0%" y1="0%" x2="100%">
+      <stop offset="0%" style="stop-color:#f0ebe0;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#faf6f0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e5dfd0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="flourFront" x1="0%" y1="0%" x2="100%">
+      <stop offset="0%" style="stop-color:#f5f1e8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8e0d5;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Shadow -->
+  <ellipse cx="100" cy="285" rx="70" ry="14" fill="#00000020"/>
+
+  <!-- Flour bag back panel -->
+  <path d="M 45 60 L 50 280 Q 50 290 60 290 L 140 290 Q 150 290 150 280 L 155 60 Z" fill="url(#flourBagGradient)" stroke="#c9a876" stroke-width="2"/>
+
+  <!-- Front panel of bag (layered effect) -->
+  <path d="M 50 70 L 60 285 Q 60 292 70 292 L 130 292 Q 140 292 140 285 L 150 70 Z" fill="url(#flourFront)" stroke="#d4b896" stroke-width="2"/>
+
+  <!-- Left fold -->
+  <polygon points="50,70 45,60 50,280 60,285" fill="#ddd4c8" opacity="0.6" stroke="#b8a894" stroke-width="0.5"/>
+
+  <!-- Top folded edge -->
+  <path d="M 50 70 Q 60 65 100 63 Q 140 65 150 70" fill="#faf6f0" stroke="#c9a876" stroke-width="1.5"/>
+
+  <!-- Bag folds/wrinkles -->
+  <path d="M 75 90 Q 75 150 78 250" stroke="#ddd4c8" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <path d="M 125 90 Q 125 150 122 250" stroke="#ddd4c8" stroke-width="1.5" fill="none" opacity="0.5"/>
+
+  <!-- Label area -->
+  <rect x="60" y="90" width="80" height="120" fill="#fff9f0" stroke="#d4a574" stroke-width="2" rx="4" opacity="0.98"/>
+
+  <!-- Decorative header -->
+  <rect x="60" y="90" width="80" height="20" fill="#d4a574" opacity="0.3"/>
+
+  <!-- Product text -->
+  <text x="100" y="110" font-family="serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#8b6914">FLOUR</text>
+  <text x="100" y="145" font-family="sans-serif" font-size="12" text-anchor="middle" fill="#666">All Purpose</text>
+  <text x="100" y="165" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#999">2 kg / 4.4 lbs</text>
+  <text x="100" y="180" font-family="sans-serif" font-size="8" text-anchor="middle" fill="#ccc">Unbleached</text>
+
+  <!-- Flour texture on bottom -->
+  <g opacity="0.2">
+    <circle cx="75" cy="200" r="2" fill="#d4a574"/>
+    <circle cx="90" cy="210" r="1.5" fill="#d4a574"/>
+    <circle cx="110" cy="205" r="2" fill="#d4a574"/>
+    <circle cx="125" cy="215" r="1.5" fill="#d4a574"/>
+    <circle cx="85" cy="230" r="2" fill="#d4a574"/>
+    <circle cx="115" cy="235" r="1.5" fill="#d4a574"/>
+  </g>
+
+  <!-- Window shine -->
+  <ellipse cx="70" cy="100" rx="8" ry="12" fill="#ffffff" opacity="0.3"/>
+  <ellipse cx="130" cy="150" rx="6" ry="10" fill="#ffffff" opacity="0.2"/>
+
+  <!-- Bottom fold -->
+  <path d="M 60 285 L 70 295 L 130 295 L 140 285" fill="#e5dfd0" stroke="#b8a894" stroke-width="1"/>
+</svg>

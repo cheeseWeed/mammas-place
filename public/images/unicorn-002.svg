@@ -1,0 +1,262 @@
+<svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Warm cream studio backdrop -->
+    <linearGradient id="studioBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fff8e7;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#f5edd8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8dcc8;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Pure white body with warm undertones -->
+    <radialGradient id="whiteBody" cx="35%" cy="35%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#fefefe;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#f8f5f0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8e0d5;stop-opacity:1" />
+    </radialGradient>
+
+    <!-- Body highlight -->
+    <radialGradient id="bodyHighlight" cx="25%" cy="25%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.5" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </radialGradient>
+
+    <!-- Golden metallic gradient -->
+    <linearGradient id="goldMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#ffec8b;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#daa520;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#ffd700;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b8860b;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Rainbow gradients for tail -->
+    <linearGradient id="rainbow1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff0000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff4500;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="rainbow2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff7f00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffa500;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="rainbow3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffff00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f0e68c;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="rainbow4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00ff00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#32cd32;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="rainbow5" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#0000ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4169e1;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="rainbow6" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8b00ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9400d3;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Realistic shadow filter -->
+    <filter id="shadow3D" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur"/>
+      <feOffset in="blur" dx="5" dy="8" result="offsetBlur"/>
+      <feFlood flood-color="#8b7355" flood-opacity="0.35"/>
+      <feComposite in2="offsetBlur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Gold shimmer filter -->
+    <filter id="goldShimmer" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feSpecularLighting in="blur" surfaceScale="3" specularConstant="1" specularExponent="30" lighting-color="#ffd700" result="specular">
+        <fePointLight x="200" y="100" z="300"/>
+      </feSpecularLighting>
+      <feComposite in="SourceGraphic" in2="specular" operator="arithmetic" k1="0" k2="1" k3="0.4" k4="0"/>
+    </filter>
+
+    <!-- Soft ambient light -->
+    <filter id="softLight" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur"/>
+      <feOffset in="blur" dx="1" dy="2" result="offsetBlur"/>
+      <feFlood flood-color="#d4a574" flood-opacity="0.2"/>
+      <feComposite in2="offsetBlur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Fur texture -->
+    <pattern id="furTexture" x="0" y="0" width="6" height="6" patternUnits="userSpaceOnUse">
+      <rect width="6" height="6" fill="transparent"/>
+      <line x1="0" y1="0" x2="3" y2="3" stroke="#ffffff" stroke-width="0.3" opacity="0.15"/>
+      <line x1="3" y1="0" x2="6" y2="3" stroke="#f8f0e0" stroke-width="0.2" opacity="0.1"/>
+    </pattern>
+  </defs>
+
+  <!-- Warm studio background -->
+  <rect width="500" height="600" fill="url(#studioBg)"/>
+
+  <!-- Floor reflection -->
+  <ellipse cx="250" cy="535" rx="170" ry="35" fill="#ffffff" opacity="0.15"/>
+
+  <!-- Main ground shadow -->
+  <ellipse cx="250" cy="520" rx="130" ry="30" fill="#c4a77d" opacity="0.4"/>
+  <ellipse cx="250" cy="520" rx="100" ry="20" fill="#a08060" opacity="0.25"/>
+
+  <!-- Golden hoof reflection on floor -->
+  <ellipse cx="250" cy="520" rx="80" ry="15" fill="#ffd700" opacity="0.1"/>
+
+  <!-- BACK LEGS -->
+  <ellipse cx="185" cy="430" rx="22" ry="75" fill="url(#whiteBody)" filter="url(#softLight)"/>
+  <ellipse cx="300" cy="430" rx="22" ry="75" fill="url(#whiteBody)" filter="url(#softLight)"/>
+
+  <!-- Back golden hooves -->
+  <ellipse cx="185" cy="500" rx="15" ry="11" fill="url(#goldMetal)" filter="url(#goldShimmer)"/>
+  <ellipse cx="185" cy="497" rx="10" ry="6" fill="#ffec8b" opacity="0.6"/>
+  <ellipse cx="300" cy="500" rx="15" ry="11" fill="url(#goldMetal)" filter="url(#goldShimmer)"/>
+  <ellipse cx="300" cy="497" rx="10" ry="6" fill="#ffec8b" opacity="0.6"/>
+
+  <!-- RAINBOW TAIL - Flowing magnificently -->
+  <path d="M 315 340 Q 380 270 410 170 Q 430 100 415 50" stroke="url(#rainbow1)" stroke-width="22" fill="none" stroke-linecap="round" filter="url(#shadow3D)"/>
+  <path d="M 320 350 Q 385 280 420 180 Q 440 110 425 60" stroke="url(#rainbow2)" stroke-width="19" fill="none" stroke-linecap="round" filter="url(#shadow3D)"/>
+  <path d="M 325 358 Q 390 290 428 190 Q 448 120 435 72" stroke="url(#rainbow3)" stroke-width="16" fill="none" stroke-linecap="round"/>
+  <path d="M 328 366 Q 393 300 433 200 Q 453 130 442 85" stroke="url(#rainbow4)" stroke-width="13" fill="none" stroke-linecap="round"/>
+  <path d="M 330 374 Q 395 308 436 210 Q 456 140 448 98" stroke="url(#rainbow5)" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M 332 380 Q 397 315 438 218 Q 458 148 452 110" stroke="url(#rainbow6)" stroke-width="7" fill="none" stroke-linecap="round"/>
+
+  <!-- Tail highlight streaks -->
+  <path d="M 335 385 Q 400 320 440 225" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.4"/>
+
+  <!-- MAIN BODY -->
+  <ellipse cx="250" cy="360" rx="90" ry="100" fill="url(#whiteBody)" filter="url(#shadow3D)"/>
+
+  <!-- Body fur texture -->
+  <ellipse cx="250" cy="360" rx="88" ry="98" fill="url(#furTexture)"/>
+
+  <!-- Body 3D highlights -->
+  <ellipse cx="215" cy="305" rx="55" ry="75" fill="url(#bodyHighlight)"/>
+
+  <!-- Golden fleck details on body -->
+  <circle cx="235" cy="315" r="4" fill="#daa520" opacity="0.5"/>
+  <circle cx="270" cy="340" r="3" fill="#daa520" opacity="0.4"/>
+  <circle cx="225" cy="365" r="3.5" fill="#daa520" opacity="0.45"/>
+  <circle cx="285" cy="385" r="4" fill="#daa520" opacity="0.5"/>
+  <circle cx="210" cy="395" r="2.5" fill="#ffd700" opacity="0.35"/>
+
+  <!-- Body contour shadow -->
+  <path d="M 165 345 Q 175 420 205 455" stroke="#d4c4a8" stroke-width="3" fill="none" opacity="0.3"/>
+
+  <!-- NECK -->
+  <path d="M 210 280 Q 185 250 175 200" stroke="url(#whiteBody)" stroke-width="60" fill="none" stroke-linecap="round" filter="url(#shadow3D)"/>
+
+  <!-- Neck highlight -->
+  <path d="M 195 275 Q 172 242 165 195" stroke="#ffffff" stroke-width="18" fill="none" stroke-linecap="round" opacity="0.2"/>
+
+  <!-- HEAD -->
+  <circle cx="160" cy="150" r="55" fill="url(#whiteBody)" filter="url(#shadow3D)"/>
+
+  <!-- Head highlight -->
+  <ellipse cx="135" cy="118" rx="32" ry="42" fill="url(#bodyHighlight)"/>
+
+  <!-- Golden flecks on face -->
+  <circle cx="150" cy="125" r="2.5" fill="#daa520" opacity="0.4"/>
+  <circle cx="178" cy="145" r="2" fill="#daa520" opacity="0.35"/>
+
+  <!-- MUZZLE -->
+  <ellipse cx="128" cy="182" rx="36" ry="32" fill="#f5ede0"/>
+  <ellipse cx="125" cy="178" rx="28" ry="25" fill="#faf6ef"/>
+
+  <!-- Muzzle highlight -->
+  <ellipse cx="118" cy="172" rx="16" ry="13" fill="#ffffff" opacity="0.25"/>
+
+  <!-- Nostrils -->
+  <ellipse cx="108" cy="188" rx="7" ry="5" fill="#c4a574"/>
+  <ellipse cx="106" cy="187" rx="4" ry="3" fill="#8b7355"/>
+  <ellipse cx="125" cy="188" rx="7" ry="5" fill="#c4a574"/>
+  <ellipse cx="123" cy="187" rx="4" ry="3" fill="#8b7355"/>
+
+  <!-- EYES -->
+  <ellipse cx="138" cy="130" rx="13" ry="15" fill="#1a1a1a"/>
+  <ellipse cx="138" cy="132" rx="11" ry="12" fill="#3d2b1f"/>
+  <ellipse cx="136" cy="128" rx="5" ry="6" fill="#ffffff" opacity="0.85"/>
+  <circle cx="141" cy="135" r="2" fill="#ffffff" opacity="0.5"/>
+
+  <ellipse cx="185" cy="125" rx="13" ry="15" fill="#1a1a1a"/>
+  <ellipse cx="185" cy="127" rx="11" ry="12" fill="#3d2b1f"/>
+  <ellipse cx="183" cy="123" rx="5" ry="6" fill="#ffffff" opacity="0.85"/>
+  <circle cx="188" cy="130" r="2" fill="#ffffff" opacity="0.5"/>
+
+  <!-- Eyelashes -->
+  <path d="M 125 122 Q 121 117 117 120" stroke="#4a3728" stroke-width="1.5" fill="none"/>
+  <path d="M 172 117 Q 168 112 164 115" stroke="#4a3728" stroke-width="1.5" fill="none"/>
+
+  <!-- EARS -->
+  <ellipse cx="115" cy="85" rx="18" ry="45" fill="url(#whiteBody)" transform="rotate(-25 115 85)" filter="url(#shadow3D)"/>
+  <ellipse cx="115" cy="90" rx="10" ry="30" fill="#f5dcd0" transform="rotate(-25 115 90)"/>
+  <ellipse cx="115" cy="92" rx="6" ry="20" fill="#e8c8bc" transform="rotate(-25 115 92)"/>
+
+  <ellipse cx="200" cy="75" rx="18" ry="45" fill="url(#whiteBody)" transform="rotate(25 200 75)" filter="url(#shadow3D)"/>
+  <ellipse cx="200" cy="80" rx="10" ry="30" fill="#f5dcd0" transform="rotate(25 200 80)"/>
+  <ellipse cx="200" cy="82" rx="6" ry="20" fill="#e8c8bc" transform="rotate(25 200 82)"/>
+
+  <!-- RAINBOW MANE -->
+  <path d="M 138 95 Q 115 55 110 15 Q 108 -10 118 -30" stroke="url(#rainbow1)" stroke-width="18" fill="none" stroke-linecap="round" filter="url(#shadow3D)"/>
+  <path d="M 152 90 Q 140 50 140 10 Q 140 -15 150 -35" stroke="url(#rainbow2)" stroke-width="16" fill="none" stroke-linecap="round" filter="url(#shadow3D)"/>
+  <path d="M 165 88 Q 168 48 175 8 Q 180 -15 175 -35" stroke="url(#rainbow3)" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <path d="M 178 92 Q 190 55 200 15 Q 208 -10 200 -30" stroke="url(#rainbow4)" stroke-width="12" fill="none" stroke-linecap="round"/>
+  <path d="M 188 98 Q 205 62 218 22 Q 228 -5 218 -25" stroke="url(#rainbow5)" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M 195 105 Q 215 70 230 30" stroke="url(#rainbow6)" stroke-width="8" fill="none" stroke-linecap="round"/>
+
+  <!-- Mane highlights -->
+  <path d="M 145 92 Q 125 52 122 12" stroke="#ffffff" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.35"/>
+  <path d="M 172 90 Q 175 50 180 10" stroke="#ffffff" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.3"/>
+
+  <!-- GOLDEN HORN -->
+  <ellipse cx="160" cy="70" rx="20" ry="28" fill="#e8dcc8" filter="url(#shadow3D)"/>
+
+  <!-- Main horn -->
+  <path d="M 160 62 Q 158 35 160 8 Q 162 -15 165 -38" stroke="url(#goldMetal)" stroke-width="18" fill="none" stroke-linecap="round" filter="url(#goldShimmer)"/>
+
+  <!-- Horn spiral grooves -->
+  <path d="M 152 58 Q 148 30 152 2 Q 156 -20 160 -35" stroke="#b8860b" stroke-width="3" fill="none" opacity="0.5"/>
+  <path d="M 168 56 Q 172 28 170 0 Q 168 -22 168 -36" stroke="#b8860b" stroke-width="3" fill="none" opacity="0.5"/>
+  <path d="M 160 52 Q 158 25 160 -2 Q 162 -25 165 -37" stroke="#ffd700" stroke-width="2" fill="none" opacity="0.6"/>
+
+  <!-- Horn highlights -->
+  <path d="M 155 55 Q 152 28 155 0 Q 158 -22 160 -35" stroke="#ffec8b" stroke-width="5" fill="none" opacity="0.5"/>
+
+  <!-- Horn tip gleam -->
+  <ellipse cx="165" cy="-38" rx="8" ry="10" fill="#ffec8b" filter="url(#goldShimmer)"/>
+  <circle cx="165" cy="-38" r="4" fill="#ffffff" opacity="0.8"/>
+
+  <!-- FRONT LEGS -->
+  <ellipse cx="215" cy="430" rx="24" ry="78" fill="url(#whiteBody)" filter="url(#shadow3D)"/>
+  <ellipse cx="215" cy="430" rx="20" ry="72" fill="url(#bodyHighlight)"/>
+
+  <ellipse cx="275" cy="430" rx="24" ry="78" fill="url(#whiteBody)" filter="url(#shadow3D)"/>
+  <ellipse cx="275" cy="430" rx="20" ry="72" fill="url(#bodyHighlight)"/>
+
+  <!-- Front golden hooves -->
+  <ellipse cx="215" cy="505" rx="17" ry="13" fill="url(#goldMetal)" filter="url(#goldShimmer)"/>
+  <ellipse cx="215" cy="502" rx="12" ry="8" fill="#ffec8b" opacity="0.6"/>
+  <ellipse cx="215" cy="500" rx="8" ry="5" fill="#ffffff" opacity="0.3"/>
+
+  <ellipse cx="275" cy="505" rx="17" ry="13" fill="url(#goldMetal)" filter="url(#goldShimmer)"/>
+  <ellipse cx="275" cy="502" rx="12" ry="8" fill="#ffec8b" opacity="0.6"/>
+  <ellipse cx="275" cy="500" rx="8" ry="5" fill="#ffffff" opacity="0.3"/>
+
+  <!-- Golden sparkles -->
+  <circle cx="130" cy="55" r="3" fill="#ffd700" opacity="0.8" filter="url(#goldShimmer)"/>
+  <circle cx="195" cy="35" r="2.5" fill="#ffec8b" opacity="0.7" filter="url(#goldShimmer)"/>
+  <circle cx="175" cy="-15" r="2" fill="#ffd700" opacity="0.6" filter="url(#goldShimmer)"/>
+  <circle cx="140" cy="15" r="2" fill="#ffffff" opacity="0.5"/>
+
+  <!-- Product label -->
+  <rect x="100" y="545" width="300" height="50" fill="#f5edd8" opacity="0.9" rx="5" stroke="#daa520" stroke-width="1"/>
+  <text x="250" y="565" font-family="Georgia, serif" font-size="16" fill="#8b7355" text-anchor="middle" font-weight="bold">Golden Dream Unicorn</text>
+  <text x="250" y="585" font-family="Arial, sans-serif" font-size="11" fill="#a08060" text-anchor="middle">24K Gold-Plated Hooves | Rainbow Mane &amp; Tail | Collector Series</text>
+</svg>

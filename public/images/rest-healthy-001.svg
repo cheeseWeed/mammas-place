@@ -1,0 +1,71 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#d1fae5"/>
+
+  <!-- Bowl -->
+  <ellipse cx="200" cy="240" rx="135" ry="80" fill="#e8d5c4" stroke="#d4b5a0" stroke-width="2"/>
+  <ellipse cx="200" cy="235" rx="130" ry="75" fill="#f5ede3"/>
+
+  <!-- Base (rice) -->
+  <ellipse cx="200" cy="200" rx="125" ry="70" fill="#f5f5dc"/>
+  <ellipse cx="200" cy="195" rx="120" ry="65" fill="#fffff0"/>
+
+  <!-- Quinoa texture dots -->
+  <circle cx="160" cy="190" r="0.8" fill="#c9915c"/>
+  <circle cx="190" cy="180" r="0.8" fill="#c9915c"/>
+  <circle cx="220" cy="200" r="0.8" fill="#c9915c"/>
+  <circle cx="240" cy="190" r="0.8" fill="#c9915c"/>
+
+  <!-- Grilled chicken breast -->
+  <ellipse cx="170" cy="170" rx="35" ry="40" fill="#c9915c"/>
+  <ellipse cx="170" cy="165" rx="32" ry="37" fill="#ddb896"/>
+
+  <!-- Grill marks -->
+  <line x1="150" y1="160" x2="190" y2="160" stroke="#8b4513" stroke-width="0.8" opacity="0.5"/>
+  <line x1="148" y1="175" x2="192" y2="175" stroke="#8b4513" stroke-width="0.8" opacity="0.5"/>
+  <line x1="150" y1="190" x2="190" y2="190" stroke="#8b4513" stroke-width="0.8" opacity="0.5"/>
+
+  <!-- Roasted sweet potato -->
+  <ellipse cx="220" cy="195" rx="28" ry="32" fill="#e67e22"/>
+  <ellipse cx="220" cy="190" rx="25" ry="30" fill="#f39c12"/>
+
+  <!-- Roasted cubes texture -->
+  <circle cx="210" cy="185" r="2" fill="rgba(0,0,0,0.1)"/>
+  <circle cx="225" cy="200" r="2" fill="rgba(0,0,0,0.1)"/>
+
+  <!-- Broccoli florets -->
+  <g>
+    <!-- Floret 1 -->
+    <circle cx="145" cy="210" r="15" fill="#27ae60"/>
+    <circle cx="135" cy="202" r="6" fill="#229954"/>
+    <circle cx="155" cy="200" r="6" fill="#229954"/>
+    <circle cx="150" cy="215" r="6" fill="#229954"/>
+
+    <!-- Floret 2 -->
+    <circle cx="260" cy="220" r="15" fill="#27ae60"/>
+    <circle cx="275" cy="215" r="6" fill="#229954"/>
+    <circle cx="255" cy="210" r="6" fill="#229954"/>
+    <circle cx="265" cy="230" r="6" fill="#229954"/>
+  </g>
+
+  <!-- Spinach base -->
+  <ellipse cx="200" cy="225" rx="110" ry="45" fill="#2ecc71" opacity="0.3"/>
+
+  <!-- Tahini dressing drizzle -->
+  <path d="M 140 200 Q 160 220 180 230" stroke="#d4a574" stroke-width="2" fill="none" opacity="0.7" stroke-linecap="round"/>
+  <path d="M 260 200 Q 240 220 220 230" stroke="#d4a574" stroke-width="2" fill="none" opacity="0.7" stroke-linecap="round"/>
+
+  <!-- Fork -->
+  <g opacity="0.5">
+    <line x1="85" y1="140" x2="100" y2="200" stroke="#888" stroke-width="2.5"/>
+    <line x1="95" y1="200" x2="100" y2="185"/>
+    <line x1="100" y1="200" x2="105" y2="185"/>
+    <line x1="105" y1="200" x2="110" y2="185"/>
+  </g>
+
+  <!-- Shine effect -->
+  <ellipse cx="200" cy="170" rx="60" ry="50" fill="white" opacity="0.1"/>
+
+  <!-- Nutritional indicator text (subtle) -->
+  <text x="200" y="350" font-size="12" font-family="sans-serif" text-anchor="middle" fill="#065f46" opacity="0.4">35g Protein</text>
+</svg>

@@ -1,0 +1,239 @@
+<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Studio background -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8f5f0"/>
+      <stop offset="60%" style="stop-color:#f0ebe3"/>
+      <stop offset="100%" style="stop-color:#e8e0d5"/>
+    </linearGradient>
+
+    <!-- Pillow 1 - Navy velvet -->
+    <linearGradient id="pillow1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a2a4a"/>
+      <stop offset="25%" style="stop-color:#2c3e5a"/>
+      <stop offset="50%" style="stop-color:#3d5070"/>
+      <stop offset="75%" style="stop-color:#2c3e5a"/>
+      <stop offset="100%" style="stop-color:#1a2a4a"/>
+    </linearGradient>
+
+    <!-- Pillow 2 - Mustard/gold textured -->
+    <linearGradient id="pillow2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#b8860b"/>
+      <stop offset="30%" style="stop-color:#d4a525"/>
+      <stop offset="50%" style="stop-color:#e8c252"/>
+      <stop offset="70%" style="stop-color:#d4a525"/>
+      <stop offset="100%" style="stop-color:#b8860b"/>
+    </linearGradient>
+
+    <!-- Pillow 3 - Cream/ivory with pattern -->
+    <linearGradient id="pillow3Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8dcc8"/>
+      <stop offset="30%" style="stop-color:#f5ede0"/>
+      <stop offset="50%" style="stop-color:#faf6f0"/>
+      <stop offset="70%" style="stop-color:#f5ede0"/>
+      <stop offset="100%" style="stop-color:#e8dcc8"/>
+    </linearGradient>
+
+    <!-- Pillow 4 - Terracotta/rust -->
+    <linearGradient id="pillow4Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a0522d"/>
+      <stop offset="30%" style="stop-color:#c4684a"/>
+      <stop offset="50%" style="stop-color:#d4785a"/>
+      <stop offset="70%" style="stop-color:#c4684a"/>
+      <stop offset="100%" style="stop-color:#a0522d"/>
+    </linearGradient>
+
+    <!-- Soft shadow filter -->
+    <filter id="pillowShadow" x="-30%" y="-20%" width="160%" height="150%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="3" dy="6" result="offsetblur"/>
+      <feFlood flood-color="#2d2518" flood-opacity="0.3"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Fabric texture pattern -->
+    <pattern id="velvetTexture" patternUnits="userSpaceOnUse" width="3" height="3">
+      <rect width="3" height="3" fill="transparent"/>
+      <circle cx="1.5" cy="1.5" r="0.5" fill="#ffffff" opacity="0.05"/>
+    </pattern>
+
+    <!-- Geometric pattern for cream pillow -->
+    <pattern id="geometricPattern" patternUnits="userSpaceOnUse" width="20" height="20">
+      <path d="M 0 10 L 10 0 L 20 10 L 10 20 Z" fill="none" stroke="#c9b896" stroke-width="0.5" opacity="0.4"/>
+      <circle cx="10" cy="10" r="2" fill="#b8a080" opacity="0.3"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="300" height="300" fill="url(#bgGrad)"/>
+
+  <!-- Soft surface/couch hint -->
+  <rect x="0" y="200" width="300" height="100" fill="#e0d5c5" opacity="0.5"/>
+  <path d="M 0 200 Q 75 195 150 198 Q 225 195 300 200" stroke="#d4c9b5" stroke-width="1" fill="none"/>
+
+  <!-- Shadow base -->
+  <g opacity="0.25">
+    <ellipse cx="80" cy="265" rx="55" ry="15" fill="#3d3528"/>
+    <ellipse cx="220" cy="268" rx="50" ry="14" fill="#3d3528"/>
+    <ellipse cx="150" cy="258" rx="45" ry="12" fill="#3d3528"/>
+  </g>
+
+  <!-- PILLOW 4 - Back left (Terracotta/rust) -->
+  <g filter="url(#pillowShadow)">
+    <!-- Main pillow body -->
+    <path d="M 25 120
+             Q 20 95 35 75
+             Q 55 55 95 55
+             Q 130 55 145 75
+             Q 160 95 155 120
+             Q 160 160 145 185
+             Q 125 210 95 215
+             Q 60 210 40 185
+             Q 20 160 25 120
+             Z"
+          fill="url(#pillow4Grad)"/>
+
+    <!-- Pillow puff/fullness highlights -->
+    <path d="M 45 90 Q 70 75 100 82 Q 130 90 140 105"
+          stroke="#e8a080" stroke-width="8" fill="none" opacity="0.4" stroke-linecap="round"/>
+
+    <!-- Corner tufts -->
+    <circle cx="40" cy="80" r="6" fill="#d4785a" opacity="0.6"/>
+    <circle cx="145" cy="85" r="5" fill="#d4785a" opacity="0.5"/>
+    <circle cx="35" cy="175" r="5" fill="#b05535" opacity="0.4"/>
+    <circle cx="150" cy="170" r="4" fill="#b05535" opacity="0.4"/>
+
+    <!-- Fabric folds -->
+    <path d="M 50 130 Q 90 125 130 135" stroke="#8b4020" stroke-width="1" fill="none" opacity="0.2"/>
+    <path d="M 55 160 Q 95 155 135 165" stroke="#8b4020" stroke-width="1" fill="none" opacity="0.15"/>
+
+    <!-- Seam line -->
+    <path d="M 90 60 Q 95 135 90 210" stroke="#a0522d" stroke-width="1" fill="none" opacity="0.3"/>
+  </g>
+
+  <!-- PILLOW 1 - Back right (Navy velvet) -->
+  <g filter="url(#pillowShadow)">
+    <!-- Main pillow body -->
+    <path d="M 155 125
+             Q 150 100 165 80
+             Q 185 60 220 58
+             Q 260 60 275 80
+             Q 290 100 285 125
+             Q 290 165 275 190
+             Q 255 215 220 218
+             Q 180 215 165 190
+             Q 150 165 155 125
+             Z"
+          fill="url(#pillow1Grad)"/>
+
+    <!-- Velvet texture overlay -->
+    <path d="M 155 125 Q 150 100 165 80 Q 185 60 220 58 Q 260 60 275 80 Q 290 100 285 125 Q 290 165 275 190 Q 255 215 220 218 Q 180 215 165 190 Q 150 165 155 125 Z"
+          fill="url(#velvetTexture)"/>
+
+    <!-- Velvet sheen highlights -->
+    <path d="M 175 95 Q 205 80 240 88 Q 270 95 278 110"
+          stroke="#5a7090" stroke-width="10" fill="none" opacity="0.35" stroke-linecap="round"/>
+
+    <!-- Deep velvet folds -->
+    <path d="M 170 140 Q 215 135 260 145" stroke="#0a1a30" stroke-width="1.5" fill="none" opacity="0.25"/>
+    <path d="M 175 170 Q 220 165 260 175" stroke="#0a1a30" stroke-width="1" fill="none" opacity="0.2"/>
+
+    <!-- Corner puffs -->
+    <circle cx="170" cy="90" r="5" fill="#3d5070" opacity="0.5"/>
+    <circle cx="275" cy="95" r="4" fill="#3d5070" opacity="0.4"/>
+
+    <!-- Seam -->
+    <path d="M 220 62 Q 218 140 220 214" stroke="#1a2a4a" stroke-width="1" fill="none" opacity="0.3"/>
+  </g>
+
+  <!-- PILLOW 2 - Front left (Mustard/gold) -->
+  <g filter="url(#pillowShadow)">
+    <!-- Main pillow body -->
+    <path d="M 35 170
+             Q 28 145 45 125
+             Q 65 105 105 105
+             Q 145 108 160 130
+             Q 175 152 170 180
+             Q 175 220 158 245
+             Q 138 268 100 272
+             Q 58 268 42 245
+             Q 25 220 35 170
+             Z"
+          fill="url(#pillow2Grad)"/>
+
+    <!-- Golden sheen -->
+    <path d="M 55 140 Q 95 125 135 135 Q 160 145 165 160"
+          stroke="#f4d878" stroke-width="12" fill="none" opacity="0.4" stroke-linecap="round"/>
+
+    <!-- Fabric texture lines -->
+    <path d="M 50 180 Q 100 175 145 185" stroke="#a07808" stroke-width="1" fill="none" opacity="0.2"/>
+    <path d="M 55 215 Q 100 210 145 220" stroke="#a07808" stroke-width="1" fill="none" opacity="0.15"/>
+
+    <!-- Button/tuft detail in center -->
+    <circle cx="100" cy="190" r="8" fill="#c9a020" opacity="0.6"/>
+    <circle cx="100" cy="190" r="4" fill="#b89015" opacity="0.5"/>
+
+    <!-- Corner tufts -->
+    <circle cx="50" cy="130" r="5" fill="#e8c252" opacity="0.5"/>
+    <circle cx="158" cy="138" r="4" fill="#e8c252" opacity="0.4"/>
+
+    <!-- Seam -->
+    <path d="M 98 110 Q 102 188 100 268" stroke="#a07808" stroke-width="1" fill="none" opacity="0.25"/>
+  </g>
+
+  <!-- PILLOW 3 - Front right (Cream with pattern) -->
+  <g filter="url(#pillowShadow)">
+    <!-- Main pillow body -->
+    <path d="M 145 175
+             Q 138 150 155 130
+             Q 180 110 220 108
+             Q 262 112 278 135
+             Q 292 158 287 185
+             Q 292 225 275 250
+             Q 255 275 218 278
+             Q 178 275 160 250
+             Q 142 225 145 175
+             Z"
+          fill="url(#pillow3Grad)"/>
+
+    <!-- Geometric pattern overlay -->
+    <path d="M 145 175 Q 138 150 155 130 Q 180 110 220 108 Q 262 112 278 135 Q 292 158 287 185 Q 292 225 275 250 Q 255 275 218 278 Q 178 275 160 250 Q 142 225 145 175 Z"
+          fill="url(#geometricPattern)"/>
+
+    <!-- Soft highlights -->
+    <path d="M 170 145 Q 210 130 255 140 Q 280 150 285 168"
+          stroke="#ffffff" stroke-width="8" fill="none" opacity="0.35" stroke-linecap="round"/>
+
+    <!-- Subtle folds -->
+    <path d="M 158 190 Q 218 185 270 195" stroke="#c9b896" stroke-width="1" fill="none" opacity="0.25"/>
+    <path d="M 162 225 Q 218 220 268 230" stroke="#c9b896" stroke-width="1" fill="none" opacity="0.2"/>
+
+    <!-- Corner accents -->
+    <circle cx="162" cy="140" r="4" fill="#e8dcc8" opacity="0.6"/>
+    <circle cx="280" cy="148" r="3.5" fill="#e8dcc8" opacity="0.5"/>
+
+    <!-- Decorative edge piping hint -->
+    <path d="M 155 130 Q 180 110 220 108 Q 262 112 278 135"
+          stroke="#d4c9b5" stroke-width="2" fill="none" opacity="0.4"/>
+
+    <!-- Seam -->
+    <path d="M 218 112 Q 220 193 218 274" stroke="#c9b896" stroke-width="1" fill="none" opacity="0.2"/>
+  </g>
+
+  <!-- Ambient shadows between pillows -->
+  <ellipse cx="130" cy="200" rx="15" ry="25" fill="#2d2518" opacity="0.1"/>
+  <ellipse cx="110" cy="145" rx="10" ry="20" fill="#2d2518" opacity="0.08"/>
+
+  <!-- Surface reflections -->
+  <g opacity="0.05">
+    <ellipse cx="95" cy="285" rx="50" ry="10" fill="#d4a525"/>
+    <ellipse cx="210" cy="288" rx="45" ry="9" fill="#f5ede0"/>
+  </g>
+
+  <!-- Ambient light -->
+  <ellipse cx="150" cy="180" rx="140" ry="100" fill="#ffffff" opacity="0.03"/>
+</svg>

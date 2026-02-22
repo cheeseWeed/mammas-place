@@ -1,0 +1,70 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bg-003" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fafafa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f0f0f0;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="ceramic-003" cx="40%" cy="30%">
+      <stop offset="0%" style="stop-color:#e8d4c4;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#d4b5a0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a89080;stop-opacity:1" />
+    </radialGradient>
+    <radialGradient id="water-003" cx="45%" cy="35%">
+      <stop offset="0%" style="stop-color:#87ceeb;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4a9fd9;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bg-003)"/>
+
+  <!-- Pedestal shadow -->
+  <ellipse cx="200" cy="340" rx="85" ry="25" fill="#000" opacity="0.08"/>
+
+  <!-- Pedestal - cylindrical base -->
+  <rect x="170" y="280" width="60" height="65" fill="#a89080" stroke="#8a7060" stroke-width="1.5"/>
+  <ellipse cx="200" cy="280" rx="30" ry="12" fill="#c4a490" stroke="#8a7060" stroke-width="1.5"/>
+
+  <!-- Pedestal decoration -->
+  <g fill="none" stroke="#8a7060" stroke-width="1" opacity="0.7">
+    <line x1="175" y1="290" x2="225" y2="290"/>
+    <line x1="175" y1="305" x2="225" y2="305"/>
+    <line x1="175" y1="320" x2="225" y2="320"/>
+  </g>
+
+  <!-- Main bowl - outer -->
+  <ellipse cx="200" cy="250" rx="95" ry="50" fill="url(#ceramic-003)" stroke="#8a7060" stroke-width="2"/>
+
+  <!-- Bowl rim/edge -->
+  <ellipse cx="200" cy="210" rx="92" ry="32" fill="#d4b5a0" stroke="#8a7060" stroke-width="1.5"/>
+  <ellipse cx="200" cy="215" rx="88" ry="28" fill="#c4a490" opacity="0.8"/>
+
+  <!-- Water inside bowl -->
+  <ellipse cx="200" cy="245" rx="80" ry="35" fill="url(#water-003)"/>
+
+  <!-- Water reflections - highlights -->
+  <ellipse cx="160" cy="225" rx="35" ry="18" fill="#5eb3e6" opacity="0.6"/>
+  <ellipse cx="220" cy="235" rx="28" ry="15" fill="#87ceeb" opacity="0.4"/>
+
+  <!-- Water shimmer lines -->
+  <g stroke="#87ceeb" stroke-width="1" opacity="0.5" fill="none">
+    <path d="M 140 245 Q 160 240 180 245"/>
+    <path d="M 220 250 Q 240 245 260 250"/>
+  </g>
+
+  <!-- Small pebbles/stones in water -->
+  <g fill="#6b5d52" opacity="0.6">
+    <circle cx="140" cy="260" r="3"/>
+    <circle cx="260" cy="255" r="2.5"/>
+    <circle cx="200" cy="270" r="2"/>
+  </g>
+
+  <!-- Ceramic texture/pattern -->
+  <g stroke="#8a7060" stroke-width="0.5" opacity="0.3" fill="none">
+    <path d="M 150 235 Q 200 220 250 240"/>
+    <path d="M 145 255 Q 200 265 255 250"/>
+  </g>
+
+  <!-- Highlight for 3D depth -->
+  <ellipse cx="140" cy="220" rx="40" ry="20" fill="#f0e6d6" opacity="0.4"/>
+</svg>

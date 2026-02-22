@@ -1,0 +1,64 @@
+<svg viewBox="0 0 180 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cerealBoxGrad" x1="0%" y1="0%" x2="100%">
+      <stop offset="0%" style="stop-color:#f5e6c8;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#fffaf0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8d9b8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Shadow -->
+  <ellipse cx="90" cy="285" rx="60" ry="12" fill="#00000025"/>
+
+  <!-- Cereal box back -->
+  <rect x="35" y="40" width="110" height="180" fill="#e8d9b8" stroke="#c9a876" stroke-width="2"/>
+
+  <!-- Front panel (layered) -->
+  <rect x="40" y="50" width="100" height="170" fill="url(#cerealBoxGrad)" stroke="#d4b896" stroke-width="2.5" rx="2"/>
+
+  <!-- Top flap fold -->
+  <path d="M 40 50 Q 60 40 90 38 Q 120 40 140 50" fill="#faf6f0" stroke="#d4b896" stroke-width="2"/>
+
+  <!-- Right side fold -->
+  <polygon points="140,50 150,45 150,215 140,220" fill="#d4a574" opacity="0.5" stroke="#c9a876" stroke-width="1.5"/>
+
+  <!-- Main cereal graphic area -->
+  <rect x="50" y="65" width="80" height="85" fill="#fff9f0" stroke="#d4a574" stroke-width="2" rx="4" opacity="0.98"/>
+
+  <!-- Cereal pieces scattered in window -->
+  <g opacity="0.85">
+    <!-- Grain pieces -->
+    <circle cx="65" cy="80" r="6" fill="#d4a25c"/>
+    <circle cx="75" cy="75" r="5.5" fill="#e6b86d"/>
+    <circle cx="85" cy="82" r="6" fill="#d4a25c"/>
+    <circle cx="95" cy="78" r="5.5" fill="#e6b86d"/>
+    <circle cx="105" cy="84" r="6" fill="#d4a25c"/>
+    <circle cx="70" cy="100" r="5.5" fill="#e6b86d"/>
+    <circle cx="85" cy="98" r="6" fill="#d4a25c"/>
+    <circle cx="100" cy="102" r="5.5" fill="#e6b86d"/>
+    <!-- Milk effect -->
+    <ellipse cx="90" cy="125" rx="35" ry="8" fill="#fffcf7" opacity="0.6"/>
+  </g>
+
+  <!-- Product name -->
+  <text x="90" y="170" font-family="serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#8b6914">CEREAL</text>
+  <text x="90" y="188" font-family="sans-serif" font-size="10" text-anchor="middle" fill="#666">Whole Grain</text>
+  <text x="90" y="202" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#999">12 oz / 340g</text>
+
+  <!-- Price/weight stripe -->
+  <rect x="40" y="225" width="100" height="12" fill="#d4a574" opacity="0.25"/>
+
+  <!-- Nutritional claims -->
+  <g font-family="sans-serif" font-size="7" fill="#666" text-anchor="middle">
+    <text x="60" y="245">High in Fiber</text>
+    <text x="120" y="245">Vitamin D</text>
+    <text x="90" y="258">Low Sugar Formula</text>
+  </g>
+
+  <!-- Shine/highlight effect -->
+  <ellipse cx="55" cy="70" rx="10" ry="18" fill="#ffffff" opacity="0.35"/>
+  <ellipse cx="125" cy="120" rx="8" ry="15" fill="#ffffff" opacity="0.2"/>
+
+  <!-- Bottom flap -->
+  <path d="M 40 220 L 50 230 L 130 230 L 140 220" fill="#e8d9b8" stroke="#c9a876" stroke-width="1.5"/>
+</svg>

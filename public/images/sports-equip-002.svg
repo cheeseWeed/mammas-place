@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <!-- Premium yoga mat gradient - deep purple/lavender -->
+    <linearGradient id="mat-surface" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#a78bfa"/>
+      <stop offset="30%" style="stop-color:#8b5cf6"/>
+      <stop offset="70%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#6d28d9"/>
+    </linearGradient>
+    <!-- Mat edge/thickness gradient -->
+    <linearGradient id="mat-edge" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#6d28d9"/>
+      <stop offset="50%" style="stop-color:#5b21b6"/>
+      <stop offset="100%" style="stop-color:#4c1d95"/>
+    </linearGradient>
+    <!-- Rolled section gradient -->
+    <radialGradient id="roll-gradient" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#9333ea"/>
+      <stop offset="40%" style="stop-color:#7e22ce"/>
+      <stop offset="100%" style="stop-color:#581c87"/>
+    </radialGradient>
+    <!-- Drop shadow -->
+    <filter id="mat-shadow" x="-10%" y="-10%" width="120%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="2" dy="6" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Mat texture pattern (non-slip) -->
+    <pattern id="mat-texture" patternUnits="userSpaceOnUse" width="6" height="6">
+      <circle cx="3" cy="3" r="1" fill="#000" opacity="0.06"/>
+    </pattern>
+    <!-- Ground shadow -->
+    <radialGradient id="floor-shadow" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#000;stop-opacity:0.25"/>
+      <stop offset="80%" style="stop-color:#000;stop-opacity:0.05"/>
+      <stop offset="100%" style="stop-color:#000;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Studio background -->
+  <rect width="400" height="400" fill="#fafafa"/>
+
+  <!-- Ground shadow -->
+  <ellipse cx="200" cy="350" rx="140" ry="25" fill="url(#floor-shadow)"/>
+
+  <!-- Main mat flat section (partially unrolled) -->
+  <g filter="url(#mat-shadow)">
+    <!-- Mat surface -->
+    <path d="M 50 130 L 350 130 L 350 260 Q 340 270 200 275 Q 60 270 50 260 Z" fill="url(#mat-surface)"/>
+    <!-- Non-slip texture -->
+    <path d="M 50 130 L 350 130 L 350 260 Q 340 270 200 275 Q 60 270 50 260 Z" fill="url(#mat-texture)"/>
+    <!-- Mat edge thickness -->
+    <path d="M 50 260 Q 60 270 200 275 Q 340 270 350 260 L 350 266 Q 340 276 200 281 Q 60 276 50 266 Z" fill="url(#mat-edge)"/>
+  </g>
+
+  <!-- Alignment line pattern -->
+  <g stroke="#e9d5ff" stroke-width="1.5" opacity="0.5" fill="none">
+    <!-- Center alignment line -->
+    <line x1="200" y1="140" x2="200" y2="265"/>
+    <!-- Horizontal guide lines -->
+    <line x1="70" y1="160" x2="330" y2="160"/>
+    <line x1="70" y1="190" x2="330" y2="190"/>
+    <line x1="70" y1="220" x2="330" y2="220"/>
+    <line x1="70" y1="250" x2="330" y2="250"/>
+  </g>
+
+  <!-- Alignment markers (chakra points) -->
+  <g fill="#e9d5ff" opacity="0.6">
+    <circle cx="200" cy="160" r="4"/>
+    <circle cx="200" cy="190" r="4"/>
+    <circle cx="200" cy="220" r="4"/>
+    <circle cx="200" cy="250" r="4"/>
+  </g>
+
+  <!-- Rolled section at bottom -->
+  <g filter="url(#mat-shadow)">
+    <!-- Roll cylinder -->
+    <ellipse cx="200" cy="310" rx="130" ry="25" fill="url(#roll-gradient)"/>
+    <!-- Roll face -->
+    <ellipse cx="70" cy="310" rx="25" ry="25" fill="#7c3aed"/>
+    <ellipse cx="70" cy="310" rx="22" ry="22" fill="#9333ea"/>
+    <!-- Spiral detail on roll end -->
+    <path d="M 70 295 Q 85 295 85 310 Q 85 325 70 325" fill="none" stroke="#a855f7" stroke-width="2"/>
+    <path d="M 70 300 Q 80 300 80 310 Q 80 320 70 320" fill="none" stroke="#c084fc" stroke-width="1.5"/>
+    <!-- Right roll face -->
+    <ellipse cx="330" cy="310" rx="25" ry="25" fill="#7c3aed"/>
+    <ellipse cx="330" cy="310" rx="22" ry="22" fill="#9333ea"/>
+    <path d="M 330 295 Q 345 295 345 310 Q 345 325 330 325" fill="none" stroke="#a855f7" stroke-width="2"/>
+  </g>
+
+  <!-- Carrying strap -->
+  <g filter="url(#mat-shadow)">
+    <rect x="160" y="295" width="80" height="8" rx="4" fill="#1f1f1f"/>
+    <rect x="162" y="297" width="76" height="4" rx="2" fill="#333"/>
+  </g>
+
+  <!-- Surface highlights -->
+  <ellipse cx="130" cy="170" rx="60" ry="35" fill="#fff" opacity="0.12"/>
+
+  <!-- 6mm thickness indicator label -->
+  <rect x="310" y="245" width="35" height="16" rx="3" fill="#fff" opacity="0.9"/>
+  <text x="328" y="256" font-size="9" fill="#6d28d9" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold">6mm</text>
+</svg>

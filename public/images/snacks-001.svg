@@ -1,0 +1,203 @@
+<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Bag gradient -->
+    <linearGradient id="bagGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#2d4a1c;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#3d6321;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#3d6321;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2d4a1c;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Brown accent -->
+    <linearGradient id="brownAccent" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#654321;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Nut colors -->
+    <radialGradient id="almondGradient" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#D2B48C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B7355;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="cashewGradient" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#F5DEB3;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DEB887;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="raisinGradient" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#4A235A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a0a1c;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="cranberryGradient" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#DC143C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B0000;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="pumpkinSeedGradient" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#9ACD32;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6B8E23;stop-opacity:1" />
+    </radialGradient>
+
+    <!-- Shadow filter -->
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="8" dy="12" stdDeviation="12" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+
+    <!-- Crinkle pattern -->
+    <pattern id="crinkle" x="0" y="0" width="45" height="45" patternUnits="userSpaceOnUse">
+      <path d="M0,22 Q11,18 22,22 T45,22" fill="none" stroke="#2d4a1c" stroke-width="0.5" opacity="0.4"/>
+      <path d="M0,11 Q11,8 22,11 T45,11" fill="none" stroke="#2d4a1c" stroke-width="0.3" opacity="0.3"/>
+      <path d="M0,33 Q11,29 22,33 T45,33" fill="none" stroke="#2d4a1c" stroke-width="0.3" opacity="0.3"/>
+    </pattern>
+
+    <!-- Glossy overlay -->
+    <linearGradient id="glossy" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0" />
+      <stop offset="30%" style="stop-color:#ffffff;stop-opacity:0.1" />
+      <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.15" />
+      <stop offset="70%" style="stop-color:#ffffff;stop-opacity:0.08" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </linearGradient>
+
+    <!-- Orange sunburst for energy -->
+    <radialGradient id="sunburst" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#FF8C00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF6600;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="500" fill="#f5f0e8"/>
+
+  <!-- Shadow beneath bag -->
+  <ellipse cx="200" cy="470" rx="125" ry="18" fill="#000000" opacity="0.2"/>
+
+  <!-- Main bag with shadow -->
+  <g filter="url(#dropShadow)">
+    <!-- Bag body -->
+    <path d="M70,55 Q60,250 80,465 L320,465 Q340,250 330,55 Q275,45 200,50 Q125,45 70,55 Z"
+          fill="url(#bagGradient)"/>
+
+    <!-- Crinkle texture -->
+    <path d="M70,55 Q60,250 80,465 L320,465 Q340,250 330,55 Q275,45 200,50 Q125,45 70,55 Z"
+          fill="url(#crinkle)" opacity="0.6"/>
+
+    <!-- Side shadow -->
+    <path d="M70,55 Q60,250 80,465 L100,465 Q90,250 85,55 Z" fill="#000000" opacity="0.12"/>
+
+    <!-- Side highlight -->
+    <path d="M300,55 Q325,250 305,465 L320,465 Q340,250 330,55 Z" fill="#ffffff" opacity="0.06"/>
+  </g>
+
+  <!-- Glossy overlay -->
+  <path d="M70,55 Q60,250 80,465 L320,465 Q340,250 330,55 Q275,45 200,50 Q125,45 70,55 Z"
+        fill="url(#glossy)"/>
+
+  <!-- Top seal -->
+  <path d="M80,45 Q125,35 200,40 Q275,35 320,45 L330,65 Q275,55 200,60 Q125,55 70,65 Z" fill="#5a7d3a"/>
+  <path d="M85,42 Q125,32 200,37 Q275,32 315,42 L323,58 Q275,50 200,54 Q125,50 77,58 Z" fill="#6b8e4a"/>
+
+  <!-- Orange energy banner at top -->
+  <rect x="85" y="75" width="230" height="55" fill="url(#sunburst)" rx="6"/>
+
+  <!-- Brand text -->
+  <text x="200" y="98" font-family="Impact, sans-serif" font-size="22" text-anchor="middle" fill="#FFFFFF" letter-spacing="1">
+    NATURE'S BEST
+  </text>
+  <text x="200" y="122" font-family="Arial Black, sans-serif" font-size="18" text-anchor="middle" fill="#2d4a1c">
+    TRAIL MIX
+  </text>
+
+  <!-- Window showing contents -->
+  <ellipse cx="200" cy="250" rx="110" ry="90" fill="#FFF8E7" stroke="#8B4513" stroke-width="3"/>
+  <ellipse cx="200" cy="250" rx="105" ry="85" fill="#FFFEF5"/>
+
+  <!-- Trail mix contents illustration -->
+  <g transform="translate(200, 250)">
+    <!-- Back layer -->
+    <!-- Almonds -->
+    <ellipse cx="-60" cy="-40" rx="12" ry="8" fill="url(#almondGradient)" transform="rotate(-20)"/>
+    <ellipse cx="50" cy="-45" rx="11" ry="7" fill="url(#almondGradient)" transform="rotate(25)"/>
+
+    <!-- Cashews -->
+    <path d="M-30,-50 Q-20,-55 -10,-45 Q-5,-38 -12,-30" fill="url(#cashewGradient)" stroke="#C4A76C" stroke-width="0.5"/>
+    <path d="M60,-25 Q70,-30 75,-20 Q78,-10 70,-5" fill="url(#cashewGradient)" stroke="#C4A76C" stroke-width="0.5"/>
+
+    <!-- Raisins -->
+    <ellipse cx="-45" cy="-20" rx="8" ry="6" fill="url(#raisinGradient)"/>
+    <ellipse cx="25" cy="-35" rx="7" ry="5" fill="url(#raisinGradient)"/>
+    <ellipse cx="-20" cy="-25" rx="6" ry="5" fill="url(#raisinGradient)"/>
+
+    <!-- Middle layer -->
+    <!-- Cranberries -->
+    <ellipse cx="-50" cy="10" rx="9" ry="7" fill="url(#cranberryGradient)"/>
+    <ellipse cx="10" cy="-10" rx="8" ry="6" fill="url(#cranberryGradient)"/>
+    <ellipse cx="45" cy="5" rx="9" ry="7" fill="url(#cranberryGradient)"/>
+
+    <!-- Pumpkin seeds -->
+    <ellipse cx="-25" cy="5" rx="10" ry="5" fill="url(#pumpkinSeedGradient)" transform="rotate(-15)"/>
+    <ellipse cx="30" cy="15" rx="9" ry="4" fill="url(#pumpkinSeedGradient)" transform="rotate(20)"/>
+    <ellipse cx="-5" cy="20" rx="10" ry="5" fill="url(#pumpkinSeedGradient)" transform="rotate(-10)"/>
+
+    <!-- Front layer -->
+    <!-- More almonds -->
+    <ellipse cx="-35" cy="35" rx="13" ry="8" fill="url(#almondGradient)" transform="rotate(15)"/>
+    <ellipse cx="55" cy="30" rx="12" ry="7" fill="url(#almondGradient)" transform="rotate(-25)"/>
+
+    <!-- More cashews -->
+    <path d="M15,35 Q25,28 35,38 Q40,48 30,55" fill="url(#cashewGradient)" stroke="#C4A76C" stroke-width="0.5"/>
+
+    <!-- More raisins -->
+    <ellipse cx="-60" cy="45" rx="7" ry="5" fill="url(#raisinGradient)"/>
+    <ellipse cx="0" cy="45" rx="8" ry="6" fill="url(#raisinGradient)"/>
+    <ellipse cx="65" cy="50" rx="7" ry="5" fill="url(#raisinGradient)"/>
+
+    <!-- More cranberries -->
+    <ellipse cx="-40" cy="55" rx="8" ry="6" fill="url(#cranberryGradient)"/>
+    <ellipse cx="40" cy="60" rx="9" ry="7" fill="url(#cranberryGradient)"/>
+
+    <!-- Highlights on nuts -->
+    <ellipse cx="-58" cy="-42" rx="4" ry="2" fill="#ffffff" opacity="0.2"/>
+    <ellipse cx="52" cy="-47" rx="3" ry="2" fill="#ffffff" opacity="0.2"/>
+    <ellipse cx="-33" cy="33" rx="4" ry="2" fill="#ffffff" opacity="0.2"/>
+  </g>
+
+  <!-- Product info section -->
+  <rect x="90" y="360" width="220" height="85" fill="url(#brownAccent)" rx="6"/>
+
+  <!-- Content description -->
+  <text x="200" y="385" font-family="Georgia, serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#FFD700">
+    Premium Blend
+  </text>
+  <text x="200" y="405" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#F5F5DC">
+    Almonds, Cashews, Cranberries
+  </text>
+  <text x="200" y="420" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#F5F5DC">
+    Raisins, Pumpkin Seeds
+  </text>
+
+  <!-- Weight badge -->
+  <ellipse cx="200" cy="450" rx="32" ry="14" fill="#FF8C00"/>
+  <text x="200" y="455" font-family="Arial Black, sans-serif" font-size="14" text-anchor="middle" fill="#2d4a1c">
+    14 OZ
+  </text>
+
+  <!-- Quality seal -->
+  <g transform="translate(305, 95)">
+    <circle r="28" fill="#FFD700"/>
+    <circle r="24" fill="#2d4a1c"/>
+    <circle r="20" fill="none" stroke="#90EE90" stroke-width="1"/>
+    <text y="-4" font-family="Arial, sans-serif" font-size="6" font-weight="bold" text-anchor="middle" fill="#90EE90">ENERGY</text>
+    <text y="5" font-family="Arial, sans-serif" font-size="5" text-anchor="middle" fill="#FFD700">BOOST</text>
+  </g>
+
+  <!-- Health badge -->
+  <g transform="translate(95, 95)">
+    <circle r="26" fill="#228B22"/>
+    <circle r="22" fill="#006400"/>
+    <text y="-3" font-family="Arial, sans-serif" font-size="6" font-weight="bold" text-anchor="middle" fill="#FFFFFF">NO</text>
+    <text y="6" font-family="Arial, sans-serif" font-size="5" text-anchor="middle" fill="#FFFFFF">SUGAR</text>
+  </g>
+</svg>

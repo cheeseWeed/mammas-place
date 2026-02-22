@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" width="500" height="600">
+  <!-- CRYSTAL GROWING LAB - REALISTIC PRODUCT PHOTOGRAPHY -->
+  <defs>
+    <!-- Studio lighting -->
+    <radialGradient id="studioLight2" cx="40%" cy="30%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.9" />
+      <stop offset="50%" style="stop-color:#f0f5fa;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#d0e0f0;stop-opacity:0.3" />
+    </radialGradient>
+
+    <!-- Soft shadows -->
+    <filter id="softShadow2">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="0" dy="8" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Crystal gradients with liquid -->
+    <linearGradient id="purpleLiquid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e9d5ff;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#a78bfa;stop-opacity:0.9" />
+    </linearGradient>
+
+    <linearGradient id="blueLiquid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#bfdbfe;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.9" />
+    </linearGradient>
+
+    <linearGradient id="greenLiquid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#dcfce7;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#22c55e;stop-opacity:0.9" />
+    </linearGradient>
+
+    <linearGradient id="pinkLiquid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbcfe8;stop-opacity:0.7" />
+      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:0.9" />
+    </linearGradient>
+
+    <!-- Crystal formation gradients -->
+    <radialGradient id="purpleCrystal" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#d8b4fe;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#a78bfa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="blueCrystal" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#93c5fd;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3b82f6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e40af;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="greenCrystal" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#86efac;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#22c55e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#15a34a;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="pinkCrystal" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#f472b6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ec4899;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#be185d;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="500" height="600" fill="url(#studioLight2)"/>
+
+  <!-- Soft shadow base -->
+  <ellipse cx="250" cy="480" rx="200" ry="50" fill="rgba(0,0,0,0.08)"/>
+
+  <!-- CONTAINER 1: PURPLE CRYSTALS (Left) -->
+  <g filter="url(#softShadow2)">
+    <g transform="translate(100, 200)">
+      <!-- Glass container body -->
+      <path d="M -18 40 L -20 -30 L -18 -35 L 18 -35 L 20 -30 L 18 40 Q 0 45 -18 40" fill="rgba(200,220,255,0.2)" stroke="rgba(100,150,200,0.5)" stroke-width="1.5"/>
+      <!-- Liquid inside -->
+      <path d="M -16 30 L -18 -25 L 16 -25 L 18 30" fill="url(#purpleLiquid)"/>
+      <!-- Growing crystals -->
+      <g transform="translate(0, 5)">
+        <polygon points="0,-12 8,-2 6,8 -6,8 -8,-2" fill="url(#purpleCrystal)"/>
+        <polygon points="-10,-8 -2,2 0,12 -8,6" fill="url(#purpleCrystal)" opacity="0.8"/>
+        <polygon points="8,-10 16,0 12,10 2,4" fill="url(#purpleCrystal)" opacity="0.7"/>
+        <polygon points="-4,-5 3,3 4,10 -3,8" fill="rgba(167,139,250,0.5)"/>
+      </g>
+      <!-- Glass shine -->
+      <line x1="-18" y1="-30" x2="-16" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="2" opacity="0.5"/>
+      <!-- Label -->
+      <text x="0" y="60" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">Purple</text>
+    </g>
+  </g>
+
+  <!-- CONTAINER 2: BLUE CRYSTALS (Center) -->
+  <g filter="url(#softShadow2)">
+    <g transform="translate(250, 180)">
+      <!-- Glass container body - slightly taller -->
+      <path d="M -20 45 L -22 -35 L -20 -40 L 20 -40 L 22 -35 L 20 45 Q 0 50 -20 45" fill="rgba(100,200,255,0.15)" stroke="rgba(50,150,200,0.5)" stroke-width="1.5"/>
+      <!-- Liquid inside -->
+      <path d="M -18 35 L -20 -30 L 18 -30 L 20 35" fill="url(#blueLiquid)"/>
+      <!-- Growing crystals - more prominent -->
+      <g transform="translate(0, 0)">
+        <polygon points="0,-15 10,-3 8,10 -8,10 -10,-3" fill="url(#blueCrystal)"/>
+        <polygon points="-12,-10 -2,4 0,14 -10,8" fill="url(#blueCrystal)" opacity="0.85"/>
+        <polygon points="10,-12 18,2 14,12 4,6" fill="url(#blueCrystal)" opacity="0.75"/>
+        <polygon points="-2,-8 5,4 6,12 -2,10" fill="rgba(59,130,246,0.5)"/>
+        <polygon points="2,-6 8,5 6,11 0,8" fill="rgba(59,130,246,0.4)"/>
+      </g>
+      <!-- Glass shine -->
+      <line x1="-20" y1="-35" x2="-18" y2="30" stroke="rgba(255,255,255,0.5)" stroke-width="2.5" opacity="0.6"/>
+      <!-- Label -->
+      <text x="0" y="65" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">Blue</text>
+    </g>
+  </g>
+
+  <!-- CONTAINER 3: GREEN CRYSTALS (Right) -->
+  <g filter="url(#softShadow2)">
+    <g transform="translate(400, 200)">
+      <!-- Glass container body -->
+      <path d="M -18 40 L -20 -30 L -18 -35 L 18 -35 L 20 -30 L 18 40 Q 0 45 -18 40" fill="rgba(100,255,150,0.15)" stroke="rgba(50,180,100,0.5)" stroke-width="1.5"/>
+      <!-- Liquid inside -->
+      <path d="M -16 30 L -18 -25 L 16 -25 L 18 30" fill="url(#greenLiquid)"/>
+      <!-- Growing crystals -->
+      <g transform="translate(0, 8)">
+        <polygon points="0,-12 9,-1 7,9 -7,9 -9,-1" fill="url(#greenCrystal)"/>
+        <polygon points="-11,-7 -1,5 0,13 -9,7" fill="url(#greenCrystal)" opacity="0.8"/>
+        <polygon points="9,-9 17,3 13,11 3,5" fill="url(#greenCrystal)" opacity="0.7"/>
+        <polygon points="-3,-4 4,4 5,11 -4,9" fill="rgba(34,197,94,0.5)"/>
+      </g>
+      <!-- Glass shine -->
+      <line x1="-18" y1="-30" x2="-16" y2="20" stroke="rgba(255,255,255,0.4)" stroke-width="2" opacity="0.5"/>
+      <!-- Label -->
+      <text x="0" y="60" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">Green</text>
+    </g>
+  </g>
+
+  <!-- CONTAINER 4: PINK CRYSTALS (Bottom Center) -->
+  <g filter="url(#softShadow2)">
+    <g transform="translate(250, 380)">
+      <!-- Glass container body -->
+      <path d="M -18 38 L -20 -28 L -18 -33 L 18 -33 L 20 -28 L 18 38 Q 0 43 -18 38" fill="rgba(255,150,200,0.15)" stroke="rgba(200,100,150,0.5)" stroke-width="1.5"/>
+      <!-- Liquid inside -->
+      <path d="M -16 28 L -18 -23 L 16 -23 L 18 28" fill="url(#pinkLiquid)"/>
+      <!-- Growing crystals -->
+      <g transform="translate(0, 5)">
+        <polygon points="0,-11 8,-2 6,8 -6,8 -8,-2" fill="url(#pinkCrystal)"/>
+        <polygon points="-10,-8 -2,2 0,12 -8,6" fill="url(#pinkCrystal)" opacity="0.8"/>
+        <polygon points="8,-10 16,0 12,10 2,4" fill="url(#pinkCrystal)" opacity="0.7"/>
+      </g>
+      <!-- Glass shine -->
+      <line x1="-18" y1="-28" x2="-16" y2="18" stroke="rgba(255,255,255,0.4)" stroke-width="2" opacity="0.5"/>
+      <!-- Label -->
+      <text x="0" y="58" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#333" text-anchor="middle">Pink</text>
+    </g>
+  </g>
+
+  <!-- INSTRUCTION GUIDE BOOK -->
+  <g filter="url(#softShadow2)">
+    <g transform="translate(80, 420)">
+      <!-- Book cover -->
+      <rect x="-30" y="0" width="60" height="85" rx="4" fill="#2b5a8a" stroke="#1a3a5a" stroke-width="2"/>
+      <!-- Pages -->
+      <rect x="-28" y="2" width="56" height="81" fill="#3a7aaa" opacity="0.7"/>
+      <!-- Title area -->
+      <rect x="-26" y="8" width="52" height="25" fill="rgba(255,255,255,0.85)"/>
+      <!-- Text -->
+      <text x="0" y="18" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#1a3a5a" text-anchor="middle">STEP-BY</text>
+      <text x="0" y="28" font-family="Georgia, serif" font-size="9" font-weight="bold" fill="#1a3a5a" text-anchor="middle">STEP</text>
+      <!-- Decorative crystals on cover -->
+      <circle cx="-12" cy="50" r="4" fill="#d8b4fe" opacity="0.6"/>
+      <circle cx="0" cy="55" r="5" fill="#93c5fd" opacity="0.6"/>
+      <circle cx="12" cy="50" r="4" fill="#86efac" opacity="0.6"/>
+      <!-- Spine lines -->
+      <line x1="-26" y1="18" x2="26" y2="18" stroke="rgba(0,0,0,0.1)" stroke-width="0.5"/>
+    </g>
+  </g>
+
+  <!-- TOOLS: CHISEL AND STIRRING ROD -->
+  <g filter="url(#softShadow2)">
+    <!-- Stirring rod -->
+    <g transform="translate(340, 410)">
+      <rect x="-2" y="0" width="4" height="50" fill="#8b6f47" opacity="0.8"/>
+      <circle cx="0" cy="45" r="3" fill="#daa520" opacity="0.7"/>
+    </g>
+  </g>
+
+  <!-- PRODUCT TITLE -->
+  <text x="250" y="550" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1a1a1a" text-anchor="middle">
+    Crystal Growing Lab
+  </text>
+
+  <!-- PRODUCT DESCRIPTION -->
+  <text x="250" y="575" font-family="Arial, sans-serif" font-size="11" fill="#555" text-anchor="middle">
+    Grow 4 Colourful Crystal Types • Step-by-Step Guide
+  </text>
+
+  <!-- HIGHLIGHT TEXT -->
+  <text x="250" y="595" font-family="Arial, sans-serif" font-size="9" fill="#888" text-anchor="middle">
+    Watch crystals form in just a few days!
+  </text>
+</svg>

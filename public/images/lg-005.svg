@@ -1,0 +1,198 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background - outdoor patio/deck feel -->
+    <linearGradient id="bgGradient5" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#81D4FA"/>
+      <stop offset="70%" style="stop-color:#B3E5FC"/>
+      <stop offset="100%" style="stop-color:#E1F5FE"/>
+    </linearGradient>
+
+    <!-- Grass gradient -->
+    <linearGradient id="grassGrad5" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#66BB6A"/>
+      <stop offset="50%" style="stop-color:#4CAF50"/>
+      <stop offset="100%" style="stop-color:#388E3C"/>
+    </linearGradient>
+
+    <!-- Green hose gradient -->
+    <linearGradient id="hoseGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50"/>
+      <stop offset="30%" style="stop-color:#388E3C"/>
+      <stop offset="70%" style="stop-color:#2E7D32"/>
+      <stop offset="100%" style="stop-color:#1B5E20"/>
+    </linearGradient>
+
+    <!-- Hose cross-section for 3D effect -->
+    <radialGradient id="hoseCrossSection" cx="50%" cy="30%">
+      <stop offset="0%" style="stop-color:#66BB6A"/>
+      <stop offset="50%" style="stop-color:#4CAF50"/>
+      <stop offset="100%" style="stop-color:#1B5E20"/>
+    </radialGradient>
+
+    <!-- Brass/metal gradient for connectors -->
+    <linearGradient id="brassGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#B8860B"/>
+      <stop offset="25%" style="stop-color:#DAA520"/>
+      <stop offset="50%" style="stop-color:#FFD700"/>
+      <stop offset="75%" style="stop-color:#DAA520"/>
+      <stop offset="100%" style="stop-color:#B8860B"/>
+    </linearGradient>
+
+    <!-- Black plastic nozzle -->
+    <linearGradient id="nozzleGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4A4A4A"/>
+      <stop offset="50%" style="stop-color:#2D2D2D"/>
+      <stop offset="100%" style="stop-color:#1A1A1A"/>
+    </linearGradient>
+
+    <!-- Chrome/silver for nozzle parts -->
+    <linearGradient id="chromeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#A0A0A0"/>
+      <stop offset="25%" style="stop-color:#D0D0D0"/>
+      <stop offset="50%" style="stop-color:#F0F0F0"/>
+      <stop offset="75%" style="stop-color:#D0D0D0"/>
+      <stop offset="100%" style="stop-color:#808080"/>
+    </linearGradient>
+
+    <!-- Shadow filter -->
+    <filter id="dropShadow5" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="3" dy="5" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Water spray effect -->
+    <radialGradient id="waterSpray" cx="0%" cy="50%">
+      <stop offset="0%" style="stop-color:#81D4FA" stop-opacity="0.8"/>
+      <stop offset="100%" style="stop-color:#81D4FA" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background sky -->
+  <rect width="400" height="400" fill="url(#bgGradient5)"/>
+
+  <!-- Grass ground -->
+  <ellipse cx="200" cy="380" rx="220" ry="50" fill="url(#grassGrad5)"/>
+
+  <!-- Grass texture -->
+  <g stroke="#2E7D32" stroke-width="1.5" fill="none" opacity="0.4">
+    <path d="M40 365 Q45 345 50 365"/>
+    <path d="M60 370 Q68 350 75 370"/>
+    <path d="M350 362 Q355 340 360 362"/>
+    <path d="M370 368 Q378 348 385 368"/>
+  </g>
+
+  <!-- Coiled hose with realistic 3D effect -->
+  <g filter="url(#dropShadow5)">
+    <!-- Outer coils (back layer) -->
+    <ellipse cx="200" cy="270" rx="110" ry="50" fill="none" stroke="url(#hoseGradient)" stroke-width="18" opacity="0.6"/>
+    <ellipse cx="200" cy="260" rx="100" ry="45" fill="none" stroke="url(#hoseGradient)" stroke-width="18" opacity="0.7"/>
+
+    <!-- Middle coils -->
+    <ellipse cx="200" cy="250" rx="90" ry="40" fill="none" stroke="url(#hoseGradient)" stroke-width="18" opacity="0.8"/>
+    <ellipse cx="200" cy="240" rx="80" ry="36" fill="none" stroke="url(#hoseGradient)" stroke-width="18" opacity="0.85"/>
+
+    <!-- Inner coils (front layer - brighter) -->
+    <ellipse cx="200" cy="230" rx="70" ry="32" fill="none" stroke="url(#hoseCrossSection)" stroke-width="18" opacity="0.9"/>
+    <ellipse cx="200" cy="220" rx="60" ry="28" fill="none" stroke="url(#hoseCrossSection)" stroke-width="18"/>
+    <ellipse cx="200" cy="210" rx="50" ry="24" fill="none" stroke="url(#hoseCrossSection)" stroke-width="18"/>
+    <ellipse cx="200" cy="200" rx="40" ry="20" fill="none" stroke="url(#hoseCrossSection)" stroke-width="16"/>
+
+    <!-- Center coils -->
+    <ellipse cx="200" cy="192" rx="30" ry="15" fill="none" stroke="url(#hoseCrossSection)" stroke-width="14"/>
+    <ellipse cx="200" cy="186" rx="22" ry="11" fill="none" stroke="url(#hoseCrossSection)" stroke-width="12"/>
+
+    <!-- Hose highlight lines for texture -->
+    <ellipse cx="200" cy="230" rx="70" ry="32" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="4"/>
+    <ellipse cx="200" cy="220" rx="60" ry="28" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="3"/>
+    <ellipse cx="200" cy="210" rx="50" ry="24" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="3"/>
+  </g>
+
+  <!-- Hose end going to nozzle -->
+  <path d="M300 230 Q330 230 350 180 Q365 140 350 100" stroke="url(#hoseGradient)" stroke-width="14" fill="none" stroke-linecap="round" filter="url(#dropShadow5)"/>
+  <path d="M300 230 Q330 230 350 180 Q365 140 350 100" stroke="rgba(255,255,255,0.2)" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+  <!-- Brass connector at hose end -->
+  <g filter="url(#dropShadow5)">
+    <ellipse cx="350" cy="100" rx="12" ry="8" fill="url(#brassGradient)"/>
+    <rect x="340" y="85" width="20" height="15" rx="2" fill="url(#brassGradient)"/>
+    <ellipse cx="350" cy="85" rx="10" ry="6" fill="#DAA520"/>
+  </g>
+
+  <!-- Spray nozzle -->
+  <g filter="url(#dropShadow5)" transform="translate(350, 60)">
+    <!-- Nozzle body -->
+    <rect x="-18" y="0" width="36" height="45" rx="4" fill="url(#nozzleGradient)"/>
+
+    <!-- Ergonomic grip ridges -->
+    <g fill="#3D3D3D" opacity="0.5">
+      <rect x="-15" y="8" width="30" height="3" rx="1"/>
+      <rect x="-15" y="15" width="30" height="3" rx="1"/>
+      <rect x="-15" y="22" width="30" height="3" rx="1"/>
+      <rect x="-15" y="29" width="30" height="3" rx="1"/>
+      <rect x="-15" y="36" width="30" height="3" rx="1"/>
+    </g>
+
+    <!-- Chrome trim ring -->
+    <rect x="-20" y="-5" width="40" height="8" rx="4" fill="url(#chromeGradient)"/>
+
+    <!-- Nozzle tip (adjustable) -->
+    <ellipse cx="0" cy="-12" rx="10" ry="6" fill="url(#chromeGradient)"/>
+    <ellipse cx="0" cy="-15" rx="8" ry="5" fill="#E0E0E0"/>
+    <circle cx="0" cy="-15" r="4" fill="#333"/>
+
+    <!-- Spray pattern indicator -->
+    <ellipse cx="0" cy="-20" rx="6" ry="3" fill="url(#chromeGradient)"/>
+
+    <!-- Trigger -->
+    <path d="M-18 20 Q-28 25 -25 35 Q-22 45 -18 42" fill="url(#chromeGradient)" stroke="#808080" stroke-width="1"/>
+
+    <!-- Trigger guard -->
+    <path d="M-20 18 Q-35 20 -32 40 Q-28 52 -18 45" fill="none" stroke="#333" stroke-width="3"/>
+  </g>
+
+  <!-- Water spray effect -->
+  <g opacity="0.6">
+    <ellipse cx="380" cy="30" rx="35" ry="20" fill="url(#waterSpray)" transform="rotate(-30, 380, 30)"/>
+    <path d="M350 45 Q360 35 375 25" stroke="#81D4FA" stroke-width="2" fill="none" opacity="0.5"/>
+    <path d="M352 42 Q365 30 385 20" stroke="#81D4FA" stroke-width="1.5" fill="none" opacity="0.4"/>
+    <path d="M355 40 Q370 28 390 15" stroke="#81D4FA" stroke-width="1" fill="none" opacity="0.3"/>
+  </g>
+
+  <!-- Water droplets -->
+  <g fill="#81D4FA">
+    <circle cx="375" cy="40" r="2" opacity="0.7"/>
+    <circle cx="385" cy="35" r="1.5" opacity="0.6"/>
+    <circle cx="392" cy="25" r="2" opacity="0.5"/>
+    <ellipse cx="365" cy="50" rx="2" ry="3" opacity="0.4"/>
+  </g>
+
+  <!-- Second hose end (water source connection) -->
+  <path d="M100 260 Q70 270 50 300 Q40 340 60 360" stroke="url(#hoseGradient)" stroke-width="14" fill="none" stroke-linecap="round" filter="url(#dropShadow5)"/>
+
+  <!-- Brass connector at water source end -->
+  <g transform="translate(60, 365)">
+    <ellipse cx="0" cy="0" rx="12" ry="8" fill="url(#brassGradient)"/>
+    <rect x="-10" y="0" width="20" height="12" rx="2" fill="url(#brassGradient)"/>
+    <ellipse cx="0" cy="12" rx="8" ry="5" fill="#B8860B"/>
+  </g>
+
+  <!-- Ground shadow -->
+  <ellipse cx="200" cy="340" rx="130" ry="25" fill="rgba(0,0,0,0.15)"/>
+
+  <!-- Product info badge -->
+  <g transform="translate(200, 320)">
+    <rect x="-35" y="0" width="70" height="22" rx="11" fill="#2196F3"/>
+    <text x="0" y="15" font-size="10" font-weight="bold" fill="white" text-anchor="middle" font-family="Arial, sans-serif">100 FT</text>
+  </g>
+
+  <!-- Sun glare for outdoor feel -->
+  <circle cx="50" cy="50" r="30" fill="#FFEB3B" opacity="0.15"/>
+  <circle cx="50" cy="50" r="20" fill="#FFEB3B" opacity="0.2"/>
+</svg>

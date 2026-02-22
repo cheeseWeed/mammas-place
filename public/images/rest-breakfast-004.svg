@@ -1,0 +1,197 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="shd4" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="3" dy="5" stdDeviation="5" flood-opacity="0.4"/>
+    </filter>
+    <filter id="steamF4">
+      <feGaussianBlur stdDeviation="2.2"/>
+    </filter>
+
+    <!-- Avocado gradients -->
+    <radialGradient id="avocadoGrad" cx="45%" cy="40%">
+      <stop offset="0%" stop-color="#a4c639"/>
+      <stop offset="70%" stop-color="#7cb342"/>
+      <stop offset="100%" stop-color="#558b2f"/>
+    </radialGradient>
+
+    <!-- Bread gradient -->
+    <linearGradient id="breadGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d4a046"/>
+      <stop offset="40%" stop-color="#c4903d"/>
+      <stop offset="100%" stop-color="#8b5a2b"/>
+    </linearGradient>
+
+    <!-- Egg gradient -->
+    <radialGradient id="eggG4" cx="40%" cy="35%">
+      <stop offset="0%" stop-color="#ffe066"/>
+      <stop offset="60%" stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#e6a800"/>
+    </radialGradient>
+
+    <!-- Plate gradient -->
+    <radialGradient id="plateG4" cx="38%" cy="35%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="55%" stop-color="#fafaf8"/>
+      <stop offset="100%" stop-color="#e5e2da"/>
+    </radialGradient>
+
+    <!-- Salmon gradient -->
+    <linearGradient id="salmonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffa07a"/>
+      <stop offset="50%" stop-color="#fa8072"/>
+      <stop offset="100%" stop-color="#e9967a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Restaurant background -->
+  <rect width="400" height="400" fill="#282018"/>
+  <!-- Wood grain -->
+  <line x1="0" y1="45" x2="400" y2="48" stroke="#3a3020" stroke-width="2.5" opacity="0.5"/>
+  <line x1="0" y1="110" x2="400" y2="108" stroke="#4a4030" stroke-width="2" opacity="0.4"/>
+  <line x1="0" y1="185" x2="400" y2="188" stroke="#3a3020" stroke-width="2.5" opacity="0.5"/>
+  <line x1="0" y1="270" x2="400" y2="268" stroke="#4a4030" stroke-width="2" opacity="0.4"/>
+  <line x1="0" y1="345" x2="400" y2="348" stroke="#3a3020" stroke-width="2" opacity="0.5"/>
+
+  <!-- Table shadow -->
+  <ellipse cx="200" cy="380" rx="170" ry="25" fill="#161008" opacity="0.7"/>
+
+  <!-- Slate serving board -->
+  <g filter="url(#shd4)">
+    <rect x="45" y="140" width="310" height="180" rx="8" fill="#2c2c2c"/>
+    <rect x="48" y="143" width="304" height="174" rx="6" fill="#363636"/>
+    <!-- Slate texture -->
+    <line x1="55" y1="170" x2="340" y2="172" stroke="#404040" stroke-width="1" opacity="0.4"/>
+    <line x1="50" y1="220" x2="345" y2="218" stroke="#444" stroke-width="1" opacity="0.3"/>
+    <line x1="55" y1="270" x2="340" y2="272" stroke="#404040" stroke-width="1" opacity="0.4"/>
+  </g>
+
+  <!-- Artisan toast base -->
+  <g filter="url(#shd4)">
+    <!-- Toast 1 -->
+    <rect x="70" y="180" width="115" height="100" rx="5" fill="#6b4420"/>
+    <rect x="73" y="183" width="109" height="94" rx="4" fill="url(#breadGrad)"/>
+    <rect x="76" y="186" width="103" height="88" rx="3" fill="#d4a046" opacity="0.6"/>
+    <!-- Artisan texture -->
+    <circle cx="95" cy="200" r="3" fill="#8b5a2b" opacity="0.3"/>
+    <circle cx="130" cy="230" r="2.5" fill="#8b5a2b" opacity="0.3"/>
+    <circle cx="110" cy="255" r="3" fill="#8b5a2b" opacity="0.3"/>
+    <circle cx="155" cy="210" r="2" fill="#8b5a2b" opacity="0.3"/>
+    <circle cx="85" cy="245" r="2.5" fill="#8b5a2b" opacity="0.3"/>
+
+    <!-- Toast 2 -->
+    <rect x="205" y="185" width="110" height="95" rx="5" fill="#6b4420"/>
+    <rect x="208" y="188" width="104" height="89" rx="4" fill="url(#breadGrad)"/>
+    <rect x="211" y="191" width="98" height="83" rx="3" fill="#d4a046" opacity="0.6"/>
+    <circle cx="230" cy="210" r="3" fill="#8b5a2b" opacity="0.3"/>
+    <circle cx="270" cy="235" r="2.5" fill="#8b5a2b" opacity="0.3"/>
+    <circle cx="250" cy="260" r="2" fill="#8b5a2b" opacity="0.3"/>
+  </g>
+
+  <!-- Smashed avocado on toast 1 -->
+  <g filter="url(#shd4)">
+    <ellipse cx="127" cy="225" rx="48" ry="38" fill="#558b2f"/>
+    <ellipse cx="127" cy="222" rx="46" ry="36" fill="url(#avocadoGrad)"/>
+    <ellipse cx="127" cy="219" rx="43" ry="33" fill="#8bc34a" opacity="0.6"/>
+    <!-- Chunky texture -->
+    <ellipse cx="105" cy="215" rx="10" ry="7" fill="#9acd32" opacity="0.5"/>
+    <ellipse cx="140" cy="230" rx="12" ry="8" fill="#7cb342" opacity="0.4"/>
+    <ellipse cx="120" cy="240" rx="8" ry="5" fill="#9acd32" opacity="0.5"/>
+    <ellipse cx="150" cy="212" rx="6" ry="4" fill="#8bc34a" opacity="0.4"/>
+  </g>
+
+  <!-- Poached egg on toast 1 -->
+  <g filter="url(#shd4)">
+    <!-- Egg white -->
+    <ellipse cx="127" cy="208" rx="28" ry="22" fill="#fffef5"/>
+    <ellipse cx="127" cy="205" rx="26" ry="20" fill="#ffffff" opacity="0.9"/>
+    <!-- Runny yolk -->
+    <ellipse cx="127" cy="205" rx="14" ry="12" fill="#e6a800"/>
+    <ellipse cx="127" cy="203" rx="13" ry="11" fill="url(#eggG4)"/>
+    <!-- Yolk shine -->
+    <ellipse cx="122" cy="198" rx="5" ry="4" fill="#ffe566" opacity="0.8"/>
+    <ellipse cx="120" cy="196" rx="2.5" ry="2" fill="#ffffff" opacity="0.85"/>
+  </g>
+
+  <!-- Smoked salmon on toast 2 -->
+  <g filter="url(#shd4)">
+    <path d="M 220 200 Q 230 190 260 195 Q 290 200 300 215 Q 295 235 270 250 Q 240 260 225 250 Q 210 235 220 200"
+          fill="url(#salmonGrad)"/>
+    <path d="M 225 205 Q 235 195 260 200 Q 285 205 293 218 Q 290 235 265 245 Q 240 252 228 243 Q 218 230 225 205"
+          fill="#ffa07a" opacity="0.6"/>
+    <!-- Salmon texture lines -->
+    <line x1="230" y1="215" x2="270" y2="210" stroke="#e9967a" stroke-width="1.5" opacity="0.5"/>
+    <line x1="235" y1="230" x2="280" y2="225" stroke="#e9967a" stroke-width="1.5" opacity="0.5"/>
+    <line x1="240" y1="243" x2="275" y2="240" stroke="#e9967a" stroke-width="1.5" opacity="0.4"/>
+  </g>
+
+  <!-- Cream cheese base showing -->
+  <g>
+    <ellipse cx="260" cy="252" rx="20" ry="8" fill="#f5f5f0" opacity="0.6"/>
+    <ellipse cx="235" cy="258" rx="15" ry="6" fill="#fafafa" opacity="0.5"/>
+  </g>
+
+  <!-- Capers -->
+  <g>
+    <circle cx="245" cy="215" r="3" fill="#556b2f"/>
+    <circle cx="244" cy="214" r="1.5" fill="#6b8e23" opacity="0.7"/>
+    <circle cx="275" cy="235" r="3" fill="#556b2f"/>
+    <circle cx="274" cy="234" r="1.5" fill="#6b8e23" opacity="0.7"/>
+    <circle cx="255" cy="245" r="2.5" fill="#556b2f"/>
+    <circle cx="285" cy="220" r="2.5" fill="#556b2f"/>
+  </g>
+
+  <!-- Red onion rings -->
+  <g>
+    <ellipse cx="240" cy="205" rx="8" ry="5" fill="none" stroke="#8b1a52" stroke-width="2"/>
+    <ellipse cx="240" cy="205" rx="5" ry="3" fill="none" stroke="#a0306a" stroke-width="1.5" opacity="0.6"/>
+    <ellipse cx="280" cy="225" rx="7" ry="4" fill="none" stroke="#8b1a52" stroke-width="2"/>
+  </g>
+
+  <!-- Fresh dill garnish -->
+  <g>
+    <path d="M 290 195 Q 295 185 300 190" stroke="#228b22" stroke-width="1.5" fill="none"/>
+    <path d="M 292 193 Q 300 182 305 188" stroke="#2ecc40" stroke-width="1" fill="none"/>
+    <path d="M 294 195 L 298 182" stroke="#228b22" stroke-width="1"/>
+
+    <path d="M 100 195 Q 95 185 90 188" stroke="#228b22" stroke-width="1.5" fill="none"/>
+    <path d="M 102 193 Q 93 183 88 187" stroke="#2ecc40" stroke-width="1" fill="none"/>
+  </g>
+
+  <!-- Microgreens -->
+  <g opacity="0.9">
+    <path d="M 110 195 L 105 185" stroke="#7cb342" stroke-width="1.5"/>
+    <circle cx="105" cy="183" r="2" fill="#8bc34a"/>
+    <path d="M 115 198 L 112 188" stroke="#558b2f" stroke-width="1.5"/>
+    <circle cx="112" cy="186" r="1.8" fill="#7cb342"/>
+    <line x1="145" y1="192" x2="150" y2="182" stroke="#7cb342" stroke-width="1.5"/>
+    <circle cx="150" cy="180" r="2" fill="#8bc34a"/>
+  </g>
+
+  <!-- Cracked pepper and salt -->
+  <g opacity="0.6">
+    <circle cx="122" cy="200" r="0.7" fill="#2c2c2c"/>
+    <circle cx="135" cy="208" r="0.8" fill="#2c2c2c"/>
+    <circle cx="118" cy="215" r="0.6" fill="#2c2c2c"/>
+    <circle cx="255" cy="210" r="0.7" fill="#2c2c2c"/>
+    <circle cx="270" cy="230" r="0.6" fill="#2c2c2c"/>
+    <!-- Salt flakes -->
+    <rect x="130" y="195" width="1.5" height="0.8" fill="#f0f0f0" transform="rotate(20 130 195)"/>
+    <rect x="260" y="220" width="1.5" height="0.8" fill="#f0f0f0" transform="rotate(-15 260 220)"/>
+  </g>
+
+  <!-- Steam from poached egg -->
+  <g filter="url(#steamF4)" opacity="0.2">
+    <path d="M 115 180 Q 110 165 120 150 Q 125 138 117 125" stroke="#fff" stroke-width="3.5" fill="none"/>
+    <path d="M 130 175 Q 135 160 125 145 Q 120 133 130 120" stroke="#fff" stroke-width="3" fill="none"/>
+    <path d="M 145 178 Q 150 163 140 148" stroke="#fff" stroke-width="2.5" fill="none"/>
+  </g>
+
+  <!-- Lemon wedge -->
+  <g filter="url(#shd4)">
+    <path d="M 320 280 L 350 265 Q 355 280 345 295 Z" fill="#ffd700"/>
+    <path d="M 323 280 L 347 267 Q 350 280 343 292 Z" fill="#ffeb3b" opacity="0.7"/>
+    <!-- Lemon segments -->
+    <line x1="325" y1="280" x2="345" y2="275" stroke="#ffc107" stroke-width="1" opacity="0.5"/>
+    <line x1="328" y1="285" x2="343" y2="282" stroke="#ffc107" stroke-width="1" opacity="0.5"/>
+  </g>
+</svg>

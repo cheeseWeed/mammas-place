@@ -1,0 +1,74 @@
+{
+  "homepage": {
+    "url": "http://localhost:3000",
+    "categoryCount": 38,
+    "categories": [
+      "Toys & Games",
+      "Ponies",
+      "Unicorns",
+      "Princesses",
+      "Bow & Arrow",
+      "Rock Collections",
+      "Board Games",
+      "Audiobooks",
+      "Automotive",
+      "️ Classic Cars",
+      "Tires & Parts",
+      "️ Services",
+      "Home Services",
+      "Personal Services",
+      "Home & Garden",
+      "Grocery",
+      "Pantry",
+      "️ Restaurant",
+      "Breakfast",
+      "Lunch",
+      "Dinner",
+      "Dessert",
+      "Sports",
+      "⚽ Balls",
+      "️ Exercise Equipment",
+      "⛺ Outdoor Recreation",
+      "Toys & GamesShop all →",
+      "AudiobooksShop all →",
+      "AutomotiveShop all →",
+      "️ServicesShop all →",
+      "Home & GardenShop all →",
+      "GroceryShop all →",
+      "️RestaurantShop all →",
+      "SportsShop all →",
+      "Browse Free Audiobooks →",
+      "Automotive",
+      "Grocery",
+      "Tools & Hardware"
+    ]
+  },
+  "shopPage": {
+    "url": "http://localhost:3000/shop",
+    "categoryCount": 8,
+    "categories": [
+      "toys and games",
+      "audiobooks",
+      "automotive",
+      "services",
+      "home garden",
+      "grocery",
+      "restaurant",
+      "sports"
+    ]
+  },
+  "expected": [
+    "Toys & Games",
+    "Audiobooks",
+    "Automotive",
+    "Services",
+    "Home & Garden",
+    "Grocery",
+    "Restaurant",
+    "Sports"
+  ],
+  "missing": {
+    "homepage": [],
+    "shopPage": []
+  }
+}

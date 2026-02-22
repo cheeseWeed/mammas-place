@@ -1,0 +1,62 @@
+<svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+  <!-- Bag shape -->
+  <defs>
+    <linearGradient id="popcornBag" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fef3c7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Main bag -->
+  <path d="M 48 30 L 42 100 Q 38 155 65 180 L 135 180 Q 162 155 158 100 L 152 30 Z" fill="url(#popcornBag)" stroke="#b45309" stroke-width="2"/>
+
+  <!-- Top fold -->
+  <rect x="48" y="25" width="104" height="14" fill="#fbbf24" stroke="#b45309" stroke-width="1" rx="3"/>
+
+  <!-- Fold lines -->
+  <line x1="65" y1="25" x2="65" y2="39" stroke="#b45309" stroke-width="0.5" opacity="0.5"/>
+  <line x1="135" y1="25" x2="135" y2="39" stroke="#b45309" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- Popcorn bursting out -->
+  <g transform="translate(100, 60)">
+    <!-- Large fluffy popcorn pieces -->
+    <circle cx="-28" cy="-18" r="14" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+    <circle cx="-22" cy="-8" r="12" fill="#ffffff" stroke="#e5e5e5" stroke-width="1"/>
+
+    <circle cx="-8" cy="-22" r="13" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+    <circle cx="-2" cy="-10" r="11" fill="#ffffff" stroke="#e5e5e5" stroke-width="1"/>
+
+    <circle cx="18" cy="-20" r="13" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+    <circle cx="26" cy="-8" r="12" fill="#ffffff" stroke="#e5e5e5" stroke-width="1"/>
+
+    <circle cx="32" cy="-25" r="11" fill="#f5f5f5" stroke="#ddd" stroke-width="1"/>
+
+    <!-- Interior popcorn -->
+    <circle cx="-20" cy="8" r="10" fill="#fffacd" stroke="#f5e6b3" stroke-width="1"/>
+    <circle cx="5" cy="5" r="10" fill="#fffacd" stroke="#f5e6b3" stroke-width="1"/>
+    <circle cx="20" cy="10" r="10" fill="#fffacd" stroke="#f5e6b3" stroke-width="1"/>
+    <circle cx="-8" cy="18" r="9" fill="#fffacd" stroke="#f5e6b3" stroke-width="1"/>
+  </g>
+
+  <!-- Label area -->
+  <rect x="55" y="50" width="90" height="32" fill="#ffffff" opacity="0.88" rx="3" stroke="#b45309" stroke-width="1"/>
+
+  <!-- Premium badge -->
+  <circle cx="160" cy="55" r="12" fill="#dc2626" stroke="#991b1b" stroke-width="1"/>
+  <text x="160" y="59" font-family="Arial, sans-serif" font-size="9" font-weight="bold" text-anchor="middle" fill="#ffffff">99%</text>
+
+  <!-- Brand -->
+  <text x="100" y="63" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#b45309">
+    POPCORN
+  </text>
+
+  <!-- Pop rate info -->
+  <text x="100" y="78" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#666666">
+    Premium Kernels • 99% Pop Rate
+  </text>
+
+  <!-- Size -->
+  <text x="100" y="175" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#b45309">
+    2 LB BAG
+  </text>
+</svg>

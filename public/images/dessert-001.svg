@@ -1,0 +1,85 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Soft background with subtle gradient effect -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f9f3f0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5e6e0;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bgGradient)"/>
+
+  <!-- Ceramic plate with subtle depth -->
+  <circle cx="200" cy="260" r="125" fill="#e8e8e5" stroke="#c9c9c4" stroke-width="1.5"/>
+  <circle cx="200" cy="260" r="120" fill="#f5f5f2"/>
+
+  <!-- Plate rim detail -->
+  <circle cx="200" cy="260" r="118" fill="none" stroke="#e5e5e2" stroke-width="0.5" opacity="0.6"/>
+
+  <!-- Strawberry Cheesecake -->
+  <!-- Graham cracker crust (bottom) -->
+  <rect x="125" y="200" width="150" height="25" fill="#d4a574" rx="2"/>
+  <ellipse cx="200" cy="200" rx="75" ry="8" fill="#c9935a" opacity="0.4"/>
+
+  <!-- Cream cheese layer (main body) -->
+  <path d="M 125 200 Q 120 170 125 140 L 275 140 Q 280 170 275 200 Z" fill="#fef3f0"/>
+  <path d="M 130 200 Q 127 170 130 140 L 270 140 Q 273 170 270 200 Z" fill="#fdfaf8"/>
+
+  <!-- Cheesecake shine -->
+  <ellipse cx="200" cy="155" rx="50" ry="30" fill="white" opacity="0.15"/>
+
+  <!-- Strawberry topping layer -->
+  <ellipse cx="200" cy="140" rx="73" ry="12" fill="#ee5a5a" opacity="0.8"/>
+  <ellipse cx="200" cy="138" rx="72" ry="10" fill="#f07070"/>
+
+  <!-- Individual strawberries arranged on top -->
+  <!-- Strawberry 1 (left-center) -->
+  <ellipse cx="160" cy="135" rx="12" ry="15" fill="#d63c3c"/>
+  <ellipse cx="160" cy="133" rx="11" ry="14" fill="#e85555"/>
+  <path d="M 158 120 L 155 115 M 162 120 L 165 115 M 160 120 L 160 114" stroke="#2d8659" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Strawberry 2 (center) -->
+  <ellipse cx="200" cy="130" rx="13" ry="16" fill="#d63c3c"/>
+  <ellipse cx="200" cy="128" rx="12" ry="15" fill="#e85555"/>
+  <path d="M 198 112 L 195 107 M 202 112 L 205 107 M 200 112 L 200 106" stroke="#2d8659" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Strawberry 3 (right-center) -->
+  <ellipse cx="240" cy="135" rx="12" ry="15" fill="#d63c3c"/>
+  <ellipse cx="240" cy="133" rx="11" ry="14" fill="#e85555"/>
+  <path d="M 238 120 L 235 115 M 242 120 L 245 115 M 240 120 L 240 114" stroke="#2d8659" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Strawberry 4 (left) -->
+  <ellipse cx="145" cy="145" rx="11" ry="14" fill="#d63c3c"/>
+  <ellipse cx="145" cy="143" rx="10" ry="13" fill="#e85555"/>
+  <path d="M 143 130 L 140 126 M 147 130 L 150 126" stroke="#2d8659" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+
+  <!-- Strawberry 5 (right) -->
+  <ellipse cx="255" cy="145" rx="11" ry="14" fill="#d63c3c"/>
+  <ellipse cx="255" cy="143" rx="10" ry="13" fill="#e85555"/>
+  <path d="M 253 130 L 250 126 M 257 130 L 260 126" stroke="#2d8659" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+
+  <!-- Whipped cream and strawberry seeds detail -->
+  <circle cx="155" cy="150" r="1.5" fill="#ffe8d1" opacity="0.7"/>
+  <circle cx="175" cy="148" r="1" fill="#ffe8d1" opacity="0.6"/>
+  <circle cx="225" cy="149" r="1.2" fill="#ffe8d1" opacity="0.65"/>
+  <circle cx="245" cy="151" r="1" fill="#ffe8d1" opacity="0.6"/>
+
+  <!-- Fork on left side (subtle) -->
+  <g opacity="0.25" filter="url(#shadow)">
+    <rect x="85" y="180" width="3" height="70" fill="#a8a8a8" rx="1.5"/>
+    <circle cx="87" cy="252" r="4" fill="#a8a8a8"/>
+    <path d="M 82 252 L 85 245 M 87 252 L 87 245 M 92 252 L 90 245" stroke="#a8a8a8" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Plate shadows and highlights -->
+  <circle cx="200" cy="260" r="120" fill="none" stroke="#f0f0f0" stroke-width="1" opacity="0.3"/>
+  <ellipse cx="200" cy="350" rx="130" ry="25" fill="rgba(0,0,0,0.06)"/>
+
+  <!-- Subtle surface texture on cheesecake -->
+  <circle cx="130" cy="165" r="2" fill="#fff" opacity="0.08"/>
+  <circle cx="270" cy="175" r="1.5" fill="#fff" opacity="0.06"/>
+  <circle cx="200" cy="185" r="1" fill="#fff" opacity="0.05"/>
+</svg>

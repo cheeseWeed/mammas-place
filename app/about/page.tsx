@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'About Us - Mamma\'s Place',
-  description: 'Learn about Mamma\'s Place - your trusted source for magical toys and gifts for kids',
+  description: 'Learn about Mamma\'s Place - your one-stop marketplace for everything you need, from automotive to groceries, tools to toys',
 };
 
 export default function AboutPage() {
@@ -15,7 +15,7 @@ export default function AboutPage() {
             About Mamma&apos;s Place
           </h1>
           <p className="text-lg text-purple-600 max-w-2xl mx-auto">
-            Where imagination comes to life through magical toys and gifts
+            Your one-stop marketplace for everything you need
           </p>
         </div>
 
@@ -24,13 +24,13 @@ export default function AboutPage() {
           <div className="prose max-w-none">
             <h2 className="text-2xl font-bold text-purple-900 mb-4">Our Story</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              Welcome to Mamma&apos;s Place, where every toy tells a story and every gift sparks joy! Founded with love and a passion for childhood wonder, we&apos;re dedicated to bringing smiles to children and peace of mind to parents.
+              Welcome to Mamma&apos;s Place, where you can find everything you need under one roof! We&apos;re your friendly neighborhood marketplace that competes with the big-box retailers while keeping that personal touch.
             </p>
             <p className="text-gray-700 leading-relaxed mb-4">
-              What started as a small collection of ponies and unicorns has blossomed into a curated selection of high-quality toys, games, audiobooks, and collectibles. We believe that the right toy can inspire creativity, encourage learning, and create memories that last a lifetime.
+              What started as a small shop has grown into a comprehensive marketplace offering everything from automotive supplies and groceries to home goods, tools, clothing, electronics, and yes - even toys! Whether you need new tires, lawn care supplies, picture frames, or handyman services, we&apos;ve got you covered.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              At Mamma&apos;s Place, we&apos;re more than just a toy store - we&apos;re a community of parents, grandparents, and gift-givers who understand the magic of childhood. Every product we carry is carefully selected with safety, quality, and fun in mind.
+              At Mamma&apos;s Place, we believe in the motto: "Whatever you want, we got it." We&apos;re here to compete with Walmart, Costco, and Amazon by offering the same variety with better service, competitive prices, and that Mamma warmth you can&apos;t find anywhere else. Every product we carry is carefully selected for quality and value.
             </p>
           </div>
         </div>
@@ -47,9 +47,9 @@ export default function AboutPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-purple-900 mb-2">Safety First</h3>
+                  <h3 className="text-xl font-bold text-purple-900 mb-2">Safety & Standards</h3>
                   <p className="text-gray-700 text-sm">
-                    All our products meet or exceed US safety standards. We only partner with trusted manufacturers who prioritize child safety.
+                    All our products meet or exceed industry safety standards. We only partner with trusted manufacturers and suppliers who prioritize quality and compliance.
                   </p>
                 </div>
               </div>
@@ -95,9 +95,9 @@ export default function AboutPage() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-purple-900 mb-2">Inspire Learning</h3>
+                  <h3 className="text-xl font-bold text-purple-900 mb-2">Complete Selection</h3>
                   <p className="text-gray-700 text-sm">
-                    We believe in the power of play. Our toys encourage creativity, imagination, and learning through fun experiences.
+                    From everyday essentials to specialty items, we stock a comprehensive range of products across all categories to meet your every need.
                   </p>
                 </div>
               </div>
@@ -109,24 +109,24 @@ export default function AboutPage() {
         <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border-2 border-purple-100 mb-8">
           <h2 className="text-2xl font-bold text-purple-900 mb-6 text-center">What We Offer</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
-            <a href="/shop?category=ponies" className="bg-gradient-to-br from-pink-100 to-pink-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow border border-pink-200 group">
-              <div className="text-4xl mb-2 group-hover:scale-110 transition-transform">🐴</div>
-              <h3 className="font-bold text-purple-900">Ponies</h3>
-              <p className="text-xs text-gray-600 mt-1">Magical friends</p>
+            <a href="/shop?category=automotive" className="bg-gradient-to-br from-gray-100 to-gray-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow border border-gray-200 group">
+              <div className="text-4xl mb-2 group-hover:scale-110 transition-transform">🚗</div>
+              <h3 className="font-bold text-purple-900">Automotive</h3>
+              <p className="text-xs text-gray-600 mt-1">Tires & supplies</p>
             </a>
-            <a href="/shop?category=unicorns" className="bg-gradient-to-br from-purple-100 to-purple-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow border border-purple-200 group">
-              <div className="text-4xl mb-2 group-hover:scale-110 transition-transform">🦄</div>
-              <h3 className="font-bold text-purple-900">Unicorns</h3>
-              <p className="text-xs text-gray-600 mt-1">Enchanted toys</p>
+            <a href="/shop?category=grocery" className="bg-gradient-to-br from-green-100 to-green-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow border border-green-200 group">
+              <div className="text-4xl mb-2 group-hover:scale-110 transition-transform">🛒</div>
+              <h3 className="font-bold text-purple-900">Groceries</h3>
+              <p className="text-xs text-gray-600 mt-1">Food & essentials</p>
             </a>
-            <a href="/shop?category=princesses" className="bg-gradient-to-br from-yellow-100 to-yellow-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow border border-yellow-200 group">
-              <div className="text-4xl mb-2 group-hover:scale-110 transition-transform">👑</div>
-              <h3 className="font-bold text-purple-900">Princesses</h3>
-              <p className="text-xs text-gray-600 mt-1">Royal treasures</p>
+            <a href="/shop?category=tools-and-hardware" className="bg-gradient-to-br from-orange-100 to-orange-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow border border-orange-200 group">
+              <div className="text-4xl mb-2 group-hover:scale-110 transition-transform">🔧</div>
+              <h3 className="font-bold text-purple-900">Tools & Hardware</h3>
+              <p className="text-xs text-gray-600 mt-1">Fix & build</p>
             </a>
-            <a href="/shop?category=games" className="bg-gradient-to-br from-green-100 to-green-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow border border-green-200 group">
+            <a href="/shop?category=toys-and-games" className="bg-gradient-to-br from-pink-100 to-pink-50 rounded-xl p-6 text-center hover:shadow-lg transition-shadow border border-pink-200 group">
               <div className="text-4xl mb-2 group-hover:scale-110 transition-transform">🎮</div>
-              <h3 className="font-bold text-purple-900">Games</h3>
+              <h3 className="font-bold text-purple-900">Toys & Games</h3>
               <p className="text-xs text-gray-600 mt-1">Family fun</p>
             </a>
           </div>

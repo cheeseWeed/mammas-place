@@ -1,0 +1,51 @@
+<svg viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+  <!-- Bag shape -->
+  <defs>
+    <linearGradient id="chipBag" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fde047;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f59e0b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Main bag -->
+  <path d="M 50 40 L 45 100 Q 40 150 60 175 L 140 175 Q 160 150 155 100 L 150 40 Z" fill="url(#chipBag)" stroke="#b45309" stroke-width="2"/>
+
+  <!-- Top fold -->
+  <rect x="50" y="35" width="100" height="12" fill="#fbbf24" stroke="#b45309" stroke-width="1" rx="2"/>
+
+  <!-- Shine/highlight on bag -->
+  <ellipse cx="70" cy="80" rx="25" ry="35" fill="#ffffff" opacity="0.2"/>
+
+  <!-- Chips inside -->
+  <g transform="translate(100, 100)">
+    <!-- Golden chip pieces -->
+    <ellipse cx="-20" cy="-15" rx="12" ry="8" fill="#f59e0b" stroke="#b45309" stroke-width="1" transform="rotate(-30 -20 -15)"/>
+    <ellipse cx="0" cy="-20" rx="12" ry="8" fill="#fbbf24" stroke="#b45309" stroke-width="1" transform="rotate(20 0 -20)"/>
+    <ellipse cx="18" cy="-10" rx="12" ry="8" fill="#f59e0b" stroke="#b45309" stroke-width="1" transform="rotate(45 18 -10)"/>
+
+    <ellipse cx="-25" cy="5" rx="12" ry="8" fill="#fbbf24" stroke="#b45309" stroke-width="1" transform="rotate(-60 -25 5)"/>
+    <ellipse cx="-5" cy="15" rx="12" ry="8" fill="#f59e0b" stroke="#b45309" stroke-width="1" transform="rotate(10 -5 15)"/>
+    <ellipse cx="22" cy="8" rx="12" ry="8" fill="#fbbf24" stroke="#b45309" stroke-width="1" transform="rotate(-15 22 8)"/>
+
+    <ellipse cx="5" cy="-5" rx="10" ry="7" fill="#facc15" stroke="#b45309" stroke-width="1" transform="rotate(50 5 -5)"/>
+    <ellipse cx="-12" cy="20" rx="10" ry="7" fill="#f59e0b" stroke="#b45309" stroke-width="1" transform="rotate(-35 -12 20)"/>
+  </g>
+
+  <!-- Logo/Text area -->
+  <rect x="55" y="50" width="90" height="30" fill="#ffffff" opacity="0.85" rx="3"/>
+
+  <!-- Brand name -->
+  <text x="100" y="62" font-family="Arial, sans-serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#b45309">
+    POTATO CHIPS
+  </text>
+
+  <!-- Label text -->
+  <text x="100" y="77" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#666666">
+    Family Size
+  </text>
+
+  <!-- Features at bottom -->
+  <text x="100" y="170" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#333333">
+    Crispy Golden Deliciousness
+  </text>
+</svg>

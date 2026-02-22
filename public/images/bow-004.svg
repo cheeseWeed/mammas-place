@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <defs>
+    <!-- Professional studio lighting -->
+    <linearGradient id="bgGradient4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5f5f5;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ebebeb;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Soft shadow for depth -->
+    <filter id="shadow4">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="1" dy="4" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.15"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Target red gradient -->
+    <radialGradient id="targetRed" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#b91c1c;stop-opacity:1" />
+    </radialGradient>
+
+    <!-- Target yellow gradient -->
+    <radialGradient id="targetYellow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#fde047;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#eab308;stop-opacity:1" />
+    </radialGradient>
+
+    <!-- Cardboard/cork texture -->
+    <linearGradient id="corkTexture" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#d4a574;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#c09660;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a67c52;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Suction cup gradient -->
+    <radialGradient id="suctionCup" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#fb923c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c2410c;stop-opacity:1" />
+    </radialGradient>
+
+    <radialGradient id="targetShine">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Studio white background -->
+  <rect width="400" height="500" fill="url(#bgGradient4)"/>
+
+  <!-- Subtle floor shadow -->
+  <ellipse cx="200" cy="470" rx="160" ry="20" fill="#000000" opacity="0.07"/>
+
+  <!-- Target 1 - Large center target -->
+  <g filter="url(#shadow4)">
+    <circle cx="200" cy="150" r="75" fill="url(#corkTexture)" stroke="#8b6914" stroke-width="3"/>
+    <circle cx="200" cy="150" r="65" fill="#1a1a1a"/>
+    <circle cx="200" cy="150" r="55" fill="url(#targetRed)"/>
+    <circle cx="200" cy="150" r="42" fill="url(#targetYellow)"/>
+    <circle cx="200" cy="150" r="30" fill="url(#targetRed)"/>
+    <circle cx="200" cy="150" r="18" fill="url(#targetYellow)"/>
+    <circle cx="200" cy="150" r="8" fill="url(#targetRed)"/>
+    <!-- Shine on target -->
+    <ellipse cx="175" cy="125" rx="20" ry="25" fill="url(#targetShine)"/>
+    <!-- Score numbers -->
+    <text x="200" y="98" font-size="8" font-weight="bold" text-anchor="middle" fill="#ffffff" font-family="Arial">100</text>
+  </g>
+
+  <!-- Target 2 - Left smaller -->
+  <g filter="url(#shadow4)" transform="translate(45, 280)">
+    <circle cx="0" cy="0" r="55" fill="url(#corkTexture)" stroke="#8b6914" stroke-width="2"/>
+    <circle cx="0" cy="0" r="47" fill="#1a1a1a"/>
+    <circle cx="0" cy="0" r="40" fill="url(#targetRed)"/>
+    <circle cx="0" cy="0" r="30" fill="url(#targetYellow)"/>
+    <circle cx="0" cy="0" r="20" fill="url(#targetRed)"/>
+    <circle cx="0" cy="0" r="10" fill="url(#targetYellow)"/>
+    <circle cx="0" cy="0" r="4" fill="url(#targetRed)"/>
+    <ellipse cx="-15" cy="-18" rx="12" ry="15" fill="url(#targetShine)"/>
+  </g>
+
+  <!-- Target 3 - Right smaller -->
+  <g filter="url(#shadow4)" transform="translate(355, 290)">
+    <circle cx="0" cy="0" r="55" fill="url(#corkTexture)" stroke="#8b6914" stroke-width="2"/>
+    <circle cx="0" cy="0" r="47" fill="#1a1a1a"/>
+    <circle cx="0" cy="0" r="40" fill="url(#targetRed)"/>
+    <circle cx="0" cy="0" r="30" fill="url(#targetYellow)"/>
+    <circle cx="0" cy="0" r="20" fill="url(#targetRed)"/>
+    <circle cx="0" cy="0" r="10" fill="url(#targetYellow)"/>
+    <circle cx="0" cy="0" r="4" fill="url(#targetRed)"/>
+    <ellipse cx="-15" cy="-18" rx="12" ry="15" fill="url(#targetShine)"/>
+  </g>
+
+  <!-- Suction Cup Arrows - 4 arrows -->
+  <!-- Arrow 1 - stuck in main target -->
+  <g filter="url(#shadow4)">
+    <line x1="200" y1="150" x2="200" y2="100" stroke="#6b7280" stroke-width="5"/>
+    <ellipse cx="200" cy="150" rx="8" ry="4" fill="url(#suctionCup)" stroke="#9a3412" stroke-width="1"/>
+    <polygon points="195,100 205,100 200,85" fill="#3b82f6"/>
+  </g>
+
+  <!-- Arrow 2 - bottom left scattered -->
+  <g transform="translate(120, 400) rotate(15)" filter="url(#shadow4)">
+    <line x1="0" y1="0" x2="85" y2="0" stroke="#6b7280" stroke-width="5"/>
+    <ellipse cx="85" cy="0" rx="8" ry="5" fill="url(#suctionCup)" stroke="#9a3412" stroke-width="1"/>
+    <polygon points="-12,-5 -12,5 0,0" fill="#22c55e"/>
+  </g>
+
+  <!-- Arrow 3 - center bottom -->
+  <g transform="translate(180, 420) rotate(-8)" filter="url(#shadow4)">
+    <line x1="0" y1="0" x2="85" y2="0" stroke="#6b7280" stroke-width="5"/>
+    <ellipse cx="85" cy="0" rx="8" ry="5" fill="url(#suctionCup)" stroke="#9a3412" stroke-width="1"/>
+    <polygon points="-12,-5 -12,5 0,0" fill="#ef4444"/>
+  </g>
+
+  <!-- Arrow 4 - right side -->
+  <g transform="translate(280, 390) rotate(25)" filter="url(#shadow4)">
+    <line x1="0" y1="0" x2="85" y2="0" stroke="#6b7280" stroke-width="5"/>
+    <ellipse cx="85" cy="0" rx="8" ry="5" fill="url(#suctionCup)" stroke="#9a3412" stroke-width="1"/>
+    <polygon points="-12,-5 -12,5 0,0" fill="#8b5cf6"/>
+  </g>
+
+  <!-- Target stand legs hint (behind main target) -->
+  <g filter="url(#shadow4)">
+    <line x1="200" y1="225" x2="180" y2="350" stroke="#a67c52" stroke-width="8" stroke-linecap="round"/>
+    <line x1="200" y1="225" x2="220" y2="350" stroke="#a67c52" stroke-width="8" stroke-linecap="round"/>
+    <line x1="175" y1="310" x2="225" y2="310" stroke="#8b6914" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <!-- Product label -->
+  <rect x="125" y="440" width="150" height="50" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" filter="url(#shadow4)"/>
+  <text x="200" y="460" font-size="13" font-weight="bold" text-anchor="middle" fill="#b91c1c" font-family="Arial">Archery Target Set</text>
+  <text x="200" y="478" font-size="10" text-anchor="middle" fill="#64748b" font-family="Arial">3 Targets + Suction Arrows</text>
+</svg>

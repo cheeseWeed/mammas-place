@@ -1,0 +1,56 @@
+<svg viewBox="0 0 220 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cheeseGradient" x1="0%" y1="0%" x2="100%">
+      <stop offset="0%" style="stop-color:#f4d185;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#fde89b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f0c870;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="cheeseShine" cx="30%" cy="30%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Shadow -->
+  <ellipse cx="110" cy="190" rx="80" ry="14" fill="#00000025"/>
+
+  <!-- Main cheese block -->
+  <rect x="40" y="50" width="140" height="100" fill="url(#cheeseGradient)" stroke="#d4a574" stroke-width="2.5" rx="8"/>
+
+  <!-- Cheese texture - holes -->
+  <circle cx="65" cy="75" r="4.5" fill="#e8c55f" opacity="0.8"/>
+  <circle cx="95" cy="70" r="5" fill="#e8c55f" opacity="0.7"/>
+  <circle cx="130" cy="78" r="4" fill="#e8c55f" opacity="0.8"/>
+  <circle cx="155" cy="72" r="4.5" fill="#e8c55f" opacity="0.75"/>
+
+  <circle cx="55" cy="105" r="5.5" fill="#e8c55f" opacity="0.75"/>
+  <circle cx="85" cy="110" r="4.5" fill="#e8c55f" opacity="0.8"/>
+  <circle cx="120" cy="108" r="5" fill="#e8c55f" opacity="0.7"/>
+  <circle cx="160" cy="115" r="4" fill="#e8c55f" opacity="0.8"/>
+
+  <!-- Cheese shine -->
+  <ellipse cx="70" cy="60" rx="35" ry="25" fill="url(#cheeseShine)"/>
+
+  <!-- Sliced edge effect (right side) -->
+  <rect x="175" y="50" width="8" height="100" fill="#f0c870" stroke="#d4a574" stroke-width="1.5"/>
+  <line x1="175" y1="65" x2="183" y2="65" stroke="#00000015" stroke-width="0.5"/>
+  <line x1="175" y1="85" x2="183" y2="85" stroke="#00000015" stroke-width="0.5"/>
+  <line x1="175" y1="105" x2="183" y2="105" stroke="#00000015" stroke-width="0.5"/>
+  <line x1="175" y1="125" x2="183" y2="125" stroke="#00000015" stroke-width="0.5"/>
+
+  <!-- Label/wrapper -->
+  <rect x="45" y="155" width="130" height="25" fill="#fff9f0" stroke="#d4a574" stroke-width="1.5" rx="2" opacity="0.96"/>
+
+  <!-- Label text -->
+  <text x="110" y="168" font-family="serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#d4a574">CHEDDAR CHEESE</text>
+  <text x="110" y="180" font-family="sans-serif" font-size="9" text-anchor="middle" fill="#999">Sharp • Aged 12 Months</text>
+
+  <!-- Package weight -->
+  <text x="175" y="175" font-family="sans-serif" font-size="8" text-anchor="end" fill="#bbb">8 oz</text>
+
+  <!-- Top detail/shadow -->
+  <ellipse cx="110" cy="50" rx="70" ry="6" fill="#00000010" opacity="0.3"/>
+
+  <!-- Bottom shadow cast -->
+  <ellipse cx="100" cy="150" rx="60" ry="8" fill="#00000015" opacity="0.4"/>
+</svg>

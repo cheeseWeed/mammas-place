@@ -21,8 +21,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mamma's Place - Amazing Toys & Gifts for Every Kid",
-  description: "Shop toys for adventure, imagination, and discovery at Mamma's Place! Featuring games, archery, rock collections, and more.",
+  title: "Mamma's Place - Your Everything Store | Groceries, Tires, Tools, Toys & More",
+  description: "Whatever you want, we got it! Shop Mamma's Place for everything - automotive, groceries, home goods, tools, clothing, toys, and more. Your one-stop marketplace with free shipping over $50.",
 };
 
 export default function RootLayout({

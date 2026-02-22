@@ -27,7 +27,7 @@ export default function ProductCard({ product, compact = false }: ProductCardPro
         <div className={`${compact ? 'h-32' : 'h-52'} flex items-center justify-center p-4`}>
           <ProductImage product={product} />
         </div>
-        {product.isSale && (
+        {product.isSale && product.discount > 0 && (
           <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
             SALE {product.discount}% OFF
           </div>
@@ -41,13 +41,13 @@ export default function ProductCard({ product, compact = false }: ProductCardPro
 
       {/* Info */}
       <div className="p-3">
-        <div className="text-xs sm:text-sm text-purple-500 uppercase font-semibold mb-1 capitalize">{product.category}</div>
+        <div className="text-sm text-purple-500 uppercase font-semibold mb-1 capitalize">{product.category}</div>
         <h3 className={`font-bold text-gray-800 group-hover:text-purple-700 transition-colors leading-tight ${compact ? 'text-sm' : 'text-base'}`}>
           {product.name}
         </h3>
 
         {!compact && (
-          <p className="text-gray-500 text-xs sm:text-sm mt-1 line-clamp-2">{product.shortDescription}</p>
+          <p className="text-gray-700 text-sm mt-1 line-clamp-2">{product.shortDescription}</p>
         )}
 
         {/* Rating */}
@@ -56,7 +56,7 @@ export default function ProductCard({ product, compact = false }: ProductCardPro
             <div className="flex text-yellow-400 text-sm">
               {'★'.repeat(Math.round(product.rating))}{'☆'.repeat(5 - Math.round(product.rating))}
             </div>
-            <span className="text-gray-400 text-xs sm:text-sm">({product.reviewCount})</span>
+            <span className="text-gray-600 text-sm">({product.reviewCount})</span>
           </div>
         )}
 
@@ -67,7 +67,7 @@ export default function ProductCard({ product, compact = false }: ProductCardPro
               ${product.price.toFixed(2)}
             </span>
             {product.originalPrice && (
-              <span className="text-gray-400 text-xs sm:text-sm line-through ml-2">
+              <span className="text-gray-600 text-sm line-through ml-2">
                 ${product.originalPrice.toFixed(2)}
               </span>
             )}
@@ -88,7 +88,7 @@ export default function ProductCard({ product, compact = false }: ProductCardPro
               Add to Cart
             </button>
           ) : (
-            <div className="mt-3 w-full bg-gray-100 text-gray-400 font-bold py-2 rounded-xl text-sm text-center border border-gray-200">
+            <div className="mt-3 w-full bg-gray-100 text-gray-600 font-bold py-2 rounded-xl text-sm text-center border border-gray-200">
               ❌ Unavailable
             </div>
           )

@@ -94,7 +94,7 @@ export default function AdminUploadPage() {
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-3xl font-black text-purple-900">Image Upload</h1>
-          <p className="text-gray-500 text-sm mt-1">Upload product images for Mamma&apos;s Place</p>
+          <p className="text-gray-700 text-sm mt-1">Upload product images for Mamma&apos;s Place</p>
         </div>
         <Link href="/" className="text-purple-600 hover:text-purple-800 font-semibold text-sm">
           &larr; Back to Store
@@ -112,7 +112,7 @@ export default function AdminUploadPage() {
             <select
               value={selectedProduct}
               onChange={(e) => { setSelectedProduct(e.target.value); setCustomName(''); }}
-              className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
+              className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm text-gray-900 bg-white focus:outline-none focus:ring-2 focus:ring-purple-400"
             >
               <option value="">— Select a product —</option>
               {PRODUCT_IDS.map((p) => (
@@ -131,7 +131,7 @@ export default function AdminUploadPage() {
                 placeholder="e.g. banner-hero"
                 className="w-full border border-gray-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
               />
-              <p className="text-xs text-gray-400 mt-1">Leave blank for auto-generated name</p>
+              <p className="text-xs text-gray-700 mt-1">Leave blank for auto-generated name</p>
             </div>
           )}
 
@@ -146,7 +146,7 @@ export default function AdminUploadPage() {
               // eslint-disable-next-line @next/next/no-img-element
               <img src={preview} alt="Preview" className="max-h-40 mx-auto rounded-xl object-contain" />
             ) : (
-              <div className="text-gray-400">
+              <div className="text-gray-800">
                 <div className="text-4xl mb-2">&#x1F4C1;</div>
                 <p className="font-bold text-sm">Drop image here or click to browse</p>
                 <p className="text-xs mt-1">JPG, PNG, WebP, GIF, SVG &mdash; max 5MB</p>
@@ -163,7 +163,7 @@ export default function AdminUploadPage() {
           />
 
           {file && (
-            <p className="text-xs text-gray-500 mb-3 truncate">
+            <p className="text-xs text-gray-800 mb-3 truncate">
               Selected: <strong>{file.name}</strong> ({(file.size / 1024).toFixed(1)} KB)
             </p>
           )}
@@ -171,7 +171,7 @@ export default function AdminUploadPage() {
           <button
             onClick={handleUpload}
             disabled={!file || uploading}
-            className="w-full bg-purple-700 hover:bg-purple-600 disabled:bg-gray-200 disabled:text-gray-400 text-white font-black py-3 rounded-2xl transition-colors flex items-center justify-center gap-2"
+            className="w-full bg-purple-700 hover:bg-purple-600 disabled:bg-gray-200 disabled:text-gray-600 text-white font-black py-3 rounded-2xl transition-colors flex items-center justify-center gap-2"
           >
             {uploading ? (
               <>Uploading...</>
@@ -205,7 +205,7 @@ export default function AdminUploadPage() {
               <li>The image saves to <code className="bg-white px-1 rounded">public/images/</code></li>
               <li>It automatically appears on that product&apos;s page</li>
             </ol>
-            <div className="mt-3 text-xs text-gray-500 bg-white rounded-xl p-3 border border-purple-100">
+            <div className="mt-3 text-xs text-gray-700 bg-white rounded-xl p-3 border border-purple-100">
               <strong>Tip:</strong> Name your image to match the product ID (e.g., <code>pony-001.jpg</code>) and it will automatically display on that product page.
             </div>
           </div>

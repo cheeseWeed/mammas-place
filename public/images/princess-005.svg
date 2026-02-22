@@ -1,0 +1,215 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <!-- Royal purple studio backdrop -->
+    <radialGradient id="royalStudio" cx="50%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#f5f0ff"/>
+      <stop offset="40%" stop-color="#e8e0f5"/>
+      <stop offset="100%" stop-color="#d0c0e8"/>
+    </radialGradient>
+
+    <!-- Rich purple velvet gradient -->
+    <linearGradient id="purpleVelvet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e1bee7"/>
+      <stop offset="15%" stop-color="#ce93d8"/>
+      <stop offset="30%" stop-color="#ab47bc"/>
+      <stop offset="50%" stop-color="#8e24aa"/>
+      <stop offset="70%" stop-color="#ab47bc"/>
+      <stop offset="85%" stop-color="#ce93d8"/>
+      <stop offset="100%" stop-color="#e1bee7"/>
+    </linearGradient>
+
+    <!-- Gold metallic for jewelry -->
+    <linearGradient id="royalGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff9c4"/>
+      <stop offset="25%" stop-color="#ffd700"/>
+      <stop offset="50%" stop-color="#ffb300"/>
+      <stop offset="75%" stop-color="#ffd700"/>
+      <stop offset="100%" stop-color="#fff9c4"/>
+    </linearGradient>
+
+    <!-- Amethyst gem gradient -->
+    <radialGradient id="amethyst" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#e1bee7"/>
+      <stop offset="40%" stop-color="#9c27b0"/>
+      <stop offset="100%" stop-color="#6a1b9a"/>
+    </radialGradient>
+
+    <!-- Diamond sparkle -->
+    <radialGradient id="diamond" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#e0e0e0"/>
+      <stop offset="100%" stop-color="#bdbdbd"/>
+    </radialGradient>
+
+    <!-- Glass slipper gradient -->
+    <linearGradient id="glassShoe" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="30%" stop-color="#e8e8f0" stop-opacity="0.8"/>
+      <stop offset="60%" stop-color="#d0d0e0" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#e8e8f0" stop-opacity="0.8"/>
+    </linearGradient>
+
+    <!-- Royal shadow -->
+    <filter id="royalShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="4"/>
+      <feOffset dx="3" dy="5"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.2  0 0 0 0 0.1  0 0 0 0 0.3  0 0 0 0.35 0"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Jewel sparkle -->
+    <filter id="jewelSparkle" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Tulle shimmer overlay -->
+    <linearGradient id="purpleTulle" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f3e5f5" stop-opacity="0.5"/>
+      <stop offset="50%" stop-color="#e1bee7" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#ce93d8" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Studio background -->
+  <rect width="400" height="400" fill="url(#royalStudio)"/>
+
+  <!-- Floor reflection -->
+  <ellipse cx="200" cy="382" rx="155" ry="20" fill="#b8a0c8" opacity="0.3"/>
+
+  <!-- Royal Ball Gown -->
+  <g filter="url(#royalShadow)">
+    <!-- Mannequin neck -->
+    <ellipse cx="200" cy="88" rx="10" ry="14" fill="#f5e0d0" stroke="#d4b8a0" stroke-width="0.5"/>
+
+    <!-- Bodice - structured sweetheart with jeweled neckline -->
+    <path d="M 160 100 Q 175 92 200 95 Q 225 92 240 100 L 235 150 Q 200 158 165 150 Z"
+          fill="url(#purpleVelvet)" stroke="#7b1fa2" stroke-width="1.5"/>
+    <!-- Bodice shimmer -->
+    <path d="M 170 102 Q 185 96 200 98 Q 215 96 230 102 L 228 140 Q 200 146 172 140 Z"
+          fill="#e1bee7" opacity="0.4"/>
+    <!-- Boning lines for structure -->
+    <path d="M 180 100 L 178 148" stroke="#9c27b0" stroke-width="0.5" opacity="0.4"/>
+    <path d="M 200 95 L 200 155" stroke="#9c27b0" stroke-width="0.5" opacity="0.4"/>
+    <path d="M 220 100 L 222 148" stroke="#9c27b0" stroke-width="0.5" opacity="0.4"/>
+
+    <!-- Jeweled neckline -->
+    <g filter="url(#jewelSparkle)">
+      <circle cx="180" cy="100" r="4" fill="url(#amethyst)"/>
+      <circle cx="180" cy="100" r="1.5" fill="#ffffff" opacity="0.7"/>
+      <circle cx="190" cy="96" r="3" fill="url(#diamond)"/>
+      <circle cx="200" cy="95" r="5" fill="url(#amethyst)"/>
+      <circle cx="200" cy="95" r="2" fill="#ffffff" opacity="0.7"/>
+      <circle cx="210" cy="96" r="3" fill="url(#diamond)"/>
+      <circle cx="220" cy="100" r="4" fill="url(#amethyst)"/>
+      <circle cx="220" cy="100" r="1.5" fill="#ffffff" opacity="0.7"/>
+    </g>
+
+    <!-- Off-shoulder straps -->
+    <path d="M 160 100 Q 145 98 138 105 Q 135 115 145 118" fill="url(#purpleVelvet)" stroke="#7b1fa2" stroke-width="0.8"/>
+    <path d="M 240 100 Q 255 98 262 105 Q 265 115 255 118" fill="url(#purpleVelvet)" stroke="#7b1fa2" stroke-width="0.8"/>
+
+    <!-- Waist jewel accent -->
+    <ellipse cx="200" cy="155" rx="25" ry="6" fill="url(#royalGold)" stroke="#b8860b" stroke-width="1"/>
+    <circle cx="200" cy="155" r="6" fill="url(#amethyst)"/>
+    <circle cx="200" cy="155" r="2.5" fill="#ffffff" opacity="0.6"/>
+    <circle cx="185" cy="155" r="3" fill="url(#diamond)"/>
+    <circle cx="215" cy="155" r="3" fill="url(#diamond)"/>
+
+    <!-- Magnificent ball gown skirt - multiple layers -->
+    <!-- Base deep purple layer -->
+    <ellipse cx="200" cy="275" rx="120" ry="125" fill="#7b1fa2"/>
+    <!-- Main velvet layer -->
+    <ellipse cx="200" cy="270" rx="115" ry="120" fill="url(#purpleVelvet)"/>
+    <!-- Tulle overlay for dimension -->
+    <ellipse cx="200" cy="265" rx="108" ry="112" fill="url(#purpleTulle)"/>
+
+    <!-- Dramatic skirt draping -->
+    <path d="M 85 210 Q 90 280 75 365" stroke="#7b1fa2" stroke-width="2" fill="none" opacity="0.4"/>
+    <path d="M 120 185 Q 115 270 105 365" stroke="#7b1fa2" stroke-width="1.5" fill="none" opacity="0.35"/>
+    <path d="M 155 170 Q 148 260 140 365" stroke="#7b1fa2" stroke-width="1" fill="none" opacity="0.3"/>
+    <path d="M 245 170 Q 252 260 260 365" stroke="#7b1fa2" stroke-width="1" fill="none" opacity="0.3"/>
+    <path d="M 280 185 Q 285 270 295 365" stroke="#7b1fa2" stroke-width="1.5" fill="none" opacity="0.35"/>
+    <path d="M 315 210 Q 310 280 325 365" stroke="#7b1fa2" stroke-width="2" fill="none" opacity="0.4"/>
+
+    <!-- Shimmer highlights -->
+    <path d="M 140 200 Q 145 260 142 330" stroke="#e1bee7" stroke-width="5" fill="none" opacity="0.45"/>
+    <path d="M 260 200 Q 255 260 258 330" stroke="#e1bee7" stroke-width="5" fill="none" opacity="0.45"/>
+
+    <!-- Jewel accents on skirt -->
+    <g filter="url(#jewelSparkle)">
+      <circle cx="150" cy="220" r="3" fill="url(#amethyst)"/>
+      <circle cx="250" cy="230" r="3" fill="url(#amethyst)"/>
+      <circle cx="180" cy="290" r="2.5" fill="url(#diamond)"/>
+      <circle cx="220" cy="300" r="2.5" fill="url(#diamond)"/>
+      <circle cx="200" cy="340" r="3" fill="url(#amethyst)"/>
+    </g>
+  </g>
+
+  <!-- Glass Slippers -->
+  <g filter="url(#royalShadow)" transform="translate(60, 300)">
+    <!-- Left slipper -->
+    <ellipse cx="0" cy="0" rx="25" ry="12" fill="url(#glassShoe)" stroke="#b0b0c0" stroke-width="1"/>
+    <!-- Heel -->
+    <path d="M -20 8 L -22 30 L -15 30 L -12 12" fill="url(#glassShoe)" stroke="#b0b0c0" stroke-width="0.8"/>
+    <!-- Toe detail -->
+    <ellipse cx="15" cy="-2" rx="12" ry="8" fill="url(#glassShoe)" stroke="#c0c0d0" stroke-width="0.5" opacity="0.8"/>
+    <!-- Jewel on toe -->
+    <circle cx="18" cy="-3" r="4" fill="url(#amethyst)"/>
+    <circle cx="18" cy="-3" r="1.5" fill="#ffffff" opacity="0.7"/>
+    <!-- Sparkle reflections -->
+    <ellipse cx="5" cy="-5" rx="8" ry="3" fill="#ffffff" opacity="0.4"/>
+
+    <!-- Right slipper (slightly behind) -->
+    <g transform="translate(35, 5)">
+      <ellipse cx="0" cy="0" rx="23" ry="11" fill="url(#glassShoe)" stroke="#b0b0c0" stroke-width="1"/>
+      <path d="M -18 7 L -20 28 L -13 28 L -10 11" fill="url(#glassShoe)" stroke="#b0b0c0" stroke-width="0.8"/>
+      <ellipse cx="14" cy="-2" rx="11" ry="7" fill="url(#glassShoe)" stroke="#c0c0d0" stroke-width="0.5" opacity="0.8"/>
+      <circle cx="16" cy="-3" r="3.5" fill="url(#amethyst)"/>
+      <circle cx="16" cy="-3" r="1.2" fill="#ffffff" opacity="0.7"/>
+      <ellipse cx="4" cy="-4" rx="7" ry="2.5" fill="#ffffff" opacity="0.4"/>
+    </g>
+  </g>
+
+  <!-- Jewelry Display -->
+  <g filter="url(#jewelSparkle)" transform="translate(305, 130)">
+    <!-- Necklace -->
+    <path d="M -30 0 Q -25 20 0 25 Q 25 20 30 0" fill="none" stroke="url(#royalGold)" stroke-width="3"/>
+    <!-- Pendant -->
+    <circle cx="0" cy="30" r="10" fill="url(#royalGold)" stroke="#b8860b" stroke-width="1"/>
+    <circle cx="0" cy="30" r="7" fill="url(#amethyst)"/>
+    <circle cx="0" cy="30" r="3" fill="#e1bee7" opacity="0.6"/>
+    <!-- Small gems on chain -->
+    <circle cx="-20" cy="12" r="3" fill="url(#diamond)"/>
+    <circle cx="20" cy="12" r="3" fill="url(#diamond)"/>
+
+    <!-- Earrings below -->
+    <g transform="translate(-15, 55)">
+      <circle cx="0" cy="0" r="4" fill="url(#royalGold)"/>
+      <ellipse cx="0" cy="10" rx="5" ry="8" fill="url(#amethyst)"/>
+      <ellipse cx="0" cy="10" rx="2" ry="4" fill="#e1bee7" opacity="0.5"/>
+    </g>
+    <g transform="translate(15, 55)">
+      <circle cx="0" cy="0" r="4" fill="url(#royalGold)"/>
+      <ellipse cx="0" cy="10" rx="5" ry="8" fill="url(#amethyst)"/>
+      <ellipse cx="0" cy="10" rx="2" ry="4" fill="#e1bee7" opacity="0.5"/>
+    </g>
+  </g>
+
+  <!-- Scattered sparkles -->
+  <g filter="url(#jewelSparkle)">
+    <polygon points="70,150 73,160 83,160 75,166 78,176 70,170 62,176 65,166 57,160 67,160" fill="#ffd700" opacity="0.8"/>
+    <polygon points="340,250 342,257 349,257 344,261 346,268 340,264 334,268 336,261 331,257 338,257" fill="#e1bee7" opacity="0.9"/>
+    <circle cx="95" cy="220" r="2.5" fill="#ffffff"/>
+    <circle cx="310" cy="180" r="2" fill="#ffd700"/>
+    <circle cx="55" cy="280" r="1.5" fill="#e1bee7"/>
+    <circle cx="350" cy="320" r="2" fill="#ffffff"/>
+  </g>
+
+  <!-- Product label -->
+  <rect x="50" y="362" width="300" height="30" rx="5" fill="#2d1b3d" opacity="0.92"/>
+  <text x="200" y="382" font-family="Georgia, serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#ce93d8">ROYAL BALL GOWN</text>
+</svg>

@@ -1,0 +1,58 @@
+<svg viewBox="0 0 200 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sugarBagGrad" x1="0%" y1="0%" x2="100%">
+      <stop offset="0%" style="stop-color:#fff5e6;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#fffbf0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f5ead8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Shadow -->
+  <ellipse cx="100" cy="268" rx="68" ry="12" fill="#00000020"/>
+
+  <!-- Main bag -->
+  <path d="M 50 50 L 55 260 Q 55 270 65 270 L 135 270 Q 145 270 145 260 L 150 50 Z" fill="url(#sugarBagGrad)" stroke="#d4b896" stroke-width="2.5"/>
+
+  <!-- Bag fold lines -->
+  <path d="M 70 60 Q 70 150 72 260" stroke="#e8dcc8" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M 130 60 Q 130 150 128 260" stroke="#e8dcc8" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M 100 50 L 100 260" stroke="#ddd0c0" stroke-width="1.5" fill="none" opacity="0.4"/>
+
+  <!-- Label -->
+  <rect x="62" y="75" width="76" height="110" fill="#fff9f0" stroke="#d4a574" stroke-width="2" rx="3" opacity="0.97"/>
+
+  <!-- Decorative border -->
+  <rect x="62" y="75" width="76" height="15" fill="#c9a876" opacity="0.2"/>
+
+  <!-- Crystals decoration (sugar visual) -->
+  <circle cx="75" cy="100" r="2" fill="#f0e8d8" opacity="0.7"/>
+  <circle cx="85" cy="105" r="1.5" fill="#f0e8d8" opacity="0.6"/>
+  <circle cx="95" cy="102" r="2" fill="#f0e8d8" opacity="0.7"/>
+  <circle cx="105" cy="108" r="1.5" fill="#f0e8d8" opacity="0.6"/>
+  <circle cx="115" cy="103" r="2" fill="#f0e8d8" opacity="0.7"/>
+  <circle cx="125" cy="107" r="1.5" fill="#f0e8d8" opacity="0.6"/>
+
+  <!-- Title -->
+  <text x="100" y="130" font-family="serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#8b6914">SUGAR</text>
+
+  <!-- Product info -->
+  <text x="100" y="148" font-family="sans-serif" font-size="11" text-anchor="middle" fill="#666">Granulated</text>
+  <text x="100" y="162" font-family="sans-serif" font-size="10" text-anchor="middle" fill="#999">1 kg / 2.2 lbs</text>
+  <text x="100" y="173" font-family="sans-serif" font-size="7" text-anchor="middle" fill="#bbb">Pure Cane</text>
+
+  <!-- Nutritional info stripe -->
+  <rect x="62" y="188" width="76" height="6" fill="#d4a574" opacity="0.15"/>
+  <text x="65" y="194" font-family="sans-serif" font-size="6" fill="#999">Est. per 100g: 387 kcal</text>
+
+  <!-- Left side shadow for depth -->
+  <polygon points="50,50 55,60 55,260 50,250" fill="#00000015" opacity="0.5"/>
+
+  <!-- Top shine -->
+  <ellipse cx="70" cy="65" rx="10" ry="8" fill="#ffffff" opacity="0.25"/>
+  <ellipse cx="130" cy="70" rx="8" ry="6" fill="#ffffff" opacity="0.15"/>
+
+  <!-- Bottom crushed texture -->
+  <circle cx="80" cy="245" r="1" fill="#d4a574" opacity="0.3"/>
+  <circle cx="100" cy="250" r="1.2" fill="#d4a574" opacity="0.25"/>
+  <circle cx="120" cy="243" r="0.8" fill="#d4a574" opacity="0.3"/>
+</svg>

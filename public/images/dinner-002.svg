@@ -1,0 +1,111 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <radialGradient id="bgGradient2" cx="50%" cy="40%">
+      <stop offset="0%" style="stop-color:#faf7f2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e9e0d5;stop-opacity:1" />
+    </radialGradient>
+    <filter id="shadow2" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bgGradient2)"/>
+
+  <!-- Slate plate background -->
+  <circle cx="200" cy="215" r="145" fill="#2a2a2a" stroke="#5a5a5a" stroke-width="3"/>
+  <circle cx="200" cy="215" r="140" fill="#323232"/>
+  <circle cx="200" cy="215" r="138" fill="#3a3a3a"/>
+
+  <!-- Subtle plate texture -->
+  <circle cx="200" cy="215" r="138" fill="none" stroke="#1a1a1a" stroke-width="1" opacity="0.3"/>
+
+  <!-- Cheese 1: Limburger - Soft yellow -->
+  <g filter="url(#shadow2)">
+    <rect x="110" y="160" width="50" height="35" fill="#d4a574" stroke="#a8854a" stroke-width="1.5" rx="2"/>
+    <ellipse cx="140" cy="165" rx="20" ry="8" fill="#e8b88a"/>
+    <!-- Cheese cracks/cuts -->
+    <path d="M 120 170 L 155 175" stroke="#a8854a" stroke-width="1" opacity="0.5"/>
+    <path d="M 125 185 L 160 187" stroke="#a8854a" stroke-width="0.8" opacity="0.4"/>
+  </g>
+
+  <!-- Cheese 2: Epoisses - Darker amber -->
+  <g filter="url(#shadow2)">
+    <ellipse cx="200" cy="150" rx="45" ry="32" fill="#8b6b47" stroke="#6b5a42" stroke-width="1.5"/>
+    <ellipse cx="200" cy="145" rx="42" ry="30" fill="#a68566"/>
+    <!-- Surface detail -->
+    <path d="M 160 150 Q 200 148 240 150" stroke="#6b5a42" stroke-width="1" opacity="0.4"/>
+    <!-- Glossy surface -->
+    <ellipse cx="200" cy="135" rx="25" ry="12" fill="white" opacity="0.15"/>
+  </g>
+
+  <!-- Cheese 3: Taleggio - Reddish-orange -->
+  <g filter="url(#shadow2)">
+    <polygon points="260,160 310,145 315,190 280,200" fill="#d97044" stroke="#b8563a" stroke-width="1.5"/>
+    <polygon points="262,162 308,148 312,185 282,195" fill="#e8865a"/>
+    <!-- Texture marks -->
+    <path d="M 270 170 Q 290 165 305 175" stroke="#b8563a" stroke-width="0.8" opacity="0.5"/>
+  </g>
+
+  <!-- Crackers scattered -->
+  <!-- Cracker 1 -->
+  <g filter="url(#shadow2)">
+    <rect x="90" y="240" width="45" height="28" fill="#d4c5a9" stroke="#a89878" stroke-width="1" rx="1"/>
+    <rect x="92" y="242" width="41" height="24" fill="#e8dcc5"/>
+    <!-- Cracker holes/texture -->
+    <circle cx="105" cy="250" r="1.5" fill="#a89878" opacity="0.6"/>
+    <circle cx="115" cy="248" r="1.2" fill="#a89878" opacity="0.5"/>
+    <circle cx="125" cy="252" r="1.5" fill="#a89878" opacity="0.6"/>
+  </g>
+
+  <!-- Cracker 2 -->
+  <g filter="url(#shadow2)">
+    <rect x="230" y="250" width="48" height="30" fill="#d4c5a9" stroke="#a89878" stroke-width="1" rx="1" transform="rotate(-15 254 265)"/>
+    <rect x="232" y="252" width="44" height="26" fill="#e8dcc5" transform="rotate(-15 254 265)"/>
+    <!-- Texture -->
+    <circle cx="250" cy="258" r="1.5" fill="#a89878" opacity="0.6"/>
+    <circle cx="265" cy="260" r="1.2" fill="#a89878" opacity="0.5"/>
+  </g>
+
+  <!-- Fig jam dollops -->
+  <ellipse cx="145" cy="280" rx="12" ry="10" fill="#5a3a2a"/>
+  <ellipse cx="143" cy="278" rx="10" ry="8" fill="#7a4a3a"/>
+  <!-- Jam shine -->
+  <ellipse cx="145" cy="276" rx="5" ry="3" fill="#9a5a4a" opacity="0.8"/>
+
+  <ellipse cx="280" cy="290" rx="11" ry="9" fill="#5a3a2a"/>
+  <ellipse cx="279" cy="288" rx="9" ry="7" fill="#7a4a3a"/>
+  <ellipse cx="280" cy="286" rx="5" ry="3" fill="#9a5a4a" opacity="0.8"/>
+
+  <!-- Dried fruits scattered -->
+  <!-- Dried apricots -->
+  <circle cx="170" cy="300" r="5" fill="#d4884a" stroke="#b8704a" stroke-width="0.8"/>
+  <ellipse cx="170" cy="300" rx="4" ry="3" fill="#e8985a" opacity="0.8"/>
+
+  <circle cx="210" cy="310" r="5" fill="#d4884a" stroke="#b8704a" stroke-width="0.8"/>
+  <ellipse cx="210" cy="310" rx="4" ry="3" fill="#e8985a" opacity="0.8"/>
+
+  <!-- Dried dates -->
+  <ellipse cx="150" cy="320" rx="6" ry="7" fill="#3a2a1a" stroke="#2a1a0a" stroke-width="0.8"/>
+  <ellipse cx="150" cy="318" rx="4" ry="5" fill="#5a3a2a" opacity="0.8"/>
+
+  <!-- Raisins -->
+  <circle cx="245" cy="315" r="3.5" fill="#4a3a2a" opacity="0.9"/>
+  <circle cx="255" cy="320" r="3.5" fill="#4a3a2a" opacity="0.9"/>
+  <circle cx="265" cy="318" r="3.5" fill="#4a3a2a" opacity="0.9"/>
+
+  <!-- Fresh herbs - mint -->
+  <g opacity="0.75">
+    <path d="M 120 190 Q 125 175 135 180" fill="none" stroke="#2d8659" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="122" cy="187" r="1.2" fill="#2d8659"/>
+    <circle cx="128" cy="182" r="1.2" fill="#2d8659"/>
+    <circle cx="133" cy="180" r="1.2" fill="#2d8659"/>
+  </g>
+
+  <!-- Slate plate shine -->
+  <ellipse cx="200" cy="120" rx="65" ry="50" fill="white" opacity="0.05"/>
+
+  <!-- Elegant presentation - gold accent -->
+  <circle cx="100" cy="150" r="2" fill="#d4af37" opacity="0.4"/>
+  <circle cx="300" cy="160" r="2" fill="#d4af37" opacity="0.4"/>
+</svg>

@@ -1,0 +1,67 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bg-004" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8f8f8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ededed;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="shadow-004" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#000;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#000;stop-opacity:0" />
+    </radialGradient>
+    <linearGradient id="cushion-004" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2c5f8d;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1e4d7a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a3d64;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bg-004)"/>
+
+  <!-- Shadow beneath cushion -->
+  <ellipse cx="200" cy="325" rx="140" ry="35" fill="url(#shadow-004)"/>
+
+  <!-- Main cushion body -->
+  <rect x="70" y="160" width="260" height="160" rx="25" fill="url(#cushion-004)" stroke="#1a3d64" stroke-width="2"/>
+
+  <!-- Top cushion highlight/fold -->
+  <rect x="70" y="160" width="260" height="60" rx="25" fill="#4a7fb8" opacity="0.6"/>
+
+  <!-- Cushion quilting pattern -->
+  <g stroke="#1a3d64" stroke-width="1.5" fill="none" opacity="0.5">
+    <path d="M 90 170 Q 200 150 310 170"/>
+    <path d="M 90 195 Q 200 180 310 195"/>
+    <path d="M 90 220 Q 200 210 310 220"/>
+    <path d="M 90 245 Q 200 240 310 245"/>
+    <path d="M 90 270 Q 200 270 310 270"/>
+  </g>
+
+  <!-- Vertical quilting -->
+  <g stroke="#1a3d64" stroke-width="1" fill="none" opacity="0.3">
+    <line x1="110" y1="160" x2="105" y2="320"/>
+    <line x1="150" y1="160" x2="145" y2="320"/>
+    <line x1="200" y1="160" x2="200" y2="320"/>
+    <line x1="250" y1="160" x2="255" y2="320"/>
+    <line x1="290" y1="160" x2="295" y2="320"/>
+  </g>
+
+  <!-- Textured fabric appearance - subtle lines -->
+  <g stroke="#ffffff" stroke-width="0.5" opacity="0.2">
+    <line x1="75" y1="175" x2="325" y2="175"/>
+    <line x1="75" y1="190" x2="325" y2="190"/>
+    <line x1="75" y1="205" x2="325" y2="205"/>
+    <line x1="75" y1="220" x2="325" y2="220"/>
+    <line x1="75" y1="235" x2="325" y2="235"/>
+    <line x1="75" y1="250" x2="325" y2="250"/>
+    <line x1="75" y1="265" x2="325" y2="265"/>
+    <line x1="75" y1="280" x2="325" y2="280"/>
+    <line x1="75" y1="295" x2="325" y2="295"/>
+    <line x1="75" y1="310" x2="325" y2="310"/>
+  </g>
+
+  <!-- Bottom edge highlight -->
+  <ellipse cx="200" cy="320" rx="130" ry="15" fill="#ffffff" opacity="0.15"/>
+
+  <!-- Subtle 3D edge shadow -->
+  <path d="M 70 320 Q 200 330 330 320" stroke="#000" stroke-width="1" opacity="0.1" fill="none" stroke-linecap="round"/>
+</svg>

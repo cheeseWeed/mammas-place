@@ -1,0 +1,85 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Warm Italian kitchen background -->
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fef9f4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#f8f1ea;stop-opacity:1" />
+    </linearGradient>
+    <filter id="naturalshadow">
+      <feDropShadow dx="1" dy="3" stdDeviation="2" flood-opacity="0.1"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bgGrad3)"/>
+
+  <!-- Rustic ceramic plate with slight texture -->
+  <circle cx="200" cy="265" r="132" fill="#e6ddd2" stroke="#b8a89b" stroke-width="1.2"/>
+  <circle cx="200" cy="265" r="129" fill="#f5ede5"/>
+
+  <!-- Plate surface detail -->
+  <circle cx="200" cy="265" r="128" fill="none" stroke="#e8e0d8" stroke-width="0.3" opacity="0.4"/>
+
+  <!-- Tiramisu -->
+  <!-- Ladyfinger biscuit base layer -->
+  <rect x="125" y="215" width="150" height="30" fill="#a68a6f" rx="2"/>
+  <ellipse cx="200" cy="215" rx="75" ry="8" fill="#8b6f54" opacity="0.3"/>
+
+  <!-- Coffee-soaked layer (darker) -->
+  <path d="M 125 215 Q 120 185 125 150 L 275 150 Q 280 185 275 215 Z" fill="#8b6f54"/>
+  <path d="M 130 215 Q 127 186 130 151 L 270 151 Q 273 186 270 215 Z" fill="#9a7e62"/>
+
+  <!-- Mascarpone cream layer (main body) -->
+  <ellipse cx="200" cy="140" rx="76" ry="18" fill="#f5e8d8"/>
+  <ellipse cx="200" cy="138" rx="75" ry="16" fill="#fef4e8"/>
+
+  <!-- Cream texture ripples -->
+  <path d="M 145 135 Q 150 128 155 135" stroke="#e8dcc9" stroke-width="0.8" fill="none" opacity="0.5"/>
+  <path d="M 245 135 Q 250 128 255 135" stroke="#e8dcc9" stroke-width="0.8" fill="none" opacity="0.5"/>
+  <path d="M 190 132 Q 200 125 210 132" stroke="#e8dcc9" stroke-width="0.7" fill="none" opacity="0.4"/>
+
+  <!-- Cocoa powder dusting (top) -->
+  <ellipse cx="200" cy="138" rx="76" ry="16" fill="#4a3420" opacity="0.15"/>
+
+  <!-- Cocoa powder texture detail -->
+  <circle cx="150" cy="135" r="1.2" fill="#3d2817" opacity="0.4"/>
+  <circle cx="170" cy="133" r="1" fill="#3d2817" opacity="0.3"/>
+  <circle cx="230" cy="134" r="1.5" fill="#3d2817" opacity="0.35"/>
+  <circle cx="250" cy="136" r="1" fill="#3d2817" opacity="0.3"/>
+  <circle cx="200" cy="130" r="1" fill="#3d2817" opacity="0.25"/>
+  <circle cx="180" cy="140" r="0.8" fill="#3d2817" opacity="0.2"/>
+  <circle cx="220" cy="141" r="0.9" fill="#3d2817" opacity="0.25"/>
+
+  <!-- Cocoa streaks for depth -->
+  <path d="M 155 137 L 165 136" stroke="#3d2817" stroke-width="0.5" opacity="0.2"/>
+  <path d="M 235 135 L 250 137" stroke="#3d2817" stroke-width="0.5" opacity="0.15"/>
+
+  <!-- Chocolate shaving decoration -->
+  <path d="M 140 125 Q 145 120 150 124" fill="#5c3d28" opacity="0.5"/>
+  <path d="M 250 126 Q 255 121 260 125" fill="#4a2f1a" opacity="0.4"/>
+
+  <!-- Cream shine highlight -->
+  <ellipse cx="200" cy="132" rx="45" ry="12" fill="#fff" opacity="0.2"/>
+
+  <!-- Fork placement (left side) -->
+  <g opacity="0.15" filter="url(#naturalshadow)">
+    <line x1="80" y1="190" x2="110" y2="260" stroke="#959590" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="112" cy="265" r="4" fill="#959590"/>
+    <path d="M 108 265 L 110 255 M 112 265 L 112 255 M 116 265 L 115 255" stroke="#959590" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Coffee cup suggestion (background blur) -->
+  <g opacity="0.08">
+    <ellipse cx="300" cy="240" rx="30" ry="35" fill="#6b5344"/>
+    <ellipse cx="300" cy="210" rx="28" ry="8" fill="#8b6f54"/>
+  </g>
+
+  <!-- Plate rim detail -->
+  <circle cx="200" cy="265" r="129" fill="none" stroke="#fff" stroke-width="1" opacity="0.2"/>
+
+  <!-- Subtle plate shadow -->
+  <ellipse cx="200" cy="355" rx="140" ry="30" fill="rgba(0,0,0,0.04)"/>
+
+  <!-- Realistic cream surface imperfections -->
+  <circle cx="130" cy="140" r="1" fill="#fff" opacity="0.08"/>
+  <circle cx="270" cy="142" r="0.8" fill="#fff" opacity="0.06"/>
+</svg>

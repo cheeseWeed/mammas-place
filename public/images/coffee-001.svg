@@ -1,0 +1,171 @@
+<svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Bag gradient -->
+    <linearGradient id="bagGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1a0f05;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#2d1810;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#2d1810;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a0f05;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Gold foil accent -->
+    <linearGradient id="goldFoil" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#DAA520;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#B8860B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B6914;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Coffee bean gradient -->
+    <radialGradient id="beanGradient" cx="30%" cy="30%" r="70%">
+      <stop offset="0%" style="stop-color:#6B4423;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4a2c20;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2d1810;stop-opacity:1" />
+    </radialGradient>
+
+    <!-- Shadow filter -->
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="10" dy="15" stdDeviation="15" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+
+    <!-- Metallic valve gradient -->
+    <radialGradient id="valveGradient" cx="50%" cy="30%" r="60%">
+      <stop offset="0%" style="stop-color:#E0E0E0;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#A0A0A0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#606060;stop-opacity:1" />
+    </radialGradient>
+
+    <!-- Glossy overlay -->
+    <linearGradient id="glossy" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0" />
+      <stop offset="30%" style="stop-color:#ffffff;stop-opacity:0.1" />
+      <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.15" />
+      <stop offset="70%" style="stop-color:#ffffff;stop-opacity:0.08" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </linearGradient>
+
+    <!-- Crinkle pattern -->
+    <pattern id="crinkle" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M0,20 Q10,17 20,20 T40,20" fill="none" stroke="#3d2517" stroke-width="0.5" opacity="0.4"/>
+      <path d="M0,10 Q10,7 20,10 T40,10" fill="none" stroke="#3d2517" stroke-width="0.3" opacity="0.3"/>
+      <path d="M0,30 Q10,27 20,30 T40,30" fill="none" stroke="#3d2517" stroke-width="0.3" opacity="0.3"/>
+    </pattern>
+
+    <!-- Cream accent -->
+    <linearGradient id="creamAccent" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5F5DC;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E8DCC8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="500" fill="#f5f0e8"/>
+
+  <!-- Shadow beneath bag -->
+  <ellipse cx="200" cy="475" rx="120" ry="18" fill="#000000" opacity="0.25"/>
+
+  <!-- Main bag with shadow -->
+  <g filter="url(#dropShadow)">
+    <!-- Bag body -->
+    <path d="M75,55 Q65,250 85,465 L315,465 Q335,250 325,55 Q270,45 200,50 Q130,45 75,55 Z"
+          fill="url(#bagGradient)"/>
+
+    <!-- Crinkle texture -->
+    <path d="M75,55 Q65,250 85,465 L315,465 Q335,250 325,55 Q270,45 200,50 Q130,45 75,55 Z"
+          fill="url(#crinkle)" opacity="0.5"/>
+
+    <!-- Side shadow -->
+    <path d="M75,55 Q65,250 85,465 L105,465 Q95,250 90,55 Z" fill="#000000" opacity="0.15"/>
+
+    <!-- Side highlight -->
+    <path d="M295,55 Q320,250 300,465 L315,465 Q335,250 325,55 Z" fill="#ffffff" opacity="0.05"/>
+  </g>
+
+  <!-- Glossy overlay -->
+  <path d="M75,55 Q65,250 85,465 L315,465 Q335,250 325,55 Q270,45 200,50 Q130,45 75,55 Z"
+        fill="url(#glossy)"/>
+
+  <!-- Top seal -->
+  <path d="M85,45 Q130,35 200,40 Q270,35 315,45 L325,65 Q270,55 200,60 Q130,55 75,65 Z" fill="#4a2c20"/>
+  <path d="M90,42 Q130,32 200,37 Q270,32 310,42 L318,58 Q270,50 200,54 Q130,50 82,58 Z" fill="#5a3825"/>
+
+  <!-- Valve for freshness (distinctive coffee bag feature) -->
+  <circle cx="300" cy="120" r="18" fill="url(#valveGradient)"/>
+  <circle cx="300" cy="120" r="14" fill="#808080"/>
+  <circle cx="300" cy="120" r="6" fill="#404040"/>
+  <circle cx="296" cy="116" r="3" fill="#ffffff" opacity="0.3"/>
+
+  <!-- Gold foil banner area -->
+  <rect x="90" y="160" width="220" height="200" fill="url(#goldFoil)" rx="6"/>
+  <rect x="95" y="165" width="210" height="190" fill="#1a0f05" rx="4"/>
+
+  <!-- Inner decorative frame -->
+  <rect x="102" y="172" width="196" height="176" fill="none" stroke="url(#goldFoil)" stroke-width="2" rx="3"/>
+
+  <!-- Brand name -->
+  <text x="200" y="205" font-family="Georgia, serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#DAA520" font-style="italic">
+    ARTISAN ROAST
+  </text>
+  <text x="200" y="240" font-family="Times New Roman, serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#FFD700" letter-spacing="2">
+    PREMIUM
+  </text>
+  <text x="200" y="270" font-family="Times New Roman, serif" font-size="22" text-anchor="middle" fill="#F5F5DC">
+    Coffee Beans
+  </text>
+
+  <!-- Coffee bean illustration -->
+  <g transform="translate(200, 315)">
+    <!-- Multiple beans -->
+    <g transform="translate(-40, -10) rotate(-20)">
+      <ellipse rx="22" ry="14" fill="url(#beanGradient)"/>
+      <path d="M0,-12 Q2,0 0,12" fill="none" stroke="#1a0f05" stroke-width="2"/>
+    </g>
+
+    <g transform="translate(0, 0) rotate(10)">
+      <ellipse rx="24" ry="15" fill="url(#beanGradient)"/>
+      <path d="M0,-13 Q2,0 0,13" fill="none" stroke="#1a0f05" stroke-width="2"/>
+    </g>
+
+    <g transform="translate(45, -5) rotate(-5)">
+      <ellipse rx="22" ry="14" fill="url(#beanGradient)"/>
+      <path d="M0,-12 Q2,0 0,12" fill="none" stroke="#1a0f05" stroke-width="2"/>
+    </g>
+
+    <g transform="translate(-25, 25) rotate(25)">
+      <ellipse rx="20" ry="12" fill="url(#beanGradient)"/>
+      <path d="M0,-10 Q2,0 0,10" fill="none" stroke="#1a0f05" stroke-width="1.5"/>
+    </g>
+
+    <g transform="translate(25, 30) rotate(-15)">
+      <ellipse rx="21" ry="13" fill="url(#beanGradient)"/>
+      <path d="M0,-11 Q2,0 0,11" fill="none" stroke="#1a0f05" stroke-width="1.5"/>
+    </g>
+  </g>
+
+  <!-- Product info section -->
+  <rect x="100" y="385" width="200" height="60" fill="url(#creamAccent)" rx="6"/>
+  <rect x="100" y="385" width="200" height="60" fill="none" stroke="url(#goldFoil)" stroke-width="2" rx="6"/>
+
+  <!-- Roast level and origin -->
+  <text x="200" y="408" font-family="Georgia, serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#2d1810">
+    Medium-Dark Roast
+  </text>
+  <text x="200" y="428" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#4a2c20">
+    100% Arabica - Single Origin
+  </text>
+
+  <!-- Weight badge -->
+  <ellipse cx="200" cy="455" rx="32" ry="14" fill="url(#goldFoil)"/>
+  <text x="200" y="460" font-family="Arial Black, sans-serif" font-size="14" text-anchor="middle" fill="#1a0f05">
+    12 OZ
+  </text>
+
+  <!-- Quality seal -->
+  <g transform="translate(310, 400)">
+    <circle r="30" fill="#DAA520"/>
+    <circle r="26" fill="#1a0f05"/>
+    <circle r="22" fill="none" stroke="#FFD700" stroke-width="1"/>
+    <text y="-5" font-family="Arial, sans-serif" font-size="7" font-weight="bold" text-anchor="middle" fill="#FFD700">SPECIALTY</text>
+    <text y="5" font-family="Arial, sans-serif" font-size="6" text-anchor="middle" fill="#FFD700">GRADE</text>
+  </g>
+</svg>

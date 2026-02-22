@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <!-- Main backpack body - olive/forest green -->
+    <linearGradient id="pack-main" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#65a30d"/>
+      <stop offset="40%" style="stop-color:#4d7c0f"/>
+      <stop offset="100%" style="stop-color:#3f6212"/>
+    </linearGradient>
+    <!-- Shadow side panel -->
+    <linearGradient id="pack-shadow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4d7c0f"/>
+      <stop offset="100%" style="stop-color:#365314"/>
+    </linearGradient>
+    <!-- Accent color - orange trim -->
+    <linearGradient id="accent-orange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="100%" style="stop-color:#ea580c"/>
+    </linearGradient>
+    <!-- Mesh pocket -->
+    <linearGradient id="mesh-pocket" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#404040"/>
+      <stop offset="100%" style="stop-color:#262626"/>
+    </linearGradient>
+    <!-- Strap padding -->
+    <linearGradient id="strap-pad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3f6212"/>
+      <stop offset="50%" style="stop-color:#4d7c0f"/>
+      <stop offset="100%" style="stop-color:#3f6212"/>
+    </linearGradient>
+    <!-- Hip belt -->
+    <linearGradient id="hip-belt" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1f2937"/>
+      <stop offset="100%" style="stop-color:#111827"/>
+    </linearGradient>
+    <!-- Drop shadow -->
+    <filter id="pack-shadow-filter" x="-15%" y="-10%" width="130%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
+      <feOffset dx="4" dy="8" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.35"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Ground shadow -->
+    <radialGradient id="floor-shadow" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#000;stop-opacity:0.3"/>
+      <stop offset="80%" style="stop-color:#000;stop-opacity:0.05"/>
+      <stop offset="100%" style="stop-color:#000;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Studio background -->
+  <rect width="400" height="400" fill="#f5f5f5"/>
+
+  <!-- Ground shadow -->
+  <ellipse cx="200" cy="375" rx="90" ry="18" fill="url(#floor-shadow)"/>
+
+  <!-- Left shoulder strap (behind) -->
+  <g filter="url(#pack-shadow-filter)">
+    <path d="M 165 75 Q 130 130 120 200 Q 115 250 120 280"
+          stroke="url(#strap-pad)" stroke-width="22" fill="none" stroke-linecap="round"/>
+    <!-- Padding lines -->
+    <path d="M 158 80 Q 125 135 117 205 Q 112 255 117 285"
+          stroke="#4d7c0f" stroke-width="2" fill="none" opacity="0.3"/>
+  </g>
+
+  <!-- Right shoulder strap (behind) -->
+  <g filter="url(#pack-shadow-filter)">
+    <path d="M 235 75 Q 270 130 280 200 Q 285 250 280 280"
+          stroke="url(#strap-pad)" stroke-width="22" fill="none" stroke-linecap="round"/>
+    <path d="M 242 80 Q 275 135 283 205 Q 288 255 283 285"
+          stroke="#4d7c0f" stroke-width="2" fill="none" opacity="0.3"/>
+  </g>
+
+  <!-- Main pack body -->
+  <g filter="url(#pack-shadow-filter)">
+    <!-- Back panel -->
+    <path d="M 145 60
+             Q 130 65 125 100
+             L 120 320
+             Q 125 350 200 355
+             Q 275 350 280 320
+             L 275 100
+             Q 270 65 255 60
+             Q 200 50 145 60"
+          fill="url(#pack-main)"/>
+
+    <!-- Side panel shadow -->
+    <path d="M 255 60 Q 270 65 275 100 L 280 320 Q 275 350 240 355 L 240 60 Z"
+          fill="url(#pack-shadow)" opacity="0.5"/>
+  </g>
+
+  <!-- Top lid/brain -->
+  <g filter="url(#pack-shadow-filter)">
+    <path d="M 140 55 Q 200 40 260 55 Q 275 60 275 80 Q 275 100 260 105 Q 200 115 140 105 Q 125 100 125 80 Q 125 60 140 55"
+          fill="url(#pack-main)"/>
+    <!-- Lid pocket zipper -->
+    <path d="M 150 75 Q 200 65 250 75" stroke="#262626" stroke-width="2" fill="none"/>
+    <circle cx="250" cy="75" r="4" fill="#737373"/>
+  </g>
+
+  <!-- Compression straps -->
+  <g stroke="url(#accent-orange)" stroke-width="3" fill="none">
+    <line x1="130" y1="150" x2="270" y2="150"/>
+    <line x1="128" y1="220" x2="272" y2="220"/>
+    <line x1="130" y1="290" x2="270" y2="290"/>
+  </g>
+
+  <!-- Front pocket -->
+  <path d="M 155 180 L 155 300 Q 200 310 245 300 L 245 180 Q 200 170 155 180"
+        fill="#3f6212" opacity="0.8"/>
+  <!-- Pocket zipper -->
+  <path d="M 160 230 L 240 230" stroke="#262626" stroke-width="2"/>
+  <rect x="235" y="226" width="10" height="8" rx="2" fill="#525252"/>
+
+  <!-- Mesh side pockets -->
+  <g fill="url(#mesh-pocket)" opacity="0.8">
+    <rect x="115" y="200" width="22" height="80" rx="4"/>
+    <rect x="263" y="200" width="22" height="80" rx="4"/>
+  </g>
+  <!-- Mesh pattern -->
+  <g stroke="#555" stroke-width="0.5" opacity="0.4">
+    <line x1="120" y1="210" x2="132" y2="210"/>
+    <line x1="120" y1="220" x2="132" y2="220"/>
+    <line x1="120" y1="230" x2="132" y2="230"/>
+    <line x1="268" y1="210" x2="280" y2="210"/>
+    <line x1="268" y1="220" x2="280" y2="220"/>
+    <line x1="268" y1="230" x2="280" y2="230"/>
+  </g>
+
+  <!-- Top handle -->
+  <path d="M 175 55 Q 200 35 225 55" stroke="#1f2937" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M 177 53 Q 200 35 223 53" stroke="#404040" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+  <!-- Hip belt -->
+  <g filter="url(#pack-shadow-filter)">
+    <path d="M 125 320 Q 80 325 70 340 Q 65 355 80 360" stroke="url(#hip-belt)" stroke-width="20" fill="none" stroke-linecap="round"/>
+    <path d="M 275 320 Q 320 325 330 340 Q 335 355 320 360" stroke="url(#hip-belt)" stroke-width="20" fill="none" stroke-linecap="round"/>
+    <!-- Buckle -->
+    <rect x="70" y="350" width="20" height="15" rx="3" fill="#404040"/>
+    <rect x="310" y="350" width="20" height="15" rx="3" fill="#404040"/>
+  </g>
+
+  <!-- Ice axe/trekking pole loops -->
+  <g fill="url(#accent-orange)">
+    <rect x="138" y="310" width="8" height="25" rx="2"/>
+    <rect x="254" y="310" width="8" height="25" rx="2"/>
+  </g>
+
+  <!-- Fabric highlight -->
+  <path d="M 150 70 Q 170 100 160 180" stroke="#fff" stroke-width="6" opacity="0.12" fill="none" stroke-linecap="round"/>
+
+  <!-- Volume label -->
+  <rect x="170" y="130" width="60" height="22" rx="4" fill="#fff" opacity="0.95"/>
+  <text x="200" y="146" font-size="12" font-weight="bold" fill="#3f6212" text-anchor="middle" font-family="Arial, sans-serif">50L</text>
+</svg>

@@ -1,0 +1,83 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Sunny Mediterranean background -->
+  <defs>
+    <linearGradient id="bgGrad4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fffdf7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fef9f0;stop-opacity:1" />
+    </linearGradient>
+    <filter id="brightShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bgGrad4)"/>
+
+  <!-- Delicate porcelain plate -->
+  <circle cx="200" cy="270" r="135" fill="#f0ebe0" stroke="#d4c9bb" stroke-width="0.8"/>
+  <circle cx="200" cy="270" r="132" fill="#faf7f2"/>
+
+  <!-- Plate gold rim suggestion -->
+  <circle cx="200" cy="270" r="130" fill="none" stroke="#e8dfd3" stroke-width="0.5" opacity="0.6"/>
+
+  <!-- Lemon Tart -->
+  <!-- Shortcrust pastry shell (golden crust) -->
+  <ellipse cx="200" cy="215" rx="76" ry="12" fill="#d4a574"/>
+  <ellipse cx="200" cy="216" rx="75" ry="11" fill="#e8c295" opacity="0.7"/>
+
+  <!-- Pastry crust texture -->
+  <path d="M 140 215 Q 145 212 150 215" stroke="#c9935a" stroke-width="0.5" opacity="0.4"/>
+  <path d="M 250 215 Q 255 212 260 215" stroke="#c9935a" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- Pastry shell sides -->
+  <path d="M 125 215 Q 122 200 125 180 L 275 180 Q 278 200 275 215 Z" fill="#d9a876"/>
+  <path d="M 130 215 Q 128 201 130 182 L 270 182 Q 272 201 270 215 Z" fill="#e8b890"/>
+
+  <!-- Lemon curd filling (bright yellow) -->
+  <ellipse cx="200" cy="185" rx="70" ry="20" fill="#f4d03f"/>
+  <ellipse cx="200" cy="183" rx="69" ry="18" fill="#f7e066"/>
+
+  <!-- Lemon curd shine and depth -->
+  <ellipse cx="200" cy="175" rx="55" ry="14" fill="#fce8a8" opacity="0.4"/>
+  <ellipse cx="200" cy="177" rx="50" ry="12" fill="#fff" opacity="0.15"/>
+
+  <!-- Meringue topping (peaks) -->
+  <path d="M 135 175 Q 140 155 145 175 Q 150 160 155 175 Q 160 158 165 175" fill="#f5f5f0" opacity="0.95"/>
+  <path d="M 235 175 Q 240 155 245 175 Q 250 160 255 175 Q 260 158 265 175" fill="#f5f5f0" opacity="0.95"/>
+  <path d="M 190 172 Q 195 152 200 172 Q 205 154 210 172" fill="#f5f5f0" opacity="0.9"/>
+
+  <!-- Meringue peaks detail -->
+  <path d="M 135 175 L 140 165" stroke="#f0f0e8" stroke-width="1" opacity="0.5"/>
+  <path d="M 245 175 L 250 165" stroke="#f0f0e8" stroke-width="1" opacity="0.5"/>
+
+  <!-- Browned meringue tips -->
+  <circle cx="145" cy="155" r="1.5" fill="#e8d4a8" opacity="0.6"/>
+  <circle cx="165" cy="158" r="1.2" fill="#d9c39a" opacity="0.5"/>
+  <circle cx="255" cy="155" r="1.5" fill="#e8d4a8" opacity="0.6"/>
+  <circle cx="235" cy="158" r="1.2" fill="#d9c39a" opacity="0.5"/>
+  <circle cx="200" cy="152" r="1.3" fill="#e8d4a8" opacity="0.55"/>
+
+  <!-- Lemon zest garnish -->
+  <circle cx="165" cy="165" r="1.5" fill="#f4d03f" opacity="0.4"/>
+  <circle cx="235" cy="166" r="1.5" fill="#f4d03f" opacity="0.4"/>
+  <circle cx="200" cy="160" r="1" fill="#f7e066" opacity="0.35"/>
+
+  <!-- Pastry shell shine -->
+  <ellipse cx="180" cy="205" rx="35" ry="8" fill="#fff" opacity="0.12"/>
+
+  <!-- Decorative knife on right -->
+  <g opacity="0.12" filter="url(#brightShadow)">
+    <line x1="305" y1="180" x2="320" y2="280" stroke="#bebdb3" stroke-width="2" stroke-linecap="round"/>
+    <polygon points="320,280 325,275 330,280" fill="#bebdb3"/>
+  </g>
+
+  <!-- Subtle plate shadow -->
+  <ellipse cx="200" cy="360" rx="140" ry="28" fill="rgba(0,0,0,0.03)"/>
+
+  <!-- Light reflection on meringue -->
+  <ellipse cx="175" cy="160" rx="25" ry="10" fill="#fff" opacity="0.25"/>
+  <ellipse cx="225" cy="162" rx="20" ry="8" fill="#fff" opacity="0.2"/>
+
+  <!-- Plate surface texture -->
+  <circle cx="140" cy="200" r="1" fill="#fff" opacity="0.05"/>
+  <circle cx="260" cy="220" r="0.8" fill="#fff" opacity="0.04"/>
+</svg>

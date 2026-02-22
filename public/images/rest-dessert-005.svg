@@ -1,0 +1,74 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#fff9e6"/>
+
+  <!-- Plate -->
+  <circle cx="200" cy="260" r="120" fill="#f5f5f0" stroke="#d4af37" stroke-width="2"/>
+  <circle cx="200" cy="260" r="115" fill="#fafaf8"/>
+
+  <!-- Apple pie crust (flaky texture) -->
+  <!-- Crust layers -->
+  <ellipse cx="200" cy="190" rx="85" ry="70" fill="#c9915c"/>
+  <ellipse cx="200" cy="185" rx="82" ry="67" fill="#d4a574"/>
+
+  <!-- Crust scoring/decoration -->
+  <path d="M 140 160 Q 155 150 170 160" stroke="#a67c52" stroke-width="0.5" fill="none"/>
+  <path d="M 165 155 Q 185 145 205 155" stroke="#a67c52" stroke-width="0.5" fill="none"/>
+  <path d="M 195 150 Q 215 140 235 150" stroke="#a67c52" stroke-width="0.5" fill="none"/>
+  <path d="M 220 160 Q 235 150 250 160" stroke="#a67c52" stroke-width="0.5" fill="none"/>
+
+  <!-- Apple filling showing -->
+  <!-- Warm spiced apples inside -->
+  <ellipse cx="200" cy="200" rx="75" ry="60" fill="#d9534f"/>
+  <ellipse cx="200" cy="200" rx="70" ry="55" fill="#e74c3c"/>
+
+  <!-- Cinnamon spice texture -->
+  <g opacity="0.5">
+    <circle cx="160" cy="190" r="2" fill="#8b4513"/>
+    <circle cx="200" cy="180" r="2" fill="#8b4513"/>
+    <circle cx="240" cy="195" r="2" fill="#8b4513"/>
+    <circle cx="180" cy="215" r="2" fill="#8b4513"/>
+    <circle cx="220" cy="220" r="2" fill="#8b4513"/>
+  </g>
+
+  <!-- Vanilla ice cream scoop (melting) -->
+  <ellipse cx="230" cy="135" rx="45" ry="50" fill="#fffacd"/>
+  <ellipse cx="230" cy="130" rx="42" ry="47" fill="#fffff0"/>
+
+  <!-- Ice cream drip effect -->
+  <path d="M 225 185 Q 228 195 226 210" fill="#fffff0" stroke="none"/>
+  <path d="M 240 190 Q 242 200 240 215" fill="#fffff0" stroke="none"/>
+
+  <!-- Cinnamon sprinkle on ice cream -->
+  <g opacity="0.6">
+    <circle cx="215" cy="120" r="1.5" fill="#8b4513"/>
+    <circle cx="235" cy="115" r="1.5" fill="#8b4513"/>
+    <circle cx="245" cy="135" r="1.5" fill="#8b4513"/>
+    <circle cx="220" cy="145" r="1.5" fill="#8b4513"/>
+  </g>
+
+  <!-- Pie steam -->
+  <path d="M 180 140 Q 175 120 185 100" stroke="#d4a5a5" stroke-width="1.5" fill="none" opacity="0.25" stroke-linecap="round"/>
+  <path d="M 220 135 Q 230 115 225 95" stroke="#d4a5a5" stroke-width="1.5" fill="none" opacity="0.25" stroke-linecap="round"/>
+
+  <!-- Fork decoration -->
+  <g opacity="0.4">
+    <line x1="90" y1="150" x2="110" y2="210" stroke="#888" stroke-width="2.5"/>
+    <line x1="105" y1="210" x2="110" y2="195"/>
+    <line x1="110" y1="210" x2="115" y2="195"/>
+    <line x1="115" y1="210" x2="120" y2="195"/>
+  </g>
+
+  <!-- Plate edge detail -->
+  <circle cx="140" cy="180" r="1.5" fill="#d4af37" opacity="0.5"/>
+  <circle cx="260" cy="190" r="1.5" fill="#d4af37" opacity="0.5"/>
+
+  <!-- Shine/gloss effect -->
+  <ellipse cx="190" cy="160" rx="50" ry="45" fill="white" opacity="0.1"/>
+
+  <!-- Caramel sauce drizzle on plate -->
+  <path d="M 140 250 Q 150 260 160 265" stroke="#a67b3a" stroke-width="1.5" fill="none" opacity="0.6" stroke-linecap="round"/>
+
+  <!-- Plate shadow -->
+  <ellipse cx="200" cy="340" rx="125" ry="25" fill="rgba(0,0,0,0.08)"/>
+</svg>

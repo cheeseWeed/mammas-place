@@ -2,14 +2,23 @@
 
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { getCategorySubcategoryMap } from '@/lib/products';
 
 export default function Header() {
   const { itemCount } = useCart();
   const [search, setSearch] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const categorySubcategoryMap = getCategorySubcategoryMap();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,15 +28,40 @@ export default function Header() {
     }
   };
 
+  const categoryConfig: Record<string, { emoji: string; label: string }> = {
+    'automotive': { emoji: '🚗', label: 'Automotive' },
+    'grocery': { emoji: '🛒', label: 'Grocery' },
+    'home-garden': { emoji: '🏡', label: 'Home & Garden' },
+    'sports': { emoji: '🏀', label: 'Sports' },
+    'toys-and-games': { emoji: '🎮', label: 'Toys & Games' },
+    'audiobooks': { emoji: '🎧', label: 'Audiobooks' },
+    'services': { emoji: '🛠️', label: 'Services' },
+    'restaurant': { emoji: '🍽️', label: 'Restaurant' }
+  };
+
+  const subcategoryConfig: Record<string, { emoji: string; label: string }> = {
+    'ponies': { emoji: '🐴', label: 'Ponies' },
+    'unicorns': { emoji: '🦄', label: 'Unicorns' },
+    'princesses': { emoji: '👑', label: 'Princesses' },
+    'bow-and-arrow': { emoji: '🏹', label: 'Bow & Arrow' },
+    'rock-collections': { emoji: '💎', label: 'Rock Collections' },
+    'board-games': { emoji: '🎲', label: 'Board Games' },
+    'classic-cars': { emoji: '🏎️', label: 'Classic Cars' },
+    'tires-parts': { emoji: '🛞', label: 'Tires & Parts' },
+    'balls': { emoji: '⚽', label: 'Balls' },
+    'exercise-equipment': { emoji: '🏋️', label: 'Exercise Equipment' },
+    'outdoor-recreation': { emoji: '⛺', label: 'Outdoor Recreation' },
+    'breakfast': { emoji: '🍳', label: 'Breakfast' },
+    'lunch': { emoji: '🥗', label: 'Lunch' },
+    'dinner': { emoji: '🍝', label: 'Dinner' },
+    'dessert': { emoji: '🍰', label: 'Dessert' },
+    'home-services': { emoji: '🏠', label: 'Home Services' },
+    'personal-services': { emoji: '💇', label: 'Personal Services' },
+    'pantry': { emoji: '🥫', label: 'Pantry' }
+  };
+
   const navLinks = [
     { href: '/shop', label: 'All Products' },
-    { href: '/shop?category=ponies', label: '🐴 Ponies' },
-    { href: '/shop?category=unicorns', label: '🦄 Unicorns' },
-    { href: '/shop?category=princesses', label: '👑 Princesses' },
-    { href: '/shop?category=bow-and-arrow', label: '🏹 Bow & Arrow' },
-    { href: '/shop?category=rock-collections', label: '💎 Rock Collections' },
-    { href: '/shop?category=games', label: '🎮 Games' },
-    { href: '/shop?category=audiobooks', label: '🎧 Audiobooks' },
     { href: '/shop?sale=true', label: '🏷️ Sale Items' },
   ];
 
@@ -99,7 +133,7 @@ export default function Header() {
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search toys, games, and more..."
+              placeholder="Search everything - tires, groceries, toys, tools..."
               aria-label="Search products"
               className="flex-1 px-4 py-2 text-sm text-gray-900 placeholder:text-gray-400 outline-none bg-white"
             />
@@ -111,10 +145,66 @@ export default function Header() {
 
         {/* Right side: desktop nav + cart + hamburger */}
         <div className="flex items-center gap-3">
-          {/* Desktop nav links */}
-          <nav className="hidden md:flex items-center gap-3">
-            <Link href="/shop" className="text-white hover:text-yellow-300 text-sm font-medium transition-colors">Shop</Link>
-            <Link href="/shop?sale=true" className="text-yellow-300 hover:text-yellow-200 text-sm font-bold transition-colors">Sale 🏷️</Link>
+          {/* Desktop nav links with dropdowns */}
+          <nav className="hidden lg:flex items-center gap-1 relative">
+            <Link href="/shop" className="text-white hover:text-yellow-300 text-sm font-medium transition-colors px-3 py-2 rounded">Shop All</Link>
+
+            {/* Categories dropdown menu */}
+            <div
+              className="relative"
+              onMouseEnter={() => setActiveDropdown('categories')}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button className="text-white hover:text-yellow-300 text-sm font-medium transition-colors px-3 py-2 rounded flex items-center gap-1">
+                Categories
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {/* Mega dropdown */}
+              {activeDropdown === 'categories' && (
+                <div className="absolute top-full left-0 mt-1 bg-white rounded-lg shadow-2xl border border-purple-100 p-4 min-w-[600px] z-50 grid grid-cols-3 gap-4">
+                  {Object.entries(categorySubcategoryMap).map(([category, subcats]) => {
+                    const catConfig = categoryConfig[category];
+                    if (!catConfig) return null;
+
+                    return (
+                      <div key={category} className="space-y-2">
+                        <Link
+                          href={`/shop?category=${category}`}
+                          className="font-bold text-purple-900 hover:text-purple-600 text-sm flex items-center gap-1"
+                          onClick={() => setActiveDropdown(null)}
+                        >
+                          {catConfig.emoji} {catConfig.label}
+                        </Link>
+                        {subcats.length > 0 && (
+                          <div className="pl-4 space-y-1">
+                            {subcats.map((subcat) => {
+                              const subcatConfig = subcategoryConfig[subcat];
+                              if (!subcatConfig) return null;
+
+                              return (
+                                <Link
+                                  key={subcat}
+                                  href={`/shop?category=${category}&subcategory=${subcat}`}
+                                  className="text-gray-600 hover:text-purple-600 text-xs block"
+                                  onClick={() => setActiveDropdown(null)}
+                                >
+                                  {subcatConfig.emoji} {subcatConfig.label}
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+
+            <Link href="/shop?sale=true" className="text-yellow-300 hover:text-yellow-200 text-sm font-bold transition-colors px-3 py-2 rounded">Sale 🏷️</Link>
           </nav>
 
           {/* Cart */}
@@ -123,7 +213,7 @@ export default function Header() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
             <span className="hidden sm:inline font-black">Cart</span>
-            {itemCount > 0 && (
+            {mounted && itemCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-black rounded-full w-5 h-5 flex items-center justify-center">
                 {itemCount}
               </span>
@@ -161,24 +251,67 @@ export default function Header() {
       </form>
 
       {/* Mobile dropdown menu */}
-      <div className={`md:hidden overflow-hidden transition-all duration-300 ${menuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
-        <nav className="px-4 pt-2 pb-4 flex flex-col gap-1 border-t border-purple-900/50" style={{background: 'linear-gradient(135deg, #2d0550 0%, #4a0d7a 100%)'}}>
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              onClick={() => setMenuOpen(false)}
-              className="text-white hover:bg-purple-700 hover:text-yellow-300 px-4 py-3 rounded-xl font-medium text-sm transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
+      <div className={`lg:hidden overflow-hidden transition-all duration-300 ${menuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
+        <nav className="px-4 pt-2 pb-4 flex flex-col gap-1 border-t border-purple-900/50 max-h-[70vh] overflow-y-auto" style={{background: 'linear-gradient(135deg, #2d0550 0%, #4a0d7a 100%)'}}>
+          <Link
+            href="/shop"
+            onClick={() => setMenuOpen(false)}
+            className="text-white hover:bg-purple-700 hover:text-yellow-300 px-4 py-3 rounded-xl font-medium text-sm transition-colors"
+          >
+            All Products
+          </Link>
+
+          {/* Mobile Categories with Subcategories */}
+          {Object.entries(categorySubcategoryMap).map(([category, subcats]) => {
+            const catConfig = categoryConfig[category];
+            if (!catConfig) return null;
+
+            return (
+              <div key={category} className="border-b border-purple-800/50 pb-2">
+                <Link
+                  href={`/shop?category=${category}`}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-white hover:bg-purple-700 px-4 py-3 rounded-xl font-bold text-sm transition-colors flex items-center gap-2"
+                >
+                  {catConfig.emoji} {catConfig.label}
+                </Link>
+                {subcats.length > 0 && (
+                  <div className="pl-6 space-y-1 mt-1">
+                    {subcats.map((subcat) => {
+                      const subcatConfig = subcategoryConfig[subcat];
+                      if (!subcatConfig) return null;
+
+                      return (
+                        <Link
+                          key={subcat}
+                          href={`/shop?category=${category}&subcategory=${subcat}`}
+                          onClick={() => setMenuOpen(false)}
+                          className="text-purple-200 hover:bg-purple-700 hover:text-yellow-300 px-4 py-2 rounded-lg text-xs transition-colors flex items-center gap-2"
+                        >
+                          {subcatConfig.emoji} {subcatConfig.label}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+
+          <Link
+            href="/shop?sale=true"
+            onClick={() => setMenuOpen(false)}
+            className="text-yellow-300 hover:bg-purple-700 hover:text-yellow-200 px-4 py-3 rounded-xl font-bold text-sm transition-colors"
+          >
+            🏷️ Sale Items
+          </Link>
+
           <Link
             href="/cart"
             onClick={() => setMenuOpen(false)}
             className="text-purple-900 bg-yellow-400 hover:bg-yellow-300 px-4 py-3 rounded-xl font-black text-sm transition-colors text-center mt-2 flex items-center justify-center gap-2"
           >
-            🛒 View Cart {itemCount > 0 && `(${itemCount})`}
+            🛒 View Cart {mounted && itemCount > 0 && `(${itemCount})`}
           </Link>
         </nav>
       </div>

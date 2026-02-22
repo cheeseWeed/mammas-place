@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- Background gradient - Rose/Pink Royalty -->
+  <defs>
+    <linearGradient id="bgGradient16" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffe4e1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff69b4;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shine">
+      <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="400" height="400" fill="url(#bgGradient16)"/>
+
+  <!-- Dress form/mannequin base -->
+  <ellipse cx="200" cy="330" rx="45" ry="15" fill="#c4a0a0" stroke="#8b6f47" stroke-width="2"/>
+  <rect x="185" y="315" width="30" height="20" fill="#8b6f47" stroke="#5c4033" stroke-width="1"/>
+
+  <!-- Full princess ball gown on dress form -->
+  <!-- Bodice/Corset -->
+  <path d="M 170 140 L 175 140 L 180 165 L 220 165 L 225 140 L 230 140 L 230 160 L 170 160 Z" fill="#db2777" stroke="#be123c" stroke-width="1.5"/>
+
+  <!-- Lace detail on bodice -->
+  <g opacity="0.6">
+    <path d="M 175 145 Q 180 148 185 145" stroke="#fbbf24" stroke-width="0.5" fill="none"/>
+    <path d="M 190 145 Q 195 148 200 145" stroke="#fbbf24" stroke-width="0.5" fill="none"/>
+    <path d="M 205 145 Q 210 148 215 145" stroke="#fbbf24" stroke-width="0.5" fill="none"/>
+  </g>
+
+  <!-- Sleeve layer 1 (puffed) - Left -->
+  <ellipse cx="160" cy="155" rx="15" ry="20" fill="#f472b6" stroke="#be185d" stroke-width="1"/>
+  <!-- Sleeve layer 1 (puffed) - Right -->
+  <ellipse cx="240" cy="155" rx="15" ry="20" fill="#f472b6" stroke="#be185d" stroke-width="1"/>
+
+  <!-- Long gloves suggestion -->
+  <rect x="150" y="175" width="8" height="35" fill="#fffbeb" stroke="#f59e0b" stroke-width="0.5"/>
+  <rect x="242" y="175" width="8" height="35" fill="#fffbeb" stroke="#f59e0b" stroke-width="0.5"/>
+
+  <!-- Main skirt - Multi-layered tulle -->
+  <!-- Layer 1 (outermost pink) -->
+  <ellipse cx="200" cy="220" rx="95" ry="75" fill="#fce7f3" stroke="#f472b6" stroke-width="2"/>
+
+  <!-- Layer 2 (darker pink) -->
+  <ellipse cx="200" cy="215" rx="85" ry="65" fill="#fbcfe8" stroke="#ec4899" stroke-width="1.5" opacity="0.85"/>
+
+  <!-- Layer 3 (deepest pink layer) -->
+  <ellipse cx="200" cy="210" rx="75" ry="55" fill="#f8d7e6" stroke="#f472b6" stroke-width="1.5" opacity="0.7"/>
+
+  <!-- Sparkle embellishments on skirt -->
+  <circle cx="140" cy="200" r="2.5" fill="#fbbf24" filter="url(#shine)" opacity="0.9"/>
+  <circle cx="180" cy="235" r="2" fill="#fbbf24" filter="url(#shine)" opacity="0.85"/>
+  <circle cx="260" cy="230" r="2" fill="#fbbf24" filter="url(#shine)" opacity="0.85"/>
+  <circle cx="220" cy="260" r="2.5" fill="#fbbf24" filter="url(#shine)" opacity="0.8"/>
+  <circle cx="170" cy="270" r="1.5" fill="#fbbf24" filter="url(#shine)" opacity="0.75"/>
+  <circle cx="240" cy="275" r="1.5" fill="#fbbf24" filter="url(#shine)" opacity="0.75"/>
+  <circle cx="200" cy="290" r="2" fill="#fbbf24" filter="url(#shine)" opacity="0.8"/>
+
+  <!-- Hem detail with beading -->
+  <ellipse cx="200" cy="295" rx="90" ry="8" fill="#f8d7e6" stroke="#ec4899" stroke-width="1.5" opacity="0.9"/>
+
+  <!-- Head of dress form -->
+  <circle cx="200" cy="110" r="18" fill="#d7b896" stroke="#8b6f47" stroke-width="1"/>
+
+  <!-- Tiara on head -->
+  <g filter="url(#shine)">
+    <!-- Tiara band -->
+    <ellipse cx="200" cy="92" rx="24" ry="7" fill="#fbbf24" stroke="#ca8a04" stroke-width="1.5"/>
+    <!-- Central peak -->
+    <polygon points="200,92 205,72 195,92" fill="#fcd34d"/>
+    <!-- Side peaks -->
+    <polygon points="182,92 178,82 188,90" fill="#fcd34d"/>
+    <polygon points="218,92 222,82 212,90" fill="#fcd34d"/>
+    <!-- Jewels -->
+    <circle cx="178" cy="88" r="2.5" fill="#ec4899" filter="url(#shine)"/>
+    <circle cx="200" cy="78" r="3" fill="#ec4899" filter="url(#shine)"/>
+    <circle cx="222" cy="88" r="2.5" fill="#ec4899" filter="url(#shine)"/>
+    <!-- Diamond accents -->
+    <polygon points="200,70 202,73 200,75 198,73" fill="#e0f2fe" opacity="0.8"/>
+  </g>
+
+  <!-- Neck line -->
+  <rect x="196" y="128" width="8" height="8" fill="#d7b896" stroke="#8b6f47" stroke-width="0.5"/>
+
+  <!-- Decorative sash/ribbon around waist -->
+  <ellipse cx="200" cy="175" rx="65" ry="12" fill="#fbbf24" stroke="#ca8a04" stroke-width="1" opacity="0.8"/>
+  <!-- Sash detail lines -->
+  <path d="M 150 175 Q 175 180 200 175 Q 225 170 250 175" stroke="#ca8a04" stroke-width="0.5" fill="none" opacity="0.6"/>
+
+  <!-- Matching heeled shoes below dress -->
+  <!-- Left shoe -->
+  <g transform="translate(175, 305)">
+    <ellipse cx="0" cy="0" rx="10" ry="6" fill="#db2777" stroke="#be123c" stroke-width="1"/>
+    <polygon points="-8,-2 -10,-6 -6,-2" fill="#be123c"/>
+    <line x1="-2" y1="5" x2="-1" y2="12" stroke="#8b6f47" stroke-width="1.5"/>
+  </g>
+
+  <!-- Right shoe -->
+  <g transform="translate(225, 305)">
+    <ellipse cx="0" cy="0" rx="10" ry="6" fill="#db2777" stroke="#be123c" stroke-width="1"/>
+    <polygon points="8,-2 10,-6 6,-2" fill="#be123c"/>
+    <line x1="2" y1="5" x2="1" y2="12" stroke="#8b6f47" stroke-width="1.5"/>
+  </g>
+
+  <!-- Decorative floral accents on dress -->
+  <!-- Left side flower -->
+  <g transform="translate(145, 230)">
+    <circle cx="0" cy="0" r="1.5" fill="#ec4899"/>
+    <circle cx="-3" cy="-2" r="1" fill="#f472b6"/>
+    <circle cx="3" cy="-2" r="1" fill="#f472b6"/>
+    <circle cx="-3" cy="2" r="1" fill="#f472b6"/>
+    <circle cx="3" cy="2" r="1" fill="#f472b6"/>
+  </g>
+
+  <!-- Right side flower -->
+  <g transform="translate(255, 245)">
+    <circle cx="0" cy="0" r="1.5" fill="#ec4899"/>
+    <circle cx="-3" cy="-2" r="1" fill="#f472b6"/>
+    <circle cx="3" cy="-2" r="1" fill="#f472b6"/>
+    <circle cx="-3" cy="2" r="1" fill="#f472b6"/>
+    <circle cx="3" cy="2" r="1" fill="#f472b6"/>
+  </g>
+
+  <!-- Additional sparkles -->
+  <polygon points="100,150 105,160 95,165" fill="#fbbf24" opacity="0.6" filter="url(#shine)"/>
+  <polygon points="300,180 305,190 295,195" fill="#fbbf24" opacity="0.6" filter="url(#shine)"/>
+  <polygon points="130,280 135,290 125,295" fill="#fbbf24" opacity="0.5" filter="url(#shine)"/>
+  <polygon points="270,260 275,270 265,275" fill="#fbbf24" opacity="0.5" filter="url(#shine)"/>
+
+  <!-- Title -->
+  <text x="200" y="370" font-size="16" font-weight="bold" text-anchor="middle" fill="white" font-family="Arial">ROYAL BALL GOWN</text>
+</svg>

@@ -1,0 +1,70 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#e7d4f5"/>
+
+  <!-- Plate -->
+  <circle cx="200" cy="260" r="120" fill="#f5f5f0" stroke="#d4af37" stroke-width="2"/>
+  <circle cx="200" cy="260" r="115" fill="#fafaf8"/>
+
+  <!-- Tiramisu square -->
+  <!-- Bottom layer (ladyfinger) -->
+  <rect x="130" y="190" width="140" height="30" fill="#d4a574" rx="2"/>
+  <rect x="132" y="192" width="136" height="26" fill="#ddb896" rx="1"/>
+
+  <!-- Espresso soak marks -->
+  <circle cx="150" cy="205" r="2" fill="#8b4513" opacity="0.5"/>
+  <circle cx="180" cy="200" r="1.5" fill="#8b4513" opacity="0.5"/>
+  <circle cx="210" cy="207" r="2" fill="#8b4513" opacity="0.5"/>
+  <circle cx="240" cy="202" r="1.5" fill="#8b4513" opacity="0.5"/>
+
+  <!-- Middle mascarpone layer -->
+  <rect x="130" y="160" width="140" height="30" fill="#f5deb3" rx="2"/>
+  <rect x="132" y="162" width="136" height="26" fill="#fffacd" rx="1"/>
+
+  <!-- Top mascarpone layer -->
+  <rect x="130" y="130" width="140" height="30" fill="#f5deb3" rx="2"/>
+  <rect x="132" y="132" width="136" height="26" fill="#fffff0" rx="1"/>
+
+  <!-- Cocoa powder dusting -->
+  <g opacity="0.6">
+    <circle cx="145" cy="135" r="2" fill="#3d2817"/>
+    <circle cx="165" cy="140" r="1.5" fill="#3d2817"/>
+    <circle cx="190" cy="137" r="2" fill="#3d2817"/>
+    <circle cx="215" cy="141" r="1.5" fill="#3d2817"/>
+    <circle cx="240" cy="136" r="2" fill="#3d2817"/>
+    <circle cx="155" cy="150" r="1.5" fill="#3d2817"/>
+    <circle cx="225" cy="150" r="2" fill="#3d2817"/>
+    <circle cx="200" cy="148" r="1.5" fill="#3d2817"/>
+  </g>
+
+  <!-- Cocoa dusting on sides -->
+  <g opacity="0.4">
+    <circle cx="125" cy="160" r="2" fill="#3d2817"/>
+    <circle cx="275" cy="175" r="2" fill="#3d2817"/>
+  </g>
+
+  <!-- Fork decoration -->
+  <g opacity="0.4">
+    <line x1="90" y1="140" x2="110" y2="200" stroke="#888" stroke-width="2.5"/>
+    <line x1="105" y1="200" x2="110" y2="185"/>
+    <line x1="110" y1="200" x2="115" y2="185"/>
+    <line x1="115" y1="200" x2="120" y2="185"/>
+  </g>
+
+  <!-- Plate edge detail -->
+  <circle cx="145" cy="160" r="1.5" fill="#d4af37" opacity="0.5"/>
+  <circle cx="255" cy="170" r="1.5" fill="#d4af37" opacity="0.5"/>
+
+  <!-- Shine/gloss effect -->
+  <ellipse cx="200" cy="140" rx="50" ry="25" fill="white" opacity="0.12"/>
+
+  <!-- Plate shadow -->
+  <ellipse cx="200" cy="340" rx="125" ry="25" fill="rgba(0,0,0,0.08)"/>
+
+  <!-- Espresso cup nearby (small) -->
+  <g opacity="0.6">
+    <ellipse cx="310" cy="240" rx="22" ry="18" fill="#3d2817" stroke="#2a1810" stroke-width="1"/>
+    <ellipse cx="310" cy="237" rx="20" ry="16" fill="#4a3020"/>
+    <path d="M 330 235 Q 338 230 335 245" fill="none" stroke="#2a1810" stroke-width="1.5"/>
+  </g>
+</svg>

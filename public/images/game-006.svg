@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500">
+  <!-- PONY RACING GRAND PRIX - Realistic Product Photography -->
+  <defs>
+    <linearGradient id="studioBg6" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#f9f9f9;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#ffffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e8e8e8;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="pinkBox" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ec4899;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#db2777;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#be185d;stop-opacity:1" />
+    </linearGradient>
+    <radialGradient id="lightGlow6" cx="32%" cy="32%" r="46%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.32" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </radialGradient>
+    <filter id="shadow6">
+      <feDropShadow dx="3" dy="8" stdDeviation="4" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <rect width="400" height="500" fill="url(#studioBg6)"/>
+  <ellipse cx="200" cy="450" rx="180" ry="40" fill="#00000010"/>
+
+  <!-- Main Game Box -->
+  <g filter="url(#shadow6)">
+    <!-- Box depth -->
+    <polygon points="280,130 295,140 295,300 280,290" fill="#831843" opacity="0.6"/>
+    <polygon points="80,130 95,120 295,120 280,130" fill="#f472b6" opacity="0.65"/>
+
+    <!-- Front face -->
+    <rect x="80" y="130" width="200" height="170" fill="url(#pinkBox)" stroke="#5f1d35" stroke-width="2" rx="3"/>
+    <rect x="80" y="130" width="200" height="170" fill="url(#lightGlow6)" rx="3"/>
+
+    <!-- Silver accent border -->
+    <rect x="88" y="138" width="184" height="154" fill="none" stroke="#e5e7eb" stroke-width="2.5" rx="2"/>
+    <rect x="90" y="140" width="180" height="150" fill="none" stroke="#f3f4f6" stroke-width="0.5" opacity="0.6" rx="1"/>
+
+    <!-- Illustration panel -->
+    <rect x="95" y="150" width="170" height="105" fill="#fdf2f8" stroke="#ddd" stroke-width="1" rx="2"/>
+
+    <!-- Racing track -->
+    <!-- Track oval -->
+    <ellipse cx="160" cy="185" rx="45" ry="25" fill="none" stroke="#94a3b8" stroke-width="2"/>
+    <ellipse cx="160" cy="185" rx="40" ry="22" fill="none" stroke="#cbd5e1" stroke-width="1"/>
+
+    <!-- Racing ponies -->
+    <!-- Pony 1 -->
+    <ellipse cx="135" cy="180" rx="8" ry="6" fill="#f9a8d4"/>
+    <polygon points="135,174 133,170 137,170" fill="#fbbf24"/>
+    <circle cx="137" cy="179" r="1" fill="#000"/>
+
+    <!-- Pony 2 -->
+    <ellipse cx="180" cy="195" rx="8" ry="6" fill="#fff0f5"/>
+    <polygon points="180,189 177,185 183,185" fill="#ffb6c1"/>
+    <circle cx="182" cy="194" r="1" fill="#000"/>
+
+    <!-- Finish line checkered pattern (simplified) -->
+    <rect x="150" y="215" width="4" height="8" fill="#000"/>
+    <rect x="156" y="215" width="4" height="8" fill="#fff"/>
+    <rect x="162" y="215" width="4" height="8" fill="#000"/>
+
+    <!-- Game title -->
+    <text x="180" y="255" font-family="Georgia, serif" font-size="13" font-weight="bold" text-anchor="middle" fill="#fdf2f8">
+      PONY RACING
+    </text>
+    <text x="180" y="268" font-family="Garamond, serif" font-size="8" text-anchor="middle" fill="#fbcfe8">
+      Grand Prix Championship
+    </text>
+
+    <!-- Player count -->
+    <circle cx="240" cy="285" r="11" fill="#fbbf24" stroke="#d97706" stroke-width="1"/>
+    <text x="240" y="291" font-size="8" font-weight="bold" text-anchor="middle" fill="#7c2d12">2-6</text>
+
+    <!-- Info -->
+    <text x="100" y="285" font-family="Arial, sans-serif" font-size="8" fill="#fbcfe8">Ages 5+</text>
+  </g>
+
+  <!-- Racing tokens -->
+  <g>
+    <!-- Token 1 - Pink -->
+    <circle cx="125" cy="350" r="7" fill="#ec4899" stroke="#db2777" stroke-width="1"/>
+    <text x="125" y="355" font-size="6" text-anchor="middle" fill="white">🐴</text>
+
+    <!-- Token 2 - Purple -->
+    <circle cx="155" cy="348" r="7" fill="#a855f7" stroke="#7c3aed" stroke-width="1"/>
+    <text x="155" y="353" font-size="6" text-anchor="middle" fill="white">🐴</text>
+
+    <!-- Token 3 - Yellow -->
+    <circle cx="185" cy="350" r="7" fill="#facc15" stroke="#eab308" stroke-width="1"/>
+    <text x="185" y="355" font-size="6" text-anchor="middle" fill="#1f2937">🐴</text>
+
+    <!-- Token 4 - Cyan -->
+    <circle cx="215" cy="348" r="7" fill="#06b6d4" stroke="#0891b2" stroke-width="1"/>
+    <text x="215" y="353" font-size="6" text-anchor="middle" fill="white">🐴</text>
+
+    <!-- Token 5 - Green -->
+    <circle cx="245" cy="350" r="7" fill="#22c55e" stroke="#16a34a" stroke-width="1"/>
+    <text x="245" y="355" font-size="6" text-anchor="middle" fill="white">🐴</text>
+
+    <!-- Token 6 - Orange -->
+    <circle cx="275" cy="348" r="7" fill="#f97316" stroke="#ea580c" stroke-width="1"/>
+    <text x="275" y="353" font-size="6" text-anchor="middle" fill="white">🐴</text>
+  </g>
+
+  <!-- Dice visible -->
+  <g>
+    <rect x="115" y="380" width="10" height="10" fill="#ec4899" stroke="#db2777" stroke-width="0.5" rx="1"/>
+    <circle cx="117" cy="382" r="0.7" fill="white"/>
+    <circle cx="123" cy="388" r="0.7" fill="white"/>
+
+    <rect x="290" y="375" width="10" height="10" fill="#06b6d4" stroke="#0891b2" stroke-width="0.5" rx="1"/>
+    <circle cx="292" cy="377" r="0.7" fill="white"/>
+    <circle cx="295" cy="381" r="0.7" fill="white"/>
+    <circle cx="298" cy="384" r="0.7" fill="white"/>
+  </g>
+
+  <!-- Product info section -->
+  <g transform="translate(50, 400)">
+    <rect x="0" y="0" width="300" height="80" fill="white" stroke="#ddd" stroke-width="1" rx="4"/>
+
+    <text x="20" y="25" font-size="18" font-weight="bold" fill="#ec4899">$18.99</text>
+    <text x="200" y="25" font-size="10" font-weight="bold" fill="#22c55e">IN STOCK</text>
+
+    <text x="20" y="45" font-family="Arial, sans-serif" font-size="10" fill="#666">Fast-paced pony racing game</text>
+    <text x="20" y="60" font-size="9" fill="#999">4.7 out of 5 stars • 156 reviews</text>
+
+    <text x="250" y="30" font-size="16" fill="#f4d03f">★★★★★</text>
+  </g>
+</svg>

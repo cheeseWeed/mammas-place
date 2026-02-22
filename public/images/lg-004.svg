@@ -1,0 +1,202 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background gradient - garden shed feel -->
+    <linearGradient id="bgGradient4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#EFEBE9"/>
+      <stop offset="100%" style="stop-color:#D7CCC8"/>
+    </linearGradient>
+
+    <!-- Wood handle gradient -->
+    <linearGradient id="woodHandle" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8D6E63"/>
+      <stop offset="20%" style="stop-color:#A1887F"/>
+      <stop offset="40%" style="stop-color:#8D6E63"/>
+      <stop offset="60%" style="stop-color:#A1887F"/>
+      <stop offset="80%" style="stop-color:#8D6E63"/>
+      <stop offset="100%" style="stop-color:#795548"/>
+    </linearGradient>
+
+    <!-- Steel/metal gradient for tools -->
+    <linearGradient id="steelGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#9E9E9E"/>
+      <stop offset="25%" style="stop-color:#BDBDBD"/>
+      <stop offset="50%" style="stop-color:#E0E0E0"/>
+      <stop offset="75%" style="stop-color:#BDBDBD"/>
+      <stop offset="100%" style="stop-color:#757575"/>
+    </linearGradient>
+
+    <linearGradient id="steelVertical" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E0E0E0"/>
+      <stop offset="30%" style="stop-color:#BDBDBD"/>
+      <stop offset="70%" style="stop-color:#9E9E9E"/>
+      <stop offset="100%" style="stop-color:#616161"/>
+    </linearGradient>
+
+    <!-- Soil gradient -->
+    <linearGradient id="soilGradient4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#6D4C41"/>
+      <stop offset="50%" style="stop-color:#5D4037"/>
+      <stop offset="100%" style="stop-color:#4E342E"/>
+    </linearGradient>
+
+    <!-- Shadow filter -->
+    <filter id="dropShadow4" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
+      <feOffset dx="4" dy="6" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.35"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Wood grain pattern -->
+    <pattern id="woodGrain" x="0" y="0" width="6" height="100" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="100" stroke="#795548" stroke-width="0.5" opacity="0.3"/>
+      <line x1="3" y1="0" x2="3" y2="100" stroke="#6D4C41" stroke-width="0.3" opacity="0.2"/>
+    </pattern>
+
+    <!-- Metallic shine -->
+    <linearGradient id="metalShine4" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FFFFFF" stop-opacity="0"/>
+      <stop offset="50%" style="stop-color:#FFFFFF" stop-opacity="0.5"/>
+      <stop offset="100%" style="stop-color:#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="url(#bgGradient4)"/>
+
+  <!-- Garden soil/ground -->
+  <ellipse cx="200" cy="385" rx="220" ry="45" fill="url(#soilGradient4)"/>
+
+  <!-- Soil texture details -->
+  <g fill="#4E342E" opacity="0.4">
+    <circle cx="100" cy="370" r="8"/>
+    <circle cx="150" cy="380" r="6"/>
+    <circle cx="250" cy="375" r="7"/>
+    <circle cx="300" cy="365" r="5"/>
+  </g>
+
+  <!-- === GARDEN HOE (left) === -->
+  <g filter="url(#dropShadow4)" transform="rotate(-20, 100, 350)">
+    <!-- Handle -->
+    <rect x="65" y="50" width="22" height="300" rx="11" fill="url(#woodHandle)"/>
+    <rect x="65" y="50" width="22" height="300" rx="11" fill="url(#woodGrain)"/>
+
+    <!-- Handle end cap -->
+    <ellipse cx="76" cy="55" rx="11" ry="6" fill="#6D4C41"/>
+
+    <!-- Handle ring (ferrule) -->
+    <rect x="62" y="335" width="28" height="15" rx="2" fill="url(#steelGradient)"/>
+
+    <!-- Hoe blade -->
+    <path d="M45 355 L107 355 L100 400 L52 400 Z" fill="url(#steelVertical)"/>
+
+    <!-- Blade edge (sharp) -->
+    <line x1="52" y1="400" x2="100" y2="400" stroke="#424242" stroke-width="2"/>
+
+    <!-- Blade highlight -->
+    <path d="M50 360 L102 360 L98 375 L54 375 Z" fill="url(#metalShine4)" opacity="0.6"/>
+
+    <!-- Hoe neck/socket -->
+    <path d="M66 350 L86 350 L86 360 L76 380 L66 360 Z" fill="#616161"/>
+  </g>
+
+  <!-- === GARDEN SHOVEL (center) === -->
+  <g filter="url(#dropShadow4)">
+    <!-- Handle -->
+    <rect x="189" y="30" width="22" height="250" rx="11" fill="url(#woodHandle)"/>
+    <rect x="189" y="30" width="22" height="250" rx="11" fill="url(#woodGrain)"/>
+
+    <!-- Handle end cap -->
+    <ellipse cx="200" cy="35" rx="11" ry="6" fill="#6D4C41"/>
+
+    <!-- D-handle grip -->
+    <path d="M170 25 Q165 15 175 10 L225 10 Q235 15 230 25 L230 45 L170 45 Z" fill="url(#woodHandle)"/>
+    <rect x="175" y="15" width="50" height="8" rx="4" fill="#5D4037"/>
+
+    <!-- Handle ring (ferrule) -->
+    <rect x="186" y="270" width="28" height="18" rx="2" fill="url(#steelGradient)"/>
+
+    <!-- Shovel blade/spade -->
+    <path d="M165 290 Q155 310 160 350 Q170 400 200 410 Q230 400 240 350 Q245 310 235 290 Z" fill="url(#steelVertical)"/>
+
+    <!-- Blade spine -->
+    <path d="M195 290 L195 380 Q200 395 205 380 L205 290" fill="#757575"/>
+
+    <!-- Blade edge highlight -->
+    <path d="M170 300 Q160 330 168 360 L175 360 Q167 330 175 300 Z" fill="url(#metalShine4)" opacity="0.7"/>
+
+    <!-- Blade socket -->
+    <path d="M186 288 L214 288 L220 305 L180 305 Z" fill="#616161"/>
+
+    <!-- Pointed tip -->
+    <ellipse cx="200" cy="408" rx="8" ry="4" fill="#424242"/>
+  </g>
+
+  <!-- === GARDEN RAKE (right) === -->
+  <g filter="url(#dropShadow4)" transform="rotate(18, 300, 350)">
+    <!-- Handle -->
+    <rect x="289" y="40" width="22" height="310" rx="11" fill="url(#woodHandle)"/>
+    <rect x="289" y="40" width="22" height="310" rx="11" fill="url(#woodGrain)"/>
+
+    <!-- Handle end cap -->
+    <ellipse cx="300" cy="45" rx="11" ry="6" fill="#6D4C41"/>
+
+    <!-- Handle ring (ferrule) -->
+    <rect x="286" y="340" width="28" height="15" rx="2" fill="url(#steelGradient)"/>
+
+    <!-- Rake head crossbar -->
+    <rect x="250" y="355" width="100" height="12" rx="3" fill="url(#steelGradient)"/>
+
+    <!-- Rake tines -->
+    <g fill="url(#steelVertical)">
+      <rect x="255" y="367" width="6" height="35" rx="1"/>
+      <rect x="268" y="367" width="6" height="35" rx="1"/>
+      <rect x="281" y="367" width="6" height="35" rx="1"/>
+      <rect x="294" y="367" width="6" height="35" rx="1"/>
+      <rect x="307" y="367" width="6" height="35" rx="1"/>
+      <rect x="320" y="367" width="6" height="35" rx="1"/>
+      <rect x="333" y="367" width="6" height="35" rx="1"/>
+    </g>
+
+    <!-- Tine tips (curved) -->
+    <g fill="#616161">
+      <ellipse cx="258" cy="402" rx="3" ry="2"/>
+      <ellipse cx="271" cy="402" rx="3" ry="2"/>
+      <ellipse cx="284" cy="402" rx="3" ry="2"/>
+      <ellipse cx="297" cy="402" rx="3" ry="2"/>
+      <ellipse cx="310" cy="402" rx="3" ry="2"/>
+      <ellipse cx="323" cy="402" rx="3" ry="2"/>
+      <ellipse cx="336" cy="402" rx="3" ry="2"/>
+    </g>
+
+    <!-- Rake head connector -->
+    <path d="M286 345 L314 345 L310 355 L290 355 Z" fill="#757575"/>
+  </g>
+
+  <!-- Ground shadow under tools -->
+  <ellipse cx="200" cy="385" rx="150" ry="20" fill="rgba(0,0,0,0.2)"/>
+
+  <!-- Small dirt/soil clumps -->
+  <g fill="#5D4037">
+    <ellipse cx="120" cy="365" rx="5" ry="3"/>
+    <ellipse cx="180" cy="372" rx="4" ry="2"/>
+    <ellipse cx="260" cy="368" rx="6" ry="3"/>
+  </g>
+
+  <!-- Grass blades peeking through -->
+  <g stroke="#4CAF50" stroke-width="2" fill="none" opacity="0.6">
+    <path d="M50 365 Q55 345 60 365"/>
+    <path d="M360 360 Q365 340 370 362"/>
+  </g>
+
+  <!-- Product label badge -->
+  <g transform="translate(200, 15)">
+    <rect x="-50" y="0" width="100" height="22" rx="11" fill="#4CAF50"/>
+    <text x="0" y="15" font-size="10" font-weight="bold" fill="white" text-anchor="middle" font-family="Arial, sans-serif">3-PIECE SET</text>
+  </g>
+</svg>

@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Brand section */}
           <div className="text-center md:text-left">
             <div className="text-2xl font-black mb-2">Mamma&apos;s Place</div>
-            <p className="text-purple-300 text-sm mb-4">Magical toys for magical kids</p>
+            <p className="text-purple-300 text-sm mb-4">Whatever you want, we got it</p>
             <div className="flex justify-center md:justify-start gap-3">
               <a href="#" aria-label="Facebook" className="w-8 h-8 rounded-full bg-purple-700 hover:bg-purple-600 flex items-center justify-center transition-colors">
                 <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -46,9 +46,9 @@ export default function Footer() {
           <div className="text-center md:text-left">
             <h3 className="text-lg font-bold mb-4 text-yellow-300">Shop</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/shop?category=ponies" className="text-purple-300 hover:text-yellow-300 transition-colors">Ponies</Link></li>
-              <li><Link href="/shop?category=unicorns" className="text-purple-300 hover:text-yellow-300 transition-colors">Unicorns</Link></li>
-              <li><Link href="/shop?category=princesses" className="text-purple-300 hover:text-yellow-300 transition-colors">Princesses</Link></li>
+              <li><Link href="/shop?category=automotive" className="text-purple-300 hover:text-yellow-300 transition-colors">Automotive</Link></li>
+              <li><Link href="/shop?category=grocery" className="text-purple-300 hover:text-yellow-300 transition-colors">Grocery</Link></li>
+              <li><Link href="/shop?category=tools-and-hardware" className="text-purple-300 hover:text-yellow-300 transition-colors">Tools & Hardware</Link></li>
               <li><Link href="/shop?sale=true" className="text-purple-300 hover:text-yellow-300 transition-colors">Sale Items</Link></li>
             </ul>
           </div>
@@ -71,7 +71,7 @@ export default function Footer() {
                 </svg>
                 <a href="tel:1-800-626-6271" className="text-purple-300 hover:text-yellow-300 transition-colors">
                   1-800-MAMMAS-1<br />
-                  <span className="text-xs">(1-800-626-6271)</span>
+                  <span className="text-sm">(1-800-626-6271)</span>
                 </a>
               </li>
               <li className="flex items-center justify-center md:justify-start gap-2">
@@ -96,7 +96,7 @@ export default function Footer() {
               <span className="bg-purple-700/50 px-3 py-1 rounded-full">Free Shipping Over $50</span>
               <span className="bg-yellow-400/20 text-yellow-300 px-3 py-1 rounded-full font-bold">Use Code: MAMMA10</span>
             </div>
-            <Link href="/admin/upload" className="text-purple-500 hover:text-purple-400 text-xs transition-colors">
+            <Link href="/admin/upload" className="text-purple-500 hover:text-purple-400 text-sm transition-colors">
               Admin
             </Link>
           </div>

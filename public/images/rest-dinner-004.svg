@@ -1,0 +1,147 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="lobsterShd" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="3" dy="5" stdDeviation="5" flood-opacity="0.45"/>
+    </filter>
+    <filter id="steamLb">
+      <feGaussianBlur stdDeviation="2"/>
+    </filter>
+
+    <!-- Lobster shell gradient -->
+    <radialGradient id="shellGLb" cx="45%" cy="40%">
+      <stop offset="0%" stop-color="#ff8c42"/>
+      <stop offset="60%" stop-color="#ff6b35"/>
+      <stop offset="100%" stop-color="#e65c2b"/>
+    </radialGradient>
+
+    <!-- Lobster flesh gradient -->
+    <radialGradient id="fleshGrad" cx="50%" cy="45%">
+      <stop offset="0%" stop-color="#fffff0"/>
+      <stop offset="60%" stop-color="#fffacd"/>
+      <stop offset="100%" stop-color="#f5deb3"/>
+    </radialGradient>
+
+    <!-- Butter gradient -->
+    <radialGradient id="butterGLb" cx="40%" cy="35%">
+      <stop offset="0%" stop-color="#fef5c3"/>
+      <stop offset="100%" stop-color="#f4d03f"/>
+    </radialGradient>
+
+    <!-- Plate gradient -->
+    <radialGradient id="plateGLb" cx="38%" cy="35%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#f8f8f5"/>
+      <stop offset="100%" stop-color="#e5e2da"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Coastal restaurant background - blue tint -->
+  <rect width="400" height="400" fill="#1a2028"/>
+  <!-- Subtle texture -->
+  <line x1="0" y1="50" x2="400" y2="52" stroke="#2a3038" stroke-width="2.5" opacity="0.4"/>
+  <line x1="0" y1="140" x2="400" y2="138" stroke="#3a4048" stroke-width="2" opacity="0.3"/>
+  <line x1="0" y1="240" x2="400" y2="242" stroke="#2a3038" stroke-width="2.5" opacity="0.4"/>
+  <line x1="0" y1="340" x2="400" y2="338" stroke="#3a4048" stroke-width="2" opacity="0.3"/>
+
+  <!-- Table shadow -->
+  <ellipse cx="200" cy="378" rx="175" ry="28" fill="#101418" opacity="0.7"/>
+
+  <!-- Elegant white plate -->
+  <g filter="url(#lobsterShd)">
+    <circle cx="200" cy="260" r="160" fill="#d8d5cc"/>
+    <circle cx="200" cy="258" r="155" fill="url(#plateGLb)"/>
+    <circle cx="200" cy="256" r="145" fill="#fefefe"/>
+    <!-- Gold rim -->
+    <circle cx="200" cy="260" r="158" fill="none" stroke="#d4af37" stroke-width="3.5"/>
+    <ellipse cx="155" cy="175" rx="55" ry="25" fill="#ffffff" opacity="0.25"/>
+  </g>
+
+  <!-- Lobster tail (split and grilled) -->
+  <g filter="url(#lobsterShd)">
+    <!-- Shell segments -->
+    <ellipse cx="200" cy="165" rx="55" ry="80" fill="#e65c2b"/>
+    <ellipse cx="200" cy="162" rx="52" ry="77" fill="url(#shellGLb)"/>
+    <ellipse cx="200" cy="159" rx="48" ry="73" fill="#ff8c42" opacity="0.6"/>
+
+    <!-- Shell ridges -->
+    <path d="M 155 120 Q 175 115 200 112 Q 225 115 245 120" stroke="#c44a20" stroke-width="2" fill="none" opacity="0.5"/>
+    <path d="M 158 150 Q 180 145 200 143 Q 220 145 242 150" stroke="#c44a20" stroke-width="2" fill="none" opacity="0.4"/>
+    <path d="M 160 180 Q 182 175 200 173 Q 218 175 240 180" stroke="#c44a20" stroke-width="2" fill="none" opacity="0.4"/>
+
+    <!-- Lobster flesh inside -->
+    <ellipse cx="200" cy="175" rx="35" ry="58" fill="#f5deb3"/>
+    <ellipse cx="200" cy="172" rx="32" ry="55" fill="url(#fleshGrad)"/>
+    <ellipse cx="200" cy="169" rx="28" ry="50" fill="#fffacd" opacity="0.7"/>
+
+    <!-- Flesh texture -->
+    <path d="M 185 140 Q 195 135 210 140" fill="#f5deb3" opacity="0.5"/>
+    <path d="M 180 170 Q 195 165 210 170" fill="#f5deb3" opacity="0.4"/>
+  </g>
+
+  <!-- Garlic butter glaze on lobster -->
+  <g opacity="0.7">
+    <path d="M 170 150 Q 185 145 200 142 Q 215 145 230 150" stroke="#f4d03f" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M 175 175 Q 190 170 205 168 Q 220 170 228 175" stroke="#f4d03f" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Drawn butter bowl -->
+  <g filter="url(#lobsterShd)">
+    <ellipse cx="300" cy="270" rx="42" ry="35" fill="#e8c000"/>
+    <ellipse cx="300" cy="267" rx="38" ry="31" fill="url(#butterGLb)"/>
+    <ellipse cx="300" cy="264" rx="33" ry="26" fill="#fef5c3"/>
+    <!-- Butter shine -->
+    <ellipse cx="293" cy="258" rx="12" ry="8" fill="#ffffff" opacity="0.5"/>
+  </g>
+
+  <!-- Asparagus spears -->
+  <g filter="url(#lobsterShd)">
+    <rect x="105" y="265" width="8" height="60" rx="3" fill="#228b22"/>
+    <rect x="107" y="267" width="4" height="56" rx="2" fill="#27ae60"/>
+    <circle cx="109" cy="275" r="2" fill="#1a6b1a"/>
+    <circle cx="109" cy="290" r="2" fill="#1a6b1a"/>
+    <circle cx="109" cy="305" r="2" fill="#1a6b1a"/>
+
+    <rect x="122" y="272" width="8" height="55" rx="3" fill="#2ecc40"/>
+    <rect x="124" y="274" width="4" height="51" rx="2" fill="#27ae60"/>
+    <circle cx="126" cy="282" r="2" fill="#1a8348"/>
+    <circle cx="126" cy="297" r="2" fill="#1a8348"/>
+
+    <rect x="138" y="268" width="7" height="52" rx="3" fill="#228b22"/>
+    <rect x="140" y="270" width="3" height="48" rx="2" fill="#2ecc71"/>
+  </g>
+
+  <!-- Roasted vegetables -->
+  <g filter="url(#lobsterShd)">
+    <!-- Baby carrots -->
+    <ellipse cx="95" cy="215" rx="14" ry="22" fill="#e67e22"/>
+    <ellipse cx="93" cy="212" rx="10" ry="17" fill="#f39c12" opacity="0.6"/>
+
+    <!-- Roasted beet -->
+    <circle cx="320" cy="195" r="18" fill="#a0304a"/>
+    <circle cx="318" cy="193" r="14" fill="#c0405a" opacity="0.7"/>
+    <circle cx="305" cy="215" r="15" fill="#8b2040"/>
+    <circle cx="303" cy="213" r="11" fill="#a03050" opacity="0.6"/>
+  </g>
+
+  <!-- Lemon wedge -->
+  <g filter="url(#lobsterShd)">
+    <path d="M 330 320 L 360 305 Q 368 325 355 340 Z" fill="#ffd700"/>
+    <path d="M 333 320 L 357 307 Q 363 325 352 337 Z" fill="#ffeb3b" opacity="0.7"/>
+    <line x1="338" y1="320" x2="353" y2="315" stroke="#ffc107" stroke-width="1.5" opacity="0.5"/>
+    <line x1="340" y1="328" x2="350" y2="325" stroke="#ffc107" stroke-width="1.5" opacity="0.5"/>
+  </g>
+
+  <!-- Decorative plating dots -->
+  <g opacity="0.6">
+    <circle cx="80" cy="245" r="3" fill="#f4d03f"/>
+    <circle cx="325" cy="240" r="3" fill="#f4d03f"/>
+    <circle cx="150" cy="320" r="2.5" fill="#f4d03f"/>
+  </g>
+
+  <!-- Steam rising -->
+  <g filter="url(#steamLb)" opacity="0.2">
+    <path d="M 180 90 Q 175 70 185 50" stroke="#fff" stroke-width="3.5" fill="none"/>
+    <path d="M 200 85 Q 205 65 195 45" stroke="#fff" stroke-width="3" fill="none"/>
+    <path d="M 220 88 Q 225 68 215 50" stroke="#fff" stroke-width="3" fill="none"/>
+  </g>
+</svg>

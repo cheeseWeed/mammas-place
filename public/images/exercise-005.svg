@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="cable-machine-frame" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#cccccc;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#999999;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#666666;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cable-rope" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#b39b3f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8b6f2f;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feDropShadow dx="3" dy="4" stdDeviation="4" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="#fafafa"/>
+
+  <!-- Main vertical frame -->
+  <rect x="80" y="60" width="240" height="300" rx="6" fill="url(#cable-machine-frame)" filter="url(#shadow)"/>
+  <rect x="85" y="65" width="230" height="290" fill="#a0a0a0" opacity="0.3"/>
+
+  <!-- Top pulley system -->
+  <circle cx="200" cy="80" r="18" fill="#3a3a3a" filter="url(#shadow)"/>
+  <circle cx="200" cy="80" r="16" fill="#1a1a1a"/>
+  <!-- Pulley highlight -->
+  <circle cx="200" cy="80" r="14" fill="none" stroke="#666" stroke-width="1" opacity="0.6"/>
+
+  <!-- Cable/rope from top -->
+  <path d="M 190 96 Q 185 150 180 200" stroke="url(#cable-rope)" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#shadow)"/>
+  <path d="M 210 96 Q 215 150 220 200" stroke="url(#cable-rope)" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#shadow)"/>
+
+  <!-- Handle/grip attachment points -->
+  <!-- Left handle -->
+  <rect x="165" y="200" width="30" height="40" rx="6" fill="#4a4a4a" filter="url(#shadow)"/>
+  <rect x="168" y="204" width="24" height="32" fill="#333"/>
+  <!-- Handle rope connection -->
+  <circle cx="180" cy="200" r="4" fill="#8b6f2f"/>
+
+  <!-- Right handle -->
+  <rect x="205" y="200" width="30" height="40" rx="6" fill="#4a4a4a" filter="url(#shadow)"/>
+  <rect x="208" y="204" width="24" height="32" fill="#333"/>
+  <!-- Handle rope connection -->
+  <circle cx="220" cy="200" r="4" fill="#8b6f2f"/>
+
+  <!-- Weight stack indicator -->
+  <rect x="130" y="120" width="140" height="120" rx="4" fill="#7a7a7a" filter="url(#shadow)"/>
+  <rect x="135" y="125" width="130" height="110" fill="#5a5a5a"/>
+
+  <!-- Weight plate indicators -->
+  <g stroke="#fff" stroke-width="0.5" opacity="0.4">
+    <line x1="135" y1="135" x2="265" y2="135"/>
+    <line x1="135" y1="150" x2="265" y2="150"/>
+    <line x1="135" y1="165" x2="265" y2="165"/>
+    <line x1="135" y1="180" x2="265" y2="180"/>
+    <line x1="135" y1="195" x2="265" y2="195"/>
+    <line x1="135" y1="210" x2="265" y2="210"/>
+    <line x1="135" y1="225" x2="265" y2="225"/>
+  </g>
+
+  <!-- Adjustment pin -->
+  <circle cx="280" cy="165" r="6" fill="#d4a574" filter="url(#shadow)"/>
+
+  <!-- Foot pedal (optional lower cable) -->
+  <rect x="150" y="280" width="100" height="20" rx="4" fill="#4a4a4a" filter="url(#shadow)"/>
+  <rect x="152" y="282" width="96" height="16" fill="#333"/>
+
+  <!-- Connection cable to pedal -->
+  <path d="M 200 250 L 200 280" stroke="url(#cable-rope)" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.8"/>
+</svg>

@@ -42,7 +42,7 @@ export default function AdminLoginPage() {
             <span className="text-white font-black text-xl">MP</span>
           </div>
           <h1 className="text-white font-black text-2xl">Admin Portal</h1>
-          <p className="text-gray-400 text-sm mt-1">System Administration</p>
+          <p className="text-gray-200 text-sm mt-1">System Administration</p>
         </div>
 
         <form onSubmit={handleLogin} className="bg-gray-800 rounded-2xl p-6 shadow-2xl border border-gray-700">
