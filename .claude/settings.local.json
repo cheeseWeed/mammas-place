@@ -33,7 +33,8 @@
       "Bash(taskkill //F //PID 169048)",
       "mcp__playwright__browser_console_messages",
       "Bash(if not exist \"sessions\" mkdir sessions)",
-      "Bash(test:*)"
+      "Bash(test:*)",
+      "Bash(vercel:*)"
     ],
     "deny": [],
     "ask": []

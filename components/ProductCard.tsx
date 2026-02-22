@@ -27,7 +27,7 @@ export default function ProductCard({ product, compact = false }: ProductCardPro
         <div className={`${compact ? 'h-32' : 'h-52'} flex items-center justify-center p-4`}>
           <ProductImage product={product} />
         </div>
-        {product.isSale && product.discount > 0 && (
+        {product.isSale && product.discount && product.discount > 0 && (
           <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
             SALE {product.discount}% OFF
           </div>
