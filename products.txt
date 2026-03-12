@@ -1,0 +1,117 @@
+# Mamma's Place - Product Image Generation List
+# Format: product_id|prompt description
+# The script uses the prompt description to generate the image, saves as public/images/{product_id}.png
+# Comment lines (starting with #) and blank lines are ignored
+
+pony-001|Rainbow Sparkle Pony toy — cute pony with shimmering rainbow mane, glittery hooves, flowing tail, magical sparkle accessories
+pony-002|Princess Starlight Pony toy — royal pony with golden crown, silky purple mane, sparkle saddle
+pony-003|Cotton Candy Pony plush toy — soft pink and blue swirl mane, sweet candy colours, cuddly plush
+unicorn-001|Enchanted Twilight Unicorn toy — glow-in-the-dark unicorn with LED colour-changing rainbow horn
+unicorn-002|Golden Dream Unicorn toy — luxury unicorn with shiny golden hooves and flowing rainbow tail
+unicorn-003|Mini Unicorn Friends Set — 6 tiny collectible unicorns in a display case, each a different colour
+princess-001|Princess Aurora Dress-Up Set — pink sparkle princess costume with gown, tiara and magic wand
+princess-002|Royal Princess Castle Playset — 3-storey pink castle toy with princess figures and carriage
+princess-003|Princess Jewelry Craft Kit — colourful bead jewelry making kit with princess charms
+princess-004|Princess Story Book Collection — stack of 5 illustrated princess story books
+bow-001|Adventure Foam Bow and Arrow Set — safe foam-tip bow and arrow toy for kids with colourful targets
+bow-002|Ranger Pro Archery Set — complete kids archery kit with quiver and 6 arrows
+bow-003|Glow-in-the-Dark Bow and Arrow — bow and arrow toy with glowing LED arrows
+rock-001|Gemstone Explorer Kit — 20 real colourful gemstones with display case and ID guide
+rock-002|Crystal Growing Lab kit — science kit to grow 4 colourful crystal types in jars
+rock-003|Dino Fossil and Rock Dig Kit — 3 dig blocks with fossils inside for kids to excavate
+game-001|Kingdom Quest Board Game — fantasy strategy board game box with dice and pieces
+game-002|Magical Unicorn and Pony Kingdom 1000-piece jigsaw puzzle
+game-003|Card Clash Battle Game — deck of colourful battle cards in a tin
+game-004|Mamma's Place Family Trivia Game — custom trivia board game with pony and princess theme
+audio-001|The Magical Pony Kingdom audiobook — illustrated audiobook cover with pony adventure art
+audio-002|Princess and the Unicorn Star audiobook cover — princess and unicorn under stars
+audio-003|Rock Hunters Gem Quest audiobook cover — kids adventure with gemstones and geology
+audio-004|Bedtime Stories Unicorns and Dreams audiobook — soothing dreamy unicorn bedtime book cover
+audio-005|The Archery Champion audiobook cover — inspiring archery sports story for kids
+classic-car-001|1963 Volkswagen Beetle — classic coral red VW Beetle vintage car
+classic-car-002|1967 Ford Mustang Fastback — Highland Green classic muscle car
+classic-car-003|1972 Ford Transit Mark I Van — classic vintage white van
+classic-car-004|2008 Lamborghini Gallardo Spyder — bright yellow luxury sports car convertible
+classic-car-005|1996 Dodge Viper GTS — blue with white racing stripes sports car
+classic-car-006|1985 Jeep CJ-7 Laredo — lifted forest green classic Jeep 4WD
+service-001|Professional lawn mowing service — lawn mower on a green garden
+service-002|Plumbing repair service — plumber with pipes and wrench tools
+service-003|Electrician service — electrician with tools and electrical panel
+service-004|Home renovation consultation — blueprints and hard hat on a table
+service-005|Interior house painting service — paint roller and fresh painted wall
+service-006|Professional portrait photography session — camera and studio lights
+service-007|Medical checkup appointment — doctor with stethoscope
+service-008|Dental cleaning appointment — dentist tools and bright smile
+service-009|Haircut and styling service — scissors and styling tools at salon
+service-010|60-minute massage therapy session — massage table with candles and towels
+lg-001|21-inch gas lawn mower — red petrol push lawn mower
+lg-002|Cordless electric string trimmer — green cordless grass trimmer with battery
+lg-003|Native wildflower seed mix packet — colourful wildflower seed packet
+lg-004|50lb lawn fertilizer bag — large green lawn fertilizer sack
+lg-005|100ft garden hose with spray nozzle — coiled green garden hose
+hd-001|5-pack picture frame set — assorted wooden picture frames
+hd-002|24x36 abstract canvas wall art — colourful abstract painting on canvas
+hd-003|3-pack premium scented candles — glass jar candles with warm glow
+hd-004|30-inch round decorative mirror with brushed gold frame
+hd-005|5x7 area rug with geometric pattern — soft colourful rug
+tire-001|All-season car tire 16 inch — black rubber tyre
+oil-001|5-quart synthetic motor oil bottle — oil bottle with cap
+filter-001|Cabin air filter — rectangular air filter for car
+battery-001|12V car battery — black car battery with terminals
+wiper-001|Pair of windshield wipers — two car wiper blades
+pasta-001|1lb organic whole wheat pasta bag — pasta in a bag
+rice-001|5lb premium jasmine rice bag — white rice sack
+sauce-001|24oz rich tomato pasta sauce can — tomato sauce jar
+cereal-001|Honey nut whole grain cereal box — breakfast cereal box
+nuts-001|Premium roasted mixed nuts 16oz bag
+chips-001|Family size crispy potato chips bag
+cookies-001|Homestyle chocolate chip cookies bag
+trailmix-001|20oz trail mix bag with nuts and dried fruit
+fruitsnacks-001|40-pack fruit snacks box with real fruit juice
+popcorn-001|2lb premium popcorn kernels bag
+rest-breakfast-001|Classic American breakfast plate — eggs, bacon, hash browns and toast
+rest-breakfast-002|Belgian waffles with fresh berries and whipped cream
+rest-breakfast-003|Breakfast burrito with eggs, sausage and peppers
+rest-breakfast-004|Golden French toast with powdered sugar and maple syrup
+rest-breakfast-005|Veggie omelette with spinach and mushrooms
+rest-lunch-001|12-inch artisan gourmet pizza with fresh toppings
+rest-lunch-002|3 authentic street tacos with fresh toppings
+rest-lunch-003|Hawaiian poke bowl with ahi tuna, rice and sesame
+rest-lunch-004|Classic half-pound burger and hand-cut fries
+rest-lunch-005|Caesar salad with grilled chicken and parmesan
+rest-dinner-001|Escargot in garlic butter — 6 snails in shells appetiser
+rest-dinner-002|Exotic aged stinky cheese platter with crackers
+rest-dinner-003|14oz prime rib slow-roasted on a plate
+rest-dinner-004|8oz grilled lobster tail with drawn butter
+rest-dinner-005|Pasta carbonara — authentic Roman pasta dish
+rest-dinner-006|Creamy saffron risotto milanese with porcini and asparagus
+rest-dessert-001|Triple chocolate layer cake with ganache
+rest-dessert-002|Creme brulee with caramelised sugar top
+rest-dessert-003|Ice cream sundae bar with 10 flavours and toppings
+rest-dessert-004|Italian tiramisu with mascarpone and espresso
+rest-dessert-005|Warm apple pie a la mode with vanilla ice cream
+sports-ball-001|Professional basketball — orange NBA-style basketball
+sports-ball-002|NFL regulation football — brown leather American football
+sports-ball-003|Official size soccer ball — black and white football
+sports-ball-004|Indoor outdoor volleyball — white and blue volleyball
+sports-ball-005|Official league baseball — white baseball with red stitching
+sports-equip-001|Adjustable dumbbell set 5-50lbs with storage stand
+sports-equip-002|Premium non-slip yoga mat rolled up
+sports-equip-003|5-band resistance bands set with exercise guide bag
+sports-equip-004|20lb cast iron kettlebell with grip handle
+sports-equip-005|Speed jump rope with ball bearing handles
+sports-outdoor-001|4-person camping tent set up outdoors
+sports-outdoor-002|Fishing rod and reel combo with tackle box
+sports-outdoor-003|2-person inflatable kayak with paddles
+sports-outdoor-004|40L hiking backpack with ventilated back panel
+sports-outdoor-005|50qt heavy-duty cooler for camping
+exercise-001|Olympic barbell 45lb for strength training
+exercise-002|Electric treadmill with incline display
+exercise-003|Adjustable dumbbell 5-15lb quick-change
+exercise-004|Stationary exercise bike with digital console
+exercise-005|Dual cable crossover machine with weight stacks
+exercise-006|10lb medicine ball for core training
+tire-002|Performance tire 18 inch — black sport tyre
+tire-003|Winter tire 17 inch for snow and ice
+tire-004|Summer sport tire 20 inch — high performance
+tire-005|Heavy-duty truck tire LT 22 inch off-road

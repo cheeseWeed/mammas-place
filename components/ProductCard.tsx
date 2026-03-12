@@ -20,6 +20,19 @@ export default function ProductCard({ product, compact = false }: ProductCardPro
     showToast(`${product.name} added to cart!`, 'success', '🛒');
   };
 
+  const handleDownload = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (product.downloadUrl) {
+      const link = document.createElement('a');
+      link.href = product.downloadUrl;
+      link.download = product.name.replace(/[^a-z0-9]/gi, '_') + '.mp3';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast(`Downloading ${product.name}...`, 'success', '📥');
+    }
+  };
+
   return (
     <Link href={`/product/${product.id}`} className="group block bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-purple-100">
       {/* Image */}
@@ -74,9 +87,20 @@ export default function ProductCard({ product, compact = false }: ProductCardPro
           </div>
         </div>
 
-        {/* Add to Cart */}
+        {/* Add to Cart or Download */}
         {!compact && (
-          product.inStock ? (
+          product.isAudiobook && product.downloadUrl ? (
+            <button
+              onClick={handleDownload}
+              aria-label={`Download ${product.name}`}
+              className="mt-3 w-full bg-green-600 hover:bg-green-500 active:bg-green-700 text-white font-bold py-2 rounded-xl transition-colors flex items-center justify-center gap-2 text-sm"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              Download
+            </button>
+          ) : product.inStock ? (
             <button
               onClick={handleAddToCart}
               aria-label={`Add ${product.name} to cart`}

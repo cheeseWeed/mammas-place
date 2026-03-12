@@ -66,7 +66,7 @@ export default function HomePage() {
                 href={`/shop?category=${cat}`}
                 className={`bg-gradient-to-br ${displayData.color} rounded-2xl p-6 text-white text-center shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300`}
               >
-                <div className="text-4xl mb-2">{displayData.emoji}</div>
+                <div className="text-8xl mb-2">{displayData.emoji}</div>
                 <div className="text-lg font-black">{displayData.label}</div>
                 <div className="text-sm opacity-80 mt-1">Shop all →</div>
               </Link>

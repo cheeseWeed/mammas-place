@@ -16,7 +16,7 @@
       "magical",
       "girls"
     ],
-    "imageUrl": "/images/pony-001.svg",
+    "imageUrl": "/images/pony-001.png",
     "images": [
       "/images/pony-001.svg"
     ],
@@ -48,7 +48,7 @@
       "purple",
       "girls"
     ],
-    "imageUrl": "/images/pony-002.svg",
+    "imageUrl": "/images/pony-002.png",
     "images": [
       "/images/pony-002.svg"
     ],
@@ -80,7 +80,7 @@
       "pink",
       "stuffed"
     ],
-    "imageUrl": "/images/pony-003.svg",
+    "imageUrl": "/images/pony-003.png",
     "images": [
       "/images/pony-003.svg"
     ],
@@ -112,7 +112,7 @@
       "magical",
       "purple"
     ],
-    "imageUrl": "/images/unicorn-001.svg",
+    "imageUrl": "/images/unicorn-001.png",
     "images": [
       "/images/unicorn-001.svg"
     ],
@@ -144,7 +144,7 @@
       "luxury",
       "collectible"
     ],
-    "imageUrl": "/images/unicorn-002.svg",
+    "imageUrl": "/images/unicorn-002.png",
     "images": [
       "/images/unicorn-002.svg"
     ],
@@ -176,7 +176,7 @@
       "collectible",
       "friends"
     ],
-    "imageUrl": "/images/unicorn-003.svg",
+    "imageUrl": "/images/unicorn-003.png",
     "images": [
       "/images/unicorn-003.svg"
     ],
@@ -208,7 +208,7 @@
       "gown",
       "purple"
     ],
-    "imageUrl": "/images/princess-001.svg",
+    "imageUrl": "/images/princess-001.png",
     "images": [
       "/images/princess-001.svg"
     ],
@@ -240,7 +240,7 @@
       "figures",
       "3D"
     ],
-    "imageUrl": "/images/princess-002.svg",
+    "imageUrl": "/images/princess-002.png",
     "images": [
       "/images/princess-002.svg"
     ],
@@ -272,7 +272,7 @@
       "DIY",
       "creative"
     ],
-    "imageUrl": "/images/princess-003.svg",
+    "imageUrl": "/images/princess-003.png",
     "images": [
       "/images/princess-003.svg"
     ],
@@ -304,7 +304,7 @@
       "reading",
       "collection"
     ],
-    "imageUrl": "/images/princess-004.svg",
+    "imageUrl": "/images/princess-004.png",
     "images": [
       "/images/princess-004.svg"
     ],
@@ -337,7 +337,7 @@
       "adventure",
       "boys"
     ],
-    "imageUrl": "/images/bow-001.svg",
+    "imageUrl": "/images/bow-001.png",
     "images": [
       "/images/bow-001.svg"
     ],
@@ -370,7 +370,7 @@
       "quiver",
       "boys"
     ],
-    "imageUrl": "/images/bow-002.svg",
+    "imageUrl": "/images/bow-002.png",
     "images": [
       "/images/bow-002.svg"
     ],
@@ -404,7 +404,7 @@
       "outdoor",
       "boys"
     ],
-    "imageUrl": "/images/bow-003.svg",
+    "imageUrl": "/images/bow-003.png",
     "images": [
       "/images/bow-003.svg"
     ],
@@ -437,7 +437,7 @@
       "educational",
       "collection"
     ],
-    "imageUrl": "/images/rock-001.svg",
+    "imageUrl": "/images/rock-001.png",
     "images": [
       "/images/rock-001.svg"
     ],
@@ -470,7 +470,7 @@
       "STEM",
       "grow"
     ],
-    "imageUrl": "/images/rock-002.svg",
+    "imageUrl": "/images/rock-002.png",
     "images": [
       "/images/rock-002.svg"
     ],
@@ -503,7 +503,7 @@
       "science",
       "STEM"
     ],
-    "imageUrl": "/images/rock-003.svg",
+    "imageUrl": "/images/rock-003.png",
     "images": [
       "/images/rock-003.svg"
     ],
@@ -536,7 +536,7 @@
       "family",
       "adventure"
     ],
-    "imageUrl": "/images/game-001.svg",
+    "imageUrl": "/images/game-001.png",
     "images": [
       "/images/game-001.svg"
     ],
@@ -569,7 +569,7 @@
       "1000 piece",
       "art"
     ],
-    "imageUrl": "/images/game-002.svg",
+    "imageUrl": "/images/game-002.png",
     "images": [
       "/images/game-002.svg"
     ],
@@ -602,7 +602,7 @@
       "family",
       "strategy"
     ],
-    "imageUrl": "/images/game-003.svg",
+    "imageUrl": "/images/game-003.png",
     "images": [
       "/images/game-003.svg"
     ],
@@ -635,7 +635,7 @@
       "unicorn",
       "party game"
     ],
-    "imageUrl": "/images/game-004.svg",
+    "imageUrl": "/images/game-004.png",
     "images": [
       "/images/game-004.svg"
     ],
@@ -686,9 +686,9 @@
   {
     "id": "audio-001",
     "name": "The Magical Pony Kingdom â€” Audiobook",
-    "price": 9.99,
+    "price": 0.0,
     "originalPrice": 14.99,
-    "discount": 33,
+    "discount": 14.99,
     "description": "Journey into the enchanted Pony Kingdom where Rainbow Sparkle and her friends embark on a quest to save the Crystal Meadows! This beautifully narrated audiobook runs 2 hours and 15 minutes, featuring original music and sound effects. Perfect for bedtime listening ages 4-10. Includes a digital activity booklet.",
     "shortDescription": "2hr 15min narrated adventure in the Pony Kingdom",
     "category": "audiobooks",
@@ -700,7 +700,7 @@
       "kids",
       "story"
     ],
-    "imageUrl": "/images/audio-001.svg",
+    "imageUrl": "/images/audio-001.png",
     "images": [
       "/images/audio-001.svg"
     ],
@@ -715,7 +715,8 @@
     "isAudiobook": true,
     "audioPreviewUrl": "/audio/preview-pony-kingdom.mp3",
     "sku": "AUD-001",
-    "createdAt": "2026-02-01T00:00:00Z"
+    "createdAt": "2026-02-01T00:00:00Z",
+    "downloadUrl": "/audio/audiobook-001.mp3"
   },
   {
     "id": "audio-002",
@@ -734,7 +735,7 @@
       "full-cast",
       "kids"
     ],
-    "imageUrl": "/images/audio-002.svg",
+    "imageUrl": "/images/audio-002.png",
     "images": [
       "/images/audio-002.svg"
     ],
@@ -749,7 +750,8 @@
     "isAudiobook": true,
     "audioPreviewUrl": "/audio/preview-princess-unicorn.mp3",
     "sku": "AUD-002",
-    "createdAt": "2026-02-01T00:00:00Z"
+    "createdAt": "2026-02-01T00:00:00Z",
+    "downloadUrl": "/audio/audiobook-002.mp3"
   },
   {
     "id": "audio-003",
@@ -768,7 +770,7 @@
       "educational",
       "gems"
     ],
-    "imageUrl": "/images/audio-003.svg",
+    "imageUrl": "/images/audio-003.png",
     "images": [
       "/images/audio-003.svg"
     ],
@@ -783,7 +785,8 @@
     "isAudiobook": true,
     "audioPreviewUrl": "/audio/preview-rock-hunters.mp3",
     "sku": "AUD-003",
-    "createdAt": "2026-02-01T00:00:00Z"
+    "createdAt": "2026-02-01T00:00:00Z",
+    "downloadUrl": "/audio/audiobook-003.mp3"
   },
   {
     "id": "audio-004",
@@ -802,7 +805,7 @@
       "sleep",
       "stories"
     ],
-    "imageUrl": "/images/audio-004.svg",
+    "imageUrl": "/images/audio-004.png",
     "images": [
       "/images/audio-004.svg"
     ],
@@ -817,7 +820,8 @@
     "isAudiobook": true,
     "audioPreviewUrl": "/audio/preview-bedtime-unicorns.mp3",
     "sku": "AUD-004",
-    "createdAt": "2026-02-01T00:00:00Z"
+    "createdAt": "2026-02-01T00:00:00Z",
+    "downloadUrl": "/audio/audiobook-004.mp3"
   },
   {
     "id": "audio-005",
@@ -836,7 +840,7 @@
       "boys",
       "adventure"
     ],
-    "imageUrl": "/images/audio-005.svg",
+    "imageUrl": "/images/audio-005.png",
     "images": [
       "/images/audio-005.svg"
     ],
@@ -851,7 +855,8 @@
     "isAudiobook": true,
     "audioPreviewUrl": "/audio/preview-archery-champion.mp3",
     "sku": "AUD-005",
-    "createdAt": "2026-02-01T00:00:00Z"
+    "createdAt": "2026-02-01T00:00:00Z",
+    "downloadUrl": "/audio/audiobook-005.mp3"
   },
   {
     "id": "classic-car-001",
@@ -871,7 +876,7 @@
       "restored",
       "collector"
     ],
-    "imageUrl": "/images/classic-car-001.svg",
+    "imageUrl": "/images/classic-car-001.png",
     "images": [
       "/images/classic-car-001.svg"
     ],
@@ -904,7 +909,7 @@
       "V8",
       "fastback"
     ],
-    "imageUrl": "/images/classic-car-002.svg",
+    "imageUrl": "/images/classic-car-002.png",
     "images": [
       "/images/classic-car-002.svg"
     ],

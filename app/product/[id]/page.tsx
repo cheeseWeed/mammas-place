@@ -73,6 +73,18 @@ export default function ProductDetailPage() {
     router.push('/checkout');
   };
 
+  const handleDownload = () => {
+    if (product.downloadUrl) {
+      const link = document.createElement('a');
+      link.href = product.downloadUrl;
+      link.download = product.name.replace(/[^a-z0-9]/gi, '_') + '.mp3';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast(`Downloading ${product.name}...`, 'success', '📥');
+    }
+  };
+
   const emojiMap: Record<string, string> = {
     ponies: '🐴',
     unicorns: '🦄',
@@ -226,23 +238,37 @@ export default function ProductDetailPage() {
 
               {/* Action Buttons - from your sketch */}
               <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                <button
-                  onClick={handleBuyNow}
-                  disabled={!product.inStock}
-                  className="flex-1 bg-yellow-400 hover:bg-yellow-300 active:bg-yellow-500 disabled:bg-gray-200 disabled:text-gray-600 disabled:cursor-not-allowed disabled:hover:scale-100 text-purple-900 font-black py-4 rounded-2xl text-lg shadow-md transition-all hover:scale-105 flex items-center justify-center gap-2"
-                >
-                  ⚡ BUY NOW
-                </button>
-                <button
-                  onClick={handleAddToCart}
-                  disabled={!product.inStock}
-                  className="flex-1 bg-purple-700 hover:bg-purple-600 active:bg-purple-800 disabled:bg-gray-200 disabled:text-gray-600 disabled:cursor-not-allowed disabled:hover:scale-100 text-white font-black py-4 rounded-2xl text-lg shadow-md transition-all hover:scale-105 flex items-center justify-center gap-2"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                  ADD TO CART
-                </button>
+                {product.isAudiobook && product.downloadUrl ? (
+                  <button
+                    onClick={handleDownload}
+                    className="w-full bg-green-600 hover:bg-green-500 active:bg-green-700 text-white font-black py-4 rounded-2xl text-lg shadow-md transition-all hover:scale-105 flex items-center justify-center gap-2"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    DOWNLOAD AUDIOBOOK
+                  </button>
+                ) : (
+                  <>
+                    <button
+                      onClick={handleBuyNow}
+                      disabled={!product.inStock}
+                      className="flex-1 bg-yellow-400 hover:bg-yellow-300 active:bg-yellow-500 disabled:bg-gray-200 disabled:text-gray-600 disabled:cursor-not-allowed disabled:hover:scale-100 text-purple-900 font-black py-4 rounded-2xl text-lg shadow-md transition-all hover:scale-105 flex items-center justify-center gap-2"
+                    >
+                      ⚡ BUY NOW
+                    </button>
+                    <button
+                      onClick={handleAddToCart}
+                      disabled={!product.inStock}
+                      className="flex-1 bg-purple-700 hover:bg-purple-600 active:bg-purple-800 disabled:bg-gray-200 disabled:text-gray-600 disabled:cursor-not-allowed disabled:hover:scale-100 text-white font-black py-4 rounded-2xl text-lg shadow-md transition-all hover:scale-105 flex items-center justify-center gap-2"
+                    >
+                      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                      ADD TO CART
+                    </button>
+                  </>
+                )}
               </div>
 
               {/* Description - Explanation as in your sketch */}

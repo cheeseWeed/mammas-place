@@ -66,7 +66,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 shadow-xl" style={{background: 'linear-gradient(135deg, #1a0533 0%, #3b0764 40%, #581c87 70%, #2d0550 100%)'}}>
+    <header className="fixed top-0 left-0 right-0 z-[100] shadow-xl" style={{background: 'linear-gradient(135deg, #1a0533 0%, #3b0764 40%, #581c87 70%, #2d0550 100%)'}}>
       {/* DEMO SITE WARNING */}
       <div className="text-gray-900 font-black text-xs sm:text-sm text-center py-2 px-4 border-b-2 border-orange-600" style={{background: 'linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)'}}>
         🎓 DEMO SITE - For Learning & Portfolio Purposes Only - No Real Transactions

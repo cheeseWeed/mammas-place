@@ -47,10 +47,21 @@ next-env.d.ts
 
 # screenshots and demo docs
 *.png
+!public/images/*.png
 *-experience.md
 *-transcript.md
 demo-warnings*.md
 warning-locations.md
+
+# grok session data (contains auth cookies — never commit)
+grok_session.json
+grok_session_data/
+
+# failed SVG experiments
+public/images/banana.svg
+public/images/paint-horse.svg
+public/images/pig.svg
+public/images/squirrel-horse.svg
 
 # Windows reserved filename
 nul
