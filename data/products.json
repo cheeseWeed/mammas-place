@@ -713,7 +713,7 @@
     "isComingSoon": false,
     "availableOnWebsite": true,
     "isAudiobook": true,
-    "audioPreviewUrl": "/audio/preview-pony-kingdom.mp3",
+    "audioPreviewUrl": "/audio/audiobook-001.mp3",
     "sku": "AUD-001",
     "createdAt": "2026-02-01T00:00:00Z",
     "downloadUrl": "/audio/audiobook-001.mp3"
@@ -748,7 +748,7 @@
     "isComingSoon": false,
     "availableOnWebsite": true,
     "isAudiobook": true,
-    "audioPreviewUrl": "/audio/preview-princess-unicorn.mp3",
+    "audioPreviewUrl": "/audio/audiobook-002.mp3",
     "sku": "AUD-002",
     "createdAt": "2026-02-01T00:00:00Z",
     "downloadUrl": "/audio/audiobook-002.mp3"
@@ -783,7 +783,7 @@
     "isComingSoon": false,
     "availableOnWebsite": true,
     "isAudiobook": true,
-    "audioPreviewUrl": "/audio/preview-rock-hunters.mp3",
+    "audioPreviewUrl": "/audio/audiobook-003.mp3",
     "sku": "AUD-003",
     "createdAt": "2026-02-01T00:00:00Z",
     "downloadUrl": "/audio/audiobook-003.mp3"
@@ -818,7 +818,7 @@
     "isComingSoon": false,
     "availableOnWebsite": true,
     "isAudiobook": true,
-    "audioPreviewUrl": "/audio/preview-bedtime-unicorns.mp3",
+    "audioPreviewUrl": "/audio/audiobook-004.mp3",
     "sku": "AUD-004",
     "createdAt": "2026-02-01T00:00:00Z",
     "downloadUrl": "/audio/audiobook-004.mp3"
@@ -853,7 +853,7 @@
     "isComingSoon": false,
     "availableOnWebsite": true,
     "isAudiobook": true,
-    "audioPreviewUrl": "/audio/preview-archery-champion.mp3",
+    "audioPreviewUrl": "/audio/audiobook-005.mp3",
     "sku": "AUD-005",
     "createdAt": "2026-02-01T00:00:00Z",
     "downloadUrl": "/audio/audiobook-005.mp3"
