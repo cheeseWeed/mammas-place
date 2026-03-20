@@ -5,6 +5,8 @@ import { CartProvider } from "@/context/CartContext";
 import { ToastProvider } from "@/context/ToastContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { AdminAuthProvider } from "@/context/AdminAuthContext";
+import { PasscodeProvider } from "@/context/PasscodeContext";
+import PasscodeGate from "@/components/PasscodeGate";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/react";
@@ -35,6 +37,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-purple-50 min-h-screen`}
       >
+        <PasscodeProvider>
+        <PasscodeGate>
         <AdminAuthProvider>
         <AuthProvider>
         <CartProvider>
@@ -48,6 +52,8 @@ export default function RootLayout({
         </CartProvider>
         </AuthProvider>
         </AdminAuthProvider>
+        </PasscodeGate>
+        </PasscodeProvider>
         <Analytics />
         <SpeedInsights />
       </body>
