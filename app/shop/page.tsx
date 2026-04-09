@@ -166,7 +166,20 @@ function ShopContent() {
                       'tires-parts': '🛞',
                       'balls': '⚽',
                       'exercise-equipment': '🏋️',
-                      'outdoor-recreation': '⛺'
+                      'outdoor-recreation': '⛺',
+                      'standalone': '🎵',
+                      'bedtime-explorers': '🌙',
+                      'rock-hunters': '🪨',
+                      'explorer-radio': '📻',
+                      'bedtime-travelers': '✈️',
+                      'scripture-study-companion': '📖',
+                      'faith': '🕊️',
+                      'repentance': '🔄',
+                      'atonement': '✝️',
+                      'charity': '❤️',
+                      'service': '🤝',
+                      'easter': '🌅',
+                      'patriarchalBlessings': '📜',
                     };
                     const emoji = subcategoryEmojis[subcat] || '▸';
                     return (
@@ -217,6 +230,41 @@ function ShopContent() {
 
         {/* Product Grid - scrollable list */}
         <div className="flex-1">
+          {/* Horizontal subcategory pills - shown above product grid */}
+          {selectedCategory !== 'all' && subcategories.length > 0 && (
+            <div className="mb-4 flex flex-wrap gap-2">
+              <button
+                onClick={() => setSelectedSubcategory('all')}
+                className={`px-4 py-2 rounded-full text-sm font-bold transition-all ${selectedSubcategory === 'all' ? 'bg-purple-600 text-white shadow-md' : 'bg-white text-gray-600 border border-purple-200 hover:bg-purple-50'}`}
+              >
+                All
+              </button>
+              {subcategories.map((subcat) => {
+                const pillEmojis: Record<string, string> = {
+                  'ponies': '🐴', 'unicorns': '🦄', 'princesses': '👑', 'bow-and-arrow': '🏹',
+                  'rock-collections': '💎', 'board-games': '🎲', 'classic-cars': '🏎️', 'tires-parts': '🛞',
+                  'balls': '⚽', 'exercise-equipment': '🏋️', 'outdoor-recreation': '⛺',
+                  'standalone': '🎵', 'bedtime-explorers': '🌙', 'rock-hunters': '🪨',
+                  'explorer-radio': '📻', 'bedtime-travelers': '✈️', 'scripture-study-companion': '📖',
+                  'faith': '🕊️', 'repentance': '🔄', 'atonement': '✝️', 'charity': '❤️',
+                  'service': '🤝', 'easter': '🌅', 'patriarchalBlessings': '📜',
+                  'pantry': '🫙', 'snacks': '🍿', 'home-services': '🏠', 'personal-services': '💇',
+                  'lawn-garden': '🌿', 'home-decor': '🖼️',
+                  'breakfast': '🥞', 'lunch': '🥪', 'dinner': '🍝', 'dessert': '🍰', 'healthy': '🥗',
+                };
+                const emoji = pillEmojis[subcat] || '';
+                return (
+                  <button
+                    key={subcat}
+                    onClick={() => setSelectedSubcategory(subcat)}
+                    className={`px-4 py-2 rounded-full text-sm font-bold capitalize transition-all ${selectedSubcategory === subcat ? 'bg-purple-600 text-white shadow-md' : 'bg-white text-gray-600 border border-purple-200 hover:bg-purple-50'}`}
+                  >
+                    {emoji && `${emoji} `}{subcat.replace(/-/g, ' ')}
+                  </button>
+                );
+              })}
+            </div>
+          )}
           {loading ? (
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-4">
               {Array.from({ length: 6 }).map((_, i) => (
