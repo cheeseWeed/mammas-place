@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Losing Yourself to Find Yourself</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">🤝 Service</span>
+    <h1>Losing Yourself to Find Yourself</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>The Hook</h2>
+    <p>One of the strangest things Jesus ever said is also one of the most verified by experience: the person who tries hardest to protect and advance themselves tends to feel hollow, while the person who forgets themselves in service to others tends to feel strangely full. This is not a metaphor or a motivational slogan. Jesus stated it as a law. This file explores what that law actually means, what it looks like in practice, and what it is <em>not</em> — because self-forgetfulness is frequently confused with self-erasure, and those are very different things.</p>
+    <hr>
+    <h2>The Paradox in Scripture</h2>
+    <h3>Jesus states the law directly</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/16?id=p24-p26#p24" target="_blank">Matthew 16:24–26</a></p>
+    <p><strong>What to look for:</strong> Jesus says three things in sequence: deny yourself, take up your cross, follow me. Then the paradox: "whosoever will save his life shall lose it: and whosoever will lose his life for my sake shall find it." Verse 26 adds the accounting question: what does it profit a man if he gains the whole world and loses his own soul? Notice he is not talking about martyrdom only — he is talking about an orientation toward life.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Jesus connects losing your life with following him specifically. This is not just self-sacrifice for any cause — it is oriented toward Christ. What does that direction do to the meaning of the loss?</li><li>"Saving your life" in this verse seems to mean grasping for self-preservation, comfort, status. What does that look like in ordinary 21st-century terms?</li><li>Have you ever experienced the paradox personally — a moment when giving something up, or giving yourself away, produced something you could not have obtained by keeping?</li></ul>
+    <hr>
+    <h3>John's account — the grain of wheat</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/12?id=p24-p26#p24" target="_blank">John 12:24–26</a></p>
+    <p><strong>What to look for:</strong> Jesus uses a farming image: a grain of wheat that stays a grain of wheat produces nothing. A grain of wheat that falls into the ground and <em>dies</em> produces much fruit. He then applies it directly to his disciples: "He that loveth his life shall lose it; and he that hateth his life in this world shall keep it unto life eternal." The word "hateth" here means to value less by comparison — not to despise.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The seed has to give up being a seed in order to become wheat. Is there something about your current self — a preference, a habit, a self-image — that may need to be given up in order to become what you are meant to be?</li><li>Jesus says this just before his own death, which is the ultimate enactment of the principle. How does his example reframe what he is asking of us?</li><li>"He that loveth his life shall lose it" — what does it mean to love your life in the way Jesus warns against? Is there a way to cherish your life that is healthy and good?</li></ul>
+    <hr>
+    <h3>Paul's account of his own experience</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/philip/1?id=p21#p21" target="_blank">Philippians 1:21</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/gal/2?id=p20#p20" target="_blank">Galatians 2:20</a></p>
+    <p><strong>What to look for:</strong> In Philippians, Paul says "to live is Christ, and to die is gain" — meaning Christ is what living is <em>for</em>. In Galatians, he goes further: "I am crucified with Christ: nevertheless I live; yet not I, but Christ liveth in me." This is not Paul erasing himself — he is still clearly <em>there</em>, writing, arguing, loving his converts. But his center of gravity has moved outside himself.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"Not I, but Christ liveth in me" — what does Paul mean? Is he saying he no longer has a personality, preferences, or a will of his own?</li><li>Paul was a distinctive, sometimes difficult, highly individual personality. How do you reconcile "not I" with the fact that Paul is unmistakably himself on every page he writes?</li><li>What would it look like for you to say honestly: "To live is Christ"? What would have to change? What would you gain?</li></ul>
+    <hr>
+    <h2>What Self-Forgetfulness Actually Means</h2>
+    <h3>It is not low self-esteem — it is outward focus</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/7?id=p44-p47#p44" target="_blank">Moroni 7:44–47</a></p>
+    <p><strong>What to look for:</strong> Mormon's description of charity includes "thinketh no evil" and "rejoiceth not in iniquity." But notice what it does not say — it does not say charity thinks poorly of itself, or that it cancels the self. Charity is described as an active, outward-facing force: it suffereth long, it is kind, it rejoiceth in truth. The person filled with charity is not a hollow shell — they are a fully engaged person whose attention has shifted from themselves to others.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Mormon says "whoso is found possessed of" charity at the last day will be well. Charity is described as something you <em>possess</em> — a quality of character, not just an act. How does a person come to possess it rather than just perform it?</li><li>Think of someone you know who has this quality — a genuine, interested, warm attention to other people. What do you notice about their level of self-consciousness? Their energy levels? Their joy?</li><li>Verse 47 says charity is "the pure love of Christ." Is charity primarily something we feel toward others, or something Christ feels and we borrow? Can it be both?</li></ul>
+    <hr>
+    <h3>Elder Maxwell on consecration as total offering</h3>
+    <p><strong>Read:</strong> <a href="https://speeches.byu.edu/talks/neal-a-maxwell/consecrate-thy-performance/" target="_blank">Consecrate Thy Performance — Neal A. Maxwell, BYU 2002</a></p>
+    <p><strong>What to look for:</strong> Maxwell describes consecration as the "last, great challenge" of discipleship — the willingness to place the whole self, not just our surplus, on the altar. He argues that withholding the will is the last form of self-protection we give up, and that this is what makes consecration so difficult. Look for his discussion of the word "all" in the scriptures — how it keeps appearing as the required measure.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Maxwell says we often give God our time, our money, even our grief — but we protect the will. Why is surrendering the will so hard? What are we afraid will happen if we do?</li><li>He frames self-forgetfulness not as self-destruction but as re-centering: the self is not gone, it is redirected. Does that framing help? Does it trouble you?</li><li>Maxwell observed that the submission of one's will is really the only uniquely personal thing we have to give to God. Everything else — time, talents, money — ultimately belongs to him already. What does it mean that your will is the one truly personal offering?</li></ul>
+    <hr>
+    <h3>Elder Maxwell on "meekness" — strength turned outward</h3>
+    <p><strong>Read:</strong> Meekness — A Dimension of True Discipleship — Neal A. Maxwell, BYU 1983.</p>
+    <p><em>Search for this talk at https://speeches.byu.edu — search "Maxwell meekness" to locate the transcript.</em></p>
+    <p><strong>What to look for:</strong> Maxwell argues that meekness is not weakness but a specific orientation of strength — power under control, self placed in proper perspective. He distinguishes between self-denial and self-forgetfulness, and argues that the meek are actually more effective because they are not distracted by managing their own ego.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Maxwell distinguishes between the person who represses the self (self-denial as suppression) and the person who transcends self-focus (self-forgetfulness as freedom). What is the practical difference between those two?</li><li>He notes that Moses was described as the meekest man on earth (Numbers 12:3) — yet Moses was also bold, prophetic, and confrontational when needed. How do those things coexist?</li><li>What is one area of your life where ego-management — protecting your image, worrying about how you appear — is costing you energy you could use for others?</li></ul>
+    <hr>
+    <h2>The Paradox in Practice</h2>
+    <h3>President Benson on losing yourself in God's service</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/1985/10/born-of-god" target="_blank">Born of God — Ezra Taft Benson, October 1985</a></p>
+    <p><strong>What to look for:</strong> Benson describes the transformation that comes when a person is "born of God" — a change in orientation, not just behavior. He notes that a person centered in Christ begins to live outward rather than inward. The burden of self-maintenance lifts. Look for his discussion of what it means to have Christ's image in your countenance.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Benson describes a kind of lightness that comes to people who have had this transformation. Have you observed this in someone? What does it actually look like in a real person's face and manner?</li><li>"Born of God" is a transformation, not an achievement. That means you do not arrive at self-forgetfulness by trying harder to stop thinking about yourself. How then does it come?</li><li>Benson's central point: the most important thing we can do is let God transform us from the inside out — not self-improvement in the human sense, but a divine gift of new orientation. How do you position yourself to receive a transformation like that?</li></ul>
+    <hr>
+    <h2>Closing Reflection</h2>
+    <p>"Losing yourself" is not a counsel to become a doormat, to have no opinions, or to disappear into others' needs until you have nothing left. It is a counsel about the center of gravity of your life. The self that grasps, hoards, manages, and protects itself is the self that Jesus says will lose itself. The self that is given — offered outward in service, in love, in following Christ — is the self that gets to keep going.</p>
+    <p>Paul said it one way: "Not I, but Christ." Elder Maxwell said it another: we submit the will, the last thing we truly own. Jesus said it most directly: lose it, and you will find it.</p>
+    <p><strong>For personal reflection:</strong> Where is your center of gravity right now? When you make decisions about your time, attention, and energy — what are you protecting? What would it feel like to loosen that grip, even slightly, in one specific area?</p>
+    <hr>
+    <p><em>Previous: <a href="SRVS-01-why-we-serve.md" target="_blank">SRVS-01 — Why We Serve</a></em></p>
+    <p><em>Next: <a href="SRVS-03-small-and-simple-things.md" target="_blank">SRVS-03 — Small and Simple Things</a></em></p>
+  </div>
+</body>
+</html>

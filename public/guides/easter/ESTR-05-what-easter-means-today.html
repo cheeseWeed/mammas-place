@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Easter Means Today</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">🌅 Easter</span>
+    <h1>What Easter Means Today</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>Hook: We Do Not Have an Empty Cross</h2>
+    <p>Many Christian traditions display the cross as the central symbol of their faith — often empty, signifying the resurrection. Latter-day Saints do not use the cross as a devotional symbol. We have instead a living Christ, a present Savior, and a testimony not of a creed about the past but of a living relationship in the present.</p>
+    <p>Easter is the annual occasion when the whole Christian world pauses to ask the question we should be asking every day: is he risen? And if he is — what does that mean for how we live right now?</p>
+    <p>This file addresses why Latter-day Saint Christians celebrate Easter, what the proclamation of the resurrection means for the Church today, and what it looks like to live as a person whose hope rests on a physical, actual, present resurrection.</p>
+    <hr>
+    <h2>Why LDS Christians Celebrate Easter</h2>
+    <h3>Easter is not in the Doctrine and Covenants</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/20?id=p31#p31" target="_blank">John 20:31</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/25?id=p26#p26" target="_blank">2 Nephi 25:26</a></p>
+    <p><strong>What to look for:</strong> John's stated purpose for his whole Gospel is this verse: "these are written, that ye might believe that Jesus is the Christ, the Son of God; and that believing ye might have life through his name." Nephi says: "we talk of Christ, we rejoice in Christ, we preach of Christ, we prophesy of Christ, and we write according to our prophecies, that our children may know to what source they may look for a remission of their sins." Both texts frame the entire enterprise of testimony as being about him — living, risen, present.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>John says his purpose was "that ye might believe" and "have life." The Gospel is written as a tool for faith. How do you use John's Gospel that way — not just reading it, but believing through it?</li><li>Nephi's summary — "we talk, rejoice, preach, prophesy, write of Christ" — lists five modes of engagement. Which of these five do you do most? Which do you do least?</li><li>Easter is not a feast day commanded in the Doctrine and Covenants. But the resurrection is the most central event in Latter-day Saint theology. What does it mean to celebrate Easter as a choice rather than an obligation?</li></ul>
+    <hr>
+    <h3>The sacrament as weekly Easter</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/11?id=p26#p26" target="_blank">1 Corinthians 11:26</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/20?id=p77#p77" target="_blank">D&C 20:77</a></p>
+    <p><strong>What to look for:</strong> Paul says: "For as often as ye eat this bread, and drink this cup, ye do shew the Lord's death till he come." The sacrament is a proclamation — a public declaration that Christ died and that he will come again. The sacrament prayer's promise — "always have his Spirit" — is a present-tense resurrection promise. Every Sunday is, in miniature, an Easter.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"Till he come" — the sacrament looks backward to the cross and forward to the Second Coming simultaneously. How does taking the sacrament connect you to both ends of that arc?</li><li>The sacrament prayer doesn't mention the resurrection explicitly, but Paul says it "shows" the Lord's death. Showing the death implies the resurrection — because you are showing it as completed, looked back on. How does that framing change how you prepare for the sacrament?</li><li>If every Sunday is a small Easter, what does that mean for how ordinary or extraordinary Sunday should feel?</li></ul>
+    <hr>
+    <h2>The Proclamation on the Resurrection</h2>
+    <h3>The Living Christ — read it as a whole</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/the-living-christ-the-testimony-of-the-apostles" target="_blank">The Living Christ: The Testimony of the Apostles</a></p>
+    <p><strong>What to look for:</strong> Read the entire text slowly. Notice the present tense: "He lives." "He will return." "He is the light, life, and hope of the world." This is not a historical account of someone who once lived — it is a testimony about someone who is now alive. The Apostles sign their names as witnesses. The document was issued on January 1, 2000 — chosen as the theological statement the Church wished to make at the opening of a new millennium.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The document opens: "As we commemorate the birth of Jesus Christ two millennia ago, we offer our testimony of the reality of His matchless life and the infinite virtue of His great atoning sacrifice." Every claim in this document is tied to the Atonement. How is the resurrection inseparable from the Atonement — not a separate event but its completion?</li><li>Every major statement uses present tense. "He lives." What is the difference — in how you pray, how you study, how you face difficulty — between believing he lived and believing he lives?</li><li>The document ends with: "He is the light, life, and hope of the world. His way is the path that leads to happiness in this life and eternal life in the world to come." In what area of your life do you most need him to be your light right now, rather than just your historical example?</li></ul>
+    <hr>
+    <h3>What "He is risen" changes about everything else</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/15?id=p14,p17-p19#p14" target="_blank">1 Corinthians 15:14, 17–19</a></p>
+    <p><strong>What to look for:</strong> Paul is brutally clear about the stakes: "if Christ be not risen, then is our preaching vain, and your faith is also vain" (v. 14). "And if Christ be not raised, your faith is vain; ye are yet in your sins" (v. 17). "If in this life only we have hope in Christ, we are of all men most miserable" (v. 19). Everything depends on the resurrection being actually, physically, historically real.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Paul does not soften this. If the resurrection is false, the faith is worthless. That is not a comfortable claim. How do you sit with the fact that your entire hope rests on the historical reality of one event?</li><li>"Ye are yet in your sins" — if there is no resurrection, the Atonement is also empty. The resurrection is not a postscript to the Atonement; it is its validation. What does it mean that forgiveness itself depends on an empty tomb?</li><li>"We are of all men most miserable." Paul means: if this is a myth, Christians have given up everything for nothing. Have you ever felt the full weight of what you have staked on this being true? What does that feel like?</li></ul>
+    <hr>
+    <h2>Gordon B. Hinckley on Why Easter Matters</h2>
+    <h3>Easter as the hinge of history</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/1999/04/he-is-not-here-but-is-risen" target="_blank">He Is Not Here, but Is Risen — Gordon B. Hinckley, April 1999 General Conference</a></p>
+    <p><strong>What to look for:</strong> Hinckley calls the resurrection "the greatest event in human history" — not a close second to Christmas, not a tradition, but the hinge on which all of human hope turns. He bears witness plainly: Christ "broke the bonds of death" and "in everlasting immortality He arose the third day from the rock-hewn grave." He then adds the Restoration's distinct contribution: "There is another witness. This biblical companion, the Book of Mormon, testifies that He appeared not only to those of the Old World but also to those of the New." The apostles' testimony is "clear" and "secure" — secured by people who gave their lives in affirmation of it.</p>
+    <hr>
+    <h3>Hinckley on the unique LDS testimony of the risen Christ</h3>
+    <p>In the same 1999 talk, Hinckley makes the point that Latter-day Saint resurrection testimony rests on more than the four Gospels — it rests on the Book of Mormon's witness of Christ appearing to the Nephites after his resurrection, and on the First Vision, in which the Father and the Son appeared to Joseph Smith with physical, glorified, resurrected bodies. The resurrection is not just a belief Latter-day Saints hold; it is something they testify was directly demonstrated in this dispensation.</p>
+    <hr>
+    <h2>What Living as a Resurrection-Hope Person Looks Like</h2>
+    <h3>Paul on walking in newness of life</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/rom/6?id=p4-p11#p4" target="_blank">Romans 6:4–11</a></p>
+    <p><strong>What to look for:</strong> Paul argues that baptism is a participation in the resurrection — we are buried and raised with Christ. He draws out the practical consequence: "Likewise reckon ye also yourselves to be dead indeed unto sin, but alive unto God through Jesus Christ our Lord" (v. 11). The resurrection changes how you understand your own identity, not just your afterlife.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"Walk in newness of life" (v. 4). Not newness of doctrine. Not newness of argument. Newness of life — a qualitatively different way of living. What is one area of your daily life that does not yet reflect resurrection newness?</li><li>"Reckon ye yourselves to be dead indeed unto sin" — this is a deliberate act of accounting, not an emotional feeling. What does it mean to deliberately count yourself as someone who has already died to old patterns?</li><li>If you are already — covenantally, through baptism — raised with Christ, what is the gap between that identity and how you actually live today?</li></ul>
+    <hr>
+    <h3>The resurrection and grief</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/1-thes/4?id=p13-p18#p13" target="_blank">1 Thessalonians 4:13–18</a></p>
+    <p><strong>What to look for:</strong> Paul writes to people who are grieving the deaths of fellow members before the Second Coming. He does not tell them not to grieve — he tells them not to grieve "as others which have no hope." The resurrection changes the character of grief, not its presence. He promises those who have died in Christ will rise first.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"Sorrow not, even as others which have no hope." The resurrection does not eliminate grief — it changes its shape. What is the difference between grief with resurrection hope and grief without it?</li><li>He says those who have died will rise first at the coming of Christ. What does it mean to you that the dead in Christ are not left behind — they go first?</li><li>Is there someone you have lost whose resurrection you believe in? What does holding that belief do to how you carry the loss?</li></ul>
+    <hr>
+    <h3>What resurrection hope changes about how you treat your body</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/6?id=p19-p20#p19" target="_blank">1 Corinthians 6:19–20</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/93?id=p33-p34#p33" target="_blank">D&C 93:33–34</a></p>
+    <p><strong>What to look for:</strong> Paul says the body is the temple of the Holy Ghost and that you are to "glorify God in your body." D&C 93 teaches that "spirit and element, inseparably connected, receive a fulness of joy." The body is not a prison the spirit escapes — it is the thing the spirit needs to receive fulness. The resurrection restores and glorifies the body because the body was always God's intention.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"Fulness of joy" requires the inseparable union of spirit and body. This is the Latter-day Saint theology of the body — it is not a problem to be overcome but a prerequisite for fulness. How does that change how you care for or think about your physical body?</li><li>Paul says to "glorify God in your body." What would it look like, concretely, to glorify God through how you treat the physical body you have been given?</li><li>The resurrection is the permanent restoration of the body. Knowing that this physical life, in a glorified form, continues forever — what does that make of the choices you make about your body now?</li></ul>
+    <hr>
+    <h2>Conference Voices</h2>
+    <h3>Elder Holland on the resurrection as present ground</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2009/04/none-were-with-him" target="_blank">None Were with Him — Jeffrey R. Holland, April 2009 General Conference</a>. Holland's Holy Week talk asks why the Father withdrew his presence from Christ in the final hours — and his answer is that Christ had to bear the full weight alone "so that we would never have to face such utter aloneness." The resurrection is the completion of that argument: Christ descended below all things so that he could rise above all things, and death — the final enemy — is the thing he defeated. We do not merely remember that he rose; we live as people for whom the worst thing has already been undone.</p>
+    <h3>President Nelson on Easter and the Restoration</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2021/04/49nelson" target="_blank">Christ Is Risen; Faith in Him Will Move Mountains — Russell M. Nelson, April 2021 General Conference</a>. Nelson connects Easter directly to the ongoing work of the Restoration — that the Book of Mormon, the First Vision, and the restored gospel are additional witnesses of the resurrection that God himself provided. Latter-day Saints do not merely believe in the resurrection; they testify of it from multiple sources across two hemispheres and two millennia.</p>
+    <h3>President Nelson — "An Easter Invitation" (<em>The Friend</em>, April 2025)</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/friend/2025/04/an-easter-invitation" target="_blank">An Easter Invitation — President Russell M. Nelson, <em>The Friend</em>, April 2025</a></p>
+    <p><strong>What to look for:</strong> President Nelson connects Easter directly to forgiveness — he says there is "no better way to honor Jesus Christ this Easter" than to identify one person to forgive. He frames forgiveness as an Easter gift: just as Christ rose and offered new life, we can offer someone the new beginning of being forgiven. He promises: "As you forgive, the Prince of Peace will bring you peace."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Nelson ties resurrection and forgiveness together deliberately: Easter is when Christ offers new life, and forgiving someone is how we extend that same offer. Does that connection feel natural to you — or surprising?</li><li>"No better way to honor Jesus Christ this Easter" — he's not asking you to do something complex. He's asking you to identify one person. Can you?</li><li>"The Prince of Peace will bring you peace" — the promise is personal, not abstract. Have you ever forgiven someone and felt peace arrive afterward? What did that feel like?</li></ul>
+    <h3>Elder Maxwell on resurrection hope in suffering</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/1990/04/endure-it-well" target="_blank">Endure It Well — Neal A. Maxwell, April 1990 General Conference</a>. Maxwell's Easter hope is not optimism — not the feeling that things will probably work out. It is the settled conviction that the worst has already been faced and overcome. Because Christ "plumbed the depths" of suffering and rose, we have a Savior who comprehends every suffering we experience — and who demonstrated that none of it is final. Maxwell connects endurance specifically to this ground: we endure because the resurrection tells us that suffering has a limit and that God's promises hold.</p>
+    <h3>The Living Christ as Easter proclamation</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/the-living-christ-the-testimony-of-the-apostles" target="_blank">The Living Christ: The Testimony of the Apostles</a></p>
+    <p>The final lines of this document function as the Latter-day Saint Easter proclamation: "We bear testimony, as His duly ordained Apostles—that Jesus is the Living Christ, the immortal Son of God. He is the great King Immanuel, who stands today on the right hand of His Father. He is the light, the life, and the hope of the world. His way is the path that leads to happiness in this life and eternal life in the world to come."</p>
+    <hr>
+    <h2>Closing Reflection</h2>
+    <p>Easter is not a Sunday. It is a posture — the way of living that flows from the knowledge that death has been defeated, that the Savior is present and alive, that suffering has a limit and joy does not, and that nothing we do in his name is wasted.</p>
+    <p>The question is not whether Easter happened. The question is whether you are living as though it did.</p>
+    <p><strong>Closing question for reflection:</strong> If you woke up tomorrow morning and lived your entire day as a person who genuinely believes in the physical, actual, present resurrection of Jesus Christ — what would be different about how you face your hardest thing?</p>
+    <hr>
+    <p><em>This series connects to the full Atonement theology across the entire Atonement study:</em></p>
+    <ul><li><em><a href="../atonement/ATNMT-01-what-is-the-atonement.md" target="_blank">ATNMT-01 — What Is the Atonement</a> — the foundation</em></li><li><em><a href="../atonement/ATNMT-02-gethsemane.md" target="_blank">ATNMT-02 — Gethsemane</a> — the weight Christ bore</em></li><li><em><a href="../atonement/ATNMT-03-the-crucifixion.md" target="_blank">ATNMT-03 — The Crucifixion</a> — the completion of the sacrifice</em></li><li><em><a href="../atonement/ATNMT-04-the-resurrection.md" target="_blank">ATNMT-04 — The Resurrection</a> — the full theology of what resurrection is and does</em></li></ul>
+  </div>
+</body>
+</html>

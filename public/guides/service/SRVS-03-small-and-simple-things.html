@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Small and Simple Things</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">🤝 Service</span>
+    <h1>Small and Simple Things</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>The Hook</h2>
+    <p>Most of us are waiting to do something significant. We imagine that the real contribution — the moment that actually matters — will be dramatic: the mission trip, the major sacrifice, the turning-point conversation. Meanwhile, the actual material of a life of service is sitting right in front of us, unspectacular and apparently too small to count. This file is about what Jesus was actually watching for, why small things compound into something enormous, and why "being not weary in well-doing" is harder and more important than any single heroic act.</p>
+    <hr>
+    <h2>The Doctrine of Small Things</h2>
+    <h3>Alma on small and simple</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/37?id=p6-p7#p6" target="_blank">Alma 37:6–7</a></p>
+    <p><strong>What to look for:</strong> Alma is talking to his son Helaman about scripture records — small brass plates — and makes the observation that "by small and simple things are great things brought to pass." He inverts the expectation: the large things of the world are confounded by small things. He notes that "the Lord doth work by means to bring about his great and eternal purposes."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Alma is talking about record-keeping — a seemingly small, administrative act — as the mechanism by which God saved nations. What are the "brass plates" equivalent in your life? What small faithfulness might be carrying more weight than you know?</li><li>He says small and simple things can also confound the wise. When has something small — a brief kindness, a single spoken word — confounded your expectations about what matters?</li><li>Verse 7 says the Lord works <em>by means</em> — through ordinary instruments and ordinary acts. What does that say about the way God chooses to work in the world, and what that requires of us?</li></ul>
+    <hr>
+    <h3>D&C 64 — the command to persist</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/64?id=p33-p34#p33" target="_blank">D&C 64:33–34</a></p>
+    <p><strong>What to look for:</strong> "Be not weary in well-doing, for ye are laying the foundation of a great work. And out of small things proceedeth that which is great." This was given in 1831 to a young church exhausted by difficulty, persecution, and the sheer grind of building something new. The Lord is not telling them to do something big. He is telling them to keep doing what they are already doing, without getting tired.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"Weary in well-doing" is a specific kind of tiredness — not laziness, but fatigue with goodness itself. Have you experienced it? What does it feel like?</li><li>The Lord says they are "laying a foundation." Foundations are invisible once the building goes up. What does it mean to do foundational work — work whose fruit you may not see in your lifetime?</li><li>Verse 34 says great things proceed from small things. This is presented as a law, not a hope. How does treating it as a law (rather than an inspiring metaphor) change how you approach the small acts in front of you?</li></ul>
+    <hr>
+    <h3>The widow's mite — what Jesus was watching</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/mark/12?id=p41-p44#p41" target="_blank">Mark 12:41–44</a></p>
+    <p><strong>What to look for:</strong> Jesus sat down <em>opposite</em> the treasury and <em>watched</em> how people were giving. This is striking — he deliberately positioned himself to observe. Many rich people gave large amounts. A poor widow put in two small coins. Jesus called his disciples to him and made a point of it: she put in more than all the others combined. The measure was not the amount, but the proportion — she gave "all that she had."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Jesus was watching. Not casually noticing — deliberately, intentionally watching. What does it mean for the nature of small service acts that the Lord is paying that kind of attention?</li><li>The rich gave out of "abundance" — it cost them something, but it left plenty behind. The widow gave out of "want." Is there a kind of giving in your own life that comes from abundance — comfortable, painless — that you could move toward something more costly?</li><li>Why do you think Jesus made a point of teaching from this moment? What did he want his disciples to remember?</li></ul>
+    <hr>
+    <h2>What Small Service Actually Looks Like</h2>
+    <h3>Tabitha — the woman whose work was her witness</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/acts/9?id=p36-p41#p36" target="_blank">Acts 9:36–41</a></p>
+    <p><strong>What to look for:</strong> Tabitha (also called Dorcas) was described as "full of good works and almsdeeds." When she died, the widows she had served gathered around her body weeping and showing Peter "the coats and garments which Dorcas made." Her service was not famous. It was coats. Garments. The quiet, repeated, material care of specific people. Peter raised her from the dead — the miracle is remarkable, but so is the detail: she was known by her handwork.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Tabitha is remembered entirely by what her hands made and gave. No sermons. No leadership positions. Coats and garments. What small, material acts of care are you known for — or could be?</li><li>The widows showed Peter the garments as evidence of her character. What would people show as evidence of yours?</li><li>Why do you think Luke included this story in Acts — a book full of dramatic miracles and apostolic ministry? What does it say about what the early church valued?</li></ul>
+    <hr>
+    <h3>The good Samaritan — interrupted plans and inconvenient moments</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/10?id=p30-p37#p30" target="_blank">Luke 10:30–37</a></p>
+    <p><strong>What to look for:</strong> The priest and the Levite both passed by. They were not villains — they likely had destinations, obligations, reasons. The Samaritan also had a journey. His service required stopping, touching a wounded stranger, spending his own money, and making a follow-up commitment. Notice Jesus does not identify what the Samaritan felt — he focuses entirely on what the Samaritan <em>did</em>.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The priest and Levite may have had good reasons to pass by (ritual purity concerns, legitimate obligations). At what point do our good reasons for not serving become the thing we are judged for?</li><li>Jesus ends the parable with a question, not a statement: "Which of these three was neighbor?" Then: "Go, and do thou likewise." The command is not to feel more charitable — it is to <em>go</em> and <em>do</em>. What is the specific, practical implication of that command for you this week?</li><li>The Samaritan promised to return and pay more if needed. This was open-ended generosity. Where in your service life do you stop cleanly when it becomes inconvenient, versus committing to follow through?</li></ul>
+    <hr>
+    <h2>The Pattern of a Life: President Monson</h2>
+    <h3>A lifetime of specific, small acts</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2008/10/finding-joy-in-the-journey" target="_blank">Finding Joy in the Journey — Thomas S. Monson, October 2008</a></p>
+    <p><strong>What to look for:</strong> Monson consistently taught that discipleship is not lived in the dramatic moments but in the accumulated weight of small, specific acts — visiting one person, writing one letter, making one phone call when prompted. He often told stories from his years as a bishop when he visited eighty-four widows regularly. He did not visit them as a group project. He visited them as individuals, repeatedly, over years.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Monson's service was characterized by <em>specificity</em> — not "I care about the elderly" but "I am going to see Sister so-and-so today." What is the difference between a general charitable disposition and that kind of specific, recurring attention?</li><li>He served those eighty-four widows without fanfare, over years, before he was a General Authority. What does the hidden nature of that service suggest about where most important service actually happens?</li><li>Monson observed that joy is found not in spectacular experiences but by noticing and responding to the people and moments directly in front of us. What person or moment directly in front of you might be worth noticing this week?</li></ul>
+    <hr>
+    <h3>Elder Wirthlin on the compound effect of small kindnesses</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2008/10/come-what-may-and-love-it" target="_blank">Come What May, and Love It — Joseph B. Wirthlin, October 2008</a></p>
+    <p><strong>What to look for:</strong> Wirthlin's talk is about facing difficulty with grace, but woven through it is a portrait of a life built from small consistent choices — especially the choice to love people in the daily texture of ordinary life. His observation about his wife reaching out to others while dealing with her own limitations is a quiet study in what small, consistent service looks like across decades.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Wirthlin describes his wife's characteristic warmth toward strangers as a kind of natural service — not effortful, but habitual. At what point do service choices become character, and character become service that doesn't feel like effort anymore?</li><li>He talks about learning to laugh at the absurdities of hard moments. How does a sense of humor protect the capacity for long-term service — preventing the bitterness that sometimes overtakes those who serve without joy?</li><li>Wirthlin taught that the Lord compensates the faithful for every loss and that no good thing is wasted. How does that promise sustain a person through years of small, unrewarded service?</li></ul>
+    <hr>
+    <h2>Closing Reflection</h2>
+    <p>Jesus sat across from the treasury and watched. He was not watching for the large gifts. He was watching for the proportion, the cost, the character behind the act. The widow's two mites were worth everything because they represented everything she had. Alma knew that brass plates — small, easily overlooked — were carrying the spiritual survival of a civilization. The Lord told a tired young church not to aim bigger, but to keep going. Out of small things proceedeth that which is great.</p>
+    <p>The question is not whether your acts are large enough. The question is whether you are doing them, whether you are doing them consistently, and whether you are doing them without getting tired.</p>
+    <p><strong>For personal reflection:</strong> Think of the smallest recurring act of service in your life — the one so ordinary you almost don't count it. What would it mean to do that act as if Jesus were sitting across the room, watching, the way he watched the treasury? What would change about how you do it?</p>
+    <hr>
+    <p><em>Previous: <a href="SRVS-02-losing-yourself-to-find-yourself.md" target="_blank">SRVS-02 — Losing Yourself to Find Yourself</a></em></p>
+    <p><em>Next: <a href="SRVS-04-service-and-covenant.md" target="_blank">SRVS-04 — Service and Covenant</a></em></p>
+  </div>
+</body>
+</html>

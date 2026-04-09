@@ -716,7 +716,8 @@
     "audioPreviewUrl": "/audio/audiobook-001.mp3",
     "sku": "AUD-001",
     "createdAt": "2026-02-01T00:00:00Z",
-    "downloadUrl": "/audio/audiobook-001.mp3"
+    "downloadUrl": "/audio/audiobook-001.mp3",
+    "subcategory": "standalone"
   },
   {
     "id": "audio-002",
@@ -751,7 +752,8 @@
     "audioPreviewUrl": "/audio/audiobook-002.mp3",
     "sku": "AUD-002",
     "createdAt": "2026-02-01T00:00:00Z",
-    "downloadUrl": "/audio/audiobook-002.mp3"
+    "downloadUrl": "/audio/audiobook-002.mp3",
+    "subcategory": "standalone"
   },
   {
     "id": "audio-003",
@@ -786,7 +788,8 @@
     "audioPreviewUrl": "/audio/audiobook-003.mp3",
     "sku": "AUD-003",
     "createdAt": "2026-02-01T00:00:00Z",
-    "downloadUrl": "/audio/audiobook-003.mp3"
+    "downloadUrl": "/audio/audiobook-003.mp3",
+    "subcategory": "standalone"
   },
   {
     "id": "audio-004",
@@ -821,7 +824,8 @@
     "audioPreviewUrl": "/audio/audiobook-004.mp3",
     "sku": "AUD-004",
     "createdAt": "2026-02-01T00:00:00Z",
-    "downloadUrl": "/audio/audiobook-004.mp3"
+    "downloadUrl": "/audio/audiobook-004.mp3",
+    "subcategory": "standalone"
   },
   {
     "id": "audio-005",
@@ -856,7 +860,8 @@
     "audioPreviewUrl": "/audio/audiobook-005.mp3",
     "sku": "AUD-005",
     "createdAt": "2026-02-01T00:00:00Z",
-    "downloadUrl": "/audio/audiobook-005.mp3"
+    "downloadUrl": "/audio/audiobook-005.mp3",
+    "subcategory": "standalone"
   },
   {
     "id": "be-ep-001",
@@ -867,9 +872,19 @@
     "description": "Dig into the amazing world beneath our feet! In this first episode of Bedtime Explorers, young listeners discover how rocks are formed, what they're made of, and why geologists find them so fascinating. A perfect bedtime listen for curious kids who love science and nature.",
     "shortDescription": "Explore the science of rocks in this calming bedtime episode",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "science", "rocks", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "science",
+      "rocks",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.8,
@@ -884,7 +899,8 @@
     "createdAt": "2026-03-12T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-001-the-world-beneath-our-feet.mp3",
     "series": "Bedtime Explorers",
-    "episode": 1
+    "episode": 1,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "be-ep-002",
@@ -895,9 +911,20 @@
     "description": "Gaze up at the night sky and wonder no more! Episode 2 of Bedtime Explorers takes young listeners on a journey through the stars — from constellations to galaxies, from twinkling light to how stars are born. Dreamy, calming narration perfect for winding down at bedtime.",
     "shortDescription": "A soothing journey through the night sky and stars",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "science", "stars", "space", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "science",
+      "stars",
+      "space",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-001.png",
-    "images": ["/images/audio-001.svg"],
+    "images": [
+      "/images/audio-001.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -912,7 +939,8 @@
     "createdAt": "2026-03-12T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-002-the-stars-above.mp3",
     "series": "Bedtime Explorers",
-    "episode": 2
+    "episode": 2,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "be-ep-003",
@@ -923,9 +951,21 @@
     "description": "Travel through space without leaving your bed! Episode 3 visits all eight planets, the asteroid belt, and beyond. Learn fascinating facts about Mercury, the rings of Saturn, and what makes Earth so special. Narrated gently to ease little explorers into a peaceful sleep.",
     "shortDescription": "Visit every planet in our solar system at bedtime",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "science", "solar system", "space", "planets", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "science",
+      "solar system",
+      "space",
+      "planets",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-002.png",
-    "images": ["/images/audio-002.svg"],
+    "images": [
+      "/images/audio-002.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -940,7 +980,8 @@
     "createdAt": "2026-03-12T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-003-our-solar-system.mp3",
     "series": "Bedtime Explorers",
-    "episode": 3
+    "episode": 3,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "be-ep-004",
@@ -951,9 +992,20 @@
     "description": "Walk the dusty pioneer trails of the American West! Episode 4 tells the story of brave families who packed everything they owned into covered wagons and journeyed across unknown lands in search of a new home. History brought to life with calming bedtime narration.",
     "shortDescription": "Journey across the American West with pioneer families",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "history", "pioneers", "american west", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "history",
+      "pioneers",
+      "american west",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-004.png",
-    "images": ["/images/audio-004.svg"],
+    "images": [
+      "/images/audio-004.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.7,
@@ -968,7 +1020,8 @@
     "createdAt": "2026-03-12T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-004-the-pioneer-trail.mp3",
     "series": "Bedtime Explorers",
-    "episode": 4
+    "episode": 4,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "be-ep-005",
@@ -979,9 +1032,20 @@
     "description": "All aboard! Episode 5 follows the incredible story of the transcontinental railroad — the workers, the engineers, and the mountains they conquered. Discover how iron rails connected a nation and changed history forever. A fascinating bedtime story for young history lovers.",
     "shortDescription": "The epic story of building America's transcontinental railroad",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "history", "trains", "railroad", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "history",
+      "trains",
+      "railroad",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-005.png",
-    "images": ["/images/audio-005.svg"],
+    "images": [
+      "/images/audio-005.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.8,
@@ -996,7 +1060,8 @@
     "createdAt": "2026-03-12T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-005-the-iron-road.mp3",
     "series": "Bedtime Explorers",
-    "episode": 5
+    "episode": 5,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "be-ep-006",
@@ -1007,9 +1072,21 @@
     "description": "Discover the rich and ancient cultures of the Native American peoples of Utah. Episode 6 explores their traditions, artwork, and connection to the land — from the Ancestral Puebloans who carved cliff dwellings into canyon walls to the Ute, Navajo, and Paiute peoples. A respectful and wonder-filled bedtime listen.",
     "shortDescription": "Explore the ancient cultures of Native Americans in Utah",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "history", "native american", "utah", "culture", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "history",
+      "native american",
+      "utah",
+      "culture",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-001.png",
-    "images": ["/images/audio-001.svg"],
+    "images": [
+      "/images/audio-001.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -1024,7 +1101,8 @@
     "createdAt": "2026-03-12T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-006-the-first-people-of-utah.mp3",
     "series": "Bedtime Explorers",
-    "episode": 6
+    "episode": 6,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "be-ep-007",
@@ -1035,9 +1113,20 @@
     "description": "Two by two, the animals came! Episode 7 tells the timeless story of Noah's Ark — the great flood, the faithful builder, and the rainbow promise. A beautifully narrated retelling of this beloved story, perfect for a peaceful and thoughtful bedtime.",
     "shortDescription": "The timeless story of Noah's Ark, gently narrated for bedtime",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "bible", "noah", "animals", "faith", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "bible",
+      "noah",
+      "animals",
+      "faith",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-002.png",
-    "images": ["/images/audio-002.svg"],
+    "images": [
+      "/images/audio-002.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 5.0,
@@ -1052,7 +1141,8 @@
     "createdAt": "2026-03-12T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-007-noahs-ark-bible.mp3",
     "series": "Bedtime Explorers",
-    "episode": 7
+    "episode": 7,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "be-ep-008",
@@ -1063,9 +1153,21 @@
     "description": "Dive into the wonders of sand and water! Episode 8 explores beaches, rivers, deserts, and the amazing science behind how water shapes our world. From sand dunes to ocean waves, this calming episode will carry curious young listeners gently off to sleep.",
     "shortDescription": "Explore the science of sand and water in this soothing episode",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "science", "water", "sand", "nature", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "science",
+      "water",
+      "sand",
+      "nature",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.8,
@@ -1080,7 +1182,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-008-sand-and-water.mp3",
     "series": "Bedtime Explorers",
-    "episode": 8
+    "episode": 8,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "be-ep-009",
@@ -1091,9 +1194,20 @@
     "description": "Travel back 65 million years! Episode 9 brings dinosaurs to life — from the mighty T-Rex to the gentle Brachiosaurus. Young listeners will learn how dinosaurs lived, what they ate, and why they disappeared, all with calm, soothing narration perfect for drifting off to sleep.",
     "shortDescription": "A calming journey into the age of dinosaurs",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "dinosaurs", "science", "prehistoric", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "dinosaurs",
+      "science",
+      "prehistoric",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -1108,7 +1222,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-009-dinosaurs.mp3",
     "series": "Bedtime Explorers",
-    "episode": 9
+    "episode": 9,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "be-ep-010",
@@ -1119,9 +1234,21 @@
     "description": "Discover the dazzling world of gems and crystals! Episode 10 explores how crystals grow, where precious gems are found, and what makes each one unique. From sparkling amethyst to deep blue sapphire, this episode is a treasure for any young rock lover at bedtime.",
     "shortDescription": "Explore the sparkling world of gems and crystals",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "gems", "crystals", "rocks", "science", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "gems",
+      "crystals",
+      "rocks",
+      "science",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.8,
@@ -1136,7 +1263,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-010-gems-and-crystals.mp3",
     "series": "Bedtime Explorers",
-    "episode": 10
+    "episode": 10,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "be-ep-011",
@@ -1147,9 +1275,21 @@
     "description": "Face your giants with courage! Episode 11 retells the beloved Bible story of young David, a shepherd boy who faced the mighty giant Goliath with faith and bravery. A timeless story of courage and trust, gently narrated to settle little hearts before sleep.",
     "shortDescription": "The classic Bible story of courage and faith, told for bedtime",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "bible", "david", "goliath", "faith", "courage", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "bible",
+      "david",
+      "goliath",
+      "faith",
+      "courage",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-002.png",
-    "images": ["/images/audio-002.svg"],
+    "images": [
+      "/images/audio-002.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -1164,7 +1304,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-011-david-and-goliath.mp3",
     "series": "Bedtime Explorers",
-    "episode": 11
+    "episode": 11,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "be-ep-012",
@@ -1175,9 +1316,20 @@
     "description": "A big fish, a bigger lesson! Episode 12 tells the unforgettable Bible story of Jonah — swallowed by a great whale and given a second chance. A beautifully narrated tale of obedience, forgiveness, and second chances, perfect for a peaceful bedtime.",
     "shortDescription": "The beloved Bible story of Jonah and the great whale",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "bible", "jonah", "whale", "faith", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "bible",
+      "jonah",
+      "whale",
+      "faith",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-002.png",
-    "images": ["/images/audio-002.svg"],
+    "images": [
+      "/images/audio-002.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -1192,7 +1344,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-012-jonah-and-the-whale.mp3",
     "series": "Bedtime Explorers",
-    "episode": 12
+    "episode": 12,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "be-ep-013",
@@ -1203,9 +1356,20 @@
     "description": "Stay faithful, even in the den! Episode 13 retells the powerful Bible story of Daniel — a man of unwavering faith who trusted God even when surrounded by lions. A gentle, inspiring bedtime listen that teaches courage and trust.",
     "shortDescription": "Daniel's story of faith and courage in the lions' den",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "bible", "daniel", "lions", "faith", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "bible",
+      "daniel",
+      "lions",
+      "faith",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-002.png",
-    "images": ["/images/audio-002.svg"],
+    "images": [
+      "/images/audio-002.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -1220,7 +1384,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-013-daniel-in-the-lions-den.mp3",
     "series": "Bedtime Explorers",
-    "episode": 13
+    "episode": 13,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "be-ep-014",
@@ -1231,9 +1396,21 @@
     "description": "Bundle up and explore the frozen north! Episode 14 takes young listeners to the Arctic tundra — home to polar bears, arctic foxes, caribou, and the Northern Lights. A beautifully calm exploration of one of Earth's most remote and magical places.",
     "shortDescription": "Journey to the frozen Arctic tundra and its amazing wildlife",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "arctic", "tundra", "nature", "animals", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "arctic",
+      "tundra",
+      "nature",
+      "animals",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-001.png",
-    "images": ["/images/audio-001.svg"],
+    "images": [
+      "/images/audio-001.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.8,
@@ -1248,7 +1425,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-014-the-arctic-tundra.mp3",
     "series": "Bedtime Explorers",
-    "episode": 14
+    "episode": 14,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "be-ep-015",
@@ -1259,9 +1437,21 @@
     "description": "Step into the world's largest forest! Episode 15 explores the boreal forest — a vast, ancient woodland stretching across the northern hemisphere, filled with moose, wolves, owls, and towering spruce trees. A peaceful journey into the wild for bedtime.",
     "shortDescription": "Explore the vast and ancient boreal forest and its wildlife",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "forest", "nature", "animals", "boreal", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "forest",
+      "nature",
+      "animals",
+      "boreal",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-001.png",
-    "images": ["/images/audio-001.svg"],
+    "images": [
+      "/images/audio-001.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.7,
@@ -1276,7 +1466,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-015-the-boreal-forest.mp3",
     "series": "Bedtime Explorers",
-    "episode": 15
+    "episode": 15,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "be-ep-016",
@@ -1287,9 +1478,21 @@
     "description": "Go on safari without leaving your bed! Episode 16 roams the African savanna — lions, elephants, giraffes, zebras, and more come alive in this vivid, calming bedtime adventure. Young listeners will drift off dreaming of the wide open plains.",
     "shortDescription": "A calming safari through the African savanna and its wildlife",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "safari", "africa", "animals", "nature", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "safari",
+      "africa",
+      "animals",
+      "nature",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-001.png",
-    "images": ["/images/audio-001.svg"],
+    "images": [
+      "/images/audio-001.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -1304,7 +1507,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-016-the-african-safari.mp3",
     "series": "Bedtime Explorers",
-    "episode": 16
+    "episode": 16,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "be-ep-017",
@@ -1315,9 +1519,22 @@
     "description": "Venture into the world's largest tropical rainforest! Episode 17 takes sleepy explorers deep into the Amazon — towering trees, colorful parrots, playful monkeys, and the gentle sounds of rain on giant leaves. A lush, peaceful bedtime journey through Earth's most incredible jungle.",
     "shortDescription": "A lush bedtime adventure through the Amazon rainforest",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "amazon", "rainforest", "jungle", "animals", "nature", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "amazon",
+      "rainforest",
+      "jungle",
+      "animals",
+      "nature",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-001.png",
-    "images": ["/images/audio-001.svg"],
+    "images": [
+      "/images/audio-001.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -1332,7 +1549,8 @@
     "createdAt": "2026-03-26T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-017-the-amazon-rainforest.mp3",
     "series": "Bedtime Explorers",
-    "episode": 17
+    "episode": 17,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "be-ep-018",
@@ -1343,9 +1561,21 @@
     "description": "Explore America's first national park! Episode 18 visits the wonders of Yellowstone — erupting geysers, hot springs, bison herds, and bubbling mud pots. A magnificent bedtime journey through one of the most geologically active places on Earth.",
     "shortDescription": "Journey through the geysers and wildlife of Yellowstone",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "yellowstone", "nature", "geysers", "animals", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "yellowstone",
+      "nature",
+      "geysers",
+      "animals",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-001.png",
-    "images": ["/images/audio-001.svg"],
+    "images": [
+      "/images/audio-001.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.8,
@@ -1360,7 +1590,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-018-yellowstone.mp3",
     "series": "Bedtime Explorers",
-    "episode": 18
+    "episode": 18,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "be-ep-019",
@@ -1371,9 +1602,21 @@
     "description": "Drive the spike that connected a nation! Episode 19 tells the story of the transcontinental railroad's completion at Promontory Summit, Utah — where two great railroads met and a golden spike united America. A fascinating piece of history gently told for bedtime.",
     "shortDescription": "The story of the golden spike that united America by rail",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "history", "railroad", "golden spike", "utah", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "history",
+      "railroad",
+      "golden spike",
+      "utah",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.7,
@@ -1388,7 +1631,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-019-the-golden-spike.mp3",
     "series": "Bedtime Explorers",
-    "episode": 19
+    "episode": 19,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "be-ep-020",
@@ -1399,9 +1643,21 @@
     "description": "Climb into the ancient cliff dwellings! Episode 20 explores the mysterious world of the Ancestral Puebloans — the ancient people who carved homes into canyon walls across the American Southwest. A wonder-filled bedtime journey through one of history's greatest architectural achievements.",
     "shortDescription": "Explore the ancient cliff dwellings of the Ancestral Puebloans",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "history", "cliff dwellers", "native american", "archaeology", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "history",
+      "cliff dwellers",
+      "native american",
+      "archaeology",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.8,
@@ -1416,7 +1672,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/bedtimeExplorers/EP-020-cliff-dwellers.mp3",
     "series": "Bedtime Explorers",
-    "episode": 20
+    "episode": 20,
+    "subcategory": "bedtime-explorers"
   },
   {
     "id": "rh-ep-000",
@@ -1427,9 +1684,20 @@
     "description": "Meet the crew! Episode 0 introduces the Rock Hunters — a team of kid adventurers who travel the world searching for incredible rocks, gems, and geological wonders. This intro episode sets up the exciting series ahead and is perfect for new listeners of all ages.",
     "shortDescription": "Meet the Rock Hunters crew in this exciting series intro",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "rocks", "kids", "series", "educational", "explorers"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "rocks",
+      "kids",
+      "series",
+      "educational",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.8,
@@ -1444,7 +1712,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/rockHunters/ROCK-HUNTERS-000-meet-the-rock-hunters-v2.mp3",
     "series": "Rock Hunters",
-    "episode": 0
+    "episode": 0,
+    "subcategory": "rock-hunters"
   },
   {
     "id": "rh-ep-001",
@@ -1455,9 +1724,20 @@
     "description": "The Rock Hunters discover a hidden cave with a door made entirely of crystal! Episode 1 takes the crew deep underground where giant crystals grow in darkness and ancient geological secrets await. Action, adventure, and real crystal science all in one.",
     "shortDescription": "The Rock Hunters explore a cave with a mysterious crystal door",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "crystals", "cave", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "crystals",
+      "cave",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -1472,7 +1752,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/rockHunters/ROCK-HUNTERS-001-cave-of-the-crystal-door.mp3",
     "series": "Rock Hunters",
-    "episode": 1
+    "episode": 1,
+    "subcategory": "rock-hunters"
   },
   {
     "id": "rh-ep-002",
@@ -1483,9 +1764,21 @@
     "description": "Down the Amazon and into the unknown! Episode 2 sends the Rock Hunters down a mysterious river where pink dolphins lead them to a geological discovery unlike anything they've seen before. Adventure, wildlife, and river geology combine in this thrilling episode.",
     "shortDescription": "The Rock Hunters follow pink dolphins to a river discovery",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "amazon", "dolphins", "river", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "amazon",
+      "dolphins",
+      "river",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.8,
@@ -1500,7 +1793,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/rockHunters/ROCK-HUNTERS-002-river-of-the-pink-dolphin.mp3",
     "series": "Rock Hunters",
-    "episode": 2
+    "episode": 2,
+    "subcategory": "rock-hunters"
   },
   {
     "id": "rh-ep-003",
@@ -1511,9 +1805,21 @@
     "description": "Trek the trails of the pioneers! Episode 3 follows the Rock Hunters as they retrace historic pioneer routes and discover the incredible geology along the way — volcanic rock, ancient seabeds, and fossils hidden in the trail dust.",
     "shortDescription": "The Rock Hunters trek pioneer trails and uncover hidden geology",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "pioneer", "history", "geology", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "pioneer",
+      "history",
+      "geology",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.7,
@@ -1528,7 +1834,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/rockHunters/ROCK-HUNTERS-003-the-pioneer-trek.mp3",
     "series": "Rock Hunters",
-    "episode": 3
+    "episode": 3,
+    "subcategory": "rock-hunters"
   },
   {
     "id": "rh-ep-004",
@@ -1539,9 +1846,22 @@
     "description": "Enter a world that looks like another planet! Episode 4 takes the Rock Hunters to Goblin Valley, Utah — a landscape of bizarre sandstone formations called hoodoos, where the night sky blazes with stars. Geology, astronomy, and adventure collide.",
     "shortDescription": "The Rock Hunters explore Goblin Valley's alien landscape and starry skies",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "goblin valley", "utah", "stars", "geology", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "goblin valley",
+      "utah",
+      "stars",
+      "geology",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -1556,7 +1876,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/rockHunters/ROCK-HUNTERS-004-goblin-valley-and-the-stars.mp3",
     "series": "Rock Hunters",
-    "episode": 4
+    "episode": 4,
+    "subcategory": "rock-hunters"
   },
   {
     "id": "rh-ep-005",
@@ -1567,9 +1888,21 @@
     "description": "Camp deep in the wild! Episode 5 finds the Rock Hunters setting up base camp far from civilization, where they study the rocks beneath their feet and the wilderness all around them. A great episode about outdoor adventure, teamwork, and geology in the field.",
     "shortDescription": "The Rock Hunters camp in the backcountry and study wilderness geology",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "camping", "backcountry", "geology", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "camping",
+      "backcountry",
+      "geology",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.7,
@@ -1584,7 +1917,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/rockHunters/ROCK-HUNTERS-005-the-backcountry-camp.mp3",
     "series": "Rock Hunters",
-    "episode": 5
+    "episode": 5,
+    "subcategory": "rock-hunters"
   },
   {
     "id": "rh-ep-006",
@@ -1595,9 +1929,22 @@
     "description": "History meets geology! Episode 6 takes the Rock Hunters to Promontory Summit, where the transcontinental railroad was completed. They discover the fascinating rocks and minerals found along the historic route and learn how geology shaped the path of the iron road.",
     "shortDescription": "The Rock Hunters discover the geology behind the transcontinental railroad",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "history", "railroad", "golden spike", "geology", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "history",
+      "railroad",
+      "golden spike",
+      "geology",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.8,
@@ -1612,7 +1959,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/rockHunters/ROCK-HUNTERS-006-the-golden-spike.mp3",
     "series": "Rock Hunters",
-    "episode": 6
+    "episode": 6,
+    "subcategory": "rock-hunters"
   },
   {
     "id": "rh-ep-007",
@@ -1623,9 +1971,21 @@
     "description": "Who built homes in the cliffs? Episode 7 follows the Rock Hunters as they investigate the ancient cliff dwellings of the American Southwest, learning about the sandstone and geology that made these incredible structures possible — and the mystery of those who built them.",
     "shortDescription": "The Rock Hunters uncover the geology behind ancient cliff dwellings",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "cliff dwellers", "archaeology", "geology", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "cliff dwellers",
+      "archaeology",
+      "geology",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.8,
@@ -1640,7 +2000,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/rockHunters/ROCK-HUNTERS-007-the-cliff-dwellers.mp3",
     "series": "Rock Hunters",
-    "episode": 7
+    "episode": 7,
+    "subcategory": "rock-hunters"
   },
   {
     "id": "rh-ep-008",
@@ -1651,9 +2012,21 @@
     "description": "What's rumbling beneath Yellowstone? Episode 8 takes the Rock Hunters underground into Yellowstone's supervolcano — exploring the geothermal forces that power Old Faithful, the hot springs, and the mud pots. A thrilling look at the geological giant sleeping beneath the park.",
     "shortDescription": "The Rock Hunters explore the geology beneath Yellowstone's supervolcano",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "yellowstone", "volcano", "geology", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "yellowstone",
+      "volcano",
+      "geology",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -1668,7 +2041,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/rockHunters/ROCK-HUNTERS-008-yellowstone-underground.mp3",
     "series": "Rock Hunters",
-    "episode": 8
+    "episode": 8,
+    "subcategory": "rock-hunters"
   },
   {
     "id": "rh-ep-009",
@@ -1679,9 +2053,22 @@
     "description": "Where the ocean meets the rocks! Episode 9 brings the Rock Hunters to the coast, where tide pools reveal a hidden world of sea stars, anemones, crabs, and unique coastal rock formations. A fascinating exploration of geology and marine life at the water's edge.",
     "shortDescription": "The Rock Hunters explore coastal geology and the life of tide pools",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "tide pools", "ocean", "geology", "marine", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "tide pools",
+      "ocean",
+      "geology",
+      "marine",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.8,
@@ -1696,7 +2083,8 @@
     "createdAt": "2026-03-20T00:00:00Z",
     "downloadUrl": "/audio/rockHunters/ROCK-HUNTERS-009-tide-pools.mp3",
     "series": "Rock Hunters",
-    "episode": 9
+    "episode": 9,
+    "subcategory": "rock-hunters"
   },
   {
     "id": "rh-ep-010",
@@ -1707,9 +2095,21 @@
     "description": "Small but mighty! Episode 10 follows the Rock Hunters as they discover the fascinating world of the jumping spider — one of nature's most curious and intelligent little creatures. Along the way they uncover the rocky habitats these spiders call home and the geology that shapes their world.",
     "shortDescription": "The Rock Hunters explore jumping spiders and their rocky habitats",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "spiders", "nature", "geology", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "spiders",
+      "nature",
+      "geology",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.8,
@@ -1724,7 +2124,8 @@
     "createdAt": "2026-03-23T00:00:00Z",
     "downloadUrl": "/audio/rockHunters/ROCK-HUNTERS-010-the-jumping-spider.mp3",
     "series": "Rock Hunters",
-    "episode": 10
+    "episode": 10,
+    "subcategory": "rock-hunters"
   },
   {
     "id": "rh-ep-011",
@@ -1735,9 +2136,22 @@
     "description": "Sand dunes in Utah? Episode 11 takes the Rock Hunters to Little Sahara — a stunning expanse of white sand dunes rising out of the desert. They explore how wind and geology created this surprising landscape and what secrets are hidden beneath the sand.",
     "shortDescription": "The Rock Hunters explore the surprising sand dunes of Little Sahara",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "sand dunes", "utah", "geology", "desert", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "sand dunes",
+      "utah",
+      "geology",
+      "desert",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.8,
@@ -1752,7 +2166,8 @@
     "createdAt": "2026-03-23T00:00:00Z",
     "downloadUrl": "/audio/rockHunters/ROCK-HUNTERS-011-little-sahara.mp3",
     "series": "Rock Hunters",
-    "episode": 11
+    "episode": 11,
+    "subcategory": "rock-hunters"
   },
   {
     "id": "rh-ep-012",
@@ -1763,9 +2178,22 @@
     "description": "What do trees and rocks have in common? Episode 12 finds the Rock Hunters exploring ancient forests where the oldest living trees on Earth grow from rocky soil. A beautiful episode about the connection between geology and life, and the stories written in both stone and wood.",
     "shortDescription": "The Rock Hunters discover the connection between ancient trees and geology",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "trees", "nature", "geology", "forest", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "trees",
+      "nature",
+      "geology",
+      "forest",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -1780,7 +2208,8 @@
     "createdAt": "2026-03-23T00:00:00Z",
     "downloadUrl": "/audio/rockHunters/ROCK-HUNTERS-012-the-living-trees.mp3",
     "series": "Rock Hunters",
-    "episode": 12
+    "episode": 12,
+    "subcategory": "rock-hunters"
   },
   {
     "id": "rh-ep-013",
@@ -1791,9 +2220,22 @@
     "description": "The Rock Hunters look up! Episode 13 explores the daytime sky — from the blazing sun and its role in shaping rocks, to clouds, rainbows, and the atmosphere that protects our planet. A bright, wonder-filled adventure that connects what's above us to the ground beneath our feet.",
     "shortDescription": "The Rock Hunters explore the sun, clouds, and daytime sky",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "sky", "sun", "weather", "atmosphere", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "sky",
+      "sun",
+      "weather",
+      "atmosphere",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -1808,7 +2250,8 @@
     "createdAt": "2026-03-26T00:00:00Z",
     "downloadUrl": "/audio/rockHunters/ROCK-HUNTERS-013-the-day-sky.mp3",
     "series": "Rock Hunters",
-    "episode": 13
+    "episode": 13,
+    "subcategory": "rock-hunters"
   },
   {
     "id": "rh-ep-014",
@@ -1819,9 +2262,22 @@
     "description": "The Rock Hunters set up camp right in the backyard! Episode 14 is a cozy nighttime adventure where the kids discover that geology doesn't stop when the sun goes down — from glowing minerals and meteor showers to the ancient stories written in stone beneath their sleeping bags.",
     "shortDescription": "The Rock Hunters discover nighttime geology on a backyard campout",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "camping", "nighttime", "minerals", "meteors", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "camping",
+      "nighttime",
+      "minerals",
+      "meteors",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -1836,7 +2292,8 @@
     "createdAt": "2026-04-02T00:00:00Z",
     "downloadUrl": "/audio/rockHunters/ROCK-HUNTERS-014-the-backyard-campout.mp3",
     "series": "Rock Hunters",
-    "episode": 14
+    "episode": 14,
+    "subcategory": "rock-hunters"
   },
   {
     "id": "rh-ep-015",
@@ -1847,9 +2304,22 @@
     "description": "The sun is up and the Rock Hunters are still exploring! Episode 15 picks up the morning after the backyard campout, where dew-covered rocks, sunrise shadows, and fresh discoveries await. The kids learn how weathering, erosion, and daily temperature changes shape the stones right under their feet.",
     "shortDescription": "The Rock Hunters wake up to morning geology discoveries after their campout",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "camping", "morning", "weathering", "erosion", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "camping",
+      "morning",
+      "weathering",
+      "erosion",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -1864,7 +2334,8 @@
     "createdAt": "2026-04-03T00:00:00Z",
     "downloadUrl": "/audio/rockHunters/ROCK-HUNTERS-015-the-backyard-campout-morning.mp3",
     "series": "Rock Hunters",
-    "episode": 15
+    "episode": 15,
+    "subcategory": "rock-hunters"
   },
   {
     "id": "rh-ep-016",
@@ -1875,9 +2346,23 @@
     "description": "Blast off! Episode 16 takes the Rock Hunters beyond Earth as they explore the connection between rocks and rockets — from the minerals used to build spacecraft to the geology of the moon and Mars. A high-energy adventure that launches geology into outer space!",
     "shortDescription": "The Rock Hunters blast off to explore space rocks and rocket science",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "rockets", "space", "moon", "mars", "minerals", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "rockets",
+      "space",
+      "moon",
+      "mars",
+      "minerals",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -1892,7 +2377,8 @@
     "createdAt": "2026-04-03T00:00:00Z",
     "downloadUrl": "/audio/rockHunters/ROCK-HUNTERS-016-rockets.mp3",
     "series": "Rock Hunters",
-    "episode": 16
+    "episode": 16,
+    "subcategory": "rock-hunters"
   },
   {
     "id": "er-ep-001",
@@ -1903,9 +2389,21 @@
     "description": "Welcome to Explorer Radio! In the very first episode, we tune in to the Artemis 2 mission — humanity's next giant leap back to the Moon. Learn about the crew, the spacecraft, and why this mission matters for the future of space exploration. A thrilling listen for young explorers everywhere!",
     "shortDescription": "Explorer Radio covers the Artemis 2 mission to the Moon",
     "category": "audiobooks",
-    "tags": ["audiobook", "explorer radio", "space", "artemis", "moon", "nasa", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "explorer radio",
+      "space",
+      "artemis",
+      "moon",
+      "nasa",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -1920,7 +2418,8 @@
     "createdAt": "2026-04-05T00:00:00Z",
     "downloadUrl": "/audio/explorerRadio/ER-001-artemis-2.mp3",
     "series": "Explorer Radio",
-    "episode": 1
+    "episode": 1,
+    "subcategory": "explorer-radio"
   },
   {
     "id": "bt-ep-001",
@@ -1931,9 +2430,20 @@
     "description": "Welcome to Bedtime Travelers! In our first episode, travel back in time to meet George Washington — the farmer, the general, and the first President of the United States. Discover the real man behind the legends in this cozy bedtime journey through history.",
     "shortDescription": "Travel back in time to meet George Washington",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime travelers", "history", "george washington", "president", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "bedtime travelers",
+      "history",
+      "george washington",
+      "president",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -1948,7 +2458,8 @@
     "createdAt": "2026-04-08T00:00:00Z",
     "downloadUrl": "/audio/bedtimeTravelers/BT-001-george-washington.mp3",
     "series": "Bedtime Travelers",
-    "episode": 1
+    "episode": 1,
+    "subcategory": "bedtime-travelers"
   },
   {
     "id": "bt-ep-002",
@@ -1959,9 +2470,22 @@
     "description": "Happy birthday, America! In Part 1 of this special two-part episode, the Bedtime Travelers journey through the first 125 years of the United States — from the Declaration of Independence through the Civil War and into the age of invention. A sweeping adventure through the birth of a nation.",
     "shortDescription": "Journey through the first 125 years of American history",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime travelers", "history", "america", "250 years", "independence", "civil war", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "bedtime travelers",
+      "history",
+      "america",
+      "250 years",
+      "independence",
+      "civil war",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -1976,7 +2500,8 @@
     "createdAt": "2026-04-08T00:00:00Z",
     "downloadUrl": "/audio/bedtimeTravelers/BT-002-250-years-part-1.mp3",
     "series": "Bedtime Travelers",
-    "episode": 2
+    "episode": 2,
+    "subcategory": "bedtime-travelers"
   },
   {
     "id": "bt-ep-003",
@@ -1987,9 +2512,22 @@
     "description": "The journey continues! In Part 2, the Bedtime Travelers explore the last 125 years of American history — from World Wars and the space race to the digital age and beyond. See how a young nation grew into the world we know today.",
     "shortDescription": "Explore the last 125 years of American history",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime travelers", "history", "america", "250 years", "world war", "space race", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "bedtime travelers",
+      "history",
+      "america",
+      "250 years",
+      "world war",
+      "space race",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -2004,7 +2542,8 @@
     "createdAt": "2026-04-08T00:00:00Z",
     "downloadUrl": "/audio/bedtimeTravelers/BT-003-250-years-part-2.mp3",
     "series": "Bedtime Travelers",
-    "episode": 3
+    "episode": 3,
+    "subcategory": "bedtime-travelers"
   },
   {
     "id": "ssc-ep-001",
@@ -2015,9 +2554,20 @@
     "description": "Begin your scripture journey with Nephi! Episode 1 explores 1 Nephi Chapter 1 — Lehi's vision, the pillar of fire, and the courage it takes to follow God's call. A thoughtful companion for young readers studying the Book of Mormon.",
     "shortDescription": "Study companion for 1 Nephi Chapter 1",
     "category": "audiobooks",
-    "tags": ["audiobook", "scripture study companion", "book of mormon", "nephi", "faith", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "scripture study companion",
+      "book of mormon",
+      "nephi",
+      "faith",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -2032,7 +2582,8 @@
     "createdAt": "2026-04-08T00:00:00Z",
     "downloadUrl": "/audio/scriptureStudyCompanion/SSC-001-1-nephi-1.mp3",
     "series": "Scripture Study Companion",
-    "episode": 1
+    "episode": 1,
+    "subcategory": "scripture-study-companion"
   },
   {
     "id": "ssc-ep-002",
@@ -2043,9 +2594,20 @@
     "description": "The journey into the wilderness begins! Episode 2 covers 1 Nephi Chapter 2 — Lehi's family leaves Jerusalem, camps in the valley of Lemuel, and Nephi prays for understanding. A guide for young learners exploring obedience and faith.",
     "shortDescription": "Study companion for 1 Nephi Chapter 2",
     "category": "audiobooks",
-    "tags": ["audiobook", "scripture study companion", "book of mormon", "nephi", "faith", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "scripture study companion",
+      "book of mormon",
+      "nephi",
+      "faith",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -2060,7 +2622,8 @@
     "createdAt": "2026-04-08T00:00:00Z",
     "downloadUrl": "/audio/scriptureStudyCompanion/SSC-002-1-nephi-2.mp3",
     "series": "Scripture Study Companion",
-    "episode": 2
+    "episode": 2,
+    "subcategory": "scripture-study-companion"
   },
   {
     "id": "ssc-ep-003",
@@ -2071,9 +2634,21 @@
     "description": "Back to Jerusalem! Episode 3 covers 1 Nephi Chapter 3 — Nephi and his brothers return to get the brass plates from Laban. A story of perseverance and trust in the Lord, perfect for young scripture students.",
     "shortDescription": "Study companion for 1 Nephi Chapter 3",
     "category": "audiobooks",
-    "tags": ["audiobook", "scripture study companion", "book of mormon", "nephi", "brass plates", "faith", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "scripture study companion",
+      "book of mormon",
+      "nephi",
+      "brass plates",
+      "faith",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -2088,7 +2663,8 @@
     "createdAt": "2026-04-08T00:00:00Z",
     "downloadUrl": "/audio/scriptureStudyCompanion/SSC-003-1-nephi-3.mp3",
     "series": "Scripture Study Companion",
-    "episode": 3
+    "episode": 3,
+    "subcategory": "scripture-study-companion"
   },
   {
     "id": "ssc-ep-004",
@@ -2099,9 +2675,22 @@
     "description": "Moses stands before Pharaoh! Episode 4 covers Exodus Chapter 7 — Aaron's rod becomes a serpent, the Nile turns to blood, and God's power is revealed. An exciting study companion for the Old Testament plagues of Egypt.",
     "shortDescription": "Study companion for Exodus Chapter 7",
     "category": "audiobooks",
-    "tags": ["audiobook", "scripture study companion", "old testament", "exodus", "moses", "plagues", "egypt", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "scripture study companion",
+      "old testament",
+      "exodus",
+      "moses",
+      "plagues",
+      "egypt",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -2116,7 +2705,8 @@
     "createdAt": "2026-04-08T00:00:00Z",
     "downloadUrl": "/audio/scriptureStudyCompanion/SSC-004-exodus-7.mp3",
     "series": "Scripture Study Companion",
-    "episode": 4
+    "episode": 4,
+    "subcategory": "scripture-study-companion"
   },
   {
     "id": "ssc-ep-005",
@@ -2127,9 +2717,22 @@
     "description": "The plagues continue! Episode 5 covers Exodus Chapter 8 — frogs, lice, and flies descend on Egypt as Pharaoh's heart remains hard. Learn how God's patience and power work together in this dramatic chapter.",
     "shortDescription": "Study companion for Exodus Chapter 8",
     "category": "audiobooks",
-    "tags": ["audiobook", "scripture study companion", "old testament", "exodus", "moses", "plagues", "egypt", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "scripture study companion",
+      "old testament",
+      "exodus",
+      "moses",
+      "plagues",
+      "egypt",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -2144,7 +2747,8 @@
     "createdAt": "2026-04-08T00:00:00Z",
     "downloadUrl": "/audio/scriptureStudyCompanion/SSC-005-exodus-8.mp3",
     "series": "Scripture Study Companion",
-    "episode": 5
+    "episode": 5,
+    "subcategory": "scripture-study-companion"
   },
   {
     "id": "ssc-ep-006",
@@ -2155,9 +2759,22 @@
     "description": "The plagues intensify! Episode 6 covers Exodus Chapter 9 — livestock disease, boils, and a devastating hailstorm strike Egypt. Discover how these signs point to God's power and His plan to free Israel.",
     "shortDescription": "Study companion for Exodus Chapter 9",
     "category": "audiobooks",
-    "tags": ["audiobook", "scripture study companion", "old testament", "exodus", "moses", "plagues", "egypt", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "scripture study companion",
+      "old testament",
+      "exodus",
+      "moses",
+      "plagues",
+      "egypt",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -2172,7 +2789,8 @@
     "createdAt": "2026-04-08T00:00:00Z",
     "downloadUrl": "/audio/scriptureStudyCompanion/SSC-006-exodus-9.mp3",
     "series": "Scripture Study Companion",
-    "episode": 6
+    "episode": 6,
+    "subcategory": "scripture-study-companion"
   },
   {
     "id": "ssc-ep-007",
@@ -2183,9 +2801,22 @@
     "description": "Darkness covers the land! Episode 7 covers Exodus Chapter 10 — locusts devour every green thing and three days of thick darkness fall over Egypt. Pharaoh begins to waver but still won't let Israel go.",
     "shortDescription": "Study companion for Exodus Chapter 10",
     "category": "audiobooks",
-    "tags": ["audiobook", "scripture study companion", "old testament", "exodus", "moses", "plagues", "egypt", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "scripture study companion",
+      "old testament",
+      "exodus",
+      "moses",
+      "plagues",
+      "egypt",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -2200,7 +2831,8 @@
     "createdAt": "2026-04-08T00:00:00Z",
     "downloadUrl": "/audio/scriptureStudyCompanion/SSC-007-exodus-10.mp3",
     "series": "Scripture Study Companion",
-    "episode": 7
+    "episode": 7,
+    "subcategory": "scripture-study-companion"
   },
   {
     "id": "ssc-ep-008",
@@ -2211,9 +2843,22 @@
     "description": "The final warning! Episode 8 covers Exodus Chapter 11 — Moses delivers God's last message to Pharaoh: the firstborn of Egypt will be taken. A solemn and powerful chapter that sets the stage for the Passover.",
     "shortDescription": "Study companion for Exodus Chapter 11",
     "category": "audiobooks",
-    "tags": ["audiobook", "scripture study companion", "old testament", "exodus", "moses", "plagues", "passover", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "scripture study companion",
+      "old testament",
+      "exodus",
+      "moses",
+      "plagues",
+      "passover",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -2228,7 +2873,8 @@
     "createdAt": "2026-04-08T00:00:00Z",
     "downloadUrl": "/audio/scriptureStudyCompanion/SSC-008-exodus-11.mp3",
     "series": "Scripture Study Companion",
-    "episode": 8
+    "episode": 8,
+    "subcategory": "scripture-study-companion"
   },
   {
     "id": "ssc-ep-009",
@@ -2239,9 +2885,22 @@
     "description": "The Passover! Episode 9 covers Exodus Chapter 12 — the Israelites mark their doors with lamb's blood, the angel of death passes over, and Pharaoh finally lets God's people go. One of the most important chapters in all of scripture.",
     "shortDescription": "Study companion for Exodus Chapter 12 - The Passover",
     "category": "audiobooks",
-    "tags": ["audiobook", "scripture study companion", "old testament", "exodus", "moses", "passover", "freedom", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "scripture study companion",
+      "old testament",
+      "exodus",
+      "moses",
+      "passover",
+      "freedom",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -2256,7 +2915,8 @@
     "createdAt": "2026-04-08T00:00:00Z",
     "downloadUrl": "/audio/scriptureStudyCompanion/SSC-009-exodus-12.mp3",
     "series": "Scripture Study Companion",
-    "episode": 9
+    "episode": 9,
+    "subcategory": "scripture-study-companion"
   },
   {
     "id": "ssc-ep-010",
@@ -2267,9 +2927,22 @@
     "description": "Freedom at last! Episode 10 covers Exodus Chapter 13 — the Israelites leave Egypt, consecrate their firstborn to God, and follow the pillar of cloud by day and fire by night. A triumphant chapter about trusting God's guidance.",
     "shortDescription": "Study companion for Exodus Chapter 13 - The Exodus begins",
     "category": "audiobooks",
-    "tags": ["audiobook", "scripture study companion", "old testament", "exodus", "moses", "pillar of fire", "freedom", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "scripture study companion",
+      "old testament",
+      "exodus",
+      "moses",
+      "pillar of fire",
+      "freedom",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -2284,7 +2957,1490 @@
     "createdAt": "2026-04-08T00:00:00Z",
     "downloadUrl": "/audio/scriptureStudyCompanion/SSC-010-exodus-13.mp3",
     "series": "Scripture Study Companion",
+    "episode": 10,
+    "subcategory": "scripture-study-companion"
+  },
+  {
+    "id": "sg-atnmt-01",
+    "name": "The Atonement: What Is the Atonement?",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on the atonement",
+    "category": "study-guides",
+    "subcategory": "atonement",
+    "tags": [
+      "study guide",
+      "atonement",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/atonement/ATNMT-01-what-is-the-atonement.html",
+    "sku": "SG-ATNMT-001",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/atonement/ATNMT-01-what-is-the-atonement.html",
+    "series": "The Atonement",
+    "episode": 1
+  },
+  {
+    "id": "sg-atnmt-02",
+    "name": "The Atonement: Gethsemane",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on the atonement",
+    "category": "study-guides",
+    "subcategory": "atonement",
+    "tags": [
+      "study guide",
+      "atonement",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/atonement/ATNMT-02-gethsemane.html",
+    "sku": "SG-ATNMT-002",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/atonement/ATNMT-02-gethsemane.html",
+    "series": "The Atonement",
+    "episode": 2
+  },
+  {
+    "id": "sg-atnmt-03",
+    "name": "The Atonement: The Crucifixion",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on the atonement",
+    "category": "study-guides",
+    "subcategory": "atonement",
+    "tags": [
+      "study guide",
+      "atonement",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/atonement/ATNMT-03-the-crucifixion.html",
+    "sku": "SG-ATNMT-003",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/atonement/ATNMT-03-the-crucifixion.html",
+    "series": "The Atonement",
+    "episode": 3
+  },
+  {
+    "id": "sg-atnmt-04",
+    "name": "The Atonement: The Resurrection",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on the atonement",
+    "category": "study-guides",
+    "subcategory": "atonement",
+    "tags": [
+      "study guide",
+      "atonement",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/atonement/ATNMT-04-the-resurrection.html",
+    "sku": "SG-ATNMT-004",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/atonement/ATNMT-04-the-resurrection.html",
+    "series": "The Atonement",
+    "episode": 4
+  },
+  {
+    "id": "sg-atnmt-05",
+    "name": "The Atonement: Grace and Mercy",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on the atonement",
+    "category": "study-guides",
+    "subcategory": "atonement",
+    "tags": [
+      "study guide",
+      "atonement",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/atonement/ATNMT-05-grace-and-mercy.html",
+    "sku": "SG-ATNMT-005",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/atonement/ATNMT-05-grace-and-mercy.html",
+    "series": "The Atonement",
+    "episode": 5
+  },
+  {
+    "id": "sg-atnmt-06",
+    "name": "The Atonement: Repentance and Forgiveness",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on the atonement",
+    "category": "study-guides",
+    "subcategory": "atonement",
+    "tags": [
+      "study guide",
+      "atonement",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/atonement/ATNMT-06-repentance-and-forgiveness.html",
+    "sku": "SG-ATNMT-006",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/atonement/ATNMT-06-repentance-and-forgiveness.html",
+    "series": "The Atonement",
+    "episode": 6
+  },
+  {
+    "id": "sg-atnmt-07",
+    "name": "The Atonement: The Infinite Nature of the Atonement",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on the atonement",
+    "category": "study-guides",
+    "subcategory": "atonement",
+    "tags": [
+      "study guide",
+      "atonement",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/atonement/ATNMT-07-the-infinite-nature.html",
+    "sku": "SG-ATNMT-007",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/atonement/ATNMT-07-the-infinite-nature.html",
+    "series": "The Atonement",
+    "episode": 7
+  },
+  {
+    "id": "sg-atnmt-08",
+    "name": "The Atonement: How We Access the Atonement Daily",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on the atonement",
+    "category": "study-guides",
+    "subcategory": "atonement",
+    "tags": [
+      "study guide",
+      "atonement",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/atonement/ATNMT-08-how-we-access-it-daily.html",
+    "sku": "SG-ATNMT-008",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/atonement/ATNMT-08-how-we-access-it-daily.html",
+    "series": "The Atonement",
+    "episode": 8
+  },
+  {
+    "id": "sg-atnmt-09",
+    "name": "The Atonement: The Sacrament as Weekly Re-Access to the Atonement",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on the atonement",
+    "category": "study-guides",
+    "subcategory": "atonement",
+    "tags": [
+      "study guide",
+      "atonement",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/atonement/ATNMT-09-the-sacrament.html",
+    "sku": "SG-ATNMT-009",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/atonement/ATNMT-09-the-sacrament.html",
+    "series": "The Atonement",
+    "episode": 9
+  },
+  {
+    "id": "sg-atnmt-10",
+    "name": "The Atonement: Suffering with Purpose: The Atonement Sanctifies, Not Just Removes",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on the atonement",
+    "category": "study-guides",
+    "subcategory": "atonement",
+    "tags": [
+      "study guide",
+      "atonement",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/atonement/ATNMT-10-suffering-with-purpose.html",
+    "sku": "SG-ATNMT-010",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/atonement/ATNMT-10-suffering-with-purpose.html",
+    "series": "The Atonement",
     "episode": 10
+  },
+  {
+    "id": "sg-atnmt-11",
+    "name": "The Atonement: Forgiving Others",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on the atonement",
+    "category": "study-guides",
+    "subcategory": "atonement",
+    "tags": [
+      "study guide",
+      "atonement",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/atonement/ATNMT-11-forgiving-others.html",
+    "sku": "SG-ATNMT-011",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/atonement/ATNMT-11-forgiving-others.html",
+    "series": "The Atonement",
+    "episode": 11
+  },
+  {
+    "id": "sg-atnmt-12",
+    "name": "The Atonement: The Atonement and Identity",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "Cross-references: ATNMT-01 (what the Atonement is), ATNMT-06 (repentance), ATNMT-10 (suffering), RPNT-01 (what...",
+    "shortDescription": "Study guide on the atonement",
+    "category": "study-guides",
+    "subcategory": "atonement",
+    "tags": [
+      "study guide",
+      "atonement",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/atonement/ATNMT-12-atonement-and-identity.html",
+    "sku": "SG-ATNMT-012",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/atonement/ATNMT-12-atonement-and-identity.html",
+    "series": "The Atonement",
+    "episode": 12
+  },
+  {
+    "id": "sg-atnmt-13",
+    "name": "The Atonement: Salvation and Eternal Life",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on the atonement",
+    "category": "study-guides",
+    "subcategory": "atonement",
+    "tags": [
+      "study guide",
+      "atonement",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/atonement/ATNMT-13-salvation-and-eternal-life.html",
+    "sku": "SG-ATNMT-013",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/atonement/ATNMT-13-salvation-and-eternal-life.html",
+    "series": "The Atonement",
+    "episode": 13
+  },
+  {
+    "id": "sg-chrt-01",
+    "name": "Charity: What Charity Is",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "Most people hear the word \"charity\" and think of dropping change in a bucket or being patient when someone annoys you....",
+    "shortDescription": "Study guide on charity",
+    "category": "study-guides",
+    "subcategory": "charity",
+    "tags": [
+      "study guide",
+      "charity",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/charity/CHRT-01-what-charity-is.html",
+    "sku": "SG-CHRT-001",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/charity/CHRT-01-what-charity-is.html",
+    "series": "Charity",
+    "episode": 1
+  },
+  {
+    "id": "sg-chrt-02",
+    "name": "Charity: Charity in the Gospels",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "When Jesus moved through a crowd, he did not see a crowd. He saw the leper standing at the edge of it. He saw the short...",
+    "shortDescription": "Study guide on charity",
+    "category": "study-guides",
+    "subcategory": "charity",
+    "tags": [
+      "study guide",
+      "charity",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/charity/CHRT-02-charity-in-the-gospels.html",
+    "sku": "SG-CHRT-002",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/charity/CHRT-02-charity-in-the-gospels.html",
+    "series": "Charity",
+    "episode": 2
+  },
+  {
+    "id": "sg-chrt-03",
+    "name": "Charity: Bearing One Another",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "There is a difference between watching someone carry a heavy box and actually taking one end of",
+    "shortDescription": "Study guide on charity",
+    "category": "study-guides",
+    "subcategory": "charity",
+    "tags": [
+      "study guide",
+      "charity",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/charity/CHRT-03-bearing-one-another.html",
+    "sku": "SG-CHRT-003",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/charity/CHRT-03-bearing-one-another.html",
+    "series": "Charity",
+    "episode": 3
+  },
+  {
+    "id": "sg-chrt-04",
+    "name": "Charity: Charity Begins at Home",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "It is often easier to be charitable to strangers than to the people who live with",
+    "shortDescription": "Study guide on charity",
+    "category": "study-guides",
+    "subcategory": "charity",
+    "tags": [
+      "study guide",
+      "charity",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/charity/CHRT-04-charity-begins-at-home.html",
+    "sku": "SG-CHRT-004",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/charity/CHRT-04-charity-begins-at-home.html",
+    "series": "Charity",
+    "episode": 4
+  },
+  {
+    "id": "sg-estr-01",
+    "name": "Easter: The Triumphal Entry",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on easter",
+    "category": "study-guides",
+    "subcategory": "easter",
+    "tags": [
+      "study guide",
+      "easter",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/easter/ESTR-01-the-triumphal-entry.html",
+    "sku": "SG-ESTR-001",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/easter/ESTR-01-the-triumphal-entry.html",
+    "series": "Easter",
+    "episode": 1
+  },
+  {
+    "id": "sg-estr-02",
+    "name": "Easter: The Last Supper",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on easter",
+    "category": "study-guides",
+    "subcategory": "easter",
+    "tags": [
+      "study guide",
+      "easter",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/easter/ESTR-02-the-last-supper.html",
+    "sku": "SG-ESTR-002",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/easter/ESTR-02-the-last-supper.html",
+    "series": "Easter",
+    "episode": 2
+  },
+  {
+    "id": "sg-estr-03",
+    "name": "Easter: Gethsemane to the Cross",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on easter",
+    "category": "study-guides",
+    "subcategory": "easter",
+    "tags": [
+      "study guide",
+      "easter",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/easter/ESTR-03-gethsemane-to-the-cross.html",
+    "sku": "SG-ESTR-003",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/easter/ESTR-03-gethsemane-to-the-cross.html",
+    "series": "Easter",
+    "episode": 3
+  },
+  {
+    "id": "sg-estr-04",
+    "name": "Easter: The Resurrection Morning",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on easter",
+    "category": "study-guides",
+    "subcategory": "easter",
+    "tags": [
+      "study guide",
+      "easter",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/easter/ESTR-04-the-resurrection-morning.html",
+    "sku": "SG-ESTR-004",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/easter/ESTR-04-the-resurrection-morning.html",
+    "series": "Easter",
+    "episode": 4
+  },
+  {
+    "id": "sg-estr-05",
+    "name": "Easter: What Easter Means Today",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on easter",
+    "category": "study-guides",
+    "subcategory": "easter",
+    "tags": [
+      "study guide",
+      "easter",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/easter/ESTR-05-what-easter-means-today.html",
+    "sku": "SG-ESTR-005",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/easter/ESTR-05-what-easter-means-today.html",
+    "series": "Easter",
+    "episode": 5
+  },
+  {
+    "id": "sg-fath-01",
+    "name": "Faith: What Faith Is",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on faith",
+    "category": "study-guides",
+    "subcategory": "faith",
+    "tags": [
+      "study guide",
+      "faith",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/faith/FATH-01-what-faith-is.html",
+    "sku": "SG-FATH-001",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/faith/FATH-01-what-faith-is.html",
+    "series": "Faith",
+    "episode": 1
+  },
+  {
+    "id": "sg-fath-02",
+    "name": "Faith: Faith as Action",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on faith",
+    "category": "study-guides",
+    "subcategory": "faith",
+    "tags": [
+      "study guide",
+      "faith",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/faith/FATH-02-faith-as-action.html",
+    "sku": "SG-FATH-002",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/faith/FATH-02-faith-as-action.html",
+    "series": "Faith",
+    "episode": 2
+  },
+  {
+    "id": "sg-fath-03",
+    "name": "Faith: The Seed of Faith",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on faith",
+    "category": "study-guides",
+    "subcategory": "faith",
+    "tags": [
+      "study guide",
+      "faith",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/faith/FATH-03-the-seed-of-faith.html",
+    "sku": "SG-FATH-003",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/faith/FATH-03-the-seed-of-faith.html",
+    "series": "Faith",
+    "episode": 3
+  },
+  {
+    "id": "sg-fath-04",
+    "name": "Faith: Faith in the Dark",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on faith",
+    "category": "study-guides",
+    "subcategory": "faith",
+    "tags": [
+      "study guide",
+      "faith",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/faith/FATH-04-faith-in-the-dark.html",
+    "sku": "SG-FATH-004",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/faith/FATH-04-faith-in-the-dark.html",
+    "series": "Faith",
+    "episode": 4
+  },
+  {
+    "id": "sg-ptbl-01",
+    "name": "Patriarchal Blessings: What Is a Patriarchal Blessing?",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on patriarchal blessings",
+    "category": "study-guides",
+    "subcategory": "patriarchalBlessings",
+    "tags": [
+      "study guide",
+      "patriarchalBlessings",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/patriarchalBlessings/PTBL-01-what-is-a-patriarchal-blessing.html",
+    "sku": "SG-PTBL-001",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/patriarchalBlessings/PTBL-01-what-is-a-patriarchal-blessing.html",
+    "series": "Patriarchal Blessings",
+    "episode": 1
+  },
+  {
+    "id": "sg-ptbl-02",
+    "name": "Patriarchal Blessings: Your Lineage and the House of Israel",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on patriarchal blessings",
+    "category": "study-guides",
+    "subcategory": "patriarchalBlessings",
+    "tags": [
+      "study guide",
+      "patriarchalBlessings",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/patriarchalBlessings/PTBL-02-lineage-and-the-house-of-israel.html",
+    "sku": "SG-PTBL-002",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/patriarchalBlessings/PTBL-02-lineage-and-the-house-of-israel.html",
+    "series": "Patriarchal Blessings",
+    "episode": 2
+  },
+  {
+    "id": "sg-ptbl-03",
+    "name": "Patriarchal Blessings: Preparing to Receive Your Blessing",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on patriarchal blessings",
+    "category": "study-guides",
+    "subcategory": "patriarchalBlessings",
+    "tags": [
+      "study guide",
+      "patriarchalBlessings",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/patriarchalBlessings/PTBL-03-receiving-your-blessing.html",
+    "sku": "SG-PTBL-003",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/patriarchalBlessings/PTBL-03-receiving-your-blessing.html",
+    "series": "Patriarchal Blessings",
+    "episode": 3
+  },
+  {
+    "id": "sg-ptbl-04",
+    "name": "Patriarchal Blessings: How to Study Your Blessing",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on patriarchal blessings",
+    "category": "study-guides",
+    "subcategory": "patriarchalBlessings",
+    "tags": [
+      "study guide",
+      "patriarchalBlessings",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/patriarchalBlessings/PTBL-04-reading-and-studying-your-blessing.html",
+    "sku": "SG-PTBL-004",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/patriarchalBlessings/PTBL-04-reading-and-studying-your-blessing.html",
+    "series": "Patriarchal Blessings",
+    "episode": 4
+  },
+  {
+    "id": "sg-ptbl-05",
+    "name": "Patriarchal Blessings: Living by Your Blessing",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on patriarchal blessings",
+    "category": "study-guides",
+    "subcategory": "patriarchalBlessings",
+    "tags": [
+      "study guide",
+      "patriarchalBlessings",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/patriarchalBlessings/PTBL-05-living-by-your-blessing.html",
+    "sku": "SG-PTBL-005",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/patriarchalBlessings/PTBL-05-living-by-your-blessing.html",
+    "series": "Patriarchal Blessings",
+    "episode": 5
+  },
+  {
+    "id": "sg-rpnt-01",
+    "name": "Repentance: What Repentance Actually Is",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on repentance",
+    "category": "study-guides",
+    "subcategory": "repentance",
+    "tags": [
+      "study guide",
+      "repentance",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/repentance/RPNT-01-what-repentance-is.html",
+    "sku": "SG-RPNT-001",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/repentance/RPNT-01-what-repentance-is.html",
+    "series": "Repentance",
+    "episode": 1
+  },
+  {
+    "id": "sg-rpnt-02",
+    "name": "Repentance: Godly Sorrow vs. Worldly Sorrow",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on repentance",
+    "category": "study-guides",
+    "subcategory": "repentance",
+    "tags": [
+      "study guide",
+      "repentance",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/repentance/RPNT-02-godly-sorrow.html",
+    "sku": "SG-RPNT-002",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/repentance/RPNT-02-godly-sorrow.html",
+    "series": "Repentance",
+    "episode": 2
+  },
+  {
+    "id": "sg-rpnt-03",
+    "name": "Repentance: Confession and Making Right",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on repentance",
+    "category": "study-guides",
+    "subcategory": "repentance",
+    "tags": [
+      "study guide",
+      "repentance",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/repentance/RPNT-03-confession-and-making-right.html",
+    "sku": "SG-RPNT-003",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/repentance/RPNT-03-confession-and-making-right.html",
+    "series": "Repentance",
+    "episode": 3
+  },
+  {
+    "id": "sg-rpnt-04",
+    "name": "Repentance: The Change That Lasts",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on repentance",
+    "category": "study-guides",
+    "subcategory": "repentance",
+    "tags": [
+      "study guide",
+      "repentance",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/repentance/RPNT-04-the-change-that-lasts.html",
+    "sku": "SG-RPNT-004",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/repentance/RPNT-04-the-change-that-lasts.html",
+    "series": "Repentance",
+    "episode": 4
+  },
+  {
+    "id": "sg-srvs-01",
+    "name": "Service: Why We Serve",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on service",
+    "category": "study-guides",
+    "subcategory": "service",
+    "tags": [
+      "study guide",
+      "service",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/service/SRVS-01-why-we-serve.html",
+    "sku": "SG-SRVS-001",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/service/SRVS-01-why-we-serve.html",
+    "series": "Service",
+    "episode": 1
+  },
+  {
+    "id": "sg-srvs-02",
+    "name": "Service: Losing Yourself to Find Yourself",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on service",
+    "category": "study-guides",
+    "subcategory": "service",
+    "tags": [
+      "study guide",
+      "service",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/service/SRVS-02-losing-yourself-to-find-yourself.html",
+    "sku": "SG-SRVS-002",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/service/SRVS-02-losing-yourself-to-find-yourself.html",
+    "series": "Service",
+    "episode": 2
+  },
+  {
+    "id": "sg-srvs-03",
+    "name": "Service: Small and Simple Things",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on service",
+    "category": "study-guides",
+    "subcategory": "service",
+    "tags": [
+      "study guide",
+      "service",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/service/SRVS-03-small-and-simple-things.html",
+    "sku": "SG-SRVS-003",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/service/SRVS-03-small-and-simple-things.html",
+    "series": "Service",
+    "episode": 3
+  },
+  {
+    "id": "sg-srvs-04",
+    "name": "Service: Service and Covenant",
+    "price": 0.0,
+    "originalPrice": null,
+    "discount": 0,
+    "description": "(Move this line to mark your current",
+    "shortDescription": "Study guide on service",
+    "category": "study-guides",
+    "subcategory": "service",
+    "tags": [
+      "study guide",
+      "service",
+      "scripture",
+      "faith",
+      "educational"
+    ],
+    "imageUrl": "/images/audio-003.png",
+    "images": [
+      "/images/audio-003.svg"
+    ],
+    "inStock": true,
+    "stockCount": 999,
+    "rating": 4.9,
+    "reviewCount": 3,
+    "isSale": false,
+    "isFeatured": false,
+    "isComingSoon": false,
+    "availableOnWebsite": true,
+    "isAudiobook": false,
+    "isStudyGuide": true,
+    "studyGuideUrl": "/guides/service/SRVS-04-service-and-covenant.html",
+    "sku": "SG-SRVS-004",
+    "createdAt": "2026-04-09T00:00:00Z",
+    "downloadUrl": "/guides/service/SRVS-04-service-and-covenant.html",
+    "series": "Service",
+    "episode": 4
   },
   {
     "id": "classic-car-001",

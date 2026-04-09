@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Change That Lasts</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">🔄 Repentance</span>
+    <h1>The Change That Lasts</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>Hook</h2>
+    <p>The hardest question in the repentance process is not "have I been forgiven?" It is "have I actually changed?" You can confess without changing. You can feel sorry without changing. You can resolve to be different, keep the resolution for a while, and then slowly drift back to exactly who you were. This cycle — the loop of sin, sorrow, resolution, relapse — is one of the most discouraging experiences in the spiritual life, and it raises the uncomfortable possibility that what you are managing is not repentance but behavior modification.</p>
+    <p>Behavior modification and repentance are not the same thing. Behavior modification changes what you do. Repentance changes what you want.</p>
+    <p>King Benjamin's people experienced something that went past modification. When they called on God at the close of his great sermon, "the Spirit of the Lord came upon them, and they were filled with joy, having received a remission of their sins, and having peace of conscience, because of the exceeding faith which they had in Jesus Christ who should come... And they all cried with one voice, saying: Yea, we believe all the words which thou hast spoken unto us; and also, we know of their surety and truth, because of the Spirit of the Lord Omnipotent, which has wrought a mighty change in us, or in our hearts, that we have no more disposition to do evil, but to do good continually" (Mosiah 5:2).</p>
+    <p><em>No more disposition to do evil.</em> Not just no more doing of evil. The disposition — the inclination, the pull — had changed. This is what the end of genuine repentance looks like.</p>
+    <hr>
+    <h2>Deepen</h2>
+    <h3>Mosiah 5:2 — The Mighty Change</h3>
+    <p>The phrase "mighty change" appears in both Mosiah 5:2 and Alma 5:14, and in each case it refers to the same interior transformation. It is not a gradual improvement. It is not an incremental upgrading of behavior. It is a categorical change in what the person is oriented toward — in what they love, what they want, what pulls on them.</p>
+    <p>The people of King Benjamin do not say they have resolved to stop doing evil. They say they have <em>no more disposition</em> to do it. The desire itself has changed. This is the fruit of repentance taken all the way to conversion: not a person who is white-knuckling their way through temptation, but a person who genuinely wants something different.</p>
+    <p>Alma 5:14 frames the same transformation differently: "Have ye spiritually been born of God? Have ye received his image in your countenances?" The image of God appearing in a person's face is a metaphor for a complete reorientation of character — not just action, but the inner shape of the person.</p>
+    <p>This is what 2 Corinthians 5:17 points toward: "Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new." The word <em>new creature</em> is not hyperbole. Something genuinely new has been created — not the old person improved, but a new person with new appetites, new instincts, new loves.</p>
+    <h3>What It Is Not</h3>
+    <p>The mighty change of heart is not:</p>
+    <ul><li><strong>Perfect performance.</strong> King Benjamin's people did not become sinless. They went on to face the same world, the same opposition, the same weaknesses. What had changed was their orientation — what they were aimed at — not their immediate capacity.</li></ul>
+    <ul><li><strong>A single moment.</strong> The mighty change often deepens over years. Alma asks "can ye feel so now?" (Alma 5:26) because the change is not a transaction completed at one moment — it is a state that must be renewed, deepened, and maintained. People who have genuinely experienced it can feel it slipping and can return to it.</li></ul>
+    <ul><li><strong>Primarily about stopping things.</strong> The change Mosiah describes is <em>toward</em> good continually — not merely away from evil. The positive orientation is as important as the negative cessation.</li></ul>
+    <ul><li><strong>Produced by willpower.</strong> This is perhaps the most important point. The mighty change is not the result of trying harder. It is the result of encountering God in a way that changes what you love. Alma did not will his way out of misery. He cried out to Christ — and Christ changed him.</li></ul>
+    <h3>Conversion vs. Compliance</h3>
+    <p>Elder David A. Bednar's 2012 conference address "Converted Unto the Lord" draws the distinction that matters most here: the difference between compliance and conversion.</p>
+    <p>Compliance is external. A compliant person does what the covenant requires because of social expectation, fear of consequences, or habit. The behavior looks right, but the heart has not moved. Compliance is fragile — it depends on the external conditions that produced it. Remove the social pressure, and it collapses.</p>
+    <p>Conversion is internal. A converted person behaves in accordance with the covenant because their desires have been changed — because they actually want what the covenant offers. Conversion is durable. It does not depend on being watched or on conditions remaining favorable. It survives because it is rooted in what the person actually loves.</p>
+    <p>Bednar argues that the purpose of all Church activity — scripture study, prayer, temple attendance, sacrament, service — is not compliance but conversion. These practices are the means by which the Holy Ghost can work the mighty change in us. They are not the change itself, but they are how the change happens.</p>
+    <p>The question he leaves with his audience is a version of Alma's question: are you going through the motions in a way that is producing compliance, or is something actually shifting in your heart? The two look identical from the outside. The difference is entirely interior.</p>
+    <h3>The Ongoing Work</h3>
+    <p>The mighty change does not mean the work is finished. It means the direction has been established. Conversion is not a destination but an orientation — and an orientation must be maintained.</p>
+    <p>This is why the sacrament is weekly, not annual. This is why the scriptures speak of "enduring to the end" rather than "arriving at the end." The person who has experienced genuine conversion still faces opposition, still has weaknesses, still needs the Atonement daily. What is different is that they face all of this while pointed toward God rather than away from him.</p>
+    <p>Ether 12:27 describes the ongoing dynamic: "And if men come unto me I will show unto them their weakness. I give unto men weakness that they may be humble; and my grace is sufficient for all men that humble themselves before me; for if they humble themselves before me, and have faith in me, then will I make weak things become strong unto them." The weakness is not removed immediately. It is being transformed — and the transformation is ongoing, not instantaneous.</p>
+    <hr>
+    <h2>Cross-References</h2>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/5?id=p1-p5#p1" target="_blank">Mosiah 5:1–5</a></p>
+    <p>The central text. King Benjamin's people report "no more disposition to do evil, but to do good continually" — the positive and negative dimensions of the mighty change, stated together.</p>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/5?id=p12-p26#p12" target="_blank">Alma 5:12–26</a></p>
+    <p>Alma's probing questions about whether the change has actually occurred, and whether it can be felt <em>now</em> — not just at some past moment.</p>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/12?id=p27#p27" target="_blank">Ether 12:27</a></p>
+    <p>God's promise that weakness is given for a purpose — to produce humility — and that through grace, weak things become strong. The change is ongoing.</p>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/2-cor/5?id=p17#p17" target="_blank">2 Corinthians 5:17</a></p>
+    <p>"If any man be in Christ, he is a new creature" — Paul's language for the same transformation the Book of Mormon calls a mighty change of heart.</p>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/ezek/36?id=p26-p27#p26" target="_blank">Ezekiel 36:26–27</a></p>
+    <p>"A new heart also will I give you, and a new spirit will I put within you: and I will take away the stony heart out of your flesh, and I will give you an heart of flesh." God promises not just behavioral correction but cardiac surgery — the heart itself replaced.</p>
+    <p><strong>Cross-reference:</strong> RPNT-01 (What Repentance Actually Is) — the linguistic roots of repentance as <em>metanoia</em>, a change of mind and inner orientation. RPNT-04 is where that definition arrives at its fullest expression.</p>
+    <p><strong>Cross-reference:</strong> ATNMT-06, section "Alma's mighty change of heart" and "Repentance as daily orientation" — covers the same terrain from the angle of the Atonement and daily practice.</p>
+    <hr>
+    <h2>Conference References</h2>
+    <p><strong>Elder David A. Bednar</strong> — "Converted Unto the Lord" (General Conference, October 2012):</p>
+    <p>Bednar drew the core distinction between members who are "active in the Church" but not converted and those who are "active in the gospel" — genuinely changed. He argued that all Church activity has conversion as its goal, and that the test is not what you do but what you have become: whether your desires, priorities, and loves have actually shifted. This talk is one of the most direct treatments of the difference between compliance and conversion in recent conference addresses.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2012/10/converted-unto-the-lord" target="_blank">Converted Unto the Lord — Elder David A. Bednar, October 2012</a></p>
+    <p><strong>Elder D. Todd Christofferson</strong> — "The Divine Gift of Repentance" (General Conference, October 2011):</p>
+    <p>Christofferson addressed the failure mode of behavior modification — the pattern of adjusting outward conduct without undergoing genuine inner change. He described repentance as requiring not just resolve but transformation, and pointed to the Holy Ghost as the agent of that transformation. He was direct that God is not satisfied with compliance and neither should we be.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2011/10/the-divine-gift-of-repentance" target="_blank">The Divine Gift of Repentance — Elder D. Todd Christofferson, October 2011</a></p>
+    <p><strong>President Ezra Taft Benson</strong> — "Born of God" (General Conference, October 1985):</p>
+    <p>Benson gave what is probably the landmark modern treatment of the mighty change of heart, drawing directly on Mosiah 5:2 and Alma 5. He argued that the change is real, that it is available to all, and that the means of obtaining it is through submitting fully to Christ — not through self-improvement programs. He said something to the effect that if we put God first, all other things fall into proper place; and that the Church has always emphasized this transformation rather than mere rule-keeping.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/1985/10/born-of-god" target="_blank">Born of God — President Ezra Taft Benson, October 1985</a></p>
+    <p><strong>Elder Dieter F. Uchtdorf</strong> — "You Can Do It Now" (General Conference, October 2013):</p>
+    <p>Uchtdorf brought the concept of change directly to the question of whether it is too late, too hard, or too much to ask. He offered the invitation that the change is not something we achieve and then report on — it is something we enter into now, in this moment, in response to a Savior who is already present. The emphasis on <em>now</em> is the answer to the loop of delay and discouragement.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2013/10/you-can-do-it-now" target="_blank">You Can Do It Now — Elder Dieter F. Uchtdorf, October 2013</a></p>
+    <hr>
+    <h2>Closing Question</h2>
+    <p>Think about the areas of your life where you have most wanted to change — and look honestly at whether what you have been doing is behavior modification (trying harder, making new resolutions, managing the behavior) or genuine repentance (bringing the desire itself to God and asking him to change what you love). What would it mean to stop trying to fix the fruit and instead ask God to change the root?</p>
+  </div>
+</body>
+</html>

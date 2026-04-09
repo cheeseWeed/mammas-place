@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bearing One Another</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">❤️ Charity</span>
+    <h1>Bearing One Another</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <h2>Hook</h2>
+    <p>There is a difference between watching someone carry a heavy box and actually taking one end of it.</p>
+    <p>Witnessing someone's pain is not the same as bearing it with them. You can observe grief from across a room, offer a sympathetic word, and return to your own life without your load changing at all. That is compassion at a distance. It is not nothing — but it is not what the covenants ask for.</p>
+    <p>The scriptures ask for something more physical, more committed, more inconvenient: to actually take hold of what someone else is carrying, so that the weight is distributed, so that they are not alone under it.</p>
+    <hr>
+    <h2>Deepen</h2>
+    <h3>Mosiah 18:8-9 — The Baptismal Covenant</h3>
+    <p>Alma is teaching by the waters of Mormon, and his description of baptism is among the most specific in all of scripture about what we are actually agreeing to when we enter the covenant.</p>
+    <blockquote>
+    <p>"And it came to pass that he said unto them: Behold, here are the waters of Mormon (for thus were they called) and now, as ye are desirous to come into the fold of God, and to be called his people, and are willing to bear one another's burdens, that they may be light; yea, and are willing to mourn with those that mourn; yea, and comfort those that stand in need of comfort, and to stand as witnesses of God at all times and in all things, and in all places that ye may be in, even until death, that ye may be redeemed of God, and be numbered with those of the first resurrection, that ye may have eternal life."</p>
+    <p>— Mosiah 18:8-9</p>
+    </blockquote>
+    <p>The structure of this covenant is worth examining carefully. Three paired actions are listed:</p>
+    <ol><li><strong>Bear one another's burdens</strong> — that they may be <strong>light</strong></li><li><strong>Mourn with those that mourn</strong></li><li><strong>Comfort those that stand in need of comfort</strong></li></ol>
+    <p>Notice that the first pair includes a purpose clause: "that they may be light." This is not just about solidarity. It is about outcome. The covenant exists to actually reduce weight. The bearing is meant to accomplish something — the burden is meant to become lighter because someone else has taken hold of it.</p>
+    <p>The second pair — mourning with those that mourn — does not say "comfort those that mourn." It says mourn <em>with</em> them. This is the covenant to be present in grief, not just to fix it. Sometimes the most charitable act is to sit down where someone is sitting and not try to explain why they should not be there.</p>
+    <p>The third — comfort those that stand in need of comfort — covers the rest: those who are struggling without obvious cause, those who need encouragement, those whose need is not visible but is real.</p>
+    <p>Alma then asks directly: "Now I say unto you, if this be the desire of your hearts, what have you against being baptized in the name of the Lord?" (Mosiah 18:10). The covenant is the condition of entry. To be baptized is to say yes to this description of how you will live.</p>
+    <hr>
+    <h3>Galatians 6:2 — Paul's Parallel Command</h3>
+    <blockquote>
+    <p>"Bear ye one another's burdens, and so fulfil the law of Christ."</p>
+    <p>— Galatians 6:2</p>
+    </blockquote>
+    <p>Paul uses the word "fulfil" — the same word used when Jesus says he came not to destroy the law but to fulfil it (Matthew 5:17). The implication is that bearing one another's burdens is not a supplemental act of kindness above and beyond the law. It is the law of Christ, fulfilled. It is what the whole thing was always pointing at.</p>
+    <p>Two verses later Paul adds: "For every man shall bear his own burden" (Galatians 6:5). At first this looks like a contradiction. But the Greek words are different: in verse 2, "burden" (baros) means a heavy weight, an oppressive load — the kind you cannot carry alone. In verse 5, "burden" (phortion) means a pack or personal load — the ordinary responsibilities of one's own life. Paul is not contradicting himself. He is distinguishing between the loads we must carry ourselves (our own responsibilities) and the crushing weights that require others to share them.</p>
+    <p>Charity discerns the difference. It knows when someone needs a push toward their own effort, and when they need someone to come take hold of the other end.</p>
+    <hr>
+    <h2>The Difference Between Witnessing and Bearing</h2>
+    <p>There is a practical and spiritual gap between these two postures that is worth naming honestly.</p>
+    <p><strong>Witnessing</strong> pain means:</p>
+    <ul><li>I see what is happening to you</li><li>I acknowledge it is real and difficult</li><li>I feel something when I observe it</li><li>My own load does not change</li></ul>
+    <p><strong>Bearing</strong> pain means:</p>
+    <ul><li>I have taken something on</li><li>I am now carrying weight I was not carrying before</li><li>My life has been rearranged to make room for your need</li><li>The load is now distributed between us</li></ul>
+    <p>Most social expressions of sympathy are forms of witnessing. "I'm so sorry." "I'll keep you in my prayers." "Let me know if there's anything I can do." These are not wrong — they can be genuine expressions of care. But the covenant asks for the step after these phrases: the follow-through, the inconvenience, the actual rearrangement.</p>
+    <p>The widow of Zarephath in 1 Kings 17 was herself at the edge of starvation when Elijah arrived. She bore his burden — she fed him — out of her last supply. The miracle followed. Bearing is often a prior act of faith, made when we do not yet see how it will be sustained.</p>
+    <hr>
+    <h2>Sister Chieko Okazaki on Belonging and Inclusion</h2>
+    <p>Sister Chieko Okazaki, former first counselor in the Relief Society general presidency, taught with unusual power about what belonging actually requires. She emphasized that inclusion is not a passive state — it is something that must be actively created by those who already belong.</p>
+    <p>She taught that the Church's diversity was not a challenge to be managed but a gift to be received, and that the covenant to mourn with those that mourn required understanding what caused others' mourning — including the grief of feeling unseen, of having one's experience dismissed, of being welcomed in word but not in practice.</p>
+    <p>Her teaching on inclusion appears across her Relief Society general presidency addresses from the early-to-mid 1990s and in her book <em>Disciples</em>. Her 1993 General Conference address "Baskets and Bottles" is a good starting point.</p>
+    <p><em>Search for Okazaki at https://www.churchofjesuschrist.org/study/general-conference — her addresses from 1990–1997 consistently address belonging, inclusion, and the covenant community.</em></p>
+    <p>Her consistent message: that inclusion is not a passive state but something actively created — and that mourning with those that mourn requires understanding what causes others' mourning, including the grief of feeling unseen or unwelcome.</p>
+    <p>What Okazaki understood is that the covenant of bearing is not only about physical burdens. It includes the burden of feeling like an outsider, of navigating a community that was not designed with your experience in mind. Bearing that burden with someone means doing the work of genuine inclusion — not waiting to be asked, not requiring the person carrying it to explain it, but actively choosing to take hold of that end.</p>
+    <hr>
+    <h2>Cross-References</h2>
+    <ul><li><strong>Moroni 7:45</strong> — "charity... beareth all things." This is not coincidental language. Moroni's definition of charity includes the bearing function at its center.</li><li><strong>Alma 7:11-12</strong> — Christ "shall go forth, suffering pains and afflictions and temptations of every kind... that he may know according to the flesh how to succor his people according to their infirmities." The Atonement itself is the supreme act of burden-bearing. Jesus did not witness suffering from a distance — he entered it.</li><li><strong>Romans 15:1</strong> — "We then that are strong ought to bear the infirmities of the weak, and not to please ourselves." Paul expands the burden-bearing obligation: those with strength or stability have a particular responsibility toward those who currently lack it.</li><li><strong>Matthew 11:28-30</strong> — "Come unto me, all ye that labour and are heavy laden, and I will give you rest... For my yoke is easy, and my burden is light." Christ offers to bear our burden with us; the yoke is for two. The model he gives us is one of shared carrying, not solo endurance.</li></ul>
+    <hr>
+    <h2>Conference References</h2>
+    <p><strong>President Henry B. Eyring</strong> has taught about the gift of being present in grief — staying with someone in their sorrow rather than rushing to explain or resolve it. His talk "Mountains to Climb" addresses how God gives us trials and also gives us companions for them, and how faithful presence is itself a form of ministry.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2012/04/mountains-to-climb" target="_blank">Eyring, "Mountains to Climb," General Conference April 2012</a></p>
+    <p><strong>Elder D. Todd Christofferson</strong> has taught that the Church of Jesus Christ is a community of believers who share each other's burdens, and that this mutual bearing is one of the defining marks of the covenant people — distinguishable from mere association by the depth of the obligation.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2015/10/why-the-church" target="_blank">Christofferson, "Why the Church," General Conference October 2015</a></p>
+    <p><strong>Sister Jean B. Bingham</strong> (Relief Society General President) taught that ministering — which replaced home and visiting teaching — is meant to be a formalization of the baptismal covenant. Its purpose is to ensure that no one in the community carries their burden alone without anyone knowing.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2018/04/ministering-as-the-savior-does" target="_blank">Bingham, "Ministering as the Savior Does," General Conference April 2018</a></p>
+    <hr>
+    <h3>Hollie Rhees Fluhman — Belonging and the Body of Christ</h3>
+    <p><strong>Read:</strong> Hollie Rhees Fluhman, "Belonging and the Body of Christ," BYU Women's Conference 2023.</p>
+    <p><em>Search for this talk at https://womensconference.byu.edu/transcripts — title confirmed, PDF available through the Women's Conference archive.</em></p>
+    <p><strong>What to look for:</strong> Fluhman argues that belonging is not something people earn or achieve — it is something the covenant community creates together. She draws on Paul's image of the body of Christ (1 Corinthians 12) to argue that bearing one another's burdens requires first ensuring that everyone knows they are a member of the body — that their place is not contingent on conformity. Look for her distinction between tolerance (you may stay) and genuine belonging (we need you here).</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Fluhman distinguishes between allowing someone to be present and actively creating the conditions for them to belong. What is the difference? What does active belonging-creation require of you?</li><li>She draws on the body metaphor: "the eye cannot say unto the hand, I have no need of thee" (1 Cor 12:21). What members of your ward, family, or community have you been, even subtly, treating as nonessential?</li><li>Bearing one another's burdens includes the burden of not belonging — of being present but not included, welcomed in word but not in practice. Is there someone in your circle carrying that specific burden right now?</li></ul>
+    <hr>
+    <h2>Closing Question for Reflection</h2>
+    <p>Is there a difference between how you understand the baptismal covenant now versus the day you were baptized (or confirmed it as an adult)? What does it mean to you personally that bearing another's burden is listed first — before mourning with them, before comforting them — as if it is the most fundamental act the covenant asks of you?</p>
+  </div>
+</body>
+</html>

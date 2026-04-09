@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Atonement and Identity</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">✝️ The Atonement</span>
+    <h1>The Atonement and Identity</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <p><strong>Bookmark:</strong> <code>atonement/ATNMT-12</code></p>
+    <p><strong>Cross-references:</strong> ATNMT-01 (what the Atonement is), ATNMT-06 (repentance), ATNMT-10 (suffering), RPNT-01 (what repentance is)</p>
+    <p><strong>Core scriptures:</strong> Moses 1:3–13, Romans 8:16–17, 1 John 3:1–2, 2 Corinthians 5:17, D&C 18:10</p>
+    <hr>
+    <h2>Hook</h2>
+    <p>Satan's first move with Moses was not a temptation. It was an identity attack.</p>
+    <p>God had just told Moses: <em>"thou art my son."</em> (Moses 1:4) Then Satan appeared and said: <em>"Moses, son of man, worship me."</em> (Moses 1:12)</p>
+    <p>Moses caught it immediately. He said: <em>"Who art thou? For behold, I am a son of God."</em> (Moses 1:13)</p>
+    <p>He didn't argue doctrine. He didn't debate Satan's theology. He answered from identity — and the identity God had given him held.</p>
+    <p>The Atonement is not only about what you've <em>done.</em> It is a statement about who you <em>are.</em></p>
+    <hr>
+    <h2>Deepen</h2>
+    <h3>God Establishes Identity Before He Calls to Work</h3>
+    <p>In Moses 1, the sequence matters:</p>
+    <ol><li>God tells Moses who he is — "thou art my son" (verse 4)</li><li>God shows Moses the breadth of creation (verses 7–8)</li><li>Moses is left to himself; Satan attacks (verse 12)</li><li>Moses answers from identity, not argument (verse 13)</li><li><em>Then</em> God gives Moses his mission (verse 26 onward)</li></ol>
+    <p>This is the pattern. Identity first. Mission second. Satan knows that if he can destabilize the identity, the mission collapses with it.</p>
+    <p>The Atonement is what makes the identity claim possible. You are a child of God not because you've earned it, not because you've been good enough, but because of what Christ did. The worth precedes the performance.</p>
+    <hr>
+    <h3>The Scriptural Foundation</h3>
+    <p><strong>D&C 18:10:</strong></p>
+    <blockquote>
+    <p>"Remember the worth of souls is great in the sight of God."</p>
+    </blockquote>
+    <p>Not <em>was</em> great. Not <em>will be</em> great when you get your act together. <em>Is.</em> Present tense, unconditional.</p>
+    <p><strong>1 John 3:1–2:</strong></p>
+    <blockquote>
+    <p>"Behold, what manner of love the Father hath bestowed upon us, that we should be called the sons of God: therefore the world knoweth us not, because it knew him not. Beloved, now are we the sons of God, and it doth not yet appear what we shall be: but we know that, when he shall appear, we shall be like him; for we shall see him as he is."</p>
+    </blockquote>
+    <p>John is overwhelmed by it: <em>what manner of love.</em> That we should be called — not just feel like, not just aspire to be — <em>called</em> the sons and daughters of God. That is the Atonement's deepest declaration.</p>
+    <p><strong>Romans 8:16–17:</strong></p>
+    <blockquote>
+    <p>"The Spirit itself beareth witness with our spirit, that we are the children of God: and if children, then heirs; heirs of God, and joint-heirs with Christ."</p>
+    </blockquote>
+    <p>The Spirit's witness is identity confirmation. One of the Spirit's functions is to remind you who you are when you've forgotten.</p>
+    <p><strong>Isaiah 43:1:</strong></p>
+    <blockquote>
+    <p>"But now thus saith the Lord that created thee, O Jacob, and he that formed thee, O Israel, Fear not: for I have redeemed thee, I have called thee by thy name; thou art mine."</p>
+    </blockquote>
+    <p><em>I have called thee by thy name.</em> He knows you specifically. Not as a category. By name.</p>
+    <p><strong>2 Corinthians 5:17:</strong></p>
+    <blockquote>
+    <p>"Therefore if any man be in Christ, he is a new creature: old things are passed away; behold, all things are become new."</p>
+    </blockquote>
+    <p>Not a cleaned-up version of the old person. Not a reformed sinner on probation. A <em>new creature.</em> The Atonement doesn't just repair — it transforms.</p>
+    <hr>
+    <h3>Shame vs. Guilt — Why Identity Matters</h3>
+    <p>Guilt says: <em>I did something bad.</em></p>
+    <p>Shame says: <em>I am bad.</em></p>
+    <p>The gospel addresses both — but they require different responses. Guilt is answered by repentance: you did something wrong, you can change it, Christ makes the change possible. That's the repentance pipeline (ATNMT-06, RPNT-01 through 04).</p>
+    <p>Shame is answered by identity: <em>who you are is not determined by what you've done.</em> The Atonement doesn't just clean the record — it restores the person. You are not "a sinner who got forgiven." You are a child of God, redeemed, with a worth that no sin can erase and no performance can manufacture.</p>
+    <p>The trap of shame is that it closes the very door the Atonement opens. If I believe I <em>am</em> bad — not just that I <em>did</em> something bad — then the Atonement feels inaccessible. Why would it apply to me? It's for people who are basically good and just need some help.</p>
+    <p>Moses 1 is the answer. God didn't say "thou art a pretty good person who mostly tries hard." He said: <em>thou art my son.</em> Before Moses had done anything. Before the mission. Before the Red Sea. That is the foundation — and it holds.</p>
+    <hr>
+    <h3>Acting From Identity, Not Earning It</h3>
+    <p>There's a direction difference between two ways of living:</p>
+    <p><strong>Acting to earn identity:</strong> I will keep the commandments so that I will become someone God loves and Christ died for. If I do enough, I will deserve it.</p>
+    <p><strong>Acting from identity:</strong> I am a child of God, redeemed by Christ. Therefore I keep the commandments. Not to earn it — because it's already true, and I want to live in accordance with who I am.</p>
+    <p>The first is exhausting and never finishes. The second is still hard — but it's powered from a different source.</p>
+    <p>Elder Lynn G. Robbins has taught the <em>to be</em> vs. <em>to do</em> distinction: if you focus only on what you do, you will manage behavior. If you focus on who you are (your identity in Christ), the behavior follows from a deeper place. The Atonement changes who you <em>are,</em> not just what you <em>do.</em> (See "Until Seventy Times Seven," General Conference April 2018)</p>
+    <hr>
+    <h3>The Permanence of Redemption</h3>
+    <p>Elder Holland has spoken directly about not looking back at your worst self as though that is your truest self. The Atonement is not a temporary fix that could be undone. What God does in you is permanent. You are not perpetually on probation.</p>
+    <p>This is what Lot's wife misunderstood. She looked back. Holland reads that as a refusal to let go of the old identity — the old life, the old self. The command was not to torture her but to free her. Don't define yourself by what you're leaving. Define yourself by where you're going — and who you are now.</p>
+    <hr>
+    <h2>Talk References</h2>
+    <h3>Elder Jeffrey R. Holland — "Remember Lot's Wife"</h3>
+    <p><em>BYU Devotional, January 2009</em></p>
+    <p><strong>What to read:</strong> The second half of the talk — from the section where Holland addresses looking back at your worst self as though it defines you. His language about "the permanent, irreversible seriousness of what Christ has done for you" is the key passage.</p>
+    <p><strong>Key idea:</strong> You cannot undo what the Atonement has done. Looking back at your worst moment as your truest self is a refusal of the gift.</p>
+    <p><strong>Find it:</strong> <a href="https://speeches.byu.edu/talks/jeffrey-r-holland/remember-lots-wife/" target="_blank">Remember Lot's Wife — Elder Jeffrey R. Holland, BYU Devotional January 2009</a></p>
+    <hr>
+    <h3>Elder Dieter F. Uchtdorf — "You Matter to Him"</h3>
+    <p><em>General Conference, October 2011</em></p>
+    <p><strong>What to read:</strong> The opening illustration (the distance between stars and how vast the universe is — and yet God knows you personally), and then the section on God's view of individual worth. Uchtdorf's prose is unusually direct here.</p>
+    <p><strong>Key idea:</strong> The size of the universe does not diminish your significance — it amplifies it. That the Creator of all of that knows your name is the point.</p>
+    <p><strong>Find it:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2011/10/you-matter-to-him" target="_blank">You Matter to Him — Elder Dieter F. Uchtdorf, General Conference October 2011</a></p>
+    <hr>
+    <h3>Elder Lynn G. Robbins — "Until Seventy Times Seven"</h3>
+    <p><em>General Conference, April 2018</em></p>
+    <p><strong>What to read:</strong> His treatment of the <em>to be</em> vs. <em>to do</em> distinction — approximately the middle third of the talk. He argues that the Savior's gospel is fundamentally about changing <em>who we are,</em> not just managing <em>what we do.</em></p>
+    <p><strong>Key idea:</strong> Behavior management produces compliance. Identity transformation produces conversion. The Atonement aims at the deeper target.</p>
+    <p><strong>Find it:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2018/04/until-seventy-times-seven" target="_blank">Until Seventy Times Seven — Elder Lynn G. Robbins, General Conference April 2018</a></p>
+    <hr>
+    <h3>President Russell M. Nelson — "Becoming Exemplary Latter-day Saints"</h3>
+    <p><em>General Conference, October 2018</em></p>
+    <p><strong>What to read:</strong> His teaching that our identity as children of God and disciples of Christ should drive our choices. Nelson has returned to identity themes multiple times since 2018 — also see "Choices for Eternity" (May 2022 Worldwide Devotional for Young Adults).</p>
+    <p><strong>Key idea:</strong> Who you are should inform what you do — not the other way around.</p>
+    <p><strong>Find it:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2018/10/becoming-exemplary-latter-day-saints" target="_blank">Becoming Exemplary Latter-day Saints — President Russell M. Nelson, General Conference October 2018</a></p>
+    <hr>
+    <h3>Elder Jeffrey R. Holland — "The Laborers in the Vineyard"</h3>
+    <p><em>General Conference, April 2012</em></p>
+    <p><strong>What to read:</strong> The final third — particularly the section where Holland addresses the older brother's complaint in the prodigal son parable. He shows that jealousy over God's mercy toward others is itself a misunderstanding of identity: you don't lose anything when God is generous to someone else.</p>
+    <p><strong>Key idea:</strong> Insecurity about your own standing before God produces resentment toward others' redemption. Security in your identity in Christ makes their redemption a cause for rejoicing.</p>
+    <p><strong>Find it:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2012/04/the-laborers-in-the-vineyard" target="_blank">The Laborers in the Vineyard — Elder Jeffrey R. Holland, General Conference April 2012</a></p>
+    <hr>
+    <h3>Sister Sheri Dew — "Knowing Who You Are — and Who You Have Always Been" (BYU Women's Conference, 2001)</h3>
+    <p><strong>Read:</strong> <a href="https://womensconference.byu.edu/transcripts" target="_blank">Knowing Who You Are — and Who You Have Always Been — Sheri Dew, BYU Women's Conference, 2001</a> <em>(Find "Dew" on the transcripts index page)</em></p>
+    <p><strong>What to look for:</strong> Dew argues that the most important thing you can know is who you are — and that Satan's primary strategy is identity confusion. She explores what it means to be a spirit child of God <em>before</em> this life began, and how that pre-mortal identity is the foundation that survives every failure, wound, or sin in mortality. She is direct about the practical cost of not knowing who you are: you make decisions from fear, seek validation from the wrong sources, and are easily manipulated.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Dew says Satan's main attack is on identity. This is exactly what Moses 1 shows. How does knowing this change how you respond when you feel worthless, inadequate, or irredeemably broken?</li><li>She distinguishes between the identity we build in mortality (reputation, roles, accomplishments) and the identity God gave us before we came (children of God, heirs of eternal life). Which one do you actually live from day to day?</li><li>"Who you have always been" — this implies an identity that predates your sins, your wounds, and your worst moments. What does it do to you to think of your truest self as older than your failures?</li></ul>
+    <hr>
+    <h3>Sister Michelle Craig — "Notwithstanding My Weakness" (BYU Women's Conference, 2023)</h3>
+    <p><strong>Read:</strong> <a href="https://womensconference.byu.edu/transcripts" target="_blank">Notwithstanding My Weakness — Michelle Craig, BYU Women's Conference, 2023</a> <em>(Find "Craig" on the transcripts index page)</em></p>
+    <p><strong>What to look for:</strong> Craig takes her title from Moroni's famous confession in Ether 12:23–27 — where Moroni mourns his weakness in writing and the Lord responds with the principle of grace made perfect in weakness. She applies this to the experience of feeling unequal to your calling, your role, or your life — and argues that the Atonement is not just for sin but for inadequacy. The grace that covers sin also covers the gap between who you are and who God is asking you to become.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Moroni worried that his weaknesses would make people mock his words. The Lord's answer was not "you're not weak" but "my grace is sufficient." What area of your life do you most need to hear that answer right now?</li><li>Craig distinguishes between the Atonement for what you've done wrong and the Atonement for who you are not yet. Have you ever applied the Atonement to the second category — the gap between your current self and the person God is inviting you to become?</li><li>"Notwithstanding my weakness" — Moroni wrote anyway. Craig argues that the Atonement doesn't remove weakness; it works through it. What would it look like to act "notwithstanding" your own weakness in an area where you have been waiting until you feel more ready?</li></ul>
+    <hr>
+    <h2>Closing Question</h2>
+    <p>Moses answered Satan with the identity God gave him: <em>I am a son of God.</em></p>
+    <p>What is Satan's current version of "son of man" for you? What label — failure, addict, disappointment, not enough, too broken — does he want you to accept as your truest self?</p>
+    <p>And what does God say instead?</p>
+    <p>Sit with Isaiah 43:1: <em>"I have called thee by thy name; thou art mine."</em></p>
+    <p>What does it mean — specifically, for you, right now — to believe that?</p>
+    <hr>
+    <p><em>Cross-reference: ATNMT-06 (repentance — guilt vs. shame) | ATNMT-10 (suffering — identity held through trials) | RPNT-01 (what repentance is — metanoia as identity reorientation) | FATH-01 (faith as acting from who you are)</em></p>
+  </div>
+</body>
+</html>

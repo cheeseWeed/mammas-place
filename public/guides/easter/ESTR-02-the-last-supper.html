@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Last Supper</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">🌅 Easter</span>
+    <h1>The Last Supper</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>Hook: The Longest Night</h2>
+    <p>Between Palm Sunday and Gethsemane stands a room, a table, and five chapters of the Gospel of John that contain the most extended private teaching Jesus ever gave his disciples. He knew what was coming — the arrest was hours away. He had chosen this moment, this table, this night, to say everything they would need after he was gone.</p>
+    <p>John 13–17 is sometimes called the Upper Room Discourse. It contains the washing of feet, the promise of the Comforter, the vine and the branches, the command to love one another, and — in John 17 — the most complete prayer of Jesus Christ recorded in scripture.</p>
+    <p>He did not go to Gethsemane unprepared or silent. He went having poured himself out in words, in service, and in prayer.</p>
+    <hr>
+    <h2>The Foot Washing — What Kind of Lord</h2>
+    <h3>John 13: the servant king</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/13?id=p1-p17#p1" target="_blank">John 13:1–17</a></p>
+    <p><strong>What to look for:</strong> John opens with a theological summary before narrating the foot washing: "having loved his own which were in the world, he loved them unto the end" (v. 1). That phrase — "unto the end" — can mean until the last moment and also to the uttermost degree. Then Jesus, knowing who he was and where he was going (v. 3), gets up and washes the disciples' feet. John notes that this included Judas, who Jesus already knew would betray him.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Peter protests: "Thou shalt never wash my feet." Jesus says, "If I wash thee not, thou hast no part with me." What does Peter's resistance reveal about how we sometimes resist being served by Christ?</li><li>Jesus washes Judas's feet knowing what Judas will do within hours. What does that act say about the nature of Christ's love — is it conditional on the response it receives?</li><li>Verse 15: "I have given you an example, that ye should do as I have done to you." The night before his arrest, his final practical teaching was about serving one another. Why is service the thing he chose to demonstrate?</li></ul>
+    <hr>
+    <h3>The new commandment</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/13?id=p31-p35#p31" target="_blank">John 13:31–35</a></p>
+    <p><strong>What to look for:</strong> After Judas leaves, Jesus says he will give the disciples "a new commandment" — to love one another as he has loved them. He says this is how "all men shall know that ye are my disciples." Not doctrine, not ordinance, not correct procedure — the identifying mark of his followers is the quality of their love for each other.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The commandment to love is not new in the Old Testament. What makes it "new" here? What did Jesus add to it that changed its nature?</li><li>He says the measure of the love is "as I have loved you." That is a very high standard — he is about to die for them. What does it mean to calibrate your love for others by that measure?</li><li>He says the watching world will identify his disciples by their love. Not by their arguments, their buildings, or their numbers — by love. What would it look like for that to be literally true of your own community?</li></ul>
+    <hr>
+    <h2>The Sacrament Instituted</h2>
+    <h3>Matthew's account of the bread and cup</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/26?id=p26-p30#p26" target="_blank">Matthew 26:26–30</a></p>
+    <p><strong>What to look for:</strong> In the middle of the Passover meal — itself a memorial of deliverance from Egypt — Jesus takes the bread and redefines it: "This is my body." He takes the cup and says it is "my blood of the new testament, which is shed for many for the remission of sins" (v. 28). He is transforming a covenant meal about an old deliverance into a covenant meal about a new and greater one.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The Passover meal was a commanded remembrance of the Exodus. Jesus used that framework — a meal of memorial covenant — to institute the sacrament. What does it say that God consistently uses eating together as a covenant act?</li><li>"For the remission of sins" — this is the purpose he names. How does taking the sacrament weekly connect to the ongoing reality of needing and receiving forgiveness?</li><li>Verse 30: "And when they had sung an hymn, they went out into the mount of Olives." They sang before Gethsemane. What does it mean that he went to his suffering with a hymn?</li></ul>
+    <hr>
+    <h3>The restored sacrament prayers</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/20?id=p77-p79#p77" target="_blank">D&C 20:77–79</a></p>
+    <p><strong>What to look for:</strong> The Doctrine and Covenants gives the text of the sacrament prayers restored through Joseph Smith. The bread prayer specifies witnesses will "always remember him" and "keep his commandments" — two specific covenants. The water prayer asks to "always have his Spirit to be with them." The promise is the Spirit, conditional on remembrance and covenant-keeping.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The bread prayer ends "that they may always have his Spirit to be with them." The Comforter promised in John 14–16 and the Spirit promised in the sacrament prayer are the same gift. How does the Last Supper discourse change how you hear those words on Sunday?</li><li>Both prayers include the phrase "always remember him." What makes remembrance covenantal — not just sentimental — in this context?</li><li>These prayers were not written in Jerusalem on that night — they were revealed in 1830 in New York. What does it mean that the same covenant meal was restored, with the same essential terms, in a different century?</li></ul>
+    <hr>
+    <h2>The Upper Room Discourse</h2>
+    <h3>The promise of the Comforter</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/14?id=p1-p27#p1" target="_blank">John 14:1–27</a></p>
+    <p><strong>What to look for:</strong> This chapter begins with one of the most comforting sequences in scripture: "Let not your heart be troubled." Jesus tells the disciples he is going to prepare a place for them and will come again. He promises the Comforter — the Holy Ghost — who "will teach you all things, and bring all things to your remembrance" (v. 26). He gives "peace" as a specific gift: "not as the world giveth" (v. 27).</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"Let not your heart be troubled: ye believe in God, believe also in me" (v. 1). This command — not to be troubled — is given by someone who is about to be arrested and crucified. What authority does it carry, coming from him in that moment?</li><li>"I am the way, the truth, and the life" (v. 6). These are three distinct claims. Which of the three is most significant to you right now, and why?</li><li>He promises peace that the world cannot give. What kind of peace has the world been unable to give you — and what would it mean to receive that different kind?</li></ul>
+    <hr>
+    <h3>"I am the vine" — John 15</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/15?id=p1-p17#p1" target="_blank">John 15:1–17</a></p>
+    <p><strong>What to look for:</strong> Jesus describes himself as the true vine and his Father as the husbandman. Disciples are branches — they can bear fruit only by abiding in the vine. The word "abide" (Greek: meno) appears ten times in this short passage. It means to remain, to stay, to dwell. The entire metaphor is about sustained connection, not occasional contact.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The branches that do not abide are "cast into the fire" (v. 6) — not because God rejects them in anger, but because a branch severed from the vine is already dead. How does this image reframe the idea of spiritual discipline as something we need rather than something God demands?</li><li>Verse 13: "Greater love hath no man than this, that a man lay down his life for his friends." He says this in the same evening he will go to Gethsemane. He is teaching about the love he is about to demonstrate. How does knowing what comes next change how you hear this verse?</li><li>He calls them friends, not servants (v. 15). The friendship is based on disclosure — "all things that I have heard of my Father I have made known unto you." What does friendship based on shared knowledge mean in terms of how you study the scriptures?</li></ul>
+    <hr>
+    <h3>The coming of the Spirit — John 16</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/16?id=p5-p15,p33#p5" target="_blank">John 16:5–15, 33</a></p>
+    <p><strong>What to look for:</strong> Jesus tells the disciples it is actually better for them that he goes — because if he does not go, the Comforter will not come (v. 7). This is a striking statement: the physical presence of Jesus was less beneficial for them than the Holy Ghost would be. He closes the chapter with: "In the world ye shall have tribulation: but be of good cheer; I have overcome the world" (v. 33).</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"It is expedient for you that I go away." This was incomprehensible to the disciples in the moment. Why would his departure be better than his presence? What does the answer reveal about what the Spirit can do that a physical teacher cannot?</li><li>Verse 33: "Be of good cheer." He says this just before Gethsemane, to people who do not yet understand what is about to happen. What kind of cheer is this — and what is it based on?</li><li>The Spirit will "guide you into all truth" (v. 13). This promise was given to disciples, not just apostles. How does it shape how you approach personal study and prayer?</li></ul>
+    <hr>
+    <h2>The Intercessory Prayer — John 17</h2>
+    <h3>The whole of John 17</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/17" target="_blank">John 17</a></p>
+    <p><strong>What to look for:</strong> This is the longest recorded prayer of Jesus in scripture. He prays first for himself (v. 1–5), then for his apostles (v. 6–19), then for all who will believe through their words — which includes you (v. 20–26). The defining petition of the prayer is unity: "that they all may be one; as thou, Father, art in me, and I in thee, that they also may be one in us" (v. 21). Read slowly.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Verse 3: "And this is life eternal, that they might know thee the only true God, and Jesus Christ, whom thou hast sent." Eternal life is defined as knowing — not merely believing in, not obeying, but knowing. What is the difference between knowing someone and knowing about them?</li><li>He prays "not that thou shouldest take them out of the world, but that thou shouldest keep them from the evil" (v. 15). His prayer for us is not escape from difficulty but preservation through it. How does that change what you might ask God for?</li><li>Verse 26: "And I have declared unto them thy name, and will declare it: that the love wherewith thou hast loved me may be in them, and I in them." He prays that the exact love the Father has for the Son would be in us. What does it mean to be loved with that love?</li></ul>
+    <hr>
+    <h2>Conference Voices</h2>
+    <h3>Elder Holland on the Last Supper's weight</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/1995/10/the-atonement" target="_blank">The Atonement — Jeffrey R. Holland, October 1995 General Conference</a>. Holland's treatment of the Atonement consistently emphasizes that Christ gave everything in service to his disciples before and during the suffering — that the washing of feet, the discourse of John 13–17, the prayer of John 17, were all acts of love poured out by someone who knew what was coming. He gave the most when he had the least.</p>
+    <h3>President Eyring on the Comforter promised at the Last Supper</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2015/04/the-comforter" target="_blank">The Comforter — Henry B. Eyring, April 2015 General Conference</a>. Eyring draws directly on John 14:16–17 and 14:26–27, where Jesus promises "the Comforter, which is the Holy Ghost, whom the Father will send in my name, he shall teach you all things." He connects the Comforter's role to the covenant members make to bear one another's burdens — the same covenant referenced in the sacrament prayers.</p>
+    <h3>Elder Bednar on the sacrament promise and the Spirit</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2006/04/that-we-may-always-have-his-spirit-to-be-with-us" target="_blank">That We May Always Have His Spirit to Be with Us — David A. Bednar, April 2006 General Conference</a>. Bednar draws the direct line between the sacrament covenant promise — "always have his Spirit to be with them" — and the Holy Ghost described in John 14:17. The Comforter Christ promised at the Last Supper and the Spirit promised in the weekly sacrament prayer are the same gift, offered on the same terms: covenant faithfulness and remembrance.</p>
+    <h3>Elder McConkie on John 17 as the capstone</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/1985/04/the-purifying-power-of-gethsemane" target="_blank">The Purifying Power of Gethsemane — Bruce R. McConkie, April 1985 General Conference</a>. McConkie treats John 17 as the theological pinnacle of the Last Supper — Christ's declaration of unity with the Father and his prayer that we share in that unity. He argues this prayer was not sentiment but covenant declaration.</p>
+    <hr>
+    <h2>Closing Reflection</h2>
+    <p>Everything Jesus did and said in that upper room — the washing of feet, the bread and cup, the long discourse on love and the Spirit, the prayer for our unity with God — he did knowing what was waiting in the garden.</p>
+    <p><strong>Closing question for reflection:</strong> If you knew you had one evening to speak freely to the people you love most, what would you say — and what does it tell you about Jesus that he spent that evening entirely focused on them?</p>
+    <hr>
+    <p><em>Cross-reference: The prayer Jesus prayed in Gethsemane hours after this supper is explored in <a href="../atonement/ATNMT-02-gethsemane.md" target="_blank">ATNMT-02 — Gethsemane</a>. The sacrament as weekly remembrance of the cross is explored in <a href="../atonement/ATNMT-03-the-crucifixion.md" target="_blank">ATNMT-03 — The Crucifixion</a>.</em></p>
+  </div>
+</body>
+</html>

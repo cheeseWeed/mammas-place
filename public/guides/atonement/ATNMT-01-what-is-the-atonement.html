@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Is the Atonement?</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">✝️ The Atonement</span>
+    <h1>What Is the Atonement?</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>The Word and the Concept</h2>
+    <h3>At-one-ment — the meaning of reconciliation</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/gospel-topics/atonement-of-jesus-christ" target="_blank">Gospel Topics: Atonement of Jesus Christ</a></p>
+    <p><strong>What to look for:</strong> Notice how the entry breaks the English word into its root meaning — "at-one-ment" — and how that reconciliation is described as both an event and an ongoing process.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>What does it mean to be "at one" with God? What separates us from that, and why can't we close that gap on our own?</li><li>The entry distinguishes between the Fall and the Atonement as two necessary parts of the plan. Why does the Fall make the Atonement necessary rather than just God forgiving us without it?</li><li>In your own words, how would you explain the Atonement to someone who had never heard of Jesus Christ?</li></ul>
+    <hr>
+    <h3>Jacob's sweeping Atonement sermon</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/9?id=p6-p26#p6" target="_blank">2 Nephi 9:6–26</a></p>
+    <p><strong>What to look for:</strong> Jacob describes what would happen to us "if the flesh should rise no more" — a world without resurrection or redemption. He then names what Christ's Atonement rescues us from: physical death, spiritual death, and the monster he calls "death and hell." Notice how physical and spiritual redemption are treated as distinct but connected.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Jacob calls death and hell a "monster" (v. 10). What does personifying them that way do to how you feel about what Christ overcame?</li><li>Verse 21 says Christ "suffereth the pains of all men." What does it mean that he suffered "the pains" — not just the punishment but the actual pain?</li><li>Jacob shouts "O how great the holiness of our God!" after explaining the Atonement. What provokes that kind of praise in you when you think about it?</li></ul>
+    <hr>
+    <h3>What Christ took upon himself — Alma's description</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/7?id=p11-p13#p11" target="_blank">Alma 7:11–13</a></p>
+    <p><strong>What to look for:</strong> Alma lists specific things Christ took upon himself: pains, sicknesses, infirmities, temptations, death. Pay special attention to verse 12 — he took these things "that he may know according to the flesh." The reason given is empathy, not just substitution.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Alma says Christ took our infirmities and sicknesses, not only our sins. What difference does it make that he understands illness, grief, and limitation — not just guilt?</li><li>"That he may know according to the flesh" — why was it important for God to know these things experientially, not just omnisciently?</li><li>Is there something you are carrying right now — not a sin, but a burden — that you could see differently knowing Christ took it upon himself?</li></ul>
+    <hr>
+    <h2>The Purpose of the Atonement</h2>
+    <h3>The plan of salvation and why it requires a Redeemer</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/preach-my-gospel-2023/04-chapter3?lang=eng" target="_blank">Preach My Gospel, Chapter 3 — The Gospel of Jesus Christ</a></p>
+    <p><strong>What to look for:</strong> This chapter lays out the five principles and ordinances of the gospel. Notice how the Atonement is not listed as one item among five — it is the foundation that makes all five possible. Look for the phrase "the Atonement of Jesus Christ makes it possible..."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Why does repentance require the Atonement? Could God just forgive us without Christ's suffering?</li><li>The chapter connects baptism to the Atonement through the covenant. What does making a covenant have to do with accepting what Christ did?</li><li>How would you explain to a child why we need a Savior if God loves us and could just forgive us?</li></ul>
+    <hr>
+    <h3>Isaiah's portrait of the suffering servant</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/isa/53" target="_blank">Isaiah 53</a></p>
+    <p><strong>What to look for:</strong> This chapter was written 700 years before Christ. Notice the specific details: "despised and rejected," "acquainted with grief," "he hath borne our griefs," "with his stripes we are healed." This is not a vague prophecy — it is a portrait.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Verse 3 says he was "a man of sorrows, and acquainted with grief." What does it mean to you that the Savior of the world was also deeply familiar with sorrow?</li><li>"With his stripes we are healed" (v. 5). What kind of healing do you most need — and how does Christ's suffering make that healing possible?</li><li>Isaiah wrote this without knowing Christ's name. How does that affect the way you read it compared to reading a New Testament account?</li></ul>
+    <hr>
+    <h3>Paul's compact statement of the gospel core</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/15?id=p1-p8,p20-p22#p1" target="_blank">1 Corinthians 15:1–8, 20–22</a></p>
+    <p><strong>What to look for:</strong> Paul says the gospel is: Christ died for our sins, was buried, and rose again. Then in verse 22 he makes the stunning claim — "as in Adam all die, even so in Christ shall all be made alive." The Atonement is the reversal of the Fall, person by person.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Paul calls the resurrection "the firstfruits" (v. 20). What does that agricultural image suggest about how Christ's resurrection relates to ours?</li><li>"If Christ be not risen, your faith is vain" (v. 17). Why does everything depend on whether the resurrection actually happened?</li><li>Paul says Christ "died for our sins according to the scriptures." What scriptures was Paul pointing to — and how does that connect to what you read in Isaiah 53?</li></ul>
+    <hr>
+    <h2>Foundational Latter-day Saint Teachings</h2>
+    <h3>Talmage's foundational summary</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/jesus-the-christ/chapter-1?lang=eng" target="_blank">Jesus the Christ, Chapter 1 — James E. Talmage</a></p>
+    <p><strong>What to look for:</strong> Talmage opens with the eternal nature of Christ's mission — pre-mortal foreordination, the Council in Heaven, and the idea that the Atonement was planned before the earth was formed. Notice the weight he gives to "the Firstborn."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>If the Atonement was planned before the earth was created, what does that say about God's confidence in us? His love for us?</li><li>Talmage calls Jesus "the Firstborn" in the spirit and "the Only Begotten" in the flesh. Why are both titles important to understanding what the Atonement required?</li><li>How does knowing the Atonement was foreordained — not a backup plan — change how you feel about God's relationship to your own life?</li></ul>
+    <hr>
+    <h3>Elder Holland on what it cost</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2009/04/none-were-with-him" target="_blank">None Were with Him — Jeffrey R. Holland, April 2009 General Conference</a></p>
+    <p><strong>What to look for:</strong> Holland focuses on the moment of absolute aloneness in Gethsemane and on the cross. He asks why the Father withdrew — and his answer is one of the most searching paragraphs in modern conference history. Find it: "His Father did not spare..."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Holland says Christ had to descend below all things — including the feeling of being forsaken by God. Have you ever felt forsaken? What does it mean that Christ went there first?</li><li>He distinguishes between the suffering of Gethsemane and the suffering of the cross as two distinct events. Why might that distinction matter doctrinally?</li><li>Holland closes by saying the Savior did not break the promise of the Atonement even when he was in its most severe moment. What promise are you relying on right now?</li></ul>
+    <hr>
+    <h3>The Atonement in the Articles of Faith</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/pgp/a-of-f/1?id=p3-p4#p3" target="_blank">Articles of Faith 1:3–4</a></p>
+    <p><strong>What to look for:</strong> Article 3 identifies the Atonement as the mechanism by which "all mankind may be saved." Article 4 lists the "first principles and ordinances." Notice Article 3 says "may be saved" — conditionality is built into the doctrine.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The word "may" carries a lot of weight. What does the Atonement make possible vs. what does it guarantee automatically?</li><li>Why are faith, repentance, baptism, and the gift of the Holy Ghost listed as the "first principles" rather than the Atonement itself?</li><li>Joseph Smith wrote these articles in 1842. What do you think he most wanted people to understand about what makes the restored gospel distinctive?</li></ul>
+    <hr>
+    <h2>Going Deeper</h2>
+    <h3>Callister's comprehensive treatment</h3>
+    <p><strong>Read:</strong> <em>The Infinite Atonement</em> — Tad R. Callister (Deseret Book, 2000) — Start with the Preface and Chapter 1.</p>
+    <p><em>This book is not available free online; it is available through Deseret Book and most LDS libraries.</em></p>
+    <p><strong>What to look for:</strong> Callister opens by asking what it means for the Atonement to be "infinite." He pushes back on casual use of the word and builds a theological case from scripture. Chapter 1 explores the question: infinite in what sense?</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Callister argues the Atonement is infinite in scope (all mankind), in depth (every kind of pain), and in duration (eternal consequences). Which of these "infinities" is hardest for you to fully believe?</li><li>He notes that the word "infinite" appears only once in Latter-day Saint scripture in reference to the Atonement (Alma 34:10). Why do you think that word was chosen?</li><li>After reading his opening, has the word "infinite" become more or less meaningful to you than it was before?</li></ul>
+    <hr>
+    <h3>D&C 19 — Christ describing Gethsemane himself</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/19?id=p16-p19#p16" target="_blank">D&C 19:16–19</a></p>
+    <p><strong>What to look for:</strong> This is the Lord speaking in his own voice, in this dispensation, about what he suffered. He says he "suffered these things for all, that they might not suffer if they would repent." The word "tremble" appears — he trembles at the thought of us going through it ourselves.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>He says he "would that I might not drink the bitter cup." This is the same language as Gethsemane in the Gospels. What does it do to your faith to hear him say he did not want to do it — but did?</li><li>Verse 19 says he "finished" his preparations. What was being prepared? For whom?</li><li>He warns us of the cost of not repenting — "how sore you know not." What does that warning reveal about his motivation in suffering — is it duty, love, both?</li></ul>
+  </div>
+</body>
+</html>

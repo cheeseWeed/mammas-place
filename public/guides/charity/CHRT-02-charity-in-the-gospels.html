@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charity in the Gospels</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">❤️ Charity</span>
+    <h1>Charity in the Gospels</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <h2>Hook</h2>
+    <p>When Jesus moved through a crowd, he did not see a crowd. He saw the leper standing at the edge of it. He saw the short man in the tree who everyone else had dismissed. He saw the woman at the well — the one people had given up on — and engaged her with more theological depth than almost any conversation recorded in scripture.</p>
+    <p>The Gospels are not just a record of what Jesus taught about love. They are a record of what charity looks like when it is actually operating in a human life. Studying these scenes is studying the thing itself.</p>
+    <hr>
+    <h2>Deepen</h2>
+    <h3>Matthew 8:1-3 — Jesus and the Leper</h3>
+    <blockquote>
+    <p>"When he was come down from the mountain, great multitudes followed him. And, behold, there came a leper and worshipped him, saying, Lord, if thou wilt, thou canst make me clean. And Jesus put forth his hand, and touched him, saying, I will; be thou clean. And immediately his leprosy was cleansed."</p>
+    <p>— Matthew 8:1-3</p>
+    </blockquote>
+    <p>In first-century Jewish culture, lepers were untouchable — not metaphorically, but by law. They were required to call out "Unclean! Unclean!" and to maintain distance from others (Leviticus 13:45-46). Physical contact with a leper rendered a person ritually unclean.</p>
+    <p>Jesus could have healed this man with a word. He had already been demonstrating verbal authority over illness and evil. Instead, he <strong>touched</strong> him first, then spoke the healing.</p>
+    <p>That touch was not medically necessary. It was personally necessary. The man had likely not been touched by another human being in years — perhaps decades. Jesus knew this. The act of touching communicated what the healing alone could not: you are not untouchable to me.</p>
+    <p>Charity does not heal from a safe distance.</p>
+    <hr>
+    <h3>John 4:1-26 — The Samaritan Woman at the Well</h3>
+    <blockquote>
+    <p>"Then cometh he to a city of Samaria, which is called Sychar... Now Jacob's well was there. Jesus therefore, being wearied with his journey, sat thus on the well: and it was about the sixth hour. There cometh a woman of Samaria to draw water: Jesus saith unto her, Give me to drink."</p>
+    <p>— John 4:5-7</p>
+    </blockquote>
+    <p>The sixth hour is noon — the hottest part of the day, when no one drew water. Women came to the well in the early morning, together, to socialize. This woman came alone at noon. She was avoiding people.</p>
+    <p>Jesus broke four social conventions in opening this conversation: he was a Jew speaking to a Samaritan, a man speaking to an unaccompanied woman, a rabbi engaging with someone of her reputation, and he was making himself dependent on her ("Give me to drink"). Every one of these was a social barrier he simply did not treat as a barrier.</p>
+    <p>The conversation that follows is remarkable for its depth. Jesus does not lecture her or deliver a moral verdict on her life. He reveals to her, in the most direct terms he uses with anyone in the Gospels, that he is the Messiah (John 4:26). He treats her as someone capable of receiving and handling the truth.</p>
+    <p>When the disciples return and are "marvelled that he talked with the woman" (John 4:27), the word used is the same word used for astonishment. They could not understand why he would waste this conversation on her.</p>
+    <p>He would not have recognized the word "waste."</p>
+    <hr>
+    <h3>Luke 19:1-10 — Zacchaeus</h3>
+    <blockquote>
+    <p>"And he entered and passed through Jericho. And, behold, there was a man named Zacchaeus, which was the chief among the publicans, and he was rich. And he sought to see Jesus who he was; and could not for the press, because he was little of stature. And he ran before, and climbed up into a sycomore tree to see him: for he was to pass that way. And when Jesus came to the place, he looked up, and saw him, and said unto him, Zacchaeus, make haste, and come down; for to day I must abide at thy house."</p>
+    <p>— Luke 19:1-5</p>
+    </blockquote>
+    <p>Three things in this scene deserve attention.</p>
+    <p>First, Jesus already knew his name. In a crowd of people, Jesus looked up into a tree and addressed this man by name. The weight of being known — truly seen — is embedded in that single word, "Zacchaeus."</p>
+    <p>Second, the initiative was entirely from Jesus. Zacchaeus had climbed a tree to see Jesus from a distance. He had not asked for a meeting. Jesus invited himself.</p>
+    <p>Third, the crowd "murmured, saying, That he was gone to be guest with a man that is a sinner" (Luke 19:7). The crowd had a category for Zacchaeus — tax collector, collaborator, sinner — and Jesus had already moved past the category to the person.</p>
+    <p>The result: "This day is salvation come to this house" (Luke 19:9). Zacchaeus, encountered by someone who looked up and knew his name, gave away half his goods and restored fourfold what he had wrongfully taken. He was not guilted into change. He was loved into it.</p>
+    <hr>
+    <h3>Luke 10:25-37 — The Good Samaritan</h3>
+    <blockquote>
+    <p>"And, behold, a certain lawyer stood up, and tempted him, saying, Master, what shall I do to inherit eternal life? He said unto him, What is written in the law? how readest thou? And he answering said, Thou shalt love the Lord thy God with all thy heart, and with all thy soul, and with all thy strength, and with all thy mind; and thy neighbour as thyself. And he said unto him, Thou hast answered right: this do, and thou shalt live. But he, willing to justify himself, said unto Jesus, And who is my neighbour?"</p>
+    <p>— Luke 10:25-29</p>
+    </blockquote>
+    <p>The lawyer's follow-up question — "who is my neighbour?" — is a question about category. He wants to know the outer boundary of the obligation. Jesus responds with a story that explodes the category entirely.</p>
+    <p>The priest and the Levite see the beaten man and pass by on the other side. They have reasons — ritual purity, road safety, plausible deniability about what exactly they saw. The Samaritan, who by every social measure had the least obligation to help a Jewish man, stops.</p>
+    <blockquote>
+    <p>"But a certain Samaritan, as he journeyed, came where he was: and when he saw him, he had compassion on him, and went to him, and bound up his wounds, pouring in oil and wine, and set him on his own beast, and brought him to an inn, and took care of him. And on the morrow when he departed, he took out two pence, and gave them to the host, and said unto him, Take care of him; and whatsoever thou spendest more, when I come again, I will repay thee."</p>
+    <p>— Luke 10:33-35</p>
+    </blockquote>
+    <p>The Samaritan does not just help — he commits to follow-through. He pays in advance and promises to cover anything additional. He treats a stranger's recovery as his ongoing responsibility.</p>
+    <p>Jesus ends by reversing the lawyer's question entirely. The lawyer asked: "Who is my neighbour?" Jesus asks: "Which now of these three, thinkest thou, was neighbour unto him that fell among the thieves?" (Luke 10:36). The question is not "who qualifies as your neighbour?" The question is "are you willing to be a neighbour to anyone who needs one?"</p>
+    <p>Charity does not require the right category. It requires a willing yes.</p>
+    <hr>
+    <h2>What Jesus Noticed</h2>
+    <p>Across these four scenes, a pattern emerges in what Jesus consistently noticed:</p>
+    <ul><li><strong>The person at the margin</strong> — the one the crowd had already sorted and dismissed</li><li><strong>The moment of felt need</strong> — not just a general condition, but the specific longing in this person, now</li><li><strong>The name</strong> — Jesus knew Zacchaeus by name; he engaged the Samaritan woman with her specific history; he touched the leper in the way that mattered most</li><li><strong>The capacity for change</strong> — he treated each person as someone capable of becoming more than the category they had been placed in</li></ul>
+    <p>This is the practical shape of charity: not a feeling that washes over us, but an attentiveness that sees differently.</p>
+    <hr>
+    <h2>Cross-References</h2>
+    <ul><li><strong>Moroni 7:45</strong> — "charity suffereth long, and is kind." Each of these Gospel scenes is an illustration of charity suffering long (the woman at the well, years of isolation; the leper, years of untouchability) and being kind in the most specific, embodied ways.</li><li><strong>Luke 15:20</strong> — The father in the parable of the prodigal son "saw him yet a great way off, and had compassion, and ran." The same pattern: seeing someone others would overlook, and moving toward them.</li><li><strong>Matthew 25:40</strong> — "Inasmuch as ye have done it unto one of the least of these my brethren, ye have done it unto me." The connection between charity toward the overlooked and charity toward Christ.</li><li><strong>John 13:34-35</strong> — "A new commandment I give unto you, That ye love one another; as I have loved you, that ye also love one another. By this shall all men know that ye are my disciples." The manner of love is the model: "as I have loved you."</li></ul>
+    <hr>
+    <h2>Conference References</h2>
+    <p><strong>Elder Jeffrey R. Holland</strong> has taught that the Savior moved toward people others moved away from — the leper, the outcast, the one the crowd had already sorted and dismissed. He has challenged disciples to cultivate the same willingness to be interrupted by another person's need, to resist the urge to protect ourselves from the inconvenience of genuine encounter.</p>
+    <p><em>Search for Holland's addresses on the ministry of Christ at https://www.churchofjesuschrist.org/study/general-conference — his April 2006 talk "Broken Things to Mend" and October 2012 talk "The First Great Commandment" both develop this theme.</em></p>
+    <p><strong>Elder Holland</strong> taught in a General Conference address that the parable of the laborers in the vineyard — like the Good Samaritan — is ultimately a description of what God does for us: he comes to us when we are depleted and pays what we cannot pay. Understanding these parables this way deepens charity: we love others as Christ has already loved us.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2012/04/the-laborers-in-the-vineyard" target="_blank">Holland, "The Laborers in the Vineyard," General Conference April 2012</a></p>
+    <p><strong>Sister Linda K. Burton</strong> (former Relief Society General President) taught that charity is seeing people the way the Savior sees them — not as they appear on the outside but as they are within, and as they can become. She connected this vision to every covenant relationship.</p>
+    <p><em>Search for Burton's General Conference addresses at https://www.churchofjesuschrist.org/study/general-conference — her 2013–2017 addresses consistently develop this theme.</em></p>
+    <p><strong>President Russell M. Nelson</strong> has taught that the way we see people — whether we choose to see them as sons and daughters of God — fundamentally changes how we treat them. Charity begins with a choice to look at someone through the lens of their divine identity.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2018/04/ministering" target="_blank">Nelson, "Ministering," General Conference April 2018</a></p>
+    <hr>
+    <h2>Closing Question for Reflection</h2>
+    <p>In the story of Zacchaeus, Jesus looked up into the tree and already knew his name. Is there someone in your life — maybe at the edge of the crowd, maybe someone everyone else has sorted into a category — whose name Jesus knows and who might be waiting for someone to look up and say it?</p>
+  </div>
+</body>
+</html>

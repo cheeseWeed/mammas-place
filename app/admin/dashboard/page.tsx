@@ -878,6 +878,7 @@ function CategoryVisibilityManager() {
     'sports': '🏀',
     'toys-and-games': '🎮',
     'audiobooks': '🎧',
+    'study-guides': '📖',
     'services': '🛠️',
     'restaurant': '🍽️'
   };

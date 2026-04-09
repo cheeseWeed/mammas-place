@@ -32,6 +32,8 @@ export interface Product {
   sku: string;
   audioPreviewUrl?: string;
   isAudiobook?: boolean;
+  isStudyGuide?: boolean;
+  studyGuideUrl?: string;
   downloadUrl?: string;
   reviews?: Review[];
 }

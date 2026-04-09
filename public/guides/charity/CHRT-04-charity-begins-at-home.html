@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charity Begins at Home</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">❤️ Charity</span>
+    <h1>Charity Begins at Home</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <h2>Hook</h2>
+    <p>It is often easier to be charitable to strangers than to the people who live with you.</p>
+    <p>You can be warm and patient at church, kind at work, generous with neighbors — and then walk through your own front door and be short-tempered, critical, and uncharitable in ways you would never allow yourself in public. This is not hypocrisy exactly. It is something more uncomfortable: the truth that charity costs more in proximity.</p>
+    <p>The people who are with us every day — the ones who see us tired, who know our failures, who ask for the tenth time today — they are the proving ground. The home is where charity is either being practiced or it is not being practiced at all. Whatever we do in public is downstream of what we are doing at home.</p>
+    <hr>
+    <h2>Deepen</h2>
+    <h3>3 Nephi 11:29 — Contention Is of the Devil</h3>
+    <p>Jesus, in his first recorded words after appearing to the Nephites, takes an unexpected turn. Before he teaches the Beatitudes, before the Sermon at the Temple — even before explaining the change in the law — he addresses contention.</p>
+    <blockquote>
+    <p>"For verily, verily I say unto you, he that hath the spirit of contention is not of me, but is of the devil, who is the father of contention, and he stirreth up the hearts of men to contend with anger, one with another."</p>
+    <p>— 3 Nephi 11:29</p>
+    </blockquote>
+    <p>The word "contention" in this context does not only mean obvious fighting or argument. It includes the spirit underneath fighting — the orientation of the heart that positions itself against another, that keeps score, that seeks to win rather than to understand, that would rather be right than be together.</p>
+    <p>Jesus does not say that contention is bad behavior to be corrected. He says the spirit of contention is not of him — which means it is incompatible with his presence. A home where that spirit regularly operates is a home that has, in some functional sense, asked the Spirit to wait outside.</p>
+    <p>Verse 30 continues: "Behold, this is not my doctrine, to stir up the hearts of men with anger, one against another; but this is my doctrine, that such things should be done away."</p>
+    <p>"Done away" — not managed, not reduced, not channeled into productive debate. Done away. This is a strong standard, and it applies nowhere more directly than in the family.</p>
+    <hr>
+    <h3>The Hardest Place</h3>
+    <p>Why is the home the hardest place?</p>
+    <p>Familiarity removes the effort we make for strangers. With strangers, we perform our best selves partly because we want to be seen well and partly because the stakes feel abstract. With family, the performance is exhausting to maintain, so we drop it.</p>
+    <p>But the scriptures suggest a different framing: the home is not harder because our family sees our worst self. The home is harder because the costs of charity there are real and daily. To be patient with a child who is pushing every boundary for the fortieth time today is not the same as being patient with a stranger once. To speak kindly to a spouse when you are frustrated and exhausted is different from being polite to a coworker on a good morning.</p>
+    <p>Real charity is forged in these daily, low-stakes, high-frequency moments. The man who is generous to the homeless shelter but cutting to his wife is not yet charitable — he has not yet been asked to be. The woman who is warm and gracious to her friends but dismissive of her children's feelings has not yet located the actual proving ground.</p>
+    <p>Home is not where charity goes on vacation. Home is where charity does its hardest work.</p>
+    <hr>
+    <h3>Ephesians 4:32 — The Operating Instruction</h3>
+    <blockquote>
+    <p>"And be ye kind one to another, tenderhearted, forgiving one another, even as God for Christ's sake hath forgiven you."</p>
+    <p>— Ephesians 4:32</p>
+    </blockquote>
+    <p>Three things are asked:</p>
+    <p><strong>Kindness</strong> — The word in Greek (chrestos) implies usefulness, suitability, goodness that is practically expressed. Not just warm feelings but acts that are actually helpful. The kindness Paul describes is active, not sentimental.</p>
+    <p><strong>Tenderheartedness</strong> — The word (eusplagchnos) is literally "good-hearted," with the root referring to the bowels or inward parts — the deep interior. The Hebrews located emotion not in the head but in the gut. To be tenderhearted is to carry emotional openness in your center, not your periphery. It is to be reachable by another person's condition.</p>
+    <p><strong>Forgiving one another</strong> — Paul does not leave this at an aspiration. He anchors it: "even as God for Christ's sake hath forgiven you." The measure of forgiveness in the family is not what we naturally feel capable of. It is the measure God has set by forgiving us. This is the charity connection: we forgive at home not because our family deserves it in some accounting, but because we have been forgiven in exactly the same way.</p>
+    <hr>
+    <h3>What a Covenant Family Actually Looks Like</h3>
+    <p>The covenant family is not a family that never fails or fights or falls short. It is a family that has committed to something specific:</p>
+    <ul><li>The spirit of contention will not be welcomed here, and when it enters, it will be named and asked to leave</li><li>Kindness will be practiced as an active, useful, daily thing — not reserved for special occasions</li><li>Forgiveness will be extended beyond what anyone "deserves" because we are all operating on underserved grace</li><li>The people under this roof are the primary covenant community — they are to be borne with, mourned with, and comforted first</li></ul>
+    <p>This does not mean family conflict is sinful. It means the orientation underneath the conflict matters. Disagreement is not contention. Working through difficulty is not contention. Contention is the spirit that would rather prevail than repair — the spirit that stores grievances, weaponizes past failures, and prefers a wound that proves a point over a healed relationship.</p>
+    <p>Charity at home chooses the relationship. Every day, in small ways, it chooses again.</p>
+    <hr>
+    <h2>Cross-References</h2>
+    <ul><li><strong>Mosiah 18:8-9</strong> — The baptismal covenant to bear one another's burdens, mourn together, and comfort each other applies within the family first. The people under your roof are the first community to whom this covenant is owed.</li><li><strong>Colossians 3:12-14</strong> — "Put on therefore, as the elect of God, holy and beloved, bowels of mercies, kindness, humbleness of mind, meekness, longsuffering; forbearing one another, and forgiving one another, if any man have a quarrel against any: even as Christ forgave you, so also do ye. And above all these things put on charity, which is the bond of perfectness." Paul's list here is addressed to the community of believers — but "above all these things put on charity" as the binding element. It holds the household together.</li><li><strong>1 Nephi 8:12</strong> — Lehi, upon tasting the fruit, "began to be desirous that my family should partake of it also." The first impulse of someone who has received the love of God is to bring the family. Charity turns homeward.</li><li><strong>Doctrine and Covenants 121:41-42</strong> — "No power or influence can or ought to be maintained by virtue of the priesthood, only by persuasion, by long-suffering, by gentleness and meekness, and by love unfeigned; by kindness, and pure knowledge." These are domestic virtues as much as leadership virtues. The home is where "persuasion" rather than compulsion must operate daily.</li></ul>
+    <hr>
+    <h2>Conference References</h2>
+    <p><strong>President Gordon B. Hinckley</strong> frequently taught that kindness at home is the proving ground of discipleship. He challenged members to bring through the front door the same patience and warmth they showed in public. His September 2000 General Conference address "The Symbol of Our Faith" and many other addresses return to the theme of family kindness as the heart of Christian living.</p>
+    <p><em>Search for Hinckley's addresses at https://www.churchofjesuschrist.org/study/general-conference — his consistent theme of personal kindness as the foundation of good character runs across decades of teaching.</em></p>
+    <p><strong>Elder Neal A. Maxwell</strong> taught that the home is the laboratory of discipleship — the place where our virtues are actually tested at their most demanding. Our treatment of those closest to us reveals the actual state of our character more honestly than the public performance we offer to the world.</p>
+    <p><em>Search for Maxwell's addresses at https://www.churchofjesuschrist.org/study/general-conference — his talks on discipleship and family consistently develop this theme.</em></p>
+    <p><strong>Elder Lynn G. Robbins</strong> taught the difference between reactive behavior and proactive choice — that we can choose our response rather than being controlled by what others do to us. Applied to family, this means that charity at home is a daily choice, not a reaction to whether family members have earned it.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/1998/04/agency-and-anger" target="_blank">Robbins, "Agency and Anger," General Conference April 1998</a></p>
+    <p><strong>Elder Jeffrey R. Holland</strong> taught in "The Other Prodigal" that the elder brother's resentment — earned after years of faithful service — reveals how easy it is to withhold grace from those closest to us when we feel our own faithfulness has not been properly recognized. The antidote is to receive God's generosity so deeply that we stop measuring what others owe us.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2002/04/the-other-prodigal" target="_blank">Holland, "The Other Prodigal," General Conference April 2002</a></p>
+    <hr>
+    <h2>Closing Question for Reflection</h2>
+    <p>If you were to honestly describe the spirit that operates most frequently in your home — not the spirit at your best moments, but the consistent, default spirit — how close is it to the spirit described in Ephesians 4:32: kind, tenderhearted, forgiving one another as God has forgiven you? What is one specific change that would bring your home closer to that description?</p>
+  </div>
+</body>
+</html>

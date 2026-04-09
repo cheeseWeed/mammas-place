@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gethsemane to the Cross</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">🌅 Easter</span>
+    <h1>Gethsemane to the Cross</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>Hook: From the Garden to Golgotha</h2>
+    <p>Between Thursday night and Friday afternoon, Jesus Christ was arrested, tried six times, flogged, mocked, and crucified. He had no sleep. He was taken before Annas, Caiaphas, Pilate, Herod, and Pilate again. From Gethsemane — where the agony of the Atonement began — to Golgotha, where he said "It is finished," the trajectory was unbroken.</p>
+    <p>This file does not replicate the full theological depth of the Atonement in Gethsemane and at the cross — that is covered in detail in <strong>ATNMT-02</strong> and <strong>ATNMT-03</strong> (see cross-references at the close). This file walks the narrative from arrest to burial, with attention to what was happening in each moment and why it matters.</p>
+    <hr>
+    <h2>The Arrest</h2>
+    <h3>Judas, the soldiers, and the kiss</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/26?id=p47-p56#p47" target="_blank">Matthew 26:47–56</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/18?id=p1-p12#p1" target="_blank">John 18:1–12</a></p>
+    <p><strong>What to look for:</strong> Compare the two accounts. Matthew focuses on the kiss — "Friend, wherefore art thou come?" — and on Peter's impulsive sword strike. John adds a detail found nowhere else: when the soldiers say they are looking for Jesus of Nazareth and he says "I am he," they all "went backward, and fell to the ground" (v. 6). Then he asks that his disciples be let go.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"I am he" — in the Greek, just "I am" (ego eimi). The soldiers fall down. Is John giving us a glimpse of the divine identity behind the arrest — the one being arrested is the one before whom every knee will bow? What do you make of that moment?</li><li>He calls Judas "Friend" in Matthew. Not traitor. Not enemy. Friend. What does that word cost Jesus to say — and what does it reveal about his character?</li><li>He negotiates for his disciples to be let go (John 18:8). Even at the moment of his own arrest, his concern is for the people in his care. How does that detail sit with you?</li></ul>
+    <hr>
+    <h3>The trials — a night of false justice</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/26?id=p57-p68#p57" target="_blank">Matthew 26:57–68</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/23?id=p1-p25#p1" target="_blank">Luke 23:1–25</a></p>
+    <p><strong>What to look for:</strong> Matthew records the trial before Caiaphas and the Sanhedrin — the high priest tears his robes at Jesus' claim that he will be "sitting on the right hand of power, and coming in the clouds of heaven." Luke records the trial before Pilate and before Herod. Pilate three times declares Jesus innocent ("I find no fault in this man") and still condemns him.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Pilate knows Jesus is innocent and says so multiple times. Then he hands him over anyway. What does the cowardice of Pilate say about what justice requires — and what happens when those in authority abdicate it?</li><li>The high priest tears his robes — an expression of extreme religious horror — when Jesus claims divine identity. The very claim that is true is the claim they use to condemn him. What does it mean that the truth was the thing that got him killed?</li><li>Jesus is largely silent before his accusers. Isaiah 53:7 says "he opened not his mouth." What do you think that silence meant — and what might it cost you to stay silent when falsely accused?</li></ul>
+    <hr>
+    <h3>Peter's denial</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/22?id=p54-p62#p54" target="_blank">Luke 22:54–62</a></p>
+    <p><strong>What to look for:</strong> Luke's account includes one devastating detail: "And the Lord turned, and looked upon Peter" (v. 61). After the third denial, Jesus and Peter's eyes meet across the courtyard. No words. Just a look. And Peter "went out, and wept bitterly."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>What do you imagine was in that look? Disappointment? Grief? Love? Something else?</li><li>Peter had said "I will lay down my life for thy sake" (John 13:37) just hours earlier. The gap between his intentions and his actions in that moment is painfully human. Where do you recognize that gap in yourself?</li><li>Peter would later be restored fully — three times asked "lovest thou me?" (John 21). The man who denied three times was asked three times. What does the symmetry of Peter's restoration tell you about Christ's capacity to redeem even our worst moments?</li></ul>
+    <hr>
+    <h2>Gethsemane — The Weight Before the Cross</h2>
+    <p>This section gives an entry point to the Gethsemane narrative. For the full treatment, see <strong><a href="../atonement/ATNMT-02-gethsemane.md" target="_blank">ATNMT-02 — Gethsemane</a></strong>.</p>
+    <h3>The agony in the garden</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/22?id=p39-p46#p39" target="_blank">Luke 22:39–46</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/19?id=p16-p19#p16" target="_blank">D&C 19:16–19</a></p>
+    <p><strong>What to look for:</strong> Luke records that an angel came and strengthened him — and then the agony intensified to the point of bloody sweat. D&C 19 gives Christ's own first-person account: "which suffering caused myself, even God, the greatest of all, to tremble because of pain, and to bleed at every pore." He says he "would that I might not drink the bitter cup, and shrink" — and then he did not shrink.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>He asked that the cup might pass. It did not pass. What does it tell you about God that the prayer of the Son was not granted in the way he asked — and what does it tell you about what God permitted himself to do?</li><li>"Even God, the greatest of all" trembled. The qualifier matters. If even the greatest being in existence trembled under this weight, what does that say about the weight itself?</li><li>He did not shrink. He kept going. What sustained him? (Hint: D&C 19:19 gives his answer.)</li></ul>
+    <p>For the full depth of Gethsemane — the prophecies of Mosiah 3:7, the Alma 7:11–13 list of what he took upon himself, and the conference talks of Elder McConkie and Elder Holland — see <a href="../atonement/ATNMT-02-gethsemane.md" target="_blank">ATNMT-02 — Gethsemane</a>.</p>
+    <hr>
+    <h2>The Crucifixion</h2>
+    <p>This section gives entry points to the crucifixion narrative. For the full treatment, see <strong><a href="../atonement/ATNMT-03-the-crucifixion.md" target="_blank">ATNMT-03 — The Crucifixion</a></strong>.</p>
+    <h3>The road to the cross</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/23?id=p26-p31#p26" target="_blank">Luke 23:26–31</a></p>
+    <p><strong>What to look for:</strong> Simon of Cyrene is compelled to carry the cross. A crowd of women weep, and Jesus turns and speaks to them: "Daughters of Jerusalem, weep not for me, but weep for yourselves, and for your children." Even on the way to his execution, he is pastoral — looking outward, not inward.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Why do you think Jesus addressed the weeping women and not the crowd in general? What does his concern for their future grief reveal about where his attention was?</li><li>Simon of Cyrene was compelled to carry the cross. He did not choose it. Have you ever been pressed into service you did not choose — and found something unexpected in it?</li></ul>
+    <hr>
+    <h3>"It is finished" — John 19:30</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/19?id=p17-p30#p17" target="_blank">John 19:17–30</a></p>
+    <p><strong>What to look for:</strong> John is an eyewitness at the cross. He records the sign above the cross (written in three languages — Hebrew, Greek, Latin — announcing a king to the whole world), Jesus' care for his mother (committing her to John's keeping), "I thirst," and finally "It is finished" — and he bowed his head and "gave up the ghost." The Greek for "It is finished" is tetelestai — a single word meaning "paid in full," used in commercial contexts to mark a debt as settled.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"It is finished" — tetelestai. What exactly was finished? What debt was paid, and to whom? (See Alma 42:13–15 for the doctrinal context of what justice required.)</li><li>He gave his mother to John's care while on the cross. What does it say about who he was that even in dying he was arranging for someone's welfare?</li><li>John testifies as an eyewitness (v. 35) of the blood and water from Christ's side. Why does he stake his testimony specifically on the physical, observable reality of what he saw? What is at stake?</li></ul>
+    <hr>
+    <h3>The cry of desolation and the Father's withdrawal</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/27?id=p45-p50#p45" target="_blank">Matthew 27:45–50</a></p>
+    <p><strong>What to look for:</strong> From noon to three in the afternoon — three hours — darkness covered the land. Then Jesus cries: "My God, my God, why hast thou forsaken me?" This is Psalm 22:1. It is the only moment in the Gospels where Jesus does not call God "Father" — he says "My God." Something has changed in those three hours.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>This cry has been called the most desolate sentence in all of human history. He who had been in eternal unity with the Father experienced abandonment. Why was that abandonment necessary — and what does it mean for anyone who has ever felt spiritually forsaken?</li><li>Psalm 22 begins in desolation and ends in triumph: "They shall come, and shall declare his righteousness unto a people that shall be born, that he hath done this" (v. 31). Was Jesus quoting only the agony of the Psalm — or the whole arc of it?</li><li>Holland has said the withdrawal of the Father was the hardest part: that Gethsemane was the weight of sin, but the cross was the loss of the Father's presence. Both were necessary. (See <a href="../atonement/ATNMT-02-gethsemane.md" target="_blank">ATNMT-02</a> and <a href="../atonement/ATNMT-03-the-crucifixion.md" target="_blank">ATNMT-03</a> for the full theology of these two phases.)</li></ul>
+    <hr>
+    <h2>What Was Finished</h2>
+    <h3>The veil torn — access restored</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/27?id=p51-p54#p51" target="_blank">Matthew 27:51–54</a></p>
+    <p><strong>What to look for:</strong> At the moment of Christ's death, the veil of the temple — a thick curtain separating the Holy of Holies from the rest of the temple — was torn "from the top to the bottom." An earthquake. Rocks split. Graves opened. The centurion says, "Truly this was the Son of God." The physical world responded to what happened.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The veil was torn from top to bottom — from above, not from below. A human tearing it from the bottom would be an act of desecration; torn from the top is an act of God. What was God opening? What access was being granted?</li><li>The Holy of Holies was the place where God's presence dwelt — accessible only once a year to the High Priest. The Atonement replaced the veil with access. What does it mean that the way to God's presence is now open?</li><li>The Roman centurion — a gentile soldier who had just supervised an execution — makes the greatest theological declaration in Matthew's crucifixion narrative. Why does Matthew record this particular voice as the one to name who Jesus was?</li></ul>
+    <hr>
+    <h3>The witnesses at the cross</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/19?id=p25-p27#p25" target="_blank">John 19:25–27</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/23?id=p47-p49#p47" target="_blank">Luke 23:47–49</a></p>
+    <p><strong>What to look for:</strong> John names those present at the cross: his mother Mary, his mother's sister, Mary Magdalene, and the beloved disciple (John). Luke records that all who knew him and the women from Galilee stood watching from a distance. The disciples who had fled were not there — but the women were.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The women who stayed. Who stays when it costs something — and what does their presence say about the quality of their love?</li><li>John is there, the one disciple who remained. He is an eyewitness of everything he writes. How does the eyewitness quality of John's Gospel change how you read it?</li><li>Christ from the cross creates a new family — giving his mother to John and John to his mother. He is reordering human relationships around covenant love even while dying. What does that act of care mean to you?</li></ul>
+    <hr>
+    <h3>The burial — the body mattered</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/19?id=p38-p42#p38" target="_blank">John 19:38–42</a></p>
+    <p><strong>What to look for:</strong> Joseph of Arimathea and Nicodemus — both secret disciples — come forward at the moment of greatest risk to claim the body. Nicodemus brings a very large quantity of spices. They wrap the body with care and place it in a new tomb. These two men, who had not followed publicly during his ministry, step forward at his death.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Nicodemus first appeared in John 3 — the man who came to Jesus by night. Now he comes forward in full daylight, after the crucifixion, in public view. What does that movement from darkness to daylight represent in his story?</li><li>The body was handled with care, wrapped in linen with spices. Why does it matter that the physical body was treated with dignity? What does that say about the body's value in God's plan?</li><li>Both Joseph and Nicodemus were members of the Sanhedrin — the ruling council that had condemned Jesus. What does it mean that some of the very institution that condemned him also provided his burial?</li></ul>
+    <hr>
+    <h2>Conference Voices</h2>
+    <h3>Elder McConkie's final testimony</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/1985/04/the-purifying-power-of-gethsemane" target="_blank">The Purifying Power of Gethsemane — Bruce R. McConkie, April 1985 General Conference</a></p>
+    <p><strong>What to look for:</strong> McConkie's final conference address. He explicitly treats both Gethsemane and the cross as necessary and distinct phases of the Atonement. Near the close he bears his personal testimony: "I testify that he is the Son of the living God and was crucified for the sins of the world." He knew he was dying when he gave this talk.</p>
+    <h3>Elder Holland on why neither phase was enough alone</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2009/04/none-were-with-him" target="_blank">None Were with Him — Jeffrey R. Holland, April 2009 General Conference</a></p>
+    <p><strong>What to look for:</strong> Holland's central argument: Gethsemane was not sufficient — the cross was also required. The cry of desolation ("Why hast thou forsaken me?") was the moment the Father withdrew, adding spiritual aloneness to physical agony. Holland asks: why did the Father not intervene? His answer is that someone had to bear it fully so no one else ever has to bear it fully alone.</p>
+    <h3>President Hinckley on the Easter promise</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/1999/04/he-is-not-here-but-is-risen" target="_blank">He Is Not Here, but Is Risen — Gordon B. Hinckley, April 1999 General Conference</a>. Hinckley's Easter testimony pairs the cross and the empty tomb as one continuous act: Christ "broke the bonds of death" and "in everlasting immortality He arose." The crucifixion was not a defeat the resurrection reversed — it was the sacrifice the resurrection completed. His directness about the physical reality of both events is characteristically plain: this is not metaphor, not sentiment; it is "the greatest event in human history."</p>
+    <h3>Talmage on "It is finished"</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/jesus-the-christ/chapter-35?lang=eng" target="_blank">Jesus the Christ, Chapter 35</a></p>
+    <p><strong>What to look for:</strong> Talmage traces the physical and theological significance of tetelestai — "it is finished" — and connects it to the completion of the Law of Moses, the end of the sacrificial system, and the opening of a new covenant. He calls the cross the altar on which the great sacrifice was completed.</p>
+    <hr>
+    <h2>Closing Reflection</h2>
+    <p>"It is finished." Not "I am finished" — not the exhausted end of a man. But "it is finished" — the declaration that a task was completed, a debt was paid, a plan was fulfilled.</p>
+    <p><strong>Closing question for reflection:</strong> When you hear "It is finished," what do you understand to have been finished — and is there any burden you are still carrying as though it were not?</p>
+    <hr>
+    <p><em>This file is the narrative bridge to the deeper theology in:</em></p>
+    <ul><li><em><a href="../atonement/ATNMT-02-gethsemane.md" target="_blank">ATNMT-02 — Gethsemane</a> — the full Gethsemane theology, including McConkie's sermon, Holland's "None Were with Him," Alma 7, and D&C 19</em></li><li><em><a href="../atonement/ATNMT-03-the-crucifixion.md" target="_blank">ATNMT-03 — The Crucifixion</a> — the full crucifixion theology, including Isaiah 53, Alma 42, and Paul on the foolishness of the cross</em></li></ul>
+  </div>
+</body>
+</html>

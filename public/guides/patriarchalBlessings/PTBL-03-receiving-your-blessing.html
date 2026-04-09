@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preparing to Receive Your Blessing</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">📜 Patriarchal Blessings</span>
+    <h1>Preparing to Receive Your Blessing</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>Hook</h2>
+    <p>There is a moment in the patriarchal blessing experience that almost no one talks about — the moment just before. The patriarch has laid his hands on your head. The room is quiet. And then words begin to come — words about <em>you</em>, by name, from God.</p>
+    <p>Preparation matters not because it earns the blessing, but because it opens you to receive it fully. This file is about how to get there.</p>
+    <hr>
+    <h2>Who Can Receive a Blessing?</h2>
+    <h3>The Handbook's requirements</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/general-handbook/38-church-policies-and-guidelines?id=title_number232#title_number232" target="_blank">General Handbook 38.2.10 — Patriarchal Blessings</a></p>
+    <p><strong>What to look for:</strong> The Handbook specifies that members must be baptized and confirmed, that bishops determine readiness, and that there is no set age minimum — readiness is the criterion. Re-read the section on what happens to the written copy and who has access to it.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The Handbook says the bishop determines if you are "sufficiently mature." What does spiritual maturity look like at the age you are now? What would you want your bishop to see in you?</li><li>There is no age minimum. What do you think the right age is for <em>you</em> — and how would you know you're ready?</li><li>The blessing is on file with the Church. What does it mean to you that your blessing is preserved at an institutional level — not just tucked in a drawer at home?</li></ul>
+    <hr>
+    <h2>Preparing Your Heart and Mind</h2>
+    <h3>True to the Faith — preparation guidance</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/true-to-the-faith/patriarchal-blessings" target="_blank">True to the Faith: Patriarchal Blessings</a></p>
+    <p><strong>What to look for:</strong> This entry includes practical preparation guidance: prayer, fasting, pondering, coming with sincere desire. It also notes that you should not come with a predetermined list of things you expect the blessing to say.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The counsel to fast and pray before receiving your blessing is consistent across Church guidance. What does fasting do specifically for spiritual receptivity — not just for worthiness?</li><li>"Come with sincere desire" — what is the difference between desire and expectation? Why is that distinction important when approaching this ordinance?</li><li>The entry cautions against coming with a list of what you want the blessing to say. Have you (or would you) find that hard? What desires are you most tempted to bring as requirements?</li></ul>
+    <hr>
+    <h3>Enos — the pattern of seeking</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/enos/1?id=p1-p8#p1" target="_blank">Enos 1:1–8</a></p>
+    <p><strong>What to look for:</strong> Enos goes into the forest alone to pray — he wrestles before God, his soul hungers. The response doesn't come instantly but comes after genuine seeking. Pay attention to the question God asks him: "thy sins are forgiven thee." Enos had asked for forgiveness — but he hadn't yet asked for that specific thing. God spoke to what he needed.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Enos's soul "hungered." What does spiritual hunger feel like — how is it different from just wanting something or going through the motions?</li><li>God spoke to Enos's need rather than only answering his question. How might that pattern apply to what you receive in a patriarchal blessing — God speaking to what you need, not only what you asked?</li><li>Verse 4 says his guilt was swept away when he heard the voice. What is the relationship between spiritual preparation, worthiness, and receiving spiritual experiences?</li></ul>
+    <hr>
+    <h2>The Blessing Itself — What to Expect</h2>
+    <h3>What a blessing contains</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/gospel-topics/patriarchal-blessings" target="_blank">Gospel Topics: Patriarchal Blessings</a></p>
+    <p><strong>What to look for:</strong> The entry describes the typical contents: lineage declaration, counsel, promises, cautions, and encouragement. It notes that not all topics will be covered — a blessing is not a comprehensive biography of your future. It speaks to what the Spirit prompts in the moment.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The blessing speaks to "what the Spirit prompts" — not a formula. What does that mean for how you interpret silences? (If your blessing doesn't mention something you hoped for, does that mean it won't happen?)</li><li>The entry says the blessing may include "cautions." How do you receive a caution with gratitude rather than fear?</li><li>Promises in a blessing are described as conditional on faithfulness. How do you live by a conditional promise without turning it into anxiety?</li></ul>
+    <hr>
+    <h3>Joseph Smith on the spirit of prophecy</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/20?id=p26#p26" target="_blank">D&C 20:26</a>; <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/rev/19?id=p10#p10" target="_blank">Revelation 19:10</a></p>
+    <p><strong>What to look for:</strong> "The testimony of Jesus is the spirit of prophecy." The patriarchal blessing is a prophetic act — it operates by the same Spirit that animates all prophecy. The patriarch is not guessing or flattering. He is speaking in the Lord's name, moved upon by the Holy Ghost.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>If the spirit of prophecy is the same spirit that moved upon Isaiah, Nephi, and Joseph Smith, what does that mean about the words your patriarch will speak over you?</li><li>Prophecy can be partial — we "know in part and prophesy in part" (1 Cor 13:9). How does that reality sit alongside trusting what your blessing says?</li><li>D&C 20:26 says the church was established so this spirit could operate. What does it mean that you are receiving this blessing inside a restored institution built specifically to carry the spirit of prophecy?</li></ul>
+    <hr>
+    <h2>After You Receive Your Blessing</h2>
+    <h3>Treating the written copy as scripture</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/true-to-the-faith/patriarchal-blessings" target="_blank">True to the Faith: Patriarchal Blessings</a> (re-read the section on privacy and preservation)</p>
+    <p><strong>What to look for:</strong> The counsel to keep your blessing private — not to share it casually, not to compare it with others' blessings. Also the counsel to read it regularly and use it as a guide.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Why is privacy important for something so personal? What could be lost if you shared it too widely or compared it freely?</li><li>The counsel to read it regularly implies it will mean different things at different life stages. What might your blessing mean at age 16, at 30, at 50 — and why would the words stay the same while your reading of them changes?</li><li>What would it look like practically to use your blessing as a "guide throughout your life" — not just a keepsake?</li></ul>
+    <hr>
+    <h2>Closing Question</h2>
+    <p>Receiving a patriarchal blessing is not a transaction — it is an encounter. You come as yourself, fully prepared, and the Lord speaks to you by name.</p>
+    <p><strong>Ponder or write:</strong></p>
+    <p>If you could ask God one question about your life right now — not about facts, but about who you are and who you are becoming — what would you ask? Write it down. Bring that question, held openly, into your preparation.</p>
+  </div>
+</body>
+</html>

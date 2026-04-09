@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confession and Making Right</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">🔄 Repentance</span>
+    <h1>Confession and Making Right</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>Hook</h2>
+    <p>There is a temptation to keep repentance entirely interior — between you and God, in the privacy of your own heart, with no one else involved. Sometimes that is all that is needed. But for serious sins, that privatized repentance often leaves something incomplete. The external acts of repentance — confessing, making restitution, going to a bishop, acknowledging the wrong to someone you have harmed — are not bureaucratic requirements added on top of the real work. They are part of the real work.</p>
+    <p>This is because sin has both an inward and an outward dimension. It disorders something in you, and it often disorders something in the world — a relationship, a person's trust, a community. Genuine repentance attends to both.</p>
+    <hr>
+    <h2>Deepen</h2>
+    <h3>D&C 58:42–43 — The Divine Forgiveness Promise</h3>
+    <p>"Behold, he who has repented of his sins, the same is forgiven, and I, the Lord, remember them no more. By this ye may know if a man repenteth of his sins — behold, he will confess them and forsake them."</p>
+    <p>Two things are worth sitting with here. First, the promise: <em>the Lord will remember them no more</em>. Not "will think less of you for them" or "will hold them in reserve in case you fail again." Remembered no more. The past, once repented of, is not archived. It is gone from God's record of you.</p>
+    <p>Second, the definition: repentance is identified by confession and forsaking — two acts, not one. Confession is the speaking of the truth about what happened. Forsaking is the turning away from it. The word repentance in this verse is measured by what comes out of it behaviorally. If there is no confession, no forsaking, no change — the verse invites honest self-examination about whether repentance has actually occurred.</p>
+    <h3>The Role of Confession</h3>
+    <p>There are two kinds of confession relevant to Latter-day Saint practice.</p>
+    <p>The first is confession to God. This is always required. Mosiah 26:29 makes the principle plain: "And as often as my people repent will I forgive them their trespasses against me." Confession to God is the opening of the dialogue.</p>
+    <p>The second is confession to the bishop — the Lord's representative — for serious transgressions. D&C 58:43 makes this part of the definition of repentance for significant sins. This is not punishment. The bishop is not a judge in the punitive sense. He is described in scripture as a "common judge in Israel" (D&C 107:74) — someone who helps assess where a person is, opens the process of formal repentance, and exercises the keys necessary to pronounce forgiveness and restoration in some cases. The relationship with a bishop in this context is one of the most caring and confidential relationships in the Church.</p>
+    <p>The hardest confession is often not the one to God — who already knows — but the one to a person you trust. There is something about speaking the truth aloud that completes the interior work. It removes the double life. It ends the secret. It costs something, and that cost is part of what makes it real.</p>
+    <h3>Making Restitution</h3>
+    <p>Restitution is the attempt to repair what sin has broken in the world. The principle runs through both the Old and New Testament law: if you have taken something, give it back. If you have damaged something, repair it. If you have lied about someone, tell the truth.</p>
+    <p>Leviticus 6:4–5 captures the Old Testament form: "Then it shall be, because he hath sinned, and is guilty, that he shall restore that which he took violently away..." Restitution was not optional — it was built into the law of repentance.</p>
+    <p>The New Testament carries this forward. Zacchaeus is perhaps the most vivid example: "Behold, Lord, the half of my goods I give to the poor; and if I have taken any thing from any man by false accusation, I restore him fourfold" (Luke 19:8). Jesus's response — "This day is salvation come to this house" — came <em>after</em> the declaration of restitution. Zacchaeus did not just feel sorry. He restructured his relationship with everyone he had wronged.</p>
+    <p>Restitution is not always possible. You cannot always find the person. You cannot always give back what was taken. You cannot undo every consequence. This is the reality that requires the Atonement.</p>
+    <h3>When You Cannot Repair the Damage</h3>
+    <p>Elder Jeffrey R. Holland has addressed directly what happens when the consequences of sin extend beyond what any individual can repair. Some damage is irreversible — relationships that cannot be restored, opportunities that cannot be recovered, trust that cannot be rebuilt in this life. What does repentance mean in those cases?</p>
+    <p>The Atonement does not simply cover the guilt of the person who sinned. It extends to the consequences — including the consequences that fall on others. Christ took upon himself not only the moral weight of sin but its full downstream damage. This means that when you have done everything you can to make right what you have broken, and it is still not enough, there is One who has covered the remainder.</p>
+    <p>This is part of what it means that the Atonement is infinite. It is not limited by what we can do. It reaches past our capacity to repair, into the places we cannot go, and covers what we cannot fix. The repentant person who has done their sincere best can release the remainder to Christ — not as an escape from responsibility, but as a recognition that the Atonement is sufficient for what they could not do.</p>
+    <hr>
+    <h2>Cross-References</h2>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/58?id=p42-p43#p42" target="_blank">D&C 58:42–43</a></p>
+    <p>The core text for this file. Two verses that define repentance by its outputs — confession and forsaking — and attach the divine promise of total forgiveness to it.</p>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/26?id=p29-p31#p29" target="_blank">Mosiah 26:29–31</a></p>
+    <p>The Lord's direct statement to Alma about the terms of forgiveness — "as often as my people repent." The repetition is significant: there is no limit on how many times this applies.</p>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/19?id=p1-p10#p1" target="_blank">Luke 19:1–10</a></p>
+    <p>Zacchaeus — the fullest New Testament portrait of restitution. Jesus's declaration of salvation comes after the restitution pledge, not before it.</p>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/lev/6?id=p1-p7#p1" target="_blank">Leviticus 6:1–7</a></p>
+    <p>Old Testament restitution law — the formal legal framework for making right. Compare with New Testament and Latter-day Saint practice to see the consistent principle across dispensations.</p>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/james/5?id=p16#p16" target="_blank">James 5:16</a></p>
+    <p>"Confess your faults one to another, and pray one for another, that ye may be healed." Confession as a healing practice, not a legal requirement.</p>
+    <p><strong>Cross-reference:</strong> ATNMT-06, section "D&C 58 — God's word on forgiveness" — covers D&C 58:42–43 from the angle of forgiveness received. This RPNT-03 file approaches the same verses from the angle of what is required on our side: the acts of confession and forsaking.</p>
+    <hr>
+    <h2>Conference References</h2>
+    <p><strong>Elder Jeffrey R. Holland</strong> — on what the Atonement covers when we cannot repair the damage:</p>
+    <p>Holland has argued with particular force that the Atonement is not only retroactive to our guilt — it is prospective toward the consequences we cannot undo. Christ absorbed not just the moral weight of sin but the full downstream damage of it. Sincere repentance combined with genuine effort at restitution can release us from the weight of what we could not fix.</p>
+    <p><em>Search for Holland's addresses on the Atonement at https://www.churchofjesuschrist.org/study/general-conference — his talks "Broken Things to Mend" (Apr 2006) and "None Were with Him" (Apr 2009) both address this theme.</em></p>
+    <p><strong>Elder Richard G. Scott</strong> — "Finding Forgiveness" (General Conference, October 1995):</p>
+    <p>Scott offered careful, pastoral guidance on the process of repentance — including what to do when you are uncertain whether repentance is complete, how to work with a bishop, and what it means to forsake a sin rather than just reduce it. He emphasized that the Lord does not leave sincere penitents without guidance.</p>
+    <p><em>Search for "Finding Forgiveness Richard G. Scott 1995" at https://www.churchofjesuschrist.org/study/general-conference — individual talk URLs for 1995 may vary; search by speaker name.</em></p>
+    <p><strong>Elder D. Todd Christofferson</strong> — "The Divine Gift of Repentance" (General Conference, October 2011):</p>
+    <p>Christofferson addressed restitution directly — noting that the willingness to make restitution, even imperfect or partial restitution, is a sign of genuine repentance. He acknowledged that full restitution is often impossible and pointed to Christ's Atonement as the covering for what cannot be repaired.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2011/10/the-divine-gift-of-repentance" target="_blank">The Divine Gift of Repentance — Elder D. Todd Christofferson, October 2011</a></p>
+    <p><strong>Elder Dale G. Renlund</strong> — "Repentance: A Joyful Choice" (General Conference, October 2016):</p>
+    <p>Renlund made a point that is easy to miss: the bishop's role in the repentance process is not adversarial — it is a gift. Having someone with priesthood keys who can hear your confession, help you assess where you are, and extend the Lord's mercy in an official capacity is not a burden added to repentance. It is a resource provided for it.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2016/10/repentance-a-joyful-choice" target="_blank">Repentance: A Joyful Choice — Elder Dale G. Renlund, October 2016</a></p>
+    <hr>
+    <h2>Closing Question</h2>
+    <p>Is there a sin or failure in your past for which you have sought God's forgiveness in your heart but have never spoken aloud to anyone — a bishop, a trusted person you wronged, God in formal prayer? What would it mean to take the next step toward speaking it? And for the damage you have done that you cannot repair: have you brought that specific impossibility to Christ, or are you still carrying it yourself?</p>
+  </div>
+</body>
+</html>

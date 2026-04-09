@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gethsemane</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">✝️ The Atonement</span>
+    <h1>Gethsemane</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>What Happened in the Garden</h2>
+    <h3>The night before — Christ's own prayer</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/17" target="_blank">John 17</a></p>
+    <p><strong>What to look for:</strong> This is the intercessory prayer — spoken the same night Jesus entered Gethsemane, before he was arrested. He prays for his disciples, then for all who will believe through their words (that includes you). Notice verse 3's definition of eternal life and verses 20–23 on unity.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Jesus prays "that they all may be one; as thou, Father, art in me, and I in thee" (v. 21). He goes into Gethsemane having just prayed for our unity with God. How does that set the stage for what he was about to do?</li><li>Verse 3 defines eternal life as knowing God and Jesus Christ. How is the Atonement connected to that kind of knowing, rather than just being forgiven?</li><li>He says in verse 12, "those that thou gavest me I have kept." He is going into suffering with a pastor's heart. What does that say about what motivated him?</li></ul>
+    <hr>
+    <h3>The Gospel accounts of Gethsemane</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/26?id=p36-p46#p36" target="_blank">Matthew 26:36–46</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/22?id=p39-p46#p39" target="_blank">Luke 22:39–46</a></p>
+    <p><strong>What to look for:</strong> Compare the two accounts. Matthew records "he fell on his face" and the prayer three times. Luke — the physician — records that his sweat was "as it were great drops of blood." Luke also records an angel strengthening him. Neither account explains the mechanism — only the weight.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Jesus asked the disciples to watch with him and they fell asleep three times. He was utterly alone in the hardest moment of human history. How do you sit with that image?</li><li>"Not as I will, but as thou wilt" (Matt. 26:39). This is the most complete surrender in all of scripture. What does it teach you about submitting your own will to God?</li><li>Luke says an angel came and "strengthened him" — and then the agony intensified. Why do you think receiving divine strength allowed the suffering to deepen rather than end?</li></ul>
+    <hr>
+    <h3>King Benjamin's angel — blood from every pore</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/3?id=p7#p7" target="_blank">Mosiah 3:7</a></p>
+    <p><strong>What to look for:</strong> This prophecy was given to King Benjamin by an angel — likely 124 years before Christ's birth. The angel describes the suffering with startling specificity: "blood cometh from every pore, so great shall be his anguish." This is a prophecy, not a Gospel narrative. It was declared before it happened.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>An angel knew, over a century in advance, exactly what Christ would suffer. What does that pre-knowledge reveal about how deliberately planned the Atonement was?</li><li>The verse describes both physical agony (blood from every pore) and spiritual weight ("so great shall be his anguish"). How are the physical and spiritual dimensions of the Atonement connected?</li><li>How does reading this prophecy — spoken before the event — affect your trust that the suffering was foreknown and accepted, not accidental?</li></ul>
+    <hr>
+    <h3>Christ's own account in D&C 19</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/19?id=p16-p19#p16" target="_blank">D&C 19:16–19</a></p>
+    <p><strong>What to look for:</strong> The resurrected Christ, speaking to Martin Harris in 1829, describes Gethsemane in first person. "Which suffering caused myself, even God, the greatest of all, to tremble because of pain, and to bleed at every pore, and to suffer both body and spirit." He is describing it from the other side of the experience — after the resurrection, he still carries the memory.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>He says "even God, the greatest of all" trembled. Why does that qualifier — "the greatest of all" — matter? What does it tell us about the magnitude of the suffering?</li><li>He says "I would that I might not drink the bitter cup, and shrink" — and then he didn't shrink. What sustained him?</li><li>This revelation was given as a warning not to shrink from repentance. How does hearing Christ describe his own suffering change how you feel about putting off repentance?</li></ul>
+    <hr>
+    <h2>Why Gethsemane?</h2>
+    <h3>McConkie's definitive sermon on the garden</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/1985/04/the-purifying-power-of-gethsemane" target="_blank">The Purifying Power of Gethsemane — Bruce R. McConkie, April 1985 General Conference</a></p>
+    <p><strong>What to look for:</strong> This was Elder McConkie's final General Conference address — he died five weeks later and knew it. He describes the Atonement in Gethsemane with stark theological clarity. Find the passage where he says Christ "sweat great gouts of blood" and then the paragraph that begins "in some way, incomprehensible to us..."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>McConkie insists that the chief suffering of the Atonement happened in Gethsemane, not only on the cross. Why do you think Latter-day Saint theology emphasizes the garden as much as Calvary?</li><li>He says Christ took upon himself "the sins of all men on conditions of repentance." The word "conditions" is doing real work there. What does conditionality mean for how you access the Atonement?</li><li>McConkie knew he was dying when he gave this talk. How does that context change how you receive his testimony at the end?</li></ul>
+    <hr>
+    <h3>Holland's reflection on aloneness</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2009/04/none-were-with-him" target="_blank">None Were with Him — Jeffrey R. Holland, April 2009 General Conference</a></p>
+    <p><strong>What to look for:</strong> Holland explores what it meant that the disciples fell asleep, Judas betrayed him, Peter denied him, and then — most searching of all — the Father withdrew his presence. He asks: why did the Father leave? His answer is that Christ had to bear the full weight alone so no one else would ever have to bear it alone.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Holland says the Father did not intervene in Gethsemane because "He could not, if the Redemption of man was to be accomplished." What does that necessity reveal about the law of justice?</li><li>The disciples could not stay awake — not from cruelty but from human limitation. In what ways do we also "sleep" during Christ's most important moments?</li><li>If Christ descended below all things so that he would be in all things (D&C 88:6), what does that mean for the hardest, loneliest moments of your life?</li></ul>
+    <hr>
+    <h2>The Infinite Weight He Carried</h2>
+    <h3>Alma's list of what was taken</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/7?id=p11-p13#p11" target="_blank">Alma 7:11–13</a></p>
+    <p><strong>What to look for:</strong> Alma says Christ took upon himself not only sins but pains, sicknesses, infirmities, and death. The reason given in verse 12 is empathy — "that he may know according to the flesh." In Gethsemane he was not only bearing the weight of sin — he was absorbing the full breadth of human suffering.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Alma lists "infirmities" — weaknesses, limitations, chronic struggles. How does it change your relationship to your own weaknesses knowing Christ has carried them too?</li><li>"That he may know according to the flesh" means experiential knowledge. Why is experience different from omniscience? Why did God need to know this way?</li><li>Which item on Alma's list — pains, sicknesses, infirmities, temptations, death — feels most personal to you right now?</li></ul>
+    <hr>
+    <h3>The weight of all human experience</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/1995/10/the-atonement" target="_blank">The Atonement — Jeffrey R. Holland, October 1995 General Conference</a></p>
+    <p><strong>What to look for:</strong> Holland describes how Christ in Gethsemane took upon himself not just abstract sin but the specific, personal weight of every individual experience of grief, shame, and failure. He uses the phrase "every fear, every loss, every crushing human pain" — look for where he expands this idea and makes it personal.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Holland says Christ felt "every human hurt" — including things we feel shame about. How does it change your approach to those shameful memories knowing he has already met you there?</li><li>He draws on Isaiah 53's "man of sorrows." How does grief — not sin — fit into what Christ took upon himself?</li><li>What specific burden are you carrying that, after reading this, you can place differently in the context of what happened in Gethsemane?</li></ul>
+    <hr>
+    <h2>Personal Application</h2>
+    <h3>What Gethsemane means for our suffering</h3>
+    <p><strong>Read:</strong> <a href="https://womensconference.byu.edu/transcripts" target="_blank">Trauma, Trust, and Turning to the Savior — Kristine Manwaring, BYU Women's Conference</a> [verify URL — search site for "Manwaring" if link does not resolve directly]</p>
+    <p><strong>What to look for:</strong> This talk applies the Gethsemane narrative specifically to people who have experienced trauma, betrayal, and loss of trust. It draws on Alma 7 and the idea that Christ's empathy is not abstract — it is specific to the kind of suffering you have experienced.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The talk argues that Christ's empathy is not generic but specific to your kind of pain. Does that feel true to you? What would it mean if it were?</li><li>Trauma often makes it hard to trust — including trust in God. How does the specificity of Gethsemane's suffering address that particular struggle?</li><li>What is one thing you want to bring to the Savior that you have been carrying privately?</li></ul>
+    <hr>
+    <h3>Okazaki on the Atonement's personal reach</h3>
+    <p><strong>Read:</strong> <a href="https://womensconference.byu.edu/transcripts" target="_blank">Fulness of Joy — Chieko Okazaki, BYU Women's Conference</a> [verify URL — search site for "Okazaki" if link does not resolve directly]</p>
+    <p><strong>What to look for:</strong> Okazaki, one of the most distinctive voices in the Church on the Atonement, insists that Christ came to every person, in every culture, in every kind of suffering — not only to a particular kind of Western, middle-class religious experience. Look for her image of the Atonement as a "quilt" covering every pattern of life.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Okazaki argues that our tendency to domesticate the Atonement keeps it from reaching us in our actual situations. What does "domesticating" the Atonement mean to you?</li><li>She speaks to people whose suffering looks different from the tidy examples in manuals. In what ways might your own life require a more expansive understanding of what Gethsemane covered?</li><li>How would your daily life change if you believed, in a concrete way, that Christ was in Gethsemane for the specific, particular, unrepeatable suffering of your specific, particular, unrepeatable life?</li></ul>
+  </div>
+</body>
+</html>

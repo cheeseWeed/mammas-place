@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Triumphal Entry</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">🌅 Easter</span>
+    <h1>The Triumphal Entry</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>Hook: The Wrong Kind of King</h2>
+    <p>The crowd was ready for a warrior. The Romans occupied Jerusalem, taxes were crushing, and the people had been waiting generations for the Messiah who would restore the kingdom of David by force. When Jesus entered the city on a donkey — not a warhorse — and the crowd laid down cloaks and palm branches shouting "Hosanna to the Son of David," most of them did not understand what kind of king they were welcoming.</p>
+    <p>By Friday, many of the same voices would be shouting something else.</p>
+    <p>This first event of Holy Week is about the gap between the king the crowd wanted and the king who came. Understanding that gap is the beginning of understanding everything that follows.</p>
+    <hr>
+    <h2>The Prophecy That Was Being Fulfilled</h2>
+    <h3>Zechariah's king on a donkey</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/zech/9?id=p9#p9" target="_blank">Zechariah 9:9</a></p>
+    <p><strong>What to look for:</strong> This verse was written approximately 520 BC. It describes a coming king who is "just, and having salvation; lowly, and riding upon an ass." The specific detail of the donkey is not incidental — it is the prophetic signal that this king comes in humility and peace, not military conquest. Matthew and John both flag this prophecy as being fulfilled in the Triumphal Entry.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Zechariah says the king will "speak peace unto the heathen" and his dominion will be "from sea even to sea." This is a king of universal peace, not a regional liberator. How does that vision differ from what the crowd in Jerusalem likely expected?</li><li>The prophecy says "lowly" — the word in Hebrew (ani) carries the meaning of afflicted, humble, poor. Why would God announce his king through poverty and humility rather than power?</li><li>If you had been a devout Jew who knew Zechariah 9:9, what would you have understood when you saw Jesus enter on a donkey? Would it have been reassuring or confusing?</li></ul>
+    <hr>
+    <h3>John's account of the entry</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/12?id=p12-p19#p12" target="_blank">John 12:12–19</a></p>
+    <p><strong>What to look for:</strong> John notes explicitly that the disciples "understood not these things at the first: but when Jesus was glorified, then remembered they that these things were written of him" (v. 16). This is a crucial detail — even his closest followers did not fully understand what was happening as it happened. John is writing from after the resurrection, looking back with clarity they did not have in the moment.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The Pharisees say, "Perceive ye how ye prevail nothing? behold, the world is gone after him" (v. 19). This is frustration and alarm from the religious leadership. Why did Jesus' popularity feel threatening to them?</li><li>John notes that the crowd which had seen the raising of Lazarus bore witness of him, and that this was why the crowd met him (v. 17–18). The Triumphal Entry was built, in part, on the witness of people who had seen a resurrection. How does that detail preview what is coming?</li><li>The disciples understood only after the resurrection. Are there things in your own life that you understood only in retrospect — after something difficult had passed?</li></ul>
+    <hr>
+    <h3>Matthew's fuller account</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/21?id=p1-p17#p1" target="_blank">Matthew 21:1–17</a></p>
+    <p><strong>What to look for:</strong> Matthew quotes Zechariah 9:9 directly (v. 5). He also records what happened immediately after the entry: Jesus went to the temple, drove out the merchants and money changers, and healed the blind and lame who came to him. The children in the temple continued shouting "Hosanna to the Son of David" — and the chief priests were displeased. Jesus responds by quoting Psalm 8:2: "Out of the mouth of babes and sucklings thou hast perfected praise."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Jesus quotes Psalm 8:2 in response to the religious leaders' displeasure at the children's praise. What does it say that children recognized him when the learned did not?</li><li>He healed the blind and lame immediately after entering the city and cleansing the temple. The king's first act in his city was not to establish political authority but to heal. What kind of kingdom does that establish?</li><li>The crowd shouts "Hosanna" — which means "Save us now" or "Please save." It was a desperate plea, not just a praise word. In what ways were the people right to plead for salvation, even if they imagined the wrong kind?</li></ul>
+    <hr>
+    <h2>Why the Donkey and Not a Warhorse</h2>
+    <h3>The symbol's full meaning</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/1-kgs/1?id=p32-p40#p32" target="_blank">1 Kings 1:32–40</a></p>
+    <p><strong>What to look for:</strong> When Solomon was anointed king by David, he was placed on David's own mule and ridden through Jerusalem. The mule or donkey was the mount of royalty in Israel — not the warhorse of a conqueror. Jesus is deliberately reenacting a royal coronation procession in the Davidic tradition. This is not poverty; it is the correct symbol of the right kind of king.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Solomon's coronation on the royal mule was accompanied by "all the people" who piped and rejoiced "so that the earth rent with the sound of them" (v. 40). The Palm Sunday crowd echoes this. What does it say that the right Davidic sign was so publicly given?</li><li>The donkey was also an animal of peace and agriculture — the warhorse was the animal of conquest. What did Jesus refuse to be, by choosing the donkey?</li><li>If Christ had entered on a warhorse and driven out the Romans by force, the crowd would have been ecstatic. Why do you think God chose the harder, quieter path?</li></ul>
+    <hr>
+    <h3>What Hosanna really meant</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/ps/118?id=p25-p26#p25" target="_blank">Psalm 118:25–26</a></p>
+    <p><strong>What to look for:</strong> "Hosanna" (Hebrew: hoshianna) is drawn directly from this Psalm: "Save now, I beseech thee, O LORD" (v. 25). The crowd was quoting a Psalm of deliverance. Verse 26 — "Blessed is he that cometh in the name of the LORD" — is what they were calling to Jesus. This was messianic language from a Psalm Jesus himself would quote in the following days (Matthew 21:42 quotes Psalm 118:22).</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The Hosanna shout was a scripture quotation. The crowd was using the language of their own scripture to receive their Messiah. What does that say about how God prepares a people to receive him?</li><li>Psalm 118 ends with a great celebration and sacrifice. The whole Psalm ends in joy. What does it mean that the Palm Sunday cry came from a Psalm that ends in triumph?</li><li>The crowd cried "Save us now." They meant save us from Rome. He meant something broader — and deeper. In what areas of your life have you asked God for one kind of salvation and been given a different, larger kind?</li></ul>
+    <hr>
+    <h2>The Week Begins</h2>
+    <h3>Jesus weeps over Jerusalem</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/19?id=p41-p44#p41" target="_blank">Luke 19:41–44</a></p>
+    <p><strong>What to look for:</strong> This passage sits inside the Triumphal Entry narrative. As Jesus comes over the Mount of Olives and sees the city spread before him, he weeps. He says Jerusalem "knewest not the time of thy visitation." The king enters his city — and his first recorded response is grief. Not triumph. Grief.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>He could see the crowd celebrating before him and the city spread out below, and he wept. What does it mean to enter a celebration while carrying grief that others cannot see?</li><li>"Thou knewest not the time of thy visitation." The word "visitation" (Greek: episkope) is the same root as "bishop" — an overseer who comes to check on those in his care. What does it say that God came to visit and was not recognized?</li><li>He weeps not in anger but in sorrow. What does that tell you about how God responds when his people miss the moment?</li></ul>
+    <hr>
+    <h3>John 12 — the broader context of that day</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/12?id=p20-p36#p20" target="_blank">John 12:20–36</a></p>
+    <p><strong>What to look for:</strong> Some Greeks approach Philip wanting to see Jesus. Jesus' response is not to meet with them — it is to say, "The hour is come, that the Son of man should be glorified" (v. 23). He then gives one of his most striking sayings: "Except a corn of wheat fall into the ground and die, it abideth alone: but if it die, it bringeth forth much fruit" (v. 24). In the middle of his triumphal welcome, he is thinking about the cross.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"Except a corn of wheat fall into the ground and die" — even in the moment of public acclaim, Jesus was focused on the death that was coming. What does that suggest about how he experienced the Triumphal Entry?</li><li>A voice from heaven speaks (v. 28–29), and some hear thunder while others hear an angel. Why do some people experience the same divine moment differently?</li><li>Verse 32: "And I, if I be lifted up from the earth, will draw all men unto me." John notes this referred to his crucifixion (v. 33). The "lifting up" the crowd wanted (political triumph) and the lifting up Jesus had in mind (the cross) were not the same thing. What does it mean that the cross is how he draws all people?</li></ul>
+    <hr>
+    <h2>Conference Voices</h2>
+    <h3>Elder Holland on the crowd's misunderstanding</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2009/04/none-were-with-him" target="_blank">None Were with Him — Jeffrey R. Holland, April 2009 General Conference</a>. Holland notes briefly that the Palm Sunday moment — when the crowds welcomed Christ with public celebration — quickly dissolved: "eagerness to continue walking with Him would quickly begin to wane." The very week that began with hosannas ended with crucifixion. The tragedy of Palm Sunday is not only the betrayal that came later but the misunderstanding that was present from the beginning — the crowd celebrated a political deliverer while Christ came to offer something they could not yet imagine.</p>
+    <h3>President Nelson on the Savior as King</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2021/04/49nelson" target="_blank">Christ Is Risen; Faith in Him Will Move Mountains — Russell M. Nelson, April 2021 General Conference</a>. Nelson does not address the Triumphal Entry directly in this talk, but his consistent teaching is that Christ's kingship operates through covenant and transformation of the heart — not political or military power. As you read about Palm Sunday, consider: what kind of king is Jesus in your own life — and are you letting him define that, or defining it for him?</p>
+    <h3>Elder McConkie on the fulfillment of prophecy</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/1985/04/the-purifying-power-of-gethsemane" target="_blank">The Purifying Power of Gethsemane — Bruce R. McConkie, April 1985 General Conference</a>. In the opening section, McConkie notes that every event of Holy Week was foreknown and foretold — not as fate that removed agency, but as the fulfillment of a plan made before the foundation of the world. The Triumphal Entry was not improvised: it was the arrival of the one who had been coming all along.</p>
+    <h3>Talmage on what kind of king</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/jesus-the-christ/chapter-29?lang=eng" target="_blank">Jesus the Christ, Chapter 29</a></p>
+    <p><strong>What to look for:</strong> Talmage walks carefully through the prophecy of Zechariah 9:9 and its fulfillment, noting that the donkey — specifically an unbroken colt — was a symbol of sacred use, an animal not yet touched by common labor. He argues that this detail signals that Christ's entry was priestly and consecrated, not merely symbolic.</p>
+    <hr>
+    <h2>Closing Reflection</h2>
+    <p>The crowd on Palm Sunday wanted a king who would solve their most visible problem. What they received was a king who had come to solve a problem they could not fully see.</p>
+    <p><strong>Closing question for reflection:</strong> What kind of king are you expecting Jesus to be — and is there any way your expectations might be limiting what he has come to do in your life?</p>
+    <hr>
+    <p><em>Cross-reference: The Atonement this entry set in motion is explored in full in <a href="../atonement/ATNMT-01-what-is-the-atonement.md" target="_blank">ATNMT-01 — What Is the Atonement</a> and <a href="../atonement/ATNMT-02-gethsemane.md" target="_blank">ATNMT-02 — Gethsemane</a>.</em></p>
+  </div>
+</body>
+</html>

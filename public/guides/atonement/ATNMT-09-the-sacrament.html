@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Sacrament as Weekly Re-Access to the Atonement</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">✝️ The Atonement</span>
+    <h1>The Sacrament as Weekly Re-Access to the Atonement</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>Hook — The Most Accessible Ordinance You May Be Underusing</h2>
+    <p>Every week. No appointment. No temple recommend required. No cost. Available to anyone who walks in.</p>
+    <p>The sacrament is the most accessible ordinance in the Church — and arguably the least deeply understood. It is not a memorial service. It is not a quiet moment of reflection bolted onto the beginning of Sunday. It is a covenant renewal — a formal, liturgical, repeated act in which you and God rehearse your agreement, and God re-extends the promised blessing: <em>always have his Spirit.</em></p>
+    <p>Most Latter-day Saints have taken the sacrament hundreds of times. The trays pass, the prayers are said, the bread and water are received, and the meeting moves on. Familiarity is the enemy of this ordinance. If you have ever caught yourself holding the bread while your mind was somewhere else entirely — you already know the problem this file is designed to address.</p>
+    <p>The questions this file pursues:</p>
+    <ul><li>What is the covenant you are renewing? What are its exact terms?</li><li>What does "always remember him" actually require — in the Hebrew covenant sense, not just the mental recollection sense?</li><li>What does "always have his Spirit" look like on a Wednesday morning?</li><li>Why does the Atonement need to be re-accessed weekly rather than once?</li></ul>
+    <hr>
+    <h2>The Institution — Where It Began</h2>
+    <h3>Jesus instituting the sacrament among the Nephites</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/18?id=p6-p11#p6" target="_blank">3 Nephi 18:6–11</a></p>
+    <p><strong>What to look for:</strong> This is the clearest account of Christ instituting the sacrament himself, with his own hands, among people who had just touched the prints of the nails in his body. He does not say "do this to remember my death." He says: do this in remembrance of my body and my blood — and then partaking witnesses to the Father that you "do always remember me." Read the sequence in verse 11: <em>if ye do always remember me</em> → <em>ye shall have my Spirit to be with you.</em> The Spirit is the promised reward of active covenant memory.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Verse 7: "he that eateth this bread eateth of my body to his soul." Christ uses the word <em>soul</em>, not <em>body</em>. What does it mean for bread to nourish a soul?</li><li>He says partaking witnesses to the Father that we "do always remember me." The word <em>witness</em> is a legal and covenant term — a declaration. What are you actually declaring each Sunday when you eat and drink?</li><li>"If ye do always remember me ye shall have my Spirit to be with you" (v. 11). The promised blessing is conditional not on being sinless or spiritually advanced — it is conditional on <em>remembering</em>. Why is remembrance the hinge?</li></ul>
+    <hr>
+    <h3>The Last Supper — the original institution</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/22?id=p19-p20#p19" target="_blank">Luke 22:19–20</a></p>
+    <p><strong>What to look for:</strong> "This do in remembrance of me" (v. 19). Then the cup: "This cup is the new testament in my blood, which is shed for you" (v. 20). The word <em>testament</em> is the Greek word for <em>covenant</em>. Jesus is not establishing a memorial — he is establishing a new covenant, sealed by blood, replacing the Passover as the central remembrance ordinance of the covenant people. The Passover had defined Israel's identity for fifteen centuries; Jesus is now saying: <em>your defining act of deliverance just changed.</em></p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The Passover lamb's blood marked the houses that death passed over (Exodus 12). Now Christ's blood marks the covenant people. What is the continuity between the Passover lamb and Christ as the Lamb?</li><li>"This is my body which is given for you" — <em>given</em>, not <em>taken</em>. The sacrifice was voluntary. What does that willingness change about how you receive it?</li><li>Hours after the Last Supper, Jesus went directly to Gethsemane (Luke 22:39). He gave the bread and cup knowing what the next twelve hours would cost. How does knowing that change how you receive the sacrament?</li></ul>
+    <hr>
+    <h3>The Bread of Life sermon — the theological depth behind the ordinance</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/6?id=p48-p58#p48" target="_blank">John 6:48–58</a></p>
+    <p><strong>What to look for:</strong> This sermon comes before the Last Supper — it is the theological foundation on which the sacrament will later be built. "I am the bread of life" (v. 48). "He that eateth my flesh, and drinketh my blood, dwelleth in me, and I in him" (v. 56). The crowd found this so offensive that many disciples left (v. 66). Jesus did not soften the claim. He is insisting that union with him is not optional or metaphorical but essential — and that the way to receive it is through a physical, embodied, repeated act of eating and drinking. The sacrament is the enacted form of this claim.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"Except ye eat the flesh of the Son of man, and drink his blood, ye have no life in you" (v. 53). Not <em>less</em> life — <em>no</em> life. What does that say about the seriousness of the ordinance, understood correctly?</li><li>Many disciples left at this point. Peter said "Lord, to whom shall we go? thou hast the words of eternal life" (v. 68). Have you had a moment when staying was difficult but leaving was unthinkable? What held you?</li><li>Verse 56: "He that eateth my flesh, and drinketh my blood, dwelleth in me, and I in him." Mutual indwelling — Christ in you and you in Christ. That is what the sacrament enacts. Does that description match your experience of taking it?</li></ul>
+    <hr>
+    <h2>Deepen — The Covenant Language Word for Word</h2>
+    <h3>Moroni 4–5 and D&C 20 — the sacrament prayers as covenant documents</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/4" target="_blank">Moroni 4</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/5" target="_blank">Moroni 5</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/20?id=p75-p79#p75" target="_blank">D&C 20:75–79</a></p>
+    <p><strong>What to look for:</strong> Read both prayers in full — they are each under 80 words, but worth reading slowly. Then compare Moroni 4–5 with D&C 20:75–79 side by side: the wording is nearly identical across two separate canonized sources. The bread prayer (Moroni 4:3 / D&C 20:77) names three covenant commitments: (1) take upon us the name of Christ; (2) always remember him; (3) keep his commandments. The promised blessing is a single thing: "that they may always have his Spirit to be with them." The water prayer distills the covenant to one phrase: "witness... that they do always remember him."</p>
+    <p>The bread prayer, in full:</p>
+    <blockquote>
+    <p>"O God, the Eternal Father, we ask thee in the name of thy Son, Jesus Christ, to bless and sanctify this bread to the souls of all those who partake of it; that they may eat in remembrance of the body of thy Son, and witness unto thee, O God, the Eternal Father, that they are willing to take upon them the name of thy Son, and always remember him, and keep his commandments which he has given them, that they may always have his Spirit to be with them. Amen."</p>
+    <p>— Moroni 4:3; D&C 20:77</p>
+    </blockquote>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The same prayer appears in two canonized scriptures, preserved across centuries and then re-revealed in 1830. Why does God repeat this exact wording in two separate canonized witnesses? What does that tell you about the precision of these words?</li><li>"Willing to take upon them the name of thy Son" — the prayer says <em>willing</em>, not <em>have taken</em> or <em>will take</em>. It is a present posture of readiness. In the ancient world, taking someone's name meant entering into their identity and mission. Whose identity are you aligning with when you take his name?</li><li>Three commitments, one promised blessing. The entire Atonement's weekly delivery mechanism is the Spirit's companionship. What does it mean that the blessing is not forgiveness (already given), not salvation (promised at baptism), but companionship — presence?</li></ul>
+    <hr>
+    <h3>What "always remember him" actually requires</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/deut/8?id=p11-p20#p11" target="_blank">Deuteronomy 8:11–20</a></p>
+    <p><strong>What to look for:</strong> Moses warns Israel that forgetting God is not atheism — it is the gradual slide into crediting yourself for your own success. "Thou shalt remember the Lord thy God: for it is he that giveth thee power to get wealth" (v. 18). The Hebrew word for <em>remember</em> (<em>zakar</em>) does not primarily mean mental recollection. It means to act in accordance with, to keep faith with, to bring the person actively into your present behavior and decision-making. Israel forgets God in Deuteronomy 8 not by denying him but by acting as though they built their lives themselves. "Always remember him" is a covenant active verb, not a passive feeling.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Moses says Israel will forget God <em>when things are going well</em> (vv. 12–14) — when houses are built, herds are multiplying, silver and gold increase. Prosperity is the most spiritually dangerous condition. How does that apply to your current season of life?</li><li>If <em>zakar</em> means to act in accordance with someone, not just to think about them — what would it look like to <em>remember</em> Christ in a business negotiation, in a difficult conversation, or when no one is watching?</li><li>The covenant commitment is "always remember him." Not "remember him on Sundays." What practices in your actual week bring him to mind consistently enough to count as <em>always</em>?</li></ul>
+    <hr>
+    <h3>Paul on partaking worthily — the self-examination required</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/11?id=p23-p29#p23" target="_blank">1 Corinthians 11:23–29</a></p>
+    <p><strong>What to look for:</strong> Paul warns that partaking "unworthily" brings condemnation — but the context matters. The Corinthians were eating the sacramental meal in a self-serving, chaotic, class-divided way (vv. 20–22): some were overeating and getting drunk while others went hungry. <em>Unworthily</em> describes that posture, not ordinary imperfection. Verse 28: "let a man examine himself, and so let him eat." The instruction is: examine, then eat — not examine, and if imperfect, abstain.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Paul's instruction is to examine yourself <em>and then eat</em> — the examination leads to the table, not away from it. How does that framing change how you respond to your own imperfection before sacrament meeting?</li><li>"Whosoever shall eat this bread, and drink this cup of the Lord, unworthily, shall be guilty of the body and blood of the Lord" (v. 27). The context here is carelessness and self-serving behavior, not general sinfulness. What posture — carelessness, distraction, self-focus — would qualify as partaking unworthily in your own life?</li><li>Verse 26: "For as often as ye eat this bread, and drink this cup, ye do shew the Lord's death till he come." Partaking is a public proclamation of your belief in the Atonement. What does it mean to <em>show</em> — to make visible — what Christ did?</li></ul>
+    <hr>
+    <h3>The promised blessing — what "always have his Spirit" looks like on a Wednesday</h3>
+    <p><strong>Read:</strong> John 14:15–27</p>
+    <p><strong>What to look for:</strong> This is the Upper Room Discourse — delivered the same night as the Last Supper, hours before Gethsemane. Jesus has just given the bread and cup; now he promises the Comforter. Notice verse 26: the Spirit "shall teach you all things, and bring all things to your remembrance, whatsoever I have said unto you." The Spirit is the mechanism of covenant memory — He is literally what makes "always remember him" possible. The sacrament covenant promises the Spirit; the Spirit keeps the remembrance alive. The loop closes here. Also read verse 27: "Peace I leave with you, my peace I give unto you: not as the world giveth."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The Spirit's job includes bringing Christ's words "to your remembrance" (v. 26). If you have the Spirit as a companion, you have help keeping the sacrament covenant. What does it mean that God designed the blessing to help you fulfill the commitment?</li><li>"Not as the world giveth" — the world offers peace through control, comfort, and distraction. What is qualitatively different about the peace the Spirit gives?</li><li>Jesus says the world "seeth him not, neither knoweth him: but ye know him; for he dwelleth with you" (v. 17). The Spirit is a companion the world around you cannot perceive. How does that invisible companionship show up in your actual daily life?</li></ul>
+    <hr>
+    <h2>Cross-References — Why Weekly?</h2>
+    <h3>The theology of repetition — the Atonement is not a one-time access</h3>
+    <p><strong>Ponder the pattern across the scriptures you have read:</strong> In 3 Nephi 18, Jesus says "this shall ye always do." In Moroni 4–5, the word <em>always</em> appears twice in the bread prayer and once in the water prayer. In D&C 20, the same language is repeated. In John 6, Jesus says "he that eateth my flesh... hath eternal life" — the present-tense eating, not the past-tense having eaten once.</p>
+    <p>The design is not weekly because we are bad at remembering. The design is weekly because we are exactly as good at remembering as we are — which means we forget, we drift, we accumulate small betrayals of the covenant that need to be cleared. The repetition is not a punishment for spiritual weakness. It is a mercy designed for it.</p>
+    <p><strong>Old Testament parallel:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/ex/16?id=p14-p20#p14" target="_blank">Exodus 16:14–20</a> — manna fell fresh every morning and could not be stored. Israel could not stockpile grace. They had to come back every day. The manna was a theology of ongoing dependence built into a food supply.</p>
+    <p><strong>After reading and pondering:</strong></p>
+    <ul><li>The manna could not be hoarded — it spoiled (v. 20). Why would God design grace to be un-storable? What is the spiritual danger of believing you have enough Spirit in reserve to skip the renewal?</li><li>Think about the past seven days. In what small, quiet ways did you drift from "always remember him"? Not dramatically — the ordinary drifts. What would it mean to bring those specifically to the sacrament rather than treating the ordinance as a general spiritual reset?</li><li>If the sacrament is weekly re-access to the Atonement, what does careless or distracted participation actually cost you?</li></ul>
+    <hr>
+    <h2>Talk Pointers — Five Voices on the Same Table</h2>
+    <h3>Elder Jeffrey R. Holland — what Jesus was carrying when He instituted it</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/1995/10/this-do-in-remembrance-of-me" target="_blank">This Do in Remembrance of Me — Elder Jeffrey R. Holland, General Conference October 1995</a></p>
+    <p><strong>Where to focus:</strong> The opening section of the talk — the first five or six paragraphs — where Holland places you in the upper room and asks you to feel the weight of what that night was. He describes the Passover context (the lamb, the blood, the remembrance of Egypt) and then the moment Jesus replaces it all with himself. He lingers on what Jesus was <em>feeling</em> as he gave the bread and cup — knowing Gethsemane was hours away, knowing the disciples would scatter, knowing the cost. This opening section is the most emotionally grounding treatment of the Last Supper in modern General Conference.</p>
+    <p><strong>What this passage does:</strong> Holland insists the sacrament is not communion with a dead teacher but with a living Savior — "the resurrected, exalted, glorified Son of the Living God." The ordinance looks backward (to the cross and garden) and forward (to his return) simultaneously. His treatment of the bread and cup as a new covenant ratification — the "new testament in my blood" — gives the ordinance theological weight that the word <em>memorial</em> does not carry.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Holland asks you to feel what the upper room felt like. When you next partake of the sacrament, what would it mean to place yourself at that table — knowing what Jesus knew about what lay hours ahead?</li><li>He argues the sacrament is not remembrance of someone who is gone but communion with someone who is present. How does the resurrection change the emotional register of partaking?</li><li>He closes by calling participants to come with "broken hearts and contrite spirits." Is that an emotional state you can choose — or one you wait for? How do you come broken when you don't feel broken?</li></ul>
+    <hr>
+    <h3>Elder Dallin H. Oaks — the covenant language analyzed in detail</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2015/10/the-sacrament-and-the-atonement" target="_blank">The Sacrament and the Atonement — Elder Dallin H. Oaks, General Conference October 2015</a></p>
+    <p><strong>Where to focus:</strong> The heart of the talk is Oaks's close reading of the covenant language in the sacrament prayers. He treats each phrase — "take upon them the name," "always remember him," "keep his commandments" — as a distinct covenant commitment rather than ornamental liturgy. The key section is his argument that "always have his Spirit" is not a vague blessing but the specific promised mechanism by which the Atonement operates in daily life. The final four paragraphs are among the most direct modern statements of why this ordinance is the primary weekly access point to the Atonement.</p>
+    <p><strong>What this passage does:</strong> Oaks frames the sacrament as the renewal of the baptismal covenant — the same covenant made at the font, re-ratified weekly. He is explicit that the promised blessing (the Spirit's companionship) is conditional on fulfilling the covenant: take the name, remember, keep the commandments. Understanding this changes the sacrament from a spiritual atmosphere event into a covenant transaction with specific terms on both sides.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Oaks argues the sacrament renews the baptismal covenant — not a separate covenant but the same one. How does framing Sunday as a return to the font change the weight of participation?</li><li>He emphasizes that the promised blessing of the Spirit follows covenant faithfulness. Is there a gap between the covenant you renew on Sunday and how you live on weekdays? What would closing it look like?</li><li>He says "always have his Spirit" is the Atonement functioning in your daily life. If that is true, what should you be noticing or experiencing? How would you describe the gap between that promise and your current experience?</li></ul>
+    <hr>
+    <h3>Elder David A. Bednar — retaining a remission of your sins</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2016/04/always-retain-a-remission-of-your-sins" target="_blank">Always Retain a Remission of Your Sins — Elder David A. Bednar, General Conference April 2016</a></p>
+    <p><strong>Where to focus:</strong> The theological hinge of the talk is the distinction between <em>receiving</em> a remission of sins (which happens at baptism and through repentance) and <em>retaining</em> it as an ongoing state. Bednar draws on King Benjamin's language in Mosiah 4: "always retain a remission of your sins." He argues the sacrament is the designed weekly mechanism for that retention — not a new forgiveness each week, but the maintenance of a remission already granted. Find the paragraphs where he makes this distinction, then read the last five paragraphs carefully.</p>
+    <p><strong>What this passage does:</strong> This talk reframes the sacrament from "I got my sins cleared again" to "I am maintaining an already-given remission by living in covenant." That reframing has significant implications for how you understand your daily standing before God and what the ordinance actually accomplishes. Bednar also connects the Sabbath day as the setting designed to make the sacrament's work possible.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The distinction between <em>receiving</em> and <em>retaining</em> a remission is new to many members. In your own understanding, which model have you been operating from — weekly forgiveness, or weekly retention of ongoing forgiveness?</li><li>Bednar connects Mosiah 4:11 ("always retain in remembrance the greatness of God") to the sacrament covenant. Retention requires consistent habits. What practices in your week support the retention of the Spirit?</li><li>If the sacrament is the mechanism for retaining the Spirit's companionship, what does it mean to take it carelessly — or skip it?</li></ul>
+    <hr>
+    <h3>President Russell M. Nelson — the sacrament as the center of Sabbath worship</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2015/04/the-sabbath-is-a-delight" target="_blank">The Sabbath Is a Delight — President Russell M. Nelson, General Conference April 2015</a></p>
+    <p><strong>Where to focus:</strong> Find the section specifically about the sacrament — roughly the middle of the talk. Nelson argues that the sacrament is not one item on a Sunday checklist but the organizing center of the Sabbath. The key framing he uses is the Sabbath as a sign — a weekly declaration of loyalty — and the sacrament as the physical enactment of that declaration. His question is: what sign do you want to give God about whose side you are on?</p>
+    <p><strong>What this passage does:</strong> Nelson reorients Sunday worship around the sacrament rather than around rules. His treatment of the Sabbath as <em>delight</em> (from Isaiah 58) rather than duty changes the emotional register of what weekly worship is. He also connects the sacrament to a covenant identity — you take his name in the prayer, and the Sabbath is the weekly public display of that name.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Nelson frames the Sabbath as a sign — a weekly loyalty declaration to God. What does your Sunday currently signal? What would you want it to signal?</li><li>He uses the word <em>delight</em> — the Sabbath and sacrament as delight, not duty. Is your weekly sacrament a delight? If not, what is in the way — and what would have to change?</li><li>He places the sacrament at the center, around which the day is organized. How do you prepare for the sacrament in the hours before sacrament meeting — does your morning preparation reflect that centering?</li></ul>
+    <hr>
+    <h3>Elder Don R. Clarke — every element of the ordinance connects to the Atonement</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2011/10/the-sacrament-and-the-atonement" target="_blank">The Sacrament and the Atonement — Elder Don R. Clarke, General Conference October 2011</a></p>
+    <p><strong>Where to focus:</strong> Clarke takes each physical element of the sacrament — the broken bread, the water (standing in for wine), the white cloth, the deacons, the prayers — and connects each to a specific aspect of Christ's atoning work. The most important section is his treatment of "placing ourselves in remembrance" — he argues this is an active, intentional act we perform, not a passive feeling that may or may not arise. Also read his closing section on what preparation and attentiveness look like.</p>
+    <p><strong>What this passage does:</strong> This is the most detailed element-by-element treatment of the sacrament in modern General Conference. It trains you to see the ordinance rather than simply perform it. After reading Clarke, you will find the sacrament harder to take inattentively — every physical object in the ordinance has been made to mean something.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Clarke says we "place ourselves in remembrance" of Christ — it is something we actively do. What is the difference between placing yourself in remembrance and waiting to feel something?</li><li>He connects the whiteness of the sacrament cloth to baptismal white and to Isaiah's "white as snow." After reading this, what physical elements of the sacrament do you want to notice more carefully next Sunday?</li><li>What is one specific thing Clarke's analysis reveals that you want to do differently — or notice differently — the next time you take the sacrament?</li></ul>
+    <hr>
+    <h2>Closing Question</h2>
+    <p>You have worked through the institution in 3 Nephi 18, Luke 22, and John 6. You have read the covenant language of Moroni 4–5 and D&C 20 word for word. You have looked at what "always remember him" requires (<em>zakar</em> — active orientation, not mental recall), what "always have his Spirit" promises as the Atonement's daily delivery mechanism, and why weekly is not failure but design.</p>
+    <p>Here is the single question to carry into this week:</p>
+    <p><strong>When you sit in sacrament meeting this Sunday, will you be renewing a covenant — or attending a meeting?</strong></p>
+    <p>The difference is not how reverent you appear. It is whether you know what you are agreeing to, whether you mean it in the present tense, and whether you receive the promised blessing as a real transaction rather than a closing phrase.</p>
+    <p>The sacrament does not require you to be perfect. It requires you to be <em>willing.</em> And it offers you, every seven days, what you cannot sustain alone: the continuous companionship of the Spirit, which is the Atonement functioning in your life between Sundays.</p>
+    <p>Christ sat at a table with his disciples the night before Gethsemane, broke bread, gave thanks, and told them to do this in remembrance of him. He knew what the next twelve hours would cost. He established the ordinance anyway — and then went out into the garden.</p>
+    <p>The sacrament is where you meet him every week, on the other side of that night.</p>
+    <p><strong>Closing ponder:</strong> What is the single thing — distraction, familiarity, unresolved sin, doubt, or something else entirely — that most keeps you from fully entering the sacrament covenant when you take it? What would it look like to bring that one thing to the table next Sunday and lay it down?</p>
+  </div>
+</body>
+</html>

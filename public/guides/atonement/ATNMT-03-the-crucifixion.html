@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Crucifixion</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">✝️ The Atonement</span>
+    <h1>The Crucifixion</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>The Narrative Accounts</h2>
+    <h3>Matthew's account of the cross</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/27?id=p27-p56#p27" target="_blank">Matthew 27:27–56</a></p>
+    <p><strong>What to look for:</strong> Matthew records the mockery, the crown of thorns, the offer of vinegar, and the moment of death. Most important: verse 46 — "My God, my God, why hast thou forsaken me?" This cry of desolation is the emotional and theological center of the crucifixion narrative.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Matthew 27:46 is a quotation of Psalm 22:1. Why does Jesus quote a Psalm in his final agony — and what does it mean that Psalm 22 ends in triumph and praise?</li><li>The veil of the temple was torn from top to bottom (v. 51). What barrier was being removed, and what does it symbolize about what the Atonement opened?</li><li>The centurion says "Truly this was the Son of God" (v. 54). Why does a Roman soldier — not a disciple, not a Pharisee — make this declaration at the moment of death?</li></ul>
+    <hr>
+    <h3>John's account — the beloved disciple at the cross</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/19?id=p16-p37#p16" target="_blank">John 19:16–37</a></p>
+    <p><strong>What to look for:</strong> John is the only Gospel writer who was present at the cross. Notice the details only an eyewitness records: the sign above the cross ("Jesus of Nazareth, King of the Jews"), the soldiers casting lots for his garment, his words to Mary and John, "I thirst," "It is finished," and the blood and water from his side.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"It is finished" (v. 30, "tetelestai" in Greek) was an accounting term meaning "paid in full." What debt was being paid, and to whom?</li><li>Jesus commits his mother to John's care even in his final moments (v. 26–27). What does this act of pastoral care — in the middle of the worst suffering — tell you about who he is?</li><li>John says he saw blood and water come from Christ's side and testifies he tells the truth (v. 34–35). Why does he emphasize this as eyewitness testimony? What is at stake in whether it is physical and real?</li></ul>
+    <hr>
+    <h3>Luke's account — mercy even on the cross</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/23?id=p32-p49#p32" target="_blank">Luke 23:32–49</a></p>
+    <p><strong>What to look for:</strong> Luke alone records three things: the prayer "Father, forgive them; for they know not what they do" (v. 34), the conversation with the thief (v. 39–43), and the final words "Father, into thy hands I commend my spirit" (v. 46). Each of these is a window into Christ's character under the most extreme duress.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"Father, forgive them; for they know not what they do." He prays for his executioners. How does the Atonement make that prayer more than just admirable — how does it make it effective?</li><li>He promises the thief, "Today shalt thou be with me in paradise" — an act of Atonement-as-mercy performed while suffering. What does it tell you that he was offering salvation to others even while dying?</li><li>"Father, into thy hands I commend my spirit" is a quote of Psalm 31:5. His final breath was scripture. What does that suggest about how deeply saturated he was in the word of God?</li></ul>
+    <hr>
+    <h2>The Theology of the Cross</h2>
+    <h3>Isaiah's prophecy and its fulfillment</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/isa/53" target="_blank">Isaiah 53</a></p>
+    <p><strong>What to look for:</strong> Read this now with the Gospel accounts fresh in your mind. Verse 9: "he made his grave with the wicked" — crucified between two criminals. Verse 12: "he poured out his soul unto death." The specificity of Isaiah's language maps onto the crucifixion with precision written 700 years earlier.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"He was wounded for our transgressions, he was bruised for our iniquities" (v. 5). How does knowing the physical reality of the cross change how you read Isaiah's words?</li><li>Verse 7: "he opened not his mouth." Before Pilate and Herod, Jesus was largely silent. Why do you think the silence mattered?</li><li>The Servant in Isaiah 53 is described as someone people "hid their faces" from (v. 3). In what ways do we still sometimes avert our eyes from the full reality of what Christ suffered?</li></ul>
+    <hr>
+    <h3>Paul on the foolishness and power of the cross</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/1?id=p18-p25#p18" target="_blank">1 Corinthians 1:18–25</a></p>
+    <p><strong>What to look for:</strong> Paul says "the preaching of the cross is to them that perish foolishness; but unto us which are saved it is the power of God." He deliberately frames the crucifixion as something the world calls weak, scandalous, and absurd — but that is exactly its power.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Paul says God chose foolish things to confound the wise. What is "foolish" about the idea of a crucified God — and why does that foolishness become the deepest wisdom?</li><li>Verse 25: "the weakness of God is stronger than men." What does the image of God apparently defeated on a cross say about how God exercises power?</li><li>Do you ever feel embarrassed or uncertain about the cross — about explaining it to a skeptic? How does Paul's framing help?</li></ul>
+    <hr>
+    <h3>The Atonement and justice — Alma 42</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/42?id=p13-p23#p13" target="_blank">Alma 42:13–23</a></p>
+    <p><strong>What to look for:</strong> Alma explains to his son Corianton why the Atonement was necessary — not because God wanted to punish Jesus, but because justice has claims that cannot simply be waived. Verse 15 contains one of the most important doctrinal sentences in the Book of Mormon: "And now, the plan of mercy could not be brought about except an atonement should be made."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Alma argues that mercy cannot rob justice. What would it mean for the universe if God could simply ignore sin without any cost? Why would that actually be unjust to everyone?</li><li>Verse 23: "God himself atoneth for the sins of the world." The subject of atonement is God — not a third party substituting for God's anger. How does that distinction change how you understand what happened at the cross?</li><li>Corianton was troubled by the justice of punishment. What are you most troubled by when you think about the demands of divine justice — and how does the Atonement address that?</li></ul>
+    <hr>
+    <h2>Suffering That Was Not Finished at Gethsemane</h2>
+    <h3>The cross as distinct from the garden</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2009/04/none-were-with-him" target="_blank">None Were with Him — Jeffrey R. Holland, April 2009 General Conference</a></p>
+    <p><strong>What to look for:</strong> Holland distinguishes two phases of suffering: the garden and the cross. In the garden, Christ felt the weight of sin. On the cross, he experienced the withdrawal of the Father's presence — a spiritual desolation that compounded the physical. Both were necessary.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Holland says Gethsemane was not enough — the cross was also required. What does that tell us about the completeness of Christ's submission? He did not stop at Gethsemane.</li><li>The cry of desolation — "Why hast thou forsaken me?" — is the moment Holland focuses on. Why might the withdrawal of the Father's presence be the hardest part?</li><li>Holland says no one was with him. Not his disciples, not angels, not the Father. Have you ever felt spiritually alone in suffering? What does Christ's desolation mean for that experience?</li></ul>
+    <hr>
+    <h3>The physical reality matters — it was not symbolic</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/the-living-christ-the-testimony-of-the-apostles" target="_blank">The Living Christ: The Testimony of the Apostles</a></p>
+    <p><strong>What to look for:</strong> This formal declaration by the First Presidency and Quorum of the Twelve states that Christ "gave his life to atone for the sins of all mankind." Notice how physical, concrete, and historical the language is — not metaphorical.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The declaration says he "rose from the tomb to live again" — past tense, a real event. Why does the physical, historical reality of crucifixion and resurrection matter for your faith?</li><li>The Apostles sign their names as "witnesses of the name of Christ in all the world." What does it mean to be a witness of the cross in your specific corner of the world?</li><li>If someone asked why the death of one person could matter for all humanity, how would you answer using the ideas from this declaration and what you've read in this file?</li></ul>
+    <hr>
+    <h2>Symbols and Ordinances</h2>
+    <h3>The sacrament as weekly remembrance of the cross</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/22?id=p14-p20#p14" target="_blank">Luke 22:14–20</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/20?id=p75-p79#p75" target="_blank">D&C 20:75–79</a></p>
+    <p><strong>What to look for:</strong> In Luke, Jesus institutes the sacrament the same night before Gethsemane — bread as his body, wine (water) as his blood "shed for you." D&C 20 gives the restored version of the sacrament prayers. Notice that the bread prayer mentions his body and the water prayer mentions his blood — two separate elements for the two phases of his giving.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Jesus says "this do in remembrance of me" (Luke 22:19). Remembrance is an active, deliberate act. What does it mean to deliberately remember the crucifixion every week?</li><li>The sacrament prayers ask us to "always remember him" and promise we "may always have his Spirit." What is the connection between remembering the cross and receiving the Spirit?</li><li>Is there something about the crucifixion — one detail from the accounts you've read this week — that you want to bring to the sacrament table next Sunday?</li></ul>
+    <hr>
+    <h3>The cross in early Christian worship</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/3?id=p5-p11#p5" target="_blank">Mosiah 3:5–11</a></p>
+    <p><strong>What to look for:</strong> King Benjamin's angel describes Christ's coming mission in detail, including "suffering temptations, and pain of body, hunger, thirst, and fatigue, even more than man can suffer, except it be unto death." The crucifixion is prophesied here not as a symbol but as a specific physical ordeal of the body.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The angel says Christ will suffer "more than man can suffer, except it be unto death." What does that phrase mean? Why does "except it be unto death" set a threshold?</li><li>Benjamin's people fell to the earth after hearing about Christ's coming Atonement (Mosiah 4:1). What would it mean to be moved that physically by the knowledge of the crucifixion?</li><li>Benjamin says this will all happen "that the resurrection might pass upon all men" (Mosiah 3:10). The cross is the path to the empty tomb. How do you hold both together?</li></ul>
+  </div>
+</body>
+</html>

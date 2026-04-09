@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faith in the Dark</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">🕊️ Faith</span>
+    <h1>Faith in the Dark</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <blockquote>
+    <p>"Lord, I believe; help thou mine unbelief."</p>
+    <p>— Mark 9:24</p>
+    </blockquote>
+    <p>This may be the most honest prayer in all of scripture. It is not a confession of full faith. It is not an admission of no faith. It is both at once — a man holding everything he has in one hand and everything he lacks in the other, and bringing both to Christ. And Christ heals his son anyway.</p>
+    <p>This file is for the seasons when faith is hard. Not for abandoning it — but for understanding what faithful darkness looks like, and how to move through it.</p>
+    <hr>
+    <h2>The Hook: The Father Who Said Both Things</h2>
+    <h3>Mark 9 — the epileptic boy and his father</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/mark/9?id=p14-p29#p14" target="_blank">Mark 9:14–29</a></p>
+    <p><strong>What to look for:</strong> The context matters as much as the famous verse. The disciples had failed to cast out the spirit (v. 18). The father has watched that failure. He comes to Jesus with a request that contains a revealing word: "if thou canst do any thing" (v. 22). Jesus immediately addresses the word "if" — "if thou canst believe, all things are possible to him that believeth" (v. 23). The father's response in verse 24 is immediate, anguished, and transparent: <em>I believe and I do not believe, both, at the same time. Please help me with the part I cannot manage.</em></p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Jesus does not rebuke the man for having partial faith. He works with it. What does that say about what God requires before he will help?</li><li>The father had watched the disciples fail. That failure did not make him walk away — it made him go directly to Christ. What does it look like to take your failed experience of religion directly to Christ rather than letting it end the conversation?</li><li>"Help thou mine unbelief" is a prayer about faith, not just a prayer for healing. What would it mean to make that prayer your own today — not asking God to remove your doubt, but asking him to help with the part you can't manage?</li></ul>
+    <hr>
+    <h2>What Faithful Doubt Looks Like</h2>
+    <h3>Elder Holland's April 2013 address — "Lord, I Believe"</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2013/04/lord-i-believe" target="_blank">Lord, I Believe — Jeffrey R. Holland, April 2013</a></p>
+    <p><strong>What to look for:</strong> Holland speaks directly to people who are struggling with faith — not backsliders, but believers who find some things hard. He uses Mark 9:24 as his frame. He argues that the father's prayer is not a failure of faith but its most honest expression. Holland's key move is to distinguish between two kinds of doubt: the doubt that leans toward God and the doubt that leans away. One is humble and seeking; the other is hardened and rejecting. The outer behavior may look the same but the inner posture is entirely different.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Holland says to "be kind regarding human frailty — your own as well as that of those who served imperfectly." Why does the presence of human imperfection in the Church test faith specifically? And why is kindness toward that imperfection part of the answer?</li><li>Holland's central argument: don't give up what you <em>do</em> know because of what you <em>don't</em> know. What do you know? What specific things are you sure of — even now?</li><li>Holland invokes the image of holding on to the iron rod "with both hands" when the darkness is thickest. What does holding on look like when you can't feel anything? What practical act of holding on is available to you right now?</li></ul>
+    <hr>
+    <h3>The difference between honest questioning and faithless doubt</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/6?id=p36#p36" target="_blank">D&C 6:36</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/9?id=p7-p9#p7" target="_blank">D&C 9:7–9</a></p>
+    <p><strong>What to look for:</strong> D&C 6:36 is a command: "Look unto me in every thought; doubt not, fear not." This could be read as "never have uncertainty" — but the surrounding context is encouragement to Oliver Cowdery who is already trying. D&C 9:7–9 gives Oliver correction for not translating: God expected him to study it out in his mind first. That is an instruction to do the intellectual work, not to bypass it. Together these passages suggest that "doubt not" does not mean "stop thinking" — it means "don't let uncertainty become paralysis or rejection."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"Doubt not, fear not" — what is the difference between doubt and fear in this context? Can you have intellectual questions (doubt) without the emotional posture of fear? What does non-fearful uncertainty look like?</li><li>D&C 9 instructs Oliver to "study it out in your mind first." That is an intellectual command — engage your brain. How does that interact with the command not to doubt? Can studying hard and doubting not coexist?</li><li>What kind of doubt tends to lead you toward God (asking, seeking, experimenting)? What kind tends to pull you away (cynicism, contempt, disengagement)? Which pattern is more present in your life right now?</li></ul>
+    <hr>
+    <h2>The Pattern: Moving Forward Without Seeing the End</h2>
+    <h3>Lehi's dream — pressing forward through mist</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/8?id=p24-p30#p24" target="_blank">1 Nephi 8:24–30</a></p>
+    <p><strong>What to look for:</strong> The iron rod runs through the mist of darkness to the tree. The people who hold fast and press forward reach the tree (v. 30). Those who let go to look around get lost in the mist (v. 28) or wander into strange paths. Lehi's dream is a spatial map of what happens when you keep moving through darkness versus stopping or redirecting. The mist is not a sign that the path has ended — it is weather.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The mist of darkness does not destroy the path — it obscures it. What is the difference between the path being gone and the path being invisible? How does that distinction change the way you approach dark seasons?</li><li>Some people in the dream hold the rod with one hand (v. 28) — they make it partway but let go when they see people mocking from the great building. What does one-handed faith look like? What does two-handed faith look like?</li><li>The people who reach the tree still face the mocking from across the river. Arrival does not end the test. What does that say about what testimony actually protects you from, and what it does not?</li></ul>
+    <hr>
+    <h3>Abraham's faith in the face of the impossible</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/rom/4?id=p18-p21#p18" target="_blank">Romans 4:18–21</a></p>
+    <p><strong>What to look for:</strong> Paul describes Abraham's faith in the promise of Isaac with stunning precision: Abraham "against hope believed in hope" (v. 18). He did not consider his own body "now dead" — he did not look at the evidence against and let it override the promise. Verse 20: he "staggered not at the promise of God through unbelief; but was strong in faith, giving glory to God." Paul frames Abraham's faith as a refusal to give the evidence against more weight than the word of God.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"Against hope believed in hope" — what does it mean to hope against hope? Is this willful blindness, or is it a different kind of seeing?</li><li>Verse 21 says Abraham "was fully persuaded that, what he had promised, he was able also to perform." The center of his faith was not certainty about circumstances — it was certainty about <em>God's character.</em> How does that shift what faith is rooted in?</li><li>Paul holds up Abraham's faith as a model for Christians who have not received the promise yet. What promise are you waiting on — and what would it look like to "stagger not" while you wait?</li></ul>
+    <hr>
+    <h3>Moroni's closing words to doubters</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/10?id=p3-p5#p3" target="_blank">Moroni 10:3–5</a></p>
+    <p><strong>What to look for:</strong> Moroni's famous promise is often quoted from verse 4–5, but verse 3 is the setup: "ponder it in your hearts." He does not say believe it first, then read. He says read, ponder, ask. This is the structure of the experiment Alma described — you engage the text, you let it work, you bring your whole self including your doubt to God. Notice the conditions Moroni gives: "with a sincere heart, with real intent, having faith in Christ." Sincere, real, grounded — not perfect.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"Real intent" — Moroni uses this phrase deliberately. What is the difference between asking with real intent (genuinely willing to receive and act on the answer) and asking performatively (going through the motions)?</li><li>The promise is that God "will manifest the truth of it unto you, by the power of the Holy Ghost." What does a manifestation by the Holy Ghost look like? Is it always dramatic, or can it be quiet, gradual, and cumulative?</li><li>Moroni wrote this knowing it was the last thing he would write and that the book might not be read for 1,400 years. What does that say about the seriousness with which he made the promise — and with which you might receive it?</li></ul>
+    <hr>
+    <h3>Elder Holland on what to do when the darkness persists</h3>
+    <p><strong>Read:</strong> <a href="https://speeches.byu.edu/talks/jeffrey-r-holland/cast-not-away-therefore-your-confidence/" target="_blank">Cast Not Away Therefore Your Confidence — Jeffrey R. Holland, BYU Devotional 1999</a></p>
+    <p><strong>What to look for:</strong> Holland draws on Moses 1 (Moses standing alone after a dramatic vision, assailed by Satan) and Hebrews 10:35–39 to argue that the enemy of faith is often not dramatic crisis but the cold, quiet erosion that happens in the aftermath of a spiritual high. He argues that the moments of spiritual darkness that follow moments of spiritual light are not evidence that the light was false — they are part of the test.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Holland argues that after Moses had his magnificent vision, Satan appeared. He suggests this pattern — darkness following light — is not a sign that the experience was false, but that it was real enough to be worth attacking. Has that pattern appeared in your own life?</li><li>Holland uses the image of nightfall after a good day: you don't conclude the day wasn't real just because night came. What would it mean to apply that logic to a season of spiritual difficulty you have experienced or are experiencing?</li><li>Hebrews 10:36 — "ye have need of patience, that, after ye have done the will of God, ye might receive the promise." Note the sequence: obedience first, patience second, promise third. What is the promise you are waiting to receive — and how patient are you willing to be?</li></ul>
+    <hr>
+    <h2>Faith Under Physical Extremity — Church History</h2>
+    <h3>The handcart companies — faith in its most stripped-down form</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/history/topics/handcart-companies" target="_blank">Church History Topics: Handcart Companies</a></p>
+    <p><strong>What to look for:</strong> The Willie and Martin handcart companies of 1856 were caught by early winter in Wyoming with inadequate supplies. Hundreds died. Rescue parties came, but many suffered terribly before help arrived. The survivors' testimonies are some of the most searching accounts of faith under extremity in Latter-day Saint history. Look especially for the account often attributed to Francis Webster: "We suffered beyond anything you can imagine and many died of exposure and starvation, but... we became acquainted with him in our extremities."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Survivors often reported that their most intense experiences of God came in their most desperate circumstances — not that God removed the suffering, but that he was present inside it. How does that witness sit alongside the question "why doesn't God intervene?"</li><li>Some who suffered lost their faith. Others had it deepened. What do you think made the difference — not abstractly, but in the specific texture of how they thought about God?</li><li>If you had been on that trail, what do you think your faith would have looked like? What does your answer reveal about where your faith actually rests right now?</li></ul>
+    <hr>
+    <h3>Brigham Young's response — faith does not demand explanation</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/history/topics/handcart-companies" target="_blank">Church History Topics: Handcart Companies</a> — look specifically for Brigham Young's statement about the survivors</p>
+    <p><strong>What to look for:</strong> When critics questioned the decision to send the companies out so late in the season, Brigham Young did not offer a full theological explanation. He said, in effect: do not attempt to rend their faith. The survivors had found something in that experience that could not be given any other way.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>There are things that can only be learned in the dark. What have you learned about God — or about yourself — in a hard season that you could not have learned any other way?</li><li>Faith that has been through something is different from faith that hasn't been tested. What is the difference, practically? How does it show up in a person's life?</li><li>The handcart survivors are often cited as examples of faith. But many of them also suffered permanent physical damage and lost family members. How do you honor both the witness of their faith <em>and</em> the reality of what they lost?</li></ul>
+    <hr>
+    <h2>Closing Question for Reflection</h2>
+    <p>The father in Mark 9 did not wait until he had enough faith to approach Jesus. He came with what he had — half-faith, honest doubt, a desperate need — and said: <em>Lord, I believe; help thou mine unbelief.</em></p>
+    <p>That prayer was answered.</p>
+    <p><strong>Sit with this question:</strong></p>
+    <p>What is the doubt or darkness you are carrying right now that you have not yet brought to Christ directly? Not to a teacher, not to a book, not even to this study guide — but to Christ himself, in prayer, with nothing held back?</p>
+    <p>What would you say if you could say anything, the way that father did?</p>
+    <hr>
+    <p><em>Previous: <a href="FATH-03-the-seed-of-faith.md" target="_blank">FATH-03 — The Seed of Faith</a></em></p>
+  </div>
+</body>
+</html>

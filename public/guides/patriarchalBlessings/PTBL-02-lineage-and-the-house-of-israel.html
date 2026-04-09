@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Lineage and the House of Israel</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">📜 Patriarchal Blessings</span>
+    <h1>Your Lineage and the House of Israel</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>Hook</h2>
+    <p>Every patriarchal blessing declares the lineage of the person receiving it — Ephraim, Manasseh, Judah, Benjamin, or another tribe of Israel. For many people, that declaration is the part they skip over fastest. It sounds like ancient genealogy. It feels distant and formal.</p>
+    <p>It isn't. Your lineage declaration is one of the most personally significant statements in your blessing. Understanding it changes how you read everything that follows.</p>
+    <hr>
+    <h2>What Is the House of Israel?</h2>
+    <h3>Abraham, Isaac, Jacob — the covenant family</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/gen/12?id=p1-p3#p1" target="_blank">Genesis 12:1–3; 17:1–8; 26:3–4; 28:13–15</a></p>
+    <p><strong>What to look for:</strong> God makes essentially the same covenant three times — to Abraham, then to Isaac, then to Jacob. The covenant has three parts: land, posterity, and blessing to all nations. When you are declared a member of Israel, you are being placed into that covenant family.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>God says "in thee shall all families of the earth be blessed" (Gen 12:3). What does it mean that your membership in Israel connects you to a promise about <em>all families of the earth</em>?</li><li>The covenant was given through a specific family line. Why does God work through family relationships rather than simply blessing people individually?</li><li>Jacob received his father's blessing through an unconventional path. What does that tell you about how God works within human imperfection to keep covenants?</li></ul>
+    <hr>
+    <h3>The twelve sons — the origin of the tribes</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/gen/49?id=p28#p28" target="_blank">Genesis 49:28</a>; <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/num/2?id=p1-p2#p1" target="_blank">Numbers 2:1–2</a></p>
+    <p><strong>What to look for:</strong> Jacob had twelve sons; their descendants became the twelve tribes. The tribes were organized, given territories, given callings. Each tribe had a distinct character and role within Israel. Your patriarchal blessing places you in one of those tribes — not randomly.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The tribes were organized — each had an assignment, a banner, a place. What does it mean to have a specific <em>place</em> within the house of Israel?</li><li>Most Latter-day Saints are declared from the tribe of Ephraim or Manasseh (both sons of Joseph). Why might that be — what was Joseph's role among the twelve sons?</li><li>If your blessing declares a tribe you don't know much about, how might you study that tribe's history to better understand your declaration?</li></ul>
+    <hr>
+    <h2>What Does Lineage Mean for Us Today?</h2>
+    <h3>Adoption into Israel — the New Testament pattern</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/rom/11?id=p17-p21#p17" target="_blank">Romans 11:17–21</a>; <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/gal/3?id=p26-p29#p26" target="_blank">Galatians 3:26–29</a></p>
+    <p><strong>What to look for:</strong> Paul uses the image of a wild olive branch grafted into a cultivated olive tree. He says that through faith and covenant, Gentiles become children of Abraham. Galatians 3:29 makes it explicit: "if ye be Christ's, then are ye Abraham's seed, and heirs according to the promise."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The image of grafting is physical — branches are cut and joined. What does that suggest about how real the adoption into Israel is meant to be?</li><li>Paul says this adoption comes "through faith in Christ Jesus" (Gal 3:26). What is the relationship between your covenant (baptism) and your lineage declaration?</li><li>Galatians 3:28 says there is "neither Jew nor Greek" in Christ. How do you hold that alongside the very specific tribal declaration in your blessing?</li></ul>
+    <hr>
+    <h3>The Abrahamic covenant in our dispensation</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/110?id=p12#p12" target="_blank">D&C 110:12</a>; <a href="https://www.churchofjesuschrist.org/study/scriptures/pgp/abr/2?id=p9-p11#p9" target="_blank">Abraham 2:9–11</a></p>
+    <p><strong>What to look for:</strong> In D&C 110, Elias restores "the dispensation of the gospel of Abraham," specifically so the blessings of the Abrahamic covenant will be available to the last days. In Abraham 2:9–11, the Lord gives Abraham the covenant in full — including the responsibility to carry it to others.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Abraham 2:9 says his name will be blessed "above all families of the earth." But verse 10 immediately says <em>he</em> must bless "all the families of the earth through his seed." Why is the blessing inseparable from the responsibility?</li><li>If you carry the Abrahamic covenant in your blessing, what does that responsibility look like in your life — not in theory, but in practice?</li><li>The restoration of this covenant came through Elias in the Kirtland Temple. Why did that restoration need to happen — what was missing without it?</li></ul>
+    <hr>
+    <h3>Ephraim's specific calling in our day</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/133?id=p30-p34#p30" target="_blank">D&C 133:30–34</a></p>
+    <p><strong>What to look for:</strong> This revelation describes Ephraim as those who "shall be crowned with glory" and who will push people together "from the ends of the earth." Ephraim's role in the last days is gathering — bringing the house of Israel back. If your blessing declares Ephraim, you are part of that mission.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Ephraim is described as pushing people from the ends of the earth — gathering. What does gathering look like for someone your age, in your circumstances?</li><li>The tribe of Ephraim is the birthright tribe (see 1 Chronicles 5:1–2; Jeremiah 31:9). What does it mean to hold a birthright — what does it obligate you to?</li><li>If you are declared Manasseh (the other son of Joseph), that lineage has its own history and significance. How might you explore what Manasseh's role is in the last days?</li></ul>
+    <hr>
+    <h2>Why It Matters That It's <em>Your</em> Declaration</h2>
+    <h3>Elder Ballard on lineage and identity</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2007/04/the-miracle-of-the-holy-bible" target="_blank">M. Russell Ballard — The Miracle of the Holy Bible, April 2007</a> — focus on his framing of Israel as a covenant people with a mission, not just a genealogy.</p>
+    <p><em>(Note: for a talk focused specifically on lineage in patriarchal blessings, search speeches.byu.edu for "patriarchal blessing lineage" — multiple BYU devotionals address this directly.)</em></p>
+    <p><strong>What to look for:</strong> How Ballard connects covenant identity to daily discipleship. The covenant people are not a historical category — they are a present reality.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Covenant identity is something you carry every day. How would your ordinary choices look different if you thought of yourself as "covenant Israel" in a practical, not abstract, way?</li><li>The gathering of Israel is described as the greatest work on earth right now. How does that connect to your patriarchal blessing's lineage declaration?</li><li>Does knowing your tribe feel meaningful or distant to you? What would make it feel more real?</li></ul>
+    <hr>
+    <h2>Closing Question</h2>
+    <p>Your lineage declaration is not a formality. It is the Church saying: <em>you belong to this covenant family. You carry these responsibilities. You have access to these promises.</em></p>
+    <p><strong>Ponder or write:</strong></p>
+    <p>Look up the tribe you were declared. Read what you can find about that tribe's history in the Old Testament and in Latter-day Saint teaching. Write one thing that surprises you — and one thing that feels like it was written for you.</p>
+  </div>
+</body>
+</html>

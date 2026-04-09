@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Study Your Blessing</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">📜 Patriarchal Blessings</span>
+    <h1>How to Study Your Blessing</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>Hook</h2>
+    <p>Most people read their patriarchal blessing a few times and put it away. They are waiting for something — maybe for a promise to come true, or for a confusing phrase to make sense. In the meantime, the blessing sits.</p>
+    <p>But the blessing is not a lottery ticket to check at the end of life. It is a living document, meant to be worked. This file is about how to do that.</p>
+    <hr>
+    <h2>Reading It as Scripture</h2>
+    <h3>The pattern of deep reading</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/4?id=p15-p16#p15" target="_blank">2 Nephi 4:15–16</a></p>
+    <p><strong>What to look for:</strong> Nephi writes that his soul "delighteth in the scriptures" and that he "pondereth" them and writes them for his children's learning. Notice the posture — delight, pondering, and intention. He doesn't just read; he works with the text.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Nephi says pondering is how the scriptures become useful. What does it look like to <em>ponder</em> your patriarchal blessing — not just read it?</li><li>He writes that his soul delights in the scriptures — that's an emotional response, not just an intellectual one. Has your blessing ever moved you emotionally? What did that feel like?</li><li>Nephi meditates on scriptures for his children's benefit. Who in your life might eventually benefit from what you learn through your blessing?</li></ul>
+    <hr>
+    <h3>What "personal scripture" requires of you</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/1?id=p37-p38#p37" target="_blank">D&C 1:37–38</a></p>
+    <p><strong>What to look for:</strong> The Lord says "what I the Lord have spoken, I have spoken, and I excuse not myself; and though the heavens and the earth pass away, my word shall not pass away." The standard for scripture — it endures. Your blessing was spoken by that same authority.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>If your blessing was given by priesthood authority and recorded faithfully, it carries the same weight as scripture in that verse. How does that change your obligation toward it?</li><li>D&C 1:38 says whether by his own voice or by the voice of his servants, it is the same. The patriarch is a servant. What does the word "same" mean for how you treat the patriarch's words?</li><li>Have you treated your blessing differently than you treat canonized scripture? What might shift if you treated them the same?</li></ul>
+    <hr>
+    <h2>Practical Study Methods</h2>
+    <h3>Looking for patterns and themes</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/true-to-the-faith/patriarchal-blessings" target="_blank">True to the Faith: Patriarchal Blessings</a></p>
+    <p><strong>What to look for:</strong> The entry encourages reading often, especially in times of decision or trial. It also notes that understanding deepens over time. This implies the blessing has layers — not everything is visible on the first read.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Read your blessing slowly and identify every distinct theme or category: gifts mentioned, callings mentioned, warnings mentioned, promises mentioned. What categories does it cover? Which surprise you?</li><li>Are there phrases that confuse you, or promises that feel far from where you are now? Write them down. What would you need to understand to receive those phrases?</li><li>True to the Faith says "the fulfillment of promises is often related to your faithfulness." Which promises in your blessing feel most dependent on something you need to do?</li></ul>
+    <hr>
+    <h3>Looking for conditionals and absolutes</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/82?id=p10#p10" target="_blank">D&C 82:10</a></p>
+    <p><strong>What to look for:</strong> "I, the Lord, am bound when ye do what I say; but when ye do not what I say, ye have no promise." This is the framework for every conditional promise in your blessing. Some things in your blessing are conditional; some may be unconditional. Learning to tell the difference is a study skill.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Go through your blessing and mark every "if" or conditional phrase. What is God asking of you in exchange for these promises? Is that a good trade?</li><li>Are there promises in your blessing that seem unconditional — given without conditions? How do you hold those differently than the conditional ones?</li><li>Verse 10 says the Lord is "bound" by this covenant. What does it mean to have a binding promise from God — and what responsibility does that place on you?</li></ul>
+    <hr>
+    <h3>Understanding what the blessing does not say</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/gospel-topics/patriarchal-blessings" target="_blank">Gospel Topics: Patriarchal Blessings</a></p>
+    <p><strong>What to look for:</strong> The entry notes that "not all blessings contain all topics." A blessing may not mention marriage, or mission, or specific children. Silences are not denials — they are simply the limits of what was prompted in that moment.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Is there something absent from your blessing that you hoped would be there? How do you hold that absence — as a closed door, an open question, or something else?</li><li>The Spirit prompts what to say, not a template. What does it mean that your blessing is shaped by what God specifically chose to say to you, not what he says to everyone?</li><li>Could a blessing ever say the wrong thing — be mistaken? How does Church guidance handle that possibility? What does it ask of our trust?</li></ul>
+    <hr>
+    <h2>Returning to It in New Seasons</h2>
+    <h3>The blessing as a lifelong companion</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/32?id=p3#p3" target="_blank">2 Nephi 32:3</a></p>
+    <p><strong>What to look for:</strong> "Feast upon the words of Christ; for behold, the words of Christ will tell you all things what ye should do." The blessing is not the only source of revelation — but it is one of the most direct. Nephi says words of Christ <em>tell you what to do</em>. Your blessing can function that way.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"Feast" is not the same as "snack." What does it mean to feast on your blessing — to really consume it and be nourished by it?</li><li>Has there been a time in your life when your blessing gave you clear direction about what to do? If not — have you asked it to?</li><li>Nephi says the words tell us "all things." That's a strong claim. How does a blessing that doesn't mention everything still function as a guide for all things?</li></ul>
+    <hr>
+    <h3>Elder Scott — using revelation as a guide</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2007/04/using-the-supernal-gift-of-prayer" target="_blank">Richard G. Scott — Using the Supernal Gift of Prayer, April 2007 General Conference</a></p>
+    <p><strong>What to look for:</strong> Scott describes how to record and preserve spiritual impressions — writing them, returning to them, letting them guide decisions. The principles apply directly to how to use a patriarchal blessing. Look especially for his counsel about reviewing recorded promptings in new circumstances.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Scott says written revelations become a resource across years of life. Have you treated your blessing that way — as a resource to consult at key moments?</li><li>He describes how returning to recorded impressions reveals new layers. When did you last read your blessing in a new life season? What did you notice that you hadn't before?</li><li>What would it look like to schedule regular reading of your blessing — not waiting until crisis, but as a regular spiritual practice?</li></ul>
+    <hr>
+    <h2>Closing Question</h2>
+    <p>Your blessing was given once. But you can receive it many times — each reading is a new encounter with who God sees when he looks at you.</p>
+    <p><strong>Ponder or write:</strong></p>
+    <p>Choose one phrase from your blessing that has always felt puzzling or distant. Spend time with it this week — research the words, pray about it, look for it in scripture. Write what you think it might mean, and what it might be asking of you.</p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Resurrection</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">✝️ The Atonement</span>
+    <h1>The Resurrection</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>The Empty Tomb</h2>
+    <h3>Mary Magdalene at the garden tomb</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/20?id=p1-p18#p1" target="_blank">John 20:1–18</a></p>
+    <p><strong>What to look for:</strong> John records the most intimate resurrection appearance in all four Gospels. Mary does not recognize Jesus at first — she thinks he is the gardener. When he says her name ("Mary"), she recognizes him. Notice what she reports to the disciples: "I have seen the Lord."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Why does Mary not recognize Jesus visually, but immediately recognizes him when he speaks her name? What does that suggest about how the resurrected Christ knows us?</li><li>She is the first witness of the resurrection. In a culture that did not accept women as legal witnesses, why do you think God chose her?</li><li>"I have seen the Lord" — she announces it as a simple fact. What would it take for you to be able to say that with the same directness?</li></ul>
+    <hr>
+    <h3>Luke's account — the road to Emmaus</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/24?id=p13-p35#p13" target="_blank">Luke 24:13–35</a></p>
+    <p><strong>What to look for:</strong> Two disciples walk with the resurrected Jesus for hours without recognizing him. He opens the scriptures to them — "beginning at Moses and all the prophets, he expounded unto them in all the scriptures the things concerning himself." They recognize him at the breaking of bread.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>They said, "Did not our heart burn within us?" (v. 32). Have you ever had a moment where the Holy Ghost confirmed truth with that kind of warmth? What was the occasion?</li><li>They recognized him in the breaking of bread — the same gesture as the Last Supper. How does the sacrament become a resurrection moment every week?</li><li>Jesus opened the scriptures to show that everything pointed to him. What passage in the Old Testament would you most want to hear him explain?</li></ul>
+    <hr>
+    <h3>Paul's great resurrection chapter</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/15?id=p12-p58#p12" target="_blank">1 Corinthians 15:12–58</a></p>
+    <p><strong>What to look for:</strong> Paul makes the stakes of the resurrection absolutely explicit: "If Christ be not risen, then is our preaching vain, and your faith is also vain" (v. 14). He then explains the sequence — Christ, then those at his coming, then the end. He closes with one of the most triumphant passages in all scripture: "O death, where is thy sting? O grave, where is thy victory?"</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Paul says if there is no resurrection, "we are of all men most miserable" (v. 19). What does that tell you about how central the physical resurrection is to the entire Christian hope?</li><li>He describes the resurrection body as a "spiritual body" (v. 44) — not a ghost or spirit, but a body transformed. What is the difference between a resurrected body and a mortal one, based on what Paul describes?</li><li>"The last enemy that shall be destroyed is death" (v. 26). How does knowing death will be destroyed — not just survived — change how you face your own mortality or the death of someone you love?</li></ul>
+    <hr>
+    <h2>What Resurrection Is</h2>
+    <h3>The Latter-day Saint understanding of a physical resurrection</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/gospel-topics/resurrection" target="_blank">Gospel Topics: Resurrection</a></p>
+    <p><strong>What to look for:</strong> The entry clarifies that the resurrection is the permanent, inseparable reuniting of spirit and body — not simply spiritual survival. It also distinguishes between resurrection (universal, unconditional) and salvation from spiritual death (conditional on the Atonement). These are two separate gifts.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The entry says resurrection is a free gift to everyone — it does not require faith or repentance. What does that say about God's love for all of his children, regardless of their choices?</li><li>Why does it matter that the resurrection is physical and permanent — not temporary, not symbolic, not merely spiritual?</li><li>The entry connects resurrection to the Fall: "because of the Fall, all must die; because of the Atonement, all shall be resurrected." How does this symmetry illuminate the plan of salvation?</li></ul>
+    <hr>
+    <h3>Jacob on the necessity of resurrection</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/9?id=p6-p15#p6" target="_blank">2 Nephi 9:6–15</a></p>
+    <p><strong>What to look for:</strong> Jacob argues that without resurrection, the spirit separated from the body at death would become a "devil" — permanently subject to the devil's will. The resurrection is what rescues the spirit-body union and allows for judgment and exaltation. Resurrection is not optional: it is the mechanism of salvation.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Jacob says a spirit separated permanently from its body would be "miserable forever" (v. 9). What does that suggest about how central the body is to God's plan — not something to be escaped but something to be glorified?</li><li>He says the resurrection defeats the "monster" of death (v. 10). When you imagine death as a monster that the resurrection destroys, how does that imagery affect your emotion around resurrection?</li><li>Jacob is speaking to a small group of refugees in the wilderness. Why do you think he chose this doctrine — resurrection — as the emotional center of his sermon?</li></ul>
+    <hr>
+    <h3>Talmage on the nature of a resurrected body</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/jesus-the-christ/chapter-36?lang=eng" target="_blank">Jesus the Christ, Chapter 36 — The Resurrection and Ascension</a></p>
+    <p><strong>What to look for:</strong> Talmage carefully examines the evidence that the resurrected Christ had a physical body: he invited Thomas to touch his wounds, he ate fish, he was not simply a spirit. But Talmage also notes that the body had new capabilities: passing through walls, appearing and disappearing. He calls it a "glorified" state.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Talmage emphasizes that Christ invited Thomas to feel the wounds in his hands and side. Why did the resurrected Christ retain the wounds? What do they mean as permanent marks?</li><li>He had a body that could eat fish and also pass through walls. How do you hold those two realities together? What does that say about what a glorified body is?</li><li>Talmage treats the resurrection as historical and physical, not metaphorical. How does that distinction matter for your own hope of resurrection?</li></ul>
+    <hr>
+    <h2>The Resurrection and Our Future</h2>
+    <h3>All shall be resurrected — Alma 40</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/40?id=p1-p14,p23#p1" target="_blank">Alma 40:1–14, 23</a></p>
+    <p><strong>What to look for:</strong> Alma explains to Corianton that resurrection restores the body "in its proper and perfect frame" (v. 23) — not as a diminished version but as it was intended. He also clarifies that the spirit exists in a waiting state between death and resurrection, and that this state is one of happiness or misery, not unconsciousness.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Alma says the resurrection will restore "every limb and joint" (v. 23). What does that mean for people who have suffered physical disability or illness? What does "perfect frame" mean to them?</li><li>He describes the "paradise" state of the righteous before resurrection as "a state of happiness, rest, peace" (v. 12). Does knowing that give you peace about loved ones who have died? Why or why not?</li><li>Alma is explaining this to a son who was troubled by guilt and justice. How does the doctrine of resurrection connect to the possibility of being made whole — not just forgiven but fully restored?</li></ul>
+    <hr>
+    <h3>The resurrection and exaltation — D&C 76</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/76?id=p50-p70#p50" target="_blank">D&C 76:50–70</a></p>
+    <p><strong>What to look for:</strong> The revelation on the degrees of glory describes the celestial resurrection as "whose glory is that of the sun" (v. 70). The resurrection is not just surviving death — it is the beginning of an eternal life of progression. The body is glorified to a state that can receive the "fulness of the Father."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The vision describes people who "received the testimony of Jesus" and "overcame by faith" (v. 51, 53). How does the resurrection reward connect to the choices made during mortal life?</li><li>"They shall dwell in the presence of God and his Christ forever and ever" (v. 62). What does "forever and ever" — eternal, continuous presence — mean to you personally?</li><li>The phrase "fulness of the Father" (v. 56) appears. What does the resurrection make possible that death was preventing?</li></ul>
+    <hr>
+    <h2>The Resurrection Changes Everything</h2>
+    <h3>Easter proclamation — the living Christ</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/the-living-christ-the-testimony-of-the-apostles" target="_blank">The Living Christ: The Testimony of the Apostles</a></p>
+    <p><strong>What to look for:</strong> This declaration was issued on January 1, 2000. Every statement about Christ is in present tense: "He lives." "He will return." The resurrection is not a past event — it is a present reality. The Apostles sign it as witnesses.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"He lives!" — present tense. How does that change how you pray, how you approach the sacrament, how you think about the Atonement?</li><li>The declaration was issued at the dawn of a new millennium. Why was the resurrection the doctrine the Apostles chose to proclaim at that moment?</li><li>The document ends with the testimony: "He is the light, life, and hope of the world." In what area of your life do you most need him to be that right now?</li></ul>
+    <hr>
+    <h3>Easter and the covenant — baptism as burial and rising</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/rom/6?id=p3-p11#p3" target="_blank">Romans 6:3–11</a></p>
+    <p><strong>What to look for:</strong> Paul says baptism is a participation in the resurrection — we are "buried with him by baptism into death: that like as Christ was raised up from the dead by the glory of the Father, even so we also should walk in newness of life" (v. 4). The physical act of immersion and rising is a resurrection symbol performed in real time.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Paul says we were "planted together in the likeness of his resurrection" (v. 5). How does remembering your own baptism connect you to Easter?</li><li>Verse 11: "Likewise reckon ye also yourselves to be dead indeed unto sin, but alive unto God." What does it mean to live as someone who has already died and risen?</li><li>Paul says we "walk in newness of life" (v. 4). What is one area of your life where you want to walk in resurrection-newness rather than old patterns?</li></ul>
+  </div>
+</body>
+</html>

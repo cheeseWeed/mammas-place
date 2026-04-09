@@ -123,6 +123,7 @@ function ShopContent() {
                     'pet-supplies': '🐾',
                     'toys-and-games': '🎮',
                     'audiobooks': '🎧',
+                    'study-guides': '📖',
                     'landscaping': '🌳',
                     'construction': '🏗️',
                     'electrician': '⚡',

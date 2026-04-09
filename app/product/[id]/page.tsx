@@ -93,6 +93,7 @@ export default function ProductDetailPage() {
     'rock-collections': '💎',
     games: '🎮',
     audiobooks: '🎧',
+    'study-guides': '📖',
   };
 
   return (
@@ -238,7 +239,16 @@ export default function ProductDetailPage() {
 
               {/* Action Buttons - from your sketch */}
               <div className="mt-6 flex flex-col sm:flex-row gap-3">
-                {product.isAudiobook && product.downloadUrl ? (
+                {product.isStudyGuide && product.studyGuideUrl ? (
+                  <a
+                    href={product.studyGuideUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-purple-700 hover:bg-purple-600 active:bg-purple-800 text-white font-black py-4 rounded-2xl text-lg shadow-md transition-all hover:scale-105 flex items-center justify-center gap-2"
+                  >
+                    📖 READ STUDY GUIDE
+                  </a>
+                ) : product.isAudiobook && product.downloadUrl ? (
                   <button
                     onClick={handleDownload}
                     className="w-full bg-green-600 hover:bg-green-500 active:bg-green-700 text-white font-black py-4 rounded-2xl text-lg shadow-md transition-all hover:scale-105 flex items-center justify-center gap-2"

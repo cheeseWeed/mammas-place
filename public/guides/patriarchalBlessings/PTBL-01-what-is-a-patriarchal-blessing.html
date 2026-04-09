@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Is a Patriarchal Blessing?</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">📜 Patriarchal Blessings</span>
+    <h1>What Is a Patriarchal Blessing?</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>Hook</h2>
+    <p>You have a personal name. A personal fingerprint. A personal history no one else has lived. The Church of Jesus Christ of Latter-day Saints teaches that you also have a personal prophecy — a document given through the power of the priesthood that speaks directly to your life, your gifts, your warnings, your potential. That document is your patriarchal blessing.</p>
+    <p>Most people receive one. Many people read it a few times and set it aside. This series asks: what if you treated it the way you treat scripture?</p>
+    <hr>
+    <h2>What Is a Patriarchal Blessing?</h2>
+    <h3>The official definition</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/gospel-topics/patriarchal-blessings" target="_blank">Gospel Topics: Patriarchal Blessings</a></p>
+    <p><strong>What to look for:</strong> The entry defines a patriarchal blessing as "inspired counsel and prophetic promises" given by an ordained patriarch. Notice that the entry specifically says these blessings are "personal scripture" — that phrase carries weight. It also explains that no two blessings are alike.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The Gospel Topics entry calls patriarchal blessings "personal scripture." What does that mean for how you should treat a written copy of your blessing?</li><li>If you have not yet received your blessing, what would you most want it to speak to? What questions about your life would you bring to that experience?</li><li>If you have already received your blessing, when did you last read it? What happened in you when you did?</li></ul>
+    <hr>
+    <h3>True to the Faith — the concise summary</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/true-to-the-faith/patriarchal-blessings" target="_blank">True to the Faith: Patriarchal Blessings</a></p>
+    <p><strong>What to look for:</strong> This entry was written for youth and young adults. It explains what the blessing contains (lineage declaration, counsel, promises), why promises are conditional, and how to keep the blessing private. Read slowly — each sentence carries doctrine.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>True to the Faith says "not all blessings are realized in this life." How do you hold a promise that hasn't come yet — especially a deeply personal one?</li><li>The entry cautions against comparing your blessing with someone else's. Why is comparison a particular danger with something this personal?</li><li>It says the promises "will be fulfilled in God's own way and time." What does that ask of you — what is the disposition required to live that way?</li></ul>
+    <hr>
+    <h3>What the Handbook says — process and purpose</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/general-handbook/38-church-policies-and-guidelines?id=title_number232#title_number232" target="_blank">General Handbook 38.2.10 — Patriarchal Blessings</a></p>
+    <p><strong>What to look for:</strong> This section describes who gives the blessing (ordained patriarchs), who can receive one (baptized members), and what is included. Notice that the bishop plays a role in recommending a member to receive their blessing — this is a formal, sacred process, not casual.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The bishop must determine that you are "sufficiently mature and prepared." What do you think spiritual maturity looks like as preparation for this kind of blessing?</li><li>The blessing is recorded and preserved by the Church. What does it mean that the institution treats your personal blessing as a sacred document worth preserving?</li><li>Why do you think the process involves the bishop, the patriarch, and the member — rather than just one person acting alone?</li></ul>
+    <hr>
+    <h2>Where Do Patriarchal Blessings Come From?</h2>
+    <h3>Jacob blessing his sons — the biblical pattern</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/gen/49?id=p1-p2,p8-p10,p22-p26#p1" target="_blank">Genesis 49:1–2, 8–10, 22–26</a></p>
+    <p><strong>What to look for:</strong> Jacob (Israel) gathers his sons and tells each one "that which shall befall you in the last days." He sees their natures, their callings, their futures. This is the Old Testament origin of the patriarchal blessing pattern — a father-prophet speaking personally to each child.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Jacob blesses each son differently, based on who they are and what he sees. What does that tell you about how God knows his children as individuals, not just a collective?</li><li>Joseph's blessing is full of imagery about fruitfulness and boughs reaching over walls (v. 22). How do you read symbolic language in a blessing — do you look for literal or spiritual fulfillment?</li><li>Jacob says "blessings have prevailed above the blessings of my progenitors" (v. 26). What does it mean to receive a blessing greater than what came before?</li></ul>
+    <hr>
+    <h3>The restoration of patriarchal order — Joseph Smith's context</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/107?id=p39-p57#p39" target="_blank">D&C 107:39–57</a></p>
+    <p><strong>What to look for:</strong> This section describes the "evangelical ministers" (patriarchs) and their role. It traces the office back to Adam and forward. Notice that the blessing of the father-patriarch is described as belonging to the "church," not just the individual — it is an institutional gift as well as a personal one.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>D&C 107 links patriarchs back to Adam, through Enoch, Noah, and Abraham. Why does that long lineage matter — what does it say about the blessing you receive?</li><li>The office of patriarch is "evangelical" — it carries good news. What is the good news embedded in your specific blessing?</li><li>Verse 53 mentions the "Grand Council" at Adam-ondi-Ahman where blessings were given. What does it mean that your blessing connects you to something that began at the beginning?</li></ul>
+    <hr>
+    <h2>Closing Question</h2>
+    <p>A patriarchal blessing is unlike any other document in your life — it was spoken over <em>you</em>, recorded for <em>you</em>, preserved by the Church for <em>your</em> use. It contains both what God sees in you and what he is calling you toward.</p>
+    <p><strong>Ponder or write:</strong></p>
+    <p>Before you read the next file in this series, write down one thing you want to understand better about your blessing — or one thing you hope your blessing will say, if you haven't received it yet. Keep that question with you as you continue.</p>
+  </div>
+</body>
+</html>

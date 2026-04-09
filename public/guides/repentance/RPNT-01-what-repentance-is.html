@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Repentance Actually Is</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">🔄 Repentance</span>
+    <h1>What Repentance Actually Is</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>Hook</h2>
+    <p>Most people carry a definition of repentance that makes them want to avoid it. The word sounds like punishment, like groveling, like a long negotiation with a disappointed God. If that is your picture, the word itself becomes a barrier — something to get through rather than something to run toward.</p>
+    <p>But the word repentance, when you trace it back to its roots, means something closer to: <em>come home</em>. Or: <em>think differently</em>. Or simply: <em>turn</em>. It describes a reorientation — a change of direction at the level of the heart — not just a modification of behavior. Understanding what the word actually means changes what the experience actually feels like.</p>
+    <hr>
+    <h2>Deepen</h2>
+    <h3>The Hebrew: <em>Shuv</em></h3>
+    <p>The Old Testament word translated as "repent" is almost always <em>shuv</em> (שׁוּב). It means to turn, to return, to come back. It is the same word used when a traveler reverses course, when a prodigal goes home, when a people scattered in exile returns to the land.</p>
+    <p>When the prophets call Israel to repent, they are not calling them to feel worse about themselves. They are calling them to turn around and face a different direction. The repentance God asks for is a movement, not a mood.</p>
+    <p>This is why Ezekiel 18:30–32 is so striking: "Repent, and turn yourselves from all your transgressions... Cast away from you all your transgressions... and make you a new heart and a new spirit: for why will ye die, O house of Israel? For I have no pleasure in the death of him that dieth, saith the Lord God: wherefore turn yourselves, and live ye." The final word is <em>live</em>. Repentance is toward life, not away from it.</p>
+    <h3>The Greek: <em>Metanoia</em></h3>
+    <p>The New Testament word is <em>metanoia</em> (μετάνοια). It is formed from <em>meta</em> (beyond, after, change) and <em>nous</em> (mind, understanding, inner life). Together: a change of mind, a transformation of inner perception.</p>
+    <p>This is not superficial. <em>Metanoia</em> is not "I will stop doing that thing." It is "I see differently now." The actions change because the person who is looking has changed. This is the reason Latter-day Saint theology insists that genuine repentance produces a <em>mighty change</em> — not willpower applied to behavior, but a new way of perceiving, wanting, and being.</p>
+    <p>When John the Baptist says "Bring forth therefore fruits meet for repentance" (Matthew 3:8), he is asking for evidence of <em>metanoia</em> — proof that the inner change has actually happened. Changed fruit grows from a changed root.</p>
+    <h3>Alma 5 — The Diagnostic</h3>
+    <p>Alma 5 is perhaps the most sustained treatment of what genuine repentance and spiritual change look like in all of scripture. Alma does not ask "Have you stopped sinning?" He asks a series of probing diagnostic questions: "Have ye experienced this mighty change in your hearts?" (v. 14). "Can ye look up to God at that day with a pure heart and clean hands?" (v. 19). "And now I ask of you, my brethren of the church, have ye spiritually been born of God? Have ye received his image in your countenances?" (v. 14).</p>
+    <p>The questions point inward. They are asking about a state of being, not a record of performance. Repentance, in Alma's framing, is the process by which God's image begins to appear in a person's life — not just the process of clearing a ledger.</p>
+    <p>Verse 26 is the one that lands: "And now behold, I say unto you, my brethren, if ye have experienced a change of heart, and if ye have felt to sing the song of redeeming love, I would ask, <em>can ye feel so now?</em>" Repentance is not a one-time event. It is an orientation that must be renewed — and the question of whether you can feel it <em>now</em> is always in play.</p>
+    <hr>
+    <h2>Cross-References</h2>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/5?id=p14-p26#p14" target="_blank">Alma 5:14–26</a></p>
+    <p>The passage most useful for this study. Alma asks whether the mighty change has actually happened, and his questions reveal what genuine repentance produces in a person.</p>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/ezek/18?id=p30-p32#p30" target="_blank">Ezekiel 18:30–32</a></p>
+    <p>God's call to turn and live — the <em>shuv</em> framework in its most direct Old Testament form.</p>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/3?id=p1-p10#p1" target="_blank">Matthew 3:1–10</a></p>
+    <p>John the Baptist's preaching — "Bring forth therefore fruits meet for repentance" — the <em>metanoia</em> call and the demand for evidence of inner change.</p>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/ezek/36?id=p26#p26" target="_blank">Ezekiel 36:26</a></p>
+    <p>"A new heart also will I give you, and a new spirit will I put within you." God promises that the transformation of repentance is something He does, not something we accomplish alone.</p>
+    <p><strong>Cross-reference:</strong> ATNMT-06, section "What Repentance Actually Is" — covers the Gospel Topics framing and Alma 5:12–26 from the angle of Atonement. This RPNT-01 file picks up from there and goes deeper into the linguistic and theological roots.</p>
+    <hr>
+    <h2>Conference References</h2>
+    <p><strong>Elder Dieter F. Uchtdorf</strong> — "You Can Do It Now!" (General Conference, October 2013):</p>
+    <p>Uchtdorf argued that repentance is one of the most beautiful concepts in the gospel because of what it actually means — a change of heart and direction, a return to God. He pushed back against the idea that repentance is something to dread or delay, framing it instead as an invitation that is always available and always answered.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2013/10/you-can-do-it-now" target="_blank">You Can Do It Now! — Elder Dieter F. Uchtdorf, October 2013</a></p>
+    <p><strong>Elder Dale G. Renlund</strong> — "Repentance: A Joyful Choice" (General Conference, October 2016):</p>
+    <p>Renlund directly challenged the cultural association of repentance with pain and shame, teaching that repentance is a gift — described in the Book of Mormon as one of God's most generous offerings. He emphasized that we are invited to repent, not condemned to it.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2016/10/repentance-a-joyful-choice" target="_blank">Repentance: A Joyful Choice — Elder Dale G. Renlund, October 2016</a></p>
+    <p><strong>Elder D. Todd Christofferson</strong> — "The Divine Gift of Repentance" (General Conference, October 2011):</p>
+    <p>Christofferson grounded repentance in the principle that God loves us too much to leave us as we are. Repentance is not the consequence of divine disappointment — it is the vehicle of divine love. He drew a clear line between repentance as transformation and repentance as mere outward compliance.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2011/10/the-divine-gift-of-repentance" target="_blank">The Divine Gift of Repentance — Elder D. Todd Christofferson, October 2011</a></p>
+    <p><strong>President Russell M. Nelson</strong> — "We Can Do Better and Be Better" (General Conference, April 2019):</p>
+    <p>Nelson used strikingly direct language — "repent" without softening it — and presented repentance as something disciples do continually, not only in moments of serious moral failure. He connected repentance to the covenant path and to the ongoing work of becoming.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2019/04/36nelson" target="_blank">We Can Do Better and Be Better — President Russell M. Nelson, April 2019</a></p>
+    <hr>
+    <h2>Closing Question</h2>
+    <p>The word repentance means <em>turn</em> — a reorientation, a coming home. If you set aside whatever weight the word carries for you and asked instead, "What direction am I currently facing, and is it toward God?" — what would your honest answer be? And what would one small turn look like today?</p>
+  </div>
+</body>
+</html>

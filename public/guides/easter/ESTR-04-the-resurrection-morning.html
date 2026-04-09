@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Resurrection Morning</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">🌅 Easter</span>
+    <h1>The Resurrection Morning</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>Hook: The Stone Was Already Rolled Away</h2>
+    <p>None of the four Gospels record the moment of resurrection itself. No one watched the stone roll. No one saw the body rise. What every Gospel records is the aftermath: the stone was already gone. The tomb was already empty. The angel is already sitting there.</p>
+    <p>This is theologically important. The resurrection is not a magic trick performed for an audience — it is a historical event witnessed by its effects. People came to a tomb and found it empty. Then they began to encounter someone they had seen die.</p>
+    <p>This file walks through all four Gospel resurrection accounts, the encounters that followed, and what the physical resurrection means in Latter-day Saint theology. For the theological depth of what resurrection is and does, see <strong>ATNMT-04</strong> (cross-referenced throughout).</p>
+    <hr>
+    <h2>The Empty Tomb — All Four Accounts</h2>
+    <h3>Matthew's account</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/28?id=p1-p10#p1" target="_blank">Matthew 28:1–10</a></p>
+    <p><strong>What to look for:</strong> Matthew records the earthquake, the angel rolling back the stone and sitting on it, the guards becoming "as dead men," and two Marys being the first to receive the news: "He is not here: for he is risen, as he said." As they run to tell the disciples, Jesus meets them. Their response: "they came and held him by the feet, and worshipped him." Physical contact. A physical body.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The angel says "as he said" — pointing back to Jesus' own predictions of his resurrection. How does that phrase invite you to take seriously every other thing Jesus said?</li><li>The women "held him by the feet." They could touch him. The resurrection is not a vision or a ghost story. What does the physical detail mean for what resurrection is?</li><li>Matthew records that the guards were bribed to say the disciples stole the body. This is the oldest alternative explanation for the empty tomb. What does the fact that the chief priests felt they needed an alternative explanation tell you?</li></ul>
+    <hr>
+    <h3>Mark's account</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/mark/16?id=p1-p8#p1" target="_blank">Mark 16:1–8</a></p>
+    <p><strong>What to look for:</strong> Mark's account ends abruptly: the women are told Jesus is risen and to tell the disciples he will meet them in Galilee. Then — "And they went out quickly, and fled from the sepulchre; for they trembled and were amazed: neither said they any thing to any man; for they were afraid." That is how the oldest manuscripts end: with trembling and silence. Mark does not resolve the women's fear for you.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Mark ends in fear and silence. Some scholars believe this is intentional — that Mark leaves the reader in the same position the women were in: confronted with an empty tomb and needing to decide what to do with it. What do you do with the empty tomb?</li><li>"He is risen; he is not here: behold the place where they laid him." The angel points to an empty stone shelf. Empty space as evidence. How do you hold something that is proved by absence?</li><li>The women had come to anoint a dead body. They were prepared for death, not resurrection. When has something in your spiritual life required you to be prepared for something you did not expect?</li></ul>
+    <hr>
+    <h3>Luke's account</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/24?id=p1-p12#p1" target="_blank">Luke 24:1–12</a></p>
+    <p><strong>What to look for:</strong> Luke records that the women reported to the eleven — and "their words seemed to them as idle tales, and they believed them not." Peter runs to the tomb, looks in, sees the linen clothes lying alone, and departs "wondering in himself at that which was come to pass." He does not understand yet. He just wonders.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The apostles did not believe the women. Women's testimony was not legally admissible in first-century Jewish courts. Why did God choose women as the first witnesses of the resurrection — knowing they would not be believed?</li><li>Peter sees the grave clothes lying there — not scattered in a struggle or removed with the body, but lying there, folded. What does that detail suggest about what the resurrection was?</li><li>He went away "wondering." Not believing. Not disbelieving. Just wondering. Is there a place for wondering in faith — for sitting with something you cannot yet resolve?</li></ul>
+    <hr>
+    <h3>John's account — Mary Magdalene</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/20?id=p1-p18#p1" target="_blank">John 20:1–18</a></p>
+    <p><strong>What to look for:</strong> This is the most intimate resurrection account in all four Gospels. Mary stays at the tomb alone after Peter and John leave. She weeps. She looks into the tomb and sees two angels. She turns and sees Jesus but does not recognize him — she thinks he is the gardener. He says one word: "Mary." She recognizes him instantly. She calls him "Rabboni" — the highest form of "teacher." He says "Touch me not" (or "do not hold me" in other translations) — and sends her to tell the brethren.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>He says her name. One word. And she knows him immediately. What does it say about how the risen Christ knows us — that the recognition came through voice and name, not appearance?</li><li>She is the first witness of the resurrection. Her report — "I have seen the Lord" — is the announcement on which the whole Christian proclamation rests. Why do you think God gave this honor to Mary Magdalene?</li><li>"I have seen the Lord" — she says it as a simple, declarative fact. Not "I think I saw" or "It seemed like." What would it take for you to say something about your testimony with that same directness?</li></ul>
+    <hr>
+    <h2>The Resurrection Appearances</h2>
+    <h3>The road to Emmaus — Luke 24</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/24?id=p13-p35#p13" target="_blank">Luke 24:13–35</a></p>
+    <p><strong>What to look for:</strong> Two disciples walk from Jerusalem to Emmaus — about seven miles — on the Sunday of the resurrection, talking about everything that had happened. A stranger joins them and walks with them. He asks what they are discussing. They are shocked he doesn't know. He then opens the scriptures: "beginning at Moses and all the prophets, he expounded unto them in all the scriptures the things concerning himself." They reach Emmaus. He joins them for supper. He takes bread, blesses it, breaks it — and "their eyes were opened, and they knew him." Then he vanished. They said to each other: "Did not our heart burn within us?"</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>They walked with the risen Christ for hours and did not know him. Recognition came at the breaking of bread — the same gesture as the Last Supper. How does the sacrament become a resurrection encounter each week?</li><li>"Did not our heart burn within us?" They felt the Spirit before they knew who he was. Have you ever had your heart burn in response to truth before you fully understood it?</li><li>He opened all the scriptures to show they were about him. What Old Testament text would you most want to hear him explain on that seven-mile walk?</li></ul>
+    <hr>
+    <h3>Thomas — "My Lord and my God"</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/20?id=p24-p29#p24" target="_blank">John 20:24–29</a></p>
+    <p><strong>What to look for:</strong> Thomas was not with the disciples when Jesus first appeared. He refuses to believe: "Except I shall see in his hands the print of the nails, and put my finger into the print of the nails, and thrust my hand into his side, I will not believe." A week later, Jesus appears specifically for Thomas. He invites Thomas to do exactly what he said would be required. Thomas responds with the highest confession in the New Testament: "My Lord and my God."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Jesus does not rebuke Thomas for his doubt — he shows up and addresses it directly. What does that say about how Christ responds to honest doubt?</li><li>Thomas asked for physical evidence. Jesus provided it. Then Jesus says: "Blessed are they that have not seen, and yet have believed" (v. 29). You are included in that blessing. What do you do with it?</li><li>"My Lord and my God" — the most complete theological confession in the Gospels, and it comes from the one who had refused to believe. What does it mean that the doubter became the one who made the fullest declaration?</li></ul>
+    <hr>
+    <h3>The appearance to five hundred</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/15?id=p3-p8#p3" target="_blank">1 Corinthians 15:3–8</a></p>
+    <p><strong>What to look for:</strong> Paul writes this within two decades of the resurrection. He names witnesses: Cephas (Peter), the twelve, "above five hundred brethren at once," James, all the apostles, and finally himself. He specifically notes that most of the five hundred are still alive at the time of writing — an implicit invitation to go check his claim.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Paul says he saw Jesus last of all "as of one born out of due time" — a reference to his Damascus road experience. His resurrection witness came differently than the others, but he counts it equally real. What does it mean that resurrection appearances were varied in form?</li><li>The five hundred witnesses — Paul writes as though they are verifiable. Why does the evidentiary tone of 1 Corinthians 15 matter for how we understand the resurrection claim?</li><li>Verse 8: Paul says he is the "least of the apostles" and "not meet to be called an apostle" because he persecuted the church. The risen Christ appeared to the man who had worked hardest to destroy his church. What does that appearance say about the breadth of Christ's grace?</li></ul>
+    <hr>
+    <h2>What the Resurrection Is</h2>
+    <h3>The Latter-day Saint understanding</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/gospel-topics/resurrection" target="_blank">Gospel Topics: Resurrection</a></p>
+    <p><strong>What to look for:</strong> The entry defines resurrection as the permanent, inseparable reuniting of spirit and body in a glorified state. It distinguishes between resurrection (universal, unconditional — every person ever born will be resurrected) and salvation from spiritual death (conditional on the Atonement and our response to it). Both are gifts of the Atonement, but they are not the same gift.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Every person who has ever lived will be resurrected — not just the faithful. What does this say about the scope of God's love and the universality of Christ's gift?</li><li>Resurrection is described as the permanent union of spirit and body. What does "permanent" mean — that this is not a temporary state but an eternal one?</li><li>The entry says the resurrection "does not depend on our choices or our righteousness." It is given freely. How does a freely given gift change how you feel about the resurrection compared to a reward you had to earn?</li></ul>
+    <p>For the full theology of what resurrection is and what it makes possible — including Jacob's sermon in 2 Nephi 9, Paul's 1 Corinthians 15 resurrection chapter, Talmage on the glorified body, and D&C 76 on the degrees of glory — see <a href="../atonement/ATNMT-04-the-resurrection.md" target="_blank">ATNMT-04 — The Resurrection</a>.</p>
+    <hr>
+    <h3>The physical wounds Christ kept</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/24?id=p36-p43#p36" target="_blank">Luke 24:36–43</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/11?id=p14-p15#p14" target="_blank">3 Nephi 11:14–15</a></p>
+    <p><strong>What to look for:</strong> In Luke, the risen Christ shows his hands and feet and eats fish to demonstrate he is not a ghost. In 3 Nephi, the Savior appears to the Nephites and invites the entire multitude — twenty-five hundred people — to come forward one by one to feel the wounds in his hands, feet, and side. The wounds are present in a glorified, resurrected body.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Why does the resurrected Christ retain the wounds? They did not need to heal — he could have been restored perfectly. What do the wounds mean as permanent marks in an eternal body?</li><li>In 3 Nephi, each person goes forward individually — one by one — to feel for themselves. The risen Christ did not ask them to take it on faith; he invited personal encounter. What does that say about how he handles testimony?</li><li>The Nephites saw and felt the wounds and "did know of a surety" and "did bear record" (3 Nephi 11:15). Certainty came through personal contact. In what ways does your own testimony depend on personal encounter rather than inherited belief?</li></ul>
+    <hr>
+    <h2>Conference Voices</h2>
+    <h3>Elder Holland on the physical reality of the resurrection</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/1995/10/the-atonement" target="_blank">The Atonement — Jeffrey R. Holland, October 1995 General Conference</a>. Holland's entire treatment of the Atonement is grounded in the physical, historical reality of what Christ suffered and what he overcame — not metaphor, not symbol, but actual events with actual weight. His Oct 1995 talk makes the case that the Atonement was "a very personal and very sincere" encounter with real human suffering. Read it as the companion to the resurrection accounts: the same Christ who took all of that upon himself in Gethsemane is the one who walked out of the tomb.</p>
+    <h3>Talmage on the nature of a glorified body</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/jesus-the-christ/chapter-36?lang=eng" target="_blank">Jesus the Christ, Chapter 36 — The Resurrection and Ascension</a></p>
+    <p><strong>What to look for:</strong> Talmage examines the resurrection appearances in careful detail and argues that the risen Christ's body was both fully physical (he ate, he was touched, he retained the wounds) and genuinely glorified (he appeared and disappeared, passed through walls, was sometimes not recognized). Talmage calls the glorified body a "celestialized" state — more than mortal, not less than physical.</p>
+    <h3>The Living Christ — formal apostolic testimony</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/the-living-christ-the-testimony-of-the-apostles" target="_blank">The Living Christ: The Testimony of the Apostles</a></p>
+    <p><strong>What to look for:</strong> Issued January 1, 2000, this declaration states: "He rose from the grave to 'become the firstfruits of them that slept' (1 Corinthians 15:20)." The present tense of the document — "He lives!" — makes the resurrection a present reality, not a past event.</p>
+    <h3>Elder Maxwell on the resurrection and enduring suffering</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/1990/04/endure-it-well" target="_blank">Endure It Well — Neal A. Maxwell, April 1990 General Conference</a>. Maxwell consistently anchored hope for those suffering to the resurrection — the demonstration that the worst has been faced and overcome. In this talk he teaches that because Christ descended below all things and rose, we have reason to "endure it well." The empty tomb is not just about the body; it is God's proof that his word holds and that suffering has a limit.</p>
+    <hr>
+    <h3>For younger readers — "I Will See Celeste Again" (<em>The Friend</em>, April 2025)</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/friend/2025/04/i-will-see-celeste-again" target="_blank">I Will See Celeste Again — <em>The Friend</em>, April 2025</a></p>
+    <p><strong>What to look for:</strong> A child loses her beloved cat Celeste and grieves. Her family talks about resurrection — that because Jesus was resurrected, all living things will be too. The story uses a flower bulb as its central image: you plant a bulb in the ground, it looks dead and gone, and then it comes back in spring. The resurrection is the spring that everything is waiting for.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The bulb metaphor is what Paul uses in 1 Corinthians 15:36–38 ("that which thou sowest is not quickened, except it die"). Did you notice the connection? Why do you think the bulb image shows up in scripture <em>and</em> in a child's story?</li><li>The story is about an animal, not a person — but it opens a door to talking about people we've lost. Who came to your mind while reading it?</li><li>The child says "I will see Celeste again." That is resurrection hope stated simply. Is simple faith like this harder or easier than theological certainty? Why?</li></ul>
+    <hr>
+    <h3>For families — "Tell the Easter Story" (<em>The Friend</em>, April 2025)</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/friend/2025/04/tell-the-easter-story" target="_blank">Tell the Easter Story — <em>The Friend</em>, April 2025</a></p>
+    <p><strong>What to look for:</strong> An 8-part family program walking through Holy Week — Palm Sunday through resurrection morning — with simple props: branches (triumphal entry), bread and cup (Last Supper), a cloth (burial), a nail (crucifixion), a stone (tomb), spices (the women coming to anoint). Each section has a brief reading, a prop to hold, and a question to discuss. The program is designed to be done over Holy Week or all in one evening.</p>
+    <p><strong>After reading or doing the program:</strong></p>
+    <ul><li>Which of the eight moments felt most real or most important to your family? Why that one?</li><li>The props are everyday objects — a stone, a cloth, some bread. What does it do to the story to hold something physical while reading about it?</li><li>"Tell the Easter Story" is exactly what 2 Nephi 25:26 says Nephi's family did — "we talk of Christ, we rejoice in Christ." How does telling the story together, as a family, differ from reading it alone?</li></ul>
+    <hr>
+    <h2>Closing Reflection</h2>
+    <p>Four Gospel writers. Twelve apostles. More than five hundred witnesses. Women who would not leave. A doubter who became the most direct confessor. A persecutor who became a witness.</p>
+    <p>All of them, in different ways, at different moments, saying the same thing: he is risen.</p>
+    <p><strong>Closing question for reflection:</strong> If you had been one of the women at the tomb that Sunday morning — not knowing yet what resurrection meant, just knowing the tomb was empty — what would you have done next? And what does your answer tell you about where your faith actually stands?</p>
+    <hr>
+    <p><em>For the full theology of what resurrection is, what it does, and what it makes possible for you personally, see <a href="../atonement/ATNMT-04-the-resurrection.md" target="_blank">ATNMT-04 — The Resurrection</a>.</em></p>
+  </div>
+</body>
+</html>

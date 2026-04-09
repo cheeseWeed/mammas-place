@@ -13,6 +13,7 @@ export default function HomePage() {
   const categoryDisplayData: Record<string, { label: string; emoji: string; color: string }> = {
     'toys-and-games': { label: 'Toys & Games', emoji: '🎮', color: 'from-red-500 to-orange-500' },
     'audiobooks': { label: 'Audiobooks', emoji: '🎧', color: 'from-indigo-500 to-purple-500' },
+    'study-guides': { label: 'Study Guides', emoji: '📖', color: 'from-violet-500 to-fuchsia-500' },
     'automotive': { label: 'Automotive', emoji: '🚗', color: 'from-gray-700 to-gray-900' },
     'services': { label: 'Services', emoji: '🛠️', color: 'from-blue-600 to-indigo-700' },
     'home-garden': { label: 'Home & Garden', emoji: '🏡', color: 'from-green-500 to-lime-600' },

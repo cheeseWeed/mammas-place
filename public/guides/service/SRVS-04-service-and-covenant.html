@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Service and Covenant</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">🤝 Service</span>
+    <h1>Service and Covenant</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>The Hook</h2>
+    <p>There is a version of service that is essentially personal virtue — kindness, generosity, good character — and it is genuinely admirable. But Latter-day Saint discipleship invites something different: a life of service rooted not in personal virtue alone but in covenant identity. The question is not just "am I a good person who serves?" but "who am I, because of what I have covenanted, and what does that identity require of me?" This file is about how baptismal and temple covenants restructure a life — not as obligations to fulfill, but as a new way of understanding who you are and what you are for.</p>
+    <hr>
+    <h2>The Baptismal Covenant: What We Agreed To</h2>
+    <h3>Alma at the waters of Mormon</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18?id=p8-p10#p8" target="_blank">Mosiah 18:8–10</a></p>
+    <p><strong>What to look for:</strong> Alma describes what it means to enter the covenant. The language is striking: "willing to bear one another's burdens," "willing to mourn with those that mourn," "willing to comfort those that stand in need of comfort." Then: "and to stand as witnesses of God at all times and in all things and in all places." This is not a list of actions — it is a description of a way of being present in the world.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The covenant is framed entirely in terms of relationship: to one another, and to God. There is no mention of personal piety, private devotion, or individual advancement. What does that tell you about what the covenant is fundamentally <em>for</em>?</li><li>"At all times and in all things and in all places" — this is a comprehensive claim. What areas of your life are currently outside the reach of that covenant? What would it take to bring them in?</li><li>Alma asks: "Now when the people had heard these words, what have ye against being baptized?" (v. 10). They were moved. What is it about this description of the covenant that is moving — rather than merely obligating?</li></ul>
+    <hr>
+    <h3>The covenant renewed each week</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/20?id=p77,p79#p77" target="_blank">D&C 20:77, 79</a> — the sacrament prayers</p>
+    <p><strong>What to look for:</strong> The bread prayer says we witness that we are "willing to take upon" Christ's name, "always remember him," and "keep his commandments." The water prayer replaces "eat" with "drink" but is otherwise the same. Notice what the promise is: "that they may always have his Spirit to be with them." The covenant is renewed; the Spirit is the promised result. Service is the content of covenant-keeping; the Spirit is what makes it possible.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The sacrament is renewal, not recommitment from scratch. How does thinking of it as renewal (rather than re-enrollment) change the emotional tone of taking it?</li><li>The promise is not forgiveness (though that is implied) — the promise is the Spirit. What is the relationship between having the Spirit and being able to genuinely serve others rather than just going through service motions?</li><li>"Always remember him" — what would it look like, practically, to remember Christ while doing the most ordinary parts of your week? While commuting, at work, with your family?</li></ul>
+    <hr>
+    <h2>Temple Covenants and Consecration</h2>
+    <h3>The law of consecration and what it actually asks</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/82?id=p17-p19#p17" target="_blank">D&C 82:17–19</a></p>
+    <p><strong>What to look for:</strong> The Lord describes the order he is establishing: everyone according to their circumstances, everyone's needs attended to, "every man seeking the interest of his neighbor, and doing all things with an eye single to the glory of God." Verse 19 says this is "for the benefit of the church of the living God." Consecration is not a solo spiritual exercise — it is a communal economic and social orientation.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"Every man seeking the interest of his neighbor" — not as charity from above, but as a mutual orientation. How is this different from modern philanthropy, where the advantaged give to the disadvantaged? What does the mutuality of consecration change?</li><li>The law of consecration was not successfully lived in the early church. Why is it so hard? What in human nature resists it most?</li><li>How does making a temple covenant to live the law of consecration — even in principle, even imperfectly — change your relationship to your possessions, your time, your abilities?</li></ul>
+    <hr>
+    <h3>Elder Oaks on becoming, not just doing</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2000/10/the-challenge-to-become" target="_blank">The Challenge to Become — Dallin H. Oaks, October 2000</a></p>
+    <p><strong>What to look for:</strong> Oaks distinguishes between the gospel as a checklist of <em>doing</em> and the gospel as a process of <em>becoming</em>. He argues that the ultimate purpose of all commandments — including service — is not compliance but transformation: becoming the kind of person who, in the Resurrection, is capable of celestial life. He uses the parable of the ten virgins to make this point: the five foolish virgins could not borrow oil because the oil represents <em>who you have become</em>, not what you have done.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The oil in the ten virgins parable cannot be transferred because it represents character, not credit. What "oil" are you accumulating through your service? What kind of person are you becoming in the process of serving?</li><li>Oaks says some commandments exist primarily to produce a change in <em>us</em> rather than a benefit to others. Does that reframe service for you — not just something you give, but something that works on the giver?</li><li>Oaks observed that the Final Judgment is not primarily about what we have done but about who we have become — and who we are capable of being forever. How does that long-range view change the way you think about consistent, daily service?</li></ul>
+    <hr>
+    <h2>Covenant Identity in Practice</h2>
+    <h3>Paul's vision of the body of Christ</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/12?id=p12-p27#p12" target="_blank">1 Corinthians 12:12–27</a></p>
+    <p><strong>What to look for:</strong> Paul argues that the members of the church are like parts of a body — not identical, but interdependent. The eye cannot say to the hand "I have no need of thee." Critically: "those members of the body which seem to be more feeble are necessary." The weakest members are not optional or extra — they are needed. Service, in this frame, is not charity from the strong to the weak. It is the body functioning as it was designed to.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"The eye cannot say to the hand, I have no need of thee." In what ways do we, as a church and as individuals, act as if we don't need certain people? Which members are we treating as optional?</li><li>Verse 26: "whether one member suffer, all the members suffer with it." Is this a description of reality (what actually happens when we are truly one body) or an aspiration? What would it take for it to be real in your ward or family?</li><li>Paul says God "set the members every one of them in the body, as it hath pleased him." Your particular place and gifts were placed deliberately. What does that mean for how you understand your specific capacity and calling to serve?</li></ul>
+    <hr>
+    <h3>The relief society and covenant community in practice</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/history/topics/relief-society" target="_blank">Church History Topics: Relief Society</a></p>
+    <p><strong>What to look for:</strong> The Relief Society was founded in 1842 with Joseph Smith's declaration that he was turning the key to "the relief of the poor, the destitute, the widow and the orphan." From the beginning, organized covenant service was not a program layered onto the church — it was central to what the church was. Notice how the early sisters understood their service as both practical and priestly: they were engaged in the Lord's work.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The Relief Society grew out of women wanting to help build the Nauvoo Temple — a covenant project. From the beginning, service and covenant were linked. How does knowing that history change how you think about organized church service today?</li><li>Early Relief Society members sewed, gave food, built networks of mutual support — practical, unglamorous work. What is the equivalent in your own ward or community?</li><li>The organization has been called "the Lord's organization for women." What does it mean for service to be <em>organized</em> and <em>institutional</em> rather than just individual? What does organization make possible that individual good intentions cannot?</li></ul>
+    <hr>
+    <h2>Building a Life of Service Around Covenant Identity</h2>
+    <h3>Elder Holland on the cost of discipleship</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2012/04/the-cost-and-blessings-of-discipleship" target="_blank">The Cost and Blessings of Discipleship — Jeffrey R. Holland, April 2012</a></p>
+    <p><strong>What to look for:</strong> Holland argues that real discipleship is costly — it requires giving up the comfortable, the convenient, and the self-serving. But he insists the cost is not a burden the gospel imposes; it is the shape of love. The cross is not a tax on discipleship; it is what love looks like when love is total. Look for his discussion of what it means to follow Christ "in deed and not in word only."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Holland distinguishes between nominal discipleship and the real thing. Which version are you living? Where are the gaps between what you say you believe and what your service life actually looks like?</li><li>He describes service as the cost <em>and</em> the blessing — the same act. How can the demanding thing also be the rewarding thing? Have you experienced that?</li><li>Holland's consistent argument: if we want the blessings of following Christ, we must actually follow him — into inconvenience, into sacrifice, into the unexpected places he leads. What unexpected place might he be leading you right now?</li></ul>
+    <hr>
+    <h3>President Nelson on covenant-keeping as identity</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2022/04/47nelson" target="_blank">The Power of Spiritual Momentum — Russell M. Nelson, April 2022</a></p>
+    <p><strong>What to look for:</strong> President Nelson has consistently framed covenant-keeping not as a set of requirements but as an identity — being a covenant-keeping person is who you <em>are</em>, not just what you do on Sundays. He has described covenants as the source of power in a disciple's life, not the constraint on it. Look for his framing of the covenant path as something that produces joy and capacity, not just obligation.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Nelson describes covenant-keeping as a source of <em>power</em>. What power does a covenant-identity give a servant that a non-covenant identity does not?</li><li>If your service life were structured entirely around your covenant identity — rather than around what you feel capable of, or what is expected of you, or what you will be recognized for — what would change?</li><li>President Nelson has taught that nothing will bring more joy than keeping our covenants. Has your experience confirmed that? Where has covenant-keeping produced joy in your service life, and where has it felt like cost without yet arriving at joy?</li></ul>
+    <hr>
+    <h2>Closing Reflection</h2>
+    <p>There is a version of service that is nice and a version that is transformative. The difference is largely in the root. Service that grows from covenant identity — from the answer to the question "who am I, and what did I promise?" — has a depth, a durability, and a direction that service from personal virtue alone cannot sustain. Covenant people mourn with those who mourn not because they are particularly empathetic by temperament, but because they said they would. They bear burdens not because it is convenient, but because they are witnesses of God "at all times and in all places."</p>
+    <p>Elder Oaks says the goal is becoming — and service is one of the primary instruments by which we become. You do not give yourself away in covenant service and end up empty. You end up more of what you were meant to be.</p>
+    <p><strong>For personal reflection:</strong> Think about the covenants you have made. Do you think of them primarily as obligations to keep, or as a description of who you are? What would it mean, in the next week, to serve <em>from</em> your covenant identity — not in order to fulfill requirements, but as an expression of who you have become and who you are still becoming?</p>
+    <hr>
+    <p><em>Previous: <a href="SRVS-03-small-and-simple-things.md" target="_blank">SRVS-03 — Small and Simple Things</a></em></p>
+    <p><em>Return to <a href="_architecture.md" target="_blank">_architecture.md</a> to see the full study plan.</em></p>
+  </div>
+</body>
+</html>

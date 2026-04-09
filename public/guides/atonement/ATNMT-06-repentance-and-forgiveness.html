@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Repentance and Forgiveness</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">✝️ The Atonement</span>
+    <h1>Repentance and Forgiveness</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>What Repentance Actually Is</h2>
+    <h3>Gospel Topics — what repentance is and is not</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/gospel-topics/repentance" target="_blank">Gospel Topics: Repentance</a></p>
+    <p><strong>What to look for:</strong> The entry distinguishes repentance from self-punishment, from endless guilt, and from merely feeling sorry. True repentance is a change of heart and direction — "a mighty change" — not simply a feeling. It also clarifies that repentance is not just for major sins.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The entry says repentance involves turning away from sin and turning toward God — two directions, not one. What does "turning toward God" look like practically in your life after you have sinned?</li><li>It distinguishes remorse (appropriate, motivating) from shame that paralyzes. How do you tell the difference in your own experience? When does sorrow for sin help you, and when does it become a trap?</li><li>The entry says repentance is available for all sins. Are there any mistakes you have quietly decided are too small to repent of, or too large to repent of? What would it mean to bring both to Christ?</li></ul>
+    <hr>
+    <h3>Alma's mighty change of heart</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/5?id=p12-p26#p12" target="_blank">Alma 5:12–26</a></p>
+    <p><strong>What to look for:</strong> Alma asks a series of probing diagnostic questions: "Have ye experienced this mighty change in your hearts?" He is not asking whether you are sinless — he is asking whether something has genuinely shifted inside. Notice the questions he asks about song, shame, and the shepherd's voice.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"Can you feel so now?" (v. 26). Alma acknowledges that conversion and repentance are not one-time events but ongoing states. When did you last feel a genuine renewal of your covenant commitment?</li><li>He asks if you could look on God "with a pure heart and clean hands" (v. 19). What does that question do to you? Is it meant to produce shame or longing?</li><li>Verse 26: "If ye have experienced a change of heart, and if ye have felt to sing the song of redeeming love, I would ask, can ye feel so now?" What does it mean to sing the song of redeeming love?</li></ul>
+    <hr>
+    <h3>The prodigal son — repentance in story form</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/15?id=p11-p32#p11" target="_blank">Luke 15:11–32</a></p>
+    <p><strong>What to look for:</strong> The son "came to himself" (v. 17) — a phrase that describes the moment of repentance. He rehearses what he will say: "I will arise and go to my father." Then the father sees him from afar and runs. Notice the sequence: the son's resolve, the father's running, the robe and ring before any confession is finished.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"He came to himself" — before repentance is action, it is awareness. What does it mean to "come to yourself"? Is there an area of your life where you have not yet come to yourself?</li><li>The father ran. In Middle Eastern culture, a patriarch running was undignified. What does this specific image of God running toward us say about the nature of divine forgiveness?</li><li>The son rehearsed his confession on the way home. Do you think it matters that he had planned what to say — or was the plan just a sign of how seriously he took coming back?</li></ul>
+    <hr>
+    <h2>The Forgiveness God Offers</h2>
+    <h3>D&C 58 — God's word on forgiveness</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/58?id=p42-p43#p42" target="_blank">D&C 58:42–43</a></p>
+    <p><strong>What to look for:</strong> The Lord states flatly: "he who has repented of his sins, the same is forgiven, and I, the Lord, remember them no more." Two separate statements: forgiven, AND not remembered. The second is the harder one to believe.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"I, the Lord, remember them no more." Do you believe that God has actually forgotten specific sins you have repented of? If not, what is in the way of believing it?</li><li>Verse 43 defines repentance by a single behavioral criterion: "by this ye may know if a man repenteth of his sins — behold, he will confess them and forsake them." Confession and forsaking — what is the relationship between speaking it and leaving it?</li><li>Which is harder for you: believing God has forgiven you, or forgiving yourself? Why are those often different?</li></ul>
+    <hr>
+    <h3>Isaiah's radical promise of forgiveness</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/isa/1?id=p18#p18" target="_blank">Isaiah 1:18</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/isa/43?id=p25#p25" target="_blank">Isaiah 43:25</a></p>
+    <p><strong>What to look for:</strong> Isaiah 1:18 offers the most vivid color metaphor in scripture for forgiveness: "though your sins be as scarlet, they shall be as white as snow." Isaiah 43:25 has God saying "I, even I, am he that blotteth out thy transgressions for mine own sake." The reason given — "for mine own sake" — is worth sitting with.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Scarlet to white — what imagery does that transformation evoke? What would it look like in your own memory or self-image?</li><li>"For mine own sake" — God forgives not because we deserve it or have earned it, but because it is in keeping with his own nature. What does that say about what forgiveness reveals about who God is?</li><li>Isaiah 43:25 says God will "not remember thy sins." The language is the same as D&C 58. Why does this theme — God actively not-remembering — appear across both testaments?</li></ul>
+    <hr>
+    <h3>Alma's account of his own conversion</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/36?id=p6-p23#p6" target="_blank">Alma 36:6–23</a></p>
+    <p><strong>What to look for:</strong> Alma describes the torment of unrepented sin — "a gall of bitterness" and "everlasting burning" — and then the precise moment of relief: "I remembered also to have heard my father prophesy unto the people concerning... Jesus Christ, a Son of God, to atone for the sins of the world. Now, as my mind caught hold upon this thought, I cried within my heart: O Jesus, thou Son of God, have mercy on me." The transition in verse 19 is sudden and complete.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Alma says the relief was "exquisite" — the same word he used for the pain. What does it mean that the joy of forgiveness was as intense as the guilt had been?</li><li>He "remembered" his father's teaching about Christ — and that memory became the vehicle of repentance. What teachings or memories do you carry that could become an anchor in a moment of spiritual crisis?</li><li>He went from darkness to light in a moment (v. 20). Does repentance always work that quickly? What do you do when the relief does not come right away?</li></ul>
+    <hr>
+    <h2>Forgiving Others</h2>
+    <h3>The Lord's Prayer and the condition attached</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/6?id=p12-p15#p12" target="_blank">Matthew 6:12–15</a></p>
+    <p><strong>What to look for:</strong> The Lord's Prayer asks God to "forgive us our debts, as we forgive our debtors." Then — unusually — Jesus appends a commentary to this specific petition only: "if ye forgive men their trespasses, your heavenly Father will also forgive you: But if ye forgive not men their trespasses, neither will your Father forgive your trespasses." Forgiveness received and forgiveness given are linked.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Why is the forgiveness we receive connected to the forgiveness we extend? Is this a transactional rule, or is there something deeper about how forgiveness works spiritually?</li><li>Is there someone you need to forgive who you have been withholding forgiveness from? What would it cost you to extend it?</li><li>Verse 14 says "your heavenly Father will also forgive you." The word "also" implies parallel movement — as you forgive, so you receive. What would it look like to start that movement today?</li></ul>
+    <hr>
+    <h3>D&C 64 — the obligation to forgive</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/64?id=p9-p11#p9" target="_blank">D&C 64:9–11</a></p>
+    <p><strong>What to look for:</strong> The Lord commands that his disciples "forgive one another" and then says: "he that forgiveth not his brother his trespasses standeth condemned before the Lord; for there remaineth in him the greater sin." The person who refuses to forgive bears the greater sin — a strong and unsettling statement.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"The greater sin" is in the one who refuses forgiveness. This is a radical claim. How does unforgiveness become a sin greater than the original offense?</li><li>Verse 10: "I, the Lord, will forgive whom I will forgive." He reserves the right to deal with the person who wronged you — you are released from carrying that. What would it mean to actually release it?</li><li>Forgiving does not mean excusing, and it does not always mean reconciliation. How do you forgive someone without pretending the harm was not real?</li></ul>
+    <hr>
+    <h2>The Ongoing Work of Repentance</h2>
+    <h3>Repentance as daily orientation, not crisis management</h3>
+    <p><strong>Read:</strong> Repentance and the Atonement — David A. Bednar, BYU-Idaho Devotional.</p>
+    <p><em>Search for this talk at https://www.byui.edu/speeches — search "Bednar Repentance Atonement" to locate the transcript.</em></p>
+    <p><strong>What to look for:</strong> Bednar argues that repentance is not just the emergency response to major sin — it is the daily posture of a disciple. He distinguishes "occasionally and urgently" versus "daily and constantly" approaching the Atonement. Look for his discussion of the sacrament as weekly repentance.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Bednar's framework shifts repentance from an event to a lifestyle. What would daily repentance look like for you — not confessing major sins, but continual turning toward God?</li><li>He connects the sacrament directly to ongoing repentance. How has your weekly partaking of the sacrament functioned as a repentance practice? How could it become more intentional?</li><li>Is there a difference between feeling guilty all the time and living in daily repentance? What is the emotional tone of the kind of repentance Bednar describes?</li></ul>
+    <hr>
+    <h3>Atonement covers the consequences, not only the guilt</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/1992/04/healing-the-tragic-scars-of-abuse" target="_blank">Healing the Tragic Scars of Abuse — Elder Richard G. Scott, General Conference April 1992</a></p>
+    <p><strong>What to look for:</strong> Scott speaks specifically about healing from abuse, trauma, and others' sin done to you — not your own guilt. He argues the Atonement covers not only what you have done but what has been done to you. Look for the phrase "the Lord will not allow you to be left without hope."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Scott says the Atonement covers what others have done to you, not only what you have done. How does that expand your understanding of what Christ took upon himself in Gethsemane?</li><li>He addresses people who feel shame for things that were not their fault. How does the Atonement reach into that kind of wound — the wound of being sinned against?</li><li>He promises healing, not just management of pain. Do you believe the Atonement can actually heal the deepest wounds of your life? What makes that hard to believe?</li></ul>
+    <hr>
+    <h3>The great forgiveness chapter — Psalm 51</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/ps/51" target="_blank">Psalm 51</a></p>
+    <p><strong>What to look for:</strong> Attributed to David after his sin with Bathsheba — the most explicit confession of sin in scripture. Notice the vocabulary: "blot out," "wash," "cleanse," "purge," "create in me a clean heart." David is asking not just for forgiveness but for transformation — a new heart, not just cleared records.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>David asks God to "create in me a clean heart" (v. 10). He does not ask for his old heart to be cleaned up — he asks for a new one. What is the difference, and why does it matter?</li><li>Verse 17: "The sacrifices of God are a broken and a contrite heart." What does brokenness have to do with being ready to receive the Atonement?</li><li>David is the man after God's own heart, even after this — one of the worst failures in the entire Old Testament. What does that say about who God is willing to work with?</li></ul>
+  </div>
+</body>
+</html>

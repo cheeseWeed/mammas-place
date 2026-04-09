@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grace and Mercy</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">✝️ The Atonement</span>
+    <h1>Grace and Mercy</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>What Is Grace?</h2>
+    <h3>The Gospel Topics definition</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/gospel-topics/grace" target="_blank">Gospel Topics: Grace</a></p>
+    <p><strong>What to look for:</strong> This entry distinguishes grace as divine enabling power — not just forgiveness. It is the help God gives us to do and become things we could not do or become on our own. The entry also addresses the tension between grace and works, and how Latter-day Saint theology holds both together.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The entry distinguishes two dimensions of grace: grace that saves (forgiveness, resurrection) and grace that enables (strength to grow, change, endure). Which dimension do you think about most, and which do you need most right now?</li><li>The entry says grace is not earned, but it is accessed through faith and ordinances. Is that a contradiction? How do you hold those together?</li><li>How is the Latter-day Saint understanding of grace similar to and different from what you might hear in a Protestant church?</li></ul>
+    <hr>
+    <h3>Paul on justification by faith</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/rom/5?id=p1-p11#p1" target="_blank">Romans 5:1–11</a></p>
+    <p><strong>What to look for:</strong> Paul says we are "justified by faith" and have "access by faith into this grace" (v. 2). He then says something startling: "while we were yet sinners, Christ died for us" (v. 8). Grace is not given after we clean up — it is given while we are still the problem.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"While we were yet sinners, Christ died for us" (v. 8). What does it mean that God did not wait for you to improve before he sent his Son? How does that change how you approach God when you have failed?</li><li>Paul says grace gives us "peace with God" (v. 1) and "joy in God" (v. 11). Is your experience of religion marked by peace and joy, or more by guilt and striving? What would change if you let grace do more?</li><li>Verse 5: "the love of God is shed abroad in our hearts by the Holy Ghost." How does grace arrive experientially — how do you actually feel it, not just understand it?</li></ul>
+    <hr>
+    <h3>The Book of Mormon on grace — 2 Nephi 25:23</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/25?id=p23-p26#p23" target="_blank">2 Nephi 25:23–26</a></p>
+    <p><strong>What to look for:</strong> Nephi says "it is by grace that we are saved, after all we can do." This verse has been much discussed. Notice that Nephi does not say grace saves us after we have done enough — he says he labors to persuade his people to believe in Christ, because it is by Christ they are saved. Verse 26 is the key: "we talk of Christ, we rejoice in Christ."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"After all we can do" is one of the most debated phrases in the Book of Mormon. Does it mean grace kicks in only after maximum effort? Or does it mean grace is operative across everything we do? How do you read it?</li><li>Nephi says the law of Moses is "dead" to his people — they keep it, but they look through it to Christ. What practices in your life could become more alive if you looked through them to Christ rather than performing them as obligations?</li><li>Verse 26: "We talk of Christ, we rejoice in Christ, we preach of Christ." Is Christ the center of your religious conversation? What would it look like if he were more central?</li></ul>
+    <hr>
+    <h2>Mercy and Justice</h2>
+    <h3>Alma's explanation to Corianton</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/42?id=p14-p25#p14" target="_blank">Alma 42:14–25</a></p>
+    <p><strong>What to look for:</strong> Alma says mercy and justice do not conflict — they operate on different claims. Justice claims the consequence of sin. Mercy answers that claim through Christ's suffering, so mercy does not "rob" justice but satisfies it. Look for verse 15: "mercy claimeth the penitent."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Alma says "mercy cannot rob justice" (v. 25). Why is it important that mercy works through justice rather than around it? What would a universe look like where God could simply cancel consequences arbitrarily?</li><li>Verse 23: "God himself atoneth for the sins of the world." Grace is not a policy change — it is God personally absorbing the debt. How does that personal quality of grace affect how you receive it?</li><li>"Mercy claimeth the penitent" (v. 23). Mercy does not claim everyone automatically — it claims those who repent. What is the relationship between your repentance and God's mercy?</li></ul>
+    <hr>
+    <h3>The parable of the creditor — mercy in story form</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/7?id=p36-p50#p36" target="_blank">Luke 7:36–50</a></p>
+    <p><strong>What to look for:</strong> A sinful woman anoints Jesus's feet with tears and ointment. Simon the Pharisee objects silently. Jesus tells a parable: a creditor forgives two debtors — one who owed much, one who owed little. He asks: which loved more? Simon answers correctly, and Jesus says the woman's great love is connected to her great forgiveness.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Jesus says "her sins, which are many, are forgiven; for she loved much" (v. 47). Does great love produce forgiveness, or does forgiveness produce great love? Does the order matter?</li><li>Simon had the Savior at his table but showed him no hospitality. The woman — who Simon considered unworthy — showed extravagant love. What gets in the way of extravagant gratitude for grace?</li><li>Verse 50: "Thy faith hath saved thee; go in peace." She left in peace. Is peace — not just forgiveness, but peace — a regular part of your experience of the Atonement?</li></ul>
+    <hr>
+    <h3>Grace covers what we cannot fix ourselves</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2006/04/broken-things-to-mend" target="_blank">Broken Things to Mend — Jeffrey R. Holland, April 2006 General Conference</a></p>
+    <p><strong>What to look for:</strong> Holland speaks directly to people who feel they have "made too many mistakes," who feel beyond repair. He insists the Atonement covers not only sins but also regret, grief, and the irreversible consequences of bad choices. Look for his use of the word "broken."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Holland says Christ comes especially to those who are "brokenhearted" and "downtrodden." Is your image of grace mostly for people who are struggling morally — or does it extend to people who are simply broken by life?</li><li>He says God does not expect us to "fix" everything before coming to him. What specific thing have you been trying to fix on your own before you let God in?</li><li>Holland says "hope is never lost." Where in your life do you most need to hear that?</li></ul>
+    <hr>
+    <h2>Grace as Enabling Power</h2>
+    <h3>Grace that strengthens, not only forgives</h3>
+    <p><strong>Read:</strong> <a href="https://speeches.byu.edu/talks/brad-wilcox/his-grace-is-sufficient/" target="_blank">His Grace Is Sufficient — Brad Wilcox, BYU Devotional, July 12, 2011</a></p>
+    <p><strong>What to look for:</strong> Wilcox uses the analogy of a piano lesson: a parent pays for lessons and the child practices, but the child's practice does not earn the lessons — they were already paid for. He argues that the purpose of keeping commandments is not to earn grace but to be changed by the relationship grace opens. Look for his key line about what the Atonement is for.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Wilcox's analogy says we practice not to pay for lessons but to become pianists. How does that shift from earning to becoming change how you approach commandments?</li><li>He argues that "the miracle of the Atonement is not just that we can go home, but that... we can change." What aspect of your character do you most want the Atonement to change?</li><li>He says some people refuse grace because they want to feel they earned their standing with God. Is there any area where you resist grace because you want to do it yourself?</li></ul>
+    <hr>
+    <h3>Grace for the daily struggle — not just the crisis</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2002/05/the-other-prodigal" target="_blank">The Other Prodigal — Jeffrey R. Holland, May 2002 General Conference</a></p>
+    <p><strong>What to look for:</strong> Holland takes the parable of the prodigal son and turns his full attention to the elder brother — the one who stayed, served faithfully, and was bitter when grace was extended to the wayward one. This is a talk about the grace we resist for others, and what that reveals about how deeply we have received it ourselves.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The elder brother was angry that grace seemed unfair. Have you ever felt that mercy extended to someone else was unjust? What does that feeling reveal?</li><li>Holland says the Father "ran" to the returning son — grace moves toward us before we have fully arrived. What does it mean that God moves toward you?</li><li>Is there someone in your life to whom you are struggling to extend grace, perhaps because it feels like it lets them off the hook? How does this parable speak to that?</li></ul>
+    <hr>
+    <h2>Grace in the Restored Gospel</h2>
+    <h3>The grace in the sacrament covenant</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/20?id=p77,p79#p77" target="_blank">D&C 20:77, 79</a></p>
+    <p><strong>What to look for:</strong> The sacrament prayers are covenantal — we promise to take upon us his name, always remember him, and keep his commandments. In return: "that they may always have his Spirit." The Spirit is the daily delivery mechanism of grace in the restored gospel.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The promise is not "that they may be forgiven" but "that they may always have his Spirit." How is the ongoing presence of the Spirit itself a form of grace?</li><li>"Always remember him" is the condition. What practices help you keep that kind of continuous remembrance? What disrupts it?</li><li>You renew this covenant weekly. How aware are you, in the days between Sundays, that you are living inside a covenant of grace?</li></ul>
+    <hr>
+    <h3>Oscarson on grace that heals and enables</h3>
+    <p><strong>Read:</strong> Bonnie L. Oscarson, "The Atonement Heals, Comforts, Consoles, and Enables Us to Show Mercy and Grace unto Ourselves," BYU Women's Conference 2014.</p>
+    <p><em>Search for this talk at https://womensconference.byu.edu/transcripts — title confirmed, PDF available through the Women's Conference archive.</em></p>
+    <p><strong>What to look for:</strong> Oscarson distinguishes between the grace that forgives (covering our sins) and the grace that enables (giving us power to do things we could not do otherwise — to endure illness, raise difficult children, serve when depleted, forgive the unforgivable). She argues that most of us only come to the Atonement when we have sinned, and that we leave the enabling power largely untouched. Look for her treatment of showing grace <em>to ourselves</em> — the mercy we resist extending inward.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Oscarson says the Atonement gives us power to do hard things, not just to be forgiven for failures. What hard thing in your life right now might you be trying to handle on your own willpower instead of drawing on enabling grace?</li><li>She addresses the tendency to be harder on ourselves than God is. Why is self-mercy spiritually important — not just emotionally comforting, but actually necessary to discipleship?</li><li>The title includes "show mercy and grace unto ourselves." What does that look like in practice — not as self-indulgence, but as a genuine spiritual discipline?</li></ul>
+    <hr>
+    <h3>Moroni's final summary — grace through Christ</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/10?id=p32-p33#p32" target="_blank">Moroni 10:32–33</a></p>
+    <p><strong>What to look for:</strong> Moroni's very last words on grace: "Come unto Christ, and be perfected in him, and deny yourselves of all ungodliness... then is his grace sufficient for you." He ties grace to coming unto Christ, to denial of self, and to being "sanctified in Christ." This is the Book of Mormon's final word on how grace works.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Moroni says grace is sufficient — not grace is available. There is a fullness implied. What does it mean that grace is sufficient for you, specifically, in your specific situation?</li><li>"By the shedding of his blood" grace is made possible (v. 33). Moroni ends the entire Book of Mormon pointing back to the Atonement. Why is that the right place to end?</li><li>Verse 32 says "deny yourselves of all ungodliness." Grace is not passive — it works in us to produce renunciation of what is wrong. How are grace and self-denial connected rather than opposed?</li></ul>
+  </div>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forgiving Others</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">✝️ The Atonement</span>
+    <h1>Forgiving Others</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>The Hook: An Impossible Debt and a Collectible One</h2>
+    <h3>Matthew 18 — the economics Jesus built into the parable</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/18?id=p21-p35#p21" target="_blank">Matthew 18:21–35</a></p>
+    <p><strong>What to look for:</strong> Jesus did not pick the numbers casually. Ten thousand talents was the largest unit of currency times the largest number in common Greek usage — one ancient estimate puts a single talent at roughly 20 years of a laborer's wages, making 10,000 talents the lifetime earnings of approximately 200,000 workers. It is mathematically unpayable on purpose. The second debt — 100 denarii, roughly three months of wages — is real money, genuinely owed, entirely collectible. Jesus made the contrast as extreme as language would allow. Then he made the forgiven servant refuse to forgive. The shock of that refusal is the point.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Why did Jesus make the first debt so grotesquely large? What does an unpayable debt have to do with your standing before God?</li><li>The king "was moved with compassion" (v. 27) and released the entire debt. That was not a legal outcome — it was a gift. What does it mean that your forgiveness was also a gift, not a transaction you earned?</li><li>Verse 35: "So likewise shall my heavenly Father do also unto you, if ye from your hearts forgive not every one his brother their trespasses." The phrase "from your hearts" distinguishes going through the motions from actual release. What does forgiveness from the heart look like — versus forgiveness in words only?</li></ul>
+    <hr>
+    <h2>Deepening: What Forgiveness Actually Is</h2>
+    <h3>D&C 64 — required of you, even when God reserves judgment</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/64?id=p9-p11#p9" target="_blank">D&C 64:9–11</a></p>
+    <p><strong>What to look for:</strong> The Lord uses unusually firm language: "he that forgiveth not his brother his trespasses standeth condemned before the Lord; for there remaineth in him the greater sin." This was given to early Church leaders dealing with real interpersonal conflicts — not an abstract principle. Verse 10 does something important: the Lord says "I, the Lord, will forgive whom I will forgive" — he reserves the right to deal with the person who wronged you. You are explicitly released from carrying that judgment.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"The greater sin remaineth in him" — in the one who refuses to forgive, not in the one who committed the original offense. How does unforgiveness become its own sin?</li><li>Verse 10: "I, the Lord, will forgive whom I will forgive." When you carry a grievance, you are, in effect, holding onto a judgment that God says belongs to him. What would it feel like to actually hand that over?</li><li>This revelation was given in a real conflict between Church members. How does knowing that context — real people, real offenses — change what this commandment costs?</li></ul>
+    <hr>
+    <h3>Matthew 6 and 3 Nephi 13 — the condition attached to the Lord's Prayer</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/6?id=p14-p15#p14" target="_blank">Matthew 6:14–15</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/13?id=p14-p15#p14" target="_blank">3 Nephi 13:14–15</a></p>
+    <p><strong>What to look for:</strong> Of all the petitions in the Lord's Prayer, Jesus appends a commentary only to this one: forgiveness given and forgiveness received are explicitly linked. The Book of Mormon record confirms the teaching in its own context — Christ taught this in the Western Hemisphere as well. This is not a single-source anomaly; it is a repeated, confirmed principle.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The two accounts use nearly identical language. What does the repetition across two continents and two records say about the weight Jesus placed on this particular teaching?</li><li>"As we forgive our debtors" — the prayer asks God to forgive us in the same measure we forgive others. That is either a very bold request or a very sobering one, depending on how you have been extending forgiveness. Which is it for you right now?</li><li>Is the link between forgiving and being forgiven a punishment — or is it describing a spiritual law about how the heart works? What is the difference?</li></ul>
+    <hr>
+    <h2>Going Deeper: The Hardest Cases</h2>
+    <h3>Luke 23:34 — from the cross</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/luke/23?id=p34#p34" target="_blank">Luke 23:34</a></p>
+    <p><strong>What to look for:</strong> "Father, forgive them; for they know not what they do." This was spoken while the nails were in. The people being forgiven were not repentant — they were gambling for his clothes while he bled. He did not wait for them to ask. He did not wait for the harm to stop. He prayed for their forgiveness in real time, mid-injury.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>He said "they know not what they do." This is a form of seeing the people who hurt you as incomplete, confused, or spiritually blind rather than as purely malicious. Does that reframe change anything for someone who has injured you?</li><li>He did not wait for the harm to end before forgiving. Is it possible to begin forgiving before the injury is over? What would that look like?</li><li>This is the hardest model in scripture. No one in the New Testament was harmed more unjustly by more people simultaneously. What does it mean that the model for forgiveness is Christ — not someone who had an easier case?</li></ul>
+    <hr>
+    <h3>Matthew 5:43–48 — the harder standard</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/5?id=p43-p48#p43" target="_blank">Matthew 5:43–48</a></p>
+    <p><strong>What to look for:</strong> "Love your enemies, bless them that curse you, do good to them that hate you." This goes beyond forgiving — it asks for active goodwill toward those who have harmed you. Jesus grounds this in the Father's character: he "maketh his sun to rise on the evil and on the good." God's goodness is not distributed based on whether people deserve it. The standard for his disciples is the same.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Verse 46: "if ye love them which love you, what reward have ye?" Jesus is deliberately setting a higher bar. The ordinary human standard — love those who love you — is insufficient for a disciple. Why does discipleship require this higher bar?</li><li>"That ye may be the children of your Father which is in heaven" — the motivation is not obedience but identity. You love enemies to become who you are meant to be. How does framing forgiveness as identity formation — not rule compliance — change how you approach it?</li><li>Who in your life would qualify as an "enemy" by this passage? What would one concrete act of goodwill toward that person look like?</li></ul>
+    <hr>
+    <h2>Cross-References: The Atonement Makes This Possible</h2>
+    <h3>The Atonement absorbed the debt — so you can release the claim</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/34?id=p15-p16#p15" target="_blank">Alma 34:15–16</a></p>
+    <p><strong>What to look for:</strong> Amulek teaches that the atoning sacrifice brings about the "bowels of mercy" — that mercy can satisfy the demands of justice. The Atonement is the legal and spiritual mechanism by which debts are absorbed rather than merely dismissed. When you forgive someone, you are not pretending the debt was zero — you are releasing your claim on collecting it, because Christ has already absorbed the ultimate cost.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Forgiveness is not saying "what you did was fine." It is releasing your claim to collect a debt that is still real. How does that distinction — releasing the claim rather than denying the harm — make forgiveness feel more honest?</li><li>If Christ has absorbed the deepest cost of every sin ever committed, what does that mean for your role in demanding payment from the person who hurt you?</li><li>Amulek says mercy "overpowereth justice" through the Atonement. What would it look like to let mercy overpower justice in your own relationships?</li></ul>
+    <hr>
+    <h3>D&C 98 — the Lord's law of forgiveness is more nuanced than people realize</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/98?id=p39-p45#p39" target="_blank">D&C 98:39–45</a></p>
+    <p><strong>What to look for:</strong> This passage lays out a detailed law governing repeated offenses: the Lord acknowledges that some people will wrong you once, twice, three times, or more. After each offense, if the offender repents and seeks forgiveness, you are commanded to forgive. But the passage also says "if he trespass against thee and repent not, he that forgiveth him not shall be condemned before the Lord." Notice: this is about your internal state and release — not about whether reconciliation is required. Verse 45 makes it clear that God himself will deal with the offender in due course.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The Lord's law here distinguishes internal forgiveness from external reconciliation — you can forgive and still maintain wise boundaries. Does that distinction help you? Have you ever confused "I must forgive" with "I must resume the relationship"?</li><li>Verse 45 says the Lord "will repay." How does trust in divine justice make it more possible to let go of personal grievance?</li><li>This passage is addressed to people experiencing repeated offense — not just a single injury. What does it say about God's understanding of chronic harm that he gave these detailed instructions?</li></ul>
+    <hr>
+    <h2>Talk Pointers</h2>
+    <h3>President James E. Faust — the Amish school shooting and releasing the burden</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2007/04/the-healing-power-of-forgiveness" target="_blank">The Healing Power of Forgiveness — President James E. Faust, General Conference April 2007</a></p>
+    <p><strong>What to look for:</strong> Faust opens with the 2006 Amish school shooting in Nickel Mines, Pennsylvania (the Roberts shooting), where a gunman killed five Amish girls. Within hours, the Amish community had visited the shooter's widow and extended forgiveness. Faust uses this as the anchor for his talk. The section most worth reading carefully is his treatment of resentment as a burden the victim carries — not the offender. He describes forgiveness as "a liberating gift people can give to themselves" and says forgiving is "freeing up and putting to better use the energy once consumed by holding grudges." He also distinguishes forgiveness from excusing or condoning the act.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The Amish community forgave before they had time to process the loss theologically. What does that tell you about forgiveness as a practiced discipline — not just a theological conclusion you arrive at after extended analysis?</li><li>Faust says releasing resentment is something the victim does for themselves as much as for anyone else. Do you believe that? Has resentment you have carried ever cost you something — energy, peace, relationships?</li><li>How do you respond to the Amish example? Does it inspire you, or does it feel impossibly far from your own capacity? What does the gap between the example and your current state show you about where you need the Atonement's help?</li></ul>
+    <hr>
+    <h3>Elder Kevin R. Duncan — resentment as a self-inflicted wound</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2016/04/the-healing-ointment-of-forgiveness" target="_blank">The Healing Ointment of Forgiveness — Elder Kevin R. Duncan, General Conference April 2016</a></p>
+    <p><strong>What to look for:</strong> Duncan's specific contribution is his treatment of resentment as a secondary wound — the harm done to you is the first wound; the resentment you carry afterward is a wound you inflict on yourself. He teaches that "an unforgiving heart harbors so much needless pain" and that "we do not need to be a victim twice." He also addresses the common fear that forgiving means the other person "wins" — and explains why that fear misunderstands what forgiveness actually is. Look for his discussion of forgiveness as the ointment that heals your own wound, not something you apply to the offender.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Duncan's image is that resentment is a wound you sustain and keep open. Is there a resentment you are carrying that has been injuring you long after the original offense? What would it mean to let that wound close?</li><li>He addresses the fear that forgiving means the other person won. Have you ever felt that? What does he say about it, and does his answer satisfy you?</li><li>"Healing ointment" — the image is gentle and medical rather than legal. Forgiveness heals, rather than pardons. How does that frame change your relationship to the act of forgiving?</li></ul>
+    <hr>
+    <h3>President Gordon B. Hinckley — the cost of a grudge</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2005/10/forgiveness" target="_blank">Forgiveness — President Gordon B. Hinckley, General Conference October 2005</a></p>
+    <p><strong>What to look for:</strong> Hinckley is characteristically direct about the cost of holding a grudge. He quotes D&C 64 plainly — "of you it is required to forgive all men" — and observes that so many "are unwilling to forgive and forget," naming the damage that does in families. He insists that "somehow forgiveness, with love and tolerance, accomplishes miracles that can happen in no other way." He also draws on scripture to show that the Lord's commandment is not a suggestion about what might feel nice — it is a binding requirement.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Hinckley's directness can feel bracing. He does not soften the commandment. Does that frankness help you — or does it make the task feel more impossible?</li><li>He separates the choice to forgive from the feeling of having forgiven. Have you ever made that choice before the feeling arrived? What happened?</li><li>He says carrying resentment prevents you from living at your best. In what specific area of your life has unforgiveness limited you?</li></ul>
+    <hr>
+    <h3>Elder Richard G. Scott — the Atonement for what was done <em>to</em> you</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/1992/04/healing-the-tragic-scars-of-abuse" target="_blank">Healing the Tragic Scars of Abuse — Elder Richard G. Scott, General Conference April 1992</a></p>
+    <p><strong>What to look for:</strong> Scott speaks directly about healing from abuse and the sins others have committed against you — not your own guilt. The section most relevant here is his argument that the Atonement covers what has been done to you, not only what you have done. He says plainly that "the Lord has provided a way for you to overcome the destructive results of others' acts against your will" and that "the healing power of the Atonement of Jesus Christ can provide a complete cure." He also addresses the shame victims sometimes carry for harm they did not cause — insisting "you are not responsible and you must not feel guilty." This is the doctrinal foundation for why forgiving others is possible even in the hardest cases: Christ absorbed the weight of what was done to you, which means you are not the only one who paid.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Scott says the Atonement reaches the person who was harmed, not only the person who sinned. How does knowing that Christ absorbed the cost of what was done to you — not just what you did — change what the Atonement means for you personally?</li><li>He addresses shame that victims carry for harm they did not cause. Is there anything you carry in that category? What would it mean to give that specifically to Christ?</li><li>Scott promises healing, not only management of ongoing pain. Do you believe that level of healing is available for what has been done to you? What makes it hard to believe?</li></ul>
+    <hr>
+    <h3>Elder Jeffrey R. Holland — the servant who forgot what he had been forgiven</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2012/04/the-laborers-in-the-vineyard" target="_blank">The Laborers in the Vineyard — Elder Jeffrey R. Holland, General Conference April 2012</a></p>
+    <p><strong>What to look for:</strong> In <em>The Laborers in the Vineyard</em>, Holland addresses envy and grievance — the complaint that someone else received something undeserved. While the parable is about grace and compensation, his application to forgiveness is direct: "don't dwell on old issues or grievances." He says even if a grievance did not originate with you, "it can end with you." The unmerciful servant in Matthew 18 fails for the same reason: he did not let his own forgiveness transform him. Look for Holland's challenge to those who nurse grievances about what they are owed.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Holland argues that the people who struggle most to extend grace are often people who have not internalized the grace they received. Is that true in your experience — not with others, but with yourself?</li><li>The unmerciful servant's fatal move was not cruelty in the abstract — it was forgetting. He walked out of the king's presence, having just had an unpayable debt cancelled, and immediately grabbed a fellow servant by the throat. What spiritual practice would help you not forget what you have been forgiven?</li><li>Holland's talks consistently call the self-righteous to soften. Where in your life are you holding the throat of someone whose debt to you is, compared to your debt to God, roughly 100 denarii to 10,000 talents?</li></ul>
+    <hr>
+    <h3>President Russell M. Nelson — "An Easter Invitation" (<em>The Friend</em>, April 2025)</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/friend/2025/04/an-easter-invitation" target="_blank">An Easter Invitation — President Russell M. Nelson, <em>The Friend</em>, April 2025</a></p>
+    <p><strong>What to look for:</strong> This short message was written for families and children but carries a direct doctrinal point: there is "no better way to honor Jesus Christ this Easter" than to forgive someone. Nelson frames forgiveness as an Easter act — that just as Christ's resurrection opened a new beginning for all of us, forgiving someone gives them a new beginning too. His closing promise: "As you forgive, the Prince of Peace will bring you peace."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"No better way to honor Jesus Christ this Easter." That is a strong claim. Why would Nelson say that forgiving someone is better than, say, attending church, taking the sacrament, or reading scripture? What is he saying about the relationship between forgiveness and honoring Christ?</li><li>This was written for children to read, but the message is fully adult. What does it mean that the prophet's Easter invitation — stripped to its simplest form — is: go forgive one person?</li><li>"The Prince of Peace will bring you peace." Nelson promises peace as the direct result of forgiving. Is peace something you want badly enough to forgive for?</li></ul>
+    <hr>
+    <h3>Brother Russell T. Osguthorpe — "I Did Frankly Forgive Them" (BYU Women's Conference, 2011)</h3>
+    <p><strong>Read:</strong> <a href="https://womensconference.byu.edu/transcripts" target="_blank">I Did Frankly Forgive Them — Russell T. Osguthorpe, BYU Women's Conference, 2011</a> <em>(Find "Osguthorpe" on the transcripts index page)</em></p>
+    <p><strong>What to look for:</strong> Osguthorpe's title comes from Joseph Smith's account of forgiving his early persecutors — "I did frankly forgive them all." He uses this as the template for what frank, unconditional forgiveness looks like — not grudging, not provisional, but complete. He addresses the common experience of people who want to forgive but feel that forgiveness requires feeling forgiving first, and argues that the choice precedes the feeling.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"I did frankly forgive them all" — what does the word "frankly" add to forgiveness? What would the opposite of frank forgiveness look like?</li><li>Osguthorpe argues that forgiving does not require feeling ready to forgive. The choice and the feeling are separate, and the choice comes first. Have you ever forgiven someone before you felt like forgiving them? What happened next?</li><li>Joseph Smith forgave people who had actively tried to destroy him and his work. His "frankness" came from somewhere — from his understanding of the Atonement and his own need for forgiveness. What would ground that kind of frankness in your own life?</li></ul>
+    <hr>
+    <h2>Closing Question</h2>
+    <p>You can forgive without pretending the harm was not real. You can forgive without resuming a relationship that is not safe. You can forgive before the feeling of having forgiven has arrived. You can forgive someone who has never apologized. The Atonement makes this possible not because it minimizes what was done, but because Christ absorbed the weight of it — both what you did and what was done to you. The 10,000-talent debt was cancelled. The question is whether you are walking out of the king's presence gripping someone by the throat over 100 denarii.</p>
+    <p><strong>Final question to sit with:</strong> Is there one person — or one category of person — you have been unable or unwilling to forgive? What is the specific thing that makes it feel impossible? And if Christ absorbed even that debt in Gethsemane, what exactly are you still collecting on — and for whom?</p>
+  </div>
+</body>
+</html>

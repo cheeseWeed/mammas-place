@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why We Serve</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">🤝 Service</span>
+    <h1>Why We Serve</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>The Hook</h2>
+    <p>There is a question underneath all service: <em>why are you doing this?</em> The answer matters — not just morally, but practically. People who serve out of guilt burn out. People who serve for recognition stop when no one is watching. But people who serve because they have come to understand something about God and about other people — they are nearly unstoppable. This file is about getting the foundation right, because everything else about a life of service depends on it.</p>
+    <hr>
+    <h2>The Core Doctrine: We Are Serving God</h2>
+    <h3>King Benjamin's radical equation</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/2?id=p17#p17" target="_blank">Mosiah 2:17</a></p>
+    <p><strong>What to look for:</strong> King Benjamin — a king, speaking to his people from a tower — says something startling: when you serve your fellow beings, you are <em>only</em> in the service of your God. He does not say "it is like" serving God, or "it is pleasing to" God. He says it IS service to God. The equation is that direct.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>What does it change about the way you approach ordinary acts of help — a meal for a neighbor, a ride for someone stranded — if those acts are literally service to God?</li><li>Benjamin is a king serving his people. He says he has not done this to boast, but because God commanded it and because he is indebted to God. How does a sense of debt to God (rather than superiority over others) change the posture of a servant?</li><li>Is there someone in your life right now whom you have been slow to serve? How does this verse reframe the stakes of that hesitation?</li></ul>
+    <hr>
+    <h3>The sheep and the goats — Jesus explains himself</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/25?id=p35-p40#p35" target="_blank">Matthew 25:35–40</a></p>
+    <p><strong>What to look for:</strong> Jesus describes the final judgment in terms of service — not belief, not ritual, but whether people fed the hungry, welcomed the stranger, clothed the naked, visited the sick and imprisoned. The righteous ask, bewildered: "When saw we thee?" The answer cuts through everything: "Inasmuch as ye have done it unto one of the least of these my brethren, ye have done it unto me."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The righteous in this parable did not know they were serving Christ. They just served. What does that tell us about the relationship between motive and action — can genuine service become so habitual that you stop thinking about the theology behind it?</li><li>The word "least" appears deliberately. Jesus does not say "the most impressive" or "the most deserving." Why does service to the least carry such weight in this passage?</li><li>The goats also failed without knowing it — they too ask "when saw we thee?" What habits of attention or inattention might cause us to pass the "least of these" without seeing them?</li></ul>
+    <hr>
+    <h3>The two great commandments as the architecture of service</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/matt/22?id=p37-p40#p37" target="_blank">Matthew 22:37–40</a></p>
+    <p><strong>What to look for:</strong> Jesus reduces the entire law to love God and love your neighbor. Notice that he does not separate them — he says the second is <em>like</em> the first. Service is not a third commandment that follows from the first two. It is the natural outflow of love that takes both commandments seriously at the same time.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>If service to neighbor is "like" love of God, what does that say about the spiritual nature of ordinary kindness?</li><li>Have you ever experienced loving God and serving neighbors as two separate tracks — devotional life on one hand, practical service on the other? What would it look like to fully integrate them?</li><li>Jesus says "all the law and the prophets" hang on these two. What laws and prophetic teachings about service can you think of that flow from this root?</li></ul>
+    <hr>
+    <h2>Why Motive Matters: Love vs. Duty vs. Fear</h2>
+    <h3>Three motivations and what each produces</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18?id=p8-p9#p8" target="_blank">Mosiah 18:8–9</a></p>
+    <p><em>(This passage is studied more fully in SRVS-04, but read it here for its description of what covenant people look like: those who are "willing to mourn with those that mourn.")</em></p>
+    <p><strong>What to look for:</strong> Alma does not say covenant people are <em>required</em> to mourn with others — he asks if they are <em>willing</em>. The covenant is not a duty list; it is a description of the kind of person the covenant is meant to produce. Notice the willingness in each verb: "willing to bear one another's burdens," "willing to mourn," "to comfort."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>What is the difference between doing a kind act because you fear consequences if you don't, and doing it because you are genuinely willing? Does the act look the same from the outside? Does it feel the same from the inside?</li><li>Think of a time you served reluctantly. Think of a time you served eagerly. What was different? What made the difference?</li><li>Alma is describing what covenant people <em>want</em> — their inner orientation. Is willingness something you can choose, or something that grows? How?</li></ul>
+    <hr>
+    <h3>Paul's famous nothing-without-love warning</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/1-cor/13?id=p1-p3#p1" target="_blank">1 Corinthians 13:1–3</a></p>
+    <p><strong>What to look for:</strong> Paul makes a list of impressive-sounding acts — speaking with the tongues of angels, giving all your goods to feed the poor, even giving your body to be burned — and says that without charity (love), they are nothing. This is not about the acts being bad. It is about motive being the thing that gives the act its moral weight.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>It seems extreme to say that giving everything to the poor "profits nothing" without love. Do you think Paul means that motive cancels the act entirely, or that the act without love fails to do something for the <em>giver</em>?</li><li>What does service without love do to the person who gives it over time? What does service <em>with</em> love do?</li><li>Paul says charity "suffereth long, and is kind" and "seeketh not her own." How do those traits show up (or fail to show up) in your own service?</li></ul>
+    <hr>
+    <h2>Service as a Defining Characteristic of Discipleship</h2>
+    <h3>President Monson on service as the essence of the gospel</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2009/10/what-have-i-done-for-someone-today" target="_blank">What Have I Done for Someone Today? — Thomas S. Monson, October 2009</a></p>
+    <p><strong>What to look for:</strong> President Monson draws on a poem by Will Allen Dromgoole and on his lifelong pattern of stopping what he was doing to find and serve specific people. His consistent message was that discipleship is not an abstract quality — it is expressed in specific acts toward specific people, and those acts require us to <em>notice</em> people rather than moving past them.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Monson often told stories of feeling prompted to visit someone, and arriving to find they had needed exactly that visit. What does that pattern suggest about the relationship between the Spirit and service?</li><li>He asked: "What have I done for someone today?" That question, asked every evening, would reorient a life. What would change in your days if you asked it genuinely?</li><li>Monson suggested that the greatest gift we can give is ourselves — our time, our attention, our presence. When have you received that kind of gift from someone? When have you given it?</li></ul>
+    <hr>
+    <h3>Elder Uchtdorf on the why beneath service</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2010/04/you-are-my-hands" target="_blank">You Are My Hands — Dieter F. Uchtdorf, April 2010</a></p>
+    <p><strong>What to look for:</strong> Uchtdorf opens with the legend of the statue of Christ whose hands were destroyed in the war, and the inscription left at its base: "You are my hands." He then explores what it means to be instruments of God's love — not substitutes for it, but expressions of it. He distinguishes between service that comes from love and service that becomes an anxious performance.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The "You are my hands" image is striking because it says God's love reaches people <em>through</em> us. Does that feel like a privilege or a pressure to you? Why?</li><li>Uchtdorf warns against confusing busyness with discipleship. What is the difference between a full service calendar and a genuinely servant heart?</li><li>Uchtdorf noted that God does not need our good works — but our neighbor does, and <em>we</em> do. Why do we need to serve? What does service do for the one who gives it?</li></ul>
+    <hr>
+    <h2>The Founding of the Relief Society — Service as Covenant Identity</h2>
+    <h3>Emma Smith and the women of Nauvoo</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/history/topics/relief-society" target="_blank">Church History Topics: Relief Society</a></p>
+    <p><strong>What to look for:</strong> The Female Relief Society of Nauvoo was organized in March 1842 — one of the earliest institutional expressions of covenant service in this dispensation. Emma Smith, the first president, and the women who founded it understood their purpose as not merely charitable but covenant-driven: they were not doing good works in addition to their religion, they were expressing it. Joseph Smith told the women that the Church was not fully organized until the sisters were. Look for the vision of organized, consecrated service as essential to the restored Church, not supplemental to it.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Joseph Smith said the society was "not only to relieve the poor, but to save souls." What is the connection between relieving physical need and saving souls? How are those the same act?</li><li>Emma Smith was called to lead without much precedent. What does it mean to take up a covenant responsibility when you are not sure exactly what it will require of you?</li><li>The Relief Society was organized in a season of intense persecution and hardship. The women chose to organize themselves for service <em>in that context</em>. What does that say about the relationship between difficulty and the impulse to serve?</li></ul>
+    <hr>
+    <h3>Eliza R. Snow and the reestablishment — service that endures</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/history/topics/relief-society" target="_blank">Church History Topics: Relief Society</a> — focus on Eliza R. Snow's role in the 1867 reestablishment</p>
+    <p><strong>What to look for:</strong> After the Relief Society went largely dormant during the pioneer period, Eliza R. Snow used the original Nauvoo minutes — which she had preserved as secretary — as the charter for reestablishing it throughout the Church. Her act of preservation made continuity possible. She served as general Relief Society president from 1880. Look for how the founding vision survived because someone kept the record.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Eliza R. Snow kept the minutes of the founding meeting for twenty-five years before they were needed again. What does faithful record-keeping have to do with service? What have you preserved that someone else will someday need?</li><li>The reestablishment of the Relief Society under Snow connected the pioneer generation directly to the Nauvoo generation. What covenant threads run through your own family or community that connect you to an earlier act of service or sacrifice?</li><li>Snow organized sisters throughout the territory — not just in Salt Lake City. She understood that the covenant to serve was not geographically limited. What does that look like for you in your current community?</li></ul>
+    <hr>
+    <h2>Closing Reflection</h2>
+    <p>Service turns out to be about far more than the act itself. The same meal delivered to the same neighbor carries entirely different spiritual weight depending on whether it comes from fear of judgment, a desire for credit, genuine compassion, or covenant love. King Benjamin and Jesus both insist that the person standing in front of you — hungry, sick, lonely, inconvenient — is the presence of God in disguise. What you do with that person, and why you do it, is the substance of discipleship.</p>
+    <p><strong>For personal reflection:</strong> Think of one person in your life who genuinely serves from love — not for recognition, not from obligation, but from what seems like an overflow of care. What does their life look like? What do you notice about them? What would it take for you to become more like that?</p>
+    <hr>
+    <p><em>Next: <a href="SRVS-02-losing-yourself-to-find-yourself.md" target="_blank">SRVS-02 — Losing Yourself to Find Yourself</a></em></p>
+  </div>
+</body>
+</html>

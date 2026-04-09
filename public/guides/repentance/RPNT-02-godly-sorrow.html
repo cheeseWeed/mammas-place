@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Godly Sorrow vs. Worldly Sorrow</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">🔄 Repentance</span>
+    <h1>Godly Sorrow vs. Worldly Sorrow</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>Hook</h2>
+    <p>There is a kind of sorrow over sin that actually makes things worse. It turns inward, feeds on itself, produces shame rather than change — and shame, unlike guilt, does not move you toward God. It moves you away from him. It says: <em>I am the problem. I am irreparable. There is no point.</em></p>
+    <p>Paul makes a sharp distinction in 2 Corinthians 7:10 that cuts directly through this confusion: "For godly sorrow worketh repentance to salvation not to be repented of: but the sorrow of the world worketh death." Two kinds of sorrow. One leads somewhere. One leads nowhere — or worse, somewhere dark.</p>
+    <p>Understanding which one you are feeling — and how to move from worldly sorrow to godly sorrow — is one of the more practical skills in the spiritual life.</p>
+    <hr>
+    <h2>Deepen</h2>
+    <h3>2 Corinthians 7:10 — The Diagnostic</h3>
+    <p>Paul is writing to a congregation that has had conflict. He had sent them a hard letter, and it produced sorrow. Now he is distinguishing whether that sorrow was the right kind. He says he does not regret the letter, even though it caused pain, "for I perceive that the same epistle hath made you sorry, though it were but for a season. Now I rejoice, not that ye were made sorry, but that ye sorrowed to repentance" (vv. 8–9).</p>
+    <p>The goal was never the sorrow. The goal was the repentance. The sorrow was the mechanism — but only if it was the right kind.</p>
+    <p>Godly sorrow:</p>
+    <ul><li>Is oriented outward toward God and others harmed</li><li>Asks "what must I do?" rather than "what does this mean about me?"</li><li>Produces action — repentance, restitution, change</li><li>Has a quality of urgency without despair</li><li>Ends somewhere: in the arms of a Savior</li></ul>
+    <p>Worldly sorrow:</p>
+    <ul><li>Is oriented inward toward the self</li><li>Produces self-condemnation, not repair</li><li>Asks "how terrible am I?" rather than "how do I change?"</li><li>Feeds on itself and spirals</li><li>Does not lead to the Savior — it substitutes self-punishment for his Atonement</li></ul>
+    <p>The critical difference: godly sorrow does not confuse you with your sin. Worldly sorrow does. Shame says <em>I am broken</em>. Godly sorrow says <em>I have done something that is not who I want to be, and I know the One who can help me become that person</em>.</p>
+    <h3>Alma 36 — Pain and Peace in Sequence</h3>
+    <p>Alma's account of his own conversion (Alma 36:6–21) is the most vivid first-person description of this process in scripture. He uses the language of extremity: "I was racked with eternal torment... I was harrowed up by the memory of my many sins... the thought of coming into the presence of my God did rack my soul with inexpressible horror" (vv. 12–14).</p>
+    <p>This is worldly sorrow at its furthest extreme — the brink of despair. Alma uses one word for it: "exquisite." The pain was exquisite.</p>
+    <p>Then the turn. "As my mind caught hold upon this thought" — his father's teaching about Jesus Christ — "I cried within my heart: O Jesus, thou Son of God, have mercy on me" (v. 18). The moment he cried out to Christ, something broke open.</p>
+    <p>"And now, behold, when I thought this, I could remember my pains no more; yea, I was harrowed up by the memory of my sins no more. And oh, what joy, and what marvelous light I did behold" (v. 19–20).</p>
+    <p>And then: "Yea, methought I saw, even as our father Lehi saw, God sitting upon his throne... and my soul did long to be there" (v. 22). The torment did not just stop — it reversed. The horror of God's presence became a longing for it. That is the transformation godly sorrow makes possible. Not the sorrow itself — but what it opens up when it turns toward Christ rather than inward on the self.</p>
+    <p>Note that Alma describes the joy as "exquisite" — the same word he used for the pain (v. 21). The capacity for one was the capacity for the other. The depth of the wound was the depth of the healing.</p>
+    <h3>The Trap of Shame</h3>
+    <p>Shame is different from guilt in a way that matters enormously. Guilt says: <em>I did something wrong.</em> Shame says: <em>I am wrong.</em> Guilt is about an action that can be repented of and corrected. Shame is about identity — and you cannot repent your way out of an identity. This is why shame is so spiritually destructive. It forecloses the path.</p>
+    <p>Godly sorrow keeps the person separate from the sin. It says: this is not who you are; this is not who God sees; this is not who you can become. Worldly sorrow collapses that distinction. The result is that the person stops trying — not from pride, but from despair.</p>
+    <p>The Atonement does not work on shame the way it works on guilt. Shame requires a different kind of encounter: the experience of being known fully and loved anyway. This is why so many scriptural accounts of conversion involve not just forgiveness but a direct sense of being seen and not condemned. Alma was not just forgiven — he was filled with light. The son in Luke 15 was not just received — his father ran to him, and the robe and ring came before the confession was finished.</p>
+    <hr>
+    <h2>Cross-References</h2>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/2-cor/7?id=p8-p11#p8" target="_blank">2 Corinthians 7:8–11</a></p>
+    <p>Paul's full discussion of godly versus worldly sorrow. Verse 11 lists what godly sorrow produces: "carefulness, clearing of yourselves, indignation, fear, vehement desire, zeal, revenge" (revenge here meaning a desire to right the wrong, not retaliation). The list is striking — godly sorrow is <em>energetic</em>.</p>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/36?id=p6-p23#p6" target="_blank">Alma 36:6–23</a></p>
+    <p>Alma's first-person account — the most detailed narrative of the sorrow-to-joy transition in scripture. Read it as a case study in what godly sorrow, turned toward Christ, actually produces.</p>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/4?id=p1-p3#p1" target="_blank">Mosiah 4:1–3</a></p>
+    <p>King Benjamin's people fall to the earth "for the fear of the Lord had come upon them... viewing themselves in their own carnal state" — a description of godly sorrow at scale. The immediate consequence is not despair but a cry for mercy, and the immediate answer is peace.</p>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/ot/ps/51" target="_blank">Psalm 51</a></p>
+    <p>David's great penitential psalm — attributed to his repentance after Bathsheba. "The sacrifices of God are a broken and a contrite heart" (v. 17). Notice that what David offers is not perfect performance but brokenness — and God receives it.</p>
+    <p><strong>Cross-reference:</strong> ATNMT-06, section "Alma's account of his own conversion" (Alma 36:6–23) — covers the same passage from the angle of how the Atonement provides relief. This RPNT-02 file approaches Alma 36 from the angle of sorrow itself — what kind it was, and how it turned.</p>
+    <hr>
+    <h2>Conference References</h2>
+    <p><strong>Elder David A. Bednar</strong> — "Bear Up Their Burdens with Ease" (General Conference, April 2014):</p>
+    <p>Bednar has distinguished between the Spirit's invitation to repent (which produces hope and energy) and the adversary's counterfeit (which produces shame and hopelessness). The Spirit never makes you feel beyond help. If the sorrow you feel is making you want to run <em>from</em> God rather than to him, it is worth asking which voice you are actually hearing.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2014/04/bear-up-their-burdens-with-ease" target="_blank">Bear Up Their Burdens with Ease — Elder David A. Bednar, April 2014</a></p>
+    <p><strong>Elder Jeffrey R. Holland</strong> — "The Laborers in the Vineyard" (General Conference, April 2012):</p>
+    <p>Holland addressed the paralysis of past mistakes with characteristic force — arguing that God does not want us to keep dragging yesterday's failures into today. The work is to accept what has already been paid for, not to keep paying it again ourselves.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2012/04/the-laborers-in-the-vineyard" target="_blank">The Laborers in the Vineyard — Elder Jeffrey R. Holland, April 2012</a></p>
+    <p><strong>President Dieter F. Uchtdorf</strong> — "Forget Me Not" (General Relief Society Meeting, October 2011):</p>
+    <p>Uchtdorf addressed the particular trap of self-criticism that looks like humility but is actually spiritual paralysis. He argued that comparing ourselves to an impossible standard and feeling endless shame is not the same as repentance — and that God's love does not diminish while we are in the process of change.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2011/10/forget-me-not" target="_blank">Forget Me Not — President Dieter F. Uchtdorf, October 2011</a></p>
+    <p><strong>Elder Dale G. Renlund</strong> — "Repentance: A Joyful Choice" (General Conference, October 2016):</p>
+    <p>Renlund drew on the Book of Mormon's framing of repentance as a gift — not a punishment. He addressed the tendency to treat repentance as something shameful rather than liberating, noting that the very fact God offers it is evidence of his confidence in us.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2016/10/repentance-a-joyful-choice" target="_blank">Repentance: A Joyful Choice — Elder Dale G. Renlund, October 2016</a></p>
+    <hr>
+    <h2>Closing Question</h2>
+    <p>When you have been aware of sin or failure in your life, which kind of sorrow is your more natural response — godly sorrow that moves toward Christ, or worldly sorrow that turns inward? And if it tends to be the latter: what would it take for you to cry out, as Alma did, in the middle of the pain rather than waiting until you have processed it alone?</p>
+  </div>
+</body>
+</html>

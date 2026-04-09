@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Seed of Faith</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">🕊️ Faith</span>
+    <h1>The Seed of Faith</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <blockquote>
+    <p>"We will compare the word unto a seed. Now, if ye give place, that a seed may be planted in your heart, behold, if it be a true seed, or a good seed, if ye do not cast it out by your unbelief, that ye will resist the Spirit of the Lord, behold, it will begin to swell within your breasts."</p>
+    <p>— Alma 32:28</p>
+    </blockquote>
+    <p>Alma 32 is one of the most sustained doctrinal treatments of faith anywhere in scripture. It is not a list of commandments. It is an experiment — a carefully described scientific and spiritual method for finding out whether something is true. You plant. You observe. You nourish. And the experiment, run faithfully, produces a living tree.</p>
+    <p>This file works through the whole chapter with care.</p>
+    <hr>
+    <h2>The Setup: Who Alma Is Talking To</h2>
+    <h3>The Zoramite poor and their problem</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/31?id=p12-p18#p12" target="_blank">Alma 31:12–18</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/32?id=p1-p6#p1" target="_blank">Alma 32:1–6</a></p>
+    <p><strong>What to look for:</strong> The Zoramites had built a single tower (the Rameumptom) where each person stood once a week and recited a prayer that was proud, repetitive, and empty. The poor had been cast out of the synagogue because they had nothing to wear. They came to Alma compelled by their poverty. Alma says (32:6) they are "in a preparation to hear the word" — suffering had stripped away the pride that keeps people from experimenting.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Alma says being "compelled to be humble" is less blessed than choosing humility, but it is still blessed (v. 14–15). What does that say about the way suffering can function spiritually even when we didn't choose it?</li><li>The rich Zoramites had religious routines but no real faith. The poor had been excluded but were ready to receive. What does that contrast say about the relationship between comfort and spiritual receptivity?</li><li>Have you ever been "compelled to be humble" by circumstances? Looking back, what did that circumstance prepare you to receive?</li></ul>
+    <hr>
+    <h2>The Experiment Described</h2>
+    <h3>The problem with not knowing — and the invitation to try</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/32?id=p17-p23#p17" target="_blank">Alma 32:17–23</a></p>
+    <p><strong>What to look for:</strong> Alma addresses a group who want a sign before they will believe (v. 17). He pushes back: a sign doesn't produce faith, it bypasses it. Then he makes the offer that drives the whole chapter: if you cannot believe, can you at least desire to believe? (v. 27). That desire — not certainty, not full belief, just the desire — is enough to begin the experiment.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Alma offers a minimum threshold: "even if ye can no more than desire to believe." That is a very low starting point. Does knowing that low a threshold is acceptable change anything about how you approach your own doubt?</li><li>He says a sign does not produce faith. Why not? If God appeared to you right now and proved himself visually, would that produce lasting faith? What might it produce instead?</li><li>Verse 23 says God imparts the word "according to the heed and diligence which they give unto him." The word comes in proportion to how we receive it. How does that change the way you approach scripture study, prayer, or church attendance?</li></ul>
+    <hr>
+    <h3>The seed planted — Alma 32:26–30</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/32?id=p26-p30#p26" target="_blank">Alma 32:26–30</a></p>
+    <p><strong>What to look for:</strong> These are the core verses of the experiment. Alma asks you to "give place" for the seed — not force it, not clutch it, just create space. Then he gives four observable signs of a good seed: it swells, it sprouts, it enlightens the understanding, it begins to be delicious (v. 28). Verse 29 makes an important turn: this feeling is <em>real</em> — it is not nothing. But Alma will not yet call it knowledge.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"Behold, is not this real?" (v. 35 — worth reading ahead). Alma asks this question seriously, as if the answer is not obvious. Why might someone doubt that an interior feeling of swelling and enlightenment is "real"? What would make it feel less real to you?</li><li>The seed "enlighteneth your understanding." How does learning something true feel different from just memorizing information? Have you experienced that distinction?</li><li>Verse 28 says this is how you know the seed is good — not by being told, but by observing what happens when you plant it. What does it say that Alma trusts the <em>experiment</em> to do the persuading rather than just asserting "it's true, trust me"?</li></ul>
+    <hr>
+    <h3>What makes a seed "good" — the right question</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/32?id=p28,p33-p35#p28" target="_blank">Alma 32:28, 33–35</a></p>
+    <p><strong>What to look for:</strong> Alma's test for whether a seed is good is not external authority but internal effect: does it swell? Does it sprout? Does it enlighten? Verse 33 adds an important warning: the fact that the seed sprouted does not mean you have perfect knowledge. It means the seed is good. Verse 35 is where Alma asks directly — "Is not this real?" — and then says: this is faith.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Alma's test is experiential: a good seed produces good growth. A corrupt seed does not grow or, if it grows, brings bitterness. What happens to this framework if the seed appears to grow for a while and then dies? Does that mean the seed was bad?</li><li>"Your knowledge is perfect in that thing" (v. 34) — Alma says knowledge can be "perfect" about specific, limited things (the seed is good, the feeling is real) before it is perfect about everything. How does that idea help you hold the things you do know while still living with uncertainty?</li><li>Is Alma's epistemology (his method of knowing) compatible with modern skeptical frameworks? Where do they agree, and where do they diverge?</li></ul>
+    <hr>
+    <h2>The Nourishing — What Happens After</h2>
+    <h3>From sprout to tree — Alma 32:37–43</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/32?id=p37-p43#p37" target="_blank">Alma 32:37–43</a></p>
+    <p><strong>What to look for:</strong> Alma shifts from the experiment to the ongoing responsibility of the experimenter. The seed must be nourished — with faith, diligence, and patience (v. 41). A neglected tree does not just stop growing: it withers (v. 38–39). And Alma ends on a surprising note: when the tree is grown and bears fruit, the fruit is eternal life (v. 43). The seed was always going to become this.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Verses 38–39 describe the person who plants the seed but does not nourish it — and does not blame themselves but blames the seed. How does Alma answer that? Have you ever felt that "the gospel didn't work" when the real problem might have been neglect of nourishment?</li><li>"Nourish it with great care, that it may take root" — what does nourishment look like in practical terms? What specific practices nourish faith for you?</li><li>The fruit is eternal life. That is not a small payoff. How does knowing where the experiment leads change how seriously you take the early stages of planting and nourishing?</li></ul>
+    <hr>
+    <h2>How the Chapter Connects Forward</h2>
+    <h3>Amulek's companion sermon on faith in Christ specifically</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/34?id=p15-p17#p15" target="_blank">Alma 34:15–17</a></p>
+    <p><strong>What to look for:</strong> Amulek is Alma's companion and follows him immediately. He grounds Alma's general "experiment on the word" in the specific Atonement of Jesus Christ. The word you are planting, he argues, is faith <em>in Christ.</em> Verse 17 ends with a direct command: "exercise your faith unto repentance." Faith is not abstract — it has a specific object and a specific action.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Amulek says the word you experiment on is faith in Christ — not just faith in general. Does it matter what the object of faith is? Can you have the same kind of faith in something false?</li><li>"Exercise your faith unto repentance" — the word "exercise" suggests effort, practice, repetition. How do you exercise faith the way you exercise a muscle?</li><li>Alma 32 gives the process; Alma 34 gives the object. Together, what do they say about how to develop a working, growing, fruit-bearing faith?</li></ul>
+    <hr>
+    <h3>Elder Bednar on nourishing faith through daily habits</h3>
+    <p><strong>Read:</strong> Seek Learning by Faith — David A. Bednar, BYU-Idaho Devotional 2006.</p>
+    <p><em>Search https://www.byui.edu/speeches for "Bednar Seek Learning by Faith" to locate the transcript.</em></p>
+    <p><strong>What to look for:</strong> Bednar develops the principle that spiritual learning — the kind Alma describes — happens through consistent, small acts of obedience and study, not through dramatic encounters. He uses the image of compound interest: small deposits over time yield extraordinary growth. Neglect has the same compound effect in the opposite direction.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Bednar's argument is that daily faithfulness — not grand spiritual experiences — is how the tree grows. Does that feel reassuring or frustrating? Why?</li><li>He challenges his audience to evaluate spiritual progress not by the intensity of peak experiences but by consistency of obedience, diligence, and patience — the qualities Alma names in 32:41. How would that metric change how you evaluate your spiritual life?</li><li>What one daily practice could you begin or renew that would function as nourishment for the seed you have already planted?</li></ul>
+    <hr>
+    <h3>Elder Holland on the tree that bears fruit</h3>
+    <p><strong>Read:</strong> <a href="https://speeches.byu.edu/talks/jeffrey-r-holland/cast-not-away-therefore-your-confidence/" target="_blank">Cast Not Away Therefore Your Confidence — Jeffrey R. Holland, BYU Devotional 1999</a></p>
+    <p><strong>What to look for:</strong> Holland draws on Hebrews 10:35–36 and applies it to the long arc of growing faith: "cast not away therefore your confidence, which hath great recompense of reward." He warns: "Don't forget how you once felt. Don't distrust the experience you had." Opposition and doubt often intensify just after spiritual breakthrough — his counsel is to hold to the earlier confirmation when fear arrives.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Holland says, in effect, that people surrender precisely when victory approaches — they forget what they once felt and give up at the moment the fruit was about to come. Have you ever come close to abandoning something and then discovered that staying was the turning point?</li><li>He connects Hebrews 10:36 — "ye have need of patience" — to Alma's word "patience" in Alma 32:41–43. Both texts say the fruit takes time. How do you nourish patience itself as you wait?</li><li>What would it look like to be, right now, faithfully present in the waiting — not sprinting, not quitting, just nourishing?</li></ul>
+    <hr>
+    <h2>Closing Question for Reflection</h2>
+    <p>Alma's experiment is still open. It is not a historical event — it is an ongoing invitation.</p>
+    <p><strong>Sit with this question:</strong></p>
+    <p>Where in your spiritual life is there a seed that has been planted but is not currently being nourished? What specific act of nourishment — one small, consistent thing — could you begin this week that would give it space to grow?</p>
+    <hr>
+    <p><em>Previous: <a href="FATH-02-faith-as-action.md" target="_blank">FATH-02 — Faith as Action</a></em></p>
+    <p><em>Next: <a href="FATH-04-faith-in-the-dark.md" target="_blank">FATH-04 — Faith in the Dark</a></em></p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Living by Your Blessing</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">📜 Patriarchal Blessings</span>
+    <h1>Living by Your Blessing</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>Hook</h2>
+    <p>Here is the hardest question in all five files: what do you do with a blessing that hasn't come true yet?</p>
+    <p>Or the reverse — what do you do with a promise that has already been fulfilled, quietly, in a way you almost missed?</p>
+    <p>This file is about making your blessing active — not waiting for it to happen to you, but living in a way that creates the conditions for it to be fulfilled.</p>
+    <hr>
+    <h2>Fulfilled Promises — Learning to See Them</h2>
+    <h3>Gratitude as spiritual sight</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/59?id=p21#p21" target="_blank">D&C 59:21</a></p>
+    <p><strong>What to look for:</strong> "In nothing doth man offend God, or against none is his wrath kindled, save those who confess not his hand in all things." To not see God's hand is described here as an offense — which means that seeing it is a spiritual obligation, not just a nice habit.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Look back through your blessing. Has anything in it already happened — a gift recognized, a promise begun, a warning you heeded? What did you do when you noticed?</li><li>The scripture says "in all things." Not just in obvious spiritual moments, but in ordinary ones. How do you practice seeing God's hand in your daily life?</li><li>What is the relationship between gratitude for what has already been fulfilled and faith in what hasn't come yet?</li></ul>
+    <hr>
+    <h3>Noticing partial fulfillment</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/10?id=p17#p17" target="_blank">2 Nephi 10:17</a>; <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/12?id=p6#p6" target="_blank">Ether 12:6</a></p>
+    <p><strong>What to look for:</strong> Ether 12:6 — "ye receive no witness until after the trial of your faith." Fulfillment comes after the trial, not before it. And 2 Nephi 10:17 reminds us that God is merciful in all his works — including his timing.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Moroni says the witness comes <em>after</em> the trial. What has your blessing asked you to have faith in that hasn't yet been confirmed? What trial might precede that confirmation?</li><li>What does "partial fulfillment" look like — a promise beginning rather than complete? Have you noticed that in your own life?</li><li>Is there a promise in your blessing you've nearly given up on? What would it take to hold it open instead of closing it?</li></ul>
+    <hr>
+    <h2>Unfulfilled Promises — How to Hold Them</h2>
+    <h3>The patriarchs who died in faith</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/heb/11?id=p13-p16#p13" target="_blank">Hebrews 11:13–16</a></p>
+    <p><strong>What to look for:</strong> These patriarchs — Abraham, Isaac, Jacob — "died in faith, not having received the promises." They saw them "afar off." And the writer doesn't call that a failure — he calls it faith. Holding an unfulfilled promise and not letting go of it is the definition of faithfulness in this chapter.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The text says they "embraced" the promises they hadn't received. What does it look like to embrace a promise that hasn't come — to live as if it will, not as if it won't?</li><li>Verse 16 says God prepared a city for them — because they were "seeking a country." Their seeking was the condition of the city being prepared. What are you seeking right now?</li><li>Some promises in your blessing may not be fulfilled in this life. True to the Faith says this directly. How does knowing that change the stakes? Does it feel like a comfort or a grief?</li></ul>
+    <hr>
+    <h3>When a promise feels out of reach</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/12?id=p27#p27" target="_blank">Ether 12:27</a></p>
+    <p><strong>What to look for:</strong> "If men come unto me I will show unto them their weakness." God gives weakness so that we will be humble and rely on him — and then the weakness becomes a strength. A promise that feels out of reach may involve a weakness God is still developing in you.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Is there a gift or quality your blessing names that doesn't feel like you yet? Could it be in the process of development rather than already present?</li><li>Moroni describes making weakness into strength as a God-directed process. What does it ask of us in the meantime — what is our role in that process?</li><li>What would it mean to believe that the distance between who you are now and who your blessing describes is not a gap to despair over, but a journey God has already planned?</li></ul>
+    <hr>
+    <h2>Using Your Blessing as a Decision Guide</h2>
+    <h3>The blessing as directional compass</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/8?id=p2-p3#p2" target="_blank">D&C 8:2–3</a></p>
+    <p><strong>What to look for:</strong> God says revelation comes to the mind <em>and</em> to the heart. The blessing was given through both — the patriarch's mind prompted by the Spirit, the words received by both. When you consult your blessing in decisions, you are accessing that same channel.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Is there a decision you are facing right now — education, mission, relationships, vocation? Go to your blessing. What does it say about who you are that is relevant to that decision?</li><li>Your blessing may not name your career or your spouse — but it names your gifts and your character. How do gifts and character guide decisions even when specifics are not given?</li><li>Elder Scott (see PTBL-04) said to write down spiritual impressions and return to them. Have you ever done that with insights from your blessing? What might you note today?</li></ul>
+    <hr>
+    <h3>Living up to who your blessing says you are</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/5?id=p2-p5#p2" target="_blank">Mosiah 5:2–5</a></p>
+    <p><strong>What to look for:</strong> King Benjamin's people receive a spiritual experience and say they have no more disposition to do evil — they have a new identity. They are told they will be "called the children of Christ." The blessing on them is both a declaration of who they are <em>and</em> an invitation to live that way.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Your blessing declares who you are in God's eyes. What would change about your daily life if you fully believed that declaration — if you acted like the person your blessing describes?</li><li>Benjamin's people had a specific moment when their identity changed. Do you have a moment like that connected to your blessing? Or is it a gradual process for you?</li><li>Mosiah 5:5 says they are "willing to enter into a covenant." The blessing works inside a covenant relationship. What covenants are you in that the blessing is meant to support?</li></ul>
+    <hr>
+    <h2>Closing Question — for the Whole Series</h2>
+    <p>You have now spent five files with this topic. You have considered what a patriarchal blessing is, where it comes from, how to prepare to receive it, how to study it, and how to live by it.</p>
+    <p><strong>Ponder or write:</strong></p>
+    <p>Read your entire blessing aloud — slowly, as if for the first time. When you finish, write down:</p>
+    <ol><li>One promise you will actively work toward this month.</li><li>One gift you will begin to develop consciously.</li><li>One thing you are grateful God said to you — something that surprised you, comforted you, or called you higher.</li></ol>
+    <p>Then put that paper somewhere you will see it.</p>
+  </div>
+</body>
+</html>

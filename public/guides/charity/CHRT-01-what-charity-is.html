@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Charity Is</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">❤️ Charity</span>
+    <h1>What Charity Is</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <h2>Hook</h2>
+    <p>Most people hear the word "charity" and think of dropping change in a bucket or being patient when someone annoys you. That version of charity is achievable on a good day, by a reasonably decent person, without God's help.</p>
+    <p>But the scriptures describe something completely different — something you cannot manufacture, cannot sustain by willpower, and cannot fake for long. They describe a love so specific, so thorough, and so resilient that its only true source is Jesus Christ himself. The question is not "Am I a loving person?" The question is: "Have I sought this gift?"</p>
+    <hr>
+    <h2>Deepen</h2>
+    <h3>Moroni 7:45-48 — The Definition and the Command</h3>
+    <p>Mormon's discourse on charity, preserved by Moroni, is the most concentrated scriptural treatment of what charity is and how to get it.</p>
+    <blockquote>
+    <p>"And charity suffereth long, and is kind, and envieth not, and is not puffed up, seeketh not her own, is not easily provoked, thinketh no evil, and rejoiceth not in iniquity but rejoiceth in the truth, beareth all things, believeth all things, hopeth all things, endureth all things. Wherefore, my beloved brethren, if ye have not charity, ye are nothing. For charity never faileth. Wherefore, cleave unto charity, which is the greatest of all, for all things must fail — but charity is the pure love of Christ, and it endureth forever; and whoso is found possessed of it at the last day, it shall be well with him."</p>
+    <p>— Moroni 7:45-47</p>
+    </blockquote>
+    <p>Notice the structural surprise in verse 47: after this entire list of what charity does, Mormon defines it not as a behavior but as a love — "the pure love of Christ." The behaviors in verses 45-46 are the outworkings of something prior. That prior thing is a divine quality of love rooted in who Christ is.</p>
+    <p>Then verse 48:</p>
+    <blockquote>
+    <p>"Wherefore, my beloved brethren, pray unto the Father with all the energy of heart, that ye may be filled with this love, which he hath bestowed upon all who are true followers of his Son, Jesus Christ."</p>
+    <p>— Moroni 7:48</p>
+    </blockquote>
+    <p>The command is not "try harder to be loving." The command is to <strong>pray with all the energy of heart</strong> to be <strong>filled</strong> with it. Charity is a gift, received, not a discipline, achieved.</p>
+    <hr>
+    <h3>1 Corinthians 13 — Paul's Parallel Witness</h3>
+    <p>Paul's letter to the Corinthians contains an almost word-for-word parallel to Moroni 7, written centuries earlier. This is not coincidence — it is the Spirit bearing consistent witness through two different prophets to the same truth.</p>
+    <blockquote>
+    <p>"Though I speak with the tongues of men and of angels, and have not charity, I am become as sounding brass, or a tinkling cymbal. And though I have the gift of prophecy, and understand all mysteries, and all knowledge; and though I have all faith, so that I could remove mountains, and have not charity, I am nothing."</p>
+    <p>— 1 Corinthians 13:1-2</p>
+    </blockquote>
+    <p>Paul's point is stark: spiritual gifts without charity are noise. You can prophesy, speak in tongues, and exercise mountain-moving faith and still be nothing in the Lord's accounting if charity is absent.</p>
+    <blockquote>
+    <p>"Charity suffereth long, and is kind; charity envieth not; charity vaunteth not itself, is not puffed up, doth not behave itself unseemly, seeketh not her own, is not easily provoked, thinketh no evil; rejoiceth not in iniquity, but rejoiceth in the truth; beareth all things, believeth all things, hopeth all things, endureth all things. Charity never faileth."</p>
+    <p>— 1 Corinthians 13:4-8</p>
+    </blockquote>
+    <blockquote>
+    <p>"And now abideth faith, hope, charity, these three; but the greatest of these is charity."</p>
+    <p>— 1 Corinthians 13:13</p>
+    </blockquote>
+    <p>Charity is the capstone of the three enduring virtues. Faith and hope are directional — they reach toward something. Charity is relational — it expresses itself toward someone.</p>
+    <hr>
+    <h2>What Charity Is NOT</h2>
+    <p>It is worth naming the counterfeits, because confusing charity with lesser things prevents people from seeking the real thing.</p>
+    <p><strong>Charity is not niceness.</strong> Niceness avoids conflict to preserve comfort. Charity sometimes confronts, corrects, and weeps — because it cares about the whole person, not just the moment.</p>
+    <p><strong>Charity is not tolerance.</strong> Tolerance keeps its distance and withholds judgment. Charity moves toward people. Jesus did not merely tolerate lepers — he touched them.</p>
+    <p><strong>Charity is not sentiment.</strong> Sentiment feels warmly about people in the abstract. Charity is particular, embodied, and willing to cost you something.</p>
+    <p><strong>Charity is not earned by effort alone.</strong> This is the most important distinction. You may practice kind behaviors, but that is not the same as being "filled with this love." Moroni's command is to pray for it — which means acknowledging that it is above your natural capacity and that you need it given to you.</p>
+    <hr>
+    <h2>Cross-References</h2>
+    <ul><li><strong>John 15:12</strong> — "This is my commandment, That ye love one another, as I have loved you." The standard of charity is Christ's own love — not our natural affection.</li><li><strong>Romans 5:5</strong> — "The love of God is shed abroad in our hearts by the Holy Ghost which is given unto us." This confirms that divine love comes through the Spirit, not through human striving alone.</li><li><strong>Ether 12:34</strong> — "And now I know that this love which thou hast had for the children of men is charity." Moroni, at the end of his record, recognizes that what God has for us is precisely the thing he has been writing about.</li><li><strong>2 Nephi 31:20</strong> — "Wherefore, ye must press forward with a steadfastness in Christ, having a perfect brightness of hope, and a love of God and of all men." Charity is listed alongside hope as an enduring orientation of the disciple.</li></ul>
+    <hr>
+    <h2>Conference References</h2>
+    <p><strong>Elder Dieter F. Uchtdorf</strong> has taught that God's love is the most powerful force in the universe and that it reaches every soul regardless of worthiness or circumstance. He has emphasized that the Savior's love is unconditional in the sense that it is not withdrawn when we fail — it is the constant from which all repentance and growth become possible.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2009/10/the-love-of-god" target="_blank">Uchtdorf, "The Love of God," General Conference October 2009</a></p>
+    <p><strong>Elder Jeffrey R. Holland</strong> has taught that charity — the pure love of Christ — is what makes the difference between going through the motions of discipleship and actually living it. He has said that this love is not a feeling we wait for but a decision to see people the way Christ sees them.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2007/04/the-tongue-of-angels" target="_blank">Holland, "The Tongue of Angels," General Conference April 2007</a></p>
+    <p><strong>President Thomas S. Monson</strong> frequently cited the teaching that "charity is the pure love of Christ" and connected it directly to acts of service — not as a substitute for the inner quality, but as the natural expression of it. He taught that acts of love, consistently performed, open the heart to receive more of this gift.</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/2010/10/charity-never-faileth" target="_blank">Monson, "Charity Never Faileth," General Conference October 2010</a></p>
+    <p><strong>Elder Marvin J. Ashton</strong> wrote: "Charity is accepting someone's differences, weaknesses, and shortcomings; having patience with someone who has let us down; or resisting the impulse to become offended when someone doesn't handle something the way we might have hoped. Charity is refusing to take advantage of another's weakness and being willing to forgive someone who has hurt us. Charity is expecting the best of each other."</p>
+    <p><a href="https://www.churchofjesuschrist.org/study/general-conference/1992/04/the-tongue-can-be-a-sharp-sword" target="_blank">Ashton, "The Tongue Can Be a Sharp Sword," General Conference April 1992</a></p>
+    <hr>
+    <h2>Closing Question for Reflection</h2>
+    <p>Mormon says to pray "with all the energy of heart" to be filled with charity. What would it look like to pray for charity with that level of intensity — not for a general warm feeling toward people, but specifically asking to be given the pure love of Christ toward one person who is difficult for you to love right now?</p>
+  </div>
+</body>
+</html>

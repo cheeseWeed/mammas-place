@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Faith Is</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">🕊️ Faith</span>
+    <h1>What Faith Is</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <blockquote>
+    <p>"Now faith is the substance of things hoped for, the evidence of things not seen."</p>
+    <p>— Hebrews 11:1</p>
+    </blockquote>
+    <p>That sentence is one of the most compressed theological definitions in all of scripture. Two words in it deserve particular attention: <em>substance</em> and <em>evidence.</em> Both are words of weight, of solidity, of something real. Paul is not saying faith is a wish or a feeling. He is saying it is a foundation — something you can stand on before you can see what you are standing toward.</p>
+    <p>This file explores what faith actually <em>is</em> as a doctrine, and how it differs from both certainty and mere wishful thinking.</p>
+    <hr>
+    <h2>The Classic Definitions</h2>
+    <h3>Paul's foundational statement</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/heb/11?id=p1-p6#p1" target="_blank">Hebrews 11:1–6</a></p>
+    <p><strong>What to look for:</strong> After defining faith in verse 1, Paul immediately moves into a Hall of Faith — Abel, Enoch, Noah, Abraham — none of whom received the promised things in their lifetime (v. 13: "having seen them afar off"). The definition is immediately tested by example. Notice especially verse 6: "without faith it is impossible to please him." Faith is not optional equipment — it is the fundamental posture toward God.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Paul says these heroes "died in faith, not having received the promises." What does it do to your understanding of faith to realize that receiving the promise is not required for faith to be real?</li><li>"Evidence of things not seen" — faith is called <em>evidence.</em> What kind of evidence can exist before you see something? What does your own experience provide as evidence?</li><li>Verse 6 says God "is a rewarder of them that diligently seek him." What does it mean that seeking is rewarded, even before finding?</li></ul>
+    <hr>
+    <h3>Alma's corrective definition</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/32?id=p21#p21" target="_blank">Alma 32:21</a></p>
+    <p><strong>What to look for:</strong> Alma adds a crucial clarification that Paul's definition does not spell out: "faith is not to have a perfect knowledge of things." This is not just a contrast — it is a boundary. Faith occupies a specific space. It begins where knowledge ends (or has not yet arrived). Notice how Alma says faith must coexist with <em>hope</em> — it is not the same as certainty, but it is also not the same as doubt.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Alma says faith is "not a perfect knowledge." Does that mean faith is inferior to knowledge, or that it is doing a different job? What job does faith do that knowledge cannot?</li><li>If you already knew something was true with perfect certainty, would you need faith? What would be lost?</li><li>Where in your own life are you being asked to exercise faith rather than rely on knowledge you already have?</li></ul>
+    <hr>
+    <h3>The Joseph Smith expansion — faith as a principle of power</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/teachings-of-presidents-of-the-church-joseph-smith/chapter-1?lang=eng" target="_blank">Lectures on Faith, Lecture 1</a></p>
+    <p><strong>What to look for:</strong> Joseph Smith (attributed in the Lectures) opens by calling faith "the first principle in revealed religion and the foundation of all righteousness." More striking: he calls faith "the principle of action in all intelligent beings." This is a claim that faith is not merely a religious concept — it is the mechanism by which all meaningful action happens. Even standing up to walk across a room requires that you believe the floor will hold you.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Joseph says all action is grounded in faith. Think of three ordinary things you did today. What did you trust — without certain knowledge — in order to do each of them?</li><li>If faith is "the principle of action," what does it mean when someone says they "don't have enough faith to act"? Is that a faith problem or something else?</li><li>What would it take for faith to become "the foundation of all righteousness" in your daily life rather than just a Sunday concept?</li></ul>
+    <hr>
+    <h2>Faith Is Not Certainty</h2>
+    <h3>The difference between faith and knowledge</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/manual/gospel-topics/faith" target="_blank">Gospel Topics: Faith</a> at churchofjesuschrist.org</p>
+    <p><strong>What to look for:</strong> The entry distinguishes faith from both certainty and intellectual assent. It describes faith as active and forward-moving, not passive. Look for the sentence or phrase connecting faith to action — the idea that faith without action is incomplete.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The entry distinguishes intellectual agreement ("I believe this is probably true") from faith ("I will act as if it is true"). What is the difference between those two postures?</li><li>Have you ever had an experience where acting on faith produced evidence that strengthened the faith further? What did that cycle feel like?</li><li>Is it possible to have faith and doubt at the same time? What does the entry suggest, and what do you think?</li></ul>
+    <hr>
+    <h3>Elder Holland on faith versus certainty</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2013/04/lord-i-believe" target="_blank">Lord, I Believe — Jeffrey R. Holland, April 2013</a></p>
+    <p><strong>What to look for:</strong> Holland opens by speaking to anyone whose faith is "tested, tried, and feels inadequate." He draws from Mark 9:24 — the father who says "Lord, I believe; help thou mine unbelief" — and argues that this man's partial, struggling faith was enough for Christ to work with. Holland's central argument is that God does not require certainty before he acts; he requires whatever faith you have.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Holland says, in effect, that the Lord accepts imperfect, incomplete faith as a real offering. Does that change how you present yourself to God when you feel your faith is weak?</li><li>He distinguishes between doubt that leads you toward God (honest, humble uncertainty) and doubt that leads you away (cynicism, rejection). What makes the difference between those two kinds of doubt?</li><li>Holland asks us not to abandon what we know because of what we don't know. What are the things you <em>do</em> know — the things your faith is built on — even when other things are uncertain?</li></ul>
+    <hr>
+    <h3>Alma on hope and faith working together</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/32?id=p16-p21#p16" target="_blank">Alma 32:16–21</a></p>
+    <p><strong>What to look for:</strong> Alma addresses people who believe because of signs (v. 16–17) and says their faith is dormant — it did no work. Contrast that with verse 21: faith <em>works</em> in those who have not seen. Notice also the cluster of words Alma uses — hope, trust, assurance — all pointing to a posture of forward-leaning confidence that is not yet knowledge.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Alma says the person who believes only because of a sign has a "dormant" faith. Why does receiving a sign bypass the exercise that makes faith grow?</li><li>If faith includes hope, what exactly are you hoping for? Is it just that God exists — or something more specific about his character and intentions toward you?</li><li>Verse 21 says faith is "a real knowledge of things hoped for." Is that phrase contradictory or precise? What kind of knowledge does Alma mean?</li></ul>
+    <hr>
+    <h2>Faith as Assurance Plus Action</h2>
+    <h3>The "substance" of hope — what that means</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/7?id=p40-p43#p40" target="_blank">Moroni 7:40–43</a></p>
+    <p><strong>What to look for:</strong> Moroni draws a close connection between faith, hope, and charity — they are interdependent, not isolated virtues. He says faith must be centered on Christ (v. 42) and that without faith, there is no hope. The sequence matters: faith in Christ produces hope, and hope is not wishful thinking but a confident expectation grounded in who Christ is.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Moroni says hope comes <em>from</em> faith. What is the difference between hope based on faith and optimism based on temperament?</li><li>He says a person cannot have faith in Christ without having hope for eternal life. Does that mean every act of faith is implicitly an act of hope? What are you hoping for when you choose to trust God?</li><li>Verse 43 says we are "unprofitable servants" without faith. What does that word "unprofitable" reveal about what faith makes possible in us?</li></ul>
+    <hr>
+    <h2>Closing Question for Reflection</h2>
+    <p>Hebrews 11:1 calls faith the "substance" of things hoped for. Alma says it is "not a perfect knowledge." Elder Holland says even a trembling, partial faith is enough for God to work with.</p>
+    <p><strong>Sit with this question:</strong></p>
+    <p>What are you hoping for right now — something specific, not abstract — and what does it look like to treat that hope as the "substance" of something real, even before you can see how it resolves?</p>
+    <p>Write it down if you can. Faith is often clarified when it becomes concrete.</p>
+    <hr>
+    <p><em>Next: <a href="FATH-02-faith-as-action.md" target="_blank">FATH-02 — Faith as Action</a></em></p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Faith as Action</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">🕊️ Faith</span>
+    <h1>Faith as Action</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <blockquote>
+    <p>"Even so faith, if it hath not works, is dead, being alone."</p>
+    <p>— James 2:17</p>
+    </blockquote>
+    <p>There is a version of faith that stays entirely inside the head — it believes the right things, affirms the right propositions, and never costs anything. James says that version is not faith. It is a corpse wearing faith's clothes. Real faith moves. It takes a step before the whole path is lit. It acts before the outcome is guaranteed.</p>
+    <p>This file explores faith not as a state of mind but as a principle of action — and the scriptural examples that show what that looks like in practice.</p>
+    <hr>
+    <h2>The Hook: Faith That Does Nothing</h2>
+    <h3>James on dead faith vs. living faith</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/james/2?id=p14-p26#p14" target="_blank">James 2:14–26</a></p>
+    <p><strong>What to look for:</strong> James does not say faith without works is <em>weak.</em> He says it is <em>dead.</em> He uses two examples: a person who tells the hungry "be ye warmed and filled" without giving them anything (v. 16), and Abraham offering Isaac (v. 21). Both examples involve a gap between what someone believes and what they do. Faith, James argues, is verified and completed by action — "faith wrought with his works" (v. 22).</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>James uses a corpse metaphor — "dead." Why does that word land harder than "incomplete" or "insufficient"? What makes inactive faith a kind of death?</li><li>He says Abraham's faith was "made perfect" by his action. Does that mean faith grows through action, or that action is what <em>reveals</em> that faith was real?</li><li>Think of a time you said you trusted God with something but did not act as if you did. What was the gap between belief and behavior? What would closing that gap have looked like?</li></ul>
+    <hr>
+    <h3>The two Nephi moments — knowing vs. not knowing</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/3?id=p7#p7" target="_blank">1 Nephi 3:7</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/4?id=p6#p6" target="_blank">1 Nephi 4:6</a></p>
+    <p><strong>What to look for:</strong> These two verses are often cited together because they represent two different modes of obedience. In 3:7, Nephi declares a principle — God will not command something without making a way. In 4:6, Nephi acts on it in practice: he goes to Laban "not knowing beforehand the things which I should do." He had the principle but not the plan. He walked anyway.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>3:7 is a confidence statement; 4:6 is a description of actual uncertainty in the moment. Why is it important to see both? What does knowing the principle do — and what does it <em>not</em> do — to prepare you for the moment of action?</li><li>"Not knowing beforehand the things which I should do" — have you ever had to move without knowing the next step? What did that feel like, and what did you discover by moving?</li><li>Nephi was not reckless — he was responsive. What is the difference between acting in faith and acting impulsively? What marks Nephi's action as faith rather than presumption?</li></ul>
+    <hr>
+    <h2>The Liahona — Faith as a Mechanism</h2>
+    <h3>How the Liahona worked</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/16?id=p27-p29#p27" target="_blank">1 Nephi 16:27–29</a></p>
+    <p><strong>What to look for:</strong> Verse 28 is the key: the pointers worked "according to the faith and diligence and heed which we did give unto them." This is not a metaphor — it is a stated mechanism. The device that gave directions worked <em>in proportion to</em> the faith of the people using it. When faith was present, direction came. When it was absent, the compass went dark.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The Liahona did not work automatically — it worked proportionally. What does that suggest about how God's guidance generally operates? Is this a fair arrangement, or does it seem demanding?</li><li>Verse 29 says the writings on the Liahona changed and gave them "understanding concerning the ways of the Lord." What does it say that understanding came <em>through</em> the instrument, not before using it?</li><li>Is there a "Liahona" in your life — something that provides guidance but only when you engage it faithfully? What is it, and how consistent is your engagement?</li></ul>
+    <hr>
+    <h3>Alma's comparison of the Liahona to the word of Christ</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/37?id=p38-p47#p38" target="_blank">Alma 37:38–47</a></p>
+    <p><strong>What to look for:</strong> Alma the Younger is passing sacred relics to his son Helaman and uses the Liahona as a teaching object. He makes the comparison explicit in verse 44–45: the scriptures and the words of Christ are a "spiritual Liahona" that works the same way — by small and simple means, pointing toward eternal life. Notice verse 46: he mourns that "because those miracles were worked by small means it did cause them to be slothful." Ease breeds neglect.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Alma says the Liahona's miraculous guidance was taken for granted because it came through "small means." What in your life is a spiritual Liahona you may be neglecting because it seems ordinary?</li><li>"It is as easy to give heed to the word of Christ, which will point to you a straight course to eternal bliss, as it was for our fathers to give heed to this compass" (v. 44). What makes it feel harder than that? Why do we resist the easy thing?</li><li>Alma says neglecting the Liahona caused them to "tarry in the wilderness." What is the cost of neglecting your own means of spiritual direction?</li></ul>
+    <hr>
+    <h2>Acting Before You Can See</h2>
+    <h3>Elder Bednar on acting in faith</h3>
+    <p><strong>Read:</strong> Seek Learning by Faith — David A. Bednar, BYU-Idaho Devotional 2006.</p>
+    <p><em>Search https://www.byui.edu/speeches for "Bednar Seek Learning by Faith" to locate the transcript.</em></p>
+    <p><strong>What to look for:</strong> Bednar draws a contrast between <em>waiting for certainty</em> before acting and <em>acting</em> in a way that invites certainty to come. He argues that the pattern of the gospel is consistently the latter — you act, and then the confirmation follows. He uses the phrase "acting in faith" rather than "having faith" to emphasize that faith is a verb before it is a noun.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Bednar argues that learning by faith requires "mentally and physically doing something." Is there a difference between thinking hard about a principle and actually doing it? What does doing it produce that thinking alone cannot?</li><li>He suggests that spiritual witnesses often come <em>after</em> faithful action, not before. Does that feel backward to you, or does it match your experience?</li><li>He uses the image of driving at night: the headlights only show the next hundred yards, not the whole road — but that is enough to get you home. What would it mean for you to drive by your headlights right now, moving forward on what you can see even without seeing the full destination?</li></ul>
+    <hr>
+    <h3>The brother of Jared — seeing because of action</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/3?id=p1-p6#p1" target="_blank">Ether 3:1–6</a></p>
+    <p><strong>What to look for:</strong> The brother of Jared does the work first — he "molten out of a rock sixteen small stones" (v. 1), carries them to the top of the mountain, and then asks God to touch them. He does not wait to see if God will agree before beginning. Notice verse 4: his prayer reveals a man who has thought carefully about the problem and proposed a specific solution. His faith is not passive trust — it is active problem-solving offered to God.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>He brought sixteen molten stones — specific, prepared, ready. What does that level of preparation say about the quality of his faith? Is thorough preparation an act of faith or an act of doubt?</li><li>Verse 6: "the Lord stretched forth his hand and touched the stones one by one." God responded stone by stone — to specific, prepared effort. What does that suggest about how specific your own faith can be when you bring God a concrete offering?</li><li>The veil was taken from the brother of Jared's eyes because of his faith (v. 6). Faith <em>preceded</em> the vision. Why is that sequence important — and what does it say about what you might discover if you act before you can see?</li></ul>
+    <hr>
+    <h2>Faith in Practice — Small and Simple Things</h2>
+    <h3>Doctrine and Covenants on moving forward</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/58?id=p26-p28#p26" target="_blank">D&C 58:26–28</a></p>
+    <p><strong>What to look for:</strong> The Lord corrects the Saints for waiting to be commanded in all things. Verse 27 calls a person who must be told everything a "slothful and not a wise servant." The Lord says he expects his people to "do many things of their own free will" — to take initiative grounded in their understanding of his purposes. This is not an excuse for going rogue; it is a call for spiritually mature, initiative-taking faith.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The Lord says "men should be anxiously engaged in a good cause." What is the difference between waiting for direction and being anxiously engaged? Have you ever confused patience with passivity?</li><li>Verse 28 promises that the person who does good of their own free will "bringeth to pass much righteousness." What has faith-driven initiative produced in your own life?</li><li>Is there something good you have been waiting for permission to do? What would it look like to act on your best understanding of God's purposes and bring him what you have done?</li></ul>
+    <hr>
+    <h2>Closing Question for Reflection</h2>
+    <p>Nephi walked toward Laban not knowing what he would do. The brother of Jared molten sixteen stones and climbed a mountain before God touched a single one. James said faith that does not act is a corpse.</p>
+    <p><strong>Sit with this question:</strong></p>
+    <p>What is one thing you believe — or want to believe — that you have not yet acted on? What would the first step of acting-in-faith look like, before you have certainty? What is stopping you from taking it today?</p>
+    <hr>
+    <p><em>Previous: <a href="FATH-01-what-faith-is.md" target="_blank">FATH-01 — What Faith Is</a></em></p>
+    <p><em>Next: <a href="FATH-03-the-seed-of-faith.md" target="_blank">FATH-03 — The Seed of Faith</a></em></p>
+  </div>
+</body>
+</html>

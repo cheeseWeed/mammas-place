@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How We Access the Atonement Daily</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 50%, #ede9fe 100%);
+      color: #1e1b4b;
+      line-height: 1.8;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9, #5b21b6);
+      color: white;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 4px 20px rgba(109, 40, 217, 0.3);
+    }
+
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin-bottom: 0.25rem;
+    }
+
+    .header .topic-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #5b21b6;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #ddd6fe;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #6d28d9;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    blockquote {
+      background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+      border-left: 4px solid #7c3aed;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 12px 12px 0;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: #3b0764;
+    }
+
+    blockquote p {
+      margin-bottom: 0.25rem;
+    }
+
+    blockquote p:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: #7c3aed;
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid #ddd6fe;
+      transition: all 0.2s;
+    }
+
+    a:hover {
+      color: #5b21b6;
+      border-bottom-color: #7c3aed;
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    strong {
+      color: #5b21b6;
+      font-weight: 800;
+    }
+
+    em {
+      color: #6d28d9;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #c4b5fd, transparent);
+      margin: 2.5rem 0;
+    }
+
+    .read-box {
+      background: white;
+      border: 2px solid #ddd6fe;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+    }
+
+    .read-box strong {
+      color: #7c3aed;
+    }
+
+    .discuss-box {
+      background: linear-gradient(135deg, #fefce8, #fef9c3);
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+    }
+
+    .discuss-box ul {
+      margin-left: 1rem;
+    }
+
+    .bookmark {
+      background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+      border: 2px solid #6ee7b7;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      margin: 1.5rem 0;
+      text-align: center;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .nav-footer {
+      background: white;
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(109, 40, 217, 0.08);
+      border: 2px solid #ede9fe;
+    }
+
+    .nav-footer a {
+      background: #7c3aed;
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 999px;
+      font-weight: 800;
+      border: none;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav-footer a:hover {
+      background: #5b21b6;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: 800;
+      color: white;
+      opacity: 0.9;
+    }
+
+    @media (max-width: 640px) {
+      .header h1 { font-size: 1.3rem; }
+      .content { padding: 1.5rem 1rem 3rem; }
+      h2 { font-size: 1.2rem; }
+      blockquote { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="topic-badge">✝️ The Atonement</span>
+    <h1>How We Access the Atonement Daily</h1>
+    <a href="/shop?category=study-guides" class="back-link">← Back to Study Guides</a>
+  </div>
+  <div class="content">
+    <hr>
+    <h2>The Atonement Is Not a One-Time Event for Us</h2>
+    <h3>Bednar on the enabling power we neglect</h3>
+    <p><strong>Read:</strong> In the Strength of the Lord — David A. Bednar, BYU-Idaho Devotional, January 2002.</p>
+    <p><em>Search for this talk at https://www.byui.edu/speeches — search "Bednar In the Strength of the Lord" to locate the transcript.</em></p>
+    <p><strong>What to look for:</strong> Bednar argues that most Latter-day Saints understand the cleansing power of the Atonement (forgiveness) but underuse the enabling power (strength to do and become). He says the enabling power is available not just in crisis but every ordinary day, for every ordinary challenge.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Bednar distinguishes the "cleansing power" and the "enabling power" of the Atonement. Which one do you access more often? Which do you forget about?</li><li>He says the enabling power is for things like being a patient parent, being honest at work, getting out of bed when you are exhausted. How would your day change if you asked for enabling grace in those ordinary moments?</li><li>He uses the phrase "in the strength of the Lord" — drawn from Mosiah 9–10 where Zeniff's people fight their battles that way. What battle in your current life needs to be fought in the Lord's strength rather than your own?</li></ul>
+    <hr>
+    <h3>Daily access through the Holy Ghost</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/rom/8?id=p1-p17#p1" target="_blank">Romans 8:1–17</a></p>
+    <p><strong>What to look for:</strong> Paul says those "in Christ Jesus" are free from condemnation (v. 1), walk "after the Spirit" (v. 4), and are "led by the Spirit of God" (v. 14). The Spirit is the present-tense delivery of the Atonement — not just the evidence of it, but the means by which it reaches you today.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Verse 1: "no condemnation" for those in Christ Jesus. Is your daily experience one of freedom from condemnation, or do you carry a background noise of guilt? What would it take to live in verse 1?</li><li>Paul says the Spirit himself "beareth witness with our spirit, that we are the children of God" (v. 16). When have you felt that witness? What were the circumstances?</li><li>Verse 13: "if ye through the Spirit do mortify the deeds of the body, ye shall live." The Spirit is not just comforting — it is active, mortifying, killing off what should not continue. How is that a form of grace rather than a burden?</li></ul>
+    <hr>
+    <h3>The sacrament as the weekly access point</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2011/10/the-sacrament-and-the-atonement" target="_blank">The Sacrament and the Atonement — Don R. Clarke, October 2011 General Conference</a></p>
+    <p><strong>What to look for:</strong> Clarke traces how every element of the sacrament — the broken bread, the water, the covenant language of the prayers — directly accesses the Atonement. He says the sacrament is not a memorial only but an active covenant renewal that makes the Atonement efficacious in your life week by week.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Clarke says the sacrament is where we "place ourselves in remembrance" of Christ — it is an act we do, not just a feeling we wait for. How intentional are you in that placement each week?</li><li>The bread represents Christ's body; the water represents his blood. These are physical, sensory, embodied reminders. Why does God give us physical elements rather than just asking us to think about it?</li><li>What would have to change about how you prepare for and participate in the sacrament for it to become a genuine weekly access point to the Atonement?</li></ul>
+    <hr>
+    <h2>Prayer as Daily Atonement Access</h2>
+    <h3>Coming boldly to the throne of grace</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/heb/4?id=p14-p16#p14" target="_blank">Hebrews 4:14–16</a></p>
+    <p><strong>What to look for:</strong> The author argues that because Christ was "in all points tempted like as we are," we can "come boldly unto the throne of grace, that we may obtain mercy, and find grace to help in time of need." The word "boldly" is doing a lot of work — not hesitantly, not apologetically, but boldly.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"Come boldly" — why is boldness an appropriate posture before God? What does Christ's empathy (being tempted in all points) make possible that would otherwise be presumptuous?</li><li>Verse 16 promises "grace to help in time of need." This is the enabling power — help at the moment you need it. What does "in time of need" mean — do you think it covers ordinary difficulty or only crisis?</li><li>Do you actually pray boldly? What would bold prayer look like for you this week?</li></ul>
+    <hr>
+    <h3>John 17 — Christ's ongoing intercession</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/john/17?id=p20-p26#p20" target="_blank">John 17:20–26</a></p>
+    <p><strong>What to look for:</strong> Jesus prays specifically for "them also which shall believe on me through their word" — that is you, by name (not literally, but in scope). He prays that you will be one with him as he is one with the Father, and that the love the Father has for the Son will be in you.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Jesus prayed for you by category the night before he went to Gethsemane. He entered suffering carrying a prayer for your unity with God. How does that change how you receive what he did?</li><li>Verse 26: "that the love wherewith thou hast loved me may be in them, and I in them." He prays that the Father's love for the Son would live inside you. What would it mean to experience love of that magnitude from the inside?</li><li>He prayed for your oneness with God before you were born. How does that pre-mortal investment in you change how you think about your relationship with God today?</li></ul>
+    <hr>
+    <h2>Ordinances as Atonement Access Points</h2>
+    <h3>Baptism — dying and rising with Christ</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/nt/rom/6?id=p3-p8#p3" target="_blank">Romans 6:3–8</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/dc-testament/dc/20?id=p37#p37" target="_blank">D&C 20:37</a></p>
+    <p><strong>What to look for:</strong> Paul says baptism is a participation in Christ's death and resurrection — we are "buried with him" and "raised with him." D&C 20 gives the conditions for baptism, including "having a broken heart and contrite spirit." The ordinance is not magic — it requires a prepared heart.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Paul says we were "buried with him by baptism into death." What died in your baptism? What rose?</li><li>D&C 20:37 requires a "broken heart and contrite spirit." Why is brokenness a prerequisite for baptismal covenant rather than a sign you are not ready?</li><li>You were baptized — but do you live as someone who has already died and risen? What does "newness of life" (Romans 6:4) look like practically for you today?</li></ul>
+    <hr>
+    <h3>The temple as ongoing access to the Atonement</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2009/04/honorably-hold-a-name-and-standing" target="_blank">Honorably Hold a Name and Standing — David A. Bednar, April 2009 General Conference</a></p>
+    <p><strong>What to look for:</strong> Bednar connects temple covenants to the ongoing enabling power of the Atonement — the endowment is literally an "endowing with power." Attending the temple is not just checking a box but renewing covenants that access Christ's atoning power for daily life.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The endowment is described as receiving power — not just information or ordinances. How do you access that power between temple visits?</li><li>Bednar says covenant-keeping activates the promises attached to the covenants. What covenants do you hold, and what promises are attached to them that you may not be claiming fully?</li><li>How does temple worship change the way you understand what the Atonement purchased for you beyond forgiveness?</li></ul>
+    <hr>
+    <h2>Daily Habits of Access</h2>
+    <h3>Scripture study as Atonement access</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/32?id=p3#p3" target="_blank">2 Nephi 32:3</a> and <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/jacob/2?id=p8#p8" target="_blank">Jacob 2:8</a></p>
+    <p><strong>What to look for:</strong> Nephi says the words of Christ will "tell you all things what ye should do." Jacob says the word of God "healeth the wounded soul." Scripture reading is not only information — it is a healing and guiding act. The voice of Christ reaches you through his words.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Jacob says the word heals the "wounded soul." How has a specific scripture actually healed something in you? What did it heal?</li><li>Nephi says the words of Christ will tell you all things. Is your scripture reading a place where you expect to hear personal direction, or mainly a place where you study doctrine? What would the first approach look like?</li><li>What is one scripture you want to carry with you this week — one verse that connects you to the Atonement in a personal way?</li></ul>
+    <hr>
+    <h3>Service as experiencing the Atonement from inside</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18?id=p8-p10#p8" target="_blank">Mosiah 18:8–10</a></p>
+    <p><strong>What to look for:</strong> Alma's covenant at the Waters of Mormon: to "bear one another's burdens, that they may be light... mourn with those that mourn... comfort those that stand in need of comfort." This is a covenant to do what Christ did in the Atonement — bear, mourn with, comfort. Discipleship is participatory.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>The baptismal covenant is a commitment to do Atonement-like things for other people. How does that connect your daily service to what Christ did in Gethsemane?</li><li>"Bear one another's burdens that they may be light" — bearing does not mean eliminating. You hold the burden with someone, not take it away. How is that different from how you usually try to help?</li><li>In what specific relationship or circumstance this week could you live out this covenant — mourn with someone who is mourning, comfort someone who needs comfort?</li></ul>
+    <hr>
+    <h3>The Atonement and hope for daily endurance</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2013/10/like-a-broken-vessel" target="_blank">Like a Broken Vessel — Jeffrey R. Holland, October 2013 General Conference</a></p>
+    <p><strong>What to look for:</strong> Holland speaks directly about mental illness, depression, and the darkness that can accompany daily life. He connects Christ's cry of desolation ("why hast thou forsaken me") to those who feel that same desolation in their own minds and souls. The Atonement reaches into mental and emotional anguish — not only moral failure.</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>Holland says to those in darkness: hold on, don't give up, help is on the way. The Atonement is the basis for that promise. How do you apply that specifically to the kind of darkness you face?</li><li>He acknowledges that healing is not always immediate — sometimes we "press forward" for a long time. How does the Atonement sustain endurance, not only produce relief?</li><li>He says we are "broken vessels" who can still be made whole. What is broken in you right now — and what would "made whole" actually look like?</li></ul>
+    <hr>
+    <h3>Closing — what the Atonement asks of us today</h3>
+    <p><strong>Read:</strong> <a href="https://www.churchofjesuschrist.org/study/general-conference/2009/04/come-unto-me" target="_blank">Come unto Me — Thomas S. Monson, April 2009 General Conference</a></p>
+    <p><strong>What to look for:</strong> Monson's invitation is simple and repeated throughout scripture: "Come unto me." The entire Atonement is an extended divine invitation. Notice the gentleness of the invitation — no demand, no conditions listed first, just "come."</p>
+    <p><strong>After reading, discuss or ponder:</strong></p>
+    <ul><li>"Come" — present tense, ongoing. The invitation is not "have come" (past, done) or "will come someday" (deferred). What would it look like to come today?</li><li>Monson speaks of people carrying heavy burdens. What burden are you carrying right now that Christ specifically invited you to lay down?</li><li>After studying the Atonement across these eight files, what is the one thing that has changed in how you understand it — and what is one concrete step you want to take today because of that change?</li></ul>
+  </div>
+</body>
+</html>

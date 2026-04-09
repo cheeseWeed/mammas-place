@@ -35,6 +35,7 @@ export default function Header() {
     'sports': { emoji: '🏀', label: 'Sports' },
     'toys-and-games': { emoji: '🎮', label: 'Toys & Games' },
     'audiobooks': { emoji: '🎧', label: 'Audiobooks' },
+    'study-guides': { emoji: '📖', label: 'Study Guides' },
     'services': { emoji: '🛠️', label: 'Services' },
     'restaurant': { emoji: '🍽️', label: 'Restaurant' }
   };
