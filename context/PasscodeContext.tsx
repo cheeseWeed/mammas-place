@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-const PASSCODE = '1234';
+const PASSCODE = '1379';
 const STORAGE_KEY = 'mammas-place-passcode-unlocked';
 
 interface PasscodeContextType {

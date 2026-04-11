@@ -83,7 +83,7 @@ export default function PasscodeGate({ children }: { children: React.ReactNode }
                 onClick={() => handleDigit(d)}
                 className="h-14 rounded-2xl bg-purple-50 hover:bg-purple-100 active:bg-purple-200 text-purple-900 text-xl font-semibold transition-colors"
               >
-                {d}
+                ★
               </button>
             ))}
             <div /> {/* spacer */}
@@ -92,7 +92,7 @@ export default function PasscodeGate({ children }: { children: React.ReactNode }
               onClick={() => handleDigit('0')}
               className="h-14 rounded-2xl bg-purple-50 hover:bg-purple-100 active:bg-purple-200 text-purple-900 text-xl font-semibold transition-colors"
             >
-              0
+              ★
             </button>
             <button
               type="button"
