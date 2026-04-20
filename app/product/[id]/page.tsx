@@ -5,6 +5,7 @@ import { getProductById, getRelatedProducts } from '@/lib/products';
 import { useCart } from '@/context/CartContext';
 import { useToast } from '@/context/ToastContext';
 import { useState, useEffect } from 'react';
+import * as gtag from '@/lib/gtag';
 import Link from 'next/link';
 import ProductCard from '@/components/ProductCard';
 import SkeletonProductDetail from '@/components/SkeletonProductDetail';
@@ -22,6 +23,12 @@ export default function ProductDetailPage() {
   if (loading) return <SkeletonProductDetail />;
 
   const product = getProductById(params.id as string);
+
+  useEffect(() => {
+    if (product) {
+      gtag.viewItem({ id: product.id, name: product.name, category: product.category, price: product.price });
+    }
+  }, [product]);
 
   if (!product) {
     return (

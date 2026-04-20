@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useCart } from '@/context/CartContext';
 import { applyPromoCode } from '@/lib/cart';
+import * as gtag from '@/lib/gtag';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Confetti from 'react-confetti';
@@ -57,6 +58,16 @@ export default function CheckoutPage() {
       return () => clearTimeout(timer);
     }
   }, [orderPlaced]);
+
+  // Track begin_checkout on mount
+  useEffect(() => {
+    if (cart.items.length > 0) {
+      gtag.beginCheckout(
+        cart.total,
+        cart.items.map((i) => ({ id: i.productId, name: i.product.name, price: i.product.price, quantity: i.quantity }))
+      );
+    }
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   if (cart.items.length === 0 && !orderPlaced) {
     return (
@@ -120,6 +131,7 @@ export default function CheckoutPage() {
       setPromoDiscount(discount);
       setAppliedPromo(promoCode.toUpperCase());
       setPromoError('');
+      gtag.promoCodeApplied(promoCode.toUpperCase());
     } else {
       setPromoError('Invalid promo code. Try MAMMA10, PRINCESS20, UNICORN15, PONY25, or SAVE30');
       setPromoDiscount(0);
@@ -132,6 +144,11 @@ export default function CheckoutPage() {
 
   const handlePlaceOrder = (e: React.FormEvent) => {
     e.preventDefault();
+    gtag.purchase(
+      `ORDER-${Date.now()}`,
+      finalTotal,
+      cart.items.map((i) => ({ id: i.productId, name: i.product.name, price: i.product.price, quantity: i.quantity }))
+    );
     setOrderPlaced(true);
     clearCart();
   };

@@ -3,6 +3,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Cart, Product } from '@/types';
 import * as cartLib from '@/lib/cart';
+import * as gtag from '@/lib/gtag';
 
 interface CartContextType {
   cart: Cart;
@@ -29,6 +30,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const addToCart = (product: Product, quantity = 1) => {
     setCart(cartLib.addToCart(product, quantity));
+    gtag.addToCart({ id: product.id, name: product.name, category: product.category, price: product.price, quantity });
   };
 
   const updateQuantity = (productId: string, quantity: number) => {
@@ -36,7 +38,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   };
 
   const removeFromCart = (productId: string) => {
+    const item = cart.items.find((i) => i.productId === productId);
     setCart(cartLib.removeFromCart(productId));
+    if (item) {
+      gtag.removeFromCart({ id: item.productId, name: item.product.name, price: item.product.price });
+    }
   };
 
   const clearCart = () => {
