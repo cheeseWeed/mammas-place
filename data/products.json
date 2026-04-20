@@ -668,9 +668,9 @@
       "unicorn",
       "party game"
     ],
-    "imageUrl": "/images/Shepherd.svg",
+    "imageUrl": "/images/Shepherd.png",
     "images": [
-      "/images/Shepherd.svg"
+      "/images/Shepherd.png"
     ],
     "inStock": false,
     "stockCount": 25,
@@ -1694,9 +1694,9 @@
       "educational",
       "explorers"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/rh-ep-000.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/rh-ep-000.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -1734,9 +1734,9 @@
       "series",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/rh-ep-001.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/rh-ep-001.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -1775,9 +1775,9 @@
       "series",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/rh-ep-002.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/rh-ep-002.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -1816,9 +1816,9 @@
       "series",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/rh-ep-003.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/rh-ep-003.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -1858,9 +1858,9 @@
       "series",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/rh-ep-004.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/rh-ep-004.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -1899,9 +1899,9 @@
       "series",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/rh-ep-005.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/rh-ep-005.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -1941,9 +1941,9 @@
       "series",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/rh-ep-006.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/rh-ep-006.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -2430,9 +2430,22 @@
     "description": "The Artemis 2 crew has arrived! Episode 2 takes you into lunar orbit as the astronauts see the Moon up close for the first time. Learn about the lunar surface, the far side of the Moon, and what it feels like to be farther from Earth than any human in over 50 years.",
     "shortDescription": "The Artemis 2 crew arrives at the Moon",
     "category": "audiobooks",
-    "tags": ["audiobook", "explorer radio", "space", "artemis", "moon", "nasa", "lunar orbit", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "explorer radio",
+      "space",
+      "artemis",
+      "moon",
+      "nasa",
+      "lunar orbit",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -2459,9 +2472,23 @@
     "description": "It's time to come home! Episode 3 follows the Artemis 2 crew as they leave lunar orbit and begin the journey back to Earth. Experience the fiery reentry, the splashdown, and the celebration of a mission that proved humanity is ready to return to the Moon.",
     "shortDescription": "The Artemis 2 crew returns to Earth",
     "category": "audiobooks",
-    "tags": ["audiobook", "explorer radio", "space", "artemis", "moon", "nasa", "reentry", "splashdown", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "explorer radio",
+      "space",
+      "artemis",
+      "moon",
+      "nasa",
+      "reentry",
+      "splashdown",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -3035,9 +3062,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-atnmt-01.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-atnmt-01.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3073,9 +3100,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-atnmt-02.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-atnmt-02.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3111,9 +3138,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-atnmt-03.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-atnmt-03.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3149,9 +3176,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-atnmt-04.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-atnmt-04.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3187,9 +3214,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-atnmt-05.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-atnmt-05.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3225,9 +3252,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-atnmt-06.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-atnmt-06.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3263,9 +3290,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-atnmt-07.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-atnmt-07.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3301,9 +3328,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-atnmt-08.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-atnmt-08.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3339,9 +3366,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-atnmt-09.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-atnmt-09.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3377,9 +3404,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-atnmt-10.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-atnmt-10.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3415,9 +3442,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-atnmt-11.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-atnmt-11.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3453,9 +3480,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-atnmt-12.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-atnmt-12.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3491,9 +3518,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-atnmt-13.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-atnmt-13.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3529,9 +3556,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-chrt-01.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-chrt-01.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3567,9 +3594,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-chrt-02.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-chrt-02.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3605,9 +3632,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-chrt-03.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-chrt-03.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3643,9 +3670,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-chrt-04.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-chrt-04.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3681,9 +3708,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-estr-01.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-estr-01.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3719,9 +3746,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-estr-02.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-estr-02.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3757,9 +3784,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-estr-03.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-estr-03.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3795,9 +3822,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-estr-04.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-estr-04.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3833,9 +3860,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-estr-05.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-estr-05.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3871,9 +3898,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-fath-01.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-fath-01.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3909,9 +3936,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-fath-02.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-fath-02.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3947,9 +3974,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-fath-03.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-fath-03.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -3985,9 +4012,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-fath-04.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-fath-04.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -4023,9 +4050,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-ptbl-01.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-ptbl-01.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -4061,9 +4088,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-ptbl-02.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-ptbl-02.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -4099,9 +4126,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-ptbl-03.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-ptbl-03.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -4137,9 +4164,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-ptbl-04.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-ptbl-04.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -4175,9 +4202,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-ptbl-05.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-ptbl-05.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -4213,9 +4240,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-rpnt-01.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-rpnt-01.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -4251,9 +4278,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-rpnt-02.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-rpnt-02.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -4289,9 +4316,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-rpnt-03.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-rpnt-03.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -4327,9 +4354,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-rpnt-04.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-rpnt-04.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -4365,9 +4392,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-srvs-01.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-srvs-01.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -4403,9 +4430,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-srvs-02.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-srvs-02.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -4441,9 +4468,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-srvs-03.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-srvs-03.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -4479,9 +4506,9 @@
       "faith",
       "educational"
     ],
-    "imageUrl": "/images/audio-003.png",
+    "imageUrl": "/images/sg-srvs-04.png",
     "images": [
-      "/images/audio-003.svg"
+      "/images/sg-srvs-04.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -4584,9 +4611,9 @@
       "vintage",
       "commercial"
     ],
-    "imageUrl": "/images/classic-car-003.svg",
+    "imageUrl": "/images/classic-car-003.png",
     "images": [
-      "/images/classic-car-003.svg"
+      "/images/classic-car-003.png"
     ],
     "inStock": true,
     "stockCount": 1,
@@ -4617,9 +4644,9 @@
       "exotic",
       "V10"
     ],
-    "imageUrl": "/images/classic-car-004.svg",
+    "imageUrl": "/images/classic-car-004.png",
     "images": [
-      "/images/classic-car-004.svg"
+      "/images/classic-car-004.png"
     ],
     "inStock": true,
     "stockCount": 1,
@@ -4650,9 +4677,9 @@
       "V10",
       "American"
     ],
-    "imageUrl": "/images/classic-car-005.svg",
+    "imageUrl": "/images/classic-car-005.png",
     "images": [
-      "/images/classic-car-005.svg"
+      "/images/classic-car-005.png"
     ],
     "inStock": true,
     "stockCount": 1,
@@ -4683,9 +4710,9 @@
       "off-road",
       "restored"
     ],
-    "imageUrl": "/images/classic-car-006.svg",
+    "imageUrl": "/images/classic-car-006.png",
     "images": [
-      "/images/classic-car-006.svg"
+      "/images/classic-car-006.png"
     ],
     "inStock": true,
     "stockCount": 2,
@@ -4715,9 +4742,9 @@
       "home service",
       "outdoor"
     ],
-    "imageUrl": "/images/service-001.svg",
+    "imageUrl": "/images/service-001.png",
     "images": [
-      "/images/service-001.svg"
+      "/images/service-001.png"
     ],
     "inStock": true,
     "stockCount": 15,
@@ -4747,9 +4774,9 @@
       "maintenance",
       "professional"
     ],
-    "imageUrl": "/images/service-002.svg",
+    "imageUrl": "/images/service-002.png",
     "images": [
-      "/images/service-002.svg"
+      "/images/service-002.png"
     ],
     "inStock": true,
     "stockCount": 12,
@@ -4779,9 +4806,9 @@
       "installation",
       "home service"
     ],
-    "imageUrl": "/images/service-003.svg",
+    "imageUrl": "/images/service-003.png",
     "images": [
-      "/images/service-003.svg"
+      "/images/service-003.png"
     ],
     "inStock": true,
     "stockCount": 18,
@@ -4811,9 +4838,9 @@
       "home improvement",
       "planning"
     ],
-    "imageUrl": "/images/service-004.svg",
+    "imageUrl": "/images/service-004.png",
     "images": [
-      "/images/service-004.svg"
+      "/images/service-004.png"
     ],
     "inStock": true,
     "stockCount": 8,
@@ -4843,9 +4870,9 @@
       "renovation",
       "decoration"
     ],
-    "imageUrl": "/images/service-005.svg",
+    "imageUrl": "/images/service-005.png",
     "images": [
-      "/images/service-005.svg"
+      "/images/service-005.png"
     ],
     "inStock": true,
     "stockCount": 10,
@@ -4875,9 +4902,9 @@
       "photos",
       "session"
     ],
-    "imageUrl": "/images/service-006.svg",
+    "imageUrl": "/images/service-006.png",
     "images": [
-      "/images/service-006.svg"
+      "/images/service-006.png"
     ],
     "inStock": true,
     "stockCount": 12,
@@ -4907,9 +4934,9 @@
       "wellness",
       "health"
     ],
-    "imageUrl": "/images/service-007.svg",
+    "imageUrl": "/images/service-007.png",
     "images": [
-      "/images/service-007.svg"
+      "/images/service-007.png"
     ],
     "inStock": true,
     "stockCount": 20,
@@ -4939,9 +4966,9 @@
       "dentistry",
       "healthcare"
     ],
-    "imageUrl": "/images/service-008.svg",
+    "imageUrl": "/images/service-008.png",
     "images": [
-      "/images/service-008.svg"
+      "/images/service-008.png"
     ],
     "inStock": true,
     "stockCount": 18,
@@ -4971,9 +4998,9 @@
       "salon",
       "personal care"
     ],
-    "imageUrl": "/images/service-009.svg",
+    "imageUrl": "/images/service-009.png",
     "images": [
-      "/images/service-009.svg"
+      "/images/service-009.png"
     ],
     "inStock": true,
     "stockCount": 16,
@@ -5003,9 +5030,9 @@
       "relaxation",
       "spa"
     ],
-    "imageUrl": "/images/service-010.svg",
+    "imageUrl": "/images/service-010.png",
     "images": [
-      "/images/service-010.svg"
+      "/images/service-010.png"
     ],
     "inStock": true,
     "stockCount": 14,
@@ -5036,9 +5063,9 @@
       "yard care",
       "21 inch"
     ],
-    "imageUrl": "https://placehold.co/400x400/84cc16/4d7c0f?text=Gas+Mower",
+    "imageUrl": "/images/lg-001.png",
     "images": [
-      "https://placehold.co/400x400/84cc16/4d7c0f?text=Gas+Mower"
+      "/images/lg-001.png"
     ],
     "inStock": true,
     "stockCount": 12,
@@ -5069,9 +5096,9 @@
       "garden",
       "trimmer"
     ],
-    "imageUrl": "https://placehold.co/400x400/22c55e/15803d?text=String+Trimmer",
+    "imageUrl": "/images/lg-002.png",
     "images": [
-      "https://placehold.co/400x400/22c55e/15803d?text=String+Trimmer"
+      "/images/lg-002.png"
     ],
     "inStock": true,
     "stockCount": 24,
@@ -5102,9 +5129,9 @@
       "garden",
       "flowers"
     ],
-    "imageUrl": "https://placehold.co/400x400/fbbf24/92400e?text=Wildflower+Seeds",
+    "imageUrl": "/images/lg-003.png",
     "images": [
-      "https://placehold.co/400x400/fbbf24/92400e?text=Wildflower+Seeds"
+      "/images/lg-003.png"
     ],
     "inStock": true,
     "stockCount": 68,
@@ -5135,9 +5162,9 @@
       "yard",
       "garden"
     ],
-    "imageUrl": "https://placehold.co/400x400/8b5cf6/5b21b6?text=Fertilizer",
+    "imageUrl": "/images/lg-004.png",
     "images": [
-      "https://placehold.co/400x400/8b5cf6/5b21b6?text=Fertilizer"
+      "/images/lg-004.png"
     ],
     "inStock": true,
     "stockCount": 42,
@@ -5168,9 +5195,9 @@
       "lawn care",
       "tools"
     ],
-    "imageUrl": "https://placehold.co/400x400/06b6d4/0c4a6e?text=Garden+Hose",
+    "imageUrl": "/images/lg-005.png",
     "images": [
-      "https://placehold.co/400x400/06b6d4/0c4a6e?text=Garden+Hose"
+      "/images/lg-005.png"
     ],
     "inStock": true,
     "stockCount": 35,
@@ -5201,9 +5228,9 @@
       "display",
       "wood"
     ],
-    "imageUrl": "https://placehold.co/400x400/f472b6/831843?text=Picture+Frames",
+    "imageUrl": "/images/hd-001.png",
     "images": [
-      "https://placehold.co/400x400/f472b6/831843?text=Picture+Frames"
+      "/images/hd-001.png"
     ],
     "inStock": true,
     "stockCount": 56,
@@ -5234,9 +5261,9 @@
       "home",
       "art"
     ],
-    "imageUrl": "https://placehold.co/400x400/fb923c/7c2d12?text=Canvas+Art",
+    "imageUrl": "/images/hd-002.png",
     "images": [
-      "https://placehold.co/400x400/fb923c/7c2d12?text=Canvas+Art"
+      "/images/hd-002.png"
     ],
     "inStock": true,
     "stockCount": 18,
@@ -5267,9 +5294,9 @@
       "aromatherapy",
       "gifts"
     ],
-    "imageUrl": "https://placehold.co/400x400/fca5a5/7f1d1d?text=Scented+Candles",
+    "imageUrl": "/images/hd-003.png",
     "images": [
-      "https://placehold.co/400x400/fca5a5/7f1d1d?text=Scented+Candles"
+      "/images/hd-003.png"
     ],
     "inStock": true,
     "stockCount": 72,
@@ -5300,9 +5327,9 @@
       "modern",
       "home"
     ],
-    "imageUrl": "https://placehold.co/400x400/fcd34d/854d0e?text=Decorative+Mirror",
+    "imageUrl": "/images/hd-004.png",
     "images": [
-      "https://placehold.co/400x400/fcd34d/854d0e?text=Decorative+Mirror"
+      "/images/hd-004.png"
     ],
     "inStock": true,
     "stockCount": 22,
@@ -5333,9 +5360,9 @@
       "neutral",
       "interior"
     ],
-    "imageUrl": "https://placehold.co/400x400/d4d4d8/3f3f46?text=Area+Rug",
+    "imageUrl": "/images/hd-005.png",
     "images": [
-      "https://placehold.co/400x400/d4d4d8/3f3f46?text=Area+Rug"
+      "/images/hd-005.png"
     ],
     "inStock": true,
     "stockCount": 8,
@@ -5365,9 +5392,9 @@
       "automotive",
       "parts"
     ],
-    "imageUrl": "/images/tire-001.svg",
+    "imageUrl": "/images/tire-001.png",
     "images": [
-      "/images/tire-001.svg"
+      "/images/tire-001.png"
     ],
     "inStock": true,
     "stockCount": 48,
@@ -5397,9 +5424,9 @@
       "automotive",
       "maintenance"
     ],
-    "imageUrl": "/images/oil-001.svg",
+    "imageUrl": "/images/oil-001.png",
     "images": [
-      "/images/oil-001.svg"
+      "/images/oil-001.png"
     ],
     "inStock": true,
     "stockCount": 125,
@@ -5429,9 +5456,9 @@
       "automotive",
       "maintenance"
     ],
-    "imageUrl": "/images/filter-001.svg",
+    "imageUrl": "/images/filter-001.png",
     "images": [
-      "/images/filter-001.svg"
+      "/images/filter-001.png"
     ],
     "inStock": true,
     "stockCount": 87,
@@ -5461,9 +5488,9 @@
       "automotive",
       "electrical"
     ],
-    "imageUrl": "/images/battery-001.svg",
+    "imageUrl": "/images/battery-001.png",
     "images": [
-      "/images/battery-001.svg"
+      "/images/battery-001.png"
     ],
     "inStock": true,
     "stockCount": 32,
@@ -5493,9 +5520,9 @@
       "automotive",
       "maintenance"
     ],
-    "imageUrl": "/images/wiper-001.svg",
+    "imageUrl": "/images/wiper-001.png",
     "images": [
-      "/images/wiper-001.svg"
+      "/images/wiper-001.png"
     ],
     "inStock": true,
     "stockCount": 156,
@@ -5525,9 +5552,9 @@
       "grocery",
       "pantry"
     ],
-    "imageUrl": "/images/pasta-001.svg",
+    "imageUrl": "/images/pasta-001.png",
     "images": [
-      "/images/pasta-001.svg"
+      "/images/pasta-001.png"
     ],
     "inStock": true,
     "stockCount": 234,
@@ -5557,9 +5584,9 @@
       "grocery",
       "pantry"
     ],
-    "imageUrl": "/images/rice-001.svg",
+    "imageUrl": "/images/rice-001.png",
     "images": [
-      "/images/rice-001.svg"
+      "/images/rice-001.png"
     ],
     "inStock": true,
     "stockCount": 178,
@@ -5589,9 +5616,9 @@
       "grocery",
       "pantry"
     ],
-    "imageUrl": "/images/sauce-001.svg",
+    "imageUrl": "/images/sauce-001.png",
     "images": [
-      "/images/sauce-001.svg"
+      "/images/sauce-001.png"
     ],
     "inStock": true,
     "stockCount": 295,
@@ -5621,9 +5648,9 @@
       "grocery",
       "pantry"
     ],
-    "imageUrl": "/images/cereal-001.svg",
+    "imageUrl": "/images/cereal-001.png",
     "images": [
-      "/images/cereal-001.svg"
+      "/images/cereal-001.png"
     ],
     "inStock": true,
     "stockCount": 142,
@@ -5653,9 +5680,9 @@
       "grocery",
       "pantry"
     ],
-    "imageUrl": "/images/nuts-001.svg",
+    "imageUrl": "/images/nuts-001.png",
     "images": [
-      "/images/nuts-001.svg"
+      "/images/nuts-001.png"
     ],
     "inStock": true,
     "stockCount": 187,
@@ -5685,9 +5712,9 @@
       "family size",
       "grocery"
     ],
-    "imageUrl": "/images/chips-001.svg",
+    "imageUrl": "/images/chips-001.png",
     "images": [
-      "/images/chips-001.svg"
+      "/images/chips-001.png"
     ],
     "inStock": true,
     "stockCount": 213,
@@ -5717,9 +5744,9 @@
       "snacks",
       "grocery"
     ],
-    "imageUrl": "/images/cookies-001.svg",
+    "imageUrl": "/images/cookies-001.png",
     "images": [
-      "/images/cookies-001.svg"
+      "/images/cookies-001.png"
     ],
     "inStock": true,
     "stockCount": 167,
@@ -5749,9 +5776,9 @@
       "energy",
       "grocery"
     ],
-    "imageUrl": "/images/trailmix-001.svg",
+    "imageUrl": "/images/trailmix-001.png",
     "images": [
-      "/images/trailmix-001.svg"
+      "/images/trailmix-001.png"
     ],
     "inStock": true,
     "stockCount": 156,
@@ -5781,9 +5808,9 @@
       "pack",
       "grocery"
     ],
-    "imageUrl": "/images/fruitsnacks-001.svg",
+    "imageUrl": "/images/fruitsnacks-001.png",
     "images": [
-      "/images/fruitsnacks-001.svg"
+      "/images/fruitsnacks-001.png"
     ],
     "inStock": true,
     "stockCount": 203,
@@ -5813,9 +5840,9 @@
       "movie",
       "grocery"
     ],
-    "imageUrl": "/images/popcorn-001.svg",
+    "imageUrl": "/images/popcorn-001.png",
     "images": [
-      "/images/popcorn-001.svg"
+      "/images/popcorn-001.png"
     ],
     "inStock": true,
     "stockCount": 243,
@@ -5845,9 +5872,9 @@
       "american",
       "classic"
     ],
-    "imageUrl": "/images/burger.png",
+    "imageUrl": "/images/rest-breakfast-001.png",
     "images": [
-      "/images/burger.png"
+      "/images/rest-breakfast-001.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -5877,9 +5904,9 @@
       "dessert",
       "sweet"
     ],
-    "imageUrl": "/images/rest-breakfast-002.svg",
+    "imageUrl": "/images/rest-breakfast-002.png",
     "images": [
-      "/images/rest-breakfast-002.svg"
+      "/images/rest-breakfast-002.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -5908,9 +5935,9 @@
       "mexican",
       "savory"
     ],
-    "imageUrl": "/images/rest-breakfast-003.svg",
+    "imageUrl": "/images/rest-breakfast-003.png",
     "images": [
-      "/images/rest-breakfast-003.svg"
+      "/images/rest-breakfast-003.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -5940,9 +5967,9 @@
       "sweet",
       "bread"
     ],
-    "imageUrl": "/images/rest-breakfast-004.svg",
+    "imageUrl": "/images/rest-breakfast-004.png",
     "images": [
-      "/images/rest-breakfast-004.svg"
+      "/images/rest-breakfast-004.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -5972,9 +5999,9 @@
       "eggs",
       "healthy"
     ],
-    "imageUrl": "/images/rest-breakfast-005.svg",
+    "imageUrl": "/images/rest-breakfast-005.png",
     "images": [
-      "/images/rest-breakfast-005.svg"
+      "/images/rest-breakfast-005.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6004,9 +6031,9 @@
       "cheese",
       "gourmet"
     ],
-    "imageUrl": "/images/rest-lunch-001.svg",
+    "imageUrl": "/images/rest-lunch-001.png",
     "images": [
-      "/images/rest-lunch-001.svg"
+      "/images/rest-lunch-001.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6036,9 +6063,9 @@
       "street food",
       "authentic"
     ],
-    "imageUrl": "/images/rest-lunch-002.svg",
+    "imageUrl": "/images/rest-lunch-002.png",
     "images": [
-      "/images/rest-lunch-002.svg"
+      "/images/rest-lunch-002.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6069,9 +6096,9 @@
       "seafood",
       "healthy"
     ],
-    "imageUrl": "/images/rest-lunch-003.svg",
+    "imageUrl": "/images/rest-lunch-003.png",
     "images": [
-      "/images/rest-lunch-003.svg"
+      "/images/rest-lunch-003.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6101,9 +6128,9 @@
       "classic",
       "american"
     ],
-    "imageUrl": "/images/rest-lunch-004.svg",
+    "imageUrl": "/images/rest-lunch-004.png",
     "images": [
-      "/images/rest-lunch-004.svg"
+      "/images/rest-lunch-004.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6133,9 +6160,9 @@
       "healthy",
       "vegetarian"
     ],
-    "imageUrl": "/images/rest-lunch-005.svg",
+    "imageUrl": "/images/rest-lunch-005.png",
     "images": [
-      "/images/rest-lunch-005.svg"
+      "/images/rest-lunch-005.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6166,9 +6193,9 @@
       "seafood",
       "gourmet"
     ],
-    "imageUrl": "/images/rest-dinner-001.svg",
+    "imageUrl": "/images/rest-dinner-001.png",
     "images": [
-      "/images/rest-dinner-001.svg"
+      "/images/rest-dinner-001.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6199,9 +6226,9 @@
       "gourmet",
       "bold"
     ],
-    "imageUrl": "/images/rest-dinner-002.svg",
+    "imageUrl": "/images/rest-dinner-002.png",
     "images": [
-      "/images/rest-dinner-002.svg"
+      "/images/rest-dinner-002.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6232,9 +6259,9 @@
       "upscale",
       "gourmet"
     ],
-    "imageUrl": "/images/rest-dinner-003.svg",
+    "imageUrl": "/images/rest-dinner-003.png",
     "images": [
-      "/images/rest-dinner-003.svg"
+      "/images/rest-dinner-003.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6265,9 +6292,9 @@
       "gourmet",
       "upscale"
     ],
-    "imageUrl": "/images/rest-dinner-004.svg",
+    "imageUrl": "/images/rest-dinner-004.png",
     "images": [
-      "/images/rest-dinner-004.svg"
+      "/images/rest-dinner-004.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6298,9 +6325,9 @@
       "classic",
       "creamy"
     ],
-    "imageUrl": "/images/rest-dinner-005.svg",
+    "imageUrl": "/images/rest-dinner-005.png",
     "images": [
-      "/images/rest-dinner-005.svg"
+      "/images/rest-dinner-005.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6331,9 +6358,9 @@
       "vegetarian",
       "gourmet"
     ],
-    "imageUrl": "/images/dinner-006.svg",
+    "imageUrl": "/images/rest-dinner-006.png",
     "images": [
-      "/images/dinner-006.svg"
+      "/images/rest-dinner-006.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6363,9 +6390,9 @@
       "sweet",
       "indulgent"
     ],
-    "imageUrl": "/images/rest-dessert-001.svg",
+    "imageUrl": "/images/rest-dessert-001.png",
     "images": [
-      "/images/rest-dessert-001.svg"
+      "/images/rest-dessert-001.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6395,9 +6422,9 @@
       "elegant",
       "classic"
     ],
-    "imageUrl": "/images/rest-dessert-002.svg",
+    "imageUrl": "/images/rest-dessert-002.png",
     "images": [
-      "/images/rest-dessert-002.svg"
+      "/images/rest-dessert-002.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6427,9 +6454,9 @@
       "customizable",
       "fun"
     ],
-    "imageUrl": "/images/rest-dessert-003.svg",
+    "imageUrl": "/images/rest-dessert-003.png",
     "images": [
-      "/images/rest-dessert-003.svg"
+      "/images/rest-dessert-003.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6459,9 +6486,9 @@
       "coffee",
       "elegant"
     ],
-    "imageUrl": "/images/rest-dessert-004.svg",
+    "imageUrl": "/images/rest-dessert-004.png",
     "images": [
-      "/images/rest-dessert-004.svg"
+      "/images/rest-dessert-004.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6491,9 +6518,9 @@
       "homemade",
       "comfort food"
     ],
-    "imageUrl": "/images/rest-dessert-005.svg",
+    "imageUrl": "/images/rest-dessert-005.png",
     "images": [
-      "/images/rest-dessert-005.svg"
+      "/images/rest-dessert-005.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6523,9 +6550,9 @@
       "nutritious",
       "fitness"
     ],
-    "imageUrl": "/images/rest-healthy-001.svg",
+    "imageUrl": "/images/rest-healthy-001.png",
     "images": [
-      "/images/rest-healthy-001.svg"
+      "/images/rest-healthy-001.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6555,9 +6582,9 @@
       "omega-3",
       "upscale"
     ],
-    "imageUrl": "/images/rest-healthy-002.svg",
+    "imageUrl": "/images/rest-healthy-002.png",
     "images": [
-      "/images/rest-healthy-002.svg"
+      "/images/rest-healthy-002.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6587,9 +6614,9 @@
       "parmesan",
       "comforting"
     ],
-    "imageUrl": "/images/rest-healthy-003.svg",
+    "imageUrl": "/images/rest-healthy-003.png",
     "images": [
-      "/images/rest-healthy-003.svg"
+      "/images/rest-healthy-003.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6619,9 +6646,9 @@
       "plant-based",
       "nutritious"
     ],
-    "imageUrl": "/images/rest-healthy-004.svg",
+    "imageUrl": "/images/rest-healthy-004.png",
     "images": [
-      "/images/rest-healthy-004.svg"
+      "/images/rest-healthy-004.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6652,9 +6679,9 @@
       "luxury",
       "upscale"
     ],
-    "imageUrl": "/images/rest-healthy-005.svg",
+    "imageUrl": "/images/rest-healthy-005.png",
     "images": [
-      "/images/rest-healthy-005.svg"
+      "/images/rest-healthy-005.png"
     ],
     "inStock": true,
     "stockCount": 999,
@@ -6684,9 +6711,9 @@
       "ball",
       "indoor"
     ],
-    "imageUrl": "https://placehold.co/400x400/f97316/c2410c?text=Basketball",
+    "imageUrl": "/images/sports-ball-001.png",
     "images": [
-      "https://placehold.co/400x400/f97316/c2410c?text=Basketball"
+      "/images/sports-ball-001.png"
     ],
     "inStock": true,
     "stockCount": 48,
@@ -6716,9 +6743,9 @@
       "ball",
       "outdoor"
     ],
-    "imageUrl": "https://placehold.co/400x400/8b5cf6/6d28d9?text=NFL+Football",
+    "imageUrl": "/images/sports-ball-002.png",
     "images": [
-      "https://placehold.co/400x400/8b5cf6/6d28d9?text=NFL+Football"
+      "/images/sports-ball-002.png"
     ],
     "inStock": true,
     "stockCount": 32,
@@ -6748,9 +6775,9 @@
       "ball",
       "outdoor"
     ],
-    "imageUrl": "https://placehold.co/400x400/10b981/065f46?text=Soccer+Ball",
+    "imageUrl": "/images/sports-ball-003.png",
     "images": [
-      "https://placehold.co/400x400/10b981/065f46?text=Soccer+Ball"
+      "/images/sports-ball-003.png"
     ],
     "inStock": true,
     "stockCount": 56,
@@ -6780,9 +6807,9 @@
       "indoor",
       "outdoor"
     ],
-    "imageUrl": "https://placehold.co/400x400/ec4899/be185d?text=Volleyball",
+    "imageUrl": "/images/sports-ball-004.png",
     "images": [
-      "https://placehold.co/400x400/ec4899/be185d?text=Volleyball"
+      "/images/sports-ball-004.png"
     ],
     "inStock": true,
     "stockCount": 40,
@@ -6812,9 +6839,9 @@
       "outdoor",
       "league"
     ],
-    "imageUrl": "https://placehold.co/400x400/06b6d4/164e63?text=Baseball",
+    "imageUrl": "/images/sports-ball-005.png",
     "images": [
-      "https://placehold.co/400x400/06b6d4/164e63?text=Baseball"
+      "/images/sports-ball-005.png"
     ],
     "inStock": true,
     "stockCount": 72,
@@ -6844,9 +6871,9 @@
       "strength training",
       "home gym"
     ],
-    "imageUrl": "https://placehold.co/400x400/6366f1/3730a3?text=Dumbbells",
+    "imageUrl": "/images/sports-equip-001.png",
     "images": [
-      "https://placehold.co/400x400/6366f1/3730a3?text=Dumbbells"
+      "/images/sports-equip-001.png"
     ],
     "inStock": true,
     "stockCount": 24,
@@ -6876,9 +6903,9 @@
       "fitness",
       "flexibility"
     ],
-    "imageUrl": "https://placehold.co/400x400/a78bfa/7c3aed?text=Yoga+Mat",
+    "imageUrl": "/images/sports-equip-002.png",
     "images": [
-      "https://placehold.co/400x400/a78bfa/7c3aed?text=Yoga+Mat"
+      "/images/sports-equip-002.png"
     ],
     "inStock": true,
     "stockCount": 68,
@@ -6908,9 +6935,9 @@
       "portable",
       "fitness"
     ],
-    "imageUrl": "https://placehold.co/400x400/f472b6/be185d?text=Resistance",
+    "imageUrl": "/images/sports-equip-003.png",
     "images": [
-      "https://placehold.co/400x400/f472b6/be185d?text=Resistance"
+      "/images/sports-equip-003.png"
     ],
     "inStock": true,
     "stockCount": 85,
@@ -6940,9 +6967,9 @@
       "strength training",
       "functional fitness"
     ],
-    "imageUrl": "https://placehold.co/400x400/fbbf24/92400e?text=Kettlebell",
+    "imageUrl": "/images/sports-equip-004.png",
     "images": [
-      "https://placehold.co/400x400/fbbf24/92400e?text=Kettlebell"
+      "/images/sports-equip-004.png"
     ],
     "inStock": true,
     "stockCount": 36,
@@ -6972,9 +6999,9 @@
       "boxing",
       "fitness"
     ],
-    "imageUrl": "https://placehold.co/400x400/ef4444/7f1d1d?text=Jump+Rope",
+    "imageUrl": "/images/sports-equip-005.png",
     "images": [
-      "https://placehold.co/400x400/ef4444/7f1d1d?text=Jump+Rope"
+      "/images/sports-equip-005.png"
     ],
     "inStock": true,
     "stockCount": 92,
@@ -7004,9 +7031,9 @@
       "waterproof",
       "family camping"
     ],
-    "imageUrl": "https://placehold.co/400x400/10b981/065f46?text=Camping+Tent",
+    "imageUrl": "/images/sports-outdoor-001.png",
     "images": [
-      "https://placehold.co/400x400/10b981/065f46?text=Camping+Tent"
+      "/images/sports-outdoor-001.png"
     ],
     "inStock": true,
     "stockCount": 18,
@@ -7036,9 +7063,9 @@
       "freshwater",
       "fishing gear"
     ],
-    "imageUrl": "https://placehold.co/400x400/06b6d4/164e63?text=Fishing+Combo",
+    "imageUrl": "/images/sports-outdoor-002.png",
     "images": [
-      "https://placehold.co/400x400/06b6d4/164e63?text=Fishing+Combo"
+      "/images/sports-outdoor-002.png"
     ],
     "inStock": true,
     "stockCount": 28,
@@ -7068,9 +7095,9 @@
       "water sports",
       "paddling"
     ],
-    "imageUrl": "https://placehold.co/400x400/3b82f6/1e3a8a?text=Kayak",
+    "imageUrl": "/images/sports-outdoor-003.png",
     "images": [
-      "https://placehold.co/400x400/3b82f6/1e3a8a?text=Kayak"
+      "/images/sports-outdoor-003.png"
     ],
     "inStock": true,
     "stockCount": 12,
@@ -7100,9 +7127,9 @@
       "camping",
       "trekking"
     ],
-    "imageUrl": "https://placehold.co/400x400/8b5cf6/6d28d9?text=Hiking+Pack",
+    "imageUrl": "/images/sports-outdoor-004.png",
     "images": [
-      "https://placehold.co/400x400/8b5cf6/6d28d9?text=Hiking+Pack"
+      "/images/sports-outdoor-004.png"
     ],
     "inStock": true,
     "stockCount": 34,
@@ -7132,9 +7159,9 @@
       "food storage",
       "ice storage"
     ],
-    "imageUrl": "https://placehold.co/400x400/f59e0b/92400e?text=Cooler",
+    "imageUrl": "/images/sports-outdoor-005.png",
     "images": [
-      "https://placehold.co/400x400/f59e0b/92400e?text=Cooler"
+      "/images/sports-outdoor-005.png"
     ],
     "inStock": true,
     "stockCount": 42,
@@ -7164,9 +7191,9 @@
       "strength training",
       "powerlifting"
     ],
-    "imageUrl": "/images/exercise-001.svg",
+    "imageUrl": "/images/exercise-001.png",
     "images": [
-      "/images/exercise-001.svg"
+      "/images/exercise-001.png"
     ],
     "inStock": true,
     "stockCount": 18,
@@ -7196,9 +7223,9 @@
       "fitness",
       "home gym"
     ],
-    "imageUrl": "/images/exercise-002.svg",
+    "imageUrl": "/images/exercise-002.png",
     "images": [
-      "/images/exercise-002.svg"
+      "/images/exercise-002.png"
     ],
     "inStock": true,
     "stockCount": 6,
@@ -7228,9 +7255,9 @@
       "strength training",
       "home gym"
     ],
-    "imageUrl": "/images/exercise-003.svg",
+    "imageUrl": "/images/exercise-003.png",
     "images": [
-      "/images/exercise-003.svg"
+      "/images/exercise-003.png"
     ],
     "inStock": true,
     "stockCount": 32,
@@ -7260,9 +7287,9 @@
       "home gym",
       "low-impact"
     ],
-    "imageUrl": "/images/exercise-004.svg",
+    "imageUrl": "/images/exercise-004.png",
     "images": [
-      "/images/exercise-004.svg"
+      "/images/exercise-004.png"
     ],
     "inStock": true,
     "stockCount": 11,
@@ -7292,9 +7319,9 @@
       "gym equipment",
       "weight training"
     ],
-    "imageUrl": "/images/exercise-005.svg",
+    "imageUrl": "/images/exercise-005.png",
     "images": [
-      "/images/exercise-005.svg"
+      "/images/exercise-005.png"
     ],
     "inStock": true,
     "stockCount": 5,
@@ -7324,9 +7351,9 @@
       "plyometrics",
       "functional fitness"
     ],
-    "imageUrl": "/images/exercise-006.svg",
+    "imageUrl": "/images/exercise-006.png",
     "images": [
-      "/images/exercise-006.svg"
+      "/images/exercise-006.png"
     ],
     "inStock": true,
     "stockCount": 48,
@@ -7356,9 +7383,9 @@
       "automotive",
       "parts"
     ],
-    "imageUrl": "/images/tire-002.svg",
+    "imageUrl": "/images/tire-002.png",
     "images": [
-      "/images/tire-002.svg"
+      "/images/tire-002.png"
     ],
     "inStock": true,
     "stockCount": 35,
@@ -7389,9 +7416,9 @@
       "automotive",
       "parts"
     ],
-    "imageUrl": "/images/tire-003.svg",
+    "imageUrl": "/images/tire-003.png",
     "images": [
-      "/images/tire-003.svg"
+      "/images/tire-003.png"
     ],
     "inStock": true,
     "stockCount": 42,
@@ -7422,9 +7449,9 @@
       "automotive",
       "parts"
     ],
-    "imageUrl": "/images/tire-004.svg",
+    "imageUrl": "/images/tire-004.png",
     "images": [
-      "/images/tire-004.svg"
+      "/images/tire-004.png"
     ],
     "inStock": true,
     "stockCount": 28,
@@ -7456,9 +7483,9 @@
       "automotive",
       "parts"
     ],
-    "imageUrl": "/images/tire-005.svg",
+    "imageUrl": "/images/tire-005.png",
     "images": [
-      "/images/tire-005.svg"
+      "/images/tire-005.png"
     ],
     "inStock": true,
     "stockCount": 22,
@@ -7480,9 +7507,21 @@
     "description": "Flutter into the magical world of butterflies! Episode 21 explores the incredible transformation from caterpillar to butterfly — the miracle of metamorphosis, the beauty of their wings, and the amazing migrations that carry them across continents. A gentle, wonder-filled bedtime journey.",
     "shortDescription": "Discover the magical world of butterflies and metamorphosis",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "science", "butterflies", "metamorphosis", "nature", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "science",
+      "butterflies",
+      "metamorphosis",
+      "nature",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.8,
@@ -7509,9 +7548,22 @@
     "description": "Thunder rumbles in the distance! Episode 22 explores the science of weather — from gentle rain showers to powerful thunderstorms, lightning, tornadoes, and hurricanes. Learn what makes clouds form, why it rains, and how storms shape our world. A cozy bedtime listen while the weather rolls in.",
     "shortDescription": "Explore the science of weather, storms, and lightning",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "science", "weather", "storms", "lightning", "thunder", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "science",
+      "weather",
+      "storms",
+      "lightning",
+      "thunder",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.8,
@@ -7538,9 +7590,21 @@
     "description": "Journey back to the very beginning! Episode 23 explores the creation story — the forming of the earth, the seas, the plants, the animals, and finally, mankind. A reverent and wonder-filled bedtime exploration of how it all began.",
     "shortDescription": "Explore the creation story and how it all began",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "bible", "creation", "genesis", "faith", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "bible",
+      "creation",
+      "genesis",
+      "faith",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -7567,9 +7631,22 @@
     "description": "Watch a tiny seed grow! Episode 24 follows the incredible journey of a seed — from falling to the ground, to sprouting roots, to reaching for the sun as a mighty plant. Learn about germination, photosynthesis, and the miracle of growth in this gentle bedtime adventure.",
     "shortDescription": "Follow the incredible journey of a seed as it grows",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime", "science", "seeds", "plants", "nature", "growth", "educational", "kids", "explorers"],
+    "tags": [
+      "audiobook",
+      "bedtime",
+      "science",
+      "seeds",
+      "plants",
+      "nature",
+      "growth",
+      "educational",
+      "kids",
+      "explorers"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.8,
@@ -7596,9 +7673,22 @@
     "description": "Set sail with Nephi! Episode 4 travels back to ancient times as Nephi follows the Lord's command to build a ship — despite his brothers' doubts. Experience the faith, the struggle, and the miracle of crossing the ocean to a promised land.",
     "shortDescription": "Travel back in time as Nephi builds a ship to cross the ocean",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime travelers", "history", "nephi", "book of mormon", "faith", "ship", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "bedtime travelers",
+      "history",
+      "nephi",
+      "book of mormon",
+      "faith",
+      "ship",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -7625,9 +7715,23 @@
     "description": "Travel to ancient Egypt! Episode 5 follows the story of Joseph — sold by his brothers, imprisoned in a foreign land, yet rising to become one of the most powerful men in Egypt. A story of faith, forgiveness, and God's plan unfolding in unexpected ways.",
     "shortDescription": "Follow Joseph's journey from captivity to power in Egypt",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime travelers", "history", "joseph", "egypt", "bible", "faith", "forgiveness", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "bedtime travelers",
+      "history",
+      "joseph",
+      "egypt",
+      "bible",
+      "faith",
+      "forgiveness",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -7654,9 +7758,21 @@
     "description": "Dump the tea! Episode 6 takes you to Boston Harbor on a cold December night in 1773. Join the Sons of Liberty as they disguise themselves and board three ships to protest unfair taxation. A thrilling bedtime journey to one of America's most daring moments.",
     "shortDescription": "Relive the Boston Tea Party and America's fight for liberty",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime travelers", "history", "boston tea party", "american revolution", "liberty", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "bedtime travelers",
+      "history",
+      "boston tea party",
+      "american revolution",
+      "liberty",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -7683,9 +7799,23 @@
     "description": "Brave the storm with Paul! Episode 7 follows the Apostle Paul on a harrowing sea voyage — a terrible storm, a shipwreck on the island of Malta, and the faith that carried him through. An adventurous bedtime journey through one of the Bible's most dramatic stories.",
     "shortDescription": "Join the Apostle Paul through a dramatic shipwreck on Malta",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime travelers", "history", "paul", "bible", "shipwreck", "malta", "faith", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "bedtime travelers",
+      "history",
+      "paul",
+      "bible",
+      "shipwreck",
+      "malta",
+      "faith",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -7712,9 +7842,22 @@
     "description": "Travel to the New World! Episode 8 visits Jamestown, the first permanent English settlement in America, and meets Pocahontas — the Powhatan girl who bridged two worlds. Learn about the struggles of early colonists and the Native peoples who shaped American history.",
     "shortDescription": "Visit Jamestown and meet Pocahontas in early America",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime travelers", "history", "pocahontas", "jamestown", "colonial", "native american", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "bedtime travelers",
+      "history",
+      "pocahontas",
+      "jamestown",
+      "colonial",
+      "native american",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -7741,9 +7884,22 @@
     "description": "Stand with Lincoln! Episode 9 travels to Gettysburg, Pennsylvania in 1863 — the turning point of the Civil War. Walk the battlefield, hear the famous Gettysburg Address, and learn why Abraham Lincoln's words still echo through history today.",
     "shortDescription": "Stand with Lincoln at the turning point of the Civil War",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime travelers", "history", "lincoln", "gettysburg", "civil war", "president", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "bedtime travelers",
+      "history",
+      "lincoln",
+      "gettysburg",
+      "civil war",
+      "president",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -7770,9 +7926,23 @@
     "description": "Travel to Bethlehem! Episode 10 journeys to the night that changed the world — the star in the sky, the shepherds in the field, the manger, and the birth of Jesus Christ. A peaceful and reverent bedtime journey through the greatest story ever told.",
     "shortDescription": "Journey to Bethlehem for the birth of Jesus Christ",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime travelers", "history", "christmas", "bethlehem", "jesus", "nativity", "faith", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "bedtime travelers",
+      "history",
+      "christmas",
+      "bethlehem",
+      "jesus",
+      "nativity",
+      "faith",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -7799,9 +7969,22 @@
     "description": "Sail on the Mayflower! Episode 11 follows the Pilgrims across the Atlantic Ocean — the dangerous voyage, the harsh first winter, and the friendship with the Wampanoag people that led to the first Thanksgiving. A story of courage, faith, and gratitude.",
     "shortDescription": "Sail with the Pilgrims on the Mayflower to the New World",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime travelers", "history", "pilgrims", "mayflower", "thanksgiving", "colonial", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "bedtime travelers",
+      "history",
+      "pilgrims",
+      "mayflower",
+      "thanksgiving",
+      "colonial",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -7828,9 +8011,23 @@
     "description": "Come home! Episode 12 tells the parable of the Prodigal Son — a young man who leaves home, loses everything, and discovers that his father's love was waiting for him all along. One of Jesus's most beloved stories, retold as a gentle bedtime journey.",
     "shortDescription": "Experience the parable of the Prodigal Son",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime travelers", "history", "prodigal son", "parable", "jesus", "bible", "forgiveness", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "bedtime travelers",
+      "history",
+      "prodigal son",
+      "parable",
+      "jesus",
+      "bible",
+      "forgiveness",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -7857,9 +8054,23 @@
     "description": "Explore the pyramids! Episode 13 takes you to ancient Egypt to marvel at the Great Pyramids of Giza — one of the Seven Wonders of the Ancient World. Discover how thousands of workers built these massive monuments, the mysteries of the pharaohs, and the secrets hidden inside.",
     "shortDescription": "Marvel at the Great Pyramids of ancient Egypt",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime travelers", "history", "pyramids", "egypt", "pharaohs", "ancient", "wonders", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "bedtime travelers",
+      "history",
+      "pyramids",
+      "egypt",
+      "pharaohs",
+      "ancient",
+      "wonders",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -7886,9 +8097,23 @@
     "description": "Lift your lamp! Episode 14 visits the Statue of Liberty — from its creation in France to its journey across the Atlantic and its home on Liberty Island. Discover the story behind Lady Liberty, what she symbolizes, and why she has welcomed millions to America's shores.",
     "shortDescription": "Discover the story of the Statue of Liberty",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime travelers", "history", "statue of liberty", "france", "immigration", "freedom", "new york", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "bedtime travelers",
+      "history",
+      "statue of liberty",
+      "france",
+      "immigration",
+      "freedom",
+      "new york",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -7915,9 +8140,22 @@
     "description": "Dive deep! Episode 4 of Explorer Radio plunges into the mysterious world of the deep ocean — the darkest, most unexplored place on Earth. Discover bioluminescent creatures, hydrothermal vents, and the incredible pressure that shapes life miles beneath the waves.",
     "shortDescription": "Explore the mysterious deep ocean and its strange creatures",
     "category": "audiobooks",
-    "tags": ["audiobook", "explorer radio", "science", "ocean", "deep sea", "marine life", "bioluminescence", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "explorer radio",
+      "science",
+      "ocean",
+      "deep sea",
+      "marine life",
+      "bioluminescence",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -7944,9 +8182,22 @@
     "description": "Tune in to YOU! Episode 5 of Explorer Radio takes a fascinating tour through the human body — your beating heart, your breathing lungs, your thinking brain, and the incredible systems that keep you alive every second of every day. The most amazing machine ever built is you!",
     "shortDescription": "Take a fascinating tour through the human body",
     "category": "audiobooks",
-    "tags": ["audiobook", "explorer radio", "science", "human body", "anatomy", "biology", "health", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "explorer radio",
+      "science",
+      "human body",
+      "anatomy",
+      "biology",
+      "health",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -7973,9 +8224,23 @@
     "description": "Feel the heat! Episode 6 of Explorer Radio erupts into the world of volcanoes — rivers of lava, explosive eruptions, and the powerful forces deep inside the Earth that build mountains and reshape continents. From Mount Vesuvius to the Ring of Fire!",
     "shortDescription": "Erupt into the powerful world of volcanoes",
     "category": "audiobooks",
-    "tags": ["audiobook", "explorer radio", "science", "volcanoes", "lava", "geology", "earth", "eruption", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "explorer radio",
+      "science",
+      "volcanoes",
+      "lava",
+      "geology",
+      "earth",
+      "eruption",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -8002,9 +8267,23 @@
     "description": "Follow the journey! Episode 7 of Explorer Radio tracks the incredible migrations of animals around the world — from monarch butterflies crossing continents to whales traversing entire oceans. Learn how animals navigate thousands of miles and why they make these epic journeys.",
     "shortDescription": "Track incredible animal migrations around the world",
     "category": "audiobooks",
-    "tags": ["audiobook", "explorer radio", "science", "migration", "animals", "nature", "whales", "butterflies", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "explorer radio",
+      "science",
+      "migration",
+      "animals",
+      "nature",
+      "whales",
+      "butterflies",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -8031,9 +8310,22 @@
     "description": "Look over the edge! Episode 17 takes the Rock Hunters to the Grand Canyon — one of the most spectacular geological formations on Earth. Explore billions of years of rock layers, the mighty Colorado River that carved it all, and the fossils hidden in the canyon walls.",
     "shortDescription": "Explore the Grand Canyon's billions of years of rock layers",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "grand canyon", "geology", "colorado river", "fossils", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "grand canyon",
+      "geology",
+      "colorado river",
+      "fossils",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -8060,9 +8352,23 @@
     "description": "Two parks, one adventure! Episode 18 explores Zion National Park's towering sandstone cliffs and Bryce Canyon's magical hoodoos — the fairy-tale rock spires carved by wind and water over millions of years. A breathtaking journey through Utah's red rock wonderland.",
     "shortDescription": "Explore the towering cliffs of Zion and hoodoos of Bryce Canyon",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "zion", "bryce canyon", "utah", "hoodoos", "sandstone", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "zion",
+      "bryce canyon",
+      "utah",
+      "hoodoos",
+      "sandstone",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -8089,9 +8395,23 @@
     "description": "Find the gems! Episode 19 heads to Topaz Mountain in Utah's west desert — one of the few places where you can dig for your own topaz crystals. The Rock Hunters search volcanic rock for sparkling treasures and learn how gems form deep inside the Earth.",
     "shortDescription": "Dig for topaz crystals at Utah's Topaz Mountain",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "topaz", "gems", "crystals", "utah", "mining", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "topaz",
+      "gems",
+      "crystals",
+      "utah",
+      "mining",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -8118,9 +8438,23 @@
     "description": "Go big! Episode 20 visits the Kennecott Copper Mine — the largest open-pit mine in the world, visible from space! The Rock Hunters descend into the massive pit to learn how copper is extracted, what it's used for, and the incredible scale of modern mining.",
     "shortDescription": "Visit the world's largest open-pit copper mine",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "kennecott", "copper", "mining", "utah", "engineering", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "kennecott",
+      "copper",
+      "mining",
+      "utah",
+      "engineering",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -8147,9 +8481,23 @@
     "description": "Race across the salt! Episode 21 takes the Rock Hunters to the Bonneville Salt Flats — a vast, otherworldly landscape of pure white salt stretching to the horizon. Learn how an ancient lake left behind this incredible natural wonder and why speed racers flock here from around the world.",
     "shortDescription": "Race across Utah's otherworldly Bonneville Salt Flats",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "bonneville", "salt flats", "utah", "lake", "speed", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "bonneville",
+      "salt flats",
+      "utah",
+      "lake",
+      "speed",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -8176,9 +8524,23 @@
     "description": "Face the presidents! Episode 22 visits Mount Rushmore — the iconic granite sculpture carved into the Black Hills of South Dakota. Learn about the 14-year effort to carve four presidential faces into solid rock, the geology of the mountain, and the history behind each president chosen.",
     "shortDescription": "Visit Mount Rushmore and the granite faces of four presidents",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "mount rushmore", "granite", "presidents", "south dakota", "sculpture", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "mount rushmore",
+      "granite",
+      "presidents",
+      "south dakota",
+      "sculpture",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -8205,9 +8567,23 @@
     "description": "Walk through stone arches! Episode 23 explores Arches and Canyonlands National Parks — over 2,000 natural stone arches, deep canyons, and towering mesas. The Rock Hunters discover how wind and water sculpted these incredible formations over millions of years.",
     "shortDescription": "Explore the natural stone arches and deep canyons of Utah",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "arches", "canyonlands", "utah", "national park", "erosion", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "arches",
+      "canyonlands",
+      "utah",
+      "national park",
+      "erosion",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -8234,9 +8610,23 @@
     "description": "Go underground! Episode 24 takes the Rock Hunters deep into caves and caverns — stalactites dripping from the ceiling, stalagmites rising from the floor, and underground rivers carving through solid rock. Discover how caves form and the amazing creatures that live in total darkness.",
     "shortDescription": "Descend into caves to find stalactites, stalagmites, and underground rivers",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "caves", "caverns", "stalactites", "stalagmites", "underground", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "caves",
+      "caverns",
+      "stalactites",
+      "stalagmites",
+      "underground",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -8263,9 +8653,22 @@
     "description": "Splash back in! Episode 25 returns to the tide pools for a deeper dive — discovering new creatures, exploring how tides work, and learning how rocky shorelines create tiny ecosystems teeming with life. The Rock Hunters get up close with sea stars, anemones, and hermit crabs.",
     "shortDescription": "Return to the tide pools for more amazing discoveries",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "tide pools", "ocean", "marine life", "sea stars", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "tide pools",
+      "ocean",
+      "marine life",
+      "sea stars",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -8292,9 +8695,23 @@
     "description": "Discover the hidden gem! Episode 26 explores Capitol Reef National Park — Utah's least-visited but most geologically stunning national park. The Waterpocket Fold, ancient petroglyphs, and colorful rock layers tell a story spanning hundreds of millions of years.",
     "shortDescription": "Explore Capitol Reef, Utah's hidden geological treasure",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "capitol reef", "utah", "waterpocket fold", "petroglyphs", "national park", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "capitol reef",
+      "utah",
+      "waterpocket fold",
+      "petroglyphs",
+      "national park",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -8321,9 +8738,23 @@
     "description": "Dig up the past! Episode 27 takes the Rock Hunters fossil hunting — discovering ancient bones, imprints, and petrified remains locked in stone for millions of years. Learn how fossils form, how scientists find them, and what they reveal about life on Earth long ago.",
     "shortDescription": "Go fossil hunting and discover ancient life locked in stone",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "fossils", "paleontology", "dinosaurs", "ancient", "science", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "fossils",
+      "paleontology",
+      "dinosaurs",
+      "ancient",
+      "science",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -8350,9 +8781,23 @@
     "description": "Return to the dunes! Episode 28 brings the Rock Hunters back to Little Sahara for more sand dune adventures — this time exploring how wind builds and reshapes the dunes, the tiny creatures that survive in the desert, and the geological forces that created this sandy wonderland.",
     "shortDescription": "Return to Little Sahara for more sand dune adventures",
     "category": "audiobooks",
-    "tags": ["audiobook", "rock hunters", "adventure", "little sahara", "sand dunes", "desert", "utah", "wind", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "rock hunters",
+      "adventure",
+      "little sahara",
+      "sand dunes",
+      "desert",
+      "utah",
+      "wind",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
@@ -8379,9 +8824,21 @@
     "description": "Gather around the table! The first episode of Bedtime Memories invites you to a warm family dinner — the sounds of laughter, the clink of dishes, and the stories shared between bites. A cozy, comforting bedtime experience that celebrates the simple joy of being together.",
     "shortDescription": "A warm, cozy bedtime story about family dinner together",
     "category": "audiobooks",
-    "tags": ["audiobook", "bedtime memories", "family", "dinner", "cozy", "comfort", "kids", "series", "educational"],
+    "tags": [
+      "audiobook",
+      "bedtime memories",
+      "family",
+      "dinner",
+      "cozy",
+      "comfort",
+      "kids",
+      "series",
+      "educational"
+    ],
     "imageUrl": "/images/audio-003.png",
-    "images": ["/images/audio-003.svg"],
+    "images": [
+      "/images/audio-003.svg"
+    ],
     "inStock": true,
     "stockCount": 999,
     "rating": 4.9,
