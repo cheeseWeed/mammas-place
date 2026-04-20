@@ -11,7 +11,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,7 +55,7 @@ export default function RootLayout({
         </AdminAuthProvider>
         </PasscodeGate>
         </PasscodeProvider>
-        <GoogleAnalytics />
+        <GoogleAnalytics gaId="G-VP0PHD3ZTL" />
         <Analytics />
         <SpeedInsights />
       </body>
