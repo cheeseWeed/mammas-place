@@ -1,4 +1,4 @@
-export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "";
+export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-VP0PHD3ZTL";
 
 const isAvailable = () => typeof window !== "undefined" && typeof window.gtag === "function";
 
