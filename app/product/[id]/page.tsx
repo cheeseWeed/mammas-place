@@ -19,16 +19,17 @@ export default function ProductDetailPage() {
   const { showToast } = useToast();
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(true);
-  useEffect(() => { const t = setTimeout(() => setLoading(false), 50); return () => clearTimeout(t); }, []);
-  if (loading) return <SkeletonProductDetail />;
-
   const product = getProductById(params.id as string);
 
+  useEffect(() => { const t = setTimeout(() => setLoading(false), 50); return () => clearTimeout(t); }, []);
+
   useEffect(() => {
-    if (product) {
+    if (product && !loading) {
       gtag.viewItem({ id: product.id, name: product.name, category: product.category, price: product.price });
     }
-  }, [product]);
+  }, [product, loading]);
+
+  if (loading) return <SkeletonProductDetail />;
 
   if (!product) {
     return (

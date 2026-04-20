@@ -1,7 +1,10 @@
 export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "";
 
+const isAvailable = () => typeof window !== "undefined" && typeof window.gtag === "function";
+
 // Log a page view
 export const pageview = (url: string) => {
+  if (!isAvailable()) return;
   window.gtag("config", GA_MEASUREMENT_ID, {
     page_path: url,
   });
@@ -16,6 +19,7 @@ type GTagEvent = {
 };
 
 export const event = ({ action, category, label, value }: GTagEvent) => {
+  if (!isAvailable()) return;
   window.gtag("event", action, {
     event_category: category,
     event_label: label,
@@ -25,6 +29,7 @@ export const event = ({ action, category, label, value }: GTagEvent) => {
 
 // E-commerce events
 export const viewItem = (item: { id: string; name: string; category: string; price: number }) => {
+  if (!isAvailable()) return;
   window.gtag("event", "view_item", {
     currency: "USD",
     value: item.price,
@@ -33,6 +38,7 @@ export const viewItem = (item: { id: string; name: string; category: string; pri
 };
 
 export const addToCart = (item: { id: string; name: string; category: string; price: number; quantity: number }) => {
+  if (!isAvailable()) return;
   window.gtag("event", "add_to_cart", {
     currency: "USD",
     value: item.price * item.quantity,
@@ -41,6 +47,7 @@ export const addToCart = (item: { id: string; name: string; category: string; pr
 };
 
 export const removeFromCart = (item: { id: string; name: string; price: number }) => {
+  if (!isAvailable()) return;
   window.gtag("event", "remove_from_cart", {
     currency: "USD",
     value: item.price,
@@ -49,6 +56,7 @@ export const removeFromCart = (item: { id: string; name: string; price: number }
 };
 
 export const beginCheckout = (value: number, items: { id: string; name: string; price: number; quantity: number }[]) => {
+  if (!isAvailable()) return;
   window.gtag("event", "begin_checkout", {
     currency: "USD",
     value,
@@ -57,6 +65,7 @@ export const beginCheckout = (value: number, items: { id: string; name: string; 
 };
 
 export const purchase = (transactionId: string, value: number, items: { id: string; name: string; price: number; quantity: number }[]) => {
+  if (!isAvailable()) return;
   window.gtag("event", "purchase", {
     transaction_id: transactionId,
     currency: "USD",
@@ -66,6 +75,7 @@ export const purchase = (transactionId: string, value: number, items: { id: stri
 };
 
 export const promoCodeApplied = (code: string) => {
+  if (!isAvailable()) return;
   window.gtag("event", "promo_code_applied", {
     event_category: "engagement",
     event_label: code,
