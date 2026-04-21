@@ -42,14 +42,14 @@ test.describe("Shop Page", () => {
   test("sort by price low to high works", async ({ page }) => {
     const sortSelect = page.locator("select").first();
     if (await sortSelect.isVisible()) {
-      await sortSelect.selectOption({ label: /price.*low/i });
+      await sortSelect.selectOption({ label: "Price: Low to High" });
     }
   });
 
   test("sort by price high to low works", async ({ page }) => {
     const sortSelect = page.locator("select").first();
     if (await sortSelect.isVisible()) {
-      await sortSelect.selectOption({ label: /price.*high/i });
+      await sortSelect.selectOption({ label: "Price: High to Low" });
     }
   });
 
