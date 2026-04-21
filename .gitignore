@@ -30,7 +30,7 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files
 .env*
 
 # vercel
@@ -40,20 +40,23 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# claude/serena/playwright
+# tooling
 .claude/
 .serena/
 .playwright-mcp/
 
-# screenshots and demo docs
+# screenshots and temp images (only public/images/ tracked)
 *.png
 !public/images/*.png
+!screenshots/*.png
+
+# temp docs (experience transcripts, demo warnings, etc.)
 *-experience.md
 *-transcript.md
 demo-warnings*.md
 warning-locations.md
 
-# grok session data (contains auth cookies — never commit)
+# grok session data (contains auth cookies)
 grok_session.json
 grok_session_data/
 
