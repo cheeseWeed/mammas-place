@@ -1,3 +1,4 @@
+// Site footer — links to about, contact, FAQ, shipping, and staff portal
 'use client';
 
 import Link from 'next/link';

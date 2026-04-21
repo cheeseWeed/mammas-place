@@ -1,3 +1,4 @@
+// Loading placeholder for product cards — shown while data loads
 export default function SkeletonCard({ compact = false }: { compact?: boolean }) {
   return (
     <div className="bg-white rounded-2xl shadow-md overflow-hidden border border-purple-100 animate-pulse">

@@ -1,3 +1,4 @@
+// Contact page — form submission with name, email, subject, message
 'use client';
 
 import { useState } from 'react';

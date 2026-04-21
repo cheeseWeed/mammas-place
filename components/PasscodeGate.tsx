@@ -1,3 +1,4 @@
+// Passcode gate UI — numeric keypad that blocks access until correct code is entered
 'use client';
 
 import { useState } from 'react';

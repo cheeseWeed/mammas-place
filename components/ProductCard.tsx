@@ -1,3 +1,4 @@
+// Product card — reusable grid item used on shop page, homepage, and related products
 'use client';
 
 import Link from 'next/link';

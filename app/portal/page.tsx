@@ -1,3 +1,4 @@
+// Staff portal login — authenticates manager and agent roles
 'use client';
 
 import { useState, useEffect } from 'react';

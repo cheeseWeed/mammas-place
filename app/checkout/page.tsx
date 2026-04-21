@@ -1,3 +1,4 @@
+// Checkout — shipping form, payment form, promo codes, order placement with confetti
 'use client';
 
 import { useState, useEffect } from 'react';

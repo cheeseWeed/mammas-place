@@ -1,3 +1,4 @@
+// Global header — logo, search bar, category mega menu, cart badge, mobile hamburger
 'use client';
 
 import Link from 'next/link';

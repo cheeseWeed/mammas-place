@@ -1,3 +1,4 @@
+// Product detail — full product info, add to cart, buy now, reviews, related products
 'use client';
 
 import { useParams, useRouter } from 'next/navigation';

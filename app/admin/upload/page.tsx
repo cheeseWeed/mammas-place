@@ -1,3 +1,4 @@
+// Image upload tool — drag-and-drop file upload to public/images/
 'use client';
 
 import { useState, useRef } from 'react';

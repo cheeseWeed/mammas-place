@@ -1,9 +1,11 @@
+// Product catalog — reads from JSON, provides filtering/search/category functions
 import productsData from '@/data/products.json';
 import { Product } from '@/types';
 
+// All products loaded from data/products.json at build time
 const products: Product[] = productsData as Product[];
 
-// Category visibility management
+// Category visibility — admin can hide entire categories from the storefront
 export function getHiddenCategories(): string[] {
   if (typeof window === 'undefined') return [];
   try {
@@ -71,6 +73,7 @@ export function getProductsByCategory(category: string): Product[] {
   return getAvailableProducts().filter((p) => p.category === category);
 }
 
+// Finds products in the same category or with overlapping tags
 export function getRelatedProducts(product: Product, limit = 4): Product[] {
   return getAvailableProducts()
     .filter(
@@ -90,6 +93,7 @@ export function getFeaturedProducts(): Product[] {
   return getAvailableProducts().filter((p) => p.isFeatured);
 }
 
+// Searches products by name, description, category, or tags (case-insensitive)
 export function searchProducts(query: string): Product[] {
   const q = query.toLowerCase();
   return getAvailableProducts().filter(

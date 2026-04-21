@@ -1,3 +1,4 @@
+// Toast component — auto-dismissing notification that slides in from the top
 'use client';
 
 import { useEffect, useState } from 'react';

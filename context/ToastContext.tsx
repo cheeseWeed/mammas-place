@@ -1,3 +1,4 @@
+// Toast notification system — call showToast() from any component via useToast()
 'use client';
 
 import React, { createContext, useCallback, useContext, useState } from 'react';

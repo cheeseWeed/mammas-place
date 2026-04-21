@@ -1,3 +1,4 @@
+// Cart page — view/edit cart items, quantity controls, order summary, proceed to checkout
 'use client';
 
 import Link from 'next/link';

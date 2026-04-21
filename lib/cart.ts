@@ -1,5 +1,7 @@
+// Cart logic — all cart state lives in localStorage, recalculated on every mutation
 import { Cart, CartItem, Product } from '@/types';
 
+// localStorage key for persisting cart between page loads
 const CART_KEY = 'mammas-place-cart';
 
 export function getCart(): Cart {
@@ -14,6 +16,7 @@ export function getCart(): Cart {
   }
 }
 
+// Adds a product or increments its quantity if already in cart
 export function addToCart(product: Product, quantity = 1): Cart {
   const cart = getCart();
   const existing = cart.items.find((i) => i.productId === product.id);
@@ -32,6 +35,7 @@ export function addToCart(product: Product, quantity = 1): Cart {
   return newCart;
 }
 
+// Updates quantity — removes the item entirely if quantity <= 0
 export function updateQuantity(productId: string, quantity: number): Cart {
   const cart = getCart();
   const items =
@@ -58,6 +62,7 @@ export function clearCart(): Cart {
   return emptyCart();
 }
 
+// Returns discount multiplier (e.g. 0.1 = 10% off), 0 for invalid codes
 export function applyPromoCode(code: string): number {
   const codes: Record<string, number> = {
     MAMMA10: 0.1,
@@ -69,6 +74,7 @@ export function applyPromoCode(code: string): number {
   return codes[code.toUpperCase()] ?? 0;
 }
 
+// Recalculates subtotal, discount, 8% tax, and shipping ($5.99 or free over $50)
 function calculateCart(items: CartItem[]): Cart {
   const subtotal = items.reduce(
     (sum, item) => sum + item.product.price * item.quantity,

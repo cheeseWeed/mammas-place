@@ -1,3 +1,5 @@
+// Admin portal auth — single admin user with hardcoded credentials
+// Separate from staff auth so admin and staff sessions are independent
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';

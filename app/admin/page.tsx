@@ -1,3 +1,4 @@
+// Admin login — single admin user authentication
 'use client';
 
 import { useState, useEffect } from 'react';

@@ -1,3 +1,5 @@
+// Cart context — provides cart state and actions to all components via useCart()
+// Persists to localStorage, fires GA4 events on add/remove
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';

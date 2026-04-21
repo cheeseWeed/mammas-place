@@ -1,3 +1,4 @@
+// Audio player — custom play/pause/progress bar for audiobook previews on product pages
 'use client';
 
 import { useState, useRef, useEffect } from 'react';

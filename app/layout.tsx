@@ -1,3 +1,4 @@
+// Root layout — wraps every page with providers, analytics, and the global shell
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -38,6 +39,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-purple-50 min-h-screen`}
       >
+        {/* Provider stack: passcode gate → admin auth → staff auth → cart → toasts */}
         <PasscodeProvider>
         <PasscodeGate>
         <AdminAuthProvider>
@@ -55,6 +57,7 @@ export default function RootLayout({
         </AdminAuthProvider>
         </PasscodeGate>
         </PasscodeProvider>
+        {/* Analytics — placed outside providers so they load even if passcode is locked */}
         <GoogleAnalytics gaId="G-VP0PHD3ZTL" />
         <Analytics />
         <SpeedInsights />

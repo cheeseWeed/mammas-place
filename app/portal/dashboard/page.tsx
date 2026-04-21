@@ -1,3 +1,4 @@
+// Staff dashboard — role-based view for managers (promo codes) and agents
 'use client';
 
 import { useAuth } from '@/context/AuthContext';

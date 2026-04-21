@@ -1,3 +1,4 @@
+// About page — company story, values, and category showcase
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {

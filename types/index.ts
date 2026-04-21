@@ -1,3 +1,4 @@
+// Shared TypeScript interfaces for Product, Cart, CartItem, Order, and Review
 export interface Review {
   id: string;
   author: string;

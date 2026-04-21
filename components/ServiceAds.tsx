@@ -1,3 +1,4 @@
+// Sidebar service ads — rotating promotional banners shown alongside the product grid
 'use client';
 
 import { useState, useEffect } from 'react';

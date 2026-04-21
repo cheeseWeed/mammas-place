@@ -1,3 +1,4 @@
+// Admin dashboard — full product CRUD, search, filters, category visibility
 'use client';
 
 import { useAdminAuth } from '@/context/AdminAuthContext';

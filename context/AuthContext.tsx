@@ -1,3 +1,5 @@
+// Staff portal auth — hardcoded credentials for manager and agent roles
+// Persists to localStorage so login survives page refresh
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';

@@ -1,3 +1,4 @@
+// Homepage — hero banner, category cards, sale items, featured products, coming soon
 import Link from 'next/link';
 import { getFeaturedProducts, getSaleProducts, getComingSoonProducts, getCategories } from '@/lib/products';
 import ProductCard from '@/components/ProductCard';

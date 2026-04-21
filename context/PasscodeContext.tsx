@@ -1,3 +1,5 @@
+// Passcode gate — requires a 4-digit code before the site is accessible
+// Uses sessionStorage so the unlock resets when the browser tab closes
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';

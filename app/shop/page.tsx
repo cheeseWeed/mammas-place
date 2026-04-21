@@ -1,3 +1,4 @@
+// Shop page — product grid with search, category/subcategory filters, sorting, and sale toggle
 'use client';
 
 import { useState, useEffect, Suspense } from 'react';

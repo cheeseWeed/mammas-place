@@ -1,3 +1,4 @@
+// Shipping & returns policy — rates, processing times, return process
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {

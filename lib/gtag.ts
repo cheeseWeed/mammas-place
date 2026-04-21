@@ -1,3 +1,4 @@
+// Google Analytics 4 event helpers — e-commerce tracking via sendGAEvent
 import { sendGAEvent } from "@next/third-parties/google";
 
 // E-commerce events

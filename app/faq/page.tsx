@@ -1,3 +1,4 @@
+// FAQ page — accordion-style Q&A organized by category
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
