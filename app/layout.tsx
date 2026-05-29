@@ -47,7 +47,7 @@ export default function RootLayout({
         <CartProvider>
           <ToastProvider>
             <Header />
-            <main className="pt-[128px] sm:pt-[104px]">
+            <main className="pt-[218px] sm:pt-[142px]">
               {children}
             </main>
             <Footer />

@@ -34,7 +34,16 @@
       "mcp__playwright__browser_console_messages",
       "Bash(if not exist \"sessions\" mkdir sessions)",
       "Bash(test:*)",
-      "Bash(vercel:*)"
+      "Bash(vercel:*)",
+      "Bash(taskkill:*)",
+      "WebFetch(domain:mammas-place.vercel.app)",
+      "mcp__playwright__browser_network_requests",
+      "mcp__playwright__browser_resize",
+      "WebFetch(domain:placehold.co)",
+      "Bash(if not exist \"C:\\Users\\dglazier\\source\\repos\\mammas-place\\public\\audio\" mkdir \"C:\\Users\\dglazier\\source\\repos\\mammas-place\\public\\audio\")",
+      "mcp__playwright__browser_evaluate",
+      "WebFetch(domain:pollinations.ai)",
+      "WebFetch(domain:enter.pollinations.ai)"
     ],
     "deny": [],
     "ask": []

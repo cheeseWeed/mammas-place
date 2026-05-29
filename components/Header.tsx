@@ -65,6 +65,7 @@ export default function Header() {
   const navLinks = [
     { href: '/shop', label: 'All Products' },
     { href: '/shop?sale=true', label: '🏷️ Sale Items' },
+    { href: '/geography', label: '🗺️ Geography' },
   ];
 
   return (
@@ -207,6 +208,7 @@ export default function Header() {
             </div>
 
             <Link href="/shop?sale=true" className="text-yellow-300 hover:text-yellow-200 text-sm font-bold transition-colors px-3 py-2 rounded">Sale 🏷️</Link>
+            <Link href="/geography" className="text-emerald-300 hover:text-emerald-200 text-sm font-bold transition-colors px-3 py-2 rounded">🗺️ Geography</Link>
           </nav>
 
           {/* Cart */}
@@ -306,6 +308,14 @@ export default function Header() {
             className="text-yellow-300 hover:bg-purple-700 hover:text-yellow-200 px-4 py-3 rounded-xl font-bold text-sm transition-colors"
           >
             🏷️ Sale Items
+          </Link>
+
+          <Link
+            href="/geography"
+            onClick={() => setMenuOpen(false)}
+            className="text-emerald-300 hover:bg-purple-700 hover:text-emerald-200 px-4 py-3 rounded-xl font-bold text-sm transition-colors"
+          >
+            🗺️ Geography
           </Link>
 
           <Link
