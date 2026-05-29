@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { getCategorySubcategoryMap } from '@/lib/products';
 
@@ -17,6 +17,25 @@ export default function Header() {
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  // Dropdown close-delay: when cursor leaves the trigger, wait 200ms before
+  // closing so a quick cursor wobble between button and panel doesn't kill
+  // the menu. mouseEnter on either button OR panel cancels the pending close.
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const openDropdown = (name: string) => {
+    if (closeTimerRef.current !== null) clearTimeout(closeTimerRef.current);
+    closeTimerRef.current = null;
+    setActiveDropdown(name);
+  };
+  const scheduleDropdownClose = () => {
+    if (closeTimerRef.current !== null) clearTimeout(closeTimerRef.current);
+    closeTimerRef.current = setTimeout(() => setActiveDropdown(null), 200);
+  };
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current !== null) clearTimeout(closeTimerRef.current);
+    };
   }, []);
 
   const categorySubcategoryMap = getCategorySubcategoryMap();
@@ -155,8 +174,8 @@ export default function Header() {
             {/* Categories dropdown menu */}
             <div
               className="relative"
-              onMouseEnter={() => setActiveDropdown('categories')}
-              onMouseLeave={() => setActiveDropdown(null)}
+              onMouseEnter={() => openDropdown('categories')}
+              onMouseLeave={scheduleDropdownClose}
             >
               <button className="text-white hover:text-yellow-300 text-sm font-medium transition-colors px-3 py-2 rounded flex items-center gap-1">
                 Categories
@@ -165,9 +184,12 @@ export default function Header() {
                 </svg>
               </button>
 
-              {/* Mega dropdown */}
+              {/* Mega dropdown — pt-3 acts as a hover-bridge so the cursor
+                  never crosses an empty gap between button and panel. */}
               {activeDropdown === 'categories' && (
-                <div className="absolute top-full left-0 mt-1 bg-white rounded-lg shadow-2xl border border-purple-100 p-4 min-w-[600px] z-50 grid grid-cols-3 gap-4">
+                <div className="absolute top-full left-0 bg-white rounded-lg shadow-2xl border border-purple-100 p-4 min-w-[600px] z-50 grid grid-cols-3 gap-4" style={{ marginTop: 0 }}
+                  onMouseEnter={() => openDropdown('categories')}
+                  onMouseLeave={scheduleDropdownClose}>
                   {Object.entries(categorySubcategoryMap).map(([category, subcats]) => {
                     const catConfig = categoryConfig[category];
                     if (!catConfig) return null;
@@ -212,8 +234,8 @@ export default function Header() {
             {/* Learn dropdown — side projects for homeschool kids */}
             <div
               className="relative"
-              onMouseEnter={() => setActiveDropdown('learn')}
-              onMouseLeave={() => setActiveDropdown(null)}
+              onMouseEnter={() => openDropdown('learn')}
+              onMouseLeave={scheduleDropdownClose}
             >
               <button className="text-emerald-300 hover:text-emerald-200 text-sm font-bold transition-colors px-3 py-2 rounded flex items-center gap-1">
                 🎓 Learn
@@ -222,7 +244,9 @@ export default function Header() {
                 </svg>
               </button>
               {activeDropdown === 'learn' && (
-                <div className="absolute top-full right-0 mt-1 bg-white rounded-lg shadow-2xl border border-purple-100 p-3 min-w-[220px] z-50">
+                <div className="absolute top-full right-0 bg-white rounded-lg shadow-2xl border border-purple-100 p-3 min-w-[220px] z-50" style={{ marginTop: 0 }}
+                  onMouseEnter={() => openDropdown('learn')}
+                  onMouseLeave={scheduleDropdownClose}>
                   <Link
                     href="/geography"
                     onClick={() => setActiveDropdown(null)}
