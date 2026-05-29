@@ -208,7 +208,46 @@ export default function Header() {
             </div>
 
             <Link href="/shop?sale=true" className="text-yellow-300 hover:text-yellow-200 text-sm font-bold transition-colors px-3 py-2 rounded">Sale 🏷️</Link>
-            <Link href="/geography" className="text-emerald-300 hover:text-emerald-200 text-sm font-bold transition-colors px-3 py-2 rounded">🗺️ Geography</Link>
+
+            {/* Learn dropdown — side projects for homeschool kids */}
+            <div
+              className="relative"
+              onMouseEnter={() => setActiveDropdown('learn')}
+              onMouseLeave={() => setActiveDropdown(null)}
+            >
+              <button className="text-emerald-300 hover:text-emerald-200 text-sm font-bold transition-colors px-3 py-2 rounded flex items-center gap-1">
+                🎓 Learn
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {activeDropdown === 'learn' && (
+                <div className="absolute top-full right-0 mt-1 bg-white rounded-lg shadow-2xl border border-purple-100 p-3 min-w-[220px] z-50">
+                  <Link
+                    href="/geography"
+                    onClick={() => setActiveDropdown(null)}
+                    className="flex items-start gap-3 p-2 rounded-lg hover:bg-emerald-50 transition-colors group"
+                  >
+                    <span className="text-2xl">🗺️</span>
+                    <div>
+                      <div className="font-bold text-purple-900 group-hover:text-emerald-700">Geography</div>
+                      <div className="text-xs text-gray-600">US states, capitals, regions</div>
+                    </div>
+                  </Link>
+                  <Link
+                    href="/drive"
+                    onClick={() => setActiveDropdown(null)}
+                    className="flex items-start gap-3 p-2 rounded-lg hover:bg-emerald-50 transition-colors group"
+                  >
+                    <span className="text-2xl">🚗</span>
+                    <div>
+                      <div className="font-bold text-purple-900 group-hover:text-emerald-700">Drive</div>
+                      <div className="text-xs text-gray-600">Utah driver license study</div>
+                    </div>
+                  </Link>
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* Cart */}
@@ -310,13 +349,26 @@ export default function Header() {
             🏷️ Sale Items
           </Link>
 
-          <Link
-            href="/geography"
-            onClick={() => setMenuOpen(false)}
-            className="text-emerald-300 hover:bg-purple-700 hover:text-emerald-200 px-4 py-3 rounded-xl font-bold text-sm transition-colors"
-          >
-            🗺️ Geography
-          </Link>
+          {/* Learn section — side projects */}
+          <div className="border-b border-purple-800/50 pb-2 pt-1">
+            <div className="text-emerald-300 px-4 py-2 font-bold text-xs uppercase tracking-wide">
+              🎓 Learn
+            </div>
+            <Link
+              href="/geography"
+              onClick={() => setMenuOpen(false)}
+              className="text-white hover:bg-purple-700 hover:text-yellow-300 px-6 py-2.5 rounded-xl text-sm transition-colors flex items-center gap-2"
+            >
+              🗺️ Geography
+            </Link>
+            <Link
+              href="/drive"
+              onClick={() => setMenuOpen(false)}
+              className="text-white hover:bg-purple-700 hover:text-yellow-300 px-6 py-2.5 rounded-xl text-sm transition-colors flex items-center gap-2"
+            >
+              🚗 Drive (UT License)
+            </Link>
+          </div>
 
           <Link
             href="/cart"
