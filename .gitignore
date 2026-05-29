@@ -73,3 +73,6 @@ public/images/squirrel-horse.svg
 
 # Windows reserved filename
 nul
+
+# Driver study per-user progress data (PIN hashes + quiz history)
+/data/drive-progress.json

@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 5: Sharing the Road</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<style>
+:root { --primary: #581c87; --accent: #facc15; --text: #18181b; }
+.reveal { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+.reveal h1, .reveal h2 { color: var(--primary); }
+.reveal .must-tag { background: var(--accent); color: var(--text); padding: 2px 8px; border-radius: 4px; font-size: 0.7em; }
+.reveal .should-tag { background: #e4e4e7; color: var(--text); padding: 2px 8px; border-radius: 4px; font-size: 0.7em; }
+.reveal .nice-tag { background: #f4f4f5; color: #71717a; padding: 2px 8px; border-radius: 4px; font-size: 0.7em; }
+.reveal a { color: var(--primary); }
+.reveal .learn-more { font-size: 0.65em; opacity: 0.7; margin-top: 1em; }
+.reveal .weird-utah { background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 1em; border-radius: 8px; }
+.reveal .priority-must { border-left: 6px solid var(--accent); padding-left: 12px; }
+.reveal img.sign { max-height: 200px; }
+.reveal table { font-size: 0.75em; }
+.reveal .scenario { background: #f5f3ff; border-left: 6px solid var(--primary); padding: 0.8em 1em; border-radius: 6px; text-align: left; }
+.reveal .scenario .q { font-weight: 600; margin-bottom: 0.4em; }
+.reveal .scenario .a { margin-top: 0.6em; }
+.reveal ul { display: inline-block; text-align: left; }
+.reveal .big-number { font-size: 2.2em; color: var(--primary); font-weight: 700; }
+
+/* SIZE-CAP-PATCH v1 — clamp default Reveal heading sizes so long titles fit */
+.reveal h1 { font-size: 1.8em !important; line-height: 1.15; margin-bottom: 0.3em; }
+.reveal h2 { font-size: 1.3em !important; line-height: 1.2; margin-bottom: 0.4em; }
+.reveal h3 { font-size: 1.1em !important; }
+.reveal .slides section { padding: 0 24px; box-sizing: border-box; }
+.reveal p, .reveal li { font-size: 0.85em; line-height: 1.4; }
+.reveal table { font-size: 0.7em; }
+
+
+/* BIG-NUM-CAP v1 — clamp .big-num so long phrases like "Class D = your normal license" don't overflow */
+.reveal .big-num { font-size: 1.4em !important; line-height: 1.2; word-wrap: break-word; }
+.reveal .scenario-box, .reveal .answer-box { font-size: 0.75em; }
+.reveal h2 { font-size: 1.2em !important; }
+
+/* OVERFLOW-FIX v2 */
+/* OVERFLOW-FIX v2 — shrink everything further so slides fit within Reveal's 960x700 viewport */
+.reveal h1 { font-size: 1.4em !important; line-height: 1.15; margin-bottom: 0.2em; }
+.reveal h2 { font-size: 1.05em !important; line-height: 1.2; margin-bottom: 0.3em; }
+.reveal h3 { font-size: 0.95em !important; }
+.reveal .big-num { font-size: 1.15em !important; line-height: 1.2; word-wrap: break-word; }
+.reveal p, .reveal li { font-size: 0.7em !important; line-height: 1.35; }
+.reveal ul, .reveal ol { margin: 0.3em auto; }
+.reveal table { font-size: 0.55em !important; }
+.reveal .scenario-box, .reveal .answer-box { font-size: 0.65em !important; padding: 0.6em !important; }
+.reveal .learn-more { font-size: 0.55em !important; margin-top: 0.4em; }
+.reveal .tag-row { margin-bottom: 0.3em; }
+.reveal .must-tag, .reveal .should-tag, .reveal .nice-tag { font-size: 0.6em !important; }
+.reveal .ladder li { font-size: 0.55em !important; padding: 0.15em 0; }
+
+/* Knowledge-check slides: aggressively shrink */
+.reveal section[data-knowledge-check="true"] h2 { font-size: 0.95em !important; margin-bottom: 0.3em; }
+.reveal section[data-knowledge-check="true"] p { font-size: 0.75em !important; margin: 0.4em 0 !important; }
+.reveal section[data-knowledge-check="true"] .kc-choices { max-width: 500px !important; margin: 0 auto !important; }
+.reveal section[data-knowledge-check="true"] .kc-choices label { font-size: 0.65em !important; padding: 6px 10px !important; margin: 3px 0 !important; line-height: 1.2; }
+.reveal section[data-knowledge-check="true"] button { font-size: 0.7em !important; padding: 6px 16px !important; margin-top: 8px !important; }
+.reveal section[data-knowledge-check="true"] .kc-result { font-size: 0.65em !important; padding: 8px !important; margin-top: 8px !important; }
+.reveal section[data-knowledge-check="true"] hr { margin: 12px 0 !important; }
+
+/* CLASS-SWEEP v1 */
+/* CLASS-SWEEP v1 — size the rest of the content classes used across decks */
+.reveal .recap-card { font-size: 0.65em !important; padding: 0.4em 0.6em !important; margin: 0.3em 0 !important; line-height: 1.3; }
+.reveal .callout { font-size: 0.7em !important; padding: 0.5em !important; }
+.reveal .callout.small { font-size: 0.6em !important; }
+.reveal .scenario { font-size: 0.7em !important; padding: 0.5em !important; }
+.reveal .small { font-size: 0.6em !important; }
+.reveal .q { font-size: 0.75em !important; }
+.reveal .answer { font-size: 0.7em !important; }
+.reveal .pill, .reveal .pill-stop, .reveal .pill-go { font-size: 0.6em !important; padding: 0.2em 0.5em !important; }
+.reveal .matrix { font-size: 0.55em !important; }
+.reveal .move { font-size: 0.7em !important; }
+.reveal .big-number { font-size: 1.2em !important; line-height: 1.15; word-wrap: break-word; }
+
+/* Force a centered scrollable container that respects the brand color scrollbar */
+.reveal .slides > section { scrollbar-color: #c4b5fd #faf5ff; }
+
+/* TIGHTEN-COLS v1 */
+/* TIGHTEN-COLS v1 — shrink padding/font in 2-column go-look and multi-Q kc grids so right column fits */
+.reveal section[data-go-look="true"] div[style*="display:grid"] > div { padding: 8px !important; }
+.reveal section[data-go-look="true"] div[style*="display:grid"] .kc-choices { max-width: 100% !important; }
+.reveal section[data-go-look="true"] div[style*="display:grid"] .kc-choices label {
+  font-size: 0.55em !important;
+  padding: 5px 8px !important;
+  margin: 3px 0 !important;
+  line-height: 1.2 !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] p {
+  font-size: 0.65em !important;
+  margin: 0.4em 0 !important;
+  line-height: 1.3 !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] h2 {
+  font-size: 0.85em !important;
+  margin-bottom: 0.4em !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] button {
+  font-size: 0.65em !important;
+  padding: 5px 12px !important;
+  margin-top: 6px !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] a[href*="zerofatalities"] {
+  font-size: 0.65em !important;
+  padding: 5px 10px !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] .kc-result {
+  font-size: 0.55em !important;
+  padding: 6px !important;
+}
+/* Same for multi-Q knowledge-checks in 2-col or 3-col grids */
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] > div { padding: 6px !important; }
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] .kc-choices label {
+  font-size: 0.55em !important;
+  padding: 4px 8px !important;
+  margin: 2px 0 !important;
+  line-height: 1.2 !important;
+}
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] p {
+  font-size: 0.6em !important;
+  margin: 0.3em 0 !important;
+}
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] button {
+  font-size: 0.6em !important;
+  padding: 4px 10px !important;
+}
+
+/* CONTENT-TIGHTEN v1 */
+/* CONTENT-TIGHTEN v1 — trim tall content slides (sign + bullets + learn-more) so they fit */
+.reveal section[data-priority] img.sign { max-height: 130px !important; margin: 4px auto !important; }
+.reveal section[data-priority] p { font-size: 0.65em !important; margin: 0.3em 0 !important; line-height: 1.35; }
+.reveal section[data-priority] ul, .reveal section[data-priority] ol { margin: 0.3em 0 !important; }
+.reveal section[data-priority] li { font-size: 0.65em !important; line-height: 1.3 !important; margin: 0.15em 0 !important; }
+.reveal section[data-priority] .learn-more { font-size: 0.5em !important; margin-top: 0.3em !important; }
+.reveal section[data-priority] .tag-row { margin-bottom: 0.3em !important; }
+.reveal section[data-priority] h1 { font-size: 1.5em !important; margin-bottom: 0.2em !important; }
+.reveal section[data-priority] h2 { font-size: 1.1em !important; margin-bottom: 0.3em !important; }
+.reveal section[data-priority] table { font-size: 0.55em !important; margin: 0.3em auto !important; }
+.reveal section[data-priority] .scenario-box, .reveal section[data-priority] .answer-box { font-size: 0.6em !important; padding: 0.4em !important; margin: 0.3em 0 !important; }
+
+/* COL-DIVIDERS v1 */
+/* COL-DIVIDERS v1 — vertical separator line between 2-Q/3-Q knowledge-check grid columns */
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] > div:not(:last-child) {
+  border-right: 2px dashed #c4b5fd !important;
+  padding-right: 12px !important;
+}
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] > div:not(:first-child) {
+  padding-left: 12px !important;
+}
+
+/* GOLOOK-DIVIDER v1 */
+/* GOLOOK-DIVIDER v1 — vertical separator between go-look's left (link) and right (Q) columns */
+.reveal section[data-go-look="true"] div[style*="display:grid"] > div:not(:last-child) {
+  border-right: 2px dashed #fcd34d !important;
+  padding-right: 10px !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] > div:not(:first-child) {
+  padding-left: 10px !important;
+}
+
+</style></head>
+<body>
+<!-- HOME-BTN v1 -->
+<a href="../dashboard/index.html" style="position:fixed; top:12px; left:12px; z-index:9999; background:#581c87; color:white; text-decoration:none; padding:6px 14px; border-radius:6px; font-size:13px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.15);">&larr; Home</a>
+<div class="reveal"><div class="slides">
+
+<!-- =========================== SLIDE 1: TITLE =========================== -->
+<section>
+  <h1>Unit 5</h1>
+  <h2>Sharing the Road</h2>
+  <p>Motorcycles. Bikes. Trucks. Pedestrians. Work zones.</p>
+  <p style="font-size: 0.8em; opacity: 0.7;">About 22 minutes. The last unit. You're almost done.</p>
+</section>
+
+<!-- =========================== SLIDE 2: INTRO =========================== -->
+<section>
+  <h2>You're not alone out there</h2>
+  <p>Every other unit was about <em>you and your car</em>. This one is about
+  the eight other kinds of road user you'll meet on the way to school.</p>
+  <ul>
+    <li>Knowing the rules for each one = you stop guessing</li>
+    <li>Most of these rules are about <strong>space</strong> and <strong>visibility</strong></li>
+    <li>Almost all are MUST-know for the DLD test</li>
+  </ul>
+</section>
+
+<!-- =========================== SLIDE 3: VULNERABLE USERS =========================== -->
+<section data-fact-id="vulnerable-users-list" data-priority="SHOULD">
+  <h1>Who counts as a "vulnerable user"?</h1>
+  <p><span class="should-tag">SHOULD KNOW</span></p>
+  <p>Utah law uses this phrase for anyone on the road without a metal shell:</p>
+  <ul>
+    <li>Pedestrians (including workers in the road)</li>
+    <li>Bicyclists and e-bike riders</li>
+    <li>Motorcyclists and moped riders</li>
+    <li>Skateboards, roller skates, motorized scooters</li>
+    <li>Wheelchairs, electric mobility devices</li>
+    <li>People on horseback or in a horse-drawn vehicle</li>
+    <li>Open-cab farm tractors</li>
+  </ul>
+  <p>If you intentionally crowd or scare one of these people, that's a citation + points on your record.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.83</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- =========================== SLIDE 4: 3-FOOT RULE =========================== -->
+<section data-fact-id="pass-bicyclist-3-feet-minimum" data-priority="MUST" class="priority-must">
+  <h1>How much space when passing a bike?</h1>
+  <p><span class="must-tag">MUST KNOW &mdash; CANONICAL</span></p>
+  <p class="big-number">3 feet minimum</p>
+  <p>That's the Utah rule. Not 2 feet. Not "comfortable distance." <strong>Three feet of clear air</strong> between the side of your car and the cyclist.</p>
+  <ul>
+    <li>If the lane is too narrow, you can briefly cross a <strong>dashed</strong> yellow centerline to give the 3 ft (if oncoming is clear)</li>
+    <li>If yellow is solid or oncoming traffic is there &mdash; you wait</li>
+  </ul>
+  <p class="learn-more">Handbook p.84 &middot; <a href="https://visualhandbook.zerofatalities.com" target="_blank">zerofatalities.com</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">Which of these is NOT considered a vulnerable user under Utah law?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc4" value="0"> A skateboarder
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc4" value="1"> A motorcyclist
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc4" value="2"> A driver in a passenger car
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc4" value="3"> A pedestrian
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u5-kc4', 2, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> A driver in a passenger car<br>
+    Vulnerable users include pedestrians, bicyclists, e-bikes, mopeds, motorcycles, skateboarders, wheelchairs, persons riding animals, and farm tractors without enclosed shells. A regular car driver is NOT in this category. Handbook p. 83.
+  </div>
+</section>
+
+
+<!-- =========================== SLIDE 5: BIKE LANE MARKINGS =========================== -->
+<section data-fact-id="bike-lane-solid-white" data-priority="SHOULD">
+  <h1>What does a bike lane look like?</h1>
+  <p><span class="should-tag">SHOULD KNOW</span></p>
+  <p>Bike lanes are marked with <strong>solid white lines</strong>.</p>
+  <p>You may NOT stop, park, or drive in one. Three exceptions:</p>
+  <ul>
+    <li>Entering or leaving an alley/driveway</li>
+    <li>Police directing official duty</li>
+    <li>True emergency</li>
+  </ul>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.83</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- =========================== SLIDE 6: 100-FT NO-PASS =========================== -->
+<section data-fact-id="bicycle-no-pass-100-ft" data-priority="MUST" class="priority-must">
+  <h1>When is it never OK to pass a cyclist?</h1>
+  <p><span class="must-tag">MUST KNOW</span></p>
+  <p>Even with 3 feet available, you may NOT pass a cyclist:</p>
+  <ul>
+    <li>Within <strong>100 feet</strong> of an intersection or railroad crossing</li>
+    <li>Within 100 feet of a bridge, viaduct, or tunnel with obstructed view</li>
+    <li>Cresting a hill or curve with obstructed view</li>
+  </ul>
+  <p>Hold your spot, wait for clear road, then pass.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.84</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- =========================== SLIDE 7: E-BIKES =========================== -->
+<section data-fact-id="ebike-class-3-28mph-pedal" data-priority="SHOULD">
+  <h1>E-bikes come in three classes</h1>
+  <p><span class="should-tag">SHOULD KNOW</span></p>
+  <table>
+    <thead><tr><th>Class</th><th>How it works</th><th>Motor cuts off at</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Pedal-assist only</td><td>20 mph</td></tr>
+      <tr><td>2</td><td>Throttle (no pedaling needed)</td><td>20 mph</td></tr>
+      <tr><td>3</td><td>Pedal-assist + speedometer required</td><td><strong>28 mph</strong></td></tr>
+    </tbody>
+  </table>
+  <p>Why care? Class 3 riders can keep up with city traffic. They aren't all going 12 mph.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.85&ndash;86</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">How are bicycle lanes marked on Utah roadways?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc5" value="0"> Dashed white lines
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc5" value="1"> Solid white lines
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc5" value="2"> Solid yellow lines
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc5" value="3"> Green-painted pavement only
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u5-kc5', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Solid white lines<br>
+    Bike lanes are marked with solid white lines. Handbook p. 83.
+  </div>
+</section>
+
+
+<!-- =========================== SLIDE 8: FULL LANE =========================== -->
+<section data-fact-id="bicycle-equal-rights-as-vehicle" data-priority="SHOULD">
+  <h1>When can a bike take the whole lane?</h1>
+  <p><span class="should-tag">SHOULD KNOW</span></p>
+  <img class="sign" src="../images/signs/mutcd-W11-1-bicycle-crossing.png" alt="Yellow diamond with bicycle symbol indicating bicycle crossing">
+  <p>Bicycles are <strong>vehicles</strong> &mdash; same rights, same responsibilities as cars.</p>
+  <p>A cyclist can ride in the center of the lane when:</p>
+  <ul>
+    <li>The lane is too narrow to share safely</li>
+    <li>They're avoiding hazards (gravel, glass, parked-car doors)</li>
+    <li>They're turning left</li>
+  </ul>
+  <p>You don't get to honk. You wait, then pass with your 3 feet.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.83</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- =========================== SLIDE 9: M ENDORSEMENT =========================== -->
+<section data-fact-id="endorsement-m-motorcycle" data-priority="MUST" class="priority-must">
+  <h1>Want to ride a motorcycle? You need an M.</h1>
+  <p><span class="must-tag">MUST KNOW &mdash; CANONICAL</span></p>
+  <p>To legally ride a motorcycle on Utah roads, you need an <strong>M endorsement</strong> printed on your driver license.</p>
+  <ul>
+    <li>Class D license alone &mdash; not enough</li>
+    <li>You add the M after a separate motorcycle skills test (or by finishing an approved rider course)</li>
+    <li>Street motorcycles also require liability insurance</li>
+  </ul>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.90</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">Within how many feet of an intersection or railroad crossing is it illegal to pass a cyclist?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc6" value="0"> 50 feet
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc6" value="1"> 75 feet
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc6" value="2"> 100 feet
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc6" value="3"> 200 feet
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u5-kc6', 2, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> 100 feet<br>
+    No-pass zones for cyclists include within 100 feet of an intersection, RR crossing, or obstructed bridge/viaduct/tunnel. Handbook p. 84.
+  </div>
+</section>
+
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">Utah law requires you to give a bicyclist at least how much space when passing?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u5-kc-1" value="0"> 1 foot
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u5-kc-1" value="1"> 2 feet
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u5-kc-1" value="2"> 3 feet
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u5-kc-1" value="3"> 5 feet
+    </label>
+  </div>
+  <button onclick="checkKC('u5-kc-1', 2, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> 3 feet<br>
+    Utah&#x27;s 3-foot passing law applies whenever you pass a bicyclist or other vulnerable user. If the lane is too narrow, you may need to briefly use the adjacent lane. Handbook p. 84.
+  </div>
+</section>
+
+
+<!-- =========================== SLIDE 10: DOT HELMET =========================== -->
+<section data-fact-id="motorcycle-under-21-helmet-dot" data-priority="MUST" class="priority-must">
+  <h1>Under 21 on a motorcycle? DOT helmet, no exceptions.</h1>
+  <p><span class="must-tag">MUST KNOW</span></p>
+  <p>Riders <strong>and passengers</strong> under 21 must wear a <strong>DOT-approved</strong> helmet.</p>
+  <ul>
+    <li>A baseball cap doesn't count</li>
+    <li>A leather hat doesn't count</li>
+    <li>A bike helmet doesn't count &mdash; it must say DOT inside</li>
+  </ul>
+  <p>Same rule applies to street-legal ATVs.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.90</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- =========================== SLIDE 11: LANE FILTERING =========================== -->
+<section data-fact-id="motorcycle-lane-filter-conditions" data-priority="SHOULD">
+  <h1>Did that motorcycle just cut between cars? Probably legal.</h1>
+  <p><span class="should-tag">SHOULD KNOW</span></p>
+  <p>Utah allows <strong>lane filtering</strong> &mdash; not the same as lane splitting &mdash; when ALL of these are true:</p>
+  <ul>
+    <li>Road has 2 or more lanes going the same direction</li>
+    <li>Posted speed limit is 45 mph or less</li>
+    <li>The motorcycle is going 15 mph or less</li>
+    <li>The vehicles being passed are <strong>fully stopped</strong></li>
+    <li>It can be done safely</li>
+  </ul>
+  <p>Not allowed on freeway on-ramps.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.91</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- =========================== SLIDE 12: DEAD RED =========================== -->
+<section data-fact-id="motorcycle-dead-red-90-seconds" data-priority="SHOULD">
+  <h1>What if a light won't see a motorcycle?</h1>
+  <p><span class="should-tag">SHOULD KNOW</span></p>
+  <p>Traffic signals use buried sensors that sometimes don't pick up small bikes. Utah's <strong>dead-red rule</strong>:</p>
+  <p>A motorcycle, moped, or bicycle rider who is <strong>16 or older</strong> may proceed through a red light after waiting <strong>at least 90 seconds</strong>, IF:</p>
+  <ul>
+    <li>No other vehicles or pedestrians are present</li>
+    <li>The path is clear</li>
+  </ul>
+  <p>Cars don't get this rule. Only the small stuff.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.91</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- =========================== SLIDE 13: PEDESTRIANS ROW =========================== -->
+<section data-fact-id="pedestrian-yield-marked-or-unmarked" data-priority="MUST" class="priority-must">
+  <h1>Marked or unmarked &mdash; pedestrians have right of way</h1>
+  <p><span class="must-tag">MUST KNOW</span></p>
+  <img class="sign" src="../images/signs/mutcd-W11-2-pedestrian-crossing.png" alt="Yellow diamond with walking-person silhouette indicating pedestrian crossing">
+  <p>Yield to every pedestrian at every crosswalk &mdash; even ones not painted on the road.</p>
+  <ul>
+    <li>Stop <strong>before</strong> the crosswalk line so other drivers can see the person</li>
+    <li>Even with a green light, yield to pedestrians still in the crosswalk</li>
+    <li>Never pass another car that's stopped at a crosswalk &mdash; there might be a hidden walker</li>
+  </ul>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.91&ndash;92</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- =========================== SLIDE 14: WHITE CANE =========================== -->
+<section data-fact-id="white-cane-full-stop" data-priority="MUST" class="priority-must">
+  <h1>White cane or guide dog = full STOP</h1>
+  <p><span class="must-tag">MUST KNOW</span></p>
+  <p>This is the highest yield obligation in the entire handbook.</p>
+  <p class="big-number">STOP</p>
+  <ul>
+    <li>White cane or guide dog</li>
+    <li>Marked crosswalk, unmarked crosswalk, side street, anywhere</li>
+    <li>You don't slow &mdash; you stop, completely, until they finish crossing</li>
+  </ul>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.91</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">Which condition is REQUIRED for legal motorcycle lane filtering in Utah?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc7" value="0"> Speed limit must be 65 mph or higher
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc7" value="1"> The vehicles being passed must be moving
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc7" value="2"> The motorcycle must travel at 15 mph or less
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc7" value="3"> Riding on the right shoulder is allowed
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u5-kc7', 2, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> The motorcycle must travel at 15 mph or less<br>
+    Lane filtering is legal only when: 2+ same-direction lanes, posted limit 45 mph or less (or off-ramp), motorcycle 15 mph or less, vehicle being passed is STOPPED, move is safe. Handbook p. 91.
+  </div>
+</section>
+
+
+<!-- =========================== SLIDE 15: TRUCK 4 NO-ZONES =========================== -->
+<section data-fact-id="truck-no-zones-20-and-200" data-priority="MUST" class="priority-must">
+  <h1>Trucks have four blind spots &mdash; the right is the worst</h1>
+  <p><span class="must-tag">MUST KNOW</span></p>
+  <ul>
+    <li><strong>Front:</strong> up to 20 feet ahead of the cab</li>
+    <li><strong>Left side:</strong> alongside the cab, smaller</li>
+    <li><strong>Right side:</strong> alongside cab AND running the full length of the trailer &mdash; <strong>biggest blind spot</strong></li>
+    <li><strong>Behind:</strong> up to 200 feet</li>
+  </ul>
+  <p>Mirror test: <em>if you can't see the truck driver in their side mirror, they can't see you.</em></p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.88&ndash;89</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- =========================== SLIDE 16: TRUCK 400 FT =========================== -->
+<section data-fact-id="truck-stop-400-ft-at-55" data-priority="MUST" class="priority-must">
+  <h1>A loaded truck needs more than 400 feet to stop</h1>
+  <p><span class="must-tag">MUST KNOW</span></p>
+  <p>At 55 mph:</p>
+  <ul>
+    <li>Your car: about 130&ndash;140 feet to stop</li>
+    <li>A fully-loaded tractor-trailer: <strong>more than 400 feet</strong></li>
+  </ul>
+  <p>Why? Weight. Eighty thousand pounds takes way longer to slow than two thousand. The brakes are powerful but the inertia is enormous.</p>
+  <p><strong>What this means for you:</strong> if you cut in front of a truck and brake-check it, the truck physically can't stop. Give space, don't pinch.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.88</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- =========================== SLIDE 17: TRUCK RIGHT-TURN PINCH =========================== -->
+<section data-fact-id="truck-swings-left-for-right-turn" data-priority="MUST" class="priority-must">
+  <h1>Trucks turning right? Don't sneak up on their right.</h1>
+  <p><span class="must-tag">MUST KNOW</span></p>
+  <p>Watch a truck make a right turn at an intersection &mdash; it will swing <strong>LEFT</strong> first, then sweep right.</p>
+  <p>The gap that opens on the right side of the trailer looks like a free lane. It isn't. The trailer is about to close that gap as it pivots.</p>
+  <ul>
+    <li>That right side is also the truck's biggest blind spot</li>
+    <li>Stay behind the truck until the turn is complete</li>
+    <li>This is one of the most common car-truck crashes in Utah</li>
+  </ul>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.88</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- =========================== SLIDE 18: TRUCK LANE CHANGE =========================== -->
+<section data-fact-id="pass-truck-see-whole-front" data-priority="SHOULD">
+  <h1>Passing a truck? Know when to pull back in.</h1>
+  <p><span class="should-tag">SHOULD KNOW</span></p>
+  <ul>
+    <li>Pass on the <strong>LEFT</strong>, always, completely</li>
+    <li>Don't linger alongside &mdash; you're in the blind spot</li>
+    <li>Don't pull back in until you can see <strong>the whole front of the truck</strong> in your rearview mirror</li>
+    <li>Stopped behind a truck on a hill? Leave extra room &mdash; it may stall or roll backward</li>
+  </ul>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.88&ndash;89</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check (3 questions)</h2>
+  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start;">
+    <div>
+      <p style="margin: 1em 0; font-size: 0.7em;">A large trucks blind spot extends how far in front of the cab and how far behind?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u5-kc8-a" value="0"> 10 feet in front, 50 feet behind
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u5-kc8-a" value="1"> 20 feet in front, 200 feet behind
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u5-kc8-a" value="2"> 5 feet in front, 100 feet behind
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u5-kc8-a" value="3"> Trucks have no blind spots due to mirrors
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u5-kc8-a', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> 20 feet in front, 200 feet behind<br>
+    Truck no-zones extend up to 20 ft in front of the cab, on both sides especially alongside the cab, and up to 200 ft behind. Handbook p. 89.
+  </div>
+    </div>
+    <div>
+      <p style="margin: 1em 0; font-size: 0.7em;">At 55 mph, a fully loaded tractor-trailer may take how many feet to come to a complete stop?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u5-kc8-b" value="0"> 100 feet
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u5-kc8-b" value="1"> 200 feet
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u5-kc8-b" value="2"> More than 400 feet
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u5-kc8-b" value="3"> Same as a passenger car
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u5-kc8-b', 2, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> More than 400 feet<br>
+    A fully loaded tractor-trailer at 55 mph may take MORE than 400 feet to stop - about 1/3 longer than a football field. Handbook p. 88.
+  </div>
+    </div>
+    <div>
+      <p style="margin: 1em 0; font-size: 0.7em;">A semi-truck ahead of you is signaling a right turn and starts swinging LEFT first. What should you do?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u5-kc8-c" value="0"> Pass on the right - there is space opening up
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u5-kc8-c" value="1"> Stay behind - trucks swing wide left to make a right turn
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u5-kc8-c" value="2"> Honk because they are in the wrong lane
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u5-kc8-c" value="3"> Pass on the left because they are confused
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u5-kc8-c', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Stay behind - trucks swing wide left to make a right turn<br>
+    Trucks swing wide LEFT before a right turn - the gap on the right is the pivot zone, which will close on your car. The right side is also the trucks biggest blind spot. Stay behind. Handbook p. 88.
+  </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================== SLIDE 19: WORK ZONES DOUBLE FINES =========================== -->
+<section data-fact-id="work-zone-double-fine" data-priority="MUST" class="priority-must">
+  <h1>Speeding in a work zone = double the fine</h1>
+  <p><span class="must-tag">MUST KNOW</span></p>
+  <img class="sign" src="../images/signs/mutcd-CW20-1-road-work-ahead.png" alt="Orange diamond with black text ROAD WORK AHEAD">
+  <p>Orange signs, orange cones, orange-vested workers &mdash; you're in a work zone.</p>
+  <ul>
+    <li>Court <strong>must</strong> fine at least DOUBLE the regular speeding fine</li>
+    <li>Applies even if no workers are visible</li>
+    <li>Applies at 2 a.m. on a Sunday</li>
+    <li>Applies even if traffic is moving fine</li>
+  </ul>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.59 &amp; p.68</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">What does Utah require on your driver license to legally operate a motorcycle on Utah highways?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u5-kc-2" value="0"> A separate motorcycle license only
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u5-kc-2" value="1"> An M endorsement on your DL
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u5-kc-2" value="2"> A Class B CDL
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u5-kc-2" value="3"> No endorsement if you are over 21
+    </label>
+  </div>
+  <button onclick="checkKC('u5-kc-2', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> An M endorsement on your DL<br>
+    An M endorsement on your DL is required to operate a motorcycle on Utah highways. Handbook p. 90.
+  </div>
+</section>
+
+
+<!-- =========================== SLIDE 20: FLAGGER OVERRIDES =========================== -->
+<section data-fact-id="flagger-overrides-signs" data-priority="MUST" class="priority-must">
+  <h1>A flagger beats every other sign and signal</h1>
+  <p><span class="must-tag">MUST KNOW</span></p>
+  <img class="sign" src="../images/signs/mutcd-CW20-7-flagger.png" alt="Orange diamond with silhouette of flagger holding a flag">
+  <p>In a work zone, the person with the STOP/SLOW paddle <strong>overrides</strong>:</p>
+  <ul>
+    <li>Traffic signals</li>
+    <li>Posted signs</li>
+    <li>Lane markings</li>
+    <li>What your GPS is saying</li>
+  </ul>
+  <p>Green light + flagger waving STOP = you stop. The flagger wins.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.59</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- =========================== SLIDE 21: MOVE OVER LAW =========================== -->
+<section data-fact-id="move-over-law" data-priority="MUST" class="priority-must">
+  <h1>Move Over Law &mdash; the 90-day suspension rule</h1>
+  <p><span class="must-tag">MUST KNOW</span></p>
+  <p>Approaching ANY stationary vehicle with flashing hazards or amber/red/blue lights:</p>
+  <ul>
+    <li><strong>Slow down</strong> AND</li>
+    <li><strong>Change lanes</strong> to a non-adjacent lane if practical</li>
+  </ul>
+  <p>Applies to police, fire, ambulance &mdash; AND tow trucks, road-side assistance, UDOT, anyone with flashers on.</p>
+  <p>Violation: 4-hour live classroom course within 90 days. Don't take the course? <strong>90-day license suspension.</strong></p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.86</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- =========================== SLIDE 22: EMERGENCY SCENES =========================== -->
+<section data-fact-id="emergency-vehicle-pull-right-stop" data-priority="MUST" class="priority-must">
+  <h1>Sirens behind you? Right side, stop.</h1>
+  <p><span class="must-tag">MUST KNOW</span></p>
+  <p>Emergency vehicle approaching with lights and siren:</p>
+  <ul>
+    <li>Pull immediately to the <strong>RIGHT</strong></li>
+    <li>STOP completely until it passes</li>
+    <li>Do not follow within <strong>500 feet</strong> of a fire vehicle responding to an alarm</li>
+    <li>Do not stop or park on the same block as one</li>
+  </ul>
+  <p>If you're in the HOV/express lane, the express-lane rule lets you cross the double white to exit right &mdash; safely.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.86</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- =========================== SLIDE 23: SCHOOL ZONES =========================== -->
+<section data-fact-id="school-zone-flashing-slow" data-priority="SHOULD">
+  <h1>Flashing lights at a school = slower limit, now</h1>
+  <p><span class="should-tag">SHOULD KNOW</span></p>
+  <img class="sign" src="../images/signs/mutcd-S1-1-school.png" alt="Fluorescent yellow-green pentagon with two black walking-child silhouettes indicating school crossing">
+  <p>School-zone signs are the only <strong>fluorescent yellow-green pentagon</strong> shape on the road.</p>
+  <ul>
+    <li>Flashing yellow lights = the slower posted limit is in effect</li>
+    <li>Crossing guards function like flaggers &mdash; obey them, period</li>
+    <li>Watch for kids on the sidewalk who might dart out</li>
+  </ul>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.91</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">Utah Move Over Law requires you to slow down AND change lanes when approaching:</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc9" value="0"> Only police vehicles with flashing lights
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc9" value="1"> Only ambulances and fire trucks
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc9" value="2"> Any stationary vehicle with flashing hazard lights
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc9" value="3"> Only tow trucks
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u5-kc9', 2, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Any stationary vehicle with flashing hazard lights<br>
+    Move Over Law applies to ANY stationary vehicle with flashing hazards adjacent to the highway - not just emergency vehicles. Handbook p. 86.
+  </div>
+</section>
+
+
+<!-- =========================== SLIDE 24: SCHOOL BUS =========================== -->
+<section data-fact-id="school-bus-red-lights-stop" data-priority="MUST" class="priority-must">
+  <h1>School bus with flashing red lights = STOP</h1>
+  <p><span class="must-tag">MUST KNOW</span></p>
+  <p>The bus extends a stop-paddle and flashes alternating red lights. You stop <strong>before</strong> reaching the bus.</p>
+  <table>
+    <thead><tr><th>Road type</th><th>Who stops?</th></tr></thead>
+    <tbody>
+      <tr><td>2-lane road</td><td>Both directions</td></tr>
+      <tr><td>4-lane road, no median</td><td>Both directions</td></tr>
+      <tr><td>Divided highway with median</td><td>Same direction only</td></tr>
+      <tr><td>5+ lanes with center turn lane</td><td>Same direction only</td></tr>
+    </tbody>
+  </table>
+  <p>Illegal pass: fine up to <strong>$3,000</strong>.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.46</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-go-look="true">
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+    <div style="background: linear-gradient(135deg, #fef9c3, #fed7aa); padding: 1.2em; border-radius: 10px; border: 2px solid #fde68a;">
+    <h2 style="color:#581c87; margin-bottom: 0.5em;">Go look at the picture</h2>
+    <p style="margin: 0.6em 0; font-size: 0.85em;">Open Zerofatalities and look at <strong>traffic controls &mdash; the school-bus diagram showing exactly who has to stop on each road type</strong>. Then come back and answer below.</p>
+    <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/traffic-controls/" target="_blank" rel="noopener" style="display:inline-block; background:#581c87; color:white; text-decoration:none; padding:8px 16px; border-radius:6px; margin: 0.5em 0; font-size:0.8em;">Open Zerofatalities &rarr;</a>
+  </div>
+    <div style="padding: 1em; background: #faf5ff; border-left: 4px solid #581c87; border-radius: 6px;">
+    <p style="margin: 0.5em 0; font-size: 0.85em; font-weight: 600; color: #581c87;">Now answer:</p>
+    <p style="margin: 0.5em 0; font-size: 0.85em;">You&apos;re southbound on a 4-lane DIVIDED highway with a grass median. A school bus northbound on the other side of the median stops with red lights flashing. What do you do?</p>
+    <div class="kc-choices" style="text-align:left; max-width:520px; margin:0 auto;">
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u5-1" value="0"> Stop &mdash; all directions must stop for a school bus with flashing reds
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u5-1" value="1"> You&apos;re not required to stop &mdash; the median separates traffic, so only northbound (behind the bus) must stop
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u5-1" value="2"> Slow to 20 mph and proceed with caution
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u5-1" value="3"> Pull to the right shoulder and stop
+      </label>
+    </div>
+    <button onclick="checkKC('gl-u5-1', 1, this)" style="background:#581c87; color:white; border:none; padding:6px 16px; border-radius:5px; margin-top:8px; cursor:pointer; font-size:0.75em;">Check answer</button>
+    <div class="kc-result" style="display:none; margin-top:10px; padding:10px; background:#fef3c7; border-radius:4px; font-size:0.7em;">
+      <strong>Answer:</strong> You&apos;re not required to stop &mdash; the median separates traffic, so only northbound (behind the bus) must stop<br>On a divided highway with a median (4+ lanes), only vehicles behind the bus must stop. A median or a center turn lane between you and the bus exempts the opposite direction. Handbook p. 46.
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- =========================== SLIDE 25: TRAX / FRONTRUNNER =========================== -->
+<section data-fact-id="trains-right-of-way-always" data-priority="MUST" class="priority-must">
+  <h1>Trains always have right-of-way</h1>
+  <p><span class="must-tag">MUST KNOW</span></p>
+  <img class="sign" src="../images/signs/mutcd-R15-1-railroad-crossbuck.png" alt="White X-shaped sign with black text RAIL ROAD CROSSING">
+  <p>Trains have the right-of-way <strong>100% of the time</strong> &mdash; over ambulances, fire engines, cars, police, pedestrians.</p>
+  <ul>
+    <li>A freight train at 55 mph needs <strong>more than a mile</strong> to stop (~18 football fields)</li>
+    <li>TRAX light rail goes from 0 to 65 mph in 21 seconds. Don't try to beat it.</li>
+    <li>Never stop on tracks. Never pass another vehicle at a crossing.</li>
+    <li>Stop 15 to 50 feet from the nearest rail when signals or gates are active</li>
+  </ul>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.95&ndash;97</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- =========================== SLIDE 26: ATV/UTV =========================== -->
+<section data-fact-id="class-d-covers-street-legal-atv" data-priority="SHOULD">
+  <h1>Class D covers ATVs and UTVs (if they're street-legal)</h1>
+  <p><span class="should-tag">SHOULD KNOW</span></p>
+  <p>Your regular Class D Utah license is enough to drive a <strong>street-legal</strong> ATV, UTV, or full-size vehicle on a public road. No M endorsement needed.</p>
+  <ul>
+    <li>"Street-legal" means it meets equipment requirements (lights, horn, mirrors, etc.)</li>
+    <li>Same DOT helmet rule under 21</li>
+    <li>If it's not street-legal, you can ride it on dedicated trails only</li>
+  </ul>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.94&ndash;95</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">A school bus ahead has its alternating flashing RED lights on and the stop arm extended. You must:</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc10" value="0"> Slow down and pass carefully on the left
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc10" value="1"> Stop immediately before reaching the bus
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc10" value="2"> Stop only if children are visible
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u5-kc10" value="3"> Continue at posted speed
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u5-kc10', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Stop immediately before reaching the bus<br>
+    Alternating flashing red lights + stop arm = STOP immediately before reaching the bus. Handbook p. 46.
+  </div>
+</section>
+
+
+<!-- =========================== SLIDE 27: TRAFFIC STOP =========================== -->
+<section data-fact-id="traffic-stop-procedure" data-priority="SHOULD">
+  <h1>If a police car pulls you over: here's the move</h1>
+  <p><span class="should-tag">SHOULD KNOW</span></p>
+  <ol style="text-align: left; display: inline-block;">
+    <li>Signal, move to the <strong>RIGHT</strong> shoulder (even from the HOV lane)</li>
+    <li>Put the car in PARK and turn off the engine</li>
+    <li>Stay in the vehicle, roll down your window</li>
+    <li>Keep your seat belt on. Ask passengers to keep theirs on.</li>
+    <li>Hands on top of the steering wheel</li>
+    <li>For documents, keep one hand on the wheel and reach slowly</li>
+  </ol>
+  <p>Don't get out of the car unless the officer asks you to.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.93</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">Utah law requires DOT-approved motorcycle helmets for riders and passengers under what age?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u5-kc-3" value="0"> 16
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u5-kc-3" value="1"> 18
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u5-kc-3" value="2"> 21
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u5-kc-3" value="3"> 25
+    </label>
+  </div>
+  <button onclick="checkKC('u5-kc-3', 2, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> 21<br>
+    Riders and passengers under 21 must wear a DOT-approved helmet on a motorcycle. Same rule for street-legal ATVs. Handbook p. 90.
+  </div>
+</section>
+
+
+<!-- =========================== SLIDE 28: SCENARIO 1 (3-FT + CYCLIST) =========================== -->
+<section>
+  <h1>Scenario 1: The narrow lane</h1>
+  <div class="scenario">
+    <p class="q">You're on a 2-lane residential street. A cyclist is in your lane on the right. The lane is too narrow to give 3 feet without crossing the centerline. The yellow line on your side is dashed and no one is coming. You're not near an intersection.</p>
+    <p class="q">What do you do?</p>
+    <p class="a"><strong>Cross the dashed yellow briefly</strong> to give your 3 feet, then return. That's the legal move. If the line were solid, or oncoming traffic were there, you'd wait and follow.</p>
+  </div>
+  <p class="learn-more">Tests: pass-bicyclist-3-feet-minimum &middot; dashed-yellow-passing &middot; bicycle-no-pass-100-ft</p>
+</section>
+
+<!-- =========================== SLIDE 29: SCENARIO 2 (TRUCK RIGHT TURN) =========================== -->
+<section>
+  <h1>Scenario 2: The truck's "free" gap</h1>
+  <div class="scenario">
+    <p class="q">A tractor-trailer ahead signals a right turn. You're also turning right. You see a gap on the trailer's right side and think you can slip through.</p>
+    <p class="q">Smart or not?</p>
+    <p class="a"><strong>Bad move.</strong> The truck swings LEFT before swinging right &mdash; that gap is the pivot zone, and it's about to close around your car. The right side is also the truck's biggest blind spot. The driver doesn't see you. Stay behind.</p>
+  </div>
+  <p class="learn-more">Tests: truck-swings-left-for-right-turn &middot; truck-largest-blind-spot-right</p>
+</section>
+
+<!-- =========================== SLIDE 30: SCENARIO 3 (LANE FILTER) =========================== -->
+<section>
+  <h1>Scenario 3: The motorcycle that "cut in line"</h1>
+  <div class="scenario">
+    <p class="q">You're stopped at a red light on State Street (40 mph posted). A motorcycle slides between your lane and the next one, going about 10 mph, and pulls up to the front of the line.</p>
+    <p class="q">Was that illegal?</p>
+    <p class="a"><strong>No &mdash; that's legal lane filtering.</strong> The conditions match: 2+ lanes same direction, speed limit at or under 45 mph, motorcycle under 15 mph, vehicles being passed are fully stopped. This is NOT the same as illegal lane splitting (which is between moving traffic).</p>
+  </div>
+  <p class="learn-more">Tests: motorcycle-lane-filter-conditions</p>
+</section>
+
+<!-- =========================== SLIDE 31: SCENARIO 4 (TOW TRUCK + MOVE OVER) =========================== -->
+<section>
+  <h1>Scenario 4: The tow truck on the shoulder</h1>
+  <div class="scenario">
+    <p class="q">You're on a 4-lane highway. A tow truck is on the right shoulder with amber lights flashing, hooking up to a stalled car. There's no police presence.</p>
+    <p class="q">Move Over Law applies?</p>
+    <p class="a"><strong>Yes.</strong> Move Over applies to ANY stationary vehicle with flashing hazards or amber lights &mdash; not just police/fire/ambulance. Slow down AND change to a non-adjacent lane if practical. Skip it and you risk a 90-day suspension.</p>
+  </div>
+  <p class="learn-more">Tests: move-over-law &middot; move-over-violation-90-day-suspend</p>
+</section>
+
+<!-- =========================== SLIDE 32: SCENARIO 5 (SCHOOL BUS MEDIAN) =========================== -->
+<section>
+  <h1>Scenario 5: School bus across the median</h1>
+  <div class="scenario">
+    <p class="q">You're driving NORTH on a 4-lane divided highway with a wide grass median. A school bus SOUTHBOUND on the opposite side of the median stops with red lights flashing.</p>
+    <p class="q">Do you stop?</p>
+    <p class="a"><strong>No.</strong> Because there's a physical median, only same-direction (southbound) vehicles must stop. You proceed with caution. If the median weren't there &mdash; both directions stop.</p>
+  </div>
+  <p class="learn-more">Tests: school-bus-median-only-same-direction</p>
+</section>
+
+<!-- =========================== SLIDE 33: WEIRD UTAH =========================== -->
+<section>
+  <h1>Weird Utah Law of the Day</h1>
+  <div class="weird-utah">
+    <h2>The 14-Inch Wheel Rule</h2>
+    <p>Utah's bicycle code (UCA §41-6a-1102) only counts a device as a "bicycle" if its wheels are <strong>14 inches or more</strong> in diameter.</p>
+    <p>Why does that matter?</p>
+    <ul>
+      <li>A kid's tiny BMX or push-bike with 12-inch wheels &mdash; technically <em>not</em> a bicycle under state law</li>
+      <li>It's treated more like a toy than a road vehicle</li>
+      <li>The 3-foot passing rule still applies to the human, but the bike-lane rules don't</li>
+    </ul>
+    <p>Bonus oddity: Utah was the <strong>first state</strong> to legalize motorcycle lane filtering (2019). Most states still don't allow it.</p>
+  </div>
+</section>
+
+<!-- =========================== SLIDE 34: RECAP =========================== -->
+<section>
+  <h1>The seven MUSTs of Unit 5</h1>
+  <ol style="text-align: left; display: inline-block;">
+    <li><strong>3 feet</strong> &mdash; minimum passing distance for any cyclist</li>
+    <li><strong>100 feet</strong> &mdash; no passing a cyclist near intersections or RR crossings</li>
+    <li><strong>M endorsement</strong> &mdash; required to ride a motorcycle</li>
+    <li><strong>DOT helmet under 21</strong> &mdash; rider AND passenger</li>
+    <li><strong>White cane = full STOP</strong> &mdash; highest yield obligation</li>
+    <li><strong>400 feet</strong> &mdash; truck stopping distance at 55 mph</li>
+    <li><strong>Move Over Law</strong> &mdash; slow + change lanes for ANY flashing-light vehicle, or 90-day suspension</li>
+  </ol>
+  <p>Plus: school-bus red lights, work-zone double fine, flagger overrides, trains always win.</p>
+</section>
+
+<!-- =========================== SLIDE 34b: VISUAL CONCEPTS TOUR =========================== -->
+<section data-tour="true">
+  <h2 style="color:#581c87;">Want to see all of this in pictures?</h2>
+  <p style="margin: 0.6em 0; font-size: 0.85em;">Zerofatalities&apos; Visual Driver Handbook covers what you just studied with animations, photos, and real Utah locations. Each link opens a specific topic.</p>
+  <div style="background: linear-gradient(135deg, #fef9c3, #fed7aa); padding: 1em; border-radius: 10px; border: 2px solid #fde68a; max-width: 640px; margin: 0.8em auto; text-align: left;">
+    <ul style="list-style:none; padding:0; margin:0; font-size: 0.75em;">
+      <li style="padding: 5px 0; border-bottom: 1px solid #fcd34d;">
+        <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/traffic-controls/" target="_blank" rel="noopener" style="color: #581c87; text-decoration: none; font-weight: 600;">Traffic controls (school bus with flashing lights)</a>
+      </li>
+      <li style="padding: 5px 0; border-bottom: 1px solid #fcd34d;">
+        <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/traffic-signs/" target="_blank" rel="noopener" style="color: #581c87; text-decoration: none; font-weight: 600;">Traffic signs (signs for bikes, work zones)</a>
+      </li>
+      <li style="padding: 5px 0;">
+        <a href="https://visualhandbook.zerofatalities.com/handbook-index/" target="_blank" rel="noopener" style="color: #581c87; text-decoration: none; font-weight: 600;">Full handbook index</a>
+      </li>
+    </ul>
+  </div>
+  <p style="margin-top: 0.8em; font-size: 0.7em; color: #71717a;">All open in a new tab. Come back here when you&apos;re done.</p>
+</section>
+
+<!-- =========================== SLIDE 35: FINISH =========================== -->
+<section data-state="finish">
+  <h1 style="color:#581c87; font-size: 2em; text-align:center;">&#127881; You finished Unit 5! &#127881;</h1>
+  <p style="text-align:center; font-size: 0.95em; margin-top: 1em;">That's it. Five units. Every category the DLD test covers.</p>
+  <ul style="display:inline-block; text-align:left; margin: 0.5em auto; font-size: 0.85em;">
+    <li>You know the GDL rules and how to add the M someday</li>
+    <li>You know how to control a car &mdash; mirrors, lanes, parking, passing</li>
+    <li>You know who goes first when it gets weird (4-way stops, roundabouts, school buses)</li>
+    <li>You know how to stay safe and legal &mdash; alcohol, drugs, weather, crashes</li>
+    <li>And now you know how to share the road with everyone else</li>
+  </ul>
+  <p style="text-align:center; margin-top: 1em;"><strong>Try a quiz next.</strong> Start with Unit 5's quick check, then work up to a full exam.</p>
+</section>
+
+</div></div>
+<script>
+  function checkKC(name, correctIndex, btn) {
+    var sel = document.querySelector('input[name="' + name + '"]:checked');
+    var resultEl = btn.nextElementSibling;
+    if (!sel) {
+      resultEl.style.display = 'block';
+      resultEl.innerHTML = '<em>Pick an answer first.</em>';
+      return;
+    }
+    var labels = document.querySelectorAll('input[name="' + name + '"]');
+    labels.forEach(function(input, i) {
+      var lbl = input.parentElement;
+      if (i === correctIndex) lbl.style.borderColor = '#16a34a', lbl.style.background = '#dcfce7';
+      else if (input.checked) lbl.style.borderColor = '#dc2626', lbl.style.background = '#fee2e2';
+    });
+    resultEl.style.display = 'block';
+    btn.disabled = true;
+    btn.style.opacity = '0.5';
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>Reveal.initialize({ hash: true, slideNumber: false, transition: 'fade', controls: true, progress: true });</script>
+<script>
+  Reveal.on('slidechanged', function(event) {
+    var slides = document.querySelectorAll('.reveal .slides > section');
+    var isLast = event.currentSlide === slides[slides.length - 1];
+    if (isLast && typeof confetti === 'function') {
+      confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+      setTimeout(function() {
+        confetti({ particleCount: 80, spread: 100, origin: { y: 0.5, x: 0.2 } });
+        confetti({ particleCount: 80, spread: 100, origin: { y: 0.5, x: 0.8 } });
+      }, 400);
+      // Record deck completion
+      try {
+        var unitKey = "unit-5";
+        var completions = JSON.parse(localStorage.getItem("dl_deck_completions") || "{}");
+        completions[unitKey] = Date.now();
+        localStorage.setItem("dl_deck_completions", JSON.stringify(completions));
+        var __dlUser = localStorage.getItem("dl_user");
+        if (__dlUser && __dlUser !== "__anon__") {
+          fetch("/api/drive/progress", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              user: __dlUser.replace(/^"|"$/g, ""),
+              deckCompletions: completions
+            }),
+            keepalive: true
+          }).catch(function(){});
+        }
+      } catch (e) {}
+    }
+  });
+</script>
+</body></html>

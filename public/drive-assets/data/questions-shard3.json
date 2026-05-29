@@ -1,0 +1,4414 @@
+{
+  "questions": [
+    {
+      "id": "q-0291",
+      "canonical_fact_id": "four-way-stop-yield-right",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 60,
+      "source_doc": "handbook-3.2026",
+      "question": "You and another car arrive at a 4-way stop at the exact same moment. The other car is on your right and you're both going straight. Who goes first?",
+      "choices": [
+        "You do \u2014 left has priority at 4-way stops",
+        "The other driver \u2014 when arrivals tie, yield to the car on your right",
+        "Whoever signals their intent first",
+        "Whoever is going straight has priority over turners"
+      ],
+      "correct_index": 1,
+      "explanation": "When two vehicles arrive at a 4-way stop simultaneously, the vehicle on the right has the right-of-way. Handbook p. 60.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "four-way-stop"
+      ]
+    },
+    {
+      "id": "q-0292",
+      "canonical_fact_id": "four-way-stop-yield-right",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 60,
+      "source_doc": "handbook-3.2026",
+      "question": "At a 4-way stop, who goes first if you arrive a moment before any other vehicle?",
+      "choices": [
+        "The car on your right, always",
+        "You do \u2014 you arrived first",
+        "Whoever is going straight",
+        "Whoever has the larger vehicle"
+      ],
+      "correct_index": 1,
+      "explanation": "First to arrive at a 4-way stop goes first. The yield-to-right rule only resolves tied arrivals. Handbook p. 60.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "four-way-stop"
+      ]
+    },
+    {
+      "id": "q-0293",
+      "canonical_fact_id": "already-in-intersection-priority",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 60,
+      "source_doc": "handbook-3.2026",
+      "question": "You arrive at an intersection. Another driver is already partway through it. What do you do?",
+      "choices": [
+        "Yield \u2014 they were there first",
+        "Honk to warn them you're proceeding",
+        "Drive around them",
+        "Speed up because you have the right-of-way at the intersection"
+      ],
+      "correct_index": 0,
+      "explanation": "Yield to any driver already in the intersection before you. Handbook p. 60.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "intersection"
+      ]
+    },
+    {
+      "id": "q-0294",
+      "canonical_fact_id": "emergency-vehicle-pull-right-stop",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 86,
+      "source_doc": "handbook-3.2026",
+      "question": "You're stopped at a red light. An ambulance with lights and siren comes up behind you. What do you do?",
+      "choices": [
+        "Run the red light immediately to clear the way",
+        "Stay put \u2014 the light is red, the ambulance will go around",
+        "Pull to the right when safe and stop; clear the intersection cautiously only if you can do so safely",
+        "Honk and wait for the light to turn green"
+      ],
+      "correct_index": 2,
+      "explanation": "Yield to emergency vehicles by pulling to the right and stopping. If you're at an intersection, clear it carefully \u2014 don't run a red light unsafely. Handbook p. 86.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "emergency-vehicle"
+      ]
+    },
+    {
+      "id": "q-0295",
+      "canonical_fact_id": "emergency-vehicle-pull-right-stop",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 86,
+      "source_doc": "handbook-3.2026",
+      "question": "When an emergency vehicle approaches with lights and siren on, what must you do?",
+      "choices": [
+        "Speed up to get out of their way",
+        "Drive immediately to the right side of the road and stop until it passes",
+        "Pull to the left lane",
+        "Continue at normal speed but signal"
+      ],
+      "correct_index": 1,
+      "explanation": "Yield to emergency vehicles: drive to the right edge of the road and stop until they pass. Handbook p. 86.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "emergency-vehicle"
+      ]
+    },
+    {
+      "id": "q-0296",
+      "canonical_fact_id": "school-bus-median-only-same-direction",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "You're driving south on a 4-lane divided highway with a grass median. A school bus heading north on the other side of the median stops with red lights flashing. What do you do?",
+      "choices": [
+        "Stop \u2014 all directions must stop for a school bus with flashing reds",
+        "You're not required to stop \u2014 the median separates traffic, so only northbound (behind the bus) must stop",
+        "Slow to 20 mph and proceed with caution",
+        "Pull to the right shoulder and stop"
+      ],
+      "correct_index": 1,
+      "explanation": "On a divided highway with a median (4+ lanes), only vehicles behind the bus must stop. Opposite-direction traffic across a median is not legally required to stop. Handbook p. 46.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "school-bus"
+      ]
+    },
+    {
+      "id": "q-0297",
+      "canonical_fact_id": "school-bus-2-lane-both-stop",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "You're driving on a 2-lane road. A school bus traveling the opposite way stops with its red lights flashing. What must you do?",
+      "choices": [
+        "Continue at posted speed \u2014 opposite traffic isn't affected",
+        "Stop immediately before reaching the bus, both directions must stop on a 2-lane road",
+        "Slow to 20 mph and pass with caution",
+        "Honk to warn kids you're coming"
+      ],
+      "correct_index": 1,
+      "explanation": "On a 2-lane road, traffic in both directions must stop for a school bus with flashing red lights. Handbook p. 46.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "school-bus"
+      ]
+    },
+    {
+      "id": "q-0298",
+      "canonical_fact_id": "school-bus-4-lane-no-median-both-stop",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "You're driving on a 4-lane road with no median, just painted lines between directions. A school bus heading the opposite way stops with flashing red lights. What do you do?",
+      "choices": [
+        "Continue \u2014 4 lanes always means opposite traffic continues",
+        "Stop \u2014 without a physical median, both directions must stop",
+        "Slow to 25 mph",
+        "Only stop if you see kids"
+      ],
+      "correct_index": 1,
+      "explanation": "On a 4-lane road WITHOUT a median, both directions must stop. The median is the deciding factor, not the lane count. Handbook p. 46.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "school-bus"
+      ]
+    },
+    {
+      "id": "q-0299",
+      "canonical_fact_id": "school-bus-5-lane-center-turn-only-same-direction",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "You're driving on a 5-lane road with a shared center turn lane. A school bus on the opposite side stops with flashing red lights. Must you stop?",
+      "choices": [
+        "Yes, all 5 lanes must stop",
+        "No, opposite-direction traffic is not legally required to stop on this road type",
+        "Yes, but only if you're within 100 feet",
+        "Only if children are visible"
+      ],
+      "correct_index": 1,
+      "explanation": "On a 5+ lane road with a shared center turn lane, only vehicles behind the bus must stop. Opposite direction is not legally required. Handbook p. 46.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "school-bus"
+      ]
+    },
+    {
+      "id": "q-0300",
+      "canonical_fact_id": "school-bus-red-lights-stop",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "A school bus directly ahead of you turns on its alternating flashing red lights. What must you do?",
+      "choices": [
+        "Slow down to 20 mph and pass carefully",
+        "Stop immediately before reaching the bus and don't proceed until the flashing red lights stop",
+        "Honk to warn kids and continue at the posted limit",
+        "Pass only if there's a clear path"
+      ],
+      "correct_index": 1,
+      "explanation": "Stop immediately before reaching a school bus with flashing red lights. Don't proceed until the lights stop flashing. Handbook p. 46.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "school-bus"
+      ]
+    },
+    {
+      "id": "q-0301",
+      "canonical_fact_id": "school-bus-fine-3000",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "What's the maximum fine for illegally passing a school bus with its red lights flashing?",
+      "choices": [
+        "Up to $500",
+        "Up to $1,000",
+        "Up to $3,000",
+        "Up to $10,000"
+      ],
+      "correct_index": 2,
+      "explanation": "Fines for illegally passing a school bus can run up to $3,000 \u2014 plus insurance rate increases. Handbook p. 46.",
+      "sign_image": null,
+      "tags": [
+        "school-bus",
+        "fines"
+      ]
+    },
+    {
+      "id": "q-0302",
+      "canonical_fact_id": "school-bus-fine-3000",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "If you illegally pass a school bus with flashing red lights, what's a likely consequence besides the fine?",
+      "choices": [
+        "Your insurance rates will likely increase",
+        "Loss of driving privileges for 5 years",
+        "Mandatory community service only",
+        "Nothing \u2014 the fine is the only consequence"
+      ],
+      "correct_index": 0,
+      "explanation": "A conviction for passing a school bus illegally usually means an insurance rate increase. Handbook p. 46.",
+      "sign_image": null,
+      "tags": [
+        "school-bus",
+        "insurance"
+      ]
+    },
+    {
+      "id": "q-0303",
+      "canonical_fact_id": "school-bus-2-lane-both-stop",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "On a 2-lane road, you reach a 4-way stop. Past the intersection, a school bus stops with red lights flashing to unload kids. Another car arrives at the 4-way stop on your right at the same time. What do you do?",
+      "choices": [
+        "Yield to the right then proceed past the bus",
+        "Proceed straight through \u2014 you got there first",
+        "Wait \u2014 the school bus rule requires you to stop and not proceed past it until the red lights stop",
+        "Drive around the bus on the right"
+      ],
+      "correct_index": 2,
+      "explanation": "On a 2-lane road, both directions must stop for a school bus with flashing red lights. The 4-way stop rule is moot \u2014 nobody can proceed past the bus until the lights stop. Handbook p. 46.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "school-bus",
+        "compound"
+      ]
+    },
+    {
+      "id": "q-0304",
+      "canonical_fact_id": "trains-right-of-way-always",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 96,
+      "source_doc": "handbook-3.2026",
+      "question": "You stop at a railroad crossing \u2014 gates down, lights flashing, train approaching. An ambulance with lights and siren pulls up behind you. What do you do?",
+      "choices": [
+        "Drive around the gates to clear the way for the ambulance",
+        "Pull onto the tracks to make room",
+        "Wait \u2014 trains have the right-of-way 100% of the time, even over emergency vehicles. The ambulance must wait too",
+        "Reverse onto the shoulder past the ambulance"
+      ],
+      "correct_index": 2,
+      "explanation": "Trains have the right-of-way over ambulances, fire engines, cars, police, and pedestrians. Never drive around lowered gates. Handbook p. 96.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "train",
+        "emergency-vehicle"
+      ]
+    },
+    {
+      "id": "q-0305",
+      "canonical_fact_id": "trains-right-of-way-always",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 96,
+      "source_doc": "handbook-3.2026",
+      "question": "True or false: 'Trains have the right-of-way 100% of the time \u2014 over ambulances, fire engines, cars, police, and pedestrians.'",
+      "choices": [
+        "False \u2014 emergency vehicles always have priority",
+        "True \u2014 trains beat everything",
+        "False \u2014 only freight trains have this priority",
+        "True only at protected crossings with gates"
+      ],
+      "correct_index": 1,
+      "explanation": "Trains have right-of-way 100% of the time \u2014 over ambulances, fire engines, cars, police, and pedestrians. Handbook p. 96.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "train"
+      ]
+    },
+    {
+      "id": "q-0306",
+      "canonical_fact_id": "roundabout-yield-to-circle",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 55,
+      "source_doc": "handbook-3.2026",
+      "question": "You approach a roundabout. A pedestrian is in the crosswalk at your entry, and a car is circulating in the roundabout heading toward your entry. What do you do?",
+      "choices": [
+        "Enter \u2014 circulating cars yield to entering cars",
+        "Yield to the pedestrian only, then enter",
+        "Yield to BOTH the pedestrian and the car in the circle. Enter only when clear of both",
+        "Stop completely as if at a stop sign"
+      ],
+      "correct_index": 2,
+      "explanation": "At a roundabout: yield to pedestrians AND to traffic already in the circle before entering. Handbook p. 55.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "roundabout"
+      ]
+    },
+    {
+      "id": "q-0307",
+      "canonical_fact_id": "roundabout-counterclockwise",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 13,
+      "source_doc": "handbook-3.2026",
+      "question": "Which direction does traffic flow in a roundabout?",
+      "choices": [
+        "Clockwise",
+        "Counterclockwise",
+        "Either direction is OK if signaled",
+        "Depends on the size of the roundabout"
+      ],
+      "correct_index": 1,
+      "explanation": "Roundabouts flow counterclockwise. Handbook p. 13.",
+      "sign_image": null,
+      "tags": [
+        "roundabout"
+      ]
+    },
+    {
+      "id": "q-0308",
+      "canonical_fact_id": "roundabout-signal-exit",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 55,
+      "source_doc": "handbook-3.2026",
+      "question": "You're inside a roundabout approaching the exit you want to take. What should you do?",
+      "choices": [
+        "Brake hard so cars behind know you're exiting",
+        "Signal your intention to exit",
+        "Wave your hand out the window",
+        "Flash your headlights"
+      ],
+      "correct_index": 1,
+      "explanation": "Inside a roundabout, signal your intention to exit so other drivers know your plan. Handbook p. 55.",
+      "sign_image": null,
+      "tags": [
+        "roundabout",
+        "signaling"
+      ]
+    },
+    {
+      "id": "q-0309",
+      "canonical_fact_id": "roundabout-slow-on-approach",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 55,
+      "source_doc": "handbook-3.2026",
+      "question": "As you approach a roundabout, what's the first thing you should do?",
+      "choices": [
+        "Speed up to merge smoothly",
+        "Stop completely at the entry line",
+        "Slow down on approach",
+        "Honk to alert circulating traffic"
+      ],
+      "correct_index": 2,
+      "explanation": "Slow down as you approach a roundabout, then yield to pedestrians and traffic in the circle. Handbook p. 55.",
+      "sign_image": null,
+      "tags": [
+        "roundabout"
+      ]
+    },
+    {
+      "id": "q-0310",
+      "canonical_fact_id": "signal-out-yield-right",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 56,
+      "source_doc": "handbook-3.2026",
+      "question": "Power outage. You arrive at an intersection with traffic signals that are completely dark. Another car arrives on your right at the same time. What do you do?",
+      "choices": [
+        "Treat as a 4-way stop tie \u2014 yield to the car on the right after both stop",
+        "Slow down and proceed if no one is coming",
+        "Whoever is going straight has priority",
+        "Yield to the left"
+      ],
+      "correct_index": 0,
+      "explanation": "If signals are out, come to a complete stop first, then yield to the vehicle on the right. Handbook p. 56.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "signal-out"
+      ]
+    },
+    {
+      "id": "q-0311",
+      "canonical_fact_id": "signal-out-yield-right",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 56,
+      "source_doc": "handbook-3.2026",
+      "question": "Traffic lights at an intersection aren't working. What's the rule?",
+      "choices": [
+        "Treat as a green light \u2014 proceed if clear",
+        "Come to a complete stop, then yield to any vehicle on your right",
+        "First to arrive goes \u2014 no need to stop fully if you're alone",
+        "Slow and proceed without stopping"
+      ],
+      "correct_index": 1,
+      "explanation": "Signal out = complete stop + yield to the right. Handbook p. 56.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "signal-out"
+      ]
+    },
+    {
+      "id": "q-0312",
+      "canonical_fact_id": "left-turn-yields-to-oncoming",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 60,
+      "source_doc": "handbook-3.2026",
+      "question": "You have a solid GREEN light and want to turn left. Oncoming cars are going straight through. What do you do?",
+      "choices": [
+        "Go \u2014 green means you have priority to turn",
+        "Yield to oncoming traffic \u2014 a solid green doesn't give you priority for a left turn",
+        "Honk and turn",
+        "Inch out so oncoming traffic yields to you"
+      ],
+      "correct_index": 1,
+      "explanation": "On a solid green, left-turners must yield to oncoming traffic. A green ARROW would give priority \u2014 a solid green does not. Handbook p. 60.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "left-turn",
+        "green-light"
+      ]
+    },
+    {
+      "id": "q-0313",
+      "canonical_fact_id": "left-turn-yields-to-oncoming",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 60,
+      "source_doc": "handbook-3.2026",
+      "question": "When making a left turn at a signalized intersection on a solid green light, who has the right-of-way?",
+      "choices": [
+        "You do \u2014 the left-turner has priority once signaled",
+        "Oncoming traffic \u2014 left-turners must yield",
+        "Pedestrians only",
+        "Whoever is moving faster"
+      ],
+      "correct_index": 1,
+      "explanation": "Left-turners yield to oncoming traffic on a solid green. Handbook p. 60.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "left-turn"
+      ]
+    },
+    {
+      "id": "q-0314",
+      "canonical_fact_id": "driveway-yields-to-street",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 60,
+      "source_doc": "handbook-3.2026",
+      "question": "You're pulling out of your driveway onto a residential street. A car is coming down the street. Who has the right-of-way?",
+      "choices": [
+        "You \u2014 first to be there has priority",
+        "The car on the street \u2014 driveway traffic yields to street traffic",
+        "Tied \u2014 yield to the right",
+        "You \u2014 but only if you signal first"
+      ],
+      "correct_index": 1,
+      "explanation": "When entering a street from a driveway or private road, yield to traffic already on the street. Handbook p. 60.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "driveway"
+      ]
+    },
+    {
+      "id": "q-0315",
+      "canonical_fact_id": "complete-stop-list",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 45,
+      "source_doc": "handbook-3.2026",
+      "question": "Before pulling out of an alley, driveway, or private road onto a street, you must:",
+      "choices": [
+        "Slow down and proceed if clear",
+        "Come to a complete stop",
+        "Yield only if signs are posted",
+        "Honk before pulling out"
+      ],
+      "correct_index": 1,
+      "explanation": "Complete stops are required when entering a street from an alley, driveway, private road, or building. Handbook p. 45.",
+      "sign_image": null,
+      "tags": [
+        "complete-stop",
+        "driveway"
+      ]
+    },
+    {
+      "id": "q-0316",
+      "canonical_fact_id": "white-cane-full-stop",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 91,
+      "source_doc": "handbook-3.2026",
+      "question": "A pedestrian carrying a white cane begins to cross a side street as you approach. There's no marked crosswalk. What must you do?",
+      "choices": [
+        "Slow down and pass carefully",
+        "Honk to alert them you're coming",
+        "Come to a complete stop \u2014 the white cane requires a full stop regardless of crosswalk markings",
+        "Only yield if they're in a marked crosswalk"
+      ],
+      "correct_index": 2,
+      "explanation": "A pedestrian with a white cane (or guide dog) requires a full STOP, marked crosswalk or not. Handbook p. 91.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "pedestrian",
+        "white-cane"
+      ]
+    },
+    {
+      "id": "q-0317",
+      "canonical_fact_id": "white-cane-full-stop",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 91,
+      "source_doc": "handbook-3.2026",
+      "question": "What do you do when you see a pedestrian using a guide dog or white cane?",
+      "choices": [
+        "Come to a complete stop",
+        "Slow down to 10 mph",
+        "Honk so they know you're there",
+        "Pass them on the left at normal speed"
+      ],
+      "correct_index": 0,
+      "explanation": "White cane or guide dog = full stop. Handbook p. 91.",
+      "sign_image": null,
+      "tags": [
+        "pedestrian",
+        "white-cane"
+      ]
+    },
+    {
+      "id": "q-0318",
+      "canonical_fact_id": "flagger-overrides-signs",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 59,
+      "source_doc": "handbook-3.2026",
+      "question": "You approach a work zone intersection. The traffic light shows GREEN in your direction, but a flagger holds a STOP paddle toward you. What do you do?",
+      "choices": [
+        "Obey the light \u2014 it's the highest authority",
+        "Obey the flagger \u2014 flaggers override signs and signals",
+        "Slow down but keep going",
+        "Honk and proceed"
+      ],
+      "correct_index": 1,
+      "explanation": "A flagger's directions override traffic signs and signals in a work zone. Handbook p. 59.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "flagger",
+        "work-zone"
+      ]
+    },
+    {
+      "id": "q-0319",
+      "canonical_fact_id": "officer-overrides-signal",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 56,
+      "source_doc": "handbook-3.2026",
+      "question": "A police officer at an intersection is directing traffic. The light is green in your direction, but the officer signals you to STOP. What do you do?",
+      "choices": [
+        "Obey the light \u2014 proceed",
+        "Stop \u2014 officer directions override traffic signals",
+        "Wave at the officer to clarify",
+        "Proceed slowly"
+      ],
+      "correct_index": 1,
+      "explanation": "Officer directions override traffic signals. Handbook p. 56.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "officer"
+      ]
+    },
+    {
+      "id": "q-0320",
+      "canonical_fact_id": "mountain-downhill-yields-uphill",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 69,
+      "source_doc": "handbook-3.2026",
+      "question": "You're driving downhill on a narrow one-lane mountain road. Another car is coming uphill. There's no room to pass. Who backs up?",
+      "choices": [
+        "The uphill car \u2014 they have less momentum",
+        "You do \u2014 downhill yields to uphill on narrow mountain roads",
+        "Whichever car is larger",
+        "Whoever arrived first"
+      ],
+      "correct_index": 1,
+      "explanation": "On a narrow mountain road, downhill drivers yield to uphill drivers. The uphill driver has more difficulty restarting. Handbook p. 69.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "mountain",
+        "narrow-road"
+      ]
+    },
+    {
+      "id": "q-0321",
+      "canonical_fact_id": "ramp-yields-to-interstate",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 60,
+      "source_doc": "handbook-3.2026",
+      "question": "You're on the on-ramp to I-15 and traffic on the interstate is heavy with no clear gap. What do you do?",
+      "choices": [
+        "Push in regardless \u2014 interstate must yield to merging traffic",
+        "Use the acceleration lane to match speed, then merge at a gap. Yield \u2014 interstate traffic has priority",
+        "Stop on the ramp and wait for a gap",
+        "Drive on the shoulder past the slow traffic"
+      ],
+      "correct_index": 1,
+      "explanation": "On-ramp traffic yields to interstate traffic. Use the acceleration lane to match speed, then merge when safe. Handbook p. 60.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "interstate",
+        "merging"
+      ]
+    },
+    {
+      "id": "q-0322",
+      "canonical_fact_id": "ramp-yields-to-interstate",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 60,
+      "source_doc": "handbook-3.2026",
+      "question": "Who has the right-of-way when traffic on an entrance ramp meets traffic on the interstate?",
+      "choices": [
+        "The ramp traffic \u2014 they're getting up to speed",
+        "Vehicles already on the interstate",
+        "Whoever signals first",
+        "Whichever side has fewer cars"
+      ],
+      "correct_index": 1,
+      "explanation": "Drivers already on the interstate have the right-of-way. Ramp drivers must yield. Handbook p. 60.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "interstate"
+      ]
+    },
+    {
+      "id": "q-0323",
+      "canonical_fact_id": "trax-65-in-21-seconds",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 97,
+      "source_doc": "handbook-3.2026",
+      "question": "A TRAX light rail train approaches a grade crossing in downtown Salt Lake City \u2014 lights flashing, gates lowering. Can you try to beat it?",
+      "choices": [
+        "Yes \u2014 TRAX is slower than freight trains",
+        "Yes if it's still a block away",
+        "No \u2014 TRAX can reach 65 mph in 21 seconds. Stop and wait like any railroad crossing",
+        "Yes if the gate isn't all the way down"
+      ],
+      "correct_index": 2,
+      "explanation": "TRAX is treated like any railroad crossing. TRAX trains reach 65 mph in 21 seconds \u2014 don't try to beat them. Handbook p. 97.",
+      "sign_image": null,
+      "tags": [
+        "train",
+        "trax",
+        "right-of-way"
+      ]
+    },
+    {
+      "id": "q-0324",
+      "canonical_fact_id": "train-stops-in-a-mile",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 97,
+      "source_doc": "handbook-3.2026",
+      "question": "About how much distance does a 100-car freight train at 55 mph need to stop in an emergency?",
+      "choices": [
+        "A few hundred feet",
+        "About a quarter mile",
+        "About a half mile",
+        "More than a mile (~18 football fields)"
+      ],
+      "correct_index": 3,
+      "explanation": "A freight train at 55 mph needs more than a mile to stop. Don't assume a train can stop for you. Handbook p. 97.",
+      "sign_image": null,
+      "tags": [
+        "train",
+        "stopping-distance"
+      ]
+    },
+    {
+      "id": "q-0325",
+      "canonical_fact_id": "move-over-law",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 86,
+      "source_doc": "handbook-3.2026",
+      "question": "On a 4-lane road, a regular passenger car is stopped on the right shoulder with hazard lights flashing. It's NOT an emergency vehicle. What must you do?",
+      "choices": [
+        "Maintain speed \u2014 the Move Over law only applies to emergency vehicles",
+        "Slow down and change lanes away from the stopped vehicle if practical",
+        "Stop completely on the shoulder behind them",
+        "Honk to ask if they need help"
+      ],
+      "correct_index": 1,
+      "explanation": "The Move Over Law applies to ANY stationary vehicle with hazards \u2014 not just emergency vehicles. Slow and change lanes if practical. Handbook p. 86.",
+      "sign_image": null,
+      "tags": [
+        "move-over-law"
+      ]
+    },
+    {
+      "id": "q-0326",
+      "canonical_fact_id": "move-over-law",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 86,
+      "source_doc": "handbook-3.2026",
+      "question": "The Move Over Law requires you to slow and change lanes for which vehicles?",
+      "choices": [
+        "Only police cars",
+        "Only ambulances and fire trucks",
+        "Any stationary vehicle with flashing hazard lights",
+        "Only vehicles with amber lights"
+      ],
+      "correct_index": 2,
+      "explanation": "Move Over applies to ALL stationary vehicles with flashing hazards. Handbook p. 86.",
+      "sign_image": null,
+      "tags": [
+        "move-over-law"
+      ]
+    },
+    {
+      "id": "q-0327",
+      "canonical_fact_id": "move-over-hov-amber",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 86,
+      "source_doc": "handbook-3.2026",
+      "question": "You see a stationary vehicle with amber lights flashing in or near an HOV lane. What does the Move Over Law require?",
+      "choices": [
+        "Stop until they're gone",
+        "Change lanes OUT of the HOV lane if practical",
+        "Speed up to clear the area faster",
+        "Move toward the HOV lane"
+      ],
+      "correct_index": 1,
+      "explanation": "For HOV-adjacent stationary amber lights, change lanes OUT of the HOV lane if practical. Handbook p. 86.",
+      "sign_image": null,
+      "tags": [
+        "move-over-law",
+        "hov"
+      ]
+    },
+    {
+      "id": "q-0328",
+      "canonical_fact_id": "move-over-violation-90-day-suspend",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 86,
+      "source_doc": "handbook-3.2026",
+      "question": "What's the penalty for failing to attend the required course after a Move Over Law violation?",
+      "choices": [
+        "A $50 fine",
+        "Community service",
+        "90-day license suspension",
+        "Insurance rate increase only"
+      ],
+      "correct_index": 2,
+      "explanation": "Move Over violations require attending a 4-hour defensive driving course within 90 days. Failure = 90-day suspension. Handbook p. 86.",
+      "sign_image": null,
+      "tags": [
+        "move-over-law",
+        "suspension"
+      ]
+    },
+    {
+      "id": "q-0329",
+      "canonical_fact_id": "flashing-yellow-arrow-yield",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 56,
+      "source_doc": "handbook-3.2026",
+      "question": "At a left turn, your signal is a FLASHING YELLOW ARROW. Oncoming traffic is heavy and a pedestrian is starting to cross the perpendicular crosswalk in your turning path. What do you do?",
+      "choices": [
+        "Turn \u2014 flashing yellow arrow means you have priority",
+        "Yield to both oncoming traffic and the pedestrian. Turn only when both are clear",
+        "Stop completely and don't proceed",
+        "Honk so the pedestrian backs up"
+      ],
+      "correct_index": 1,
+      "explanation": "A flashing yellow arrow allows turns but you must yield to oncoming traffic AND pedestrians. Handbook p. 56.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "flashing-yellow-arrow",
+        "pedestrian"
+      ]
+    },
+    {
+      "id": "q-0330",
+      "canonical_fact_id": "flashing-yellow-arrow-yield",
+      "topic": "rules-of-the-road",
+      "subtopic": "signals",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 56,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a flashing yellow arrow mean?",
+      "choices": [
+        "Turn prohibited",
+        "Turn allowed \u2014 but yield to oncoming traffic and pedestrians",
+        "Same as a green arrow \u2014 you have priority",
+        "Stop and wait for a steady arrow"
+      ],
+      "correct_index": 1,
+      "explanation": "Flashing yellow arrow = turn permitted, but yield to oncoming traffic and pedestrians. Handbook p. 56.",
+      "sign_image": null,
+      "tags": [
+        "signals",
+        "flashing-yellow-arrow"
+      ]
+    },
+    {
+      "id": "q-0331",
+      "canonical_fact_id": "school-zone-flashing-slow",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 91,
+      "source_doc": "handbook-3.2026",
+      "question": "At 7:50 a.m. you drive past an elementary school. The school zone speed sign lights are flashing but you don't see any kids. What's your speed?",
+      "choices": [
+        "The posted regular limit \u2014 no kids visible",
+        "The school zone speed (20 mph) \u2014 the flashing lights mean the lower limit is active",
+        "Whatever feels safe given visibility",
+        "10 mph just to be safe"
+      ],
+      "correct_index": 1,
+      "explanation": "Flashing school-zone lights = the slower school zone speed applies, kids visible or not. Handbook p. 91.",
+      "sign_image": null,
+      "tags": [
+        "school-zone",
+        "speed"
+      ]
+    },
+    {
+      "id": "q-0332",
+      "canonical_fact_id": "speed-20-school",
+      "topic": "rules-of-the-road",
+      "subtopic": "speed",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "What's the maximum speed when passing a school during recess or when school-zone lights are flashing?",
+      "choices": [
+        "15 mph",
+        "20 mph",
+        "25 mph",
+        "30 mph"
+      ],
+      "correct_index": 1,
+      "explanation": "20 mph in a school zone when children are present, lights are flashing, or during school opening/closing hours. Handbook p. 54.",
+      "sign_image": null,
+      "tags": [
+        "speed",
+        "school-zone"
+      ]
+    },
+    {
+      "id": "q-0333",
+      "canonical_fact_id": "trains-right-of-way-always",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 96,
+      "source_doc": "handbook-3.2026",
+      "question": "You're stopped at a railroad crossing \u2014 gates down, train passing through. A police car with lights and siren pulls up behind you. Across the tracks, an ambulance approaches from the other side. What's the right outcome?",
+      "choices": [
+        "The police car overrides the train signal \u2014 you proceed",
+        "Drive around the gate to clear the way for the police car",
+        "All three of you wait. Trains have right-of-way over ambulances, fire engines, cars, AND police",
+        "Reverse off the road so the police car can pass"
+      ],
+      "correct_index": 2,
+      "explanation": "Trains beat everything \u2014 including police and ambulances. Wait until gates raise and lights stop flashing. Handbook p. 96.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "train",
+        "compound"
+      ]
+    },
+    {
+      "id": "q-0334",
+      "canonical_fact_id": "never-assume-right-of-way",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 60,
+      "source_doc": "handbook-3.2026",
+      "question": "Which statement best matches the handbook's rule about right-of-way?",
+      "choices": [
+        "Right-of-way is yours when you arrive first",
+        "Right-of-way is something you give, not take \u2014 never assume you have it",
+        "Right-of-way always belongs to the larger vehicle",
+        "Right-of-way is determined by speed"
+      ],
+      "correct_index": 1,
+      "explanation": "Never assume you have the right-of-way \u2014 it's something you GIVE, not take. Handbook p. 60.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way"
+      ]
+    },
+    {
+      "id": "q-0335",
+      "canonical_fact_id": "yield-to-pedestrians-still-in-intersection",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 60,
+      "source_doc": "handbook-3.2026",
+      "question": "You have a green light. A pedestrian is still finishing crossing the intersection. What do you do?",
+      "choices": [
+        "Go \u2014 you have the green",
+        "Yield to the pedestrian still in the intersection",
+        "Honk so they hurry",
+        "Edge forward to claim your turn"
+      ],
+      "correct_index": 1,
+      "explanation": "Yield to pedestrians, bicyclists, and others still in the intersection \u2014 even when you have a green. Handbook p. 60.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "pedestrian"
+      ]
+    },
+    {
+      "id": "q-0336",
+      "canonical_fact_id": "green-light-still-yield-pedestrians",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 91,
+      "source_doc": "handbook-3.2026",
+      "question": "You have a GREEN light at an intersection. A pedestrian is in the crosswalk crossing in front of you. What do you do?",
+      "choices": [
+        "Proceed \u2014 green gives you priority over pedestrians",
+        "Yield to the pedestrian even on a green",
+        "Tap the horn to alert them",
+        "Edge forward slowly"
+      ],
+      "correct_index": 1,
+      "explanation": "Even with a green light, yield to pedestrians in the crosswalk. Handbook p. 91.",
+      "sign_image": null,
+      "tags": [
+        "pedestrian",
+        "right-of-way"
+      ]
+    },
+    {
+      "id": "q-0337",
+      "canonical_fact_id": "pedestrian-yield-marked-or-unmarked",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "Pedestrians have the right-of-way at:",
+      "choices": [
+        "Only marked crosswalks",
+        "Marked crosswalks AND unmarked crosswalks",
+        "Only intersections with signals",
+        "Only crosswalks with pedestrian lights"
+      ],
+      "correct_index": 1,
+      "explanation": "Yield to pedestrians in marked OR unmarked crosswalks. Handbook p. 54, p. 91.",
+      "sign_image": null,
+      "tags": [
+        "pedestrian",
+        "right-of-way"
+      ]
+    },
+    {
+      "id": "q-0338",
+      "canonical_fact_id": "never-pass-vehicle-at-crosswalk",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 92,
+      "source_doc": "handbook-3.2026",
+      "question": "A car ahead of you is stopped at a crosswalk. What's the rule?",
+      "choices": [
+        "Pass on the right if there's room",
+        "Pass on the left if no oncoming traffic",
+        "Never pass a vehicle stopped at a crosswalk \u2014 pedestrians you can't see may be crossing",
+        "Pass only if you honk first"
+      ],
+      "correct_index": 2,
+      "explanation": "Never pass a vehicle stopped at a crosswalk \u2014 they may be yielding to a pedestrian you can't see. Handbook p. 92.",
+      "sign_image": null,
+      "tags": [
+        "pedestrian",
+        "crosswalk"
+      ]
+    },
+    {
+      "id": "q-0339",
+      "canonical_fact_id": "pedestrian-left-shoulder-facing-traffic",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 91,
+      "source_doc": "handbook-3.2026",
+      "question": "If you have to walk along a road with no sidewalk, which side should you walk on?",
+      "choices": [
+        "Right shoulder, same direction as traffic",
+        "Left shoulder, facing traffic",
+        "Either shoulder works",
+        "Middle of the road"
+      ],
+      "correct_index": 1,
+      "explanation": "Walk on the LEFT shoulder facing traffic so you can see vehicles approaching. Handbook p. 91.",
+      "sign_image": null,
+      "tags": [
+        "pedestrian"
+      ]
+    },
+    {
+      "id": "q-0340",
+      "canonical_fact_id": "stop-before-crosswalk-visibility",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 91,
+      "source_doc": "handbook-3.2026",
+      "question": "When stopping at a crosswalk where a pedestrian is crossing, where should you stop?",
+      "choices": [
+        "On top of the crosswalk to claim priority",
+        "Far enough back that you can clearly see the pedestrians and they can see you",
+        "Right at the edge of the crosswalk only",
+        "Wherever, as long as you stop"
+      ],
+      "correct_index": 1,
+      "explanation": "Stop far enough back from the crosswalk to maintain visibility of pedestrians. Handbook p. 91.",
+      "sign_image": null,
+      "tags": [
+        "crosswalk",
+        "pedestrian"
+      ]
+    },
+    {
+      "id": "q-0341",
+      "canonical_fact_id": "green-go-if-clear",
+      "topic": "rules-of-the-road",
+      "subtopic": "signals",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 55,
+      "source_doc": "handbook-3.2026",
+      "question": "A solid GREEN light means:",
+      "choices": [
+        "Go regardless of conditions",
+        "Go through with caution if the way is clear",
+        "Slow down and prepare to stop",
+        "Yield to all traffic"
+      ],
+      "correct_index": 1,
+      "explanation": "Green = proceed with caution IF the way is clear. Handbook p. 55.",
+      "sign_image": null,
+      "tags": [
+        "signals",
+        "green"
+      ]
+    },
+    {
+      "id": "q-0342",
+      "canonical_fact_id": "green-arrow-yield-to-clearing",
+      "topic": "rules-of-the-road",
+      "subtopic": "signals",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 55,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a green ARROW mean?",
+      "choices": [
+        "You may proceed in the arrow's direction after yielding to anyone still in the intersection",
+        "Same as a flashing yellow \u2014 yield to all traffic",
+        "Stop and wait for a steady green",
+        "You have absolute priority \u2014 others must stop"
+      ],
+      "correct_index": 0,
+      "explanation": "Green arrow = proceed in the arrow's direction after yielding to vehicles and pedestrians still in the intersection. Handbook p. 55.",
+      "sign_image": null,
+      "tags": [
+        "signals",
+        "green-arrow"
+      ]
+    },
+    {
+      "id": "q-0343",
+      "canonical_fact_id": "yellow-about-to-stop",
+      "topic": "rules-of-the-road",
+      "subtopic": "signals",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 55,
+      "source_doc": "handbook-3.2026",
+      "question": "A steady YELLOW light means:",
+      "choices": [
+        "Speed up to beat the red",
+        "Stop if you can do so safely \u2014 the light is about to turn red",
+        "Yield to traffic on the cross street",
+        "Caution only \u2014 proceed at normal speed"
+      ],
+      "correct_index": 1,
+      "explanation": "Yellow = light is about to change to red. Stop if you can safely. Handbook p. 55.",
+      "sign_image": null,
+      "tags": [
+        "signals",
+        "yellow"
+      ]
+    },
+    {
+      "id": "q-0344",
+      "canonical_fact_id": "flashing-yellow-slow-caution",
+      "topic": "rules-of-the-road",
+      "subtopic": "signals",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 55,
+      "source_doc": "handbook-3.2026",
+      "question": "A flashing YELLOW light means:",
+      "choices": [
+        "Stop completely as if at a stop sign",
+        "Slow down and proceed with caution; be prepared to stop",
+        "Yield only to pedestrians",
+        "Same as a green arrow"
+      ],
+      "correct_index": 1,
+      "explanation": "Flashing yellow = slow down, proceed with caution, be prepared to stop. Handbook p. 55.",
+      "sign_image": null,
+      "tags": [
+        "signals",
+        "flashing-yellow"
+      ]
+    },
+    {
+      "id": "q-0345",
+      "canonical_fact_id": "red-full-stop",
+      "topic": "rules-of-the-road",
+      "subtopic": "signals",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 56,
+      "source_doc": "handbook-3.2026",
+      "question": "A steady RED light requires you to:",
+      "choices": [
+        "Slow down and proceed if clear",
+        "Yield to cross traffic, then go",
+        "Come to a complete stop before the intersection and wait until green",
+        "Stop only if traffic is coming"
+      ],
+      "correct_index": 2,
+      "explanation": "Red = complete stop before the intersection. Wait until green. Handbook p. 56.",
+      "sign_image": null,
+      "tags": [
+        "signals",
+        "red"
+      ]
+    },
+    {
+      "id": "q-0346",
+      "canonical_fact_id": "right-on-red-unless-posted",
+      "topic": "rules-of-the-road",
+      "subtopic": "signals",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 56,
+      "source_doc": "handbook-3.2026",
+      "question": "At a red light, you want to turn right. What's the rule?",
+      "choices": [
+        "Always prohibited",
+        "Allowed after a complete stop, unless a sign prohibits it",
+        "Allowed without stopping if no traffic is coming",
+        "Only allowed on weekdays"
+      ],
+      "correct_index": 1,
+      "explanation": "Right on red is allowed after a complete stop, unless posted otherwise. Handbook p. 56.",
+      "sign_image": null,
+      "tags": [
+        "signals",
+        "red",
+        "right-on-red"
+      ]
+    },
+    {
+      "id": "q-0347",
+      "canonical_fact_id": "flashing-red-like-stop-sign",
+      "topic": "rules-of-the-road",
+      "subtopic": "signals",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 56,
+      "source_doc": "handbook-3.2026",
+      "question": "A flashing RED light means:",
+      "choices": [
+        "Slow down only",
+        "Yield to cross traffic",
+        "Treat it like a stop sign \u2014 full stop, look both ways, proceed when safe",
+        "Same as a steady red \u2014 wait for green"
+      ],
+      "correct_index": 2,
+      "explanation": "Flashing red = stop and look both ways, then proceed when safe. Same as a stop sign. Handbook p. 56.",
+      "sign_image": null,
+      "tags": [
+        "signals",
+        "flashing-red"
+      ]
+    },
+    {
+      "id": "q-0348",
+      "canonical_fact_id": "red-arrow-no-turn",
+      "topic": "rules-of-the-road",
+      "subtopic": "signals",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 56,
+      "source_doc": "handbook-3.2026",
+      "question": "A red ARROW (left or right) means:",
+      "choices": [
+        "You can turn after stopping",
+        "Same as a flashing yellow arrow \u2014 yield",
+        "Turn is prohibited \u2014 remain stopped",
+        "Proceed only if no traffic is coming"
+      ],
+      "correct_index": 2,
+      "explanation": "Red arrow = turn prohibited. Stay stopped until indicated to proceed. Handbook p. 56.",
+      "sign_image": null,
+      "tags": [
+        "signals",
+        "red-arrow"
+      ]
+    },
+    {
+      "id": "q-0349",
+      "canonical_fact_id": "stranded-red-arrow-exception",
+      "topic": "rules-of-the-road",
+      "subtopic": "signals",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 56,
+      "source_doc": "handbook-3.2026",
+      "question": "If a red left arrow won't change and traffic conditions allow, what exception applies?",
+      "choices": [
+        "You may turn after stopping if going from a one-way to a one-way street and it's safe",
+        "You may always turn after waiting 2 minutes",
+        "Honk three times and proceed",
+        "No exceptions \u2014 always wait"
+      ],
+      "correct_index": 0,
+      "explanation": "If stranded by a non-changing red left arrow, you may turn from one-way to one-way if safe. Handbook p. 56.",
+      "sign_image": null,
+      "tags": [
+        "signals",
+        "red-arrow"
+      ]
+    },
+    {
+      "id": "q-0350",
+      "canonical_fact_id": "complete-stop-list",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 45,
+      "source_doc": "handbook-3.2026",
+      "question": "At a STOP sign, what kind of stop is required?",
+      "choices": [
+        "A rolling stop if no traffic is visible",
+        "A complete stop",
+        "Slow to 5 mph",
+        "Pause for 1 second"
+      ],
+      "correct_index": 1,
+      "explanation": "Stop signs require a COMPLETE stop. Handbook p. 45.",
+      "sign_image": null,
+      "tags": [
+        "stop-sign"
+      ]
+    },
+    {
+      "id": "q-0351",
+      "canonical_fact_id": "four-way-stop-yield-right",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 60,
+      "source_doc": "handbook-3.2026",
+      "question": "Three cars arrive at a 4-way stop simultaneously: one across from you, one to your right, one to your left. Who goes first?",
+      "choices": [
+        "You \u2014 you have the most cars to deal with",
+        "The car on your right",
+        "The car across from you",
+        "The car on your left"
+      ],
+      "correct_index": 1,
+      "explanation": "Tied arrivals at a 4-way stop = yield to the right. Handbook p. 60.",
+      "sign_image": null,
+      "tags": [
+        "right-of-way",
+        "four-way-stop"
+      ]
+    },
+    {
+      "id": "q-0352",
+      "canonical_fact_id": "school-bus-2-lane-both-stop",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "On a 2-lane road, which direction(s) of traffic must stop when a school bus shows flashing red lights?",
+      "choices": [
+        "Same direction only",
+        "Opposite direction only",
+        "Both directions",
+        "Neither \u2014 bus drivers handle traffic"
+      ],
+      "correct_index": 2,
+      "explanation": "On a 2-lane road, both directions stop. Handbook p. 46.",
+      "sign_image": null,
+      "tags": [
+        "school-bus"
+      ]
+    },
+    {
+      "id": "q-0353",
+      "canonical_fact_id": "school-bus-median-only-same-direction",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "On a divided highway (4+ lanes with a median), which traffic must stop for a school bus with flashing red lights?",
+      "choices": [
+        "Only vehicles behind the bus (same direction)",
+        "All directions",
+        "Only the lane right next to the bus",
+        "None \u2014 the median exempts everyone"
+      ],
+      "correct_index": 0,
+      "explanation": "Median present = only same-direction (behind the bus) must stop. Handbook p. 46.",
+      "sign_image": null,
+      "tags": [
+        "school-bus",
+        "median"
+      ]
+    },
+    {
+      "id": "q-0354",
+      "canonical_fact_id": "school-bus-4-lane-no-median-both-stop",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "True or false: on a 4-lane road WITHOUT a median, only same-direction traffic must stop for a school bus.",
+      "choices": [
+        "True",
+        "False \u2014 both directions must stop on a 4-lane road without a median",
+        "True if it's 35 mph or under",
+        "True if the bus is in the center lane"
+      ],
+      "correct_index": 1,
+      "explanation": "No median = both directions stop. Handbook p. 46.",
+      "sign_image": null,
+      "tags": [
+        "school-bus"
+      ]
+    },
+    {
+      "id": "q-0355",
+      "canonical_fact_id": "school-bus-red-lights-stop",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "When you're stopped for a school bus with flashing red lights, when may you proceed?",
+      "choices": [
+        "When you can no longer see kids near the bus",
+        "When the flashing red lights stop",
+        "After waiting 30 seconds",
+        "When you hear the bus engine start"
+      ],
+      "correct_index": 1,
+      "explanation": "Don't proceed until the flashing red lights stop. Handbook p. 46.",
+      "sign_image": null,
+      "tags": [
+        "school-bus"
+      ]
+    },
+    {
+      "id": "q-0356",
+      "canonical_fact_id": "rr-stop-15-50-ft",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 95,
+      "source_doc": "handbook-3.2026",
+      "question": "At a railroad crossing controlled by gates or signals, how far from the nearest rail should you stop?",
+      "choices": [
+        "At least 5 feet but no more than 25 feet",
+        "More than 15 feet but not more than 50 feet",
+        "Exactly 100 feet",
+        "Wherever you can stop safely"
+      ],
+      "correct_index": 1,
+      "explanation": "Stop more than 15 feet but not more than 50 feet from the nearest rail. Handbook p. 95.",
+      "sign_image": null,
+      "tags": [
+        "railroad",
+        "stopping"
+      ]
+    },
+    {
+      "id": "q-0357",
+      "canonical_fact_id": "rr-flashing-lights-mandatory-stop",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 95,
+      "source_doc": "handbook-3.2026",
+      "question": "Flashing lights at a railroad crossing mean:",
+      "choices": [
+        "Slow down and proceed if no train is visible",
+        "You MUST stop \u2014 do not proceed while lights flash",
+        "Caution only",
+        "Stop only if gates are down"
+      ],
+      "correct_index": 1,
+      "explanation": "Flashing RR lights = mandatory stop. Don't proceed while flashing. Handbook p. 95.",
+      "sign_image": null,
+      "tags": [
+        "railroad"
+      ]
+    },
+    {
+      "id": "q-0358",
+      "canonical_fact_id": "no-driving-around-gates",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 95,
+      "source_doc": "handbook-3.2026",
+      "question": "If a railroad crossing gate is down, may you drive around it?",
+      "choices": [
+        "Yes, if you can see no train is coming",
+        "Yes, if you're in a hurry",
+        "Never \u2014 it's illegal regardless of visibility",
+        "Yes, if you're an emergency vehicle"
+      ],
+      "correct_index": 2,
+      "explanation": "Never drive around or under a lowered RR gate. Handbook p. 95.",
+      "sign_image": null,
+      "tags": [
+        "railroad",
+        "gates"
+      ]
+    },
+    {
+      "id": "q-0359",
+      "canonical_fact_id": "crossbuck-stop-yield-train",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 96,
+      "source_doc": "handbook-3.2026",
+      "question": "What does an X-shaped white sign reading 'Railroad Crossing' (crossbuck) mean?",
+      "choices": [
+        "Stop if a train is visible; yield to trains",
+        "Crossing closed",
+        "Speed limit zone",
+        "Detour ahead"
+      ],
+      "correct_index": 0,
+      "explanation": "A crossbuck means yield to trains; stop if a train approaches. Handbook p. 96.",
+      "sign_image": null,
+      "tags": [
+        "railroad",
+        "signs",
+        "crossbuck"
+      ]
+    },
+    {
+      "id": "q-0360",
+      "canonical_fact_id": "rr-yellow-advance-warning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 57,
+      "source_doc": "handbook-3.2026",
+      "question": "A round YELLOW sign with a black 'X' and 'RR' lettering means:",
+      "choices": [
+        "Railroad crossing ahead \u2014 slow, look, listen",
+        "Stop ahead",
+        "Detour ahead",
+        "Railroad station nearby"
+      ],
+      "correct_index": 0,
+      "explanation": "Round yellow RR advance-warning sign tells you a railroad crossing is ahead. Slow, look, listen. Handbook p. 57.",
+      "sign_image": null,
+      "tags": [
+        "railroad",
+        "signs"
+      ]
+    },
+    {
+      "id": "q-0361",
+      "canonical_fact_id": "do-not-stop-on-tracks",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 57,
+      "source_doc": "handbook-3.2026",
+      "question": "You're approaching railroad tracks. Traffic on the far side has stopped and is backing up. What should you do?",
+      "choices": [
+        "Roll onto the tracks slowly to keep up with traffic",
+        "Stop before the tracks \u2014 never stop on them. Wait until you can clear them completely",
+        "Honk for the cars ahead to move",
+        "Drive over the tracks faster to clear them"
+      ],
+      "correct_index": 1,
+      "explanation": "Don't stop on tracks. If traffic could trap you, wait at the stop line before crossing. Handbook p. 57.",
+      "sign_image": null,
+      "tags": [
+        "railroad"
+      ]
+    },
+    {
+      "id": "q-0362",
+      "canonical_fact_id": "no-pass-at-rr-crossing",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 44,
+      "source_doc": "handbook-3.2026",
+      "question": "True or false: it's never legal to pass another vehicle at a railroad crossing.",
+      "choices": [
+        "True",
+        "False \u2014 passing is OK if the gates are up",
+        "True only if the lights are flashing",
+        "False \u2014 passing is OK at uncontrolled crossings"
+      ],
+      "correct_index": 0,
+      "explanation": "Never pass another vehicle at a railroad crossing. Handbook p. 44.",
+      "sign_image": null,
+      "tags": [
+        "railroad",
+        "passing"
+      ]
+    },
+    {
+      "id": "q-0363",
+      "canonical_fact_id": "rr-broken-lights-1-mile-sight",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 95,
+      "source_doc": "handbook-3.2026",
+      "question": "If the lights at a railroad crossing appear broken, what's required before you cross?",
+      "choices": [
+        "You may proceed at normal speed",
+        "Stop, then proceed only if you have at least 1 mile of clear sight in both directions and no train",
+        "Wait for a posted official",
+        "Cross only between 9 a.m. and 5 p.m."
+      ],
+      "correct_index": 1,
+      "explanation": "If RR lights appear broken: full stop, then proceed only if 1+ mile of clear sight both directions and no train. Handbook p. 95.",
+      "sign_image": null,
+      "tags": [
+        "railroad"
+      ]
+    },
+    {
+      "id": "q-0364",
+      "canonical_fact_id": "stall-on-tracks-run-toward-angle",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 97,
+      "source_doc": "handbook-3.2026",
+      "question": "Your car stalls on railroad tracks and you can see a train coming. What do you do?",
+      "choices": [
+        "Try to restart and drive off",
+        "Get out and run AWAY from the tracks at an angle toward the approaching train",
+        "Stay in the car and brace for impact",
+        "Push the car off the tracks"
+      ],
+      "correct_index": 1,
+      "explanation": "If stalled on tracks with a train coming: exit immediately and run at an angle TOWARD the train (so flying debris from impact goes behind you). Handbook p. 97.",
+      "sign_image": null,
+      "tags": [
+        "railroad",
+        "stalled"
+      ]
+    },
+    {
+      "id": "q-0365",
+      "canonical_fact_id": "fire-vehicle-500-ft-follow",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 86,
+      "source_doc": "handbook-3.2026",
+      "question": "How close may you follow a fire vehicle responding to an alarm?",
+      "choices": [
+        "100 feet",
+        "200 feet",
+        "300 feet",
+        "Not within 500 feet"
+      ],
+      "correct_index": 3,
+      "explanation": "Don't follow within 500 feet of a fire vehicle answering an alarm. Handbook p. 86.",
+      "sign_image": null,
+      "tags": [
+        "emergency-vehicle"
+      ]
+    },
+    {
+      "id": "q-0366",
+      "canonical_fact_id": "fire-vehicle-same-block",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 86,
+      "source_doc": "handbook-3.2026",
+      "question": "You see a fire truck responding to an alarm on a city block. What's restricted?",
+      "choices": [
+        "Parking or driving on the same block is prohibited",
+        "Only horn use is restricted",
+        "Pedestrians must clear the street",
+        "Nothing \u2014 fire trucks handle their own zone"
+      ],
+      "correct_index": 0,
+      "explanation": "You may not drive or park on the same block as a fire vehicle answering an alarm. Handbook p. 86.",
+      "sign_image": null,
+      "tags": [
+        "emergency-vehicle"
+      ]
+    },
+    {
+      "id": "q-0367",
+      "canonical_fact_id": "emergency-vehicle-pull-right-stop",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 86,
+      "source_doc": "handbook-3.2026",
+      "question": "You're driving on a 2-lane road. An emergency vehicle with lights and siren comes up from the OPPOSITE direction. What should you do?",
+      "choices": [
+        "Keep going \u2014 they're not in your lane",
+        "Speed up to clear past quickly",
+        "Pull to the right and slow or stop until they pass",
+        "Pull to the left side"
+      ],
+      "correct_index": 2,
+      "explanation": "Even when emergency vehicles come from the opposite direction, pull to the right and slow/stop until they pass. Handbook p. 86.",
+      "sign_image": null,
+      "tags": [
+        "emergency-vehicle"
+      ]
+    },
+    {
+      "id": "q-0368",
+      "canonical_fact_id": "roundabout-yield-to-circle",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 55,
+      "source_doc": "handbook-3.2026",
+      "question": "Who has the right-of-way at a roundabout?",
+      "choices": [
+        "Cars entering the roundabout",
+        "Cars already in the roundabout",
+        "Whoever signals first",
+        "The largest vehicle"
+      ],
+      "correct_index": 1,
+      "explanation": "Yield to traffic already in the roundabout. Handbook p. 55.",
+      "sign_image": null,
+      "tags": [
+        "roundabout"
+      ]
+    },
+    {
+      "id": "q-0369",
+      "canonical_fact_id": "roundabout-yield-to-circle",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 55,
+      "source_doc": "handbook-3.2026",
+      "question": "You approach a roundabout. There are no cars in it but a pedestrian is at the entry crosswalk. What do you do?",
+      "choices": [
+        "Enter \u2014 pedestrians yield to cars at roundabouts",
+        "Yield to the pedestrian, then enter",
+        "Honk and proceed slowly",
+        "Stop fully like a stop sign, then go"
+      ],
+      "correct_index": 1,
+      "explanation": "Yield to pedestrians AND circulating traffic at a roundabout. Handbook p. 55.",
+      "sign_image": null,
+      "tags": [
+        "roundabout",
+        "pedestrian"
+      ]
+    },
+    {
+      "id": "q-0370",
+      "canonical_fact_id": "pavement-yellow-opposing",
+      "topic": "rules-of-the-road",
+      "subtopic": "pavement-markings",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "YELLOW pavement markings separate:",
+      "choices": [
+        "Traffic moving in the same direction",
+        "Traffic moving in opposing directions",
+        "Lane shoulders from driving lanes",
+        "Bike lanes from car lanes"
+      ],
+      "correct_index": 1,
+      "explanation": "Yellow = opposing directions. Handbook p. 53. (DLD sample-test canonical fact.)",
+      "sign_image": null,
+      "tags": [
+        "pavement-markings",
+        "yellow"
+      ]
+    },
+    {
+      "id": "q-0371",
+      "canonical_fact_id": "pavement-white-same-direction",
+      "topic": "rules-of-the-road",
+      "subtopic": "pavement-markings",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "WHITE pavement markings separate:",
+      "choices": [
+        "Traffic moving in opposing directions",
+        "Traffic moving in the same direction",
+        "Construction zones from regular lanes",
+        "School zones from main roads"
+      ],
+      "correct_index": 1,
+      "explanation": "White = same direction. Handbook p. 53. (DLD sample-test canonical fact.)",
+      "sign_image": null,
+      "tags": [
+        "pavement-markings",
+        "white"
+      ]
+    },
+    {
+      "id": "q-0372",
+      "canonical_fact_id": "dashed-yellow-passing-permitted",
+      "topic": "rules-of-the-road",
+      "subtopic": "pavement-markings",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "A broken (dashed) yellow line on YOUR side of a center line means:",
+      "choices": [
+        "Passing prohibited",
+        "Passing permitted in your direction",
+        "School zone",
+        "Slow down \u2014 narrow road ahead"
+      ],
+      "correct_index": 1,
+      "explanation": "Dashed yellow on your side = passing permitted. Handbook p. 53.",
+      "sign_image": null,
+      "tags": [
+        "pavement-markings",
+        "passing"
+      ]
+    },
+    {
+      "id": "q-0373",
+      "canonical_fact_id": "solid-yellow-no-pass",
+      "topic": "rules-of-the-road",
+      "subtopic": "pavement-markings",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "A solid yellow line on YOUR side of a center line means:",
+      "choices": [
+        "Passing permitted with caution",
+        "Passing prohibited in your direction",
+        "Same as dashed yellow",
+        "School zone"
+      ],
+      "correct_index": 1,
+      "explanation": "Solid yellow on your side = no passing in your direction. Handbook p. 53.",
+      "sign_image": null,
+      "tags": [
+        "pavement-markings",
+        "passing"
+      ]
+    },
+    {
+      "id": "q-0374",
+      "canonical_fact_id": "double-solid-yellow-no-pass-both",
+      "topic": "rules-of-the-road",
+      "subtopic": "pavement-markings",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "Double solid yellow lines mean:",
+      "choices": [
+        "Passing permitted both directions",
+        "Passing prohibited in both directions",
+        "One side may pass, the other may not",
+        "School zone center"
+      ],
+      "correct_index": 1,
+      "explanation": "Double solid yellow = no passing either direction. Handbook p. 53.",
+      "sign_image": null,
+      "tags": [
+        "pavement-markings",
+        "passing"
+      ]
+    },
+    {
+      "id": "q-0375",
+      "canonical_fact_id": "double-white-no-cross",
+      "topic": "rules-of-the-road",
+      "subtopic": "pavement-markings",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "Double solid white lines (such as express-lane separators) mean:",
+      "choices": [
+        "Lane change allowed with caution",
+        "Crossing is prohibited",
+        "Same as a dashed white line",
+        "School zone marker"
+      ],
+      "correct_index": 1,
+      "explanation": "Double solid white = crossing prohibited. Handbook p. 53.",
+      "sign_image": null,
+      "tags": [
+        "pavement-markings",
+        "express-lane"
+      ]
+    },
+    {
+      "id": "q-0376",
+      "canonical_fact_id": "express-lane-emergency-exception",
+      "topic": "rules-of-the-road",
+      "subtopic": "pavement-markings",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 50,
+      "source_doc": "handbook-3.2026",
+      "question": "When may you legally cross a double solid white line into or out of an express lane?",
+      "choices": [
+        "Only in a genuine emergency",
+        "Anytime traffic is heavy",
+        "Only at night",
+        "When you signal for 5 seconds"
+      ],
+      "correct_index": 0,
+      "explanation": "Crossing double white is prohibited except in a true emergency. Handbook p. 50.",
+      "sign_image": null,
+      "tags": [
+        "express-lane",
+        "pavement-markings"
+      ]
+    },
+    {
+      "id": "q-0377",
+      "canonical_fact_id": "sign-stop-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 57,
+      "source_doc": "handbook-3.2026",
+      "question": "An 8-sided red sign means:",
+      "choices": [
+        "Yield",
+        "Stop \u2014 come to a complete stop",
+        "Caution \u2014 slow down",
+        "Do not enter"
+      ],
+      "correct_index": 1,
+      "explanation": "Octagonal red sign = STOP. Handbook p. 57.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "stop"
+      ]
+    },
+    {
+      "id": "q-0378",
+      "canonical_fact_id": "sign-yield-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 57,
+      "source_doc": "handbook-3.2026",
+      "question": "A triangular sign with a red border (point-down) means:",
+      "choices": [
+        "Stop",
+        "Yield \u2014 slow down and give right-of-way to others",
+        "Wrong way",
+        "Do not enter"
+      ],
+      "correct_index": 1,
+      "explanation": "Downward-pointing triangle = YIELD. Handbook p. 57.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "yield"
+      ]
+    },
+    {
+      "id": "q-0379",
+      "canonical_fact_id": "sign-do-not-enter-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 57,
+      "source_doc": "handbook-3.2026",
+      "question": "A square red sign with a horizontal white bar and 'DO NOT ENTER' means:",
+      "choices": [
+        "You're approaching a one-way street going the wrong direction \u2014 do not enter",
+        "Slow down",
+        "Yield to oncoming traffic",
+        "Construction zone ahead"
+      ],
+      "correct_index": 0,
+      "explanation": "Do Not Enter \u2014 you're going against the flow of a one-way road. Handbook p. 57.",
+      "sign_image": null,
+      "tags": [
+        "signs"
+      ]
+    },
+    {
+      "id": "q-0380",
+      "canonical_fact_id": "sign-wrong-way-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 57,
+      "source_doc": "handbook-3.2026",
+      "question": "A red rectangular sign reading 'WRONG WAY' means:",
+      "choices": [
+        "Slow down \u2014 road narrows",
+        "Stop and immediately turn around \u2014 you're driving against traffic",
+        "Detour ahead",
+        "Construction warning"
+      ],
+      "correct_index": 1,
+      "explanation": "Wrong Way = you're driving against traffic; stop and turn around safely. Handbook p. 57.",
+      "sign_image": null,
+      "tags": [
+        "signs"
+      ]
+    },
+    {
+      "id": "q-0381",
+      "canonical_fact_id": "sign-one-way-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 57,
+      "source_doc": "handbook-3.2026",
+      "question": "A rectangular black-and-white sign with an arrow saying 'ONE WAY' means:",
+      "choices": [
+        "Traffic flows only in the direction of the arrow",
+        "Construction zone",
+        "Detour",
+        "Pedestrian crossing"
+      ],
+      "correct_index": 0,
+      "explanation": "One Way = traffic moves only in the arrow's direction. Handbook p. 57.",
+      "sign_image": null,
+      "tags": [
+        "signs"
+      ]
+    },
+    {
+      "id": "q-0382",
+      "canonical_fact_id": "sign-no-turn-on-red-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 57,
+      "source_doc": "handbook-3.2026",
+      "question": "A 'NO TURN ON RED' sign at an intersection means:",
+      "choices": [
+        "You may turn right on red if traffic is clear",
+        "You may NOT turn right (or left, where posted) on a red light",
+        "Stop for a longer time before turning",
+        "Yield to oncoming traffic"
+      ],
+      "correct_index": 1,
+      "explanation": "No Turn On Red overrides the default right-on-red allowance. Handbook p. 57.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "right-on-red"
+      ]
+    },
+    {
+      "id": "q-0383",
+      "canonical_fact_id": "sign-no-u-turn-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 57,
+      "source_doc": "handbook-3.2026",
+      "question": "A black-and-white sign with a U-shaped arrow and a red slash means:",
+      "choices": [
+        "U-turns allowed",
+        "No U-turn at this location",
+        "Sharp curve ahead",
+        "Detour"
+      ],
+      "correct_index": 1,
+      "explanation": "U-turn prohibited at this location. Handbook p. 57.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "u-turn"
+      ]
+    },
+    {
+      "id": "q-0384",
+      "canonical_fact_id": "sign-keep-right-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 57,
+      "source_doc": "handbook-3.2026",
+      "question": "A sign with an arrow pointing right and 'KEEP RIGHT' means:",
+      "choices": [
+        "Pass an obstruction on the right side",
+        "Right turn only",
+        "Yield to merging traffic",
+        "Drive on the shoulder"
+      ],
+      "correct_index": 0,
+      "explanation": "Keep Right means pass the obstruction (median, sign, etc.) on the right. Handbook p. 57.",
+      "sign_image": null,
+      "tags": [
+        "signs"
+      ]
+    },
+    {
+      "id": "q-0385",
+      "canonical_fact_id": "sign-no-passing-zone-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 57,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow pennant-shaped sign on the left side of the road means:",
+      "choices": [
+        "School zone",
+        "No passing zone \u2014 passing prohibited in your direction",
+        "Construction",
+        "Slow vehicle"
+      ],
+      "correct_index": 1,
+      "explanation": "Yellow pennant on the left = No Passing Zone marker. Handbook p. 57.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "passing"
+      ]
+    },
+    {
+      "id": "q-0386",
+      "canonical_fact_id": "sign-curve-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond sign with a black curved arrow means:",
+      "choices": [
+        "Detour ahead",
+        "Curve in the road ahead \u2014 slow down",
+        "Road ends",
+        "No turn"
+      ],
+      "correct_index": 1,
+      "explanation": "Yellow diamond + curved arrow = curve ahead, slow down. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "curve"
+      ]
+    },
+    {
+      "id": "q-0387",
+      "canonical_fact_id": "sign-merge-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond sign showing two arrows joining together means:",
+      "choices": [
+        "Lane ends",
+        "Merge \u2014 be ready for traffic merging into your lane",
+        "Pass with caution",
+        "Divided highway ends"
+      ],
+      "correct_index": 1,
+      "explanation": "Merge ahead \u2014 be ready for traffic joining your lane. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs"
+      ]
+    },
+    {
+      "id": "q-0388",
+      "canonical_fact_id": "sign-lane-ends-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond sign showing two lanes narrowing to one means:",
+      "choices": [
+        "Speed bump ahead",
+        "Lane ends \u2014 merge into the remaining lane",
+        "Sharp curve ahead",
+        "Pedestrian crossing"
+      ],
+      "correct_index": 1,
+      "explanation": "Lane ends \u2014 prepare to merge into the open lane. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs"
+      ]
+    },
+    {
+      "id": "q-0389",
+      "canonical_fact_id": "sign-stop-ahead-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond sign showing a red octagon with 'STOP AHEAD' means:",
+      "choices": [
+        "Yield ahead",
+        "A stop sign is coming \u2014 prepare to stop",
+        "Construction ahead",
+        "Detour"
+      ],
+      "correct_index": 1,
+      "explanation": "Stop sign ahead \u2014 prepare to stop. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs"
+      ]
+    },
+    {
+      "id": "q-0390",
+      "canonical_fact_id": "sign-signal-ahead-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond sign showing traffic-light symbols means:",
+      "choices": [
+        "Signal ahead \u2014 prepare to stop if it turns red",
+        "Detour",
+        "School zone",
+        "Slippery when wet"
+      ],
+      "correct_index": 0,
+      "explanation": "Signal Ahead \u2014 be ready for a traffic light. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs"
+      ]
+    },
+    {
+      "id": "q-0391",
+      "canonical_fact_id": "sign-school-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "A pentagon-shaped yellow-green sign with two children walking means:",
+      "choices": [
+        "School zone or school crossing \u2014 slow down, watch for children",
+        "Pedestrian crossing only",
+        "Hospital zone",
+        "Park area"
+      ],
+      "correct_index": 0,
+      "explanation": "Pentagon school sign \u2014 school zone or crossing, watch for kids. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "school"
+      ]
+    },
+    {
+      "id": "q-0392",
+      "canonical_fact_id": "sign-shape-pentagon-school",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "A 5-sided (pentagon) sign always means:",
+      "choices": [
+        "School zone or school crossing",
+        "Construction",
+        "Stop",
+        "Hospital"
+      ],
+      "correct_index": 0,
+      "explanation": "Pentagon = school. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "school"
+      ]
+    },
+    {
+      "id": "q-0393",
+      "canonical_fact_id": "sign-color-yellow-green-school",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "Fluorescent yellow-green signs typically indicate:",
+      "choices": [
+        "Construction work zones",
+        "School, pedestrian, or bicycle warnings",
+        "Hospital areas",
+        "Rest stops"
+      ],
+      "correct_index": 1,
+      "explanation": "Fluorescent yellow-green = school/ped/bike warnings. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "school"
+      ]
+    },
+    {
+      "id": "q-0394",
+      "canonical_fact_id": "sign-ped-crossing-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow-green pentagon sign with a single pedestrian figure means:",
+      "choices": [
+        "Pedestrian crossing \u2014 watch for people on foot",
+        "School only",
+        "Hiking trail",
+        "Bus stop"
+      ],
+      "correct_index": 0,
+      "explanation": "Pedestrian crossing warning. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "pedestrian"
+      ]
+    },
+    {
+      "id": "q-0395",
+      "canonical_fact_id": "sign-bike-crossing-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow-green sign with a bicycle figure means:",
+      "choices": [
+        "Bike crossing \u2014 watch for bicyclists",
+        "Bike lane begins",
+        "No bicycles",
+        "Bicycle parking"
+      ],
+      "correct_index": 0,
+      "explanation": "Bike crossing warning. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "bicycle"
+      ]
+    },
+    {
+      "id": "q-0396",
+      "canonical_fact_id": "sign-deer-crossing-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond sign with a deer silhouette means:",
+      "choices": [
+        "Hunting allowed",
+        "Deer crossing \u2014 watch for animals on the road",
+        "Wildlife refuge",
+        "No animals beyond this point"
+      ],
+      "correct_index": 1,
+      "explanation": "Animal crossing warning. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "animal"
+      ]
+    },
+    {
+      "id": "q-0397",
+      "canonical_fact_id": "sign-slippery-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond sign with a car and curvy tire marks means:",
+      "choices": [
+        "Slippery when wet",
+        "Skid pad ahead",
+        "Curve ahead",
+        "Detour"
+      ],
+      "correct_index": 0,
+      "explanation": "Slippery road conditions warning. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs"
+      ]
+    },
+    {
+      "id": "q-0398",
+      "canonical_fact_id": "sign-hill-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond sign showing a downhill grade and percentage (e.g. 7%) means:",
+      "choices": [
+        "Steep hill ahead \u2014 gear down, control speed",
+        "Climbing lane ahead",
+        "Sharp curve",
+        "Pavement ends"
+      ],
+      "correct_index": 0,
+      "explanation": "Steep grade ahead \u2014 control speed. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "hill"
+      ]
+    },
+    {
+      "id": "q-0399",
+      "canonical_fact_id": "sign-advisory-speed-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow rectangular sign below a curve warning showing '25' means:",
+      "choices": [
+        "The legal speed limit is 25 mph",
+        "The advisory (recommended safe) speed for the curve is 25 mph",
+        "A 25-mile detour ahead",
+        "School zone speed"
+      ],
+      "correct_index": 1,
+      "explanation": "Advisory speed = recommended safe speed for the hazard. Yellow advisory is suggestion; black-on-white speed limit signs are law. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "speed"
+      ]
+    },
+    {
+      "id": "q-0400",
+      "canonical_fact_id": "sign-rr-crossing-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 57,
+      "source_doc": "handbook-3.2026",
+      "question": "An X-shaped white sign reading 'RAILROAD CROSSING' indicates:",
+      "choices": [
+        "A railroad crosses the road here \u2014 yield to trains",
+        "Closed crossing",
+        "Bus stop",
+        "Crosswalk"
+      ],
+      "correct_index": 0,
+      "explanation": "Crossbuck marks an active railroad crossing. Handbook p. 57.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "railroad"
+      ]
+    },
+    {
+      "id": "q-0401",
+      "canonical_fact_id": "sign-work-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "An orange diamond sign with workers shown means:",
+      "choices": [
+        "Work zone \u2014 slow down, expect changes",
+        "Detour ahead",
+        "End of construction",
+        "Heavy truck route"
+      ],
+      "correct_index": 0,
+      "explanation": "Orange diamond = work zone warning. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "work-zone"
+      ]
+    },
+    {
+      "id": "q-0402",
+      "canonical_fact_id": "sign-flagger-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "An orange diamond sign with a person holding a paddle means:",
+      "choices": [
+        "A flagger may be directing traffic ahead \u2014 be ready to obey",
+        "Pedestrian crossing",
+        "School crossing",
+        "Traffic light ahead"
+      ],
+      "correct_index": 0,
+      "explanation": "Flagger ahead \u2014 be ready to follow their directions. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "flagger"
+      ]
+    },
+    {
+      "id": "q-0403",
+      "canonical_fact_id": "sign-detour-meaning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "An orange sign with an arrow and 'DETOUR' means:",
+      "choices": [
+        "Road is closed ahead; follow the alternate route shown",
+        "Road work \u2014 slow down",
+        "Road ends",
+        "Yield right-of-way"
+      ],
+      "correct_index": 0,
+      "explanation": "Detour \u2014 follow the alternate route. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "detour"
+      ]
+    },
+    {
+      "id": "q-0404",
+      "canonical_fact_id": "sign-shape-octagon-stop",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 57,
+      "source_doc": "handbook-3.2026",
+      "question": "An octagon (8 sides) shape is reserved for which sign?",
+      "choices": [
+        "Yield",
+        "Stop",
+        "Speed limit",
+        "School"
+      ],
+      "correct_index": 1,
+      "explanation": "Only stop signs are octagonal. Handbook p. 57.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "shapes"
+      ]
+    },
+    {
+      "id": "q-0405",
+      "canonical_fact_id": "sign-shape-triangle-yield",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 57,
+      "source_doc": "handbook-3.2026",
+      "question": "A downward-pointing triangle is reserved for which sign?",
+      "choices": [
+        "Stop",
+        "Yield",
+        "Wrong way",
+        "Caution"
+      ],
+      "correct_index": 1,
+      "explanation": "Downward triangle = yield. Handbook p. 57.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "shapes"
+      ]
+    },
+    {
+      "id": "q-0406",
+      "canonical_fact_id": "sign-shape-diamond-warning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond shape typically means:",
+      "choices": [
+        "Service area",
+        "Warning \u2014 caution ahead",
+        "Highway exit",
+        "Regulatory rule"
+      ],
+      "correct_index": 1,
+      "explanation": "Yellow diamond = warning. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "shapes"
+      ]
+    },
+    {
+      "id": "q-0407",
+      "canonical_fact_id": "sign-color-red-stop-prohibit",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 57,
+      "source_doc": "handbook-3.2026",
+      "question": "Red signs generally mean:",
+      "choices": [
+        "Information",
+        "Stop, do not enter, prohibition",
+        "Construction",
+        "Service or rest area"
+      ],
+      "correct_index": 1,
+      "explanation": "Red signs = stop, prohibition, or do-not-enter. Handbook p. 57.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "colors"
+      ]
+    },
+    {
+      "id": "q-0408",
+      "canonical_fact_id": "sign-color-yellow-warning",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "Yellow signs generally mean:",
+      "choices": [
+        "School only",
+        "Warning \u2014 be cautious",
+        "Highway services",
+        "Speed limit"
+      ],
+      "correct_index": 1,
+      "explanation": "Yellow = warning. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "colors"
+      ]
+    },
+    {
+      "id": "q-0409",
+      "canonical_fact_id": "sign-color-orange-construction",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "Orange signs typically mean:",
+      "choices": [
+        "Work zone or construction warning",
+        "School zone",
+        "Highway exit",
+        "Stop"
+      ],
+      "correct_index": 1,
+      "explanation": "Orange = work zone. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "colors"
+      ]
+    },
+    {
+      "id": "q-0410",
+      "canonical_fact_id": "sign-color-green-guide-permitted",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "Green signs typically indicate:",
+      "choices": [
+        "Warning",
+        "Guidance / directions, or permitted movement",
+        "Construction",
+        "Stop"
+      ],
+      "correct_index": 1,
+      "explanation": "Green = guide signs / permitted movements. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "colors"
+      ]
+    },
+    {
+      "id": "q-0411",
+      "canonical_fact_id": "sign-color-blue-service",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "Blue signs typically indicate:",
+      "choices": [
+        "Stop",
+        "Highway services (gas, food, lodging, hospital)",
+        "Warning",
+        "Construction"
+      ],
+      "correct_index": 1,
+      "explanation": "Blue = services. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "colors"
+      ]
+    },
+    {
+      "id": "q-0412",
+      "canonical_fact_id": "sign-color-brown-rec",
+      "topic": "rules-of-the-road",
+      "subtopic": "signs",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "Brown signs typically indicate:",
+      "choices": [
+        "Stop",
+        "Recreation, public parks, historic areas",
+        "School zones",
+        "Construction"
+      ],
+      "correct_index": 1,
+      "explanation": "Brown = recreation. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "signs",
+        "colors"
+      ]
+    },
+    {
+      "id": "q-0413",
+      "canonical_fact_id": "complete-stop-list",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 45,
+      "source_doc": "handbook-3.2026",
+      "question": "Which of these does NOT require a complete stop?",
+      "choices": [
+        "A flashing red light",
+        "A steady yellow light",
+        "All stop signs",
+        "Entering a street from a private driveway"
+      ],
+      "correct_index": 1,
+      "explanation": "Complete stops are required at steady red, flashing red, all stop signs, after a crash, when police request, and entering a road from an alley/driveway/private road. Yellow = stop IF you can do so safely \u2014 not required to. Handbook p. 45.",
+      "sign_image": null,
+      "tags": [
+        "complete-stop"
+      ]
+    },
+    {
+      "id": "q-0414",
+      "canonical_fact_id": "complete-stop-list",
+      "topic": "rules-of-the-road",
+      "subtopic": "right-of-way",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 45,
+      "source_doc": "handbook-3.2026",
+      "question": "A flashing red light requires what kind of stop?",
+      "choices": [
+        "Slow only",
+        "Yield only",
+        "A complete stop (treat like a stop sign)",
+        "No stop required if no traffic visible"
+      ],
+      "correct_index": 2,
+      "explanation": "Flashing red = complete stop, treat as stop sign. Handbook p. 45, p. 56.",
+      "sign_image": null,
+      "tags": [
+        "complete-stop",
+        "flashing-red"
+      ]
+    },
+    {
+      "id": "q-0415",
+      "canonical_fact_id": "signal-2-sec-before-turn",
+      "topic": "rules-of-the-road",
+      "subtopic": "signaling",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 44,
+      "source_doc": "handbook-3.2026",
+      "question": "How early should you signal before turning?",
+      "choices": [
+        "At least 2 seconds before the turn",
+        "Right as you start turning",
+        "About 1 second before",
+        "At least 5 seconds before"
+      ],
+      "correct_index": 0,
+      "explanation": "Signal at least 2 seconds before turning. Handbook p. 44.",
+      "sign_image": null,
+      "tags": [
+        "signaling"
+      ]
+    },
+    {
+      "id": "q-0416",
+      "canonical_fact_id": "signal-2-sec-before-lane-change",
+      "topic": "rules-of-the-road",
+      "subtopic": "signaling",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 44,
+      "source_doc": "handbook-3.2026",
+      "question": "How early should you signal before a lane change?",
+      "choices": [
+        "At least 1 second",
+        "At least 2 seconds",
+        "At least 5 seconds",
+        "Only if traffic is heavy"
+      ],
+      "correct_index": 1,
+      "explanation": "Signal at least 2 seconds before any lane change. Handbook p. 44.",
+      "sign_image": null,
+      "tags": [
+        "signaling",
+        "lane-change"
+      ]
+    },
+    {
+      "id": "q-0417",
+      "canonical_fact_id": "no-lane-change-in-intersection",
+      "topic": "rules-of-the-road",
+      "subtopic": "lane-changes",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 41,
+      "source_doc": "handbook-3.2026",
+      "question": "You're driving straight through an intersection and realize your exit is one lane to the right. What's the correct move?",
+      "choices": [
+        "Signal and change lanes while inside the intersection",
+        "Complete the straight path, exit the intersection, then signal and change lanes",
+        "Stop in the intersection and let cars pass",
+        "Cut across all lanes diagonally"
+      ],
+      "correct_index": 1,
+      "explanation": "Don't change lanes inside an intersection. Exit it first, then signal and change. Handbook p. 41.",
+      "sign_image": null,
+      "tags": [
+        "lane-change",
+        "intersection"
+      ]
+    },
+    {
+      "id": "q-0418",
+      "canonical_fact_id": "right-turn-procedure",
+      "topic": "rules-of-the-road",
+      "subtopic": "turns",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "What's the correct right turn procedure?",
+      "choices": [
+        "Wide swing to make the turn easier, signal as you turn",
+        "Signal 2 sec, head check right shoulder, traffic check, don't cut corner or make wide turn",
+        "Honk before turning, swing wide",
+        "Just signal \u2014 the rest happens naturally"
+      ],
+      "correct_index": 1,
+      "explanation": "Right turn: signal 2 sec \u2192 head check right \u2192 traffic check \u2192 no cutting/no wide turn. Handbook p. 46.",
+      "sign_image": null,
+      "tags": [
+        "turns",
+        "right-turn"
+      ]
+    },
+    {
+      "id": "q-0419",
+      "canonical_fact_id": "left-turn-procedure",
+      "topic": "rules-of-the-road",
+      "subtopic": "turns",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "What's the correct left turn procedure?",
+      "choices": [
+        "Wide swing across the lane, signal as you complete",
+        "Signal 2 sec, head check left shoulder, traffic check, don't cut corner or make wide turn",
+        "Stop, then proceed without signaling",
+        "Signal at the last second"
+      ],
+      "correct_index": 1,
+      "explanation": "Left turn: signal 2 sec \u2192 head check left \u2192 traffic check \u2192 no cutting/no wide turn. Handbook p. 47.",
+      "sign_image": null,
+      "tags": [
+        "turns",
+        "left-turn"
+      ]
+    },
+    {
+      "id": "q-0420",
+      "canonical_fact_id": "turn-finish-correct-lane",
+      "topic": "rules-of-the-road",
+      "subtopic": "turns",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 41,
+      "source_doc": "handbook-3.2026",
+      "question": "After completing a turn, you should:",
+      "choices": [
+        "Stay in whatever lane the turn ended in",
+        "Finish a left turn in the left-most lane (next to centerline) and a right turn in the right-most (curb) lane",
+        "Move to the center lane immediately",
+        "Move to the shoulder briefly"
+      ],
+      "correct_index": 1,
+      "explanation": "Left turn finishes in left-most lane; right turn finishes in right-most. Handbook p. 41.",
+      "sign_image": null,
+      "tags": [
+        "turns"
+      ]
+    },
+    {
+      "id": "q-0421",
+      "canonical_fact_id": "multi-lane-turn-stay-in-lane",
+      "topic": "rules-of-the-road",
+      "subtopic": "turns",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "When turning at a multi-lane intersection, you should:",
+      "choices": [
+        "Pick whichever lane is open mid-turn",
+        "Enter and stay in the same lane until the turn is completed",
+        "Change lanes once you start the turn",
+        "Drift across two lanes during the turn"
+      ],
+      "correct_index": 1,
+      "explanation": "On multi-lane turns, stay in the lane you entered until the turn is completed. Handbook p. 47.",
+      "sign_image": null,
+      "tags": [
+        "turns",
+        "multi-lane"
+      ]
+    },
+    {
+      "id": "q-0422",
+      "canonical_fact_id": "u-turn-500-ft-sight",
+      "topic": "rules-of-the-road",
+      "subtopic": "u-turns",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "You may NOT make a U-turn where:",
+      "choices": [
+        "You don't have at least 500 feet of visibility in both directions",
+        "You have a green light",
+        "There's only one car coming",
+        "There's a paved shoulder"
+      ],
+      "correct_index": 0,
+      "explanation": "U-turn requires 500 ft sight in both directions (no curve, no hill blocking view). Handbook p. 48.",
+      "sign_image": null,
+      "tags": [
+        "u-turn"
+      ]
+    },
+    {
+      "id": "q-0423",
+      "canonical_fact_id": "u-turn-prohibited-locations",
+      "topic": "rules-of-the-road",
+      "subtopic": "u-turns",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "U-turns are prohibited in all of these locations EXCEPT:",
+      "choices": [
+        "Anywhere a sign prohibits them",
+        "On a railroad crossing",
+        "On a freeway",
+        "On a 2-lane road with 500+ feet visibility both directions"
+      ],
+      "correct_index": 3,
+      "explanation": "U-turns are banned where a sign prohibits, on RR crossings, on freeways. A 2-lane road with adequate sight is OK. Handbook p. 48.",
+      "sign_image": null,
+      "tags": [
+        "u-turn"
+      ]
+    },
+    {
+      "id": "q-0424",
+      "canonical_fact_id": "no-driving-on-island",
+      "topic": "rules-of-the-road",
+      "subtopic": "turns",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "May you drive across or within a traffic island (e.g., painted or raised median pad)?",
+      "choices": [
+        "Yes, if signaling",
+        "No \u2014 never drive over, across, or within any part of an island",
+        "Yes, in an emergency",
+        "Yes, if turning right"
+      ],
+      "correct_index": 1,
+      "explanation": "Don't drive over or within any traffic island. Handbook p. 47.",
+      "sign_image": null,
+      "tags": [
+        "island",
+        "turns"
+      ]
+    },
+    {
+      "id": "q-0425",
+      "canonical_fact_id": "left-lane-for-passing",
+      "topic": "rules-of-the-road",
+      "subtopic": "lane-use",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 44,
+      "source_doc": "handbook-3.2026",
+      "question": "The left lane on a multi-lane road is intended for:",
+      "choices": [
+        "Slow drivers",
+        "Passing slower vehicles",
+        "Emergency vehicles only",
+        "School buses"
+      ],
+      "correct_index": 1,
+      "explanation": "Left lane is for passing. Handbook p. 44.",
+      "sign_image": null,
+      "tags": [
+        "lane-use",
+        "passing"
+      ]
+    },
+    {
+      "id": "q-0426",
+      "canonical_fact_id": "left-lane-must-move-right",
+      "topic": "rules-of-the-road",
+      "subtopic": "lane-use",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "You're cruising in the left lane at the posted speed. A faster car comes up behind clearly wanting to pass. What must you do?",
+      "choices": [
+        "Stay \u2014 you're at the legal limit",
+        "Speed up to keep them behind",
+        "Move safely to the right \u2014 failing to do so can result in an impeding-traffic citation",
+        "Honk so they back off"
+      ],
+      "correct_index": 2,
+      "explanation": "When approached from behind in the left lane, move right safely. Impeding traffic = citation. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "lane-use",
+        "left-lane"
+      ]
+    },
+    {
+      "id": "q-0427",
+      "canonical_fact_id": "default-right-lane",
+      "topic": "rules-of-the-road",
+      "subtopic": "lane-use",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 41,
+      "source_doc": "handbook-3.2026",
+      "question": "By default, you should travel in which lane on a multi-lane road?",
+      "choices": [
+        "Center lane",
+        "Right-most lane unless it's blocked",
+        "Left lane for safety",
+        "Any lane \u2014 your choice"
+      ],
+      "correct_index": 1,
+      "explanation": "Stay in the right-most lane unless blocked. Handbook p. 41.",
+      "sign_image": null,
+      "tags": [
+        "lane-use"
+      ]
+    },
+    {
+      "id": "q-0428",
+      "canonical_fact_id": "no-driving-in-emergency-lane",
+      "topic": "rules-of-the-road",
+      "subtopic": "lane-use",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "The emergency lane (outside the solid white line on a freeway) may be used for:",
+      "choices": [
+        "Passing slow drivers",
+        "Picking up or dropping off riders",
+        "Genuine emergencies only \u2014 no driving, passing, or pickup",
+        "Any time to avoid traffic"
+      ],
+      "correct_index": 2,
+      "explanation": "Emergency lane = emergencies only. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "lane-use",
+        "emergency-lane"
+      ]
+    },
+    {
+      "id": "q-0429",
+      "canonical_fact_id": "no-u-turn-freeway",
+      "topic": "rules-of-the-road",
+      "subtopic": "freeway",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "May you make a U-turn on a freeway?",
+      "choices": [
+        "Yes, where there's an emergency-only opening in the median",
+        "Yes, between exits if traffic is light",
+        "Never \u2014 no U-turns on the freeway",
+        "Yes, on a holiday"
+      ],
+      "correct_index": 2,
+      "explanation": "No U-turns on the freeway. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "freeway",
+        "u-turn"
+      ]
+    },
+    {
+      "id": "q-0430",
+      "canonical_fact_id": "flex-lane-signals",
+      "topic": "rules-of-the-road",
+      "subtopic": "lane-use",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "On a flex lane, what does a green ARROW overhead mean and what does a red X mean?",
+      "choices": [
+        "Green arrow = lane is open in your direction; red X = lane is closed",
+        "Green arrow = stop; red X = go",
+        "Both mean lane closed",
+        "Both mean lane open"
+      ],
+      "correct_index": 0,
+      "explanation": "Flex lane: green arrow = open, red X = closed. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "lane-use",
+        "flex-lane"
+      ]
+    },
+    {
+      "id": "q-0431",
+      "canonical_fact_id": "basic-speed-law-reasonably-safe",
+      "topic": "speed",
+      "subtopic": "speed-limits",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "Utah's basic speed law says:",
+      "choices": [
+        "Always drive at the posted speed limit",
+        "Never drive faster than is reasonably safe for current conditions",
+        "Always drive 5 mph under the limit",
+        "Drive whatever speed traffic is moving"
+      ],
+      "correct_index": 1,
+      "explanation": "Basic speed law: never drive faster than is reasonably safe for the conditions. Handbook p. 54.",
+      "sign_image": null,
+      "tags": [
+        "speed",
+        "basic-speed-law"
+      ]
+    },
+    {
+      "id": "q-0432",
+      "canonical_fact_id": "speed-20-school",
+      "topic": "speed",
+      "subtopic": "speed-limits",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "What's the speed limit in an active school zone?",
+      "choices": [
+        "15 mph",
+        "20 mph",
+        "25 mph",
+        "30 mph"
+      ],
+      "correct_index": 1,
+      "explanation": "School zone speed limit is 20 mph when lights are flashing, children present, or during opening/closing hours. Handbook p. 54.",
+      "sign_image": null,
+      "tags": [
+        "speed",
+        "school-zone"
+      ]
+    },
+    {
+      "id": "q-0433",
+      "canonical_fact_id": "speed-25-business-residential",
+      "topic": "speed",
+      "subtopic": "speed-limits",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "What's the default speed limit in a business or residential area (unless posted otherwise)?",
+      "choices": [
+        "15 mph",
+        "20 mph",
+        "25 mph",
+        "35 mph"
+      ],
+      "correct_index": 2,
+      "explanation": "25 mph in business or residential areas. Handbook p. 54.",
+      "sign_image": null,
+      "tags": [
+        "speed",
+        "residential"
+      ]
+    },
+    {
+      "id": "q-0434",
+      "canonical_fact_id": "speed-55-major-highway",
+      "topic": "speed",
+      "subtopic": "speed-limits",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "What's the default maximum speed limit on a major highway (as posted)?",
+      "choices": [
+        "35 mph",
+        "45 mph",
+        "55 mph",
+        "75 mph"
+      ],
+      "correct_index": 2,
+      "explanation": "55 mph on major highways as posted. Handbook p. 54.",
+      "sign_image": null,
+      "tags": [
+        "speed",
+        "highway"
+      ]
+    },
+    {
+      "id": "q-0435",
+      "canonical_fact_id": "speed-65-80-rural-interstate",
+      "topic": "speed",
+      "subtopic": "speed-limits",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "Speed limits on Utah's rural interstate highways may be posted as high as:",
+      "choices": [
+        "55 mph",
+        "65 mph",
+        "75 mph",
+        "80 mph"
+      ],
+      "correct_index": 3,
+      "explanation": "Utah rural interstates may be posted up to 80 mph. Handbook p. 54.",
+      "sign_image": null,
+      "tags": [
+        "speed",
+        "interstate"
+      ]
+    },
+    {
+      "id": "q-0436",
+      "canonical_fact_id": "never-exceed-posted-limit",
+      "topic": "speed",
+      "subtopic": "speed-limits",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "May you legally drive faster than the posted speed limit when matching traffic flow?",
+      "choices": [
+        "Yes, if you're going with the flow",
+        "Yes, if it's safe",
+        "No \u2014 never legally exceed the posted speed limit",
+        "Only when passing"
+      ],
+      "correct_index": 2,
+      "explanation": "Never legally drive faster than the posted limit, even when matching flow. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "speed"
+      ]
+    },
+    {
+      "id": "q-0437",
+      "canonical_fact_id": "never-exceed-posted-limit",
+      "topic": "speed",
+      "subtopic": "speed-limits",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "You're on I-15 in the right lane at the posted 70 mph. All traffic around you is going 80. What's your legal max?",
+      "choices": [
+        "80 mph \u2014 match flow",
+        "75 mph \u2014 give a 5 mph buffer",
+        "70 mph \u2014 never exceed the posted limit",
+        "Whatever feels safe given visibility"
+      ],
+      "correct_index": 2,
+      "explanation": "Legal max is always the posted limit, regardless of traffic flow. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "speed"
+      ]
+    },
+    {
+      "id": "q-0438",
+      "canonical_fact_id": "speed-20-school",
+      "topic": "speed",
+      "subtopic": "speed-limits",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "When does the 20 mph school-zone limit apply?",
+      "choices": [
+        "Only when bell is ringing",
+        "Only when kids are visible",
+        "When lights are flashing, children are present, or during school opening/closing hours",
+        "All weekdays, 8 a.m. to 5 p.m."
+      ],
+      "correct_index": 2,
+      "explanation": "20 mph school zone applies when flashing lights are on, children are present, or during opening/closing hours. Handbook p. 54.",
+      "sign_image": null,
+      "tags": [
+        "speed",
+        "school-zone"
+      ]
+    },
+    {
+      "id": "q-0439",
+      "canonical_fact_id": "school-zone-flashing-slow",
+      "topic": "speed",
+      "subtopic": "speed-limits",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 91,
+      "source_doc": "handbook-3.2026",
+      "question": "You drive past a school at 8:00 a.m. The school-zone speed sign is flashing. You see no kids on the street. What's your max speed?",
+      "choices": [
+        "Posted regular limit \u2014 no kids visible",
+        "20 mph \u2014 flashing lights mean the lower limit is active",
+        "30 mph",
+        "Whatever feels safe"
+      ],
+      "correct_index": 1,
+      "explanation": "Flashing lights = school zone speed applies, kids visible or not. Handbook p. 91.",
+      "sign_image": null,
+      "tags": [
+        "speed",
+        "school-zone"
+      ]
+    },
+    {
+      "id": "q-0440",
+      "canonical_fact_id": "speed-25-business-residential",
+      "topic": "speed",
+      "subtopic": "speed-limits",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "You're driving through a neighborhood with no posted speed limit signs. What's your max?",
+      "choices": [
+        "35 mph (default rural)",
+        "25 mph (residential default)",
+        "45 mph (major road default)",
+        "There's no default \u2014 drive what feels safe"
+      ],
+      "correct_index": 1,
+      "explanation": "Default in residential = 25 mph. Handbook p. 54.",
+      "sign_image": null,
+      "tags": [
+        "speed",
+        "residential"
+      ]
+    },
+    {
+      "id": "q-0441",
+      "canonical_fact_id": "freeway-2-sec-follow",
+      "topic": "speed",
+      "subtopic": "following-distance",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "What's the MINIMUM following distance on a freeway in good conditions?",
+      "choices": [
+        "1 second",
+        "2 seconds",
+        "5 seconds",
+        "Half the speed in feet"
+      ],
+      "correct_index": 1,
+      "explanation": "Minimum 2-second following distance on the freeway. Increase under bad conditions. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "following-distance",
+        "freeway"
+      ]
+    },
+    {
+      "id": "q-0442",
+      "canonical_fact_id": "freeway-2-sec-follow",
+      "topic": "speed",
+      "subtopic": "following-distance",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "How do you measure a 2-second following distance?",
+      "choices": [
+        "Count the car lengths between you and the car ahead",
+        "When the car ahead passes a fixed point, count 'one-thousand-one, one-thousand-two' before you reach the same point",
+        "Look at your speedometer",
+        "Use your GPS"
+      ],
+      "correct_index": 1,
+      "explanation": "Watch the car ahead pass a fixed point (sign, line), then count until you reach the same point. If less than 2 seconds, you're too close. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "following-distance"
+      ]
+    },
+    {
+      "id": "q-0443",
+      "canonical_fact_id": "night-add-2-seconds-follow",
+      "topic": "speed",
+      "subtopic": "following-distance",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "How should you adjust your following distance at night?",
+      "choices": [
+        "Same as daytime",
+        "Add at least 2 seconds to your following distance",
+        "Reduce by 1 second",
+        "Triple your following distance always"
+      ],
+      "correct_index": 1,
+      "explanation": "Add at least 2 seconds at night (so 4+ seconds total). Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "following-distance",
+        "night"
+      ]
+    },
+    {
+      "id": "q-0444",
+      "canonical_fact_id": "freeway-2-sec-follow",
+      "topic": "speed",
+      "subtopic": "following-distance",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "You're on I-15 in heavy rain. The car ahead is hard to see clearly. What should you do with your following distance?",
+      "choices": [
+        "Maintain 2 seconds \u2014 that's the rule",
+        "Increase your following distance \u2014 2 seconds is the minimum in good conditions, bad conditions need more",
+        "Decrease to 1 second so you can react faster",
+        "Following distance is irrelevant in rain"
+      ],
+      "correct_index": 1,
+      "explanation": "2 seconds is the MINIMUM in good conditions. Increase in rain, fog, snow, or darkness. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "following-distance",
+        "rain"
+      ]
+    },
+    {
+      "id": "q-0445",
+      "canonical_fact_id": "motorcycle-2-sec-follow",
+      "topic": "speed",
+      "subtopic": "following-distance",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "When following a motorcycle, what minimum following distance should you keep?",
+      "choices": [
+        "1 second",
+        "2 seconds (and consider more for safety)",
+        "Half the distance of a car",
+        "Same as a tractor-trailer"
+      ],
+      "correct_index": 1,
+      "explanation": "Same 2-second minimum for motorcycles. Motorcycles can stop quickly \u2014 give them room. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "following-distance",
+        "motorcycle"
+      ]
+    },
+    {
+      "id": "q-0446",
+      "canonical_fact_id": "see-rear-tires-gap-rule",
+      "topic": "speed",
+      "subtopic": "following-distance",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 41,
+      "source_doc": "handbook-3.2026",
+      "question": "When stopping behind another vehicle, what's a safe gap rule?",
+      "choices": [
+        "Stop where your bumper touches theirs",
+        "Stop where you can see the vehicle's rear tires",
+        "Stop 50 feet back",
+        "Stop where you can read their license plate"
+      ],
+      "correct_index": 1,
+      "explanation": "Safe gap when stopping behind another car: see their rear tires. Handbook p. 41, p. 46.",
+      "sign_image": null,
+      "tags": [
+        "following-distance",
+        "stopping"
+      ]
+    },
+    {
+      "id": "q-0447",
+      "canonical_fact_id": "headlights-on-1000-ft-visibility",
+      "topic": "speed",
+      "subtopic": "adverse-conditions",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "You must use headlights when you cannot clearly see a person or vehicle at what distance?",
+      "choices": [
+        "500 feet",
+        "1,000 feet",
+        "100 feet",
+        "Only at night"
+      ],
+      "correct_index": 1,
+      "explanation": "Use headlights when visibility is less than 1,000 ft. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "adverse-conditions",
+        "headlights"
+      ]
+    },
+    {
+      "id": "q-0448",
+      "canonical_fact_id": "headlights-rain-snow",
+      "topic": "speed",
+      "subtopic": "adverse-conditions",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "Should you use headlights in rain or snow?",
+      "choices": [
+        "No, they reflect off the precipitation",
+        "Yes \u2014 headlights help others see you in rain or snow",
+        "Only in heavy storms",
+        "Only at dusk"
+      ],
+      "correct_index": 1,
+      "explanation": "Use headlights in rain or snow so other drivers can see you. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "adverse-conditions",
+        "headlights"
+      ]
+    },
+    {
+      "id": "q-0449",
+      "canonical_fact_id": "dim-500-ft-oncoming",
+      "topic": "speed",
+      "subtopic": "adverse-conditions",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "You must dim high beams within how many feet of an ONCOMING vehicle?",
+      "choices": [
+        "100 feet",
+        "200 feet",
+        "500 feet",
+        "1,000 feet"
+      ],
+      "correct_index": 2,
+      "explanation": "Dim high beams within 500 ft of an oncoming vehicle. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "adverse-conditions",
+        "headlights"
+      ]
+    },
+    {
+      "id": "q-0450",
+      "canonical_fact_id": "dim-300-ft-following",
+      "topic": "speed",
+      "subtopic": "adverse-conditions",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "You must dim high beams within how many feet when following another vehicle?",
+      "choices": [
+        "100 feet",
+        "200 feet",
+        "300 feet",
+        "500 feet"
+      ],
+      "correct_index": 2,
+      "explanation": "Dim within 300 ft when following another vehicle. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "adverse-conditions",
+        "headlights"
+      ]
+    },
+    {
+      "id": "q-0451",
+      "canonical_fact_id": "hydroplane-over-35",
+      "topic": "speed",
+      "subtopic": "adverse-conditions",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "Hydroplaning becomes a serious risk at what speed on wet roads?",
+      "choices": [
+        "Over 15 mph",
+        "Over 25 mph",
+        "Over 35 mph",
+        "Over 55 mph"
+      ],
+      "correct_index": 2,
+      "explanation": "Hydroplaning risk rises sharply above ~35 mph on wet roads. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "adverse-conditions",
+        "hydroplane"
+      ]
+    },
+    {
+      "id": "q-0452",
+      "canonical_fact_id": "flood-6-inches-stalls-cars",
+      "topic": "speed",
+      "subtopic": "adverse-conditions",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "How much water on the road is enough to stall most cars?",
+      "choices": [
+        "1 inch",
+        "6 inches",
+        "1 foot",
+        "2 feet"
+      ],
+      "correct_index": 1,
+      "explanation": "6 inches of water can stall cars. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "adverse-conditions",
+        "flood"
+      ]
+    },
+    {
+      "id": "q-0453",
+      "canonical_fact_id": "flood-2-feet-carries-suv",
+      "topic": "speed",
+      "subtopic": "adverse-conditions",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "How much moving water can carry away most SUVs or trucks?",
+      "choices": [
+        "6 inches",
+        "1 foot",
+        "2 feet",
+        "5 feet"
+      ],
+      "correct_index": 2,
+      "explanation": "2 feet of moving water can carry away most SUVs and trucks. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "adverse-conditions",
+        "flood"
+      ]
+    },
+    {
+      "id": "q-0454",
+      "canonical_fact_id": "flood-turn-around",
+      "topic": "speed",
+      "subtopic": "adverse-conditions",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "You're driving and see water flowing across the road ahead \u2014 depth uncertain. What should you do?",
+      "choices": [
+        "Drive through slowly to test it",
+        "Turn around \u2014 don't drown",
+        "Drive fast to maintain momentum",
+        "Wait 5 minutes and try again"
+      ],
+      "correct_index": 1,
+      "explanation": "Turn around, don't drown. Never drive through standing or flowing water of uncertain depth. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "adverse-conditions",
+        "flood"
+      ]
+    },
+    {
+      "id": "q-0455",
+      "canonical_fact_id": "animal-no-swerve",
+      "topic": "speed",
+      "subtopic": "adverse-conditions",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "A deer jumps onto the road in front of you. What do you do?",
+      "choices": [
+        "Swerve hard to avoid hitting it",
+        "Brake firmly and stay in your lane \u2014 swerving causes worse crashes",
+        "Speed up to clear the area",
+        "Honk and keep going"
+      ],
+      "correct_index": 1,
+      "explanation": "Don't swerve for animals \u2014 brake firmly and stay in your lane. Swerving causes worse crashes. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "adverse-conditions",
+        "animal"
+      ]
+    },
+    {
+      "id": "q-0456",
+      "canonical_fact_id": "no-sunglasses-night",
+      "topic": "speed",
+      "subtopic": "adverse-conditions",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "Wearing sunglasses at night is:",
+      "choices": [
+        "Recommended to cut glare",
+        "Not recommended \u2014 they reduce your already-limited night vision",
+        "Required for older drivers",
+        "Only OK with prescription lenses"
+      ],
+      "correct_index": 1,
+      "explanation": "Don't wear sunglasses at night \u2014 they reduce night visibility. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "adverse-conditions",
+        "night"
+      ]
+    },
+    {
+      "id": "q-0457",
+      "canonical_fact_id": "stopping-distance-perception-reaction",
+      "topic": "speed",
+      "subtopic": "stopping-distance",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "Total stopping distance includes which two components?",
+      "choices": [
+        "Steering distance and turning distance",
+        "Perception/reaction distance + actual braking distance",
+        "Acceleration distance + braking distance",
+        "Engine distance + tire distance"
+      ],
+      "correct_index": 1,
+      "explanation": "Total stopping = perception/reaction distance + braking distance. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "stopping-distance"
+      ]
+    },
+    {
+      "id": "q-0458",
+      "canonical_fact_id": "car-stop-130-140-ft-at-55",
+      "topic": "speed",
+      "subtopic": "stopping-distance",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "About how much total distance does a typical CAR need to stop at 55 mph?",
+      "choices": [
+        "50\u201360 feet",
+        "130\u2013140 feet (including perception/reaction)",
+        "400 feet",
+        "800 feet"
+      ],
+      "correct_index": 1,
+      "explanation": "A car at 55 mph needs roughly 130\u2013140 ft total. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "stopping-distance"
+      ]
+    },
+    {
+      "id": "q-0459",
+      "canonical_fact_id": "truck-stop-400-ft-at-55",
+      "topic": "speed",
+      "subtopic": "stopping-distance",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "About how much distance does a fully-loaded SEMI need to stop at 55 mph?",
+      "choices": [
+        "140 feet",
+        "200 feet",
+        "About 400 feet",
+        "1 mile"
+      ],
+      "correct_index": 2,
+      "explanation": "A semi at 55 mph needs about 400 ft total \u2014 roughly 3x a passenger car. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "stopping-distance",
+        "truck"
+      ]
+    },
+    {
+      "id": "q-0460",
+      "canonical_fact_id": "freeway-2-sec-follow",
+      "topic": "speed",
+      "subtopic": "following-distance",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "You're driving 60 mph on the freeway. Roughly how many feet would 2 seconds of following distance represent?",
+      "choices": [
+        "About 30 feet",
+        "About 80 feet",
+        "About 175 feet (\u2248 88 ft/s \u00d7 2)",
+        "About 500 feet"
+      ],
+      "correct_index": 2,
+      "explanation": "At 60 mph (~88 ft/s), 2 seconds \u2248 175 ft. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "following-distance"
+      ]
+    },
+    {
+      "id": "q-0461",
+      "canonical_fact_id": "freeway-2-sec-follow",
+      "topic": "speed",
+      "subtopic": "following-distance",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "It's snowing heavily. What's the right following-distance practice?",
+      "choices": [
+        "Drop to 1 second \u2014 visibility is limited so you need quicker reaction",
+        "Stick at 2 seconds \u2014 that's the legal minimum",
+        "Increase well beyond 2 seconds \u2014 bad conditions require more space",
+        "Tailgate so the car ahead clears the road for you"
+      ],
+      "correct_index": 2,
+      "explanation": "Bad conditions = increase your following distance beyond the 2-second minimum. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "following-distance",
+        "snow"
+      ]
+    },
+    {
+      "id": "q-0462",
+      "canonical_fact_id": "work-zone-double-fine",
+      "topic": "speed",
+      "subtopic": "work-zones",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "Speeding in a work zone:",
+      "choices": [
+        "Carries the normal fine",
+        "Carries DOUBLE the normal fine",
+        "Is excused if no workers are present",
+        "Only matters between 9-5"
+      ],
+      "correct_index": 1,
+      "explanation": "Double fines in work zones. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "work-zone",
+        "speed"
+      ]
+    },
+    {
+      "id": "q-0463",
+      "canonical_fact_id": "work-zone-slow-even-no-workers",
+      "topic": "speed",
+      "subtopic": "work-zones",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "You're driving through a work zone at 11 p.m. and no workers are visible. What's the speed rule?",
+      "choices": [
+        "You can go the regular limit \u2014 no workers, no risk",
+        "Slow to the work zone limit anyway \u2014 speed rules apply whether workers are present or not",
+        "Drive 10 mph",
+        "Speed up to clear faster"
+      ],
+      "correct_index": 1,
+      "explanation": "Work zone speed limits apply at all times, workers present or not. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "work-zone",
+        "speed"
+      ]
+    },
+    {
+      "id": "q-0464",
+      "canonical_fact_id": "work-zone-80pct-not-workers",
+      "topic": "speed",
+      "subtopic": "work-zones",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "Roughly what share of fatalities in work zones are NOT workers?",
+      "choices": [
+        "About 20%",
+        "About 50%",
+        "About 80% \u2014 most are drivers and passengers",
+        "About 5%"
+      ],
+      "correct_index": 2,
+      "explanation": "About 80% of work zone fatalities are drivers and passengers, not workers. Slowing protects YOU too. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "work-zone"
+      ]
+    },
+    {
+      "id": "q-0465",
+      "canonical_fact_id": "work-zone-orange-signs",
+      "topic": "speed",
+      "subtopic": "work-zones",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "Orange diamond signs indicate:",
+      "choices": [
+        "School zone",
+        "Work zone \u2014 be ready for slowdowns, lane shifts, flaggers",
+        "Hospital ahead",
+        "Hazmat route"
+      ],
+      "correct_index": 1,
+      "explanation": "Orange = work zone. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "work-zone",
+        "signs"
+      ]
+    },
+    {
+      "id": "q-0466",
+      "canonical_fact_id": "basic-speed-law-reasonably-safe",
+      "topic": "speed",
+      "subtopic": "speed-limits",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "You're approaching a steep blind hill at the posted 55 mph limit. What's the safe driving rule?",
+      "choices": [
+        "The posted limit is always safe \u2014 go 55",
+        "Adjust speed down so you can stop within the distance you can see",
+        "Use cruise control",
+        "Honk before cresting"
+      ],
+      "correct_index": 1,
+      "explanation": "Basic speed law: never drive faster than is safe for conditions. Slow at blind crests. Handbook p. 54.",
+      "sign_image": null,
+      "tags": [
+        "speed",
+        "basic-speed-law"
+      ]
+    },
+    {
+      "id": "q-0467",
+      "canonical_fact_id": "basic-speed-law-reasonably-safe",
+      "topic": "speed",
+      "subtopic": "speed-limits",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow advisory speed sign reads '30' under a curve warning. The posted limit on the road is 55. What speed should you drive?",
+      "choices": [
+        "55 mph \u2014 it's the legal limit",
+        "30 mph or less for the curve \u2014 the advisory is the recommended safe speed for the curve",
+        "40 mph \u2014 split the difference",
+        "55 mph until you enter the curve"
+      ],
+      "correct_index": 1,
+      "explanation": "Advisory speeds are the recommended safe speed for the hazard. Slow to that or below. Handbook p. 54.",
+      "sign_image": null,
+      "tags": [
+        "speed",
+        "advisory"
+      ]
+    },
+    {
+      "id": "q-0468",
+      "canonical_fact_id": "basic-speed-law-reasonably-safe",
+      "topic": "speed",
+      "subtopic": "speed-limits",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "Heavy fog reduces visibility to about 100 feet. You're on a 65 mph road. What's the right speed?",
+      "choices": [
+        "65 mph \u2014 the posted limit is the law",
+        "Slow significantly \u2014 you must be able to stop within the distance you can see",
+        "Drive faster to clear the fog area",
+        "Same as the limit if you use fog lights"
+      ],
+      "correct_index": 1,
+      "explanation": "Basic speed law: drive only as fast as safe for conditions. Heavy fog = slow well below the posted limit. Handbook p. 54.",
+      "sign_image": null,
+      "tags": [
+        "speed",
+        "fog"
+      ]
+    },
+    {
+      "id": "q-0469",
+      "canonical_fact_id": "speed-25-business-residential",
+      "topic": "speed",
+      "subtopic": "speed-limits",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "You're cutting through a neighborhood on the way to school. There are no posted speed signs and kids are playing in driveways. What's your max?",
+      "choices": [
+        "35 mph",
+        "25 mph \u2014 the residential default",
+        "15 mph",
+        "Whatever the GPS-posted limit shows"
+      ],
+      "correct_index": 1,
+      "explanation": "Residential default = 25 mph. Slow further if kids are visible. Handbook p. 54.",
+      "sign_image": null,
+      "tags": [
+        "speed",
+        "residential"
+      ]
+    },
+    {
+      "id": "q-0470",
+      "canonical_fact_id": "basic-speed-law-reasonably-safe",
+      "topic": "speed",
+      "subtopic": "speed-limits",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "True or false: driving the posted speed limit is always legal, regardless of conditions.",
+      "choices": [
+        "True",
+        "False \u2014 basic speed law requires you to drive at a speed that's reasonably safe; the posted limit is a maximum, not a guarantee",
+        "True for freeways only",
+        "False \u2014 only for new drivers"
+      ],
+      "correct_index": 1,
+      "explanation": "Posted limit is a max \u2014 basic speed law requires you to drive only as fast as safe. Handbook p. 54.",
+      "sign_image": null,
+      "tags": [
+        "speed",
+        "basic-speed-law"
+      ]
+    },
+    {
+      "id": "q-0471",
+      "canonical_fact_id": "slow-moving-triangle-25mph",
+      "topic": "speed",
+      "subtopic": "speed-limits",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 58,
+      "source_doc": "handbook-3.2026",
+      "question": "An orange triangle (slow-moving-vehicle emblem) on a vehicle ahead means the vehicle's max speed is:",
+      "choices": [
+        "25 mph or less",
+        "45 mph",
+        "55 mph",
+        "65 mph"
+      ],
+      "correct_index": 0,
+      "explanation": "The slow-moving-vehicle triangle means the vehicle travels 25 mph or less. Handbook p. 58.",
+      "sign_image": null,
+      "tags": [
+        "speed",
+        "slow-moving"
+      ]
+    },
+    {
+      "id": "q-0472",
+      "canonical_fact_id": "freeway-2-sec-follow",
+      "topic": "speed",
+      "subtopic": "following-distance",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "Under good conditions on a freeway, the recommended following distance is at LEAST:",
+      "choices": [
+        "1 second",
+        "2 seconds",
+        "4 seconds",
+        "10 car lengths"
+      ],
+      "correct_index": 1,
+      "explanation": "Minimum 2-second following distance on the freeway in good conditions. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "following-distance"
+      ]
+    },
+    {
+      "id": "q-0473",
+      "canonical_fact_id": "freeway-2-sec-follow",
+      "topic": "speed",
+      "subtopic": "following-distance",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "You're behind a large semi on the freeway. You can't see past it. What should you do?",
+      "choices": [
+        "Tailgate so you can pass when you see a gap",
+        "Increase your following distance so you can see further ahead and so the truck driver can see you",
+        "Speed up to pass even without a clear lane",
+        "Drive in the truck's blind spot"
+      ],
+      "correct_index": 1,
+      "explanation": "Increase following distance behind a large truck so you can see further ahead and the truck driver can see you in their mirrors. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "following-distance",
+        "truck"
+      ]
+    },
+    {
+      "id": "q-0474",
+      "canonical_fact_id": "stopping-distance-perception-reaction",
+      "topic": "speed",
+      "subtopic": "stopping-distance",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "Doubling your speed roughly multiplies the BRAKING distance by:",
+      "choices": [
+        "2x",
+        "3x",
+        "4x (the squared relationship)",
+        "10x"
+      ],
+      "correct_index": 2,
+      "explanation": "Braking distance scales with the square of speed \u2014 double speed \u2248 4x braking distance. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "stopping-distance"
+      ]
+    },
+    {
+      "id": "q-0475",
+      "canonical_fact_id": "never-exceed-posted-limit",
+      "topic": "speed",
+      "subtopic": "speed-limits",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "Which is the highest speed at which it's always LEGAL to drive on Utah roads?",
+      "choices": [
+        "The flow of traffic",
+        "5 mph above the posted limit",
+        "The posted limit, never more",
+        "Whatever your speedometer can reach"
+      ],
+      "correct_index": 2,
+      "explanation": "Never exceed the posted limit. The posted number is the legal max. Handbook p. 49.",
+      "sign_image": null,
+      "tags": [
+        "speed"
+      ]
+    }
+  ]
+}

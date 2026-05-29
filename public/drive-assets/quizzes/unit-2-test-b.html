@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 - Rules of the Road - Test B</title>
+<style>
+:root { --primary: #581c87; --accent: #facc15; --green: #16a34a; --red: #dc2626; --text: #18181b; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 760px; margin: 0 auto; padding: 24px; color: var(--text); }
+h1 { color: var(--primary); }
+.meta { color: #71717a; margin-bottom: 24px; font-size: 0.9em; }
+.question { background: #fafafa; border-left: 4px solid var(--primary); padding: 16px 20px; margin: 16px 0; border-radius: 4px; }
+.question.correct { border-left-color: var(--green); }
+.question.wrong { border-left-color: var(--red); }
+.q-num { color: var(--primary); font-weight: 600; font-size: 0.85em; }
+.q-text { font-size: 1.05em; margin: 8px 0 16px; }
+.choices label { display: block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; }
+.choices label:hover { background: #faf5ff; border-color: var(--primary); }
+.choices input[type=radio] { margin-right: 10px; }
+.explanation { margin-top: 12px; padding: 12px; background: #fef3c7; border-radius: 4px; display: none; font-size: 0.92em; }
+.show .explanation { display: block; }
+.submit-btn { background: var(--primary); color: white; border: none; padding: 14px 32px; font-size: 1.1em; border-radius: 6px; cursor: pointer; margin-top: 24px; }
+.submit-btn:hover { background: #6b21a8; }
+.score-card { background: linear-gradient(135deg, var(--primary), #6b21a8); color: white; padding: 24px; border-radius: 8px; margin: 24px 0; }
+.score-card h2 { margin-top: 0; }
+.score-pct { font-size: 3em; font-weight: 700; }
+.pass-badge { background: var(--accent); color: var(--text); padding: 6px 12px; border-radius: 4px; display: inline-block; }
+.fail-badge { background: var(--red); color: white; padding: 6px 12px; border-radius: 4px; display: inline-block; }
+img.sign { max-height: 180px; margin: 8px 0; display: block; }
+.back-link { color: var(--primary); text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+.empty-state { background: #fef3c7; padding: 16px; border-radius: 6px; margin: 16px 0; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+<!-- HOME-BTN v1 -->
+<a href="../dashboard/index.html" style="position:fixed; top:12px; left:12px; z-index:9999; background:#581c87; color:white; text-decoration:none; padding:6px 14px; border-radius:6px; font-size:13px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.15);">&larr; Home</a>
+
+<h1>Unit 2 - Rules of the Road - Test B</h1>
+<div class="meta">25 questions &middot; Pass: 80% (20 correct) &middot; Pool: 235 questions from rules-of-the-road, speed, pavement-markings</div>
+
+<form id="quiz"></form>
+<button class="submit-btn" id="submit">Grade my quiz</button>
+<div id="result"></div>
+<script>
+const QUESTIONS = [{"question": "Pedestrian crosswalks are marked by what pavement paint?", "choices": ["Yellow zigzag lines", "Solid white lines (parallel bars, ladder stripes, or solid blocks across the road)", "Red lines", "Orange lines"], "correct_index": 1, "explanation": "Crosswalks are painted with white markings - parallel lines, ladder stripes, or solid white blocks across the road.", "source_page": 54, "priority": "MUST", "canonical_fact_id": "stop-before-crosswalk-visibility"}, {"question": "Traffic lights at an intersection aren't working. What's the rule?", "choices": ["Treat as a green light — proceed if clear", "Come to a complete stop, then yield to any vehicle on your right", "First to arrive goes — no need to stop fully if you're alone", "Slow and proceed without stopping"], "correct_index": 1, "explanation": "Signal out = complete stop + yield to the right. Handbook p. 56.", "source_page": 56, "priority": "MUST", "canonical_fact_id": "signal-out-yield-right"}, {"question": "A 5-sided (pentagon) sign always means:", "choices": ["School zone or school crossing", "Construction", "Stop", "Hospital"], "correct_index": 0, "explanation": "Pentagon = school. Handbook p. 58.", "source_page": 58, "priority": "MUST", "canonical_fact_id": "sign-shape-pentagon-school"}, {"question": "What does a green ARROW mean?", "choices": ["You may proceed in the arrow's direction after yielding to anyone still in the intersection", "Same as a flashing yellow — yield to all traffic", "Stop and wait for a steady green", "You have absolute priority — others must stop"], "correct_index": 0, "explanation": "Green arrow = proceed in the arrow's direction after yielding to vehicles and pedestrians still in the intersection. Handbook p. 55.", "source_page": 55, "priority": "SHOULD", "canonical_fact_id": "green-arrow-yield-to-clearing"}, {"question": "True or false: driving the posted speed limit is always legal, regardless of conditions.", "choices": ["True", "False — basic speed law requires you to drive at a speed that's reasonably safe; the posted limit is a maximum, not a guarantee", "True for freeways only", "False — only for new drivers"], "correct_index": 1, "explanation": "Posted limit is a max — basic speed law requires you to drive only as fast as safe. Handbook p. 54.", "source_page": 54, "priority": "SHOULD", "canonical_fact_id": "basic-speed-law-reasonably-safe"}, {"question": "Green signs typically indicate:", "choices": ["Warning", "Guidance / directions, or permitted movement", "Construction", "Stop"], "correct_index": 1, "explanation": "Green = guide signs / permitted movements. Handbook p. 58.", "source_page": 58, "priority": "SHOULD", "canonical_fact_id": "sign-color-green-guide-permitted"}, {"question": "Your car stalls on railroad tracks and you can see a train coming. What do you do?", "choices": ["Try to restart and drive off", "Get out and run AWAY from the tracks at an angle toward the approaching train", "Stay in the car and brace for impact", "Push the car off the tracks"], "correct_index": 1, "explanation": "If stalled on tracks with a train coming: exit immediately and run at an angle TOWARD the train (so flying debris from impact goes behind you). Handbook p. 97.", "source_page": 97, "priority": "NICE", "canonical_fact_id": "stall-on-tracks-run-toward-angle"}, {"question": "At a stop sign or signal, where exactly must you stop?", "choices": ["At the center of the intersection", "Behind the stop line or crosswalk - if neither exists, before the intersection or sign", "On top of the stop line", "Inside the crosswalk"], "correct_index": 1, "explanation": "Stop BEHIND the stop line or crosswalk. If neither exists, stop before the intersection or stop sign.", "source_page": 54, "priority": "MUST", "canonical_fact_id": "stop-before-crosswalk-visibility"}, {"question": "Double solid yellow lines down the center of a road mean what?", "choices": ["Passing permitted in both directions", "Passing prohibited in both directions", "The road is a freeway", "Slow zone"], "correct_index": 1, "explanation": "Double solid yellow = NO PASSING in either direction. Both sides of traffic are restricted.", "source_page": 53, "priority": "MUST", "canonical_fact_id": "double-solid-yellow-no-pass-both"}, {"question": "You want to pass a slow-moving vehicle. You glance at the center line. Which marking would tell you it's legal to attempt the pass?", "choices": ["Solid yellow on your side", "Broken (dashed) yellow on your side", "Double solid yellow", "Yellow X painted on the road"], "correct_index": 1, "explanation": "Broken yellow on YOUR side means you may pass when safe. Solid yellow on your side means no.", "source_page": 53, "priority": "MUST", "canonical_fact_id": "dashed-yellow-passing-permitted"}, {"question": "On YOUR side, solid yellow line + broken yellow line on the OTHER side means what?", "choices": ["You can pass; oncoming traffic cannot", "You CANNOT pass; oncoming traffic CAN pass", "Neither direction can pass", "Both directions can pass"], "correct_index": 1, "explanation": "Your side controls you. Solid on your side = you can't pass. The dashed line on the OTHER side allows oncoming traffic to pass.", "source_page": 53, "priority": "MUST", "canonical_fact_id": "solid-yellow-no-pass"}, {"question": "You approach a roundabout. There are no cars in it but a pedestrian is at the entry crosswalk. What do you do?", "choices": ["Enter — pedestrians yield to cars at roundabouts", "Yield to the pedestrian, then enter", "Honk and proceed slowly", "Stop fully like a stop sign, then go"], "correct_index": 1, "explanation": "Yield to pedestrians AND circulating traffic at a roundabout. Handbook p. 55.", "source_page": 55, "priority": "MUST", "canonical_fact_id": "roundabout-yield-to-circle"}, {"question": "How should you adjust your following distance at night?", "choices": ["Same as daytime", "Add at least 2 seconds to your following distance", "Reduce by 1 second", "Triple your following distance always"], "correct_index": 1, "explanation": "Add at least 2 seconds at night (so 4+ seconds total). Handbook p. 49.", "source_page": 49, "priority": "SHOULD", "canonical_fact_id": "night-add-2-seconds-follow"}, {"question": "Which direction does traffic flow in a roundabout?", "choices": ["Clockwise", "Counterclockwise", "Either direction is OK if signaled", "Depends on the size of the roundabout"], "correct_index": 1, "explanation": "Roundabouts flow counterclockwise. Handbook p. 13.", "source_page": 13, "priority": "MUST", "canonical_fact_id": "roundabout-counterclockwise"}, {"question": "Doubling your speed roughly multiplies the BRAKING distance by:", "choices": ["2x", "3x", "4x (the squared relationship)", "10x"], "correct_index": 2, "explanation": "Braking distance scales with the square of speed — double speed ≈ 4x braking distance. Handbook p. 49.", "source_page": 49, "priority": "NICE", "canonical_fact_id": "stopping-distance-perception-reaction"}, {"question": "Three cars arrive at a 4-way stop simultaneously: one across from you, one to your right, one to your left. Who goes first?", "choices": ["You — you have the most cars to deal with", "The car on your right", "The car across from you", "The car on your left"], "correct_index": 1, "explanation": "Tied arrivals at a 4-way stop = yield to the right. Handbook p. 60.", "source_page": 60, "priority": "MUST", "canonical_fact_id": "four-way-stop-yield-right"}, {"question": "You're approaching a crosswalk and another car has stopped just before it. What should you do?", "choices": ["Pass the stopped car carefully", "Stop also - the stopped car may be yielding to a pedestrian you can't see", "Honk to make them go", "Drive around them"], "correct_index": 1, "explanation": "If another vehicle stops at a crosswalk, never pass them - they may be yielding to a pedestrian you cannot see.", "source_page": 54, "priority": "MUST", "canonical_fact_id": "never-pass-vehicle-at-crosswalk"}, {"question": "A deer jumps onto the road in front of you. What do you do?", "choices": ["Swerve hard to avoid hitting it", "Brake firmly and stay in your lane — swerving causes worse crashes", "Speed up to clear the area", "Honk and keep going"], "correct_index": 1, "explanation": "Don't swerve for animals — brake firmly and stay in your lane. Swerving causes worse crashes. Handbook p. 49.", "source_page": 49, "priority": "SHOULD", "canonical_fact_id": "animal-no-swerve"}, {"question": "The left lane on a multi-lane road is intended for:", "choices": ["Slow drivers", "Passing slower vehicles", "Emergency vehicles only", "School buses"], "correct_index": 1, "explanation": "Left lane is for passing. Handbook p. 44.", "source_page": 44, "priority": "SHOULD", "canonical_fact_id": "left-lane-for-passing"}, {"question": "Total stopping distance includes which two components?", "choices": ["Steering distance and turning distance", "Perception/reaction distance + actual braking distance", "Acceleration distance + braking distance", "Engine distance + tire distance"], "correct_index": 1, "explanation": "Total stopping = perception/reaction distance + braking distance. Handbook p. 49.", "source_page": 49, "priority": "SHOULD", "canonical_fact_id": "stopping-distance-perception-reaction"}, {"question": "White arrows painted on the pavement at an intersection tell you what?", "choices": ["Decoration", "The legal direction(s) that lane allows you to turn or proceed", "Where the next exit is", "The speed limit"], "correct_index": 1, "explanation": "White lane arrows indicate the LEGAL movements for that lane: straight only, left turn only, right turn only, or combinations.", "source_page": 53, "priority": "SHOULD", "canonical_fact_id": "pavement-white-same-direction"}, {"question": "An 8-sided red sign means:", "choices": ["Yield", "Stop — come to a complete stop", "Caution — slow down", "Do not enter"], "correct_index": 1, "explanation": "Octagonal red sign = STOP. Handbook p. 57.", "source_page": 57, "priority": "MUST", "canonical_fact_id": "sign-stop-meaning"}, {"question": "True or false: A line between you and oncoming traffic can be white.", "choices": ["True - line color doesn't matter", "True - some states use white", "False - between you and oncoming traffic the line is always yellow", "False - only highways use yellow"], "correct_index": 2, "explanation": "In Utah and across the U.S., yellow is reserved for separating opposite-direction traffic. White means same direction.", "source_page": 53, "priority": "MUST", "canonical_fact_id": "pavement-yellow-opposing"}, {"question": "Which statement best matches the handbook's rule about right-of-way?", "choices": ["Right-of-way is yours when you arrive first", "Right-of-way is something you give, not take — never assume you have it", "Right-of-way always belongs to the larger vehicle", "Right-of-way is determined by speed"], "correct_index": 1, "explanation": "Never assume you have the right-of-way — it's something you GIVE, not take. Handbook p. 60.", "source_page": 60, "priority": "MUST", "canonical_fact_id": "never-assume-right-of-way"}, {"question": "You approach a roundabout. A pedestrian is in the crosswalk at your entry, and a car is circulating in the roundabout heading toward your entry. What do you do?", "choices": ["Enter — circulating cars yield to entering cars", "Yield to the pedestrian only, then enter", "Yield to BOTH the pedestrian and the car in the circle. Enter only when clear of both", "Stop completely as if at a stop sign"], "correct_index": 2, "explanation": "At a roundabout: yield to pedestrians AND to traffic already in the circle before entering. Handbook p. 55.", "source_page": 55, "priority": "MUST", "canonical_fact_id": "roundabout-yield-to-circle"}];
+function render(){
+  if (!QUESTIONS || QUESTIONS.length === 0) {
+    document.getElementById("quiz").innerHTML = "<div class='empty-state'>No questions available. Take a unit test first so weak spots can be tracked.</div>";
+    document.getElementById("submit").style.display = "none";
+    return;
+  }
+  const form = document.getElementById("quiz");
+  QUESTIONS.forEach((q, i) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = "q" + i;
+    let html = "<div class='q-num'>Question " + (i+1) + " &middot; " + q.priority + "</div>";
+    html += "<div class='q-text'>" + q.question + "</div>";
+    if (q.sign_image) html += "<img class='sign' src='../images/signs/" + q.sign_image + "' alt='sign'>";
+    html += "<div class='choices'>";
+    q.choices.forEach((c, ci) => {
+      html += "<label><input type='radio' name='q" + i + "' value='" + ci + "'> " + c + "</label>";
+    });
+    html += "</div>";
+    html += "<div class='explanation'><strong>Answer:</strong> " + q.choices[q.correct_index] + "<br>" + q.explanation + " <em>(Handbook p." + q.source_page + ")</em></div>";
+    div.innerHTML = html;
+    form.appendChild(div);
+  });
+}
+function grade(){
+  let correct = 0;
+  const misses = [];
+  QUESTIONS.forEach((q, i) => {
+    const sel = document.querySelector("input[name=q" + i + "]:checked");
+    const qEl = document.getElementById("q" + i);
+    qEl.classList.add("show");
+    if (sel && parseInt(sel.value) === q.correct_index) {
+      qEl.classList.add("correct");
+      correct++;
+    } else {
+      qEl.classList.add("wrong");
+      misses.push(q.canonical_fact_id);
+    }
+  });
+  const prevMisses = JSON.parse(localStorage.getItem("dl_misses") || "[]");
+  const allMisses = [...prevMisses, ...misses];
+  localStorage.setItem("dl_misses", JSON.stringify(allMisses));
+  const attempts = JSON.parse(localStorage.getItem("dl_attempts") || "[]");
+  const pct_calc = Math.round(correct / QUESTIONS.length * 100);
+  const pass_calc = pct_calc >= 80;
+  attempts.push({ quiz: document.title, score: correct, total: QUESTIONS.length, pct: pct_calc, pass: pass_calc, ts: Date.now() });
+  localStorage.setItem("dl_attempts", JSON.stringify(attempts));
+  const unitScores = JSON.parse(localStorage.getItem("dl_unit_scores") || "{}");
+  unitScores["unit-2-b"] = { pct: pct_calc, ts: Date.now() };
+  localStorage.setItem("dl_unit_scores", JSON.stringify(unitScores));
+  const sr = JSON.parse(localStorage.getItem("dl_sr") || "{}");
+  const DAY_MS = 86400000;
+  QUESTIONS.forEach((q, i) => {
+    const fid = q.canonical_fact_id;
+    if (!fid) return;
+    const sel = document.querySelector("input[name=q" + i + "]:checked");
+    const wasCorrect = sel && parseInt(sel.value) === q.correct_index;
+    const prev = sr[fid] || { interval_days: 0, ease: 2.5 };
+    let interval_days;
+    if (wasCorrect) {
+      interval_days = Math.min(Math.max(Math.round((prev.interval_days || 1) * 2.5), 1), 30);
+    } else {
+      interval_days = 1;
+    }
+    sr[fid] = { next_due_ts: Date.now() + interval_days * DAY_MS, interval_days: interval_days, ease: prev.ease || 2.5, last_seen_ts: Date.now() };
+  });
+  localStorage.setItem("dl_sr", JSON.stringify(sr));
+  // DL_SYNC_BLOCK — fire-and-forget POST to server-side progress API
+  try {
+    var __dlUser = localStorage.getItem("dl_user");
+    if (__dlUser && __dlUser !== "__anon__") {
+      var __body = {
+        user: __dlUser.replace(/^"|"$/g, ""),
+        attempts: JSON.parse(localStorage.getItem("dl_attempts") || "[]"),
+        misses: JSON.parse(localStorage.getItem("dl_misses") || "[]"),
+        unitScores: JSON.parse(localStorage.getItem("dl_unit_scores") || "{}"),
+        sr: JSON.parse(localStorage.getItem("dl_sr") || "{}")
+      };
+      fetch("/api/drive/progress", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(__body),
+        keepalive: true
+      }).catch(function(){});
+    }
+  } catch (e) {}
+  const pct = Math.round(correct / QUESTIONS.length * 100);
+  const passed = pct >= 80;
+  document.getElementById("result").innerHTML =
+    "<div class='score-card'>" +
+    "<h2>Your score</h2>" +
+    "<div class='score-pct'>" + pct + "%</div>" +
+    "<div>" + correct + " / " + QUESTIONS.length + " correct</div>" +
+    "<div style='margin-top:12px'><span class='" + (passed ? "pass-badge" : "fail-badge") + "'>" +
+    (passed ? "&check; Pass (80%+)" : "Below pass &mdash; review and retake") +
+    "</span></div>" +
+    "</div>";
+  document.getElementById("submit").style.display = "none";
+  if (typeof confetti === 'function' && pct >= 80) {
+    var fireworks = function(x) {
+      confetti({ particleCount: 60, angle: 90, spread: 100, origin: { x: x, y: 0.7 }, colors: ['#facc15', '#581c87', '#16a34a', '#dc2626', '#3b82f6'] });
+    };
+    setTimeout(function() { fireworks(0.2); }, 100);
+    setTimeout(function() { fireworks(0.5); }, 400);
+    setTimeout(function() { fireworks(0.8); }, 700);
+    setTimeout(function() { fireworks(0.3); }, 1100);
+    setTimeout(function() { fireworks(0.7); }, 1400);
+    setTimeout(function() { fireworks(0.5); }, 1700);
+  }
+  window.scrollTo({ top: document.getElementById("result").offsetTop - 20, behavior: "smooth" });
+}
+render();
+document.getElementById("submit").addEventListener("click", grade);
+</script>
+</body></html>

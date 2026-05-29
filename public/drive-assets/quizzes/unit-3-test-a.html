@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 - Signs - Test A</title>
+<style>
+:root { --primary: #581c87; --accent: #facc15; --green: #16a34a; --red: #dc2626; --text: #18181b; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 760px; margin: 0 auto; padding: 24px; color: var(--text); }
+h1 { color: var(--primary); }
+.meta { color: #71717a; margin-bottom: 24px; font-size: 0.9em; }
+.question { background: #fafafa; border-left: 4px solid var(--primary); padding: 16px 20px; margin: 16px 0; border-radius: 4px; }
+.question.correct { border-left-color: var(--green); }
+.question.wrong { border-left-color: var(--red); }
+.q-num { color: var(--primary); font-weight: 600; font-size: 0.85em; }
+.q-text { font-size: 1.05em; margin: 8px 0 16px; }
+.choices label { display: block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; }
+.choices label:hover { background: #faf5ff; border-color: var(--primary); }
+.choices input[type=radio] { margin-right: 10px; }
+.explanation { margin-top: 12px; padding: 12px; background: #fef3c7; border-radius: 4px; display: none; font-size: 0.92em; }
+.show .explanation { display: block; }
+.submit-btn { background: var(--primary); color: white; border: none; padding: 14px 32px; font-size: 1.1em; border-radius: 6px; cursor: pointer; margin-top: 24px; }
+.submit-btn:hover { background: #6b21a8; }
+.score-card { background: linear-gradient(135deg, var(--primary), #6b21a8); color: white; padding: 24px; border-radius: 8px; margin: 24px 0; }
+.score-card h2 { margin-top: 0; }
+.score-pct { font-size: 3em; font-weight: 700; }
+.pass-badge { background: var(--accent); color: var(--text); padding: 6px 12px; border-radius: 4px; display: inline-block; }
+.fail-badge { background: var(--red); color: white; padding: 6px 12px; border-radius: 4px; display: inline-block; }
+img.sign { max-height: 180px; margin: 8px 0; display: block; }
+.back-link { color: var(--primary); text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+.empty-state { background: #fef3c7; padding: 16px; border-radius: 6px; margin: 16px 0; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+<!-- HOME-BTN v1 -->
+<a href="../dashboard/index.html" style="position:fixed; top:12px; left:12px; z-index:9999; background:#581c87; color:white; text-decoration:none; padding:6px 14px; border-radius:6px; font-size:13px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.15);">&larr; Home</a>
+
+<h1>Unit 3 - Signs - Test A</h1>
+<div class="meta">25 questions &middot; Pass: 80% (20 correct) &middot; Pool: 110 questions from signs</div>
+
+<form id="quiz"></form>
+<button class="submit-btn" id="submit">Grade my quiz</button>
+<div id="result"></div>
+<script>
+const QUESTIONS = [{"question": "You arrive at a stop sign at an intersection with no other traffic in sight. What must you do?", "choices": ["Slow down and continue if nothing is coming", "Come to a complete stop, then proceed when safe", "Yield only", "Stop only if a pedestrian is present"], "correct_index": 1, "explanation": "Stop signs require a COMPLETE stop, even if no one else is around. Then proceed when safe.", "source_page": 47, "priority": "MUST", "canonical_fact_id": "sign-stop-meaning"}, {"question": "What does a yellow diamond with a T-shape where a side road enters from the right mean?", "choices": ["T-intersection - you must turn", "Side road - another road joins from the right", "Detour to the right", "Right turn only"], "correct_index": 1, "explanation": "SIDE ROAD: a smaller road joins yours from the side. Watch for vehicles entering or exiting.", "source_page": 48, "priority": "SHOULD", "canonical_fact_id": "sign-merge-meaning", "sign_image": "mutcd-W2-2R-side-road-right.png"}, {"question": "What does a sign showing a red circle and slash over a U-shaped arrow mean?", "choices": ["No left turn", "No U-turn", "No right turn", "Roundabout ahead"], "correct_index": 1, "explanation": "Red circle and slash over a U-shaped arrow = NO U-TURN at this location.", "source_page": 47, "priority": "SHOULD", "canonical_fact_id": "sign-no-u-turn-meaning", "sign_image": "mutcd-R3-4-no-u-turn.png"}, {"question": "A downward-pointing triangular sign with a red border and white interior means what?", "choices": ["Stop completely and wait", "Yield - slow and let other traffic go first", "Warning of curve ahead", "Construction zone"], "correct_index": 1, "explanation": "A downward-pointing triangle (white with red border) is a YIELD sign. Slow down, stop if necessary, and let traffic with the right-of-way go first.", "source_page": 48, "priority": "MUST", "canonical_fact_id": "sign-shape-triangle-yield"}, {"question": "How many sides does a STOP sign have?", "choices": ["6", "8", "5", "4"], "correct_index": 1, "explanation": "A stop sign has 8 sides (octagon). The shape is unique to stop signs - no other traffic sign is shaped this way.", "source_page": 47, "priority": "MUST", "canonical_fact_id": "sign-shape-octagon-stop"}, {"question": "A yellow diamond showing two opposing arrows (left and right) means what?", "choices": ["Two-way traffic", "Double arrow - you may pass on either side of an obstruction", "Lane ends in both directions", "Median ahead"], "correct_index": 1, "explanation": "Double arrow = you may pass an obstruction (like a median or island) on EITHER side.", "source_page": 48, "priority": "SHOULD", "canonical_fact_id": "sign-merge-meaning", "sign_image": "mutcd-W12-1-double-arrow.png"}, {"question": "You approach a YIELD sign at a freeway on-ramp. What should you do?", "choices": ["Stop completely before merging", "Slow down, find a gap, and merge - stop only if you cannot find a gap", "Drive at full speed onto the freeway", "Wait at the yield sign until told to go"], "correct_index": 1, "explanation": "YIELD: slow down and merge when there is a safe gap. Stop only if needed to avoid a collision.", "source_page": 48, "priority": "MUST", "canonical_fact_id": "sign-yield-meaning"}, {"question": "A red, white, and blue shield-shaped sign with a number indicates what?", "choices": ["State route number", "U.S. route number", "Interstate highway route number", "County road"], "correct_index": 2, "explanation": "The red-white-blue shield is the INTERSTATE highway marker. The number tells you which interstate (I-15, I-80, I-70 in Utah).", "source_page": 47, "priority": "SHOULD", "canonical_fact_id": "sign-interstate-meaning", "sign_image": "mutcd-M1-1-interstate-shield.png"}, {"question": "What does a yellow diamond with a sharp right-angle arrow mean?", "choices": ["Gentle curve ahead", "Sharp turn ahead - reduce speed significantly", "T-intersection ahead", "Detour"], "correct_index": 1, "explanation": "A sharp right-angle arrow means a SHARP TURN (not a gentle curve). Slow down more than for a curve sign.", "source_page": 48, "priority": "SHOULD", "canonical_fact_id": "sign-turn-meaning", "sign_image": "mutcd-W1-1R-turn-right.png"}, {"question": "An octagon-shaped sign always means what?", "choices": ["Yield", "Stop", "Warning", "School zone"], "correct_index": 1, "explanation": "Octagon = STOP. The 8-sided shape is unique to stop signs so it's recognizable even when dirty, snow-covered, or obscured.", "source_page": 47, "priority": "MUST", "canonical_fact_id": "sign-shape-octagon-stop"}, {"question": "What color marks construction and work zone signs?", "choices": ["Yellow", "Orange", "Red", "Green"], "correct_index": 1, "explanation": "Orange signs (with black letters/symbols) mean construction or work zones - workers, equipment, lane changes, or detours.", "source_page": 59, "priority": "MUST", "canonical_fact_id": "sign-color-orange-construction"}, {"question": "You suddenly see a WRONG WAY sign as you start down a road. What is the safest correct action?", "choices": ["Continue cautiously to the next intersection", "Speed up to clear the area quickly", "Pull over safely and turn around as soon as possible - you are driving against traffic", "Sound your horn"], "correct_index": 2, "explanation": "WRONG WAY: you've entered a one-way road in the wrong direction. Pull over, turn around safely - head-on crashes are deadly.", "source_page": 49, "priority": "MUST", "canonical_fact_id": "sign-wrong-way-meaning"}, {"question": "A yellow diamond-shaped sign with black symbols or letters is what kind of sign?", "choices": ["Regulatory", "Warning", "Guide", "Service"], "correct_index": 1, "explanation": "Yellow diamonds are WARNING signs - they warn of possible danger ahead (curves, intersections, slippery roads, animals, etc.).", "source_page": 48, "priority": "MUST", "canonical_fact_id": "sign-shape-diamond-warning"}, {"question": "A yellow pennant-shaped sign (horizontal triangle) on the LEFT side of the road means what?", "choices": ["Yield ahead", "No passing zone", "Sharp curve ahead", "School zone ahead"], "correct_index": 1, "explanation": "The yellow pennant is the NO PASSING ZONE sign. It's always on the LEFT side of the road and marks where a no-passing zone begins.", "source_page": 48, "priority": "MUST", "canonical_fact_id": "sign-shape-pennant-no-passing"}, {"question": "What does an ORANGE diamond with the words ROAD WORK AHEAD mean?", "choices": ["Construction is finished", "Construction or maintenance work zone - slow down and watch for workers", "Detour required", "Bridge work only"], "correct_index": 1, "explanation": "ROAD WORK AHEAD warns of an active work zone. Slow down, don't tailgate, watch for workers - and fines are doubled.", "source_page": 59, "priority": "SHOULD", "canonical_fact_id": "sign-work-meaning", "sign_image": "mutcd-CW20-1-road-work-ahead.png"}, {"question": "A fluorescent yellow-green pentagon (house-shaped) sign means what?", "choices": ["No passing zone", "School zone or school crossing", "Hospital nearby", "Pedestrian crossing"], "correct_index": 1, "explanation": "A 5-sided fluorescent yellow-green sign marks a SCHOOL zone or school crossing. The pentagon shape is unique to schools.", "source_page": 48, "priority": "MUST", "canonical_fact_id": "sign-shape-pentagon-school"}, {"question": "Horizontal rectangular signs in green or blue typically provide what?", "choices": ["Warnings", "Guide or service information (directions, exits, services)", "Speed limits", "Construction warnings"], "correct_index": 1, "explanation": "Horizontal rectangles in green/blue = GUIDE or SERVICE info. Green = directions/exits, blue = services like hospitals/rest areas.", "source_page": 47, "priority": "SHOULD", "canonical_fact_id": "sign-shape-rectangle-horiz-info"}, {"question": "A blue square with a large white capital H on it means what?", "choices": ["Highway exit", "Hospital is nearby", "Hotel", "Helipad only"], "correct_index": 1, "explanation": "Blue H = HOSPITAL nearby. Follow the direction indicated to reach the hospital.", "source_page": 46, "priority": "SHOULD", "canonical_fact_id": "sign-hospital-meaning", "sign_image": "mutcd-D9-1-hospital.png"}, {"question": "On a two-lane road, you see a yellow pennant-shaped sign on the LEFT side. What must you do?", "choices": ["Pass quickly while you still can", "Do not pass any vehicles - you've entered a no-passing zone", "Yield to oncoming traffic only", "Use the shoulder to pass"], "correct_index": 1, "explanation": "Yellow pennant on the LEFT = NO PASSING ZONE begins. Stay in your lane until the zone ends (marked by pavement striping).", "source_page": 48, "priority": "MUST", "canonical_fact_id": "sign-no-passing-zone-meaning"}, {"question": "You see a yellow diamond with mph numerals like '35' on a smaller yellow square plaque beneath. The smaller plaque means what?", "choices": ["Speed limit through the curve is 35 mph (legal limit)", "Recommended (advisory) safe speed for the curve is 35 mph", "Minimum speed is 35 mph", "Truck-only speed"], "correct_index": 1, "explanation": "Advisory speed plaques (yellow with mph) are RECOMMENDED safe speed - not the legal limit, but ignore them at your peril.", "source_page": 48, "priority": "SHOULD", "canonical_fact_id": "sign-curve-meaning"}, {"question": "Green signs on the road typically provide what kind of information?", "choices": ["Warnings of danger", "Guide/directional info or permitted movements", "Prohibitions", "Construction warnings"], "correct_index": 1, "explanation": "Green signs give GUIDE information - directions to cities, exit numbers, mileage - or indicate permitted movements.", "source_page": 47, "priority": "MUST", "canonical_fact_id": "sign-color-green-guide-permitted"}, {"question": "Fluorescent yellow-green signs warn drivers about what?", "choices": ["Construction zones", "Pedestrian, school, or bicycle activity", "Hospital and emergency services", "Detours"], "correct_index": 1, "explanation": "Fluorescent yellow-green is reserved for warnings about pedestrians, schools, and bicyclists - high-vulnerability road users.", "source_page": 48, "priority": "MUST", "canonical_fact_id": "sign-color-yellow-green-school"}, {"question": "What does this sign mean?", "choices": ["Detour", "Wrong way - you are driving against traffic on a one-way road; stop and turn around", "Reverse direction permitted", "Two-way traffic"], "correct_index": 1, "explanation": "WRONG WAY: red rectangular sign indicating you've entered a one-way road in the wrong direction. Turn around immediately and safely.", "source_page": 49, "priority": "MUST", "canonical_fact_id": "sign-wrong-way-meaning", "sign_image": "mutcd-R5-1a-wrong-way.png"}, {"question": "You approach a median or obstruction and see a KEEP RIGHT sign with a down-right arrow. What do you do?", "choices": ["Pass it on the left", "Pass it on the right", "Stop and yield", "Either side is OK"], "correct_index": 1, "explanation": "KEEP RIGHT directs you to go to the right of the obstruction (median, divider, gore area).", "source_page": 47, "priority": "SHOULD", "canonical_fact_id": "sign-keep-right-meaning"}, {"question": "Blue signs along the highway indicate what?", "choices": ["Warnings of road hazards", "Motorist services like hospitals, rest areas, phones", "Construction zones", "Speed limits"], "correct_index": 1, "explanation": "Blue signs point to motorist services - hospitals (H), rest areas, gas, food, lodging, telephones.", "source_page": 46, "priority": "MUST", "canonical_fact_id": "sign-color-blue-service"}];
+function render(){
+  if (!QUESTIONS || QUESTIONS.length === 0) {
+    document.getElementById("quiz").innerHTML = "<div class='empty-state'>No questions available. Take a unit test first so weak spots can be tracked.</div>";
+    document.getElementById("submit").style.display = "none";
+    return;
+  }
+  const form = document.getElementById("quiz");
+  QUESTIONS.forEach((q, i) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = "q" + i;
+    let html = "<div class='q-num'>Question " + (i+1) + " &middot; " + q.priority + "</div>";
+    html += "<div class='q-text'>" + q.question + "</div>";
+    if (q.sign_image) html += "<img class='sign' src='../images/signs/" + q.sign_image + "' alt='sign'>";
+    html += "<div class='choices'>";
+    q.choices.forEach((c, ci) => {
+      html += "<label><input type='radio' name='q" + i + "' value='" + ci + "'> " + c + "</label>";
+    });
+    html += "</div>";
+    html += "<div class='explanation'><strong>Answer:</strong> " + q.choices[q.correct_index] + "<br>" + q.explanation + " <em>(Handbook p." + q.source_page + ")</em></div>";
+    div.innerHTML = html;
+    form.appendChild(div);
+  });
+}
+function grade(){
+  let correct = 0;
+  const misses = [];
+  QUESTIONS.forEach((q, i) => {
+    const sel = document.querySelector("input[name=q" + i + "]:checked");
+    const qEl = document.getElementById("q" + i);
+    qEl.classList.add("show");
+    if (sel && parseInt(sel.value) === q.correct_index) {
+      qEl.classList.add("correct");
+      correct++;
+    } else {
+      qEl.classList.add("wrong");
+      misses.push(q.canonical_fact_id);
+    }
+  });
+  const prevMisses = JSON.parse(localStorage.getItem("dl_misses") || "[]");
+  const allMisses = [...prevMisses, ...misses];
+  localStorage.setItem("dl_misses", JSON.stringify(allMisses));
+  const attempts = JSON.parse(localStorage.getItem("dl_attempts") || "[]");
+  const pct_calc = Math.round(correct / QUESTIONS.length * 100);
+  const pass_calc = pct_calc >= 80;
+  attempts.push({ quiz: document.title, score: correct, total: QUESTIONS.length, pct: pct_calc, pass: pass_calc, ts: Date.now() });
+  localStorage.setItem("dl_attempts", JSON.stringify(attempts));
+  const unitScores = JSON.parse(localStorage.getItem("dl_unit_scores") || "{}");
+  unitScores["unit-3-a"] = { pct: pct_calc, ts: Date.now() };
+  localStorage.setItem("dl_unit_scores", JSON.stringify(unitScores));
+  const sr = JSON.parse(localStorage.getItem("dl_sr") || "{}");
+  const DAY_MS = 86400000;
+  QUESTIONS.forEach((q, i) => {
+    const fid = q.canonical_fact_id;
+    if (!fid) return;
+    const sel = document.querySelector("input[name=q" + i + "]:checked");
+    const wasCorrect = sel && parseInt(sel.value) === q.correct_index;
+    const prev = sr[fid] || { interval_days: 0, ease: 2.5 };
+    let interval_days;
+    if (wasCorrect) {
+      interval_days = Math.min(Math.max(Math.round((prev.interval_days || 1) * 2.5), 1), 30);
+    } else {
+      interval_days = 1;
+    }
+    sr[fid] = { next_due_ts: Date.now() + interval_days * DAY_MS, interval_days: interval_days, ease: prev.ease || 2.5, last_seen_ts: Date.now() };
+  });
+  localStorage.setItem("dl_sr", JSON.stringify(sr));
+  // DL_SYNC_BLOCK — fire-and-forget POST to server-side progress API
+  try {
+    var __dlUser = localStorage.getItem("dl_user");
+    if (__dlUser && __dlUser !== "__anon__") {
+      var __body = {
+        user: __dlUser.replace(/^"|"$/g, ""),
+        attempts: JSON.parse(localStorage.getItem("dl_attempts") || "[]"),
+        misses: JSON.parse(localStorage.getItem("dl_misses") || "[]"),
+        unitScores: JSON.parse(localStorage.getItem("dl_unit_scores") || "{}"),
+        sr: JSON.parse(localStorage.getItem("dl_sr") || "{}")
+      };
+      fetch("/api/drive/progress", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(__body),
+        keepalive: true
+      }).catch(function(){});
+    }
+  } catch (e) {}
+  const pct = Math.round(correct / QUESTIONS.length * 100);
+  const passed = pct >= 80;
+  document.getElementById("result").innerHTML =
+    "<div class='score-card'>" +
+    "<h2>Your score</h2>" +
+    "<div class='score-pct'>" + pct + "%</div>" +
+    "<div>" + correct + " / " + QUESTIONS.length + " correct</div>" +
+    "<div style='margin-top:12px'><span class='" + (passed ? "pass-badge" : "fail-badge") + "'>" +
+    (passed ? "&check; Pass (80%+)" : "Below pass &mdash; review and retake") +
+    "</span></div>" +
+    "</div>";
+  document.getElementById("submit").style.display = "none";
+  if (typeof confetti === 'function' && pct >= 80) {
+    var fireworks = function(x) {
+      confetti({ particleCount: 60, angle: 90, spread: 100, origin: { x: x, y: 0.7 }, colors: ['#facc15', '#581c87', '#16a34a', '#dc2626', '#3b82f6'] });
+    };
+    setTimeout(function() { fireworks(0.2); }, 100);
+    setTimeout(function() { fireworks(0.5); }, 400);
+    setTimeout(function() { fireworks(0.8); }, 700);
+    setTimeout(function() { fireworks(0.3); }, 1100);
+    setTimeout(function() { fireworks(0.7); }, 1400);
+    setTimeout(function() { fireworks(0.5); }, 1700);
+  }
+  window.scrollTo({ top: document.getElementById("result").offsetTop - 20, behavior: "smooth" });
+}
+render();
+document.getElementById("submit").addEventListener("click", grade);
+</script>
+</body></html>

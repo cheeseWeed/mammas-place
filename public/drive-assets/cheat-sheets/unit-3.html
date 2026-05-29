@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3 Cheat Sheet — Rules of the Road</title>
+<style>
+:root {
+  --primary: #581c87;
+  --accent: #facc15;
+  --text: #18181b;
+  --gray: #71717a;
+  --border: #e4e4e7;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 20px;
+  color: var(--text);
+  background: #fafafa;
+  line-height: 1.4;
+}
+h1 { color: var(--primary); margin: 0; font-size: 1.5em; }
+.handbook-cite { color: var(--gray); font-size: 0.85em; margin: 2px 0 14px; }
+.sheet { background: white; padding: 20px 24px; border: 1px solid var(--border); border-radius: 8px; }
+h2 { color: var(--primary); font-size: 1.05em; margin: 14px 0 6px; border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
+h2:first-of-type { margin-top: 4px; }
+ul { margin: 4px 0 10px; padding-left: 20px; }
+li { margin-bottom: 3px; font-size: 0.92em; }
+.footer { color: var(--gray); font-size: 0.78em; margin-top: 16px; text-align: center; font-style: italic; }
+.back-link { display: inline-block; margin-bottom: 10px; color: var(--gray); text-decoration: none; font-size: 0.85em; }
+.back-link:hover { color: var(--primary); }
+.print-btn { background: var(--primary); color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-family: inherit; font-size: 0.85em; float: right; }
+.print-btn:hover { background: #6b21a8; }
+b { color: var(--primary); }
+.cols { columns: 2; column-gap: 24px; }
+.cols section { break-inside: avoid; }
+.sign-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin: 10px 0; }
+.sign-box { padding: 8px; border-radius: 6px; text-align: center; font-size: 0.85em; }
+.sign-box .shape { font-size: 1.4em; font-weight: 700; }
+.sign-stop { background: #fee2e2; color: #991b1b; border: 2px solid #dc2626; }
+.sign-yield { background: #fef9c3; color: #713f12; border: 2px solid #facc15; }
+.sign-warn { background: #fef9c3; color: #713f12; border: 2px solid #facc15; }
+.sign-school { background: #ecfccb; color: #365314; border: 2px solid #84cc16; }
+.sign-work { background: #fed7aa; color: #7c2d12; border: 2px solid #f97316; }
+
+@media print {
+  body { background: white; padding: 0; max-width: none; font-size: 11pt; }
+  .back-link, .print-btn { display: none; }
+  .sheet { border: none; padding: 0; }
+  h1 { font-size: 16pt; }
+  h2 { font-size: 11pt; margin: 8px 0 3px; }
+  li { font-size: 9.5pt; margin-bottom: 1px; }
+  .cols { columns: 2; column-gap: 18px; }
+  @page { margin: 0.5in; }
+}
+</style></head>
+<body>
+
+<a class="back-link" href="../dashboard/index.html">&larr; Back to dashboard</a>
+<button class="print-btn" onclick="window.print()">Print</button>
+
+<h1>Unit 3 Cheat Sheet: Rules of the Road</h1>
+<p class="handbook-cite">Utah Driver Handbook REV 3.2026 &middot; pp. 50–60</p>
+
+<div class="sheet">
+
+  <h2>Sign shapes (memorize by silhouette)</h2>
+  <div class="sign-grid">
+    <div class="sign-box sign-stop"><div class="shape">8 sides</div>Octagon, red = <b>STOP</b></div>
+    <div class="sign-box sign-yield"><div class="shape">▽</div>Down triangle, white+red border = <b>YIELD</b></div>
+    <div class="sign-box sign-warn"><div class="shape">◇</div>Yellow diamond = <b>WARNING</b></div>
+    <div class="sign-box sign-school"><div class="shape">⬠</div>Fluorescent yellow-green pentagon = <b>SCHOOL</b></div>
+    <div class="sign-box sign-work"><div class="shape">◇ / ▭</div>Orange diamond/rectangle = <b>WORK ZONE</b></div>
+  </div>
+
+  <h2>Sign colors</h2>
+  <ul>
+    <li><b>Red</b> = STOP, YIELD, or PROHIBITION.</li>
+    <li><b>Yellow</b> = general WARNING.</li>
+    <li><b>Orange</b> = construction / work zone.</li>
+  </ul>
+
+  <div class="cols">
+
+    <section>
+      <h2>Traffic signals</h2>
+      <ul>
+        <li><b>Red light:</b> complete stop before the intersection, behind stop line / crosswalk. Wait until green.</li>
+        <li><b>Green light:</b> still yield to pedestrians in the crosswalk.</li>
+        <li><b>Lights out (dark):</b> treat as 4-way STOP. Yield to vehicle on your right.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Right-of-way priority ladder</h2>
+      <ul>
+        <li><b>Trains beat everyone</b> — including ambulances, fire engines, police, pedestrians, you.</li>
+        <li>Emergency vehicle (siren/lights): pull <b>immediately to the right</b>, <b>STOP</b> until it passes.</li>
+        <li>Turning left: yield to all <b>oncoming</b> traffic first.</li>
+        <li>4-way stop, simultaneous arrivals: yield to the vehicle on your <b>RIGHT</b>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Pedestrians</h2>
+      <ul>
+        <li>Yield to <b>ALL pedestrians</b> at any crosswalk — marked OR unmarked.</li>
+        <li>Pedestrian with a <b>white cane or guide dog</b> = full <b>STOP</b>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>School buses</h2>
+      <ul>
+        <li>Alternating flashing <b>red</b> lights = STOP immediately before reaching the bus.</li>
+        <li><b>2-lane road:</b> BOTH directions must stop.</li>
+        <li><b>Divided highway with median (4+ lanes):</b> ONLY same-direction traffic must stop.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Railroad crossings</h2>
+      <ul>
+        <li>Flashing lights or bells = <b>MUST STOP</b>.</li>
+        <li><b>Never</b> drive around or under a lowered gate.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Move Over Law</h2>
+      <ul>
+        <li>Approaching <b>any stationary vehicle with flashing hazard lights</b>: slow down <b>AND</b> change lanes to a non-adjacent lane when safe.</li>
+      </ul>
+    </section>
+
+  </div>
+
+  <p class="footer">Print this and stick on the fridge. &middot; Source: Utah Driver Handbook 3/2026</p>
+</div>
+
+</body></html>

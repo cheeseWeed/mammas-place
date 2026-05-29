@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 4 - Sharing the Road - Test A</title>
+<style>
+:root { --primary: #581c87; --accent: #facc15; --green: #16a34a; --red: #dc2626; --text: #18181b; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 760px; margin: 0 auto; padding: 24px; color: var(--text); }
+h1 { color: var(--primary); }
+.meta { color: #71717a; margin-bottom: 24px; font-size: 0.9em; }
+.question { background: #fafafa; border-left: 4px solid var(--primary); padding: 16px 20px; margin: 16px 0; border-radius: 4px; }
+.question.correct { border-left-color: var(--green); }
+.question.wrong { border-left-color: var(--red); }
+.q-num { color: var(--primary); font-weight: 600; font-size: 0.85em; }
+.q-text { font-size: 1.05em; margin: 8px 0 16px; }
+.choices label { display: block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; }
+.choices label:hover { background: #faf5ff; border-color: var(--primary); }
+.choices input[type=radio] { margin-right: 10px; }
+.explanation { margin-top: 12px; padding: 12px; background: #fef3c7; border-radius: 4px; display: none; font-size: 0.92em; }
+.show .explanation { display: block; }
+.submit-btn { background: var(--primary); color: white; border: none; padding: 14px 32px; font-size: 1.1em; border-radius: 6px; cursor: pointer; margin-top: 24px; }
+.submit-btn:hover { background: #6b21a8; }
+.score-card { background: linear-gradient(135deg, var(--primary), #6b21a8); color: white; padding: 24px; border-radius: 8px; margin: 24px 0; }
+.score-card h2 { margin-top: 0; }
+.score-pct { font-size: 3em; font-weight: 700; }
+.pass-badge { background: var(--accent); color: var(--text); padding: 6px 12px; border-radius: 4px; display: inline-block; }
+.fail-badge { background: var(--red); color: white; padding: 6px 12px; border-radius: 4px; display: inline-block; }
+img.sign { max-height: 180px; margin: 8px 0; display: block; }
+.back-link { color: var(--primary); text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+.empty-state { background: #fef3c7; padding: 16px; border-radius: 6px; margin: 16px 0; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+<!-- HOME-BTN v1 -->
+<a href="../dashboard/index.html" style="position:fixed; top:12px; left:12px; z-index:9999; background:#581c87; color:white; text-decoration:none; padding:6px 14px; border-radius:6px; font-size:13px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.15);">&larr; Home</a>
+
+<h1>Unit 4 - Sharing the Road - Test A</h1>
+<div class="meta">25 questions &middot; Pass: 80% (20 correct) &middot; Pool: 80 questions from sharing-road</div>
+
+<form id="quiz"></form>
+<button class="submit-btn" id="submit">Grade my quiz</button>
+<div id="result"></div>
+<script>
+const QUESTIONS = [{"question": "Work zone signs in Utah are what color?", "choices": ["Yellow with black letters", "Red with white letters", "Orange with black letters or symbols", "White with green letters"], "correct_index": 2, "explanation": "Work zone signs are diamond or rectangular, ORANGE with black letters/symbols. Handbook p. 59.", "source_page": 59, "priority": "MUST", "canonical_fact_id": "work-zone-orange-signs"}, {"question": "The 3-foot passing rule in Utah applies to which of the following?", "choices": ["Only adult cyclists in marked bike lanes", "Bicyclists and other vulnerable users on the road", "Only when passing at speeds over 35 mph", "Only on roads without a shoulder"], "correct_index": 1, "explanation": "The 3-foot minimum applies whenever you pass a bicyclist or vulnerable user, regardless of speed, lane, or shoulder. Handbook p. 84.", "source_page": 84, "priority": "MUST", "canonical_fact_id": "pass-bicyclist-3-feet-minimum"}, {"question": "Compared to a passenger car at 55 mph, a fully loaded tractor-trailer needs roughly how much MORE distance to stop?", "choices": ["About the same distance", "A little more - 10 to 20 feet", "Roughly 3 times the distance - over 400 ft vs 130-140 ft", "About 1.1 times the distance"], "correct_index": 2, "explanation": "Cars stop in 130-140 feet at 55 mph; loaded trucks need more than 400 feet - roughly 3x. Handbook p. 88.", "source_page": 88, "priority": "MUST", "canonical_fact_id": "truck-stop-400-ft-at-55"}, {"question": "A school bus ahead has its alternating flashing RED lights on and the stop arm extended. You must:", "choices": ["Slow down and pass carefully on the left", "Stop immediately before reaching the bus", "Stop only if children are visible", "Continue at posted speed"], "correct_index": 1, "explanation": "Alternating flashing red lights + stop arm = STOP immediately before reaching the bus. Handbook p. 46.", "source_page": 46, "priority": "MUST", "canonical_fact_id": "school-bus-red-lights-stop"}, {"question": "Compared to passenger cars, large trucks have:", "choices": ["Shorter stopping distances and tighter turn radii", "Longer stopping/accelerating distances and wider turn radii", "Identical handling and braking", "Better maneuverability due to advanced mirrors"], "correct_index": 1, "explanation": "Trucks are NOT large cars - they have longer stopping/accelerating distances, wider turning areas, and weigh much more. Handbook p. 88.", "source_page": 88, "priority": "SHOULD", "canonical_fact_id": "trucks-different-from-cars"}, {"question": "Under the Move Over Law, if you cannot safely change lanes away from a stationary vehicle with flashing hazards, you must at minimum:", "choices": ["Continue at the posted speed", "Slow down and provide as much space as practical", "Stop completely", "Pull onto the shoulder"], "correct_index": 1, "explanation": "If a lane change is not practical, you must still slow down and give as much room as practical. Handbook p. 86.", "source_page": 86, "priority": "MUST", "canonical_fact_id": "move-over-law"}, {"question": "You're on a 2-lane road. A cyclist is ahead in your lane, the lane is too narrow for 3 feet, oncoming traffic is clear, and the centerline is dashed yellow. What should you do?", "choices": ["Pass closely - staying in your lane matters most", "Briefly cross the centerline to give the 3-foot minimum", "Honk so the cyclist moves over", "Cyclists don't get 3 feet on narrow lanes"], "correct_index": 1, "explanation": "When the lane is too narrow, you may briefly cross a dashed centerline (when safe and not in a no-pass zone) to provide the required 3 feet. Handbook p. 84.", "source_page": 84, "priority": "MUST", "canonical_fact_id": "pass-bicyclist-3-feet-minimum"}, {"question": "A pedestrian is crossing the street using a white cane or guide dog. What MUST you do?", "choices": ["Slow down and pass carefully", "Honk so they know you are there", "Come to a complete stop", "Yield only if they enter your lane"], "correct_index": 2, "explanation": "White cane or guide dog = complete stop - the highest level of yield obligation. Handbook p. 91.", "source_page": 91, "priority": "MUST", "canonical_fact_id": "white-cane-full-stop"}, {"question": "How are bicycle lanes marked on Utah roadways?", "choices": ["Dashed white lines", "Solid white lines", "Solid yellow lines", "Green-painted pavement only"], "correct_index": 1, "explanation": "Bike lanes are marked with solid white lines. Handbook p. 83.", "source_page": 83, "priority": "SHOULD", "canonical_fact_id": "bike-lane-solid-white"}, {"question": "You approach an intersection without a marked crosswalk. A pedestrian with a white cane is starting to step into the street. What is required?", "choices": ["Slow down and steer around them", "Full stop until they finish crossing", "Honk to warn them", "Continue - there is no marked crosswalk"], "correct_index": 1, "explanation": "White cane or guide dog = full STOP, regardless of crosswalk markings. Handbook p. 91.", "source_page": 91, "priority": "MUST", "canonical_fact_id": "white-cane-full-stop"}, {"question": "When are bicycle lights and reflectors required in Utah?", "choices": ["Only between 10 p.m. and 6 a.m.", "From a half-hour after sunset to a half-hour before sunrise", "Only on roads without streetlights", "Only when carrying a passenger"], "correct_index": 1, "explanation": "Bicycle lights required from a half-hour after sunset to a half-hour before sunrise: white headlight, red taillight or reflector, side reflectors visible at 500 ft. Handbook p. 85.", "source_page": 85, "priority": "NICE", "canonical_fact_id": "bicycle-lights-30min-sunrise-sunset"}, {"question": "It is 11 p.m. on a Sunday. You are driving through a marked work zone with cones up but no workers visible. What is true?", "choices": ["You can drive the normal speed limit because no workers are present", "Double fines apply only when workers are visible", "Slow to the posted work-zone limit; double fines apply whether workers are there or not", "Speed limit only applies during daytime work hours"], "correct_index": 2, "explanation": "Slow to the posted work-zone speed regardless of workers. Double fines apply at all times. Handbook p. 59, 68.", "source_page": 68, "priority": "MUST", "canonical_fact_id": "work-zone-double-fine"}, {"question": "You are in the HOV lane on I-15. A police car comes up behind you with lights flashing. What do you do?", "choices": ["Stop in the HOV lane immediately", "Pull to the LEFT shoulder - it is closer", "Cross the double white line to the right when safe and pull to the right shoulder", "Speed up to clear the HOV lane faster"], "correct_index": 2, "explanation": "Pull to the RIGHT, even from the HOV lane. Utah law permits crossing the double white line out of the express lane when followed by emergency/police directing you to pull over. Handbook p. 86, 50.", "source_page": 86, "priority": "MUST", "canonical_fact_id": "emergency-vehicle-pull-right-stop"}, {"question": "Utah law requires DOT-approved motorcycle helmets for riders and passengers under what age?", "choices": ["16", "18", "21", "25"], "correct_index": 2, "explanation": "Riders and passengers under 21 must wear a DOT-approved helmet on a motorcycle. Same rule for street-legal ATVs. Handbook p. 90.", "source_page": 90, "priority": "MUST", "canonical_fact_id": "motorcycle-under-21-helmet-dot"}, {"question": "On Utah roadways, bicyclists have:", "choices": ["Fewer rights than motor vehicles", "The same rights and responsibilities as motor vehicles", "Right-of-way over all motor vehicles at all times", "Rights only on roads marked with bike lanes"], "correct_index": 1, "explanation": "Bicycles are vehicles on roadways - same rights, privileges, AND responsibilities as motorists. Handbook p. 83.", "source_page": 83, "priority": "SHOULD", "canonical_fact_id": "bicycle-equal-rights-as-vehicle"}, {"question": "You are stopped at a red light on a 40 mph street with two lanes going your way. A motorcycle slides past between lanes at about 10 mph. Is this legal?", "choices": ["No - it is illegal lane splitting", "Yes - this is legal lane filtering", "No - motorcycles must wait in line", "Legal only on freeways"], "correct_index": 1, "explanation": "Conditions met: 2+ same-direction lanes, posted 45 mph or less, motorcycle 15 mph or less, vehicles stopped, safe move. Legal lane filtering. Handbook p. 91.", "source_page": 91, "priority": "SHOULD", "canonical_fact_id": "motorcycle-lane-filter-conditions"}, {"question": "What is the consequence if you are convicted of violating the Move Over Law and fail to attend the required defensive driving course?", "choices": ["A 50 dollar fine only", "30-day license suspension", "90-day license suspension", "Court appearance with no other penalty"], "correct_index": 2, "explanation": "Conviction requires a 4-hour live classroom defensive driving course within 90 days. Failing to attend = 90-day license suspension. Handbook p. 86.", "source_page": 86, "priority": "MUST", "canonical_fact_id": "move-over-violation-90-day-suspend"}, {"question": "Which condition is REQUIRED for legal motorcycle lane filtering in Utah?", "choices": ["Speed limit must be 65 mph or higher", "The vehicles being passed must be moving", "The motorcycle must travel at 15 mph or less", "Riding on the right shoulder is allowed"], "correct_index": 2, "explanation": "Lane filtering is legal only when: 2+ same-direction lanes, posted limit 45 mph or less (or off-ramp), motorcycle 15 mph or less, vehicle being passed is STOPPED, move is safe. Handbook p. 91.", "source_page": 91, "priority": "SHOULD", "canonical_fact_id": "motorcycle-lane-filter-conditions"}, {"question": "Utah Move Over Law requires you to slow down AND change lanes when approaching:", "choices": ["Only police vehicles with flashing lights", "Only ambulances and fire trucks", "Any stationary vehicle with flashing hazard lights", "Only tow trucks"], "correct_index": 2, "explanation": "Move Over Law applies to ANY stationary vehicle with flashing hazards adjacent to the highway - not just emergency vehicles. Handbook p. 86.", "source_page": 86, "priority": "MUST", "canonical_fact_id": "move-over-law"}, {"question": "You are northbound on a 4-lane divided highway with a wide grass median. A school bus southbound stops with red lights flashing. What must you do?", "choices": ["Stop - all directions stop on any divided road", "Continue with caution - the median exempts opposing traffic", "Pull onto the median", "Stop within 100 feet on either side"], "correct_index": 1, "explanation": "With a physical median (4+ lanes divided), only SAME-direction vehicles must stop. Opposite-direction may proceed with caution. Handbook p. 46.", "source_page": 46, "priority": "MUST", "canonical_fact_id": "school-bus-median-only-same-direction"}, {"question": "You enter a work zone with reduced speed signs, and traffic is moving 10 mph above the posted work-zone limit. What should you do?", "choices": ["Match traffic flow - safer than being slower", "Drive the posted work-zone speed regardless of others", "Speed up to clear the zone faster", "Use the shoulder to maintain normal speed"], "correct_index": 1, "explanation": "Always drive at or below the posted work-zone speed - Utah law forbids exceeding posted limits even when matching traffic. Doubled fines apply. Handbook p. 49, 68.", "source_page": 68, "priority": "SHOULD", "canonical_fact_id": "work-zone-slow-even-no-workers"}, {"question": "Which of these is NOT a typical way to identify a work zone?", "choices": ["Orange signs and barrels", "Flashing lights on equipment", "Workers in highly visible clothing", "Red flares on the centerline"], "correct_index": 3, "explanation": "Work zones are identified by orange signs, orange devices, flashing lights, and highly visible worker clothing - not red flares. Handbook p. 59.", "source_page": 59, "priority": "NICE", "canonical_fact_id": "work-zone-identifiers"}, {"question": "A flagger in a work zone directs you to stop, but the traffic light ahead is green. What should you do?", "choices": ["Obey the green light - signals override flaggers", "Obey the flagger - they override signs and signals in work zones", "Stop briefly, then proceed on the green", "Honk and pass through carefully"], "correct_index": 1, "explanation": "Flagger directions in a work zone OVERRIDE signs and signals. You MUST obey the flagger. Handbook p. 59.", "source_page": 59, "priority": "SHOULD", "canonical_fact_id": "flagger-overrides-signs"}, {"question": "What does Utah require on your driver license to legally operate a motorcycle on Utah highways?", "choices": ["A separate motorcycle license only", "An M endorsement on your DL", "A Class B CDL", "No endorsement if you are over 21"], "correct_index": 1, "explanation": "An M endorsement on your DL is required to operate a motorcycle on Utah highways. Handbook p. 90.", "source_page": 90, "priority": "MUST", "canonical_fact_id": "endorsement-m-motorcycle"}, {"question": "After pulling over for a traffic stop, what should you do?", "choices": ["Get out of the car to greet the officer", "Stay in the vehicle, put it in park, turn off the engine, roll down the window, and put hands on the wheel", "Leave the engine running and stay in your seat", "Wait until the officer knocks before doing anything"], "correct_index": 1, "explanation": "Traffic stop procedure: move RIGHT, put in PARK, engine off, STAY in vehicle, window down, hands on the wheel. Handbook p. 93.", "source_page": 93, "priority": "SHOULD", "canonical_fact_id": "traffic-stop-procedure"}];
+function render(){
+  if (!QUESTIONS || QUESTIONS.length === 0) {
+    document.getElementById("quiz").innerHTML = "<div class='empty-state'>No questions available. Take a unit test first so weak spots can be tracked.</div>";
+    document.getElementById("submit").style.display = "none";
+    return;
+  }
+  const form = document.getElementById("quiz");
+  QUESTIONS.forEach((q, i) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = "q" + i;
+    let html = "<div class='q-num'>Question " + (i+1) + " &middot; " + q.priority + "</div>";
+    html += "<div class='q-text'>" + q.question + "</div>";
+    if (q.sign_image) html += "<img class='sign' src='../images/signs/" + q.sign_image + "' alt='sign'>";
+    html += "<div class='choices'>";
+    q.choices.forEach((c, ci) => {
+      html += "<label><input type='radio' name='q" + i + "' value='" + ci + "'> " + c + "</label>";
+    });
+    html += "</div>";
+    html += "<div class='explanation'><strong>Answer:</strong> " + q.choices[q.correct_index] + "<br>" + q.explanation + " <em>(Handbook p." + q.source_page + ")</em></div>";
+    div.innerHTML = html;
+    form.appendChild(div);
+  });
+}
+function grade(){
+  let correct = 0;
+  const misses = [];
+  QUESTIONS.forEach((q, i) => {
+    const sel = document.querySelector("input[name=q" + i + "]:checked");
+    const qEl = document.getElementById("q" + i);
+    qEl.classList.add("show");
+    if (sel && parseInt(sel.value) === q.correct_index) {
+      qEl.classList.add("correct");
+      correct++;
+    } else {
+      qEl.classList.add("wrong");
+      misses.push(q.canonical_fact_id);
+    }
+  });
+  const prevMisses = JSON.parse(localStorage.getItem("dl_misses") || "[]");
+  const allMisses = [...prevMisses, ...misses];
+  localStorage.setItem("dl_misses", JSON.stringify(allMisses));
+  const attempts = JSON.parse(localStorage.getItem("dl_attempts") || "[]");
+  const pct_calc = Math.round(correct / QUESTIONS.length * 100);
+  const pass_calc = pct_calc >= 80;
+  attempts.push({ quiz: document.title, score: correct, total: QUESTIONS.length, pct: pct_calc, pass: pass_calc, ts: Date.now() });
+  localStorage.setItem("dl_attempts", JSON.stringify(attempts));
+  const unitScores = JSON.parse(localStorage.getItem("dl_unit_scores") || "{}");
+  unitScores["unit-4-a"] = { pct: pct_calc, ts: Date.now() };
+  localStorage.setItem("dl_unit_scores", JSON.stringify(unitScores));
+  const sr = JSON.parse(localStorage.getItem("dl_sr") || "{}");
+  const DAY_MS = 86400000;
+  QUESTIONS.forEach((q, i) => {
+    const fid = q.canonical_fact_id;
+    if (!fid) return;
+    const sel = document.querySelector("input[name=q" + i + "]:checked");
+    const wasCorrect = sel && parseInt(sel.value) === q.correct_index;
+    const prev = sr[fid] || { interval_days: 0, ease: 2.5 };
+    let interval_days;
+    if (wasCorrect) {
+      interval_days = Math.min(Math.max(Math.round((prev.interval_days || 1) * 2.5), 1), 30);
+    } else {
+      interval_days = 1;
+    }
+    sr[fid] = { next_due_ts: Date.now() + interval_days * DAY_MS, interval_days: interval_days, ease: prev.ease || 2.5, last_seen_ts: Date.now() };
+  });
+  localStorage.setItem("dl_sr", JSON.stringify(sr));
+  // DL_SYNC_BLOCK — fire-and-forget POST to server-side progress API
+  try {
+    var __dlUser = localStorage.getItem("dl_user");
+    if (__dlUser && __dlUser !== "__anon__") {
+      var __body = {
+        user: __dlUser.replace(/^"|"$/g, ""),
+        attempts: JSON.parse(localStorage.getItem("dl_attempts") || "[]"),
+        misses: JSON.parse(localStorage.getItem("dl_misses") || "[]"),
+        unitScores: JSON.parse(localStorage.getItem("dl_unit_scores") || "{}"),
+        sr: JSON.parse(localStorage.getItem("dl_sr") || "{}")
+      };
+      fetch("/api/drive/progress", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(__body),
+        keepalive: true
+      }).catch(function(){});
+    }
+  } catch (e) {}
+  const pct = Math.round(correct / QUESTIONS.length * 100);
+  const passed = pct >= 80;
+  document.getElementById("result").innerHTML =
+    "<div class='score-card'>" +
+    "<h2>Your score</h2>" +
+    "<div class='score-pct'>" + pct + "%</div>" +
+    "<div>" + correct + " / " + QUESTIONS.length + " correct</div>" +
+    "<div style='margin-top:12px'><span class='" + (passed ? "pass-badge" : "fail-badge") + "'>" +
+    (passed ? "&check; Pass (80%+)" : "Below pass &mdash; review and retake") +
+    "</span></div>" +
+    "</div>";
+  document.getElementById("submit").style.display = "none";
+  if (typeof confetti === 'function' && pct >= 80) {
+    var fireworks = function(x) {
+      confetti({ particleCount: 60, angle: 90, spread: 100, origin: { x: x, y: 0.7 }, colors: ['#facc15', '#581c87', '#16a34a', '#dc2626', '#3b82f6'] });
+    };
+    setTimeout(function() { fireworks(0.2); }, 100);
+    setTimeout(function() { fireworks(0.5); }, 400);
+    setTimeout(function() { fireworks(0.8); }, 700);
+    setTimeout(function() { fireworks(0.3); }, 1100);
+    setTimeout(function() { fireworks(0.7); }, 1400);
+    setTimeout(function() { fireworks(0.5); }, 1700);
+  }
+  window.scrollTo({ top: document.getElementById("result").offsetTop - 20, behavior: "smooth" });
+}
+render();
+document.getElementById("submit").addEventListener("click", grade);
+</script>
+</body></html>

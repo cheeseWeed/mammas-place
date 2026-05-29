@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 5 - Vehicle and Scenarios - Test A</title>
+<style>
+:root { --primary: #581c87; --accent: #facc15; --green: #16a34a; --red: #dc2626; --text: #18181b; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 760px; margin: 0 auto; padding: 24px; color: var(--text); }
+h1 { color: var(--primary); }
+.meta { color: #71717a; margin-bottom: 24px; font-size: 0.9em; }
+.question { background: #fafafa; border-left: 4px solid var(--primary); padding: 16px 20px; margin: 16px 0; border-radius: 4px; }
+.question.correct { border-left-color: var(--green); }
+.question.wrong { border-left-color: var(--red); }
+.q-num { color: var(--primary); font-weight: 600; font-size: 0.85em; }
+.q-text { font-size: 1.05em; margin: 8px 0 16px; }
+.choices label { display: block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; }
+.choices label:hover { background: #faf5ff; border-color: var(--primary); }
+.choices input[type=radio] { margin-right: 10px; }
+.explanation { margin-top: 12px; padding: 12px; background: #fef3c7; border-radius: 4px; display: none; font-size: 0.92em; }
+.show .explanation { display: block; }
+.submit-btn { background: var(--primary); color: white; border: none; padding: 14px 32px; font-size: 1.1em; border-radius: 6px; cursor: pointer; margin-top: 24px; }
+.submit-btn:hover { background: #6b21a8; }
+.score-card { background: linear-gradient(135deg, var(--primary), #6b21a8); color: white; padding: 24px; border-radius: 8px; margin: 24px 0; }
+.score-card h2 { margin-top: 0; }
+.score-pct { font-size: 3em; font-weight: 700; }
+.pass-badge { background: var(--accent); color: var(--text); padding: 6px 12px; border-radius: 4px; display: inline-block; }
+.fail-badge { background: var(--red); color: white; padding: 6px 12px; border-radius: 4px; display: inline-block; }
+img.sign { max-height: 180px; margin: 8px 0; display: block; }
+.back-link { color: var(--primary); text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+.empty-state { background: #fef3c7; padding: 16px; border-radius: 6px; margin: 16px 0; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+<!-- HOME-BTN v1 -->
+<a href="../dashboard/index.html" style="position:fixed; top:12px; left:12px; z-index:9999; background:#581c87; color:white; text-decoration:none; padding:6px 14px; border-radius:6px; font-size:13px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.15);">&larr; Home</a>
+
+<h1>Unit 5 - Vehicle and Scenarios - Test A</h1>
+<div class="meta">25 questions &middot; Pass: 80% (20 correct) &middot; Pool: 70 questions from vehicle-equipment, misc</div>
+
+<form id="quiz"></form>
+<button class="submit-btn" id="submit">Grade my quiz</button>
+<div id="result"></div>
+<script>
+const QUESTIONS = [{"question": "Under what conditions is a texting violation upgraded to a Class B misdemeanor?", "choices": ["When the driver is over 65", "When it causes bodily injury OR the driver has a previous texting offense", "When done at speeds over 35 mph", "When the driver does not have insurance"], "correct_index": 1, "explanation": "Texting becomes a Class B misdemeanor if it causes bodily injury OR the driver has a previous texting offense. Handbook p. 68.", "source_page": 68, "priority": "SHOULD", "canonical_fact_id": "texting-class-b-injury-or-prior"}, {"question": "You spot a curbside parking space: 18 feet from a fire hydrant and 25 feet from a stop sign. Is parking there legal?", "choices": ["Yes - both distances are OK", "No - 18 feet from hydrant is too close", "No - 25 feet from stop sign violates the 30-foot rule", "No - both distances violate Utah law"], "correct_index": 2, "explanation": "18 feet from the hydrant is OK (15+ rule). But 25 feet from the stop sign violates the 30-foot rule. Find another space. Handbook p. 42.", "source_page": 42, "priority": "MUST", "canonical_fact_id": "no-park-30-ft-signal"}, {"question": "You must dim your high beams within how many feet of an oncoming vehicle?", "choices": ["200 feet", "300 feet", "500 feet", "1,000 feet"], "correct_index": 2, "explanation": "Dim high beams within 500 feet of an oncoming vehicle. Handbook p. 69.", "source_page": 69, "priority": "MUST", "canonical_fact_id": "dim-500-ft-oncoming"}, {"question": "If caught in a lightning storm in your vehicle, you should:", "choices": ["Exit the vehicle and lie flat on the ground", "Stay inside a HARD-TOPPED vehicle with doors closed and windows up, avoid touching metal", "Open windows to equalize pressure", "Use the radio to call for help"], "correct_index": 1, "explanation": "Only a hard-topped vehicle protects you in lightning. Doors closed, windows up, do NOT touch metal surfaces or use a radio with an external antenna. Handbook p. 69.", "source_page": 69, "priority": "SHOULD", "canonical_fact_id": "animal-no-swerve"}, {"question": "Before leaving a parked vehicle, you should:", "choices": ["Set the parking brake, stop the motor, and lock the doors", "Just turn off the engine - that is enough", "Roll down windows to vent the cabin", "Leave the engine running if you will be brief"], "correct_index": 0, "explanation": "Before leaving: set the parking brake, stop the motor, lock the doors. Handbook p. 42.", "source_page": 42, "priority": "SHOULD", "canonical_fact_id": "park-brake-motor-lock"}, {"question": "Drivers over 18 may use a wireless device (HWC) while driving for phone calls only if:", "choices": ["They use voice commands to connect", "The car is moving under 25 mph", "The phone is held below dashboard level", "They use Bluetooth headphones in both ears"], "correct_index": 0, "explanation": "Drivers over 18 may talk on an HWC while driving only if they use voice commands to connect the call. Hands-free voice tech also allowed for GPS, reporting hazards/criminal activity/medical emergencies. Handbook p. 68.", "source_page": 68, "priority": "MUST", "canonical_fact_id": "hwc-over-18-voice-only"}, {"question": "You must not park within how many feet of a crosswalk at an intersection?", "choices": ["10 feet", "15 feet", "20 feet", "30 feet"], "correct_index": 2, "explanation": "No parking on a crosswalk or within 20 feet of one. Handbook p. 42.", "source_page": 42, "priority": "MUST", "canonical_fact_id": "no-park-20-ft-crosswalk"}, {"question": "You must not park within how many feet of a fire station driveway?", "choices": ["10 feet", "20 feet", "30 feet", "50 feet"], "correct_index": 1, "explanation": "20 feet from a fire station driveway (and 75 feet on the opposite side if signs are posted). Handbook p. 42.", "source_page": 42, "priority": "NICE", "canonical_fact_id": "no-park-fire-station-20-75"}, {"question": "Utah law requires headlights ON whenever you cannot clearly see people and vehicles how far ahead?", "choices": ["500 feet", "750 feet", "1,000 feet", "2,000 feet"], "correct_index": 2, "explanation": "Headlights must be ON from sunset to sunrise OR whenever you cannot clearly see persons/vehicles 1,000 feet ahead due to insufficient light or atmospheric conditions. Handbook p. 69.", "source_page": 69, "priority": "MUST", "canonical_fact_id": "headlights-on-1000-ft-visibility"}, {"question": "You are driving at 5 p.m. in heavy fog. Visibility ahead is about 600 feet. Should you use headlights?", "choices": ["No - it is still daylight", "Yes - you cannot clearly see 1,000 feet ahead", "No - wait until sunset", "Only fog lights, not headlights"], "correct_index": 1, "explanation": "Headlights required ANY time you cannot see clearly 1,000 feet ahead - even in daylight in fog/rain/snow. Handbook p. 69.", "source_page": 69, "priority": "MUST", "canonical_fact_id": "headlights-on-1000-ft-visibility"}, {"question": "In Utah, brakes are required on trailers over what weight?", "choices": ["500 lbs", "750 lbs", "1,000 lbs", "2,000 lbs"], "correct_index": 3, "explanation": "Trailers over 2,000 lbs require brakes in Utah. Over 750 lbs is the recommended threshold. Handbook p. 98.", "source_page": 98, "priority": "NICE", "canonical_fact_id": "trailer-brake-1500lbs"}, {"question": "When driving DOWNHILL on a steep mountain road, you should:", "choices": ["Coast in neutral to save fuel", "Use a low gear and proper braking", "Use cruise control to maintain a constant speed", "Disengage the clutch to ease the engine"], "correct_index": 1, "explanation": "Driving downhill: pick a safe speed, use proper braking, and use a LOW gear. Do NOT coast in neutral or disengage the clutch - you lose engine braking. Handbook p. 69.", "source_page": 69, "priority": "SHOULD", "canonical_fact_id": "mountain-downhill-yields-uphill"}, {"question": "When can an officer stop a vehicle solely for a seat-belt violation?", "choices": ["Never - it is always secondary", "When anyone under 16 is unrestrained", "Only on freeways", "Only after a crash"], "correct_index": 1, "explanation": "An officer can stop you solely if anyone under 16 is unrestrained (primary offense). 16+ occupants are cited only if stopped for another reason (secondary). Handbook p. 38.", "source_page": 38, "priority": "SHOULD", "canonical_fact_id": "unrestrained-under-16-primary"}, {"question": "You are 16 and driving. Your mom calls. Can you legally answer using voice-activated hands-free?", "choices": ["No - under 18 cannot use a phone for any reason while driving", "Yes - communicating with a parent/guardian is an allowed exception", "Only if you pull over first", "Only if you are going under 25 mph"], "correct_index": 1, "explanation": "Under-18 drivers may use HWC to communicate with a parent/legal guardian - one of the four allowed exceptions. Handbook p. 68.", "source_page": 68, "priority": "MUST", "canonical_fact_id": "hwc-under-18-exceptions-only"}, {"question": "When following another vehicle at night, dim your high beams within how many feet of the vehicle ahead?", "choices": ["100 feet", "300 feet", "500 feet", "1,000 feet"], "correct_index": 1, "explanation": "Dim high beams within 300 feet when following another vehicle. (500 ft for oncoming.) Handbook p. 69.", "source_page": 69, "priority": "MUST", "canonical_fact_id": "dim-300-ft-following"}, {"question": "On a narrow mountain road where two vehicles cannot pass, who must yield?", "choices": ["The uphill driver - they have momentum to lose", "The downhill driver - they have brakes and can back up easier", "Whoever arrived first", "Larger vehicle has priority"], "correct_index": 1, "explanation": "On narrow mountain roads, the DOWNHILL driver must yield to the UPHILL driver. Counterintuitive - uphill has more difficulty restarting. Handbook p. 69.", "source_page": 69, "priority": "MUST", "canonical_fact_id": "mountain-downhill-yields-uphill"}, {"question": "Which is a proper seat-belt fit?", "choices": ["Shoulder belt under the arm or behind the back", "Lap belt across the stomach", "Shoulder belt across the shoulder/chest, lap belt across the hips", "Shoulder belt clipped to keep it slack"], "correct_index": 2, "explanation": "Shoulder belt across the shoulder/chest; lap belt across the hips (not the stomach). Never put the shoulder belt under your arm or behind your back. Handbook p. 37.", "source_page": 37, "priority": "SHOULD", "canonical_fact_id": "belt-fit-rules"}, {"question": "You are on a wet road at 50 mph. What is the safest move to reduce hydroplaning risk?", "choices": ["Drive at the posted speed regardless of conditions", "Slow down - hydroplaning starts above 35 mph", "Tap the brakes constantly to clear water", "Pump the steering wheel left-right"], "correct_index": 1, "explanation": "Hydroplaning starts above 35 mph. Slow down on wet roads - posted speeds may be too fast in heavy rain. Handbook p. 70.", "source_page": 70, "priority": "SHOULD", "canonical_fact_id": "hydroplane-over-35"}, {"question": "While driving, Utah law generally prohibits which of the following?", "choices": ["Listening to the radio", "Manual data entry into a wireless device (texting, dialing, browsing, etc.)", "Using a hands-free Bluetooth speaker", "Drinking water"], "correct_index": 1, "explanation": "Utah law prohibits manual interaction with a handheld wireless device while driving - texting, dialing, browsing, photographing, watching video, etc. Handbook p. 67-68.", "source_page": 67, "priority": "MUST", "canonical_fact_id": "hwc-general-no-manual"}, {"question": "You must not park within how many feet of a stop sign, yield sign, traffic signal, or flashing beacon?", "choices": ["15 feet", "20 feet", "25 feet", "30 feet"], "correct_index": 3, "explanation": "No parking within 30 feet of a flashing beacon, stop sign, yield sign, or traffic signal. Handbook p. 42.", "source_page": 42, "priority": "MUST", "canonical_fact_id": "no-park-30-ft-signal"}, {"question": "How much should you add to your following distance at night compared to daytime?", "choices": ["No change needed", "At least 2 seconds", "5 seconds", "10 seconds"], "correct_index": 1, "explanation": "Increase your following distance at night by at least 2 seconds. Handbook p. 70.", "source_page": 70, "priority": "SHOULD", "canonical_fact_id": "night-add-2-seconds-follow"}, {"question": "Black ice on Utah roadways:", "choices": ["Appears as a bright white patch - easy to spot", "Looks like a wet spot - hard to see", "Only forms above 35 degrees F", "Only forms on bridges"], "correct_index": 1, "explanation": "Black ice looks like a wet spot, not white ice - that is why it is so dangerous. Common Utah hazard, especially on bridges and shaded areas. Handbook p. 70.", "source_page": 70, "priority": "MUST", "canonical_fact_id": "hydroplane-over-35"}, {"question": "On a narrow or single-lane bridge, who has the right-of-way?", "choices": ["Larger vehicle has priority", "The first driver to reach the bridge", "Always yield to oncoming traffic", "Drivers must alternate by hour"], "correct_index": 1, "explanation": "On narrow/single-lane bridges, the FIRST driver to the bridge has the right-of-way. Take turns crossing. Handbook p. 70.", "source_page": 70, "priority": "MUST", "canonical_fact_id": "narrow-bridge-first-arrived"}, {"question": "Where should children 12 and younger ride?", "choices": ["In the front passenger seat", "In the back seat", "Wherever there is a free seat", "In the cargo area"], "correct_index": 1, "explanation": "Children 12 and younger should ride in the back seat. Handbook p. 38.", "source_page": 38, "priority": "MUST", "canonical_fact_id": "kids-12-and-under-back-seat"}, {"question": "Maya is parking on a steep downhill street with a curb on her right. What is the correct wheel position?", "choices": ["Wheels turned LEFT (away from curb)", "Wheels turned RIGHT (toward the curb)", "Wheels straight", "Does not matter if she sets the parking brake"], "correct_index": 1, "explanation": "Downhill with curb on the right = wheels toward the curb (RIGHT). Set the parking brake. Handbook p. 42.", "source_page": 42, "priority": "MUST", "canonical_fact_id": "downhill-wheels-toward-curb"}];
+function render(){
+  if (!QUESTIONS || QUESTIONS.length === 0) {
+    document.getElementById("quiz").innerHTML = "<div class='empty-state'>No questions available. Take a unit test first so weak spots can be tracked.</div>";
+    document.getElementById("submit").style.display = "none";
+    return;
+  }
+  const form = document.getElementById("quiz");
+  QUESTIONS.forEach((q, i) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = "q" + i;
+    let html = "<div class='q-num'>Question " + (i+1) + " &middot; " + q.priority + "</div>";
+    html += "<div class='q-text'>" + q.question + "</div>";
+    if (q.sign_image) html += "<img class='sign' src='../images/signs/" + q.sign_image + "' alt='sign'>";
+    html += "<div class='choices'>";
+    q.choices.forEach((c, ci) => {
+      html += "<label><input type='radio' name='q" + i + "' value='" + ci + "'> " + c + "</label>";
+    });
+    html += "</div>";
+    html += "<div class='explanation'><strong>Answer:</strong> " + q.choices[q.correct_index] + "<br>" + q.explanation + " <em>(Handbook p." + q.source_page + ")</em></div>";
+    div.innerHTML = html;
+    form.appendChild(div);
+  });
+}
+function grade(){
+  let correct = 0;
+  const misses = [];
+  QUESTIONS.forEach((q, i) => {
+    const sel = document.querySelector("input[name=q" + i + "]:checked");
+    const qEl = document.getElementById("q" + i);
+    qEl.classList.add("show");
+    if (sel && parseInt(sel.value) === q.correct_index) {
+      qEl.classList.add("correct");
+      correct++;
+    } else {
+      qEl.classList.add("wrong");
+      misses.push(q.canonical_fact_id);
+    }
+  });
+  const prevMisses = JSON.parse(localStorage.getItem("dl_misses") || "[]");
+  const allMisses = [...prevMisses, ...misses];
+  localStorage.setItem("dl_misses", JSON.stringify(allMisses));
+  const attempts = JSON.parse(localStorage.getItem("dl_attempts") || "[]");
+  const pct_calc = Math.round(correct / QUESTIONS.length * 100);
+  const pass_calc = pct_calc >= 80;
+  attempts.push({ quiz: document.title, score: correct, total: QUESTIONS.length, pct: pct_calc, pass: pass_calc, ts: Date.now() });
+  localStorage.setItem("dl_attempts", JSON.stringify(attempts));
+  const unitScores = JSON.parse(localStorage.getItem("dl_unit_scores") || "{}");
+  unitScores["unit-5-a"] = { pct: pct_calc, ts: Date.now() };
+  localStorage.setItem("dl_unit_scores", JSON.stringify(unitScores));
+  const sr = JSON.parse(localStorage.getItem("dl_sr") || "{}");
+  const DAY_MS = 86400000;
+  QUESTIONS.forEach((q, i) => {
+    const fid = q.canonical_fact_id;
+    if (!fid) return;
+    const sel = document.querySelector("input[name=q" + i + "]:checked");
+    const wasCorrect = sel && parseInt(sel.value) === q.correct_index;
+    const prev = sr[fid] || { interval_days: 0, ease: 2.5 };
+    let interval_days;
+    if (wasCorrect) {
+      interval_days = Math.min(Math.max(Math.round((prev.interval_days || 1) * 2.5), 1), 30);
+    } else {
+      interval_days = 1;
+    }
+    sr[fid] = { next_due_ts: Date.now() + interval_days * DAY_MS, interval_days: interval_days, ease: prev.ease || 2.5, last_seen_ts: Date.now() };
+  });
+  localStorage.setItem("dl_sr", JSON.stringify(sr));
+  // DL_SYNC_BLOCK — fire-and-forget POST to server-side progress API
+  try {
+    var __dlUser = localStorage.getItem("dl_user");
+    if (__dlUser && __dlUser !== "__anon__") {
+      var __body = {
+        user: __dlUser.replace(/^"|"$/g, ""),
+        attempts: JSON.parse(localStorage.getItem("dl_attempts") || "[]"),
+        misses: JSON.parse(localStorage.getItem("dl_misses") || "[]"),
+        unitScores: JSON.parse(localStorage.getItem("dl_unit_scores") || "{}"),
+        sr: JSON.parse(localStorage.getItem("dl_sr") || "{}")
+      };
+      fetch("/api/drive/progress", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(__body),
+        keepalive: true
+      }).catch(function(){});
+    }
+  } catch (e) {}
+  const pct = Math.round(correct / QUESTIONS.length * 100);
+  const passed = pct >= 80;
+  document.getElementById("result").innerHTML =
+    "<div class='score-card'>" +
+    "<h2>Your score</h2>" +
+    "<div class='score-pct'>" + pct + "%</div>" +
+    "<div>" + correct + " / " + QUESTIONS.length + " correct</div>" +
+    "<div style='margin-top:12px'><span class='" + (passed ? "pass-badge" : "fail-badge") + "'>" +
+    (passed ? "&check; Pass (80%+)" : "Below pass &mdash; review and retake") +
+    "</span></div>" +
+    "</div>";
+  document.getElementById("submit").style.display = "none";
+  if (typeof confetti === 'function' && pct >= 80) {
+    var fireworks = function(x) {
+      confetti({ particleCount: 60, angle: 90, spread: 100, origin: { x: x, y: 0.7 }, colors: ['#facc15', '#581c87', '#16a34a', '#dc2626', '#3b82f6'] });
+    };
+    setTimeout(function() { fireworks(0.2); }, 100);
+    setTimeout(function() { fireworks(0.5); }, 400);
+    setTimeout(function() { fireworks(0.8); }, 700);
+    setTimeout(function() { fireworks(0.3); }, 1100);
+    setTimeout(function() { fireworks(0.7); }, 1400);
+    setTimeout(function() { fireworks(0.5); }, 1700);
+  }
+  window.scrollTo({ top: document.getElementById("result").offsetTop - 20, behavior: "smooth" });
+}
+render();
+document.getElementById("submit").addEventListener("click", grade);
+</script>
+</body></html>

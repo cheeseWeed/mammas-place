@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1: Getting Your License</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<style>
+:root { --primary: #581c87; --accent: #facc15; --text: #18181b; }
+.reveal { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+.reveal h1, .reveal h2 { color: var(--primary); }
+.reveal .must-tag { background: var(--accent); color: var(--text); padding: 2px 8px; border-radius: 4px; font-size: 0.7em; }
+.reveal .should-tag { background: #e4e4e7; color: var(--text); padding: 2px 8px; border-radius: 4px; font-size: 0.7em; }
+.reveal .nice-tag { background: #f4f4f5; color: #71717a; padding: 2px 8px; border-radius: 4px; font-size: 0.7em; }
+.reveal a { color: var(--primary); }
+.reveal .learn-more { font-size: 0.65em; opacity: 0.7; margin-top: 1em; }
+.reveal .weird-utah { background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 1em; border-radius: 8px; }
+.reveal .priority-must { border-left: 6px solid var(--accent); padding-left: 12px; }
+.reveal table { font-size: 0.75em; margin: 0.5em auto; }
+.reveal th { background: #581c87; color: #fff; padding: 6px 10px; }
+.reveal td { padding: 6px 10px; border-bottom: 1px solid #e4e4e7; }
+.reveal .scenario-box { background: #faf5ff; border-left: 4px solid var(--primary); padding: 1em; text-align: left; font-size: 0.85em; border-radius: 4px; }
+.reveal .answer-box { background: #f0fdf4; border-left: 4px solid #16a34a; padding: 0.8em; text-align: left; font-size: 0.8em; margin-top: 0.6em; border-radius: 4px; }
+.reveal .tag-row { display: flex; gap: 8px; justify-content: center; align-items: center; margin-bottom: 1em; }
+.reveal ul.tight li { margin: 0.2em 0; }
+.reveal .big-num { font-size: 2.2em; color: var(--primary); font-weight: bold; }
+.reveal .ladder li { padding: 0.4em 0; font-size: 0.9em; }
+.reveal .recap-card { background: #fff; border: 2px solid var(--primary); border-radius: 8px; padding: 0.8em; margin: 0.4em 0; text-align: left; }
+
+/* SIZE-CAP-PATCH v1 — clamp default Reveal heading sizes so long titles fit */
+.reveal h1 { font-size: 1.8em !important; line-height: 1.15; margin-bottom: 0.3em; }
+.reveal h2 { font-size: 1.3em !important; line-height: 1.2; margin-bottom: 0.4em; }
+.reveal h3 { font-size: 1.1em !important; }
+.reveal .slides section { padding: 0 24px; box-sizing: border-box; }
+.reveal p, .reveal li { font-size: 0.85em; line-height: 1.4; }
+.reveal table { font-size: 0.7em; }
+
+
+/* BIG-NUM-CAP v1 — clamp .big-num so long phrases like "Class D = your normal license" don't overflow */
+.reveal .big-num { font-size: 1.4em !important; line-height: 1.2; word-wrap: break-word; }
+.reveal .scenario-box, .reveal .answer-box { font-size: 0.75em; }
+.reveal h2 { font-size: 1.2em !important; }
+
+/* OVERFLOW-FIX v2 */
+/* OVERFLOW-FIX v2 — shrink everything further so slides fit within Reveal's 960x700 viewport */
+.reveal h1 { font-size: 1.4em !important; line-height: 1.15; margin-bottom: 0.2em; }
+.reveal h2 { font-size: 1.05em !important; line-height: 1.2; margin-bottom: 0.3em; }
+.reveal h3 { font-size: 0.95em !important; }
+.reveal .big-num { font-size: 1.15em !important; line-height: 1.2; word-wrap: break-word; }
+.reveal p, .reveal li { font-size: 0.7em !important; line-height: 1.35; }
+.reveal ul, .reveal ol { margin: 0.3em auto; }
+.reveal table { font-size: 0.55em !important; }
+.reveal .scenario-box, .reveal .answer-box { font-size: 0.65em !important; padding: 0.6em !important; }
+.reveal .learn-more { font-size: 0.55em !important; margin-top: 0.4em; }
+.reveal .tag-row { margin-bottom: 0.3em; }
+.reveal .must-tag, .reveal .should-tag, .reveal .nice-tag { font-size: 0.6em !important; }
+.reveal .ladder li { font-size: 0.55em !important; padding: 0.15em 0; }
+
+/* Knowledge-check slides: aggressively shrink */
+.reveal section[data-knowledge-check="true"] h2 { font-size: 0.95em !important; margin-bottom: 0.3em; }
+.reveal section[data-knowledge-check="true"] p { font-size: 0.75em !important; margin: 0.4em 0 !important; }
+.reveal section[data-knowledge-check="true"] .kc-choices { max-width: 500px !important; margin: 0 auto !important; }
+.reveal section[data-knowledge-check="true"] .kc-choices label { font-size: 0.65em !important; padding: 6px 10px !important; margin: 3px 0 !important; line-height: 1.2; }
+.reveal section[data-knowledge-check="true"] button { font-size: 0.7em !important; padding: 6px 16px !important; margin-top: 8px !important; }
+.reveal section[data-knowledge-check="true"] .kc-result { font-size: 0.65em !important; padding: 8px !important; margin-top: 8px !important; }
+.reveal section[data-knowledge-check="true"] hr { margin: 12px 0 !important; }
+
+/* CLASS-SWEEP v1 */
+/* CLASS-SWEEP v1 — size the rest of the content classes used across decks */
+.reveal .recap-card { font-size: 0.65em !important; padding: 0.4em 0.6em !important; margin: 0.3em 0 !important; line-height: 1.3; }
+.reveal .callout { font-size: 0.7em !important; padding: 0.5em !important; }
+.reveal .callout.small { font-size: 0.6em !important; }
+.reveal .scenario { font-size: 0.7em !important; padding: 0.5em !important; }
+.reveal .small { font-size: 0.6em !important; }
+.reveal .q { font-size: 0.75em !important; }
+.reveal .answer { font-size: 0.7em !important; }
+.reveal .pill, .reveal .pill-stop, .reveal .pill-go { font-size: 0.6em !important; padding: 0.2em 0.5em !important; }
+.reveal .matrix { font-size: 0.55em !important; }
+.reveal .move { font-size: 0.7em !important; }
+.reveal .big-number { font-size: 1.2em !important; line-height: 1.15; word-wrap: break-word; }
+
+/* Force a centered scrollable container that respects the brand color scrollbar */
+.reveal .slides > section { scrollbar-color: #c4b5fd #faf5ff; }
+
+/* TIGHTEN-COLS v1 */
+/* TIGHTEN-COLS v1 — shrink padding/font in 2-column go-look and multi-Q kc grids so right column fits */
+.reveal section[data-go-look="true"] div[style*="display:grid"] > div { padding: 8px !important; }
+.reveal section[data-go-look="true"] div[style*="display:grid"] .kc-choices { max-width: 100% !important; }
+.reveal section[data-go-look="true"] div[style*="display:grid"] .kc-choices label {
+  font-size: 0.55em !important;
+  padding: 5px 8px !important;
+  margin: 3px 0 !important;
+  line-height: 1.2 !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] p {
+  font-size: 0.65em !important;
+  margin: 0.4em 0 !important;
+  line-height: 1.3 !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] h2 {
+  font-size: 0.85em !important;
+  margin-bottom: 0.4em !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] button {
+  font-size: 0.65em !important;
+  padding: 5px 12px !important;
+  margin-top: 6px !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] a[href*="zerofatalities"] {
+  font-size: 0.65em !important;
+  padding: 5px 10px !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] .kc-result {
+  font-size: 0.55em !important;
+  padding: 6px !important;
+}
+/* Same for multi-Q knowledge-checks in 2-col or 3-col grids */
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] > div { padding: 6px !important; }
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] .kc-choices label {
+  font-size: 0.55em !important;
+  padding: 4px 8px !important;
+  margin: 2px 0 !important;
+  line-height: 1.2 !important;
+}
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] p {
+  font-size: 0.6em !important;
+  margin: 0.3em 0 !important;
+}
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] button {
+  font-size: 0.6em !important;
+  padding: 4px 10px !important;
+}
+
+/* CONTENT-TIGHTEN v1 */
+/* CONTENT-TIGHTEN v1 — trim tall content slides (sign + bullets + learn-more) so they fit */
+.reveal section[data-priority] img.sign { max-height: 130px !important; margin: 4px auto !important; }
+.reveal section[data-priority] p { font-size: 0.65em !important; margin: 0.3em 0 !important; line-height: 1.35; }
+.reveal section[data-priority] ul, .reveal section[data-priority] ol { margin: 0.3em 0 !important; }
+.reveal section[data-priority] li { font-size: 0.65em !important; line-height: 1.3 !important; margin: 0.15em 0 !important; }
+.reveal section[data-priority] .learn-more { font-size: 0.5em !important; margin-top: 0.3em !important; }
+.reveal section[data-priority] .tag-row { margin-bottom: 0.3em !important; }
+.reveal section[data-priority] h1 { font-size: 1.5em !important; margin-bottom: 0.2em !important; }
+.reveal section[data-priority] h2 { font-size: 1.1em !important; margin-bottom: 0.3em !important; }
+.reveal section[data-priority] table { font-size: 0.55em !important; margin: 0.3em auto !important; }
+.reveal section[data-priority] .scenario-box, .reveal section[data-priority] .answer-box { font-size: 0.6em !important; padding: 0.4em !important; margin: 0.3em 0 !important; }
+
+/* COL-DIVIDERS v1 */
+/* COL-DIVIDERS v1 — vertical separator line between 2-Q/3-Q knowledge-check grid columns */
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] > div:not(:last-child) {
+  border-right: 2px dashed #c4b5fd !important;
+  padding-right: 12px !important;
+}
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] > div:not(:first-child) {
+  padding-left: 12px !important;
+}
+
+/* GOLOOK-DIVIDER v1 */
+/* GOLOOK-DIVIDER v1 — vertical separator between go-look's left (link) and right (Q) columns */
+.reveal section[data-go-look="true"] div[style*="display:grid"] > div:not(:last-child) {
+  border-right: 2px dashed #fcd34d !important;
+  padding-right: 10px !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] > div:not(:first-child) {
+  padding-left: 10px !important;
+}
+
+</style></head>
+<body>
+<!-- HOME-BTN v1 -->
+<a href="../dashboard/index.html" style="position:fixed; top:12px; left:12px; z-index:9999; background:#581c87; color:white; text-decoration:none; padding:6px 14px; border-radius:6px; font-size:13px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.15);">&larr; Home</a>
+<div class="reveal"><div class="slides">
+
+<section data-fact-id="unit-1-title" data-priority="NICE">
+  <h1>Unit 1</h1>
+  <h2>Getting Your License</h2>
+  <p>Utah Driver Handbook -- the admin stuff before you drive.</p>
+  <p style="font-size: 0.8em; opacity: 0.7;">About 20 minutes. ~24 slides.</p>
+</section>
+
+<section data-fact-id="unit-1-intro" data-priority="NICE">
+  <h2>What this unit teaches</h2>
+  <ul class="tight">
+    <li>How old you have to be for each step</li>
+    <li>What papers to bring to the DLD</li>
+    <li>What the letters on a license actually mean</li>
+    <li>When your license expires and how to renew</li>
+  </ul>
+  <p style="margin-top: 1.2em; font-size: 0.9em;">By the end you will know exactly what you need to do, in order, to get yourself behind the wheel.</p>
+</section>
+
+<section data-fact-id="permit-min-age-15" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span></div>
+  <h2>Can I get a permit at 15?</h2>
+  <p class="big-num">Yes -- at 15.</p>
+  <p>The <strong>Entry-Level Learner Permit</strong> is the very first card you carry. You can apply the day you turn 15.</p>
+  <ul class="tight">
+    <li>It is good for <strong>18 months</strong></li>
+    <li>You drive only with a qualifying adult in the front seat</li>
+    <li>Fee: $19</li>
+  </ul>
+  <div class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.17, p.19</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-3-driver-education-and-permits/learner-permit/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></div>
+</section>
+
+<section data-fact-id="documents-original-only" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span></div>
+  <h2>What do I bring to the DLD?</h2>
+  <ul class="tight">
+    <li><strong>Original or certified copies only.</strong> No photocopies, no faxes.</li>
+    <li>Proof of identity (birth certificate, passport)</li>
+    <li>Proof of Social Security number</li>
+    <li><strong>Two</strong> proofs of Utah residence -- each dated within <strong>90 days</strong></li>
+    <li>Fee</li>
+  </ul>
+  <p style="font-size: 0.85em; margin-top: 0.8em;">Show up with photocopies and you go home without a permit.</p>
+  <div class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.23, p.25</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></div>
+</section>
+
+<section data-fact-id="written-test-passing-80" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span></div>
+  <h2>Three tests before you drive</h2>
+  <table>
+    <thead><tr><th>Test</th><th>Where</th><th>Pass</th></tr></thead>
+    <tbody>
+      <tr><td>Written knowledge</td><td>DLD</td><td><strong>80%</strong></td></tr>
+      <tr><td>Traffic Safety &amp; Trends</td><td>Online only</td><td><strong>100%</strong></td></tr>
+      <tr><td>Skills (driving)</td><td>DLD or third-party</td><td>Examiner pass</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size: 0.85em; margin-top: 0.6em;">Knowledge test is untimed, 30-45 min. You get <strong>3 attempts per fee</strong> in a 12-month window, max 2 tries per day.</p>
+  <div class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.33</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-6-examinations/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></div>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">What kind of documents must you bring to apply for a Utah license?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc4" value="0"> Photocopies are fine
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc4" value="1"> Original or certified copies -- no photocopies or faxes
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc4" value="2"> Digital images on your phone
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc4" value="3"> Whatever you have available
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u1-kc4', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Original or certified copies -- no photocopies or faxes<br>
+    Documents must be original or certified copies. Faxed and photocopied documents are NOT accepted.
+  </div>
+</section>
+
+
+<section data-fact-id="class-d-personal-vehicles-26000" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span></div>
+  <h2>What does "Class D" mean?</h2>
+  <p class="big-num">Class D = your normal license.</p>
+  <p>Covers personal vehicles up to <strong>26,000 lbs</strong> -- cars, SUVs, pickups, most RVs.</p>
+  <table>
+    <thead><tr><th>Class</th><th>What it covers</th></tr></thead>
+    <tbody>
+      <tr><td><strong>D</strong></td><td>Personal vehicles up to 26,000 lbs</td></tr>
+      <tr><td>C</td><td>16+ passengers OR hazmat (age 21+)</td></tr>
+      <tr><td>B</td><td>Single/combined over 26,001 lbs</td></tr>
+      <tr><td>A</td><td>Combined 26,001+ with towed over 10,001 lbs</td></tr>
+    </tbody>
+  </table>
+  <div class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.20, p.21</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-4-driver-license-types/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></div>
+</section>
+
+<section data-fact-id="endorsements-other-letters" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD KNOW</span></div>
+  <h2>Endorsement vs. restriction</h2>
+  <table>
+    <thead><tr><th></th><th>Endorsement</th><th>Restriction</th></tr></thead>
+    <tbody>
+      <tr><td>What it does</td><td><strong>Adds</strong> what you can drive</td><td><strong>Limits</strong> how you drive</td></tr>
+      <tr><td>Example</td><td>M = motorcycle</td><td>B = corrective lenses</td></tr>
+      <tr><td>Where</td><td>Back of license</td><td>Back of license</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size: 0.85em; margin-top: 0.6em;">Easy memory: <strong>E</strong>ndorsement = <strong>E</strong>xtra. Restriction = required limit.</p>
+  <div class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.22</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-4-driver-license-types/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></div>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">A Class D license covers personal vehicles up to what weight?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc5" value="0"> 10,000 lbs
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc5" value="1"> 16,000 lbs
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc5" value="2"> 26,000 lbs
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc5" value="3"> 40,000 lbs
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u1-kc5', 2, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> 26,000 lbs<br>
+    Class D is the regular driver license -- covers personal vehicles up to 26,000 lbs. Above that, you need a CDL class.
+  </div>
+</section>
+
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">What is the minimum age to apply for a Utah Class D driver license?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u1-kc-1" value="0"> 14
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u1-kc-1" value="1"> 15
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u1-kc-1" value="2"> 16
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u1-kc-1" value="3"> 18
+    </label>
+  </div>
+  <button onclick="checkKC('u1-kc-1', 2, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> 16<br>
+    Minimum age for a Utah Class D driver license is 16. The learner permit is available at 15.
+  </div>
+</section>
+
+
+<section data-fact-id="endorsement-m-motorcycle" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span></div>
+  <h2>M = motorcycle</h2>
+  <p class="big-num">M</p>
+  <p>The single letter <strong>M</strong> on the back of a Utah license means "can ride a motorcycle." This one shows up on the real DLD test.</p>
+  <p style="font-size: 0.85em; margin-top: 0.8em; opacity: 0.8;">Other common ones: H = hazmat, P = passenger, S = school bus, T = doubles/triples, X = hazmat + tanker, Z = taxicab. Adult stuff.</p>
+  <div class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.22, p.90</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-4-driver-license-types/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></div>
+</section>
+
+<section data-fact-id="restriction-b-corrective-lenses" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span></div>
+  <h2>Restriction B = corrective lenses</h2>
+  <p class="big-num">B</p>
+  <p>If you needed glasses or contacts to pass the vision test, your license carries restriction <strong>B</strong>. That means: drive with them on, every time.</p>
+  <p style="font-size: 0.85em; margin-top: 0.6em; opacity: 0.8;">A = no restrictions. G = daylight hours only.</p>
+  <div class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.22, p.30</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-4-driver-license-types/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></div>
+</section>
+
+<section data-fact-id="license-expiration-5yr-vs-8yr" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span></div>
+  <h2>When does my license expire?</h2>
+  <table>
+    <thead><tr><th>Type</th><th>Lasts</th></tr></thead>
+    <tbody>
+      <tr><td>Provisional (under 21)</td><td><strong>5 years</strong></td></tr>
+      <tr><td>Regular (21+)</td><td><strong>8 years</strong></td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top: 0.8em;">Both expire on your <strong>birthday</strong>. You can renew up to <strong>6 months</strong> before the expiration date.</p>
+  <p style="font-size: 0.85em; opacity: 0.8;">Move? Tell the DLD within <strong>10 days</strong>.</p>
+  <div class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.28, p.29</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></div>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">You want to legally ride a motorcycle in Utah. What endorsement do you need on your license?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc6" value="0"> M
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc6" value="1"> H
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc6" value="2"> S
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc6" value="3"> Z
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u1-kc6', 0, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> M<br>
+    The M endorsement is required to operate a motorcycle. Without it, you can be fined.
+  </div>
+</section>
+
+
+<section data-fact-id="provisional-under-21" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span></div>
+  <h2>Learner permit vs. provisional license</h2>
+  <table>
+    <thead><tr><th></th><th>Learner Permit</th><th>Provisional License</th></tr></thead>
+    <tbody>
+      <tr><td>Age</td><td>15+</td><td>16+</td></tr>
+      <tr><td>Drive alone?</td><td><strong>No</strong> -- adult 21+ in front seat</td><td>Yes (with curfew + passenger rules)</td></tr>
+      <tr><td>Skills test passed?</td><td>No</td><td>Yes</td></tr>
+      <tr><td>Tests done</td><td>Written + eye</td><td>+ Skills + Traffic Safety &amp; Trends</td></tr>
+    </tbody>
+  </table>
+  <p style="font-size: 0.85em; margin-top: 0.6em;">The provisional license is the actual "license" -- anyone under 21 in Utah carries it.</p>
+  <div class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.12, p.17, p.20</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></div>
+</section>
+
+<section data-fact-id="permit-hold-6-months-16-17" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span></div>
+  <h2>The GDL ladder</h2>
+  <p style="font-size: 0.85em;">Utah Graduated Driver License goes in steps:</p>
+  <ol class="ladder" style="text-align: left; max-width: 700px; margin: 0 auto;">
+    <li><strong>1. Entry-Level Permit</strong> -- age 15. Adult 21+ in front seat. 18 months max.</li>
+    <li><strong>2. Renewal Permit</strong> (if needed) -- age 16. After 6 months on permit + driver ed for 16-17 year-olds.</li>
+    <li><strong>3. Provisional Class D License</strong> -- age 16. Pass skills test. Drive solo with curfew + passenger rules.</li>
+    <li><strong>4. Regular Class D License</strong> -- automatic at 21. Restrictions drop off.</li>
+  </ol>
+  <p style="font-size: 0.8em; margin-top: 0.8em; opacity: 0.8;">The "6-month hold" trips people up: under 18 must hold the permit 6 months AND finish driver ed before getting licensed.</p>
+  <div class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.14, p.16, p.17</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-2-licensing-requirements/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></div>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">What is the minimum age to apply for a Utah entry-level learner permit?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u1-kc-2" value="0"> 14
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u1-kc-2" value="1"> 15
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u1-kc-2" value="2"> 16
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u1-kc-2" value="3"> 18
+    </label>
+  </div>
+  <button onclick="checkKC('u1-kc-2', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> 15<br>
+    An entry-level learner permit can be obtained at age 15. A full Class D license requires age 16.
+  </div>
+</section>
+
+
+<section data-fact-id="age-16-curfew-12am-5am" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span></div>
+  <h2>What changes at 16?</h2>
+  <p>You can take the skills test at the DLD and get your provisional license -- but two restrictions kick in:</p>
+  <ul class="tight">
+    <li><strong>Curfew:</strong> no driving 12:00 a.m. - 5:00 a.m.</li>
+    <li><strong>Passengers:</strong> immediate family members only, for the first 6 months</li>
+  </ul>
+  <p style="font-size: 0.85em; margin-top: 0.6em;">Curfew exceptions: licensed 21+ adult riding along, driving to/from work, to/from a school-sponsored activity, agricultural work, or emergency.</p>
+  <div class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.18</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-3-driver-education-and-permits/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></div>
+</section>
+
+<section data-fact-id="regular-license-21-plus" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD KNOW</span></div>
+  <h2>What changes at 21?</h2>
+  <ul class="tight">
+    <li>"Provisional" comes off your license -- it becomes a regular Class D</li>
+    <li>License expiration jumps from <strong>5 years</strong> to <strong>8 years</strong></li>
+    <li>Curfew and passenger rules end (they ended at 17, actually)</li>
+    <li>Phone rule relaxes: voice/hands-free only while moving</li>
+  </ul>
+  <p style="font-size: 0.85em; margin-top: 0.6em; opacity: 0.8;">At 17, both the curfew and family-only rules drop off automatically.</p>
+  <div class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.18, p.20, p.28</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-3-driver-education-and-permits/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></div>
+</section>
+
+<section data-fact-id="permit-front-seat-21-plus" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span><span style="font-size: 0.7em; opacity: 0.7;">scenario</span></div>
+  <h2>Scenario: just got the permit -- drive solo?</h2>
+  <div class="scenario-box">
+    Sarah is 15 and just got her permit yesterday. She wants to drive the half-mile to a friend house alone.
+  </div>
+  <div class="answer-box">
+    <strong>No -- ever.</strong> A learner permit requires a parent, guardian, instructor, or licensed adult 21+ (with parent authorization) in the <strong>front seat</strong>. Distance does not matter. Permit hold time does not matter.
+  </div>
+  <div class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.17, p.18</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-3-driver-education-and-permits/learner-permit/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></div>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">A 16-year-old licensed Utah driver may NOT drive during which hours?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc7" value="0"> 9 p.m. to 6 a.m.
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc7" value="1"> 10 p.m. to 5 a.m.
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc7" value="2"> 12 a.m. to 5 a.m.
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc7" value="3"> 11 p.m. to 7 a.m.
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u1-kc7', 2, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> 12 a.m. to 5 a.m.<br>
+    Age 16 license holders have a 12 a.m. to 5 a.m. curfew, with limited exceptions (school activity, work, emergency, or accompanied by a licensed 21+ adult).
+  </div>
+</section>
+
+
+<section data-fact-id="age-16-family-only-6mo" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span><span style="font-size: 0.7em; opacity: 0.7;">scenario</span></div>
+  <h2>Scenario: friend needs a ride at 11:45 p.m.</h2>
+  <div class="scenario-box">
+    Marcus, 16, got his provisional license 2 months ago. It is 11:45 p.m. He wants to pick up a friend from a school dance that ran long.
+  </div>
+  <div class="answer-box">
+    <strong>Two rules block him.</strong> (1) After midnight, curfew hits -- the school-activity exception only covers driving to and from <em>his own</em> event, not a pickup. (2) Even before midnight, the first-6-months passenger rule allows immediate family only.
+  </div>
+  <div class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.18</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-3-driver-education-and-permits/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></div>
+</section>
+
+<section data-fact-id="out-of-state-permit-not-valid" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span><span style="font-size: 0.7em; opacity: 0.7;">scenario</span></div>
+  <h2>Scenario: family moves to Utah from California</h2>
+  <div class="scenario-box">
+    Dad (43) has a valid California license. Daughter (17) has a California learner permit.
+  </div>
+  <div class="answer-box">
+    <strong>Dad: yes -- for 6 months.</strong> Out-of-state licenses are good in Utah up to 6 months; then he must trade it for a Utah DL.<br>
+    <strong>Daughter: no.</strong> Out-of-state learner permits do not transfer -- she cannot drive in Utah at all on it.
+  </div>
+  <div class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.14, p.28</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-2-licensing-requirements/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></div>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">To drive on a Utah public highway, you must have what?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u1-kc-3" value="0"> Nothing -- just a vehicle is enough
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u1-kc-3" value="1"> A valid Utah driver license, learner permit, or temporary driver license
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u1-kc-3" value="2"> Only a state ID card
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u1-kc-3" value="3"> Only proof of insurance
+    </label>
+  </div>
+  <button onclick="checkKC('u1-kc-3', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> A valid Utah driver license, learner permit, or temporary driver license<br>
+    Every Utah resident driving on public highways must have a valid Utah driver license, learner permit, or temporary driver license.
+  </div>
+</section>
+
+
+<section data-fact-id="age-19-plus-no-driver-ed-with-90-days" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span><span style="font-size: 0.7em; opacity: 0.7;">scenario</span></div>
+  <h2>Scenario: 19 and never had a license</h2>
+  <div class="scenario-box">
+    Diego is 19 and wants his first license. Does he need driver education?
+  </div>
+  <div class="answer-box">
+    <strong>No</strong> -- at 19+ he can skip driver ed if he (1) holds the learner permit at least <strong>90 days</strong> AND (2) completes <strong>40 hours</strong> of practice driving (10 at night). Driver ed is an option, not a requirement, once you are 19.
+  </div>
+  <div class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.16, p.17</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-3-driver-education-and-permits/driver-education/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></div>
+</section>
+
+<section data-fact-id="third-party-skills-only" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span><span style="font-size: 0.7em; opacity: 0.7;">scenario</span></div>
+  <h2>Scenario: passed at a third-party tester -- done?</h2>
+  <div class="scenario-box">
+    Avery, 15, signs up at a third-party testing service and passes. She thinks she has her license.
+  </div>
+  <div class="answer-box">
+    <strong>Not done.</strong> Third-party testers handle the <strong>skills test only</strong> -- they do not do the written knowledge test. Avery still owes: written test at the DLD (80%), Traffic Safety &amp; Trends online (100%), 6-month permit hold, and driver ed.
+  </div>
+  <div class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.33, p.35</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-6-examinations/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></div>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">A newly licensed 16-year-old in Utah may carry which passengers during the first 6 months?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc8" value="0"> Anyone they choose
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc8" value="1"> Immediate family members only
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc8" value="2"> Only one friend at a time
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u1-kc8" value="3"> Only passengers age 18+
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u1-kc8', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Immediate family members only<br>
+    For the first 6 months of having a Utah license at age 16, only immediate family members may be in the vehicle (with limited exceptions).
+  </div>
+</section>
+
+
+<section data-fact-id="skills-test-bring-own-vehicle" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span><span style="font-size: 0.7em; opacity: 0.7;">scenario</span></div>
+  <h2>Scenario: showed up to the skills test</h2>
+  <div class="scenario-box">
+    What do you actually bring on skills-test day?
+  </div>
+  <div class="answer-box">
+    <strong>Your own vehicle</strong> (safe and registered) + valid registration + valid insurance + a licensed adult (21+, or parent/guardian/spouse 18+) to ride along. Only you and the examiner are in the car during the test. Appointments only.
+  </div>
+  <div class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.33, p.34</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-6-examinations/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></div>
+</section>
+
+<section class="weird-utah" data-fact-id="utah-weird-dpc" data-priority="NICE">
+  <div class="tag-row"><span class="nice-tag">WEIRD UTAH</span></div>
+  <h2>The license that is not an ID</h2>
+  <p>Utah has a thing called a <strong>Driving Privilege Card (DPC)</strong> -- it lets someone legally drive, but it is <em>not</em> valid ID and <em>not</em> valid age proof. You cannot buy alcohol with it, cannot board a plane with it, cannot use it to verify you are 18.</p>
+  <p>And: it expires every single <strong>birthday</strong>. Most licenses last 5 or 8 years. This one resets annually.</p>
+  <p style="font-size: 0.85em; margin-top: 0.6em; opacity: 0.8;">Another weird one: Utah will not let you hold a driver license AND a state ID card at the same time. Pick one.</p>
+  <div class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.20, p.29</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-4-driver-license-types/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></div>
+</section>
+
+<section data-fact-id="unit-1-recap" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">RECAP</span></div>
+  <h2>Top 5 MUSTs from this unit</h2>
+  <div class="recap-card"><strong>1.</strong> Permit at <strong>15</strong>, license at <strong>16</strong>. Under 18 holds the permit 6 months + driver ed.</div>
+  <div class="recap-card"><strong>2.</strong> Written test <strong>80%</strong>. Traffic Safety &amp; Trends <strong>100%</strong> online. Bring your own car to skills.</div>
+  <div class="recap-card"><strong>3.</strong> Class <strong>D</strong> = regular license. <strong>M</strong> = motorcycle. <strong>B</strong> = corrective lenses.</div>
+  <div class="recap-card"><strong>4.</strong> Provisional license = <strong>5 years</strong>. Regular (21+) = <strong>8 years</strong>. Renew within 6 months. Move? Update within 10 days.</div>
+  <div class="recap-card"><strong>5.</strong> At 16: midnight-5 a.m. curfew + family-only passengers for 6 months.</div>
+</section>
+
+<section data-state="finish" data-fact-id="unit-1-next" data-priority="NICE">
+  <h1 style="color:#581c87; font-size: 2em; text-align:center;">&#127881; You finished Unit 1! &#127881;</h1>
+  <p style="text-align:center; font-size: 0.9em; margin-top: 1em;"><strong>Next: Unit 2 &mdash; Driving Basics.</strong> Mirrors, seatbelts, lanes, parking, passing, turns -- actually operating the car.</p>
+  <p style="text-align:center; font-size: 0.8em; opacity: 0.7; margin-top: 1em;">~22 slides. About 20 minutes.</p>
+</section>
+
+</div></div>
+<script>
+  function checkKC(name, correctIndex, btn) {
+    var sel = document.querySelector('input[name="' + name + '"]:checked');
+    var resultEl = btn.nextElementSibling;
+    if (!sel) {
+      resultEl.style.display = 'block';
+      resultEl.innerHTML = '<em>Pick an answer first.</em>';
+      return;
+    }
+    var labels = document.querySelectorAll('input[name="' + name + '"]');
+    labels.forEach(function(input, i) {
+      var lbl = input.parentElement;
+      if (i === correctIndex) lbl.style.borderColor = '#16a34a', lbl.style.background = '#dcfce7';
+      else if (input.checked) lbl.style.borderColor = '#dc2626', lbl.style.background = '#fee2e2';
+    });
+    resultEl.style.display = 'block';
+    btn.disabled = true;
+    btn.style.opacity = '0.5';
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>Reveal.initialize({ hash: true, slideNumber: false, transition: "fade", controls: true, progress: true  });</script>
+<script>
+  Reveal.on('slidechanged', function(event) {
+    var slides = document.querySelectorAll('.reveal .slides > section');
+    var isLast = event.currentSlide === slides[slides.length - 1];
+    if (isLast && typeof confetti === 'function') {
+      confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+      setTimeout(function() {
+        confetti({ particleCount: 80, spread: 100, origin: { y: 0.5, x: 0.2 } });
+        confetti({ particleCount: 80, spread: 100, origin: { y: 0.5, x: 0.8 } });
+      }, 400);
+      // Record deck completion
+      try {
+        var unitKey = "unit-1";
+        var completions = JSON.parse(localStorage.getItem("dl_deck_completions") || "{}");
+        completions[unitKey] = Date.now();
+        localStorage.setItem("dl_deck_completions", JSON.stringify(completions));
+        var __dlUser = localStorage.getItem("dl_user");
+        if (__dlUser && __dlUser !== "__anon__") {
+          fetch("/api/drive/progress", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              user: __dlUser.replace(/^"|"$/g, ""),
+              deckCompletions: completions
+            }),
+            keepalive: true
+          }).catch(function(){});
+        }
+      } catch (e) {}
+    }
+  });
+</script>
+</body></html>

@@ -1,0 +1,3078 @@
+{
+  "questions": [
+    {
+      "id": "q-0001",
+      "canonical_fact_id": "license-min-age-16",
+      "topic": "licensing",
+      "subtopic": "gdl-stages",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 14,
+      "source_doc": "handbook-3.2026",
+      "question": "What is the minimum age to apply for a Utah Class D driver license?",
+      "choices": [
+        "14",
+        "15",
+        "16",
+        "18"
+      ],
+      "correct_index": 2,
+      "explanation": "Minimum age for a Utah Class D driver license is 16. The learner permit is available at 15.",
+      "sign_image": null,
+      "tags": [
+        "age",
+        "gdl"
+      ]
+    },
+    {
+      "id": "q-0002",
+      "canonical_fact_id": "permit-min-age-15",
+      "topic": "licensing",
+      "subtopic": "gdl-stages",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 17,
+      "source_doc": "handbook-3.2026",
+      "question": "What is the minimum age to apply for a Utah entry-level learner permit?",
+      "choices": [
+        "14",
+        "15",
+        "16",
+        "18"
+      ],
+      "correct_index": 1,
+      "explanation": "An entry-level learner permit can be obtained at age 15. A full Class D license requires age 16.",
+      "sign_image": null,
+      "tags": [
+        "age",
+        "permit",
+        "gdl"
+      ]
+    },
+    {
+      "id": "q-0003",
+      "canonical_fact_id": "visitor-6-months",
+      "topic": "licensing",
+      "subtopic": "residency",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 14,
+      "source_doc": "handbook-3.2026",
+      "question": "How long may a visitor with a valid out-of-state license drive in Utah before needing a Utah license?",
+      "choices": [
+        "30 days",
+        "90 days",
+        "6 months",
+        "1 year"
+      ],
+      "correct_index": 2,
+      "explanation": "Visitors with a valid out-of-state or out-of-country license may drive in Utah for up to 6 months.",
+      "sign_image": null,
+      "tags": [
+        "residency",
+        "visitor"
+      ]
+    },
+    {
+      "id": "q-0004",
+      "canonical_fact_id": "out-of-state-permit-not-valid",
+      "topic": "licensing",
+      "subtopic": "residency",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 28,
+      "source_doc": "handbook-3.2026",
+      "question": "If you hold a learner permit from another state, may you drive in Utah?",
+      "choices": [
+        "Yes, for up to 6 months",
+        "Yes, if a licensed adult is with you",
+        "No, out-of-state learner permits are not valid in Utah",
+        "Yes, but only on non-highway roads"
+      ],
+      "correct_index": 2,
+      "explanation": "Out-of-state learner permits do NOT transfer to Utah. Full out-of-state licenses are honored for up to 6 months, but permits are not.",
+      "sign_image": null,
+      "tags": [
+        "permit",
+        "residency"
+      ]
+    },
+    {
+      "id": "q-0005",
+      "canonical_fact_id": "utah-resident-definition",
+      "topic": "licensing",
+      "subtopic": "residency",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 14,
+      "source_doc": "handbook-3.2026",
+      "question": "Which of these makes you a Utah resident for driver licensing purposes?",
+      "choices": [
+        "Spending one weekend in Utah",
+        "Visiting family in Utah for 2 weeks",
+        "Registering a vehicle in Utah",
+        "Driving through Utah on a road trip"
+      ],
+      "correct_index": 2,
+      "explanation": "You become a Utah resident if you stay 6+ months in a calendar year, register a vehicle here, obtain a Utah DL, or are gainfully employed here.",
+      "sign_image": null,
+      "tags": [
+        "residency"
+      ]
+    },
+    {
+      "id": "q-0006",
+      "canonical_fact_id": "must-have-license-on-highway",
+      "topic": "licensing",
+      "subtopic": "general",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 14,
+      "source_doc": "handbook-3.2026",
+      "question": "To drive on a Utah public highway, you must have what?",
+      "choices": [
+        "Nothing -- just a vehicle is enough",
+        "A valid Utah driver license, learner permit, or temporary driver license",
+        "Only a state ID card",
+        "Only proof of insurance"
+      ],
+      "correct_index": 1,
+      "explanation": "Every Utah resident driving on public highways must have a valid Utah driver license, learner permit, or temporary driver license.",
+      "sign_image": null,
+      "tags": [
+        "general"
+      ]
+    },
+    {
+      "id": "q-0007",
+      "canonical_fact_id": "dl-blocked-by-out-of-state-suspension",
+      "topic": "licensing",
+      "subtopic": "residency",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 14,
+      "source_doc": "handbook-3.2026",
+      "question": "Your driver license is suspended in another state. Can you get a Utah driver license?",
+      "choices": [
+        "Yes, Utah does not check other states",
+        "Yes, but only a learner permit",
+        "No, a suspension in any state blocks a Utah license",
+        "Yes, after a 30-day waiting period"
+      ],
+      "correct_index": 2,
+      "explanation": "You cannot have a Utah DL if your driving privilege is denied, suspended, revoked, or disqualified in Utah OR any other state.",
+      "sign_image": null,
+      "tags": [
+        "residency",
+        "suspension"
+      ]
+    },
+    {
+      "id": "q-0008",
+      "canonical_fact_id": "utah-dlc-nrvc-member",
+      "topic": "licensing",
+      "subtopic": "general",
+      "priority": "NICE",
+      "type": "scenario",
+      "source_page": 15,
+      "source_doc": "handbook-3.2026",
+      "question": "If you get a traffic ticket in another state, what happens to your Utah record?",
+      "choices": [
+        "Nothing -- out-of-state tickets stay out of state",
+        "Utah is part of the Driver License Compact, so the conviction is forwarded to Utah",
+        "Only DUI tickets are forwarded",
+        "You must self-report within 30 days"
+      ],
+      "correct_index": 1,
+      "explanation": "Utah is a member of the Driver License Compact (DLC) and Non-Resident Violator Compact (NRVC). Out-of-state convictions get forwarded to your home state.",
+      "sign_image": null,
+      "tags": [
+        "compact"
+      ]
+    },
+    {
+      "id": "q-0009",
+      "canonical_fact_id": "class-d-personal-vehicles-26000",
+      "topic": "licensing",
+      "subtopic": "license-types",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 20,
+      "source_doc": "handbook-3.2026",
+      "question": "A Class D license covers personal vehicles up to what weight?",
+      "choices": [
+        "10,000 lbs",
+        "16,000 lbs",
+        "26,000 lbs",
+        "40,000 lbs"
+      ],
+      "correct_index": 2,
+      "explanation": "Class D is the regular driver license -- covers personal vehicles up to 26,000 lbs. Above that, you need a CDL class.",
+      "sign_image": null,
+      "tags": [
+        "license-class"
+      ]
+    },
+    {
+      "id": "q-0010",
+      "canonical_fact_id": "cdl-required-26001",
+      "topic": "licensing",
+      "subtopic": "license-types",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 11,
+      "source_doc": "handbook-3.2026",
+      "question": "A Commercial Driver License (CDL) is required for vehicles with a Gross Vehicle Weight Rating of at least what?",
+      "choices": [
+        "10,001 lbs",
+        "16,000 lbs",
+        "26,001 lbs",
+        "40,000 lbs"
+      ],
+      "correct_index": 2,
+      "explanation": "A CDL is required for vehicles with a GVWR of 26,001 lbs or more, or designed for 16+ passengers, placarded hazmat, etc.",
+      "sign_image": null,
+      "tags": [
+        "cdl",
+        "license-class"
+      ]
+    },
+    {
+      "id": "q-0011",
+      "canonical_fact_id": "class-c-passengers-hazmat-21",
+      "topic": "licensing",
+      "subtopic": "license-types",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 21,
+      "source_doc": "handbook-3.2026",
+      "question": "A Utah Class C license is required for a single vehicle under 26,001 lbs that does what?",
+      "choices": [
+        "Tows a small trailer",
+        "Transports 16+ occupants OR placarded hazmat",
+        "Drives off-road",
+        "Is registered as a farm vehicle"
+      ],
+      "correct_index": 1,
+      "explanation": "Class C covers single vehicles under 26,001 lbs that transport 16+ occupants OR placarded hazmat. Minimum age is 21.",
+      "sign_image": null,
+      "tags": [
+        "license-class"
+      ]
+    },
+    {
+      "id": "q-0012",
+      "canonical_fact_id": "class-b-definition",
+      "topic": "licensing",
+      "subtopic": "license-types",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 21,
+      "source_doc": "handbook-3.2026",
+      "question": "Which CDL class covers a single or combined vehicle over 26,001 lbs with a towed unit over 10,001 lbs?",
+      "choices": [
+        "Class A",
+        "Class B",
+        "Class C",
+        "Class D"
+      ],
+      "correct_index": 1,
+      "explanation": "Class B covers single/combined vehicles over 26,001 lbs with a towed unit over 10,001 lbs.",
+      "sign_image": null,
+      "tags": [
+        "license-class",
+        "cdl"
+      ]
+    },
+    {
+      "id": "q-0013",
+      "canonical_fact_id": "class-a-definition",
+      "topic": "licensing",
+      "subtopic": "license-types",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 21,
+      "source_doc": "handbook-3.2026",
+      "question": "Which CDL class is for a combined vehicle 26,001+ lbs with a towed unit over 10,001 lbs?",
+      "choices": [
+        "Class A",
+        "Class B",
+        "Class C",
+        "Class D"
+      ],
+      "correct_index": 0,
+      "explanation": "Class A covers combined vehicles 26,001+ lbs with towed unit over 10,001 lbs -- the largest combination class.",
+      "sign_image": null,
+      "tags": [
+        "license-class",
+        "cdl"
+      ]
+    },
+    {
+      "id": "q-0014",
+      "canonical_fact_id": "provisional-under-21",
+      "topic": "licensing",
+      "subtopic": "license-types",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 20,
+      "source_doc": "handbook-3.2026",
+      "question": "What license is issued to anyone under 21 who passes the Class D requirements?",
+      "choices": [
+        "Regular Class D",
+        "Provisional Class D",
+        "Temporary Class D",
+        "Restricted Class D"
+      ],
+      "correct_index": 1,
+      "explanation": "Anyone under 21 with a Class D license gets a Provisional license. It uses a separate point system and expires after 5 years.",
+      "sign_image": null,
+      "tags": [
+        "provisional"
+      ]
+    },
+    {
+      "id": "q-0015",
+      "canonical_fact_id": "limited-term-non-citizen",
+      "topic": "licensing",
+      "subtopic": "license-types",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 20,
+      "source_doc": "handbook-3.2026",
+      "question": "A Limited-Term Driver License is issued to whom?",
+      "choices": [
+        "U.S. citizens under 18",
+        "Non-U.S. Citizens, Nationals, or LPRs who can prove lawful presence",
+        "Anyone with a suspended license",
+        "First-time applicants only"
+      ],
+      "correct_index": 1,
+      "explanation": "A Limited-Term DL is issued to non-U.S. Citizens, Nationals, or LPRs who prove lawful presence. It expires when their lawful presence ends.",
+      "sign_image": null,
+      "tags": [
+        "limited-term"
+      ]
+    },
+    {
+      "id": "q-0016",
+      "canonical_fact_id": "dpc-drive-only-not-id",
+      "topic": "licensing",
+      "subtopic": "license-types",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 20,
+      "source_doc": "handbook-3.2026",
+      "question": "What is a Driving Privilege Card (DPC) used for?",
+      "choices": [
+        "Driving AND identification",
+        "Driving only -- NOT valid ID or age verification",
+        "Identification only -- not for driving",
+        "Driving only out-of-state vehicles"
+      ],
+      "correct_index": 1,
+      "explanation": "A DPC is for driving only. It is NOT valid ID or age verification, and expires every birthday.",
+      "sign_image": null,
+      "tags": [
+        "dpc"
+      ]
+    },
+    {
+      "id": "q-0017",
+      "canonical_fact_id": "interdicted-no-alcohol-sale",
+      "topic": "licensing",
+      "subtopic": "license-types",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 4,
+      "source_doc": "handbook-3.2026",
+      "question": "An interdicted driver license has a red banner that says what?",
+      "choices": [
+        "DUI OFFENDER",
+        "NO ALCOHOL SALE",
+        "RESTRICTED LICENSE",
+        "PROBATION"
+      ],
+      "correct_index": 1,
+      "explanation": "An interdicted DL carries a red NO ALCOHOL SALE banner. Extreme DUI = automatic interdicted status.",
+      "sign_image": null,
+      "tags": [
+        "interdicted"
+      ]
+    },
+    {
+      "id": "q-0018",
+      "canonical_fact_id": "endorsement-m-motorcycle",
+      "topic": "licensing",
+      "subtopic": "endorsements",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 22,
+      "source_doc": "handbook-3.2026",
+      "question": "You want to legally ride a motorcycle in Utah. What endorsement do you need on your license?",
+      "choices": [
+        "M",
+        "H",
+        "S",
+        "Z"
+      ],
+      "correct_index": 0,
+      "explanation": "The M endorsement is required to operate a motorcycle. Without it, you can be fined.",
+      "sign_image": null,
+      "tags": [
+        "endorsement",
+        "motorcycle"
+      ]
+    },
+    {
+      "id": "q-0019",
+      "canonical_fact_id": "endorsement-m-motorcycle",
+      "topic": "licensing",
+      "subtopic": "endorsements",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 22,
+      "source_doc": "handbook-3.2026",
+      "question": "What does the letter M on a Utah license endorsement signify?",
+      "choices": [
+        "Motor vehicle",
+        "Motorcycle",
+        "Moped only",
+        "Medical exemption"
+      ],
+      "correct_index": 1,
+      "explanation": "M = Motorcycle endorsement. It must appear on your license to legally ride a motorcycle in Utah.",
+      "sign_image": null,
+      "tags": [
+        "endorsement",
+        "motorcycle"
+      ]
+    },
+    {
+      "id": "q-0020",
+      "canonical_fact_id": "endorsement-h-hazmat",
+      "topic": "licensing",
+      "subtopic": "endorsements",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 22,
+      "source_doc": "handbook-3.2026",
+      "question": "What does the letter H on a Utah CDL endorsement mean?",
+      "choices": [
+        "Heavy load",
+        "Hazardous materials (hazmat)",
+        "Highway-only",
+        "Hauling oversized loads"
+      ],
+      "correct_index": 1,
+      "explanation": "H = Hazardous Materials endorsement. Required to transport placarded hazmat. Requires a federal background check.",
+      "sign_image": null,
+      "tags": [
+        "endorsement",
+        "hazmat"
+      ]
+    },
+    {
+      "id": "q-0021",
+      "canonical_fact_id": "endorsement-h-hazmat",
+      "topic": "licensing",
+      "subtopic": "endorsements",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 22,
+      "source_doc": "handbook-3.2026",
+      "question": "A truck driver wants to haul placarded chemicals across Utah. What endorsement is required?",
+      "choices": [
+        "S",
+        "T",
+        "H",
+        "Z"
+      ],
+      "correct_index": 2,
+      "explanation": "The H endorsement is required for transporting placarded hazardous materials. T is doubles/triples, S is school bus, Z is taxicab.",
+      "sign_image": null,
+      "tags": [
+        "endorsement",
+        "hazmat"
+      ]
+    },
+    {
+      "id": "q-0022",
+      "canonical_fact_id": "endorsement-t-doubles-triples",
+      "topic": "licensing",
+      "subtopic": "endorsements",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 22,
+      "source_doc": "handbook-3.2026",
+      "question": "The T endorsement on a CDL allows you to drive what?",
+      "choices": [
+        "Tank vehicles",
+        "Taxicabs",
+        "Doubles and triples (combination trailers)",
+        "Tow trucks"
+      ],
+      "correct_index": 2,
+      "explanation": "T = Doubles/Triples endorsement (multiple trailers). Tankers use N, taxicabs use Z.",
+      "sign_image": null,
+      "tags": [
+        "endorsement",
+        "cdl"
+      ]
+    },
+    {
+      "id": "q-0023",
+      "canonical_fact_id": "endorsement-x-hazmat-tanker",
+      "topic": "licensing",
+      "subtopic": "endorsements",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 22,
+      "source_doc": "handbook-3.2026",
+      "question": "The X endorsement on a Utah CDL combines what two endorsements?",
+      "choices": [
+        "Hazmat + Tanker",
+        "Hazmat + School Bus",
+        "Tanker + Doubles/Triples",
+        "Passenger + Hazmat"
+      ],
+      "correct_index": 0,
+      "explanation": "X combines Hazmat (H) and Tanker (N) endorsements. Required when you haul placarded hazmat in a tank vehicle.",
+      "sign_image": null,
+      "tags": [
+        "endorsement",
+        "cdl"
+      ]
+    },
+    {
+      "id": "q-0024",
+      "canonical_fact_id": "endorsement-s-school-bus",
+      "topic": "licensing",
+      "subtopic": "endorsements",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 22,
+      "source_doc": "handbook-3.2026",
+      "question": "Which endorsement is required to drive a school bus in Utah?",
+      "choices": [
+        "P",
+        "S",
+        "T",
+        "Z"
+      ],
+      "correct_index": 1,
+      "explanation": "S = School Bus endorsement. P is the broader Passenger endorsement; S is school-bus specific.",
+      "sign_image": null,
+      "tags": [
+        "endorsement",
+        "school-bus"
+      ]
+    },
+    {
+      "id": "q-0025",
+      "canonical_fact_id": "endorsement-z-taxicab",
+      "topic": "licensing",
+      "subtopic": "endorsements",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 22,
+      "source_doc": "handbook-3.2026",
+      "question": "What does the Z endorsement on a Utah driver license signify?",
+      "choices": [
+        "Zero-emission vehicle",
+        "Taxicab",
+        "Zoned commercial only",
+        "Zipper-merge certified"
+      ],
+      "correct_index": 1,
+      "explanation": "Z = Taxicab endorsement. Required to operate a taxicab commercially.",
+      "sign_image": null,
+      "tags": [
+        "endorsement"
+      ]
+    },
+    {
+      "id": "q-0026",
+      "canonical_fact_id": "endorsements-other-letters",
+      "topic": "licensing",
+      "subtopic": "endorsements",
+      "priority": "NICE",
+      "type": "application",
+      "source_page": 22,
+      "source_doc": "handbook-3.2026",
+      "question": "Which letter is the Utah endorsement for a tanker vehicle?",
+      "choices": [
+        "N",
+        "T",
+        "X",
+        "P"
+      ],
+      "correct_index": 0,
+      "explanation": "N = Tanker endorsement. X combines hazmat + tanker; T is doubles/triples; P is passenger.",
+      "sign_image": null,
+      "tags": [
+        "endorsement"
+      ]
+    },
+    {
+      "id": "q-0027",
+      "canonical_fact_id": "endorsements-other-letters",
+      "topic": "licensing",
+      "subtopic": "endorsements",
+      "priority": "NICE",
+      "type": "application",
+      "source_page": 22,
+      "source_doc": "handbook-3.2026",
+      "question": "Which letter is the Utah endorsement for transporting 16+ passengers (not school bus)?",
+      "choices": [
+        "P",
+        "S",
+        "N",
+        "H"
+      ],
+      "correct_index": 0,
+      "explanation": "P = Passenger endorsement (16+ occupants). S is the more specific school-bus endorsement.",
+      "sign_image": null,
+      "tags": [
+        "endorsement"
+      ]
+    },
+    {
+      "id": "q-0028",
+      "canonical_fact_id": "restriction-b-corrective-lenses",
+      "topic": "licensing",
+      "subtopic": "restrictions",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 22,
+      "source_doc": "handbook-3.2026",
+      "question": "Restriction code B on a Utah license means what?",
+      "choices": [
+        "No restrictions",
+        "Corrective lenses required",
+        "Daylight driving only",
+        "Automatic transmission only"
+      ],
+      "correct_index": 1,
+      "explanation": "Restriction B = corrective lenses required. You must wear your glasses or contacts when driving.",
+      "sign_image": null,
+      "tags": [
+        "restriction"
+      ]
+    },
+    {
+      "id": "q-0029",
+      "canonical_fact_id": "restriction-a-none",
+      "topic": "licensing",
+      "subtopic": "restrictions",
+      "priority": "NICE",
+      "type": "application",
+      "source_page": 22,
+      "source_doc": "handbook-3.2026",
+      "question": "Restriction code A on a Utah license means what?",
+      "choices": [
+        "Automatic transmission required",
+        "No restrictions",
+        "Adult passenger required",
+        "Audio devices prohibited"
+      ],
+      "correct_index": 1,
+      "explanation": "Restriction A = no restrictions. The license has no limitations on how, when, or where you can drive.",
+      "sign_image": null,
+      "tags": [
+        "restriction"
+      ]
+    },
+    {
+      "id": "q-0030",
+      "canonical_fact_id": "restriction-g-daylight",
+      "topic": "licensing",
+      "subtopic": "restrictions",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 22,
+      "source_doc": "handbook-3.2026",
+      "question": "Restriction code G on a Utah license means what?",
+      "choices": [
+        "Glasses required",
+        "Geographic limit (in-state only)",
+        "Daylight driving only",
+        "Governor-approved permit"
+      ],
+      "correct_index": 2,
+      "explanation": "Restriction G = daylight hours only. The driver may not operate a vehicle after sunset.",
+      "sign_image": null,
+      "tags": [
+        "restriction"
+      ]
+    },
+    {
+      "id": "q-0031",
+      "canonical_fact_id": "permit-validity-18-months",
+      "topic": "licensing",
+      "subtopic": "gdl-stages",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 16,
+      "source_doc": "handbook-3.2026",
+      "question": "How long is an entry-level Utah learner permit valid?",
+      "choices": [
+        "6 months",
+        "12 months",
+        "18 months",
+        "24 months"
+      ],
+      "correct_index": 2,
+      "explanation": "An entry-level learner permit is valid for 18 months. After that, you need a renewal permit if you have not yet obtained a license.",
+      "sign_image": null,
+      "tags": [
+        "permit",
+        "gdl"
+      ]
+    },
+    {
+      "id": "q-0032",
+      "canonical_fact_id": "permit-front-seat-21-plus",
+      "topic": "licensing",
+      "subtopic": "permit-rules",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 17,
+      "source_doc": "handbook-3.2026",
+      "question": "When driving on a Utah learner permit, who must be in the front seat?",
+      "choices": [
+        "Anyone over 16",
+        "A licensed driver 18 or older",
+        "A parent, guardian, instructor, or licensed adult 21+ with authorization",
+        "No one -- you may drive alone"
+      ],
+      "correct_index": 2,
+      "explanation": "A learner permit holder must have a parent, legal guardian, approved driving instructor, OR licensed adult 21+ with parent/guardian authorization in the front seat.",
+      "sign_image": null,
+      "tags": [
+        "permit",
+        "supervision"
+      ]
+    },
+    {
+      "id": "q-0033",
+      "canonical_fact_id": "permit-hold-6-months-16-17",
+      "topic": "licensing",
+      "subtopic": "gdl-stages",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 14,
+      "source_doc": "handbook-3.2026",
+      "question": "An applicant under 18 must hold a learner permit for how long before getting a license?",
+      "choices": [
+        "30 days",
+        "90 days",
+        "6 months",
+        "1 year"
+      ],
+      "correct_index": 2,
+      "explanation": "Under 18 = 6-month permit hold required, along with completion of an approved driver education course.",
+      "sign_image": null,
+      "tags": [
+        "permit",
+        "gdl",
+        "age"
+      ]
+    },
+    {
+      "id": "q-0034",
+      "canonical_fact_id": "permit-hold-90-days-19-plus",
+      "topic": "licensing",
+      "subtopic": "gdl-stages",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 17,
+      "source_doc": "handbook-3.2026",
+      "question": "If you are 19 or older with no prior license, how long must you hold the learner permit before getting a license?",
+      "choices": [
+        "No hold required",
+        "30 days",
+        "90 days",
+        "6 months"
+      ],
+      "correct_index": 2,
+      "explanation": "Age 19+ with no prior license = 90-day permit hold (plus 40 hours practice). Driver ed is NOT required.",
+      "sign_image": null,
+      "tags": [
+        "permit",
+        "adult-learner"
+      ]
+    },
+    {
+      "id": "q-0035",
+      "canonical_fact_id": "age-19-plus-no-driver-ed-with-90-days",
+      "topic": "licensing",
+      "subtopic": "gdl-stages",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 16,
+      "source_doc": "handbook-3.2026",
+      "question": "An adult age 19+ without a prior license can be licensed in Utah without driver education if they do what?",
+      "choices": [
+        "Pay an extra $100 fee",
+        "Hold the permit 90 days and complete 40 hours of practice driving",
+        "Pass an oral interview with DLD",
+        "Have a parent sign a waiver"
+      ],
+      "correct_index": 1,
+      "explanation": "Age 19+ no-prior-license path: hold the permit 90 days + complete 40 hours of practice driving. Driver education is NOT required.",
+      "sign_image": null,
+      "tags": [
+        "adult-learner",
+        "permit"
+      ]
+    },
+    {
+      "id": "q-0036",
+      "canonical_fact_id": "under-18-6mo-permit-driver-ed",
+      "topic": "licensing",
+      "subtopic": "gdl-stages",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 14,
+      "source_doc": "handbook-3.2026",
+      "question": "What are the two main prerequisites for an under-18 driver to get a Utah license?",
+      "choices": [
+        "Hold permit 30 days + pass written test",
+        "Hold permit 6 months + complete approved driver education",
+        "Hold permit 1 year + 20 hours practice",
+        "Driver education alone is sufficient"
+      ],
+      "correct_index": 1,
+      "explanation": "Under 18: hold the learner permit for 6 months AND complete an approved driver education course. Both are required.",
+      "sign_image": null,
+      "tags": [
+        "permit",
+        "driver-ed",
+        "age"
+      ]
+    },
+    {
+      "id": "q-0037",
+      "canonical_fact_id": "practice-40-hours-10-night",
+      "topic": "licensing",
+      "subtopic": "permit-rules",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 16,
+      "source_doc": "handbook-3.2026",
+      "question": "Before getting their first license, an under-19 Utah driver must complete how many hours of practice driving?",
+      "choices": [
+        "20 hours, all daylight",
+        "30 hours, including 5 at night",
+        "40 hours, including 10 after sunset",
+        "50 hours, including 15 at night"
+      ],
+      "correct_index": 2,
+      "explanation": "40 hours of supervised practice driving are required, with at least 10 of those hours after sunset.",
+      "sign_image": null,
+      "tags": [
+        "permit",
+        "practice"
+      ]
+    },
+    {
+      "id": "q-0038",
+      "canonical_fact_id": "age-16-curfew-12am-5am",
+      "topic": "licensing",
+      "subtopic": "gdl-restrictions",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 18,
+      "source_doc": "handbook-3.2026",
+      "question": "A 16-year-old licensed Utah driver may NOT drive during which hours?",
+      "choices": [
+        "9 p.m. to 6 a.m.",
+        "10 p.m. to 5 a.m.",
+        "12 a.m. to 5 a.m.",
+        "11 p.m. to 7 a.m."
+      ],
+      "correct_index": 2,
+      "explanation": "Age 16 license holders have a 12 a.m. to 5 a.m. curfew, with limited exceptions (school activity, work, emergency, or accompanied by a licensed 21+ adult).",
+      "sign_image": null,
+      "tags": [
+        "curfew",
+        "gdl",
+        "age-16"
+      ]
+    },
+    {
+      "id": "q-0039",
+      "canonical_fact_id": "age-16-family-only-6mo",
+      "topic": "licensing",
+      "subtopic": "gdl-restrictions",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 18,
+      "source_doc": "handbook-3.2026",
+      "question": "A newly licensed 16-year-old in Utah may carry which passengers during the first 6 months?",
+      "choices": [
+        "Anyone they choose",
+        "Immediate family members only",
+        "Only one friend at a time",
+        "Only passengers age 18+"
+      ],
+      "correct_index": 1,
+      "explanation": "For the first 6 months of having a Utah license at age 16, only immediate family members may be in the vehicle (with limited exceptions).",
+      "sign_image": null,
+      "tags": [
+        "passenger",
+        "gdl",
+        "age-16"
+      ]
+    },
+    {
+      "id": "q-0040",
+      "canonical_fact_id": "age-17-no-curfew",
+      "topic": "licensing",
+      "subtopic": "gdl-restrictions",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 18,
+      "source_doc": "handbook-3.2026",
+      "question": "When does the nighttime curfew end for a Utah teen driver?",
+      "choices": [
+        "On their 16th birthday",
+        "On their 17th birthday",
+        "Six months after licensing",
+        "On their 18th birthday"
+      ],
+      "correct_index": 1,
+      "explanation": "The 12-5 curfew applies only to age-16 license holders. At 17, there is no curfew.",
+      "sign_image": null,
+      "tags": [
+        "curfew",
+        "gdl"
+      ]
+    },
+    {
+      "id": "q-0041",
+      "canonical_fact_id": "written-test-passing-80",
+      "topic": "licensing",
+      "subtopic": "exams",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 33,
+      "source_doc": "handbook-3.2026",
+      "question": "What is the minimum passing score on the Utah written knowledge test?",
+      "choices": [
+        "70%",
+        "75%",
+        "80%",
+        "90%"
+      ],
+      "correct_index": 2,
+      "explanation": "You must score at least 80% on the written knowledge test. The test is untimed and usually takes 30-45 minutes.",
+      "sign_image": null,
+      "tags": [
+        "written-test"
+      ]
+    },
+    {
+      "id": "q-0042",
+      "canonical_fact_id": "written-test-attempts-3-per-12mo",
+      "topic": "licensing",
+      "subtopic": "exams",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 33,
+      "source_doc": "handbook-3.2026",
+      "question": "How many written-test attempts are allowed per testing fee within 12 months?",
+      "choices": [
+        "1",
+        "2",
+        "3",
+        "Unlimited"
+      ],
+      "correct_index": 2,
+      "explanation": "Three attempts per testing fee are allowed within 12 months. Maximum two written tests per day.",
+      "sign_image": null,
+      "tags": [
+        "written-test"
+      ]
+    },
+    {
+      "id": "q-0043",
+      "canonical_fact_id": "traffic-safety-trends-100",
+      "topic": "licensing",
+      "subtopic": "exams",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 33,
+      "source_doc": "handbook-3.2026",
+      "question": "What score is required on the Traffic Safety & Trends Exam?",
+      "choices": [
+        "80%",
+        "90%",
+        "100%",
+        "Pass/fail -- no minimum"
+      ],
+      "correct_index": 2,
+      "explanation": "The Traffic Safety & Trends Exam is online only and requires a 100% score. Required for all first-time Class D applicants.",
+      "sign_image": null,
+      "tags": [
+        "exam"
+      ]
+    },
+    {
+      "id": "q-0044",
+      "canonical_fact_id": "skills-test-min-age-dld-16",
+      "topic": "licensing",
+      "subtopic": "exams",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 33,
+      "source_doc": "handbook-3.2026",
+      "question": "What is the minimum age to take the skills test at a Utah DLD office?",
+      "choices": [
+        "14",
+        "15",
+        "16",
+        "17"
+      ],
+      "correct_index": 2,
+      "explanation": "Skills test at the DLD: minimum age is 16. Third-party testers and high school programs can administer it at age 15.",
+      "sign_image": null,
+      "tags": [
+        "skills-test"
+      ]
+    },
+    {
+      "id": "q-0045",
+      "canonical_fact_id": "skills-test-min-age-third-party-15",
+      "topic": "licensing",
+      "subtopic": "exams",
+      "priority": "NICE",
+      "type": "application",
+      "source_page": 33,
+      "source_doc": "handbook-3.2026",
+      "question": "What is the minimum age to take the skills test with a third-party tester or high school program?",
+      "choices": [
+        "14",
+        "15",
+        "16",
+        "17"
+      ],
+      "correct_index": 1,
+      "explanation": "Third-party testers and high school programs may give the skills test at age 15. The DLD itself requires age 16.",
+      "sign_image": null,
+      "tags": [
+        "skills-test"
+      ]
+    },
+    {
+      "id": "q-0046",
+      "canonical_fact_id": "skills-test-bring-own-vehicle",
+      "topic": "licensing",
+      "subtopic": "exams",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 33,
+      "source_doc": "handbook-3.2026",
+      "question": "On the day of your Utah skills test, who provides the vehicle?",
+      "choices": [
+        "The DLD provides one",
+        "You must bring your own vehicle",
+        "Any rental car is acceptable",
+        "The third-party tester provides it"
+      ],
+      "correct_index": 1,
+      "explanation": "You must provide your own vehicle for the skills test. It must be properly registered, insured, and safe to drive.",
+      "sign_image": null,
+      "tags": [
+        "skills-test"
+      ]
+    },
+    {
+      "id": "q-0047",
+      "canonical_fact_id": "third-party-skills-only",
+      "topic": "licensing",
+      "subtopic": "exams",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 35,
+      "source_doc": "handbook-3.2026",
+      "question": "What can a Third-Party Tester in Utah administer?",
+      "choices": [
+        "The written knowledge test only",
+        "The skills test only",
+        "Both written and skills tests",
+        "Vision and skills tests"
+      ],
+      "correct_index": 1,
+      "explanation": "Third-Party Testers administer the SKILLS test only. The written knowledge test must be taken at the DLD.",
+      "sign_image": null,
+      "tags": [
+        "third-party"
+      ]
+    },
+    {
+      "id": "q-0048",
+      "canonical_fact_id": "skills-test-applicant-examiner-only",
+      "topic": "licensing",
+      "subtopic": "exams",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 33,
+      "source_doc": "handbook-3.2026",
+      "question": "During the skills test, who is allowed in the vehicle?",
+      "choices": [
+        "Applicant, examiner, and one parent",
+        "Only the applicant and the examiner",
+        "Anyone the applicant chooses",
+        "Applicant and a licensed driver 21+"
+      ],
+      "correct_index": 1,
+      "explanation": "Only the applicant and the examiner are allowed in the vehicle during the skills test.",
+      "sign_image": null,
+      "tags": [
+        "skills-test"
+      ]
+    },
+    {
+      "id": "q-0049",
+      "canonical_fact_id": "vision-20-40-90-degree",
+      "topic": "licensing",
+      "subtopic": "vision",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 30,
+      "source_doc": "handbook-3.2026",
+      "question": "What is the Utah vision standard for getting a driver license?",
+      "choices": [
+        "20/20 in both eyes, no peripheral requirement",
+        "20/40 and 90-degree peripheral field in at least one eye",
+        "20/30 in both eyes",
+        "20/50 and 70-degree peripheral field"
+      ],
+      "correct_index": 1,
+      "explanation": "Utah requires 20/40 vision AND 90-degree peripheral field in at least one eye. Glasses or contacts are allowed to meet the standard.",
+      "sign_image": null,
+      "tags": [
+        "vision"
+      ]
+    },
+    {
+      "id": "q-0050",
+      "canonical_fact_id": "vision-test-every-renewal-65-plus",
+      "topic": "licensing",
+      "subtopic": "vision",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 30,
+      "source_doc": "handbook-3.2026",
+      "question": "At what age must drivers take a vision test with every license application or renewal?",
+      "choices": [
+        "50",
+        "60",
+        "65",
+        "70"
+      ],
+      "correct_index": 2,
+      "explanation": "Drivers 65 and older must take a vision test with every license application or renewal.",
+      "sign_image": null,
+      "tags": [
+        "vision",
+        "renewal"
+      ]
+    },
+    {
+      "id": "q-0051",
+      "canonical_fact_id": "documents-original-only",
+      "topic": "licensing",
+      "subtopic": "documents",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 23,
+      "source_doc": "handbook-3.2026",
+      "question": "What kind of documents must you bring to apply for a Utah license?",
+      "choices": [
+        "Photocopies are fine",
+        "Original or certified copies -- no photocopies or faxes",
+        "Digital images on your phone",
+        "Whatever you have available"
+      ],
+      "correct_index": 1,
+      "explanation": "Documents must be original or certified copies. Faxed and photocopied documents are NOT accepted.",
+      "sign_image": null,
+      "tags": [
+        "documents"
+      ]
+    },
+    {
+      "id": "q-0052",
+      "canonical_fact_id": "residency-2-docs-90-days",
+      "topic": "licensing",
+      "subtopic": "documents",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 25,
+      "source_doc": "handbook-3.2026",
+      "question": "Proof of Utah residency requires how many documents, dated within what timeframe?",
+      "choices": [
+        "1 document, dated within 6 months",
+        "2 documents, each dated within 90 days",
+        "3 documents, dated within 30 days",
+        "2 documents, any date"
+      ],
+      "correct_index": 1,
+      "explanation": "You must provide 2 documents proving Utah residency, each dated within 90 days. Examples: utility bill, lease, bank statement.",
+      "sign_image": null,
+      "tags": [
+        "residency",
+        "documents"
+      ]
+    },
+    {
+      "id": "q-0053",
+      "canonical_fact_id": "address-change-10-days",
+      "topic": "licensing",
+      "subtopic": "general",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 29,
+      "source_doc": "handbook-3.2026",
+      "question": "If you move to a new address in Utah, how many days do you have to notify DLD?",
+      "choices": [
+        "10 days",
+        "30 days",
+        "60 days",
+        "90 days"
+      ],
+      "correct_index": 0,
+      "explanation": "You must notify DLD of an address change within 10 days of moving. This can be done online.",
+      "sign_image": null,
+      "tags": [
+        "address-change"
+      ]
+    },
+    {
+      "id": "q-0054",
+      "canonical_fact_id": "license-expiration-5yr-vs-8yr",
+      "topic": "licensing",
+      "subtopic": "expiration",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 28,
+      "source_doc": "handbook-3.2026",
+      "question": "A Provisional Class D license (under 21) expires after how long? A Regular Class D (21+)?",
+      "choices": [
+        "5 years / 8 years",
+        "3 years / 5 years",
+        "4 years / 8 years",
+        "5 years / 10 years"
+      ],
+      "correct_index": 0,
+      "explanation": "Provisional licenses expire 5 years from issue; Regular Class D licenses expire 8 years from issue. Both expire on the birthday.",
+      "sign_image": null,
+      "tags": [
+        "expiration"
+      ]
+    },
+    {
+      "id": "q-0055",
+      "canonical_fact_id": "renew-within-6-months-of-expiration",
+      "topic": "licensing",
+      "subtopic": "expiration",
+      "priority": "NICE",
+      "type": "scenario",
+      "source_page": 28,
+      "source_doc": "handbook-3.2026",
+      "question": "How far in advance of expiration can you renew your Utah driver license?",
+      "choices": [
+        "1 month",
+        "3 months",
+        "6 months",
+        "1 year"
+      ],
+      "correct_index": 2,
+      "explanation": "You may renew up to 6 months before expiration. Renewing earlier is not permitted.",
+      "sign_image": null,
+      "tags": [
+        "expiration",
+        "renewal"
+      ]
+    },
+    {
+      "id": "q-0056",
+      "canonical_fact_id": "alcohol-reduces-4-systems",
+      "topic": "impairment",
+      "subtopic": "alcohol-effects",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 61,
+      "source_doc": "handbook-3.2026",
+      "question": "Alcohol and impairing drugs reduce which four driver systems?",
+      "choices": [
+        "Judgment, vision, color distinction, reaction time",
+        "Hearing, balance, smell, taste",
+        "Memory, math, language, music",
+        "Heart rate, breathing, sweating, vision"
+      ],
+      "correct_index": 0,
+      "explanation": "Alcohol and impairing drugs reduce judgment, vision, color distinction, and reaction time -- all four critical to driving.",
+      "sign_image": null,
+      "tags": [
+        "alcohol",
+        "drugs"
+      ]
+    },
+    {
+      "id": "q-0057",
+      "canonical_fact_id": "vision-impaired-at-0.02",
+      "topic": "impairment",
+      "subtopic": "alcohol-effects",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 61,
+      "source_doc": "handbook-3.2026",
+      "question": "At what blood alcohol level (BAC) does vision begin to be impaired for all drivers?",
+      "choices": [
+        "0.02",
+        "0.05",
+        "0.08",
+        "0.10"
+      ],
+      "correct_index": 0,
+      "explanation": "Vision is impacted at just 0.02 BAC -- well below any legal driving limit. This is part of why Utah's adult limit is set at 0.05.",
+      "sign_image": null,
+      "tags": [
+        "alcohol",
+        "vision"
+      ]
+    },
+    {
+      "id": "q-0058",
+      "canonical_fact_id": "vision-most-important-sense",
+      "topic": "impairment",
+      "subtopic": "alcohol-effects",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 61,
+      "source_doc": "handbook-3.2026",
+      "question": "Which sense is the most important for driving?",
+      "choices": [
+        "Hearing",
+        "Vision",
+        "Touch",
+        "Smell"
+      ],
+      "correct_index": 1,
+      "explanation": "Vision is the most important sense used in driving. We get most road information visually.",
+      "sign_image": null,
+      "tags": [
+        "vision"
+      ]
+    },
+    {
+      "id": "q-0059",
+      "canonical_fact_id": "impairment-starts-first-drink",
+      "topic": "impairment",
+      "subtopic": "alcohol-effects",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 61,
+      "source_doc": "handbook-3.2026",
+      "question": "At what point does alcohol impairment begin?",
+      "choices": [
+        "Only when you reach 0.05 BAC",
+        "After two or more drinks",
+        "With the very first drink",
+        "Only after you feel drunk"
+      ],
+      "correct_index": 2,
+      "explanation": "Impairment begins with the first drink. You do not have to feel drunk to be impaired enough to drive unsafely.",
+      "sign_image": null,
+      "tags": [
+        "alcohol"
+      ]
+    },
+    {
+      "id": "q-0060",
+      "canonical_fact_id": "impairing-drugs-all-three-categories",
+      "topic": "impairment",
+      "subtopic": "drugs",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 61,
+      "source_doc": "handbook-3.2026",
+      "question": "Which categories of drugs are considered impairing drugs under Utah law?",
+      "choices": [
+        "Illegal drugs only",
+        "Prescription drugs only",
+        "Illegal, over-the-counter, AND prescription drugs",
+        "Only drugs with warning labels"
+      ],
+      "correct_index": 2,
+      "explanation": "Impairing drugs include all three: illegal, over-the-counter, AND prescription. A doctor note does NOT exempt you from DUI law.",
+      "sign_image": null,
+      "tags": [
+        "drugs"
+      ]
+    },
+    {
+      "id": "q-0061",
+      "canonical_fact_id": "emotions-impair-driving",
+      "topic": "impairment",
+      "subtopic": "general",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 61,
+      "source_doc": "handbook-3.2026",
+      "question": "Which of these can impair your driving?",
+      "choices": [
+        "Strong emotions like anger, fear, or depression",
+        "Listening to instrumental music",
+        "Driving with the windows down",
+        "Drinking water"
+      ],
+      "correct_index": 0,
+      "explanation": "Strong emotions -- worried, excited, afraid, angry, depressed -- impair driving by distracting your mind from the road.",
+      "sign_image": null,
+      "tags": [
+        "emotions"
+      ]
+    },
+    {
+      "id": "q-0062",
+      "canonical_fact_id": "meds-cause-drowsiness",
+      "topic": "impairment",
+      "subtopic": "drugs",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 31,
+      "source_doc": "handbook-3.2026",
+      "question": "Before driving on a new medication, what should you do?",
+      "choices": [
+        "Take a double dose to be safe",
+        "Check the label and ask your physician about drowsiness or impairment effects",
+        "Drink coffee with it",
+        "Wait until you feel any side effects"
+      ],
+      "correct_index": 1,
+      "explanation": "Many medications cause drowsiness or impairment. Check labels and ask your physician whether it is safe to drive on a new medication.",
+      "sign_image": null,
+      "tags": [
+        "drugs",
+        "medication"
+      ]
+    },
+    {
+      "id": "q-0063",
+      "canonical_fact_id": "adult-bac-limit-0.05",
+      "topic": "impairment",
+      "subtopic": "bac-limits",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 62,
+      "source_doc": "handbook-3.2026",
+      "question": "What is the legal BAC limit for adult drivers (21+) in Utah?",
+      "choices": [
+        "0.02",
+        "0.05",
+        "0.08",
+        "0.10"
+      ],
+      "correct_index": 1,
+      "explanation": "Utah's adult BAC limit is 0.05 -- the lowest in the U.S. Most other states are 0.08. You can also be charged below 0.05 if impaired.",
+      "sign_image": null,
+      "tags": [
+        "bac",
+        "alcohol"
+      ]
+    },
+    {
+      "id": "q-0064",
+      "canonical_fact_id": "adult-bac-limit-0.05",
+      "topic": "impairment",
+      "subtopic": "bac-limits",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 62,
+      "source_doc": "handbook-3.2026",
+      "question": "Utah's adult DUI BAC threshold is lower than most states. What is it?",
+      "choices": [
+        "0.05 (lowest in U.S.)",
+        "0.08 (same as most states)",
+        "0.10 (older standard)",
+        "0.04 (CDL limit)"
+      ],
+      "correct_index": 0,
+      "explanation": "Utah set its adult limit at 0.05 -- the LOWEST in the United States. Most other states are still at 0.08.",
+      "sign_image": null,
+      "tags": [
+        "bac"
+      ]
+    },
+    {
+      "id": "q-0065",
+      "canonical_fact_id": "cdl-bac-limit-0.04",
+      "topic": "impairment",
+      "subtopic": "bac-limits",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 62,
+      "source_doc": "handbook-3.2026",
+      "question": "What is the BAC limit for a Utah CDL holder while operating a commercial vehicle?",
+      "choices": [
+        "0.00",
+        "0.02",
+        "0.04",
+        "0.05"
+      ],
+      "correct_index": 2,
+      "explanation": "CDL drivers operating commercial vehicles have a stricter 0.04 BAC limit, lower than the 0.05 personal-vehicle limit.",
+      "sign_image": null,
+      "tags": [
+        "bac",
+        "cdl"
+      ]
+    },
+    {
+      "id": "q-0066",
+      "canonical_fact_id": "under-21-zero-tolerance",
+      "topic": "impairment",
+      "subtopic": "under-21",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 62,
+      "source_doc": "handbook-3.2026",
+      "question": "What is the legal BAC limit for drivers under 21 in Utah?",
+      "choices": [
+        "0.00 -- zero tolerance",
+        "0.02",
+        "0.05",
+        "0.08"
+      ],
+      "correct_index": 0,
+      "explanation": "Under 21 = 0.00 BAC. Any measurable alcohol in your system while driving violates Utah's Not-a-Drop / zero-tolerance law.",
+      "sign_image": null,
+      "tags": [
+        "under-21",
+        "bac"
+      ]
+    },
+    {
+      "id": "q-0067",
+      "canonical_fact_id": "impaired-even-below-limit",
+      "topic": "impairment",
+      "subtopic": "bac-limits",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 62,
+      "source_doc": "handbook-3.2026",
+      "question": "Can you be charged with DUI in Utah even if your BAC is below 0.05?",
+      "choices": [
+        "No -- under 0.05 is always legal",
+        "Yes -- if you are impaired to the degree it is unsafe to drive",
+        "Only if you refuse a test",
+        "Only if you cause a crash"
+      ],
+      "correct_index": 1,
+      "explanation": "Yes. Utah's impaired-to-the-degree law allows DUI charges below 0.05 if you are impaired enough that it is unsafe to drive.",
+      "sign_image": null,
+      "tags": [
+        "bac"
+      ]
+    },
+    {
+      "id": "q-0068",
+      "canonical_fact_id": "under-21-no-alcohol-3-acts",
+      "topic": "impairment",
+      "subtopic": "under-21",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 62,
+      "source_doc": "handbook-3.2026",
+      "question": "Under Utah law, drivers under 21 may not do which of these with alcohol?",
+      "choices": [
+        "Only purchase it",
+        "Only consume it",
+        "Purchase, possess, OR consume",
+        "Only possess it"
+      ],
+      "correct_index": 2,
+      "explanation": "Under 21 = illegal to purchase, possess, OR consume alcohol. All three acts are prohibited.",
+      "sign_image": null,
+      "tags": [
+        "under-21",
+        "alcohol"
+      ]
+    },
+    {
+      "id": "q-0069",
+      "canonical_fact_id": "not-a-drop-6-months-first",
+      "topic": "impairment",
+      "subtopic": "under-21",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 62,
+      "source_doc": "handbook-3.2026",
+      "question": "Under Utah's Not-a-Drop Act, a first-time under-21 offender loses driving privileges for how long?",
+      "choices": [
+        "30 days",
+        "90 days",
+        "6 months",
+        "1 year"
+      ],
+      "correct_index": 2,
+      "explanation": "Not-a-Drop Act: under 21 with any measurable alcohol = 6-month license denial for first offense.",
+      "sign_image": null,
+      "tags": [
+        "not-a-drop",
+        "under-21"
+      ]
+    },
+    {
+      "id": "q-0070",
+      "canonical_fact_id": "not-a-drop-2-years-or-until-21",
+      "topic": "impairment",
+      "subtopic": "under-21",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 62,
+      "source_doc": "handbook-3.2026",
+      "question": "A second Not-a-Drop offense within 10 years results in license denial for how long?",
+      "choices": [
+        "1 year",
+        "2 years OR until age 21, whichever is longer",
+        "5 years",
+        "Lifetime"
+      ],
+      "correct_index": 1,
+      "explanation": "Second/subsequent Not-a-Drop offense within 10 years = denial for 2 years OR until age 21, whichever is longer.",
+      "sign_image": null,
+      "tags": [
+        "not-a-drop"
+      ]
+    },
+    {
+      "id": "q-0071",
+      "canonical_fact_id": "not-a-drop-pre-license",
+      "topic": "impairment",
+      "subtopic": "under-21",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 62,
+      "source_doc": "handbook-3.2026",
+      "question": "Can the Not-a-Drop Act apply to someone who has never had a driver license?",
+      "choices": [
+        "No -- only license holders can be affected",
+        "Yes -- they can deny a future license",
+        "Only if a parent agrees",
+        "Only for hard liquor"
+      ],
+      "correct_index": 1,
+      "explanation": "Yes. Not-a-Drop applies even if you have not been issued a license. DLD can deny a future license.",
+      "sign_image": null,
+      "tags": [
+        "not-a-drop"
+      ]
+    },
+    {
+      "id": "q-0072",
+      "canonical_fact_id": "under-21-possession-1-2-year-suspension",
+      "topic": "impairment",
+      "subtopic": "under-21",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 62,
+      "source_doc": "handbook-3.2026",
+      "question": "Possession or consumption of alcohol by someone under 21 in Utah results in a license suspension of:",
+      "choices": [
+        "30 days first offense",
+        "1 year first offense, 2 years subsequent",
+        "6 months any offense",
+        "Only a fine, no suspension"
+      ],
+      "correct_index": 1,
+      "explanation": "Possession/consumption (ages 13-20): 1-year license suspension first offense, 2 years for second or subsequent.",
+      "sign_image": null,
+      "tags": [
+        "under-21",
+        "suspension"
+      ]
+    },
+    {
+      "id": "q-0073",
+      "canonical_fact_id": "not-a-drop-reinstatement-assessment",
+      "topic": "impairment",
+      "subtopic": "under-21",
+      "priority": "NICE",
+      "type": "application",
+      "source_page": 62,
+      "source_doc": "handbook-3.2026",
+      "question": "After a Not-a-Drop suspension, what does reinstatement require?",
+      "choices": [
+        "Just pay a fee",
+        "A substance-abuse assessment or Prime For Life DUI class",
+        "A new written test",
+        "Nothing -- it ends automatically"
+      ],
+      "correct_index": 1,
+      "explanation": "Reinstatement after a Not-a-Drop suspension requires a substance-abuse assessment OR completion of a Prime For Life DUI class.",
+      "sign_image": null,
+      "tags": [
+        "not-a-drop",
+        "reinstatement"
+      ]
+    },
+    {
+      "id": "q-0074",
+      "canonical_fact_id": "first-dui-adult-120-days",
+      "topic": "impairment",
+      "subtopic": "dui-penalties",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 62,
+      "source_doc": "handbook-3.2026",
+      "question": "How long is an adult's license suspended for a first DUI conviction in Utah?",
+      "choices": [
+        "30 days",
+        "90 days",
+        "120 days",
+        "1 year"
+      ],
+      "correct_index": 2,
+      "explanation": "Adult first DUI conviction = 120-day license suspension. Second DUI = 2 years.",
+      "sign_image": null,
+      "tags": [
+        "dui",
+        "suspension"
+      ]
+    },
+    {
+      "id": "q-0075",
+      "canonical_fact_id": "second-dui-adult-2-years",
+      "topic": "impairment",
+      "subtopic": "dui-penalties",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 62,
+      "source_doc": "handbook-3.2026",
+      "question": "An adult driver's second or subsequent DUI conviction results in a suspension of:",
+      "choices": [
+        "120 days",
+        "1 year",
+        "2 years",
+        "Lifetime"
+      ],
+      "correct_index": 2,
+      "explanation": "Adult second/subsequent DUI = 2-year license suspension. First DUI is 120 days.",
+      "sign_image": null,
+      "tags": [
+        "dui",
+        "suspension"
+      ]
+    },
+    {
+      "id": "q-0076",
+      "canonical_fact_id": "dl-suspend-day-45-after-arrest",
+      "topic": "impairment",
+      "subtopic": "dui-penalties",
+      "priority": "NICE",
+      "type": "application",
+      "source_page": 62,
+      "source_doc": "handbook-3.2026",
+      "question": "If you are arrested for DUI in Utah, when does your administrative license suspension begin?",
+      "choices": [
+        "Immediately upon arrest",
+        "On day 45 after the arrest",
+        "30 days after conviction",
+        "Only after court appearance"
+      ],
+      "correct_index": 1,
+      "explanation": "Officers can confiscate your DL upon arrest; the administrative suspension begins on day 45 after the arrest.",
+      "sign_image": null,
+      "tags": [
+        "dui"
+      ]
+    },
+    {
+      "id": "q-0077",
+      "canonical_fact_id": "abeyance-counts-as-prior",
+      "topic": "impairment",
+      "subtopic": "dui-penalties",
+      "priority": "NICE",
+      "type": "application",
+      "source_page": 62,
+      "source_doc": "handbook-3.2026",
+      "question": "If a DUI plea is held in abeyance, does it count for future DUI charges?",
+      "choices": [
+        "No -- abeyance erases the record",
+        "Yes -- it counts as a PRIOR for future DUI charges and disqualifies a CDL",
+        "Only if you complete probation",
+        "Only after 10 years"
+      ],
+      "correct_index": 1,
+      "explanation": "A plea held in abeyance does NOT show on a regular MVR, but it counts as a PRIOR for future DUI charges and disqualifies a CDL.",
+      "sign_image": null,
+      "tags": [
+        "dui",
+        "abeyance"
+      ]
+    },
+    {
+      "id": "q-0078",
+      "canonical_fact_id": "implied-consent-law",
+      "topic": "impairment",
+      "subtopic": "implied-consent",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 63,
+      "source_doc": "handbook-3.2026",
+      "question": "Utah's Implied Consent Law means what?",
+      "choices": [
+        "You consent to a vehicle search by registering",
+        "By driving, you have agreed to submit to a chemical test if a peace officer asks",
+        "You consent to traffic stops by getting a license",
+        "Only commercial drivers must take chemical tests"
+      ],
+      "correct_index": 1,
+      "explanation": "By driving in Utah, you have already AGREED to submit to a chemical test (breath/blood/urine/oral fluids) if a peace officer asks based on suspicion.",
+      "sign_image": null,
+      "tags": [
+        "implied-consent"
+      ]
+    },
+    {
+      "id": "q-0079",
+      "canonical_fact_id": "officer-chooses-test",
+      "topic": "impairment",
+      "subtopic": "implied-consent",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 63,
+      "source_doc": "handbook-3.2026",
+      "question": "Under Utah's Implied Consent Law, who chooses which chemical test is given?",
+      "choices": [
+        "The driver",
+        "The officer",
+        "The judge",
+        "The lab tech"
+      ],
+      "correct_index": 1,
+      "explanation": "The officer chooses which chemical test (breath, blood, urine, oral fluids) is administered. You cannot insist on a specific test.",
+      "sign_image": null,
+      "tags": [
+        "implied-consent"
+      ]
+    },
+    {
+      "id": "q-0080",
+      "canonical_fact_id": "refusal-21-plus-18-or-36-months",
+      "topic": "impairment",
+      "subtopic": "implied-consent",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 63,
+      "source_doc": "handbook-3.2026",
+      "question": "An adult (21+) who refuses a chemical test loses their license for how long on first refusal?",
+      "choices": [
+        "6 months",
+        "12 months",
+        "18 months",
+        "24 months"
+      ],
+      "correct_index": 2,
+      "explanation": "Refusal (21+): 18-month revocation first offense. Second or subsequent refusal = 36 months. This is on top of any DUI charges.",
+      "sign_image": null,
+      "tags": [
+        "refusal",
+        "implied-consent"
+      ]
+    },
+    {
+      "id": "q-0081",
+      "canonical_fact_id": "refusal-under-21-2-years-then-36-or-21",
+      "topic": "impairment",
+      "subtopic": "implied-consent",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 63,
+      "source_doc": "handbook-3.2026",
+      "question": "An under-21 driver who refuses a chemical test loses their license for how long on first refusal?",
+      "choices": [
+        "6 months",
+        "1 year",
+        "2 years",
+        "5 years"
+      ],
+      "correct_index": 2,
+      "explanation": "Under-21 first refusal = 2-year revocation. Second = 36 months OR until age 21, whichever is longer.",
+      "sign_image": null,
+      "tags": [
+        "refusal",
+        "under-21"
+      ]
+    },
+    {
+      "id": "q-0082",
+      "canonical_fact_id": "bui-equals-dui",
+      "topic": "impairment",
+      "subtopic": "implied-consent",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 63,
+      "source_doc": "handbook-3.2026",
+      "question": "Do Utah's DUI laws apply to operating a motorboat?",
+      "choices": [
+        "No -- boating has separate rules",
+        "Yes -- BUI (Boating Under the Influence) = DUI, same laws apply",
+        "Only on Lake Powell",
+        "Only if you are commercially licensed"
+      ],
+      "correct_index": 1,
+      "explanation": "BUI = DUI. Utah's DUI laws -- including BAC limits, implied consent, and penalties -- apply to motorboats.",
+      "sign_image": null,
+      "tags": [
+        "bui"
+      ]
+    },
+    {
+      "id": "q-0083",
+      "canonical_fact_id": "alcohol-restricted-2-3-5-10-years",
+      "topic": "impairment",
+      "subtopic": "alcohol-restricted",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 63,
+      "source_doc": "handbook-3.2026",
+      "question": "How long is the Alcohol-Restricted Driver status in Utah?",
+      "choices": [
+        "Always 1 year",
+        "2, 3, 5, or 10 years depending on offense",
+        "Always 5 years",
+        "Always 6 months"
+      ],
+      "correct_index": 1,
+      "explanation": "Alcohol-Restricted status lasts 2, 3, 5, or 10 years depending on the offense count and type.",
+      "sign_image": null,
+      "tags": [
+        "alcohol-restricted"
+      ]
+    },
+    {
+      "id": "q-0084",
+      "canonical_fact_id": "lifetime-alcohol-restricted-trigger",
+      "topic": "impairment",
+      "subtopic": "alcohol-restricted",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 63,
+      "source_doc": "handbook-3.2026",
+      "question": "Which convictions result in LIFETIME Alcohol-Restricted driver status?",
+      "choices": [
+        "First DUI",
+        "Second DUI",
+        "Automobile homicide OR felony DUI",
+        "Refusal of a chemical test"
+      ],
+      "correct_index": 2,
+      "explanation": "Lifetime Alcohol-Restricted status is triggered by automobile homicide OR a felony DUI conviction.",
+      "sign_image": null,
+      "tags": [
+        "alcohol-restricted"
+      ]
+    },
+    {
+      "id": "q-0085",
+      "canonical_fact_id": "alcohol-restricted-driving-1-year-revoke",
+      "topic": "impairment",
+      "subtopic": "alcohol-restricted",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 63,
+      "source_doc": "handbook-3.2026",
+      "question": "If you drive with ANY measurable alcohol during an alcohol-restricted period, what happens?",
+      "choices": [
+        "A small fine",
+        "1-year license revocation",
+        "30-day suspension",
+        "Nothing -- only above 0.05 counts"
+      ],
+      "correct_index": 1,
+      "explanation": "Driving with ANY measurable alcohol during the alcohol-restricted period = 1-year revocation.",
+      "sign_image": null,
+      "tags": [
+        "alcohol-restricted"
+      ]
+    },
+    {
+      "id": "q-0086",
+      "canonical_fact_id": "iid-breathalyzer-ignition",
+      "topic": "impairment",
+      "subtopic": "iid",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 64,
+      "source_doc": "handbook-3.2026",
+      "question": "What is an Ignition Interlock Device (IID)?",
+      "choices": [
+        "A GPS tracker on the car",
+        "A breathalyzer wired to the ignition -- car will not start if alcohol detected",
+        "An odometer governor",
+        "An automatic seatbelt"
+      ],
+      "correct_index": 1,
+      "explanation": "An IID is a breathalyzer wired to the ignition. The car will not start if alcohol is detected on the driver's breath.",
+      "sign_image": null,
+      "tags": [
+        "iid"
+      ]
+    },
+    {
+      "id": "q-0087",
+      "canonical_fact_id": "iid-18-months-adult-first",
+      "topic": "impairment",
+      "subtopic": "iid",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 64,
+      "source_doc": "handbook-3.2026",
+      "question": "An adult (21+) convicted of a first DUI has an Ignition Interlock requirement of:",
+      "choices": [
+        "6 months",
+        "12 months",
+        "18 months",
+        "3 years"
+      ],
+      "correct_index": 2,
+      "explanation": "Adult first DUI = 18-month IID requirement. Under-21 first DUI = 3 years.",
+      "sign_image": null,
+      "tags": [
+        "iid",
+        "dui"
+      ]
+    },
+    {
+      "id": "q-0088",
+      "canonical_fact_id": "iid-3-years-under-21-first",
+      "topic": "impairment",
+      "subtopic": "iid",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 64,
+      "source_doc": "handbook-3.2026",
+      "question": "An under-21 driver convicted of a first DUI has an Ignition Interlock requirement of:",
+      "choices": [
+        "6 months",
+        "18 months",
+        "2 years",
+        "3 years"
+      ],
+      "correct_index": 3,
+      "explanation": "Under-21 first DUI = 3-year IID requirement. That is longer than the adult first-DUI period (18 months).",
+      "sign_image": null,
+      "tags": [
+        "iid",
+        "under-21",
+        "dui"
+      ]
+    },
+    {
+      "id": "q-0089",
+      "canonical_fact_id": "iid-2-years-second-offense",
+      "topic": "impairment",
+      "subtopic": "iid",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 64,
+      "source_doc": "handbook-3.2026",
+      "question": "A second-or-subsequent DUI conviction has an IID requirement of:",
+      "choices": [
+        "1 year",
+        "18 months",
+        "2 years",
+        "5 years"
+      ],
+      "correct_index": 2,
+      "explanation": "Second/subsequent DUI = 2-year IID restriction. Same for alcohol-related reckless driving or chemical refusal.",
+      "sign_image": null,
+      "tags": [
+        "iid"
+      ]
+    },
+    {
+      "id": "q-0090",
+      "canonical_fact_id": "iid-3-years-felony",
+      "topic": "impairment",
+      "subtopic": "iid",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 64,
+      "source_doc": "handbook-3.2026",
+      "question": "A felony DUI conviction carries an IID restriction of how long?",
+      "choices": [
+        "18 months",
+        "2 years",
+        "3 years",
+        "10 years"
+      ],
+      "correct_index": 2,
+      "explanation": "Felony DUI = 3-year IID restriction. Automobile homicide = 10 years.",
+      "sign_image": null,
+      "tags": [
+        "iid",
+        "felony-dui"
+      ]
+    },
+    {
+      "id": "q-0091",
+      "canonical_fact_id": "iid-10-years-auto-homicide",
+      "topic": "impairment",
+      "subtopic": "iid",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 64,
+      "source_doc": "handbook-3.2026",
+      "question": "An automobile homicide conviction carries an IID restriction of how long?",
+      "choices": [
+        "3 years",
+        "5 years",
+        "10 years",
+        "Lifetime"
+      ],
+      "correct_index": 2,
+      "explanation": "Automobile homicide = 10-year IID restriction. Lifetime alcohol-restricted status also applies.",
+      "sign_image": null,
+      "tags": [
+        "iid"
+      ]
+    },
+    {
+      "id": "q-0092",
+      "canonical_fact_id": "iid-monitoring-60-days",
+      "topic": "impairment",
+      "subtopic": "iid",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 64,
+      "source_doc": "handbook-3.2026",
+      "question": "How often must an IID be monitored, and what happens if alcohol is detected?",
+      "choices": [
+        "Daily; restriction shortened",
+        "Every 60 days; failure or alcohol attempt adds 60 days to restriction",
+        "Annually; nothing happens",
+        "Weekly; the driver is jailed"
+      ],
+      "correct_index": 1,
+      "explanation": "IID monitoring at least every 60 days. Each failed monitoring or alcohol-detected attempt extends the restriction 60 days.",
+      "sign_image": null,
+      "tags": [
+        "iid"
+      ]
+    },
+    {
+      "id": "q-0093",
+      "canonical_fact_id": "interlock-violation-1-year-revoke",
+      "topic": "impairment",
+      "subtopic": "iid",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 64,
+      "source_doc": "handbook-3.2026",
+      "question": "If you drive without an installed IID while interlock-restricted, what happens?",
+      "choices": [
+        "A $50 fine only",
+        "Vehicle impound + 1-year revoke + 2 more years of IID",
+        "Just an extension of the IID period",
+        "Loss of registration only"
+      ],
+      "correct_index": 1,
+      "explanation": "Driving while interlock-restricted without an IID = impound + 1-year revocation + 2 additional years on IID.",
+      "sign_image": null,
+      "tags": [
+        "iid",
+        "violation"
+      ]
+    },
+    {
+      "id": "q-0094",
+      "canonical_fact_id": "dui-impound-may",
+      "topic": "impairment",
+      "subtopic": "dui-penalties",
+      "priority": "NICE",
+      "type": "application",
+      "source_page": 64,
+      "source_doc": "handbook-3.2026",
+      "question": "After a DUI arrest, what can the officer do with the vehicle?",
+      "choices": [
+        "The vehicle must be released to a sober adult",
+        "The officer MAY impound the vehicle or motorboat",
+        "The vehicle must be sold immediately",
+        "Nothing -- it stays where it is"
+      ],
+      "correct_index": 1,
+      "explanation": "Upon a DUI arrest, the officer MAY impound the vehicle/motorboat. The owner pays towing, storage, and admin fees.",
+      "sign_image": null,
+      "tags": [
+        "dui",
+        "impound"
+      ]
+    },
+    {
+      "id": "q-0095",
+      "canonical_fact_id": "controlled-substance-metabolite-revoke",
+      "topic": "impairment",
+      "subtopic": "drugs",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 80,
+      "source_doc": "handbook-3.2026",
+      "question": "Driving with a controlled substance or its metabolite in your body in Utah results in:",
+      "choices": [
+        "A warning only",
+        "Mandatory revocation if convicted",
+        "Just a fine",
+        "Suspension only if impaired"
+      ],
+      "correct_index": 1,
+      "explanation": "Mandatory revocation applies if convicted of controlled substance or metabolite in body while driving -- including prescribed meds if measurable.",
+      "sign_image": null,
+      "tags": [
+        "drugs",
+        "revocation"
+      ]
+    },
+    {
+      "id": "q-0096",
+      "canonical_fact_id": "distraction-definition-mind-or-body",
+      "topic": "impairment",
+      "subtopic": "distraction",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 65,
+      "source_doc": "handbook-3.2026",
+      "question": "What is distraction while driving?",
+      "choices": [
+        "Anything that takes your mind OR body away from driving",
+        "Only phone use",
+        "Only loud passengers",
+        "Only eating"
+      ],
+      "correct_index": 0,
+      "explanation": "Distraction = anything that takes your mind OR your body away from the task of driving. Phones, food, kids, GPS -- all qualify.",
+      "sign_image": null,
+      "tags": [
+        "distraction"
+      ]
+    },
+    {
+      "id": "q-0097",
+      "canonical_fact_id": "pre-drive-distraction-prevention",
+      "topic": "impairment",
+      "subtopic": "distraction",
+      "priority": "NICE",
+      "type": "application",
+      "source_page": 65,
+      "source_doc": "handbook-3.2026",
+      "question": "Which of these is a good way to prevent distractions BEFORE you start driving?",
+      "choices": [
+        "Turn off mobile devices, set GPS, eat or groom before leaving, secure loose items",
+        "Drive faster to get there before distractions occur",
+        "Bring a passenger to entertain you",
+        "Skip the seat belt to save time"
+      ],
+      "correct_index": 0,
+      "explanation": "Pre-drive distraction prevention: turn off devices, set GPS, eat/groom before leaving, secure loose items.",
+      "sign_image": null,
+      "tags": [
+        "distraction"
+      ]
+    },
+    {
+      "id": "q-0098",
+      "canonical_fact_id": "pull-over-for-unexpected",
+      "topic": "impairment",
+      "subtopic": "distraction",
+      "priority": "NICE",
+      "type": "application",
+      "source_page": 65,
+      "source_doc": "handbook-3.2026",
+      "question": "If something unexpected happens while driving (bee in car, dropped item, contact lens shifts), what should you do?",
+      "choices": [
+        "Reach for the item quickly",
+        "Pull over immediately to handle it safely",
+        "Roll down the window and hope it leaves",
+        "Slow down but keep driving"
+      ],
+      "correct_index": 1,
+      "explanation": "Pull over immediately. Do not try to handle unexpected events while still driving -- that is how serious crashes happen.",
+      "sign_image": null,
+      "tags": [
+        "distraction"
+      ]
+    },
+    {
+      "id": "q-0099",
+      "canonical_fact_id": "hwc-general-no-manual",
+      "topic": "impairment",
+      "subtopic": "hwc",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 67,
+      "source_doc": "handbook-3.2026",
+      "question": "While driving on a Utah highway, you may NOT do which of these with a wireless device?",
+      "choices": [
+        "Use it via voice commands",
+        "Manually text, dial, browse the internet, or take photos",
+        "Use a hands-free GPS",
+        "Listen to music through Bluetooth"
+      ],
+      "correct_index": 1,
+      "explanation": "Utah's HWC law bans manually writing/sending/reading texts, dialing, browsing, viewing video, taking photos, or entering data while driving.",
+      "sign_image": null,
+      "tags": [
+        "hwc",
+        "texting"
+      ]
+    },
+    {
+      "id": "q-0100",
+      "canonical_fact_id": "hwc-over-18-voice-only",
+      "topic": "impairment",
+      "subtopic": "hwc",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "A driver over 18 may use a wireless device while driving only how?",
+      "choices": [
+        "Texting is fine if quick",
+        "Only via voice commands / hands-free",
+        "Only at red lights",
+        "Never, for any reason"
+      ],
+      "correct_index": 1,
+      "explanation": "Over-18 drivers may talk on a phone only via voice commands / hands-free. Manual dialing or texting is prohibited.",
+      "sign_image": null,
+      "tags": [
+        "hwc"
+      ]
+    },
+    {
+      "id": "q-0101",
+      "canonical_fact_id": "hwc-under-18-exceptions-only",
+      "topic": "impairment",
+      "subtopic": "hwc",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "A driver UNDER 18 may use a wireless device while driving ONLY for which purposes?",
+      "choices": [
+        "Any quick communication",
+        "Medical emergency, safety hazard, criminal activity, OR contacting parent/guardian",
+        "Texting friends about ETA",
+        "Music control only"
+      ],
+      "correct_index": 1,
+      "explanation": "Under 18 may only use a wireless device for medical emergency, safety hazard, criminal activity, OR contacting parent/legal guardian.",
+      "sign_image": null,
+      "tags": [
+        "hwc",
+        "under-18"
+      ]
+    },
+    {
+      "id": "q-0102",
+      "canonical_fact_id": "texting-class-c-100",
+      "topic": "impairment",
+      "subtopic": "hwc",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "A first texting-while-driving violation in Utah is what offense, with what maximum fine?",
+      "choices": [
+        "Infraction, $25",
+        "Class C misdemeanor, $100",
+        "Class B misdemeanor, $500",
+        "Felony, $1,000"
+      ],
+      "correct_index": 1,
+      "explanation": "Texting violation = Class C misdemeanor, max $100 fine. It becomes Class B if you cause injury or have a prior.",
+      "sign_image": null,
+      "tags": [
+        "hwc",
+        "texting"
+      ]
+    },
+    {
+      "id": "q-0103",
+      "canonical_fact_id": "texting-class-b-injury-or-prior",
+      "topic": "impairment",
+      "subtopic": "hwc",
+      "priority": "NICE",
+      "type": "application",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "When does a texting-while-driving offense become a Class B misdemeanor?",
+      "choices": [
+        "Always -- Class B is the default",
+        "If you cause bodily injury OR have a prior texting offense",
+        "If the text was more than 140 characters",
+        "Only for commercial drivers"
+      ],
+      "correct_index": 1,
+      "explanation": "Class B misdemeanor if you cause bodily injury OR have a prior texting offense. Otherwise Class C.",
+      "sign_image": null,
+      "tags": [
+        "hwc",
+        "texting"
+      ]
+    },
+    {
+      "id": "q-0104",
+      "canonical_fact_id": "texting-primary-offense",
+      "topic": "impairment",
+      "subtopic": "hwc",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "Can an officer pull you over JUST for texting in Utah, with no other violation?",
+      "choices": [
+        "No -- texting is a secondary offense only",
+        "Yes -- texting is a primary offense",
+        "Only for under-18 drivers",
+        "Only on freeways"
+      ],
+      "correct_index": 1,
+      "explanation": "Texting is a primary offense in Utah. An officer can stop you for texting alone -- no other violation needed.",
+      "sign_image": null,
+      "tags": [
+        "hwc",
+        "texting"
+      ]
+    },
+    {
+      "id": "q-0105",
+      "canonical_fact_id": "texting-judge-suspend",
+      "topic": "impairment",
+      "subtopic": "hwc",
+      "priority": "NICE",
+      "type": "application",
+      "source_page": 80,
+      "source_doc": "handbook-3.2026",
+      "question": "A texting-while-driving violation in Utah may result in what additional penalty if a judge orders it?",
+      "choices": [
+        "Vehicle confiscation",
+        "License suspension",
+        "Permanent ban from cell phones",
+        "Public service announcement"
+      ],
+      "correct_index": 1,
+      "explanation": "A judge may order license suspension as an additional penalty for texting violations, beyond the misdemeanor fine.",
+      "sign_image": null,
+      "tags": [
+        "hwc"
+      ]
+    },
+    {
+      "id": "q-0106",
+      "canonical_fact_id": "aggressive-driving-definition",
+      "topic": "impairment",
+      "subtopic": "aggressive",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 65,
+      "source_doc": "handbook-3.2026",
+      "question": "What is aggressive driving under Utah law?",
+      "choices": [
+        "Driving fast",
+        "Committing moving traffic offenses that endanger persons or property, OR assault with a motor vehicle",
+        "Passing on the right",
+        "Honking at slow drivers"
+      ],
+      "correct_index": 1,
+      "explanation": "Aggressive driving = committing moving traffic offenses that endanger people/property, OR assault with a motor vehicle.",
+      "sign_image": null,
+      "tags": [
+        "aggressive"
+      ]
+    },
+    {
+      "id": "q-0107",
+      "canonical_fact_id": "road-rage-definition",
+      "topic": "impairment",
+      "subtopic": "aggressive",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 65,
+      "source_doc": "handbook-3.2026",
+      "question": "What separates road rage from aggressive driving under Utah law?",
+      "choices": [
+        "Speed",
+        "Intent to endanger or intimidate another driver, in response to a roadway incident",
+        "Number of vehicles involved",
+        "Time of day"
+      ],
+      "correct_index": 1,
+      "explanation": "Road rage = criminal offense by a driver, in response to a roadway incident, WITH INTENT to endanger or intimidate another driver.",
+      "sign_image": null,
+      "tags": [
+        "road-rage"
+      ]
+    },
+    {
+      "id": "q-0108",
+      "canonical_fact_id": "road-rage-1-year-suspend",
+      "topic": "impairment",
+      "subtopic": "aggressive",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 65,
+      "source_doc": "handbook-3.2026",
+      "question": "A first road-rage conviction can result in what kind of license suspension?",
+      "choices": [
+        "Court MAY suspend for 1 year",
+        "Mandatory 6-month suspension",
+        "Permanent revocation",
+        "30-day suspension only"
+      ],
+      "correct_index": 0,
+      "explanation": "First road-rage conviction = court MAY suspend the license for 1 year. Not mandatory -- judge's discretion.",
+      "sign_image": null,
+      "tags": [
+        "road-rage"
+      ]
+    },
+    {
+      "id": "q-0109",
+      "canonical_fact_id": "sleep-7-9-hours",
+      "topic": "impairment",
+      "subtopic": "fatigue",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 66,
+      "source_doc": "handbook-3.2026",
+      "question": "How much sleep do most adults need per night to be alert behind the wheel?",
+      "choices": [
+        "4-5 hours",
+        "5-6 hours",
+        "7-9 hours",
+        "10+ hours"
+      ],
+      "correct_index": 2,
+      "explanation": "Most adults need 7 to 9 hours of sleep. Less than that, and you are at higher risk for drowsy driving.",
+      "sign_image": null,
+      "tags": [
+        "fatigue",
+        "sleep"
+      ]
+    },
+    {
+      "id": "q-0110",
+      "canonical_fact_id": "long-trip-stop-every-2-hours",
+      "topic": "impairment",
+      "subtopic": "fatigue",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 66,
+      "source_doc": "handbook-3.2026",
+      "question": "On a long road trip, how often should you plan to stop and rest?",
+      "choices": [
+        "Every 30 minutes",
+        "Every 2 hours",
+        "Every 4 hours",
+        "Only when tired"
+      ],
+      "correct_index": 1,
+      "explanation": "Plan to stop every 2 hours on long trips to stretch, refresh, and check fatigue level. Do not wait until you feel tired.",
+      "sign_image": null,
+      "tags": [
+        "fatigue"
+      ]
+    },
+    {
+      "id": "q-0111",
+      "canonical_fact_id": "power-nap-20-min",
+      "topic": "impairment",
+      "subtopic": "fatigue",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 67,
+      "source_doc": "handbook-3.2026",
+      "question": "If you must take a power nap on a long drive, how long should it be?",
+      "choices": [
+        "5 minutes",
+        "20 minutes",
+        "1 hour",
+        "2+ hours"
+      ],
+      "correct_index": 1,
+      "explanation": "A power nap of about 20 minutes restores alertness without the grogginess of deeper sleep.",
+      "sign_image": null,
+      "tags": [
+        "fatigue"
+      ]
+    },
+    {
+      "id": "q-0112",
+      "canonical_fact_id": "drowsy-warning-signs-list",
+      "topic": "impairment",
+      "subtopic": "fatigue",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 67,
+      "source_doc": "handbook-3.2026",
+      "question": "Which of these is a warning sign you are too drowsy to drive?",
+      "choices": [
+        "Singing along to the radio",
+        "Cannot remember the last few miles, drifting in lane, or hitting rumble strips",
+        "Holding the wheel with one hand",
+        "Stopping for gas"
+      ],
+      "correct_index": 1,
+      "explanation": "Drowsy warning signs include: cannot remember the last few miles, drift in lane, hit rumble strip, missing signs, heavy eyes, constant yawning.",
+      "sign_image": null,
+      "tags": [
+        "fatigue"
+      ]
+    },
+    {
+      "id": "q-0113",
+      "canonical_fact_id": "check-med-labels-drowsy",
+      "topic": "impairment",
+      "subtopic": "drugs",
+      "priority": "NICE",
+      "type": "application",
+      "source_page": 66,
+      "source_doc": "handbook-3.2026",
+      "question": "Before driving on a new medicine, where can you find drowsiness warnings?",
+      "choices": [
+        "The TV ad",
+        "The medicine label or your physician",
+        "Online forums",
+        "Your friends"
+      ],
+      "correct_index": 1,
+      "explanation": "Check the medicine label and/or ask your physician. Many over-the-counter and prescription meds list 'may cause drowsiness.'",
+      "sign_image": null,
+      "tags": [
+        "drugs",
+        "medication"
+      ]
+    },
+    {
+      "id": "q-0114",
+      "canonical_fact_id": "under-21-zero-tolerance",
+      "topic": "impairment",
+      "subtopic": "scenarios",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 62,
+      "source_doc": "handbook-3.2026",
+      "question": "You are 18 and just had one sip of beer at a friend's house. You decide to drive home. Are you legal?",
+      "choices": [
+        "Yes -- under 0.05 is legal",
+        "Yes -- under 0.02 is the under-21 floor",
+        "No -- under 21 has zero tolerance (0.00)",
+        "Yes -- one sip is not a real drink"
+      ],
+      "correct_index": 2,
+      "explanation": "Under 21 = 0.00 BAC. Any measurable alcohol violates the Not-a-Drop law and could result in a 6-month license denial.",
+      "sign_image": null,
+      "tags": [
+        "scenario",
+        "under-21"
+      ]
+    },
+    {
+      "id": "q-0115",
+      "canonical_fact_id": "adult-bac-limit-0.05",
+      "topic": "impairment",
+      "subtopic": "scenarios",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 62,
+      "source_doc": "handbook-3.2026",
+      "question": "You are 25 and blow 0.07 on a breathalyzer. You thought the legal limit was 0.08. What is true?",
+      "choices": [
+        "You are under the limit -- no DUI",
+        "Utah's limit is 0.05, so you are OVER and face a first-DUI suspension of 120 days",
+        "DUI only applies above 0.10",
+        "First-time offenders get a warning"
+      ],
+      "correct_index": 1,
+      "explanation": "Utah's adult limit is 0.05 -- the lowest in the U.S. At 0.07 you are over. First DUI = 120-day suspension.",
+      "sign_image": null,
+      "tags": [
+        "scenario",
+        "bac"
+      ]
+    },
+    {
+      "id": "q-0116",
+      "canonical_fact_id": "implied-consent-law",
+      "topic": "impairment",
+      "subtopic": "scenarios",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 63,
+      "source_doc": "handbook-3.2026",
+      "question": "You are pulled over and arrested for suspected DUI. You decide to refuse the breathalyzer to avoid evidence. What happens?",
+      "choices": [
+        "No consequences if not convicted",
+        "Automatic license revocation: 18 months for first refusal (21+)",
+        "A warning the first time",
+        "Required to take a urine test instead"
+      ],
+      "correct_index": 1,
+      "explanation": "Implied consent: by driving, you already agreed to the test. Refusal = automatic revocation -- 18 months first offense for adults (21+), on top of any DUI charges.",
+      "sign_image": null,
+      "tags": [
+        "scenario",
+        "implied-consent"
+      ]
+    },
+    {
+      "id": "q-0117",
+      "canonical_fact_id": "iid-3-years-under-21-first",
+      "topic": "impairment",
+      "subtopic": "scenarios",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 64,
+      "source_doc": "handbook-3.2026",
+      "question": "Caleb, 19, is convicted of his first DUI. He thinks his Ignition Interlock will be 18 months like adults. How long is it actually?",
+      "choices": [
+        "18 months -- same as adults",
+        "2 years",
+        "3 years -- under-21 IID is longer",
+        "1 year"
+      ],
+      "correct_index": 2,
+      "explanation": "Under-21 first DUI = 3-year IID restriction. That is longer than the adult first-DUI (18 months) -- Utah is stricter on young drivers.",
+      "sign_image": null,
+      "tags": [
+        "scenario",
+        "iid",
+        "under-21"
+      ]
+    },
+    {
+      "id": "q-0118",
+      "canonical_fact_id": "impairing-drugs-all-three-categories",
+      "topic": "impairment",
+      "subtopic": "scenarios",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 61,
+      "source_doc": "handbook-3.2026",
+      "question": "Mrs. Patel starts a new prescription antihistamine. The label warns of drowsiness. She drives the next morning and crashes. What is true?",
+      "choices": [
+        "Prescription drugs are always legal to drive on",
+        "Impairing drugs include prescriptions; she could face DUI charges if impaired",
+        "Only illegal drugs trigger DUI law",
+        "If her doctor approved the prescription, she is immune"
+      ],
+      "correct_index": 1,
+      "explanation": "Impairing drugs include illegal, OTC, AND prescription medications. The driver has final responsibility for knowing whether they are safe to drive.",
+      "sign_image": null,
+      "tags": [
+        "scenario",
+        "drugs"
+      ]
+    },
+    {
+      "id": "q-0119",
+      "canonical_fact_id": "hwc-under-18-exceptions-only",
+      "topic": "impairment",
+      "subtopic": "scenarios",
+      "priority": "MUST",
+      "type": "scenario",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "Sam, 16, is stopped at a red light. He pulls out his phone to text a friend 'running 5 min late.' An officer sees it. Is Sam legal?",
+      "choices": [
+        "Yes -- texting at a red light is fine",
+        "Yes -- short texts do not count",
+        "No -- under-18 may only text for medical, safety, criminal, or parent reasons",
+        "Only illegal if moving"
+      ],
+      "correct_index": 2,
+      "explanation": "Under-18 HWC exceptions are: medical emergency, safety hazard, criminal activity, or parent/guardian. Texting a friend is none of those. Class C misdemeanor, max $100.",
+      "sign_image": null,
+      "tags": [
+        "scenario",
+        "hwc",
+        "under-18"
+      ]
+    },
+    {
+      "id": "q-0120",
+      "canonical_fact_id": "hwc-over-18-voice-only",
+      "topic": "impairment",
+      "subtopic": "scenarios",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "Marisa, 22, uses her phone voice command to call her mom while driving on the freeway. They talk hands-free for 5 minutes. Is she legal?",
+      "choices": [
+        "No -- phone use is illegal at any age",
+        "Yes -- over-18 may use voice commands / hands-free",
+        "Only legal if it is an emergency",
+        "Only legal off the freeway"
+      ],
+      "correct_index": 1,
+      "explanation": "Over-18 drivers may use voice commands / hands-free. The ban is on manual writing, dialing, browsing, photos, or video -- voice commands are allowed.",
+      "sign_image": null,
+      "tags": [
+        "scenario",
+        "hwc"
+      ]
+    },
+    {
+      "id": "q-0121",
+      "canonical_fact_id": "drowsy-warning-signs-list",
+      "topic": "impairment",
+      "subtopic": "scenarios",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 67,
+      "source_doc": "handbook-3.2026",
+      "question": "Tyler has been driving 6 hours straight at 2 a.m. He just hit a rumble strip twice in 10 minutes and is yawning constantly. What should he do?",
+      "choices": [
+        "Drink coffee and push through",
+        "Drive faster to get home sooner",
+        "Open the windows for air",
+        "Pull off at the next safe place -- take a 20-minute power nap or stop for the night"
+      ],
+      "correct_index": 3,
+      "explanation": "Multiple drowsy-driving warning signs. Pull off at the next rest area, take a 20-minute power nap, or stop for the night. Drowsy driving is treated similarly to impaired driving.",
+      "sign_image": null,
+      "tags": [
+        "scenario",
+        "fatigue"
+      ]
+    },
+    {
+      "id": "q-0122",
+      "canonical_fact_id": "animal-no-swerve",
+      "topic": "impairment",
+      "subtopic": "scenarios",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 66,
+      "source_doc": "handbook-3.2026",
+      "question": "A driver is exhausted at dusk. A deer steps suddenly into the road ahead. What should the driver do?",
+      "choices": [
+        "Swerve hard to miss it",
+        "Speed up to clear the animal",
+        "Stay in the lane and brake firmly if safe -- do NOT swerve",
+        "Swerve and brake at the same time"
+      ],
+      "correct_index": 2,
+      "explanation": "Do NOT swerve. Stay in the lane and brake firmly if safe to do so. The risk of swerving (rollover, head-on, off-road) is worse than hitting the animal.",
+      "sign_image": null,
+      "tags": [
+        "scenario",
+        "animal"
+      ]
+    },
+    {
+      "id": "q-0123",
+      "canonical_fact_id": "bui-equals-dui",
+      "topic": "impairment",
+      "subtopic": "scenarios",
+      "priority": "NICE",
+      "type": "scenario",
+      "source_page": 63,
+      "source_doc": "handbook-3.2026",
+      "question": "Aaron, 19, is operating his family motorboat on Lake Powell. An officer asks him to submit to a chemical test. Aaron refuses. What happens?",
+      "choices": [
+        "Boats are exempt from DUI law",
+        "BUI = DUI; under-21 refusal = 2-year revocation of driving privilege",
+        "Boating does not affect a driver license",
+        "Only the boating license is affected"
+      ],
+      "correct_index": 1,
+      "explanation": "BUI = DUI. Implied consent applies. Under-21 first refusal = 2-year revocation -- and this affects his car driving privileges.",
+      "sign_image": null,
+      "tags": [
+        "scenario",
+        "bui",
+        "implied-consent"
+      ]
+    },
+    {
+      "id": "q-0124",
+      "canonical_fact_id": "interlock-violation-1-year-revoke",
+      "topic": "impairment",
+      "subtopic": "scenarios",
+      "priority": "NICE",
+      "type": "scenario",
+      "source_page": 64,
+      "source_doc": "handbook-3.2026",
+      "question": "Devin, 23, is on the Alcohol-Restricted list with an active IID restriction. He drives a friend's car (no IID) to work. He is pulled over. What is the consequence?",
+      "choices": [
+        "He is fine -- the borrowed car does not count",
+        "Impound + 1-year revocation + 2 more years of IID restriction",
+        "Just a $50 fine",
+        "Only the friend is in trouble"
+      ],
+      "correct_index": 1,
+      "explanation": "Driving while interlock-restricted in a vehicle WITHOUT an IID = impound + 1-year revocation + 2 more years on IID.",
+      "sign_image": null,
+      "tags": [
+        "scenario",
+        "iid"
+      ]
+    },
+    {
+      "id": "q-0125",
+      "canonical_fact_id": "road-rage-definition",
+      "topic": "impairment",
+      "subtopic": "scenarios",
+      "priority": "NICE",
+      "type": "scenario",
+      "source_page": 65,
+      "source_doc": "handbook-3.2026",
+      "question": "Two drivers argue at a stop sign. One follows the other, brake-checking, swerving, and forcing the other car off the road. Nobody is hurt. What charge fits?",
+      "choices": [
+        "Just a traffic offense, no big deal",
+        "Road rage -- intent to endanger or intimidate",
+        "Aggressive driving only",
+        "Reckless driving only"
+      ],
+      "correct_index": 1,
+      "explanation": "Road rage = criminal offense WITH INTENT to endanger or intimidate, in response to a roadway incident. First conviction = court MAY suspend the license for 1 year.",
+      "sign_image": null,
+      "tags": [
+        "scenario",
+        "road-rage"
+      ]
+    },
+    {
+      "id": "q-0126",
+      "canonical_fact_id": "flood-6-inches-stalls-cars",
+      "topic": "impairment",
+      "subtopic": "scenarios",
+      "priority": "NICE",
+      "type": "scenario",
+      "source_page": 67,
+      "source_doc": "handbook-3.2026",
+      "question": "A flash flood has covered a low section of road. Water is about 8 inches deep and moving. You can see road markings under it. What do you do?",
+      "choices": [
+        "Drive through carefully -- markings are visible",
+        "OK if you have an SUV",
+        "OK because it is only 8 inches",
+        "Turn around -- 6 inches can stall a car; never cross a flooded roadway"
+      ],
+      "correct_index": 3,
+      "explanation": "Turn around. Even 6 inches of water can stall most cars; 2 feet can carry away an SUV. Floodwater also hides washed-out road underneath.",
+      "sign_image": null,
+      "tags": [
+        "scenario",
+        "flood"
+      ]
+    },
+    {
+      "id": "q-0127",
+      "canonical_fact_id": "meds-cause-drowsiness",
+      "topic": "impairment",
+      "subtopic": "scenarios",
+      "priority": "SHOULD",
+      "type": "scenario",
+      "source_page": 31,
+      "source_doc": "handbook-3.2026",
+      "question": "Brian, 28, has the flu. He takes a nighttime cold medicine (contains a sleep aid) 2 hours before driving to a friend house at 9 p.m. What is true?",
+      "choices": [
+        "OTC medications cannot cause impairment",
+        "Only prescription drugs trigger DUI charges",
+        "Sleep aids in cold medicine are impairing drugs -- Brian could face DUI if pulled over impaired",
+        "If you can buy it legally, you can drive on it"
+      ],
+      "correct_index": 2,
+      "explanation": "OTC drugs absolutely count as impairing. Sleep aids in nighttime cold medicine are explicit drowsiness causers. The driver has final responsibility to know if it is safe to drive.",
+      "sign_image": null,
+      "tags": [
+        "scenario",
+        "drugs"
+      ]
+    },
+    {
+      "id": "q-0128",
+      "canonical_fact_id": "not-a-drop-6-months-first",
+      "topic": "impairment",
+      "subtopic": "scenarios",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 62,
+      "source_doc": "handbook-3.2026",
+      "question": "You are 19 with a Provisional license. You blow 0.01 on a breathalyzer. What is the consequence under Not-a-Drop?",
+      "choices": [
+        "No consequence -- you are under 0.05",
+        "Warning only",
+        "6-month license denial for first offense",
+        "120-day suspension"
+      ],
+      "correct_index": 2,
+      "explanation": "Under 21 = zero tolerance. Any measurable alcohol triggers Not-a-Drop: 6-month license denial for first offense.",
+      "sign_image": null,
+      "tags": [
+        "application",
+        "not-a-drop"
+      ]
+    },
+    {
+      "id": "q-0129",
+      "canonical_fact_id": "cdl-bac-limit-0.04",
+      "topic": "impairment",
+      "subtopic": "scenarios",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 62,
+      "source_doc": "handbook-3.2026",
+      "question": "A CDL driver operating a commercial truck blows 0.045. Are they legal?",
+      "choices": [
+        "Yes -- under the 0.05 adult limit",
+        "No -- CDL drivers have a stricter 0.04 limit",
+        "Yes -- CDL is the same as Class D",
+        "Only illegal if hauling hazmat"
+      ],
+      "correct_index": 1,
+      "explanation": "CDL drivers operating commercial vehicles have a 0.04 BAC limit, lower than the 0.05 personal-vehicle limit.",
+      "sign_image": null,
+      "tags": [
+        "application",
+        "bac",
+        "cdl"
+      ]
+    },
+    {
+      "id": "q-0130",
+      "canonical_fact_id": "hwc-under-18-exceptions-only",
+      "topic": "impairment",
+      "subtopic": "scenarios",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "You are 17 and driving when you notice a serious crash off the road. Which phone use is legal?",
+      "choices": [
+        "Texting your friend that you will be late",
+        "Posting a photo to social media",
+        "Calling 911 or a parent -- reporting a safety hazard qualifies",
+        "Looking up directions"
+      ],
+      "correct_index": 2,
+      "explanation": "Under-18 HWC exceptions: medical emergency, safety hazard, criminal activity, or parent/guardian. Calling 911 to report a crash is a safety-hazard call -- that is allowed.",
+      "sign_image": null,
+      "tags": [
+        "application",
+        "hwc",
+        "under-18"
+      ]
+    }
+  ]
+}

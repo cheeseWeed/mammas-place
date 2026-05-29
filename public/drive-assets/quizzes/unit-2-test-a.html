@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2 - Rules of the Road - Test A</title>
+<style>
+:root { --primary: #581c87; --accent: #facc15; --green: #16a34a; --red: #dc2626; --text: #18181b; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 760px; margin: 0 auto; padding: 24px; color: var(--text); }
+h1 { color: var(--primary); }
+.meta { color: #71717a; margin-bottom: 24px; font-size: 0.9em; }
+.question { background: #fafafa; border-left: 4px solid var(--primary); padding: 16px 20px; margin: 16px 0; border-radius: 4px; }
+.question.correct { border-left-color: var(--green); }
+.question.wrong { border-left-color: var(--red); }
+.q-num { color: var(--primary); font-weight: 600; font-size: 0.85em; }
+.q-text { font-size: 1.05em; margin: 8px 0 16px; }
+.choices label { display: block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; }
+.choices label:hover { background: #faf5ff; border-color: var(--primary); }
+.choices input[type=radio] { margin-right: 10px; }
+.explanation { margin-top: 12px; padding: 12px; background: #fef3c7; border-radius: 4px; display: none; font-size: 0.92em; }
+.show .explanation { display: block; }
+.submit-btn { background: var(--primary); color: white; border: none; padding: 14px 32px; font-size: 1.1em; border-radius: 6px; cursor: pointer; margin-top: 24px; }
+.submit-btn:hover { background: #6b21a8; }
+.score-card { background: linear-gradient(135deg, var(--primary), #6b21a8); color: white; padding: 24px; border-radius: 8px; margin: 24px 0; }
+.score-card h2 { margin-top: 0; }
+.score-pct { font-size: 3em; font-weight: 700; }
+.pass-badge { background: var(--accent); color: var(--text); padding: 6px 12px; border-radius: 4px; display: inline-block; }
+.fail-badge { background: var(--red); color: white; padding: 6px 12px; border-radius: 4px; display: inline-block; }
+img.sign { max-height: 180px; margin: 8px 0; display: block; }
+.back-link { color: var(--primary); text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+.empty-state { background: #fef3c7; padding: 16px; border-radius: 6px; margin: 16px 0; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+<!-- HOME-BTN v1 -->
+<a href="../dashboard/index.html" style="position:fixed; top:12px; left:12px; z-index:9999; background:#581c87; color:white; text-decoration:none; padding:6px 14px; border-radius:6px; font-size:13px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.15);">&larr; Home</a>
+
+<h1>Unit 2 - Rules of the Road - Test A</h1>
+<div class="meta">25 questions &middot; Pass: 80% (20 correct) &middot; Pool: 235 questions from rules-of-the-road, speed, pavement-markings</div>
+
+<form id="quiz"></form>
+<button class="submit-btn" id="submit">Grade my quiz</button>
+<div id="result"></div>
+<script>
+const QUESTIONS = [{"question": "Who has the right-of-way at a roundabout?", "choices": ["Cars entering the roundabout", "Cars already in the roundabout", "Whoever signals first", "The largest vehicle"], "correct_index": 1, "explanation": "Yield to traffic already in the roundabout. Handbook p. 55.", "source_page": 55, "priority": "MUST", "canonical_fact_id": "roundabout-yield-to-circle"}, {"question": "A solid white line painted across the road at an intersection is called a what?", "choices": ["Crosswalk", "Stop line (also called a stop bar) - you must stop behind it", "Lane divider", "Yield line"], "correct_index": 1, "explanation": "A stop bar/stop line is the thick solid white line painted across the road where vehicles must stop at a stop sign or signal.", "source_page": 54, "priority": "MUST", "canonical_fact_id": "stop-before-crosswalk-visibility"}, {"question": "True or false: A line between you and oncoming traffic can be white.", "choices": ["True - line color doesn't matter", "True - some states use white", "False - between you and oncoming traffic the line is always yellow", "False - only highways use yellow"], "correct_index": 2, "explanation": "In Utah and across the U.S., yellow is reserved for separating opposite-direction traffic. White means same direction.", "source_page": 53, "priority": "MUST", "canonical_fact_id": "pavement-yellow-opposing"}, {"question": "You're pulling out of your driveway onto a residential street. A car is coming down the street. Who has the right-of-way?", "choices": ["You — first to be there has priority", "The car on the street — driveway traffic yields to street traffic", "Tied — yield to the right", "You — but only if you signal first"], "correct_index": 1, "explanation": "When entering a street from a driveway or private road, yield to traffic already on the street. Handbook p. 60.", "source_page": 60, "priority": "MUST", "canonical_fact_id": "driveway-yields-to-street"}, {"question": "You're driving on a multi-lane road and see WHITE lines between lanes. What do they indicate?", "choices": ["Opposing traffic", "Lanes going in the same direction as you", "The edge of the road only", "School zone"], "correct_index": 1, "explanation": "White lines separate same-direction lanes. The line style tells you whether you can change lanes.", "source_page": 53, "priority": "MUST", "canonical_fact_id": "pavement-white-same-direction"}, {"question": "What does an X-shaped white sign reading 'Railroad Crossing' (crossbuck) mean?", "choices": ["Stop if a train is visible; yield to trains", "Crossing closed", "Speed limit zone", "Detour ahead"], "correct_index": 0, "explanation": "A crossbuck means yield to trains; stop if a train approaches. Handbook p. 96.", "source_page": 96, "priority": "SHOULD", "canonical_fact_id": "crossbuck-stop-yield-train"}, {"question": "On a one-way street, all pavement lines (between lanes and at the edges) should be what color?", "choices": ["Yellow", "White", "Mixed yellow and white", "Red"], "correct_index": 1, "explanation": "A one-way street has no opposing-direction traffic, so all lines (between lanes and on both edges) are WHITE.", "source_page": 53, "priority": "MUST", "canonical_fact_id": "pavement-white-same-direction"}, {"question": "The DLD sample test asks about yellow vs white lines. Which is the correct answer to 'yellow lines separate traffic moving in __ directions'?", "choices": ["The same", "Opposing (opposite)", "Right-turn", "Truck-only"], "correct_index": 1, "explanation": "Yellow = opposing (opposite). Memorize the pair: yellow = opposite, white = same.", "source_page": 53, "priority": "MUST", "canonical_fact_id": "pavement-yellow-opposing"}, {"question": "At a railroad crossing controlled by gates or signals, how far from the nearest rail should you stop?", "choices": ["At least 5 feet but no more than 25 feet", "More than 15 feet but not more than 50 feet", "Exactly 100 feet", "Wherever you can stop safely"], "correct_index": 1, "explanation": "Stop more than 15 feet but not more than 50 feet from the nearest rail. Handbook p. 95.", "source_page": 95, "priority": "MUST", "canonical_fact_id": "rr-stop-15-50-ft"}, {"question": "May you make a U-turn on a freeway?", "choices": ["Yes, where there's an emergency-only opening in the median", "Yes, between exits if traffic is light", "Never — no U-turns on the freeway", "Yes, on a holiday"], "correct_index": 2, "explanation": "No U-turns on the freeway. Handbook p. 49.", "source_page": 49, "priority": "SHOULD", "canonical_fact_id": "no-u-turn-freeway"}, {"question": "You have a GREEN light at an intersection. A pedestrian is in the crosswalk crossing in front of you. What do you do?", "choices": ["Proceed — green gives you priority over pedestrians", "Yield to the pedestrian even on a green", "Tap the horn to alert them", "Edge forward slowly"], "correct_index": 1, "explanation": "Even with a green light, yield to pedestrians in the crosswalk. Handbook p. 91.", "source_page": 91, "priority": "MUST", "canonical_fact_id": "green-light-still-yield-pedestrians"}, {"question": "You must use headlights when you cannot clearly see a person or vehicle at what distance?", "choices": ["500 feet", "1,000 feet", "100 feet", "Only at night"], "correct_index": 1, "explanation": "Use headlights when visibility is less than 1,000 ft. Handbook p. 49.", "source_page": 49, "priority": "SHOULD", "canonical_fact_id": "headlights-on-1000-ft-visibility"}, {"question": "You're approaching a crosswalk and another car has stopped just before it. What should you do?", "choices": ["Pass the stopped car carefully", "Stop also - the stopped car may be yielding to a pedestrian you can't see", "Honk to make them go", "Drive around them"], "correct_index": 1, "explanation": "If another vehicle stops at a crosswalk, never pass them - they may be yielding to a pedestrian you cannot see.", "source_page": 54, "priority": "MUST", "canonical_fact_id": "never-pass-vehicle-at-crosswalk"}, {"question": "White arrows painted on the pavement at an intersection tell you what?", "choices": ["Decoration", "The legal direction(s) that lane allows you to turn or proceed", "Where the next exit is", "The speed limit"], "correct_index": 1, "explanation": "White lane arrows indicate the LEGAL movements for that lane: straight only, left turn only, right turn only, or combinations.", "source_page": 53, "priority": "SHOULD", "canonical_fact_id": "pavement-white-same-direction"}, {"question": "You're on I-15 in the right lane at the posted 70 mph. All traffic around you is going 80. What's your legal max?", "choices": ["80 mph — match flow", "75 mph — give a 5 mph buffer", "70 mph — never exceed the posted limit", "Whatever feels safe given visibility"], "correct_index": 2, "explanation": "Legal max is always the posted limit, regardless of traffic flow. Handbook p. 49.", "source_page": 49, "priority": "MUST", "canonical_fact_id": "never-exceed-posted-limit"}, {"question": "A SOLID white line between two lanes going the same direction means what?", "choices": ["Lane change is required", "Lane change is discouraged; cross only if necessary", "Lane change permitted freely", "Bicycle lane"], "correct_index": 1, "explanation": "A single solid white line discourages lane changes (cross only if needed). A DOUBLE solid white prohibits crossing entirely.", "source_page": 53, "priority": "SHOULD", "canonical_fact_id": "double-white-no-cross"}, {"question": "A triangular sign with a red border (point-down) means:", "choices": ["Stop", "Yield — slow down and give right-of-way to others", "Wrong way", "Do not enter"], "correct_index": 1, "explanation": "Downward-pointing triangle = YIELD. Handbook p. 57.", "source_page": 57, "priority": "MUST", "canonical_fact_id": "sign-yield-meaning"}, {"question": "You may enter a shared center left-turn lane up to how far before your intended turn?", "choices": ["No distance limit", "500 feet", "100 feet", "1,000 feet"], "correct_index": 1, "explanation": "Utah law: you may not enter the shared center turn lane more than 500 feet before your turn (unless the last car using it is more than 500 ft from the intersection).", "source_page": 54, "priority": "MUST", "canonical_fact_id": "pavement-yellow-opposing"}, {"question": "At a STOP sign, what kind of stop is required?", "choices": ["A rolling stop if no traffic is visible", "A complete stop", "Slow to 5 mph", "Pause for 1 second"], "correct_index": 1, "explanation": "Stop signs require a COMPLETE stop. Handbook p. 45.", "source_page": 45, "priority": "MUST", "canonical_fact_id": "complete-stop-list"}, {"question": "How much moving water can carry away most SUVs or trucks?", "choices": ["6 inches", "1 foot", "2 feet", "5 feet"], "correct_index": 2, "explanation": "2 feet of moving water can carry away most SUVs and trucks. Handbook p. 49.", "source_page": 49, "priority": "SHOULD", "canonical_fact_id": "flood-2-feet-carries-suv"}, {"question": "Double solid yellow lines down the center of a road mean what?", "choices": ["Passing permitted in both directions", "Passing prohibited in both directions", "The road is a freeway", "Slow zone"], "correct_index": 1, "explanation": "Double solid yellow = NO PASSING in either direction. Both sides of traffic are restricted.", "source_page": 53, "priority": "MUST", "canonical_fact_id": "double-solid-yellow-no-pass-both"}, {"question": "You need to make a left turn into a driveway across a double solid yellow line. Can you?", "choices": ["No - the double yellow forbids any crossing", "Yes - you may cross a double yellow to turn left into a driveway or side road when safe", "Only at an intersection", "Only at night"], "correct_index": 1, "explanation": "Double yellow lines prohibit PASSING but you can still cross them to make a left turn into a driveway or side road, when safe.", "source_page": 53, "priority": "SHOULD", "canonical_fact_id": "double-solid-yellow-no-pass-both"}, {"question": "An orange triangle (slow-moving-vehicle emblem) on a vehicle ahead means the vehicle's max speed is:", "choices": ["25 mph or less", "45 mph", "55 mph", "65 mph"], "correct_index": 0, "explanation": "The slow-moving-vehicle triangle means the vehicle travels 25 mph or less. Handbook p. 58.", "source_page": 58, "priority": "NICE", "canonical_fact_id": "slow-moving-triangle-25mph"}, {"question": "A flashing RED light means:", "choices": ["Slow down only", "Yield to cross traffic", "Treat it like a stop sign — full stop, look both ways, proceed when safe", "Same as a steady red — wait for green"], "correct_index": 2, "explanation": "Flashing red = stop and look both ways, then proceed when safe. Same as a stop sign. Handbook p. 56.", "source_page": 56, "priority": "SHOULD", "canonical_fact_id": "flashing-red-like-stop-sign"}, {"question": "Your car stalls on railroad tracks and you can see a train coming. What do you do?", "choices": ["Try to restart and drive off", "Get out and run AWAY from the tracks at an angle toward the approaching train", "Stay in the car and brace for impact", "Push the car off the tracks"], "correct_index": 1, "explanation": "If stalled on tracks with a train coming: exit immediately and run at an angle TOWARD the train (so flying debris from impact goes behind you). Handbook p. 97.", "source_page": 97, "priority": "NICE", "canonical_fact_id": "stall-on-tracks-run-toward-angle"}];
+function render(){
+  if (!QUESTIONS || QUESTIONS.length === 0) {
+    document.getElementById("quiz").innerHTML = "<div class='empty-state'>No questions available. Take a unit test first so weak spots can be tracked.</div>";
+    document.getElementById("submit").style.display = "none";
+    return;
+  }
+  const form = document.getElementById("quiz");
+  QUESTIONS.forEach((q, i) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = "q" + i;
+    let html = "<div class='q-num'>Question " + (i+1) + " &middot; " + q.priority + "</div>";
+    html += "<div class='q-text'>" + q.question + "</div>";
+    if (q.sign_image) html += "<img class='sign' src='../images/signs/" + q.sign_image + "' alt='sign'>";
+    html += "<div class='choices'>";
+    q.choices.forEach((c, ci) => {
+      html += "<label><input type='radio' name='q" + i + "' value='" + ci + "'> " + c + "</label>";
+    });
+    html += "</div>";
+    html += "<div class='explanation'><strong>Answer:</strong> " + q.choices[q.correct_index] + "<br>" + q.explanation + " <em>(Handbook p." + q.source_page + ")</em></div>";
+    div.innerHTML = html;
+    form.appendChild(div);
+  });
+}
+function grade(){
+  let correct = 0;
+  const misses = [];
+  QUESTIONS.forEach((q, i) => {
+    const sel = document.querySelector("input[name=q" + i + "]:checked");
+    const qEl = document.getElementById("q" + i);
+    qEl.classList.add("show");
+    if (sel && parseInt(sel.value) === q.correct_index) {
+      qEl.classList.add("correct");
+      correct++;
+    } else {
+      qEl.classList.add("wrong");
+      misses.push(q.canonical_fact_id);
+    }
+  });
+  const prevMisses = JSON.parse(localStorage.getItem("dl_misses") || "[]");
+  const allMisses = [...prevMisses, ...misses];
+  localStorage.setItem("dl_misses", JSON.stringify(allMisses));
+  const attempts = JSON.parse(localStorage.getItem("dl_attempts") || "[]");
+  const pct_calc = Math.round(correct / QUESTIONS.length * 100);
+  const pass_calc = pct_calc >= 80;
+  attempts.push({ quiz: document.title, score: correct, total: QUESTIONS.length, pct: pct_calc, pass: pass_calc, ts: Date.now() });
+  localStorage.setItem("dl_attempts", JSON.stringify(attempts));
+  const unitScores = JSON.parse(localStorage.getItem("dl_unit_scores") || "{}");
+  unitScores["unit-2-a"] = { pct: pct_calc, ts: Date.now() };
+  localStorage.setItem("dl_unit_scores", JSON.stringify(unitScores));
+  const sr = JSON.parse(localStorage.getItem("dl_sr") || "{}");
+  const DAY_MS = 86400000;
+  QUESTIONS.forEach((q, i) => {
+    const fid = q.canonical_fact_id;
+    if (!fid) return;
+    const sel = document.querySelector("input[name=q" + i + "]:checked");
+    const wasCorrect = sel && parseInt(sel.value) === q.correct_index;
+    const prev = sr[fid] || { interval_days: 0, ease: 2.5 };
+    let interval_days;
+    if (wasCorrect) {
+      interval_days = Math.min(Math.max(Math.round((prev.interval_days || 1) * 2.5), 1), 30);
+    } else {
+      interval_days = 1;
+    }
+    sr[fid] = { next_due_ts: Date.now() + interval_days * DAY_MS, interval_days: interval_days, ease: prev.ease || 2.5, last_seen_ts: Date.now() };
+  });
+  localStorage.setItem("dl_sr", JSON.stringify(sr));
+  // DL_SYNC_BLOCK — fire-and-forget POST to server-side progress API
+  try {
+    var __dlUser = localStorage.getItem("dl_user");
+    if (__dlUser && __dlUser !== "__anon__") {
+      var __body = {
+        user: __dlUser.replace(/^"|"$/g, ""),
+        attempts: JSON.parse(localStorage.getItem("dl_attempts") || "[]"),
+        misses: JSON.parse(localStorage.getItem("dl_misses") || "[]"),
+        unitScores: JSON.parse(localStorage.getItem("dl_unit_scores") || "{}"),
+        sr: JSON.parse(localStorage.getItem("dl_sr") || "{}")
+      };
+      fetch("/api/drive/progress", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(__body),
+        keepalive: true
+      }).catch(function(){});
+    }
+  } catch (e) {}
+  const pct = Math.round(correct / QUESTIONS.length * 100);
+  const passed = pct >= 80;
+  document.getElementById("result").innerHTML =
+    "<div class='score-card'>" +
+    "<h2>Your score</h2>" +
+    "<div class='score-pct'>" + pct + "%</div>" +
+    "<div>" + correct + " / " + QUESTIONS.length + " correct</div>" +
+    "<div style='margin-top:12px'><span class='" + (passed ? "pass-badge" : "fail-badge") + "'>" +
+    (passed ? "&check; Pass (80%+)" : "Below pass &mdash; review and retake") +
+    "</span></div>" +
+    "</div>";
+  document.getElementById("submit").style.display = "none";
+  if (typeof confetti === 'function' && pct >= 80) {
+    var fireworks = function(x) {
+      confetti({ particleCount: 60, angle: 90, spread: 100, origin: { x: x, y: 0.7 }, colors: ['#facc15', '#581c87', '#16a34a', '#dc2626', '#3b82f6'] });
+    };
+    setTimeout(function() { fireworks(0.2); }, 100);
+    setTimeout(function() { fireworks(0.5); }, 400);
+    setTimeout(function() { fireworks(0.8); }, 700);
+    setTimeout(function() { fireworks(0.3); }, 1100);
+    setTimeout(function() { fireworks(0.7); }, 1400);
+    setTimeout(function() { fireworks(0.5); }, 1700);
+  }
+  window.scrollTo({ top: document.getElementById("result").offsetTop - 20, behavior: "smooth" });
+}
+render();
+document.getElementById("submit").addEventListener("click", grade);
+</script>
+</body></html>

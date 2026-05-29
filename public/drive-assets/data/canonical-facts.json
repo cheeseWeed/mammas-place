@@ -1,0 +1,3509 @@
+{
+  "facts": [
+    {
+      "id": "must-have-license-on-highway",
+      "description": "Every Utah resident driving on public highways must have a valid Utah driver license, learner permit, or temporary driver license",
+      "topic": "licensing",
+      "priority": "MUST",
+      "source_pages": [
+        14
+      ]
+    },
+    {
+      "id": "utah-resident-definition",
+      "description": "Becomes a Utah resident if in state 6+ months/year, registers vehicle here, obtains Utah DL, or gainfully employed (not temporary)",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        14
+      ]
+    },
+    {
+      "id": "visitor-6-months",
+      "description": "Visitors with valid out-of-state/country license may drive in Utah up to 6 months",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        14,
+        28
+      ]
+    },
+    {
+      "id": "out-of-state-permit-not-valid",
+      "description": "Out-of-state LEARNER PERMITS are NOT valid in Utah",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        28
+      ]
+    },
+    {
+      "id": "license-min-age-16",
+      "description": "Minimum age for a Utah Class D driver license is 16",
+      "topic": "licensing",
+      "priority": "MUST",
+      "source_pages": [
+        14,
+        20,
+        21
+      ]
+    },
+    {
+      "id": "under-18-6mo-permit-driver-ed",
+      "description": "Under 18 must hold learner permit 6 months AND complete approved driver education",
+      "topic": "licensing",
+      "priority": "MUST",
+      "source_pages": [
+        14,
+        16,
+        17
+      ]
+    },
+    {
+      "id": "age-19-plus-no-driver-ed-with-90-days",
+      "description": "Age 19+ with no prior license may be licensed without driver ed if permit held 90 days + 40 hours practice driving",
+      "topic": "licensing",
+      "priority": "MUST",
+      "source_pages": [
+        16
+      ]
+    },
+    {
+      "id": "dl-blocked-by-out-of-state-suspension",
+      "description": "Cannot have a Utah DL if driving privilege is denied/suspended/revoked/disqualified in Utah OR any other state",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        14
+      ]
+    },
+    {
+      "id": "utah-dlc-nrvc-member",
+      "description": "Utah is a member of the Driver License Compact (DLC) and Non-Resident Violator Compact (NRVC) - out-of-state convictions forwarded to home state",
+      "topic": "licensing",
+      "priority": "NICE",
+      "source_pages": [
+        15
+      ]
+    },
+    {
+      "id": "class-d-personal-vehicles-26000",
+      "description": "Class D = regular driver license for personal vehicles up to 26,000 lbs",
+      "topic": "licensing",
+      "priority": "MUST",
+      "source_pages": [
+        20,
+        21
+      ]
+    },
+    {
+      "id": "class-c-passengers-hazmat-21",
+      "description": "Class C = single vehicle under 26,001 lbs carrying 16+ occupants or placarded hazmat; min age 21",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        21
+      ]
+    },
+    {
+      "id": "class-b-definition",
+      "description": "Class B = single/combined vehicle over 26,001 lbs with towed unit over 10,001 lbs",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        21
+      ]
+    },
+    {
+      "id": "class-a-definition",
+      "description": "Class A = combined vehicle 26,001+ lbs with towed unit over 10,001 lbs",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        21
+      ]
+    },
+    {
+      "id": "cdl-required-26001",
+      "description": "Commercial Driver License required for vehicles with GVWR 26,001+ lbs, or designed for 16+ passengers, hazmat, doubles/triples, tankers, school buses",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        11
+      ]
+    },
+    {
+      "id": "provisional-under-21",
+      "description": "Anyone under 21 with Class D gets a Provisional license - uses separate point system",
+      "topic": "licensing",
+      "priority": "MUST",
+      "source_pages": [
+        12,
+        20
+      ]
+    },
+    {
+      "id": "limited-term-non-citizen",
+      "description": "Limited-Term DL issued to non-U.S. Citizens/Nationals/LPRs with lawful presence proof",
+      "topic": "licensing",
+      "priority": "NICE",
+      "source_pages": [
+        20,
+        24
+      ]
+    },
+    {
+      "id": "dpc-drive-only-not-id",
+      "description": "Driving Privilege Card (DPC) is for driving only - NOT valid ID or age verification; expires every birthday",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        20
+      ]
+    },
+    {
+      "id": "interdicted-no-alcohol-sale",
+      "description": "An interdicted DL/IDC has a red 'NO ALCOHOL SALE' banner at the top",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        4
+      ]
+    },
+    {
+      "id": "endorsement-m-motorcycle",
+      "description": "M = Motorcycle endorsement required to ride a motorcycle on Utah highways",
+      "topic": "licensing",
+      "priority": "MUST",
+      "source_pages": [
+        22,
+        90
+      ]
+    },
+    {
+      "id": "endorsement-h-hazmat",
+      "description": "H = Hazmat endorsement",
+      "topic": "licensing",
+      "priority": "MUST",
+      "source_pages": [
+        22
+      ]
+    },
+    {
+      "id": "endorsement-t-doubles-triples",
+      "description": "T = Doubles/Triples endorsement",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        22
+      ]
+    },
+    {
+      "id": "endorsement-x-hazmat-tanker",
+      "description": "X = Hazmat + Tanker combined endorsement",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        22
+      ]
+    },
+    {
+      "id": "endorsement-s-school-bus",
+      "description": "S = School Bus endorsement",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        22
+      ]
+    },
+    {
+      "id": "endorsement-z-taxicab",
+      "description": "Z = Taxicab endorsement",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        22
+      ]
+    },
+    {
+      "id": "endorsements-other-letters",
+      "description": "N=Tanker, P=Passenger - other endorsement letters",
+      "topic": "licensing",
+      "priority": "NICE",
+      "source_pages": [
+        22
+      ]
+    },
+    {
+      "id": "restriction-b-corrective-lenses",
+      "description": "Restriction B = corrective lenses required",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        22
+      ]
+    },
+    {
+      "id": "restriction-a-none",
+      "description": "Restriction A = no restrictions",
+      "topic": "licensing",
+      "priority": "NICE",
+      "source_pages": [
+        22
+      ]
+    },
+    {
+      "id": "restriction-g-daylight",
+      "description": "Restriction G = daylight hours only",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        22
+      ]
+    },
+    {
+      "id": "written-test-passing-80",
+      "description": "Written knowledge test passes at 80%; untimed; generally 30-45 minutes",
+      "topic": "licensing",
+      "priority": "MUST",
+      "source_pages": [
+        33
+      ]
+    },
+    {
+      "id": "written-test-attempts-3-per-12mo",
+      "description": "Two written tests per day allowed; three attempts per fee within 12 months",
+      "topic": "licensing",
+      "priority": "NICE",
+      "source_pages": [
+        33
+      ]
+    },
+    {
+      "id": "traffic-safety-trends-100",
+      "description": "Traffic Safety & Trends Exam: ONLINE only, must score 100%, required for all first-time Class D applicants",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        33
+      ]
+    },
+    {
+      "id": "skills-test-min-age-dld-16",
+      "description": "Skills test minimum age at the DLD is 16",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        33
+      ]
+    },
+    {
+      "id": "skills-test-min-age-third-party-15",
+      "description": "Skills test minimum age is 15 with a Third-Party Tester or high school program",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        33
+      ]
+    },
+    {
+      "id": "skills-test-bring-own-vehicle",
+      "description": "You must provide your own vehicle for the skills test",
+      "topic": "licensing",
+      "priority": "MUST",
+      "source_pages": [
+        33
+      ]
+    },
+    {
+      "id": "skills-test-applicant-examiner-only",
+      "description": "Only the applicant and examiner are allowed in the vehicle during the skills test",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        33
+      ]
+    },
+    {
+      "id": "skills-test-appointment-only",
+      "description": "Skills tests are by appointment only",
+      "topic": "licensing",
+      "priority": "NICE",
+      "source_pages": [
+        34
+      ]
+    },
+    {
+      "id": "third-party-skills-only",
+      "description": "Third-Party Testers administer the skills test ONLY - not the written knowledge test",
+      "topic": "licensing",
+      "priority": "MUST",
+      "source_pages": [
+        35
+      ]
+    },
+    {
+      "id": "skills-test-auto-fail-list",
+      "description": "Automatic skills-test failures: moving violation, fail to yield to pedestrians, avoidable crash, forcing evasive action, sidewalk/curb violations, examiner takes control, too fast/slow",
+      "topic": "licensing",
+      "priority": "NICE",
+      "source_pages": [
+        35,
+        36
+      ]
+    },
+    {
+      "id": "vision-20-40-90-degree",
+      "description": "Utah vision standard: 20/40 vision AND 90 degree peripheral field in at least one eye",
+      "topic": "licensing",
+      "priority": "MUST",
+      "source_pages": [
+        30
+      ]
+    },
+    {
+      "id": "vision-eye-doctor-statement",
+      "description": "If you cannot meet vision standard even with glasses, you need a written eye-doctor statement",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        30
+      ]
+    },
+    {
+      "id": "vision-test-every-renewal-65-plus",
+      "description": "Vision test required on field-office applications; ages 65+ tested with EVERY license application",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        30
+      ]
+    },
+    {
+      "id": "driver-final-responsibility",
+      "description": "Driver has final responsibility for knowing whether they are safe to drive - not doctor or DLD",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        31
+      ]
+    },
+    {
+      "id": "review-exam-skip-equals-withdrawal",
+      "description": "Skipping a required Review Examination = driving privilege withdrawn",
+      "topic": "licensing",
+      "priority": "NICE",
+      "source_pages": [
+        31,
+        32
+      ]
+    },
+    {
+      "id": "documents-original-only",
+      "description": "Documents must be original or certified copies - faxed/photocopied not accepted",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        23
+      ]
+    },
+    {
+      "id": "residency-2-docs-90-days",
+      "description": "2 documents required as proof of Utah residency, each dated within 90 days",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        25
+      ]
+    },
+    {
+      "id": "address-change-10-days",
+      "description": "Must notify DLD of address change within 10 days of moving",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        29
+      ]
+    },
+    {
+      "id": "license-expiration-5yr-vs-8yr",
+      "description": "Provisional (under 21) license expires 5 years from issue; Regular (21+) expires 8 years - both on birthday",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        28
+      ]
+    },
+    {
+      "id": "renew-within-6-months-of-expiration",
+      "description": "May renew license up to 6 months before expiration",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        28
+      ]
+    },
+    {
+      "id": "duplicate-same-expiration",
+      "description": "A duplicate (replacement) license keeps the same expiration date as the original",
+      "topic": "licensing",
+      "priority": "NICE",
+      "source_pages": [
+        29
+      ]
+    },
+    {
+      "id": "no-dl-and-id-simultaneously",
+      "description": "Utah does NOT allow holding a Utah DL and a Utah ID card simultaneously",
+      "topic": "licensing",
+      "priority": "NICE",
+      "source_pages": [
+        29
+      ]
+    },
+    {
+      "id": "permit-min-age-15",
+      "description": "Entry-level learner permit minimum age is 15",
+      "topic": "licensing",
+      "priority": "MUST",
+      "source_pages": [
+        17
+      ]
+    },
+    {
+      "id": "permit-validity-18-months",
+      "description": "Entry-level learner permit validity is 18 months",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        16,
+        17
+      ]
+    },
+    {
+      "id": "permit-front-seat-21-plus",
+      "description": "Permit holder must have parent/guardian/instructor OR licensed 21+ adult (with authorization) in the front seat",
+      "topic": "licensing",
+      "priority": "MUST",
+      "source_pages": [
+        17,
+        18
+      ]
+    },
+    {
+      "id": "permit-immediate-possession",
+      "description": "Permit must be in immediate possession while driving",
+      "topic": "licensing",
+      "priority": "NICE",
+      "source_pages": [
+        17
+      ]
+    },
+    {
+      "id": "permit-fee-19",
+      "description": "Entry-level learner permit fee is $19.00",
+      "topic": "licensing",
+      "priority": "NICE",
+      "source_pages": [
+        19
+      ]
+    },
+    {
+      "id": "renewal-permit-min-age-16",
+      "description": "6-month/renewal learner permit minimum age is 16",
+      "topic": "licensing",
+      "priority": "NICE",
+      "source_pages": [
+        17
+      ]
+    },
+    {
+      "id": "permit-hold-6-months-16-17",
+      "description": "Learner permit hold time is 6 months for ages 16-17",
+      "topic": "licensing",
+      "priority": "MUST",
+      "source_pages": [
+        14,
+        17
+      ]
+    },
+    {
+      "id": "permit-hold-90-days-19-plus",
+      "description": "Learner permit hold time is 90 days for age 19+ (waivable with driver ed)",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        17
+      ]
+    },
+    {
+      "id": "practice-40-hours-10-night",
+      "description": "Driver education requires 40 hours of practice driving including 10 hours after sunset with parent/guardian",
+      "topic": "licensing",
+      "priority": "MUST",
+      "source_pages": [
+        16
+      ]
+    },
+    {
+      "id": "driver-ed-required-15-18",
+      "description": "Driver ed is required (mandatory) for ages 15-18",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        14,
+        16
+      ]
+    },
+    {
+      "id": "age-16-curfew-12am-5am",
+      "description": "Age 16 licensed drivers cannot drive 12:00 a.m. - 5:00 a.m.",
+      "topic": "licensing",
+      "priority": "MUST",
+      "source_pages": [
+        18
+      ]
+    },
+    {
+      "id": "age-16-curfew-exceptions",
+      "description": "Age 16 curfew exceptions: 21+ in front seat, agricultural assignment, to/from work, to/from school activity, emergency",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        18
+      ]
+    },
+    {
+      "id": "age-16-family-only-6mo",
+      "description": "Age 16 licensed drivers may carry immediate family only until 6 months from license issue",
+      "topic": "licensing",
+      "priority": "MUST",
+      "source_pages": [
+        18
+      ]
+    },
+    {
+      "id": "age-17-no-curfew",
+      "description": "Age 17 has no curfew or passenger restrictions (license holders)",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        18
+      ]
+    },
+    {
+      "id": "regular-license-21-plus",
+      "description": "Regular Class D license minimum age is 21",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        20
+      ]
+    },
+    {
+      "id": "seat-10-inches-from-wheel",
+      "description": "Leave 10 inches between chest and steering wheel",
+      "topic": "vehicle-equipment",
+      "priority": "SHOULD",
+      "source_pages": [
+        37
+      ]
+    },
+    {
+      "id": "wheel-below-chin",
+      "description": "Top of steering wheel should be no higher than your shoulders, below chin level",
+      "topic": "vehicle-equipment",
+      "priority": "NICE",
+      "source_pages": [
+        37
+      ]
+    },
+    {
+      "id": "headrest-above-ears",
+      "description": "Headrest contacts the back of your head above the level of your ears",
+      "topic": "vehicle-equipment",
+      "priority": "SHOULD",
+      "source_pages": [
+        37
+      ]
+    },
+    {
+      "id": "left-mirror-head-on-window",
+      "description": "Adjust left mirror with head against closed left window so you barely see rear left edge of vehicle",
+      "topic": "vehicle-equipment",
+      "priority": "NICE",
+      "source_pages": [
+        37
+      ]
+    },
+    {
+      "id": "right-mirror-lean-right",
+      "description": "Adjust right mirror by leaning right, so you barely see the right side of vehicle",
+      "topic": "vehicle-equipment",
+      "priority": "NICE",
+      "source_pages": [
+        37
+      ]
+    },
+    {
+      "id": "everyone-buckled",
+      "description": "Everyone in the vehicle must have a fastened safety belt or child seat",
+      "topic": "vehicle-equipment",
+      "priority": "MUST",
+      "source_pages": [
+        37
+      ]
+    },
+    {
+      "id": "child-seat-under-8-or-57-inches",
+      "description": "Children 8 and younger must be in a child/booster seat unless they are 57 inches tall",
+      "topic": "vehicle-equipment",
+      "priority": "SHOULD",
+      "source_pages": [
+        37,
+        38
+      ]
+    },
+    {
+      "id": "rear-facing-2-years-30-lbs",
+      "description": "Rear-facing in back seat until at least 2 years and 30 lbs (or longer if seat allows)",
+      "topic": "vehicle-equipment",
+      "priority": "SHOULD",
+      "source_pages": [
+        38
+      ]
+    },
+    {
+      "id": "forward-facing-4-years-40-lbs",
+      "description": "Forward-facing with harness in back seat until at least 4 years and 40 lbs",
+      "topic": "vehicle-equipment",
+      "priority": "SHOULD",
+      "source_pages": [
+        38
+      ]
+    },
+    {
+      "id": "booster-until-57-inches",
+      "description": "Booster seat until belt fits and child is 57 inches tall",
+      "topic": "vehicle-equipment",
+      "priority": "SHOULD",
+      "source_pages": [
+        38
+      ]
+    },
+    {
+      "id": "kids-12-and-under-back-seat",
+      "description": "Children 12 and younger should ride in the back seat",
+      "topic": "vehicle-equipment",
+      "priority": "MUST",
+      "source_pages": [
+        38
+      ]
+    },
+    {
+      "id": "belt-fit-rules",
+      "description": "Shoulder belt across shoulder/chest; lap belt across hips, NOT stomach; shoulder belt NOT under arm or behind back",
+      "topic": "vehicle-equipment",
+      "priority": "SHOULD",
+      "source_pages": [
+        37
+      ]
+    },
+    {
+      "id": "unrestrained-under-16-primary",
+      "description": "Officer may stop you solely if anyone under 16 is unrestrained (primary offense)",
+      "topic": "vehicle-equipment",
+      "priority": "NICE",
+      "source_pages": [
+        38
+      ]
+    },
+    {
+      "id": "smoking-with-minors-infraction",
+      "description": "Smoking in a vehicle while transporting children 15 and younger is an infraction",
+      "topic": "vehicle-equipment",
+      "priority": "NICE",
+      "source_pages": [
+        39
+      ]
+    },
+    {
+      "id": "airbag-with-belt",
+      "description": "Air bags work WITH safety belts - not as a replacement",
+      "topic": "vehicle-equipment",
+      "priority": "SHOULD",
+      "source_pages": [
+        39
+      ]
+    },
+    {
+      "id": "airbag-deploys-200mph",
+      "description": "Air bags deploy at up to 200 mph - sit as far back from air bag as practical",
+      "topic": "vehicle-equipment",
+      "priority": "NICE",
+      "source_pages": [
+        39
+      ]
+    },
+    {
+      "id": "infant-never-front-air-bag",
+      "description": "Infants must NEVER ride in the front seat with a passenger-side air bag",
+      "topic": "vehicle-equipment",
+      "priority": "SHOULD",
+      "source_pages": [
+        39
+      ]
+    },
+    {
+      "id": "disable-airbag-class-b",
+      "description": "Disabling/modifying/removing the air bag system is a Class B misdemeanor",
+      "topic": "vehicle-equipment",
+      "priority": "NICE",
+      "source_pages": [
+        39
+      ]
+    },
+    {
+      "id": "backing-look-through-rear-window",
+      "description": "When backing, look through the rear window (mirrors do not show directly behind)",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        40
+      ]
+    },
+    {
+      "id": "backing-steer-rear-direction",
+      "description": "When backing, steer in the direction you want the REAR of vehicle to move",
+      "topic": "driving-basics",
+      "priority": "NICE",
+      "source_pages": [
+        40
+      ]
+    },
+    {
+      "id": "no-backing-on-freeway",
+      "description": "Do NOT back up on a freeway or interstate",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        40
+      ]
+    },
+    {
+      "id": "lane-change-procedure",
+      "description": "Lane change procedure: mirrors, signal at least 2 seconds, head check (blind spot), merge when safe",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        40,
+        44
+      ]
+    },
+    {
+      "id": "no-lane-change-in-intersection",
+      "description": "Do NOT change lanes inside an intersection",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        41,
+        52
+      ]
+    },
+    {
+      "id": "turn-finish-correct-lane",
+      "description": "Finish a left turn in the left-most lane (next to centerline); finish a right turn in the right-most (curb) lane",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        41
+      ]
+    },
+    {
+      "id": "default-right-lane",
+      "description": "Stay in the right-most lane unless it is blocked",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        41
+      ]
+    },
+    {
+      "id": "zipper-merge",
+      "description": "Zipper method: at a congested merge, use BOTH lanes until the merge point, then alternate yielding into the single lane",
+      "topic": "driving-basics",
+      "priority": "MUST",
+      "source_pages": [
+        41
+      ]
+    },
+    {
+      "id": "gore-area-no-drive",
+      "description": "Gore area (triangular area between solid white lines at lane entry/exit) - illegal to cross or drive in",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        41
+      ]
+    },
+    {
+      "id": "see-rear-tires-gap-rule",
+      "description": "When stopping behind a vehicle, leave enough gap to see the rear tires of the car in front",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        41,
+        46,
+        52
+      ]
+    },
+    {
+      "id": "no-park-15-ft-hydrant",
+      "description": "No parking within 15 feet of a fire hydrant",
+      "topic": "driving-basics",
+      "priority": "MUST",
+      "source_pages": [
+        42
+      ]
+    },
+    {
+      "id": "no-park-20-ft-crosswalk",
+      "description": "No parking on a crosswalk or within 20 feet of a crosswalk",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        42
+      ]
+    },
+    {
+      "id": "no-park-fire-station-20-75",
+      "description": "No parking within 20 feet of a fire station driveway; if signs posted, 75 feet on opposite side",
+      "topic": "driving-basics",
+      "priority": "NICE",
+      "source_pages": [
+        42
+      ]
+    },
+    {
+      "id": "no-park-30-ft-signal",
+      "description": "No parking within 30 feet of a flashing beacon, stop sign, yield sign, or traffic signal",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        42
+      ]
+    },
+    {
+      "id": "no-park-50-ft-rail",
+      "description": "No parking on a railroad track or within 50 feet of the nearest rail",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        42,
+        95
+      ]
+    },
+    {
+      "id": "park-12-inches-from-curb",
+      "description": "Parked vehicle back wheel must be no more than 12 inches from curb",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        42,
+        43
+      ]
+    },
+    {
+      "id": "no-park-locations-list",
+      "description": "No parking: interstate shoulder (except breakdown), sidewalk, intersection, bridge/tunnel, in front of driveway, red zones",
+      "topic": "driving-basics",
+      "priority": "NICE",
+      "source_pages": [
+        42
+      ]
+    },
+    {
+      "id": "downhill-wheels-toward-curb",
+      "description": "Downhill parking with curb: turn wheels TOWARD the curb",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        42
+      ]
+    },
+    {
+      "id": "uphill-wheels-away-curb",
+      "description": "Uphill parking with curb: turn wheels AWAY from the curb",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        42
+      ]
+    },
+    {
+      "id": "uphill-no-curb-right",
+      "description": "Uphill parking with no curb: turn wheels to the RIGHT",
+      "topic": "driving-basics",
+      "priority": "NICE",
+      "source_pages": [
+        42
+      ]
+    },
+    {
+      "id": "park-brake-motor-lock",
+      "description": "Before leaving parked vehicle: set parking brake, stop motor, lock doors",
+      "topic": "driving-basics",
+      "priority": "NICE",
+      "source_pages": [
+        42
+      ]
+    },
+    {
+      "id": "left-lane-for-passing",
+      "description": "On multi-lane roads, the left lane is for passing slower vehicles",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        44,
+        49
+      ]
+    },
+    {
+      "id": "no-pass-on-shoulder",
+      "description": "Never pass on the shoulder",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        44
+      ]
+    },
+    {
+      "id": "pass-return-200-ft-oncoming",
+      "description": "When returning to right lane after passing, return no less than 200 feet from oncoming vehicles",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        44
+      ]
+    },
+    {
+      "id": "never-pass-conditions",
+      "description": "Never pass when oncoming vehicle present, view blocked by curve/hill, at intersections/crosswalks, before RR crossing/bridge, or in no-passing zone",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        44
+      ]
+    },
+    {
+      "id": "no-leave-roadway-right-pass",
+      "description": "When passing on the right, illegal to leave the roadway",
+      "topic": "driving-basics",
+      "priority": "NICE",
+      "source_pages": [
+        44
+      ]
+    },
+    {
+      "id": "no-pass-snowplow-blade-side",
+      "description": "Do not pass a flashing-yellow-light snowplow on the side where the plow blade is deployed",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        44
+      ]
+    },
+    {
+      "id": "no-pass-3-snowplows",
+      "description": "Do not pass three or more snowplows in echelon on either side",
+      "topic": "driving-basics",
+      "priority": "NICE",
+      "source_pages": [
+        44
+      ]
+    },
+    {
+      "id": "signal-2-sec-before-turn",
+      "description": "Signal at least 2 seconds before a turn",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        44
+      ]
+    },
+    {
+      "id": "signal-2-sec-before-lane-change",
+      "description": "Signal at least 2 seconds before a lane change",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        44
+      ]
+    },
+    {
+      "id": "both-hands-outside-wheel",
+      "description": "Both hands on the outside of the steering wheel; hand-over-hand or push-pull steering; never hold the inside",
+      "topic": "driving-basics",
+      "priority": "NICE",
+      "source_pages": [
+        45
+      ]
+    },
+    {
+      "id": "complete-stop-list",
+      "description": "Complete stop required at: steady red, flashing red, stop signs, any crash, when police request, entering street from alley/driveway/private road",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        45
+      ]
+    },
+    {
+      "id": "rr-stop-15-50-ft",
+      "description": "At controlled railroad crossings, stop more than 15 feet but not more than 50 feet from nearest rail",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        45,
+        95
+      ]
+    },
+    {
+      "id": "right-turn-procedure",
+      "description": "Right turn: signal 2 sec, head check right shoulder, traffic check during turn, do not cut corner or make wide turn",
+      "topic": "driving-basics",
+      "priority": "NICE",
+      "source_pages": [
+        46
+      ]
+    },
+    {
+      "id": "left-turn-procedure",
+      "description": "Left turn: signal 2 sec, head check left shoulder, traffic check during turn, do not cut corner or make wide turn",
+      "topic": "driving-basics",
+      "priority": "NICE",
+      "source_pages": [
+        47
+      ]
+    },
+    {
+      "id": "multi-lane-turn-stay-in-lane",
+      "description": "On multi-lane turns, enter the lane from which you will turn and STAY in that lane until completed",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        47
+      ]
+    },
+    {
+      "id": "no-driving-on-island",
+      "description": "May not drive over, across, or within any part of an island",
+      "topic": "driving-basics",
+      "priority": "NICE",
+      "source_pages": [
+        47
+      ]
+    },
+    {
+      "id": "u-turn-500-ft-sight",
+      "description": "Never U-turn on a curve or near top of hill where you cannot see 500 feet in both directions",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "u-turn-prohibited-locations",
+      "description": "Never U-turn where prohibited by sign, on a railroad track or grade crossing, or on a freeway",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "freeway-2-sec-follow",
+      "description": "Maintain at least 2 seconds following distance on the freeway; increase in adverse conditions",
+      "topic": "speed-following",
+      "priority": "MUST",
+      "source_pages": [
+        49
+      ]
+    },
+    {
+      "id": "no-u-turn-freeway",
+      "description": "No U-turns on a freeway",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        49
+      ]
+    },
+    {
+      "id": "no-driving-in-emergency-lane",
+      "description": "Emergency lane outside solid white line is for emergencies only - no driving, passing, or pickup",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        49
+      ]
+    },
+    {
+      "id": "never-exceed-posted-limit",
+      "description": "Never legally drive faster than the posted limit, even matching traffic flow",
+      "topic": "speed-following",
+      "priority": "SHOULD",
+      "source_pages": [
+        49
+      ]
+    },
+    {
+      "id": "left-lane-must-move-right",
+      "description": "Vehicle in left lane must move safely right when approached from behind (impeding traffic = citation)",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        49
+      ]
+    },
+    {
+      "id": "flex-lane-signals",
+      "description": "Flex lane: green arrow = open, red X = closed; double-dashed yellow on either side",
+      "topic": "driving-basics",
+      "priority": "NICE",
+      "source_pages": [
+        49
+      ]
+    },
+    {
+      "id": "pavement-yellow-opposing",
+      "description": "Yellow pavement lines separate traffic moving in OPPOSING directions",
+      "topic": "pavement-markings",
+      "priority": "MUST",
+      "source_pages": [
+        53,
+        110
+      ]
+    },
+    {
+      "id": "pavement-white-same-direction",
+      "description": "White pavement lines separate traffic moving in the SAME direction",
+      "topic": "pavement-markings",
+      "priority": "MUST",
+      "source_pages": [
+        53,
+        110
+      ]
+    },
+    {
+      "id": "dashed-yellow-passing-permitted",
+      "description": "Broken (dashed) line on your side of yellow center line = passing PERMITTED",
+      "topic": "pavement-markings",
+      "priority": "MUST",
+      "source_pages": [
+        53
+      ]
+    },
+    {
+      "id": "solid-yellow-no-pass",
+      "description": "Solid yellow on your side = passing PROHIBITED in your direction",
+      "topic": "pavement-markings",
+      "priority": "MUST",
+      "source_pages": [
+        53
+      ]
+    },
+    {
+      "id": "double-solid-yellow-no-pass-both",
+      "description": "Double solid yellow lines = passing prohibited in both directions",
+      "topic": "pavement-markings",
+      "priority": "SHOULD",
+      "source_pages": [
+        53
+      ]
+    },
+    {
+      "id": "double-white-no-cross",
+      "description": "Double solid white lines (express lane separator) = crossing prohibited",
+      "topic": "pavement-markings",
+      "priority": "SHOULD",
+      "source_pages": [
+        50,
+        53
+      ]
+    },
+    {
+      "id": "green-go-if-clear",
+      "description": "Green light: go through with caution IF the way is clear",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        55
+      ]
+    },
+    {
+      "id": "green-arrow-yield-to-clearing",
+      "description": "Green arrow: proceed in the arrow direction after yielding to vehicles and pedestrians clearing the intersection",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        55
+      ]
+    },
+    {
+      "id": "yellow-about-to-stop",
+      "description": "Yellow light: the light is about to change to red; stop if you can safely",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        55
+      ]
+    },
+    {
+      "id": "flashing-yellow-slow-caution",
+      "description": "Flashing yellow: slow down and proceed with caution; be prepared to stop",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        55
+      ]
+    },
+    {
+      "id": "flashing-yellow-arrow-yield",
+      "description": "Flashing yellow arrow: turns are permitted BUT yield to oncoming traffic and pedestrians",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        56
+      ]
+    },
+    {
+      "id": "red-full-stop",
+      "description": "Red light: complete stop before the intersection; wait behind stop line/crosswalk until green",
+      "topic": "rules-of-the-road",
+      "priority": "MUST",
+      "source_pages": [
+        56
+      ]
+    },
+    {
+      "id": "right-on-red-unless-posted",
+      "description": "Right turn on red allowed after a complete stop, unless posted otherwise",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        56
+      ]
+    },
+    {
+      "id": "flashing-red-like-stop-sign",
+      "description": "Flashing red: stop and look both ways (treat like a stop sign)",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        56
+      ]
+    },
+    {
+      "id": "red-arrow-no-turn",
+      "description": "Red arrow: turn prohibited; stop and remain stopped until indication to proceed",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        56
+      ]
+    },
+    {
+      "id": "stranded-red-arrow-exception",
+      "description": "If stranded by an unchanging red left arrow, may make left from one-way street onto one-way street if safe",
+      "topic": "rules-of-the-road",
+      "priority": "NICE",
+      "source_pages": [
+        56
+      ]
+    },
+    {
+      "id": "trains-right-of-way-always",
+      "description": "Trains have right-of-way 100% of the time - over ambulances, fire engines, cars, police, and pedestrians",
+      "topic": "rules-of-the-road",
+      "priority": "MUST",
+      "source_pages": [
+        96
+      ]
+    },
+    {
+      "id": "emergency-vehicle-pull-right-stop",
+      "description": "Emergency vehicle with sirens/lights: yield, drive immediately to the RIGHT, STOP until it passes",
+      "topic": "rules-of-the-road",
+      "priority": "MUST",
+      "source_pages": [
+        86
+      ]
+    },
+    {
+      "id": "officer-overrides-signal",
+      "description": "Police officer directing traffic overrides traffic signals",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        56
+      ]
+    },
+    {
+      "id": "flagger-overrides-signs",
+      "description": "A flagger in a work zone overrides traffic signs and signals - you must obey",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        59
+      ]
+    },
+    {
+      "id": "school-bus-red-lights-stop",
+      "description": "Alternating flashing red lights from a school bus: stop immediately before reaching the bus",
+      "topic": "rules-of-the-road",
+      "priority": "MUST",
+      "source_pages": [
+        46
+      ]
+    },
+    {
+      "id": "pedestrian-yield-marked-or-unmarked",
+      "description": "Yield to ALL pedestrians at any crosswalk, marked or unmarked",
+      "topic": "rules-of-the-road",
+      "priority": "MUST",
+      "source_pages": [
+        54,
+        91
+      ]
+    },
+    {
+      "id": "white-cane-full-stop",
+      "description": "A pedestrian with a white cane or guide dog requires a full STOP",
+      "topic": "rules-of-the-road",
+      "priority": "MUST",
+      "source_pages": [
+        91
+      ]
+    },
+    {
+      "id": "already-in-intersection-priority",
+      "description": "Yield to drivers who arrived at the intersection before you",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        60
+      ]
+    },
+    {
+      "id": "left-turn-yields-to-oncoming",
+      "description": "When turning left, yield to drivers in the opposite (oncoming) lane",
+      "topic": "rules-of-the-road",
+      "priority": "MUST",
+      "source_pages": [
+        60
+      ]
+    },
+    {
+      "id": "four-way-stop-yield-right",
+      "description": "At a 4-way stop with simultaneous arrivals, yield to the vehicle on your RIGHT",
+      "topic": "rules-of-the-road",
+      "priority": "MUST",
+      "source_pages": [
+        60
+      ]
+    },
+    {
+      "id": "signal-out-yield-right",
+      "description": "When traffic lights are dark/non-functioning, come to a complete stop, then yield to any vehicle on your right",
+      "topic": "rules-of-the-road",
+      "priority": "MUST",
+      "source_pages": [
+        56
+      ]
+    },
+    {
+      "id": "roundabout-yield-to-circle",
+      "description": "Yield to oncoming traffic and pedestrians before entering a roundabout",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        55
+      ]
+    },
+    {
+      "id": "roundabout-counterclockwise",
+      "description": "Roundabouts in the U.S. flow counterclockwise",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        13,
+        55
+      ]
+    },
+    {
+      "id": "roundabout-signal-exit",
+      "description": "Signal your intention to exit a roundabout",
+      "topic": "rules-of-the-road",
+      "priority": "NICE",
+      "source_pages": [
+        55
+      ]
+    },
+    {
+      "id": "roundabout-slow-on-approach",
+      "description": "Slow down on approach to a roundabout",
+      "topic": "rules-of-the-road",
+      "priority": "NICE",
+      "source_pages": [
+        55
+      ]
+    },
+    {
+      "id": "ramp-yields-to-interstate",
+      "description": "On an entrance ramp, yield to drivers already on the interstate",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        60
+      ]
+    },
+    {
+      "id": "driveway-yields-to-street",
+      "description": "When entering a public road from a driveway or private road, yield to street traffic",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        45,
+        60
+      ]
+    },
+    {
+      "id": "narrow-bridge-first-arrived",
+      "description": "On a narrow/single-lane bridge, the first driver to arrive has the right-of-way",
+      "topic": "rules-of-the-road",
+      "priority": "NICE",
+      "source_pages": [
+        70
+      ]
+    },
+    {
+      "id": "mountain-downhill-yields-uphill",
+      "description": "On a narrow mountain road, the downhill driver yields to the uphill driver",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        69
+      ]
+    },
+    {
+      "id": "never-assume-right-of-way",
+      "description": "Never think you have the right-of-way - right-of-way is given, not taken",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        60
+      ]
+    },
+    {
+      "id": "yield-to-pedestrians-still-in-intersection",
+      "description": "Yield to pedestrians, bicyclists, and others still in the intersection",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        60
+      ]
+    },
+    {
+      "id": "green-light-still-yield-pedestrians",
+      "description": "Even with a green light, you must yield to pedestrians in the crosswalk",
+      "topic": "rules-of-the-road",
+      "priority": "MUST",
+      "source_pages": [
+        91
+      ]
+    },
+    {
+      "id": "never-pass-vehicle-at-crosswalk",
+      "description": "Never pass a vehicle stopped at a crosswalk - hidden pedestrians may be crossing",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        92
+      ]
+    },
+    {
+      "id": "school-zone-flashing-slow",
+      "description": "School zone with FLASHING lights = obey the slower school-zone speed limit",
+      "topic": "speed-following",
+      "priority": "MUST",
+      "source_pages": [
+        91
+      ]
+    },
+    {
+      "id": "pedestrian-left-shoulder-facing-traffic",
+      "description": "Pedestrians walking without a sidewalk should walk on the LEFT shoulder facing traffic",
+      "topic": "sharing-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        91
+      ]
+    },
+    {
+      "id": "stop-before-crosswalk-visibility",
+      "description": "Stop BEFORE the crosswalk so other drivers can see the pedestrian",
+      "topic": "rules-of-the-road",
+      "priority": "NICE",
+      "source_pages": [
+        92
+      ]
+    },
+    {
+      "id": "school-bus-2-lane-both-stop",
+      "description": "On a 2-lane road, school bus red lights require BOTH directions to stop",
+      "topic": "rules-of-the-road",
+      "priority": "MUST",
+      "source_pages": [
+        46
+      ]
+    },
+    {
+      "id": "school-bus-4-lane-no-median-both-stop",
+      "description": "On a 4-lane road WITHOUT a median, school bus red lights require BOTH directions to stop",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        46
+      ]
+    },
+    {
+      "id": "school-bus-median-only-same-direction",
+      "description": "On a divided highway with median (4+ lanes), only same-direction traffic must stop for a school bus",
+      "topic": "rules-of-the-road",
+      "priority": "MUST",
+      "source_pages": [
+        46
+      ]
+    },
+    {
+      "id": "school-bus-5-lane-center-turn-only-same-direction",
+      "description": "On a 5+ lane road with shared center turn lane, only same-direction traffic must stop for a school bus",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        46
+      ]
+    },
+    {
+      "id": "school-bus-fine-3000",
+      "description": "Illegal pass of a stopped school bus carries up to a $3,000 fine plus insurance increase",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        46
+      ]
+    },
+    {
+      "id": "basic-speed-law-reasonably-safe",
+      "description": "Basic speed law: never drive faster than is reasonably safe for conditions",
+      "topic": "speed-following",
+      "priority": "SHOULD",
+      "source_pages": [
+        54
+      ]
+    },
+    {
+      "id": "speed-20-school",
+      "description": "20 mph in school zones (passing school during recess, opening/closing hours, or flashing lights)",
+      "topic": "speed-following",
+      "priority": "MUST",
+      "source_pages": [
+        54
+      ]
+    },
+    {
+      "id": "speed-25-business-residential",
+      "description": "25 mph in any business or residential area",
+      "topic": "speed-following",
+      "priority": "MUST",
+      "source_pages": [
+        54
+      ]
+    },
+    {
+      "id": "speed-55-major-highway",
+      "description": "55 mph on major highways, as posted",
+      "topic": "speed-following",
+      "priority": "SHOULD",
+      "source_pages": [
+        54
+      ]
+    },
+    {
+      "id": "speed-65-80-rural-interstate",
+      "description": "65/70/75/80 mph on rural interstate highways, with posted transition zones",
+      "topic": "speed-following",
+      "priority": "SHOULD",
+      "source_pages": [
+        54
+      ]
+    },
+    {
+      "id": "rr-flashing-lights-mandatory-stop",
+      "description": "Flashing lights or bells at a railroad crossing = MUST STOP",
+      "topic": "rules-of-the-road",
+      "priority": "MUST",
+      "source_pages": [
+        95,
+        96
+      ]
+    },
+    {
+      "id": "crossbuck-stop-yield-train",
+      "description": "Crossbuck (white X-shape RAILROAD CROSSING) = yield to trains",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        57,
+        96
+      ]
+    },
+    {
+      "id": "rr-yellow-advance-warning",
+      "description": "Round yellow sign with X and RR = railroad-crossing advance warning; slow, look, listen",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        57
+      ]
+    },
+    {
+      "id": "no-driving-around-gates",
+      "description": "Never drive around or under a lowered railroad gate",
+      "topic": "rules-of-the-road",
+      "priority": "MUST",
+      "source_pages": [
+        95,
+        96
+      ]
+    },
+    {
+      "id": "do-not-stop-on-tracks",
+      "description": "Do not stop on railroad tracks; if you must stop for traffic, wait at stop line BEFORE the tracks",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        57
+      ]
+    },
+    {
+      "id": "train-stops-in-a-mile",
+      "description": "A 100-car freight train at 55 mph needs more than a mile (about 18 football fields) to stop",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        97
+      ]
+    },
+    {
+      "id": "trax-65-in-21-seconds",
+      "description": "TRAX light rail can reach 65 mph in 21 seconds; never try to beat one",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        97
+      ]
+    },
+    {
+      "id": "rr-broken-lights-1-mile-sight",
+      "description": "If RR lights appear broken: after full stop, proceed only with 1-mile sight line in both directions and no train",
+      "topic": "rules-of-the-road",
+      "priority": "NICE",
+      "source_pages": [
+        95
+      ]
+    },
+    {
+      "id": "no-pass-at-rr-crossing",
+      "description": "Never pass another vehicle in your direction at a railroad crossing",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        95
+      ]
+    },
+    {
+      "id": "stall-on-tracks-run-toward-angle",
+      "description": "If your car stalls on RR tracks: everyone OUT, notify authorities; if train comes, run TOWARD the train at an angle AWAY from it",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        97
+      ]
+    },
+    {
+      "id": "fire-vehicle-500-ft-follow",
+      "description": "Do not follow within 500 feet of a fire vehicle responding to an alarm",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        86
+      ]
+    },
+    {
+      "id": "fire-vehicle-same-block",
+      "description": "May not drive or park on the same block as a fire vehicle answering an alarm",
+      "topic": "rules-of-the-road",
+      "priority": "NICE",
+      "source_pages": [
+        86
+      ]
+    },
+    {
+      "id": "move-over-law",
+      "description": "Move Over Law: approaching ANY stationary vehicle with flashing hazard lights, slow down AND change lanes to a non-adjacent lane if practical",
+      "topic": "rules-of-the-road",
+      "priority": "MUST",
+      "source_pages": [
+        86
+      ]
+    },
+    {
+      "id": "move-over-hov-amber",
+      "description": "HOV variant: stationary amber lights = change lanes OUT of the HOV lane if practical",
+      "topic": "rules-of-the-road",
+      "priority": "NICE",
+      "source_pages": [
+        86
+      ]
+    },
+    {
+      "id": "move-over-violation-90-day-suspend",
+      "description": "Move Over violation: 4-hour live classroom defensive driving course in 90 days; failure = 90-day license suspension",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        86
+      ]
+    },
+    {
+      "id": "alcohol-reduces-4-systems",
+      "description": "Alcohol and impairing drugs reduce: judgment, vision, color distinction, reaction time",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        61
+      ]
+    },
+    {
+      "id": "vision-impaired-at-0.02",
+      "description": "Vision is impacted at 0.02 BAC for all drivers - below the legal limit",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        61
+      ]
+    },
+    {
+      "id": "vision-most-important-sense",
+      "description": "Vision is the most important sense used in driving",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        61
+      ]
+    },
+    {
+      "id": "impairment-starts-first-drink",
+      "description": "Impairment starts with the first drink",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        61
+      ]
+    },
+    {
+      "id": "impairing-drugs-all-three-categories",
+      "description": "Impairing drugs include all 3 categories: illegal, over-the-counter, AND prescription",
+      "topic": "impairment",
+      "priority": "MUST",
+      "source_pages": [
+        61
+      ]
+    },
+    {
+      "id": "emotions-impair-driving",
+      "description": "Driving while emotional (worried, excited, afraid, angry, depressed) increases risk",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        61
+      ]
+    },
+    {
+      "id": "meds-cause-drowsiness",
+      "description": "Many medications cause drowsiness or other impairment - ask your physician",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        31,
+        66
+      ]
+    },
+    {
+      "id": "under-21-no-alcohol-3-acts",
+      "description": "Under 21: illegal to purchase, possess, OR drink alcohol",
+      "topic": "impairment",
+      "priority": "MUST",
+      "source_pages": [
+        62
+      ]
+    },
+    {
+      "id": "under-21-zero-tolerance",
+      "description": "Under-21 BAC limit is 0.00 (zero tolerance) - no alcohol in circulatory system",
+      "topic": "impairment",
+      "priority": "MUST",
+      "source_pages": [
+        62
+      ]
+    },
+    {
+      "id": "under-21-possession-1-2-year-suspension",
+      "description": "Under-21 possession/consumption/underage-in-bar: 1-year first-offense license suspension, 2-year second/subsequent",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        62
+      ]
+    },
+    {
+      "id": "under-16-suspension-from-16th-birthday",
+      "description": "Alcohol suspension ordered before age 16: starts on conviction, extends 1-2 years from 16th birthday",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        62
+      ]
+    },
+    {
+      "id": "not-a-drop-6-months-first",
+      "description": "Not-a-Drop Act: under 21 + any measurable alcohol = driving privileges denied for 6 months (first offense)",
+      "topic": "impairment",
+      "priority": "MUST",
+      "source_pages": [
+        62
+      ]
+    },
+    {
+      "id": "not-a-drop-2-years-or-until-21",
+      "description": "Not-a-Drop second/subsequent within 10 years: denied 2 years OR until age 21, whichever is longer",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        62
+      ]
+    },
+    {
+      "id": "not-a-drop-pre-license",
+      "description": "Not-a-Drop applies even if you have never been issued a license (denies a future license)",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        62
+      ]
+    },
+    {
+      "id": "not-a-drop-reinstatement-assessment",
+      "description": "Reinstatement after Not-a-Drop suspension: substance-abuse assessment OR Prime For Life DUI class",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        62
+      ]
+    },
+    {
+      "id": "adult-bac-limit-0.05",
+      "description": "Utah adult (21+) BAC limit is 0.05 - the LOWEST in the U.S.",
+      "topic": "impairment",
+      "priority": "MUST",
+      "source_pages": [
+        62
+      ]
+    },
+    {
+      "id": "cdl-bac-limit-0.04",
+      "description": "CDL BAC limit is 0.04",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        62
+      ]
+    },
+    {
+      "id": "impaired-even-below-limit",
+      "description": "Driving while impaired is illegal even if under the legal BAC limit (impaired-to-the-degree law)",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        62
+      ]
+    },
+    {
+      "id": "first-dui-adult-120-days",
+      "description": "Adult first DUI conviction: license suspended 120 days",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        62
+      ]
+    },
+    {
+      "id": "second-dui-adult-2-years",
+      "description": "Adult second or subsequent DUI: 2-year suspension",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        62
+      ]
+    },
+    {
+      "id": "dl-suspend-day-45-after-arrest",
+      "description": "Officer can confiscate Utah DL on DUI arrest; suspension begins on day 45 after arrest",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        62
+      ]
+    },
+    {
+      "id": "abeyance-counts-as-prior",
+      "description": "DUI plea held in abeyance: not on regular MVR but counts as prior for future DUIs; disqualifies CDL",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        62
+      ]
+    },
+    {
+      "id": "implied-consent-law",
+      "description": "Implied Consent Law: by driving in Utah you have already agreed to chemical testing (breath/blood/urine/oral fluids) if requested by officer",
+      "topic": "impairment",
+      "priority": "MUST",
+      "source_pages": [
+        63
+      ]
+    },
+    {
+      "id": "officer-chooses-test",
+      "description": "The officer chooses which chemical test to administer",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        63
+      ]
+    },
+    {
+      "id": "refusal-21-plus-18-or-36-months",
+      "description": "Chemical test refusal (21+): license revoked 18 months first offense, 36 months second/subsequent",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        63
+      ]
+    },
+    {
+      "id": "refusal-under-21-2-years-then-36-or-21",
+      "description": "Chemical test refusal (under 21): revoked 2 years first; second = 36 months OR until 21, whichever is longer",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        63
+      ]
+    },
+    {
+      "id": "alcohol-restricted-driving-1-year-revoke",
+      "description": "Driving with any measurable alcohol during alcohol-restricted period = 1-year revocation",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        63
+      ]
+    },
+    {
+      "id": "bui-equals-dui",
+      "description": "BUI = DUI: same laws apply to operating a motorboat under the influence",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        63
+      ]
+    },
+    {
+      "id": "alcohol-restricted-2-3-5-10-years",
+      "description": "Alcohol-restricted driver status duration: 2, 3, 5, or 10 years depending on offense",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        63
+      ]
+    },
+    {
+      "id": "lifetime-alcohol-restricted-trigger",
+      "description": "Lifetime alcohol-restricted status triggered by automobile homicide or felony DUI conviction",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        63
+      ]
+    },
+    {
+      "id": "iid-breathalyzer-ignition",
+      "description": "Ignition Interlock Device = breathalyzer wired to ignition; car will not start if alcohol detected",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        64
+      ]
+    },
+    {
+      "id": "iid-18-months-adult-first",
+      "description": "First DUI (21+) = 18-month Ignition Interlock restriction",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        64
+      ]
+    },
+    {
+      "id": "iid-3-years-under-21-first",
+      "description": "First DUI under 21 = 3-year Ignition Interlock restriction",
+      "topic": "impairment",
+      "priority": "MUST",
+      "source_pages": [
+        64
+      ]
+    },
+    {
+      "id": "iid-2-years-second-offense",
+      "description": "Second/subsequent DUI or alcohol-related reckless or chemical refusal = 2-year IID",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        64
+      ]
+    },
+    {
+      "id": "iid-3-years-felony",
+      "description": "Felony DUI = 3-year IID",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        64
+      ]
+    },
+    {
+      "id": "iid-10-years-auto-homicide",
+      "description": "Automobile homicide = 10-year IID",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        64
+      ]
+    },
+    {
+      "id": "iid-monitoring-60-days",
+      "description": "IID monitoring is at least every 60 days; failure or alcohol attempt extends restriction 60 days each occurrence",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        64
+      ]
+    },
+    {
+      "id": "interlock-violation-1-year-revoke",
+      "description": "Driving while interlock-restricted without IID = impound + 1-year revoke + 2 more years IID",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        64
+      ]
+    },
+    {
+      "id": "dui-impound-may",
+      "description": "On DUI arrest, officer MAY impound vehicle or motorboat",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        64
+      ]
+    },
+    {
+      "id": "impound-fees-list",
+      "description": "Owner pays impound: towing + storage + administrative fees",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        64
+      ]
+    },
+    {
+      "id": "controlled-substance-metabolite-revoke",
+      "description": "Mandatory revocation if convicted of controlled substance/metabolite in body while driving (including prescriptions if measurable)",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        80
+      ]
+    },
+    {
+      "id": "distraction-definition-mind-or-body",
+      "description": "Distraction = anything that takes your mind OR body away from driving",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        65
+      ]
+    },
+    {
+      "id": "pre-drive-distraction-prevention",
+      "description": "Pre-drive distraction prevention: turn off devices, set GPS, eat/groom before leaving, secure loose items",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        65
+      ]
+    },
+    {
+      "id": "pull-over-for-unexpected",
+      "description": "If something unexpected happens while driving (dropped item, bee, contact lens) - pull over immediately",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        65
+      ]
+    },
+    {
+      "id": "hwc-general-no-manual",
+      "description": "While operating a vehicle on a highway, you may NOT manually write/send/read texts, dial, access internet, view/record video, take photos, or enter data on a wireless device",
+      "topic": "impairment",
+      "priority": "MUST",
+      "source_pages": [
+        67
+      ]
+    },
+    {
+      "id": "hwc-over-18-voice-only",
+      "description": "Drivers over 18 may talk on a phone while driving only with voice commands (hands-free)",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        68
+      ]
+    },
+    {
+      "id": "hwc-under-18-exceptions-only",
+      "description": "Drivers under 18 may use a handheld wireless device only for: medical emergency, reporting safety hazard, reporting criminal activity, or communicating with parent/legal guardian",
+      "topic": "impairment",
+      "priority": "MUST",
+      "source_pages": [
+        68
+      ]
+    },
+    {
+      "id": "texting-class-c-100",
+      "description": "Texting while driving violation = Class C misdemeanor, max fine $100",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        68
+      ]
+    },
+    {
+      "id": "texting-class-b-injury-or-prior",
+      "description": "Texting violation = Class B misdemeanor if you cause bodily injury or have a prior texting offense",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        68
+      ]
+    },
+    {
+      "id": "texting-judge-suspend",
+      "description": "Texting violation may also result in license suspension if a judge orders it",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        80
+      ]
+    },
+    {
+      "id": "texting-primary-offense",
+      "description": "Officer can pull you over solely for observing texting (primary offense)",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        68
+      ]
+    },
+    {
+      "id": "aggressive-driving-definition",
+      "description": "Aggressive driving = committing moving traffic offenses that endanger persons/property, or assault with a motor vehicle",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        65
+      ]
+    },
+    {
+      "id": "road-rage-definition",
+      "description": "Road rage = criminal offense by a driver, in response to a roadway incident, with intent to endanger or intimidate another driver",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        65
+      ]
+    },
+    {
+      "id": "road-rage-1-year-suspend",
+      "description": "Road rage first conviction: court may suspend license for 1 year",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        65,
+        80
+      ]
+    },
+    {
+      "id": "sleep-7-9-hours",
+      "description": "Most people need 7 to 9 hours of sleep",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        66
+      ]
+    },
+    {
+      "id": "long-trip-stop-every-2-hours",
+      "description": "On long trips, plan to stop every 2 hours",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        66
+      ]
+    },
+    {
+      "id": "power-nap-20-min",
+      "description": "A useful power nap is 20 minutes",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        67
+      ]
+    },
+    {
+      "id": "drowsy-warning-signs-list",
+      "description": "Drowsiness warnings: forgot last few miles, hit rumble strip, drift in lane, wandering thoughts, yawning, heavy eyes, tailgating, missed signs, near misses",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        67
+      ]
+    },
+    {
+      "id": "check-med-labels-drowsy",
+      "description": "Check medicine labels for drowsiness warnings",
+      "topic": "impairment",
+      "priority": "NICE",
+      "source_pages": [
+        66
+      ]
+    },
+    {
+      "id": "flood-6-inches-stalls-cars",
+      "description": "6 inches of water reaches most passenger cars' bottoms - causes loss of control or stalling",
+      "topic": "emergencies",
+      "priority": "SHOULD",
+      "source_pages": [
+        67
+      ]
+    },
+    {
+      "id": "flood-2-feet-carries-suv",
+      "description": "2 feet of moving water can carry away most vehicles, including SUVs and pickups",
+      "topic": "emergencies",
+      "priority": "SHOULD",
+      "source_pages": [
+        67
+      ]
+    },
+    {
+      "id": "flood-turn-around",
+      "description": "Turn around - never cross a flooded roadway",
+      "topic": "emergencies",
+      "priority": "SHOULD",
+      "source_pages": [
+        67
+      ]
+    },
+    {
+      "id": "headlights-on-1000-ft-visibility",
+      "description": "Headlights ON sunset to sunrise OR whenever you cannot clearly see 1,000 ft ahead",
+      "topic": "vehicle-equipment",
+      "priority": "SHOULD",
+      "source_pages": [
+        69
+      ]
+    },
+    {
+      "id": "dim-500-ft-oncoming",
+      "description": "Dim high beams within 500 feet of an oncoming vehicle",
+      "topic": "vehicle-equipment",
+      "priority": "SHOULD",
+      "source_pages": [
+        69
+      ]
+    },
+    {
+      "id": "dim-300-ft-following",
+      "description": "Dim high beams within 300 feet when following another vehicle",
+      "topic": "vehicle-equipment",
+      "priority": "SHOULD",
+      "source_pages": [
+        69
+      ]
+    },
+    {
+      "id": "no-sunglasses-night",
+      "description": "Do not wear sunglasses or colored lenses at night",
+      "topic": "vehicle-equipment",
+      "priority": "NICE",
+      "source_pages": [
+        70
+      ]
+    },
+    {
+      "id": "night-add-2-seconds-follow",
+      "description": "Increase following distance at night by at least 2 seconds",
+      "topic": "speed-following",
+      "priority": "SHOULD",
+      "source_pages": [
+        70
+      ]
+    },
+    {
+      "id": "hydroplane-over-35",
+      "description": "Hydroplaning starts at speeds over 35 mph",
+      "topic": "emergencies",
+      "priority": "SHOULD",
+      "source_pages": [
+        70
+      ]
+    },
+    {
+      "id": "animal-no-swerve",
+      "description": "Animal in road: DO NOT swerve - keep vehicle under control in lane",
+      "topic": "emergencies",
+      "priority": "SHOULD",
+      "source_pages": [
+        66
+      ]
+    },
+    {
+      "id": "vulnerable-users-list",
+      "description": "Vulnerable users include pedestrians, riders on animals, farm tractor without enclosed shell, skateboards, skates, bicycles, e-bikes, mopeds, motor-driven cycles, motorized scooters, motorcycles, wheelchairs",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        83
+      ]
+    },
+    {
+      "id": "distract-vulnerable-user-citation",
+      "description": "Distracting a vulnerable user with intent to cause violence/injury or force off road = traffic citation + points",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        83
+      ]
+    },
+    {
+      "id": "bicycle-equal-rights-as-vehicle",
+      "description": "Bicycles are vehicles on roadways - same rights, privileges, and responsibilities as motorists",
+      "topic": "sharing-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        83
+      ]
+    },
+    {
+      "id": "bike-lane-solid-white",
+      "description": "Bike lanes are marked with solid white lines",
+      "topic": "sharing-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        83
+      ]
+    },
+    {
+      "id": "no-drive-in-bike-lane",
+      "description": "Do not stop, park, or drive in a bike lane (except entering/leaving driveway, officer-directed duty, emergency)",
+      "topic": "sharing-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        83
+      ]
+    },
+    {
+      "id": "pass-bicyclist-3-feet-minimum",
+      "description": "Utah requires a minimum of 3 feet of distance when passing a bicyclist or vulnerable user",
+      "topic": "sharing-road",
+      "priority": "MUST",
+      "source_pages": [
+        84
+      ]
+    },
+    {
+      "id": "bicycle-no-pass-100-ft",
+      "description": "No-pass zone for cyclists/mopeds: obstructed-view curve/crest, within 100 feet of intersection or RR crossing or obstructed bridge/viaduct/tunnel",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        84
+      ]
+    },
+    {
+      "id": "dim-500-ft-cyclist-night",
+      "description": "Dim headlights within 500 feet when approaching/overtaking a cyclist at night",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        84
+      ]
+    },
+    {
+      "id": "check-before-opening-door",
+      "description": "Check for cyclists BEFORE opening your door when parked at a curb (Dutch reach)",
+      "topic": "sharing-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        84
+      ]
+    },
+    {
+      "id": "cyclist-no-impaired-riding",
+      "description": "Bicyclists must NEVER ride impaired",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        84
+      ]
+    },
+    {
+      "id": "cyclist-one-hand-on-bars",
+      "description": "Bicyclist must keep at least one hand on the handlebars",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        84
+      ]
+    },
+    {
+      "id": "bicycle-brake-25-ft-from-10mph",
+      "description": "Every bicycle must have a brake that can stop within 25 feet from 10 mph",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        85
+      ]
+    },
+    {
+      "id": "bicycle-lights-30min-sunrise-sunset",
+      "description": "Bicycle lights required from half-hour before sunrise to half-hour after sunset: white headlight, red taillight/reflector, side reflectors visible at 500 ft",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        85
+      ]
+    },
+    {
+      "id": "cyclist-two-abreast-max",
+      "description": "Bicyclists may ride two abreast maximum, only if not impeding traffic",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        85
+      ]
+    },
+    {
+      "id": "cyclist-helmet-recommended",
+      "description": "CPSC-approved bicycle helmet is recommended but not required by Utah law",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        85
+      ]
+    },
+    {
+      "id": "ebike-class-1-20mph-pedal",
+      "description": "E-bike Class 1: motor assists only while pedaling, cuts off at 20 mph",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        85
+      ]
+    },
+    {
+      "id": "ebike-class-2-20mph-throttle",
+      "description": "E-bike Class 2: motor can propel without pedaling, cuts off at 20 mph",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        85
+      ]
+    },
+    {
+      "id": "ebike-class-3-28mph-pedal",
+      "description": "E-bike Class 3: pedal-assist only, cuts off at 28 mph, requires a speedometer",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        86
+      ]
+    },
+    {
+      "id": "motorcycle-under-21-helmet-dot",
+      "description": "Motorcycle riders and passengers under 21 must wear a DOT-approved helmet",
+      "topic": "sharing-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        90
+      ]
+    },
+    {
+      "id": "motorcycle-liability-insurance",
+      "description": "All street motorcycles must carry liability insurance",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        90
+      ]
+    },
+    {
+      "id": "give-motorcycle-full-lane",
+      "description": "Give motorcycles a full lane - do not share the lane",
+      "topic": "sharing-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        90
+      ]
+    },
+    {
+      "id": "motorcycle-2-sec-follow",
+      "description": "When following a motorcycle, stay at least 2 seconds back (increase in wet conditions)",
+      "topic": "sharing-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        90
+      ]
+    },
+    {
+      "id": "motorcycle-signals-no-self-cancel",
+      "description": "Motorcycle turn signals often do NOT self-cancel - don't assume flashing means turning",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        90
+      ]
+    },
+    {
+      "id": "motorcycle-lane-filter-conditions",
+      "description": "Lane filtering legal when: 2+ same-direction lanes, posted speed limit <= 45 mph or off-ramp, motorcycle <= 15 mph, vehicle being passed is STOPPED, safe",
+      "topic": "sharing-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        91
+      ]
+    },
+    {
+      "id": "motorcycle-filter-no-on-ramp",
+      "description": "Lane filtering is NOT allowed on freeway on-ramps",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        91
+      ]
+    },
+    {
+      "id": "motorcycle-dead-red-90-seconds",
+      "description": "Dead-red rule: motorcycle/moped/bicycle 16+ may proceed after waiting at least 90 seconds if signal hasn't detected them and no other traffic/peds",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        91
+      ]
+    },
+    {
+      "id": "trucks-different-from-cars",
+      "description": "Trucks are NOT large cars - longer stopping/accelerating distances, wider turns, more weight",
+      "topic": "sharing-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        88
+      ]
+    },
+    {
+      "id": "truck-center-lane-multi",
+      "description": "On multi-lane highways, tractor-trailers stay in the center lane to help on/off-ramp traffic flow",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        88
+      ]
+    },
+    {
+      "id": "car-stop-130-140-ft-at-55",
+      "description": "Average passenger car at 55 mph stops in 130-140 feet (less than half a football field)",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        88
+      ]
+    },
+    {
+      "id": "truck-stop-400-ft-at-55",
+      "description": "A fully loaded tractor-trailer at 55 mph may take more than 400 feet to stop",
+      "topic": "sharing-road",
+      "priority": "MUST",
+      "source_pages": [
+        88
+      ]
+    },
+    {
+      "id": "truck-stop-335-ft-finals-only",
+      "description": "A loaded truck at 55 mph takes at least 335 feet to stop - 1.5x a car (finals-only number)",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        89
+      ]
+    },
+    {
+      "id": "mirror-test-cant-see-driver",
+      "description": "If you cannot see the truck driver in their side mirror, the driver cannot see you",
+      "topic": "sharing-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        88,
+        89
+      ]
+    },
+    {
+      "id": "pass-truck-completely-left",
+      "description": "Always pass a tractor-trailer completely and on the LEFT side - never linger alongside",
+      "topic": "sharing-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        88
+      ]
+    },
+    {
+      "id": "truck-swings-left-for-right-turn",
+      "description": "Trucks swing wide LEFT before a right turn - do not pinch them on the right",
+      "topic": "sharing-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        88
+      ]
+    },
+    {
+      "id": "stop-behind-line-truck-space",
+      "description": "Stop lines at intersections give larger vehicles room - always stop behind the stop line",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        88
+      ]
+    },
+    {
+      "id": "truck-looks-slower-than-it-is",
+      "description": "Tractor-trailers often appear slower than they are - don't underestimate approach speed",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        88
+      ]
+    },
+    {
+      "id": "truck-no-zones-20-and-200",
+      "description": "Truck blind spots: up to 20 ft in front of the cab, both sides (especially alongside cab), and up to 200 ft behind",
+      "topic": "sharing-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        89
+      ]
+    },
+    {
+      "id": "truck-largest-blind-spot-right",
+      "description": "The largest truck blind spot is on the RIGHT side - starts behind the cab, runs the length of the truck",
+      "topic": "sharing-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        89
+      ]
+    },
+    {
+      "id": "pass-truck-see-whole-front",
+      "description": "When passing a truck, don't pull back in until you see the WHOLE FRONT of the truck in your rearview mirror",
+      "topic": "sharing-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        89
+      ]
+    },
+    {
+      "id": "truck-on-hill-may-rollback",
+      "description": "When stopped behind a large vehicle on a hill, leave extra room - truck may stall or roll backward",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        89
+      ]
+    },
+    {
+      "id": "work-zone-orange-signs",
+      "description": "Work zone signs are diamond or rectangular, ORANGE with black letters/symbols",
+      "topic": "signs",
+      "priority": "MUST",
+      "source_pages": [
+        59
+      ]
+    },
+    {
+      "id": "work-zone-identifiers",
+      "description": "Work zones identified by: orange signs, orange devices, flashing lights, highly visible worker clothing",
+      "topic": "rules-of-the-road",
+      "priority": "NICE",
+      "source_pages": [
+        59
+      ]
+    },
+    {
+      "id": "work-zone-double-fine",
+      "description": "Speeding in a work zone: court must fine AT LEAST TWICE the regular speeding fine",
+      "topic": "speed-following",
+      "priority": "MUST",
+      "source_pages": [
+        59,
+        68
+      ]
+    },
+    {
+      "id": "work-zone-slow-even-no-workers",
+      "description": "Slow down in work zones even if no workers are present",
+      "topic": "speed-following",
+      "priority": "SHOULD",
+      "source_pages": [
+        59,
+        68
+      ]
+    },
+    {
+      "id": "work-zone-80pct-not-workers",
+      "description": "Over 80% of work-zone casualties are drivers/passengers/pedestrians, NOT workers",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        68
+      ]
+    },
+    {
+      "id": "slow-moving-triangle-25mph",
+      "description": "Slow-moving vehicle emblem: orange-and-red triangle on rear = vehicle travels under 25 mph",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        93
+      ]
+    },
+    {
+      "id": "farm-equipment-cant-hear",
+      "description": "Farm equipment driver cannot hear your vehicle - pass with care",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        93
+      ]
+    },
+    {
+      "id": "golf-cart-bike-rules-no-alcohol",
+      "description": "Golf carts on public roads: only where local ordinance allows; follow bicycle rules; no alcohol while operating",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        93
+      ]
+    },
+    {
+      "id": "horse-equal-road-rights",
+      "description": "Horse-drawn vehicles and horseback riders have same rights to the road - don't honk or rev",
+      "topic": "sharing-road",
+      "priority": "NICE",
+      "source_pages": [
+        93
+      ]
+    },
+    {
+      "id": "class-d-covers-street-legal-atv",
+      "description": "A Class D or CDL license covers a street-legal ATV/UTV/FSV - no special endorsement",
+      "topic": "licensing",
+      "priority": "NICE",
+      "source_pages": [
+        94
+      ]
+    },
+    {
+      "id": "traffic-stop-procedure",
+      "description": "Pulled over: move to the RIGHT side (even from HOV), put in PARK, turn off engine, STAY in vehicle, window down, hands on wheel",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        93
+      ]
+    },
+    {
+      "id": "traffic-stop-seatbelt-on",
+      "description": "Keep seat belt fastened during traffic stop; ask passengers to do the same",
+      "topic": "rules-of-the-road",
+      "priority": "NICE",
+      "source_pages": [
+        93
+      ]
+    },
+    {
+      "id": "traffic-stop-slow-reach",
+      "description": "For documents at a traffic stop, keep one hand on the wheel and reach slowly",
+      "topic": "rules-of-the-road",
+      "priority": "NICE",
+      "source_pages": [
+        93
+      ]
+    },
+    {
+      "id": "sign-shape-octagon-stop",
+      "description": "An 8-sided (octagonal) red sign with white letters means STOP",
+      "topic": "signs",
+      "priority": "MUST",
+      "source_pages": [
+        47
+      ]
+    },
+    {
+      "id": "sign-shape-triangle-yield",
+      "description": "A downward-pointing triangle (white with red border) means YIELD",
+      "topic": "signs",
+      "priority": "MUST",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-shape-diamond-warning",
+      "description": "Yellow diamond-shaped signs are WARNING signs",
+      "topic": "signs",
+      "priority": "MUST",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-shape-pentagon-school",
+      "description": "A fluorescent yellow-green pentagon sign indicates a school zone or school crossing",
+      "topic": "signs",
+      "priority": "MUST",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-shape-pennant-no-passing",
+      "description": "A yellow horizontal pennant (sideways triangle) sign means NO PASSING ZONE",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-shape-crossbuck-rr",
+      "description": "A white X-shape sign marks a RAILROAD CROSSING (crossbuck)",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        57,
+        96
+      ]
+    },
+    {
+      "id": "sign-shape-rectangle-vert-regulatory",
+      "description": "Vertical white rectangles with black text are REGULATORY signs (speed limit, do not pass, etc.)",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        47
+      ]
+    },
+    {
+      "id": "sign-shape-rectangle-horiz-info",
+      "description": "Horizontal rectangles (green or blue) typically give GUIDE or SERVICE information",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        46,
+        47
+      ]
+    },
+    {
+      "id": "sign-color-red-stop-prohibit",
+      "description": "Red signs mean STOP, YIELD, or PROHIBITION",
+      "topic": "signs",
+      "priority": "MUST",
+      "source_pages": [
+        47
+      ]
+    },
+    {
+      "id": "sign-color-yellow-warning",
+      "description": "Yellow signs are general WARNING signs",
+      "topic": "signs",
+      "priority": "MUST",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-color-orange-construction",
+      "description": "Orange signs indicate construction or work zones",
+      "topic": "signs",
+      "priority": "MUST",
+      "source_pages": [
+        59
+      ]
+    },
+    {
+      "id": "sign-color-green-guide-permitted",
+      "description": "Green signs give guide/directional info or indicate permitted movements",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        47
+      ]
+    },
+    {
+      "id": "sign-color-blue-service",
+      "description": "Blue signs indicate motorist services (hospitals, rest areas, phones)",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        46
+      ]
+    },
+    {
+      "id": "sign-color-brown-rec",
+      "description": "Brown signs mark recreation or cultural sites",
+      "topic": "signs",
+      "priority": "NICE",
+      "source_pages": [
+        47
+      ]
+    },
+    {
+      "id": "sign-color-yellow-green-school",
+      "description": "Fluorescent yellow-green signs warn of pedestrian/school/bicycle activity",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-stop-meaning",
+      "description": "STOP sign: come to a complete stop and yield to traffic and pedestrians",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        47
+      ]
+    },
+    {
+      "id": "sign-yield-meaning",
+      "description": "YIELD sign: slow or stop if necessary and yield to other traffic and pedestrians",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-speed-limit-meaning",
+      "description": "Speed Limit sign: the maximum legal speed for that road",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        47
+      ]
+    },
+    {
+      "id": "sign-no-u-turn-meaning",
+      "description": "A circle-and-slash over a U-shaped arrow means NO U-TURN",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        47
+      ]
+    },
+    {
+      "id": "sign-no-left-turn-meaning",
+      "description": "A circle-and-slash over a left-turn arrow means NO LEFT TURN",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        47
+      ]
+    },
+    {
+      "id": "sign-no-right-turn-meaning",
+      "description": "A circle-and-slash over a right-turn arrow means NO RIGHT TURN",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        47
+      ]
+    },
+    {
+      "id": "sign-do-not-enter-meaning",
+      "description": "DO NOT ENTER sign: red square with white bar - do not enter the roadway",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        47
+      ]
+    },
+    {
+      "id": "sign-wrong-way-meaning",
+      "description": "WRONG WAY sign: you are headed against traffic flow - immediately stop and turn around",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        49
+      ]
+    },
+    {
+      "id": "sign-one-way-meaning",
+      "description": "ONE WAY sign: traffic only flows in the direction of the arrow",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        49
+      ]
+    },
+    {
+      "id": "sign-no-turn-on-red-meaning",
+      "description": "NO TURN ON RED sign: right turn on red is prohibited at this intersection",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        46
+      ]
+    },
+    {
+      "id": "sign-curve-meaning",
+      "description": "Yellow diamond with curved arrow = curve in the road ahead; reduce speed",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-turn-meaning",
+      "description": "Yellow diamond with sharp right-angle arrow = sharp turn ahead",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-merge-meaning",
+      "description": "Yellow diamond with arrows converging = merging traffic ahead",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-lane-ends-meaning",
+      "description": "Yellow diamond with lane-ends pattern = lane ends ahead; merge",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-divided-highway-meaning",
+      "description": "Yellow diamond showing road split = divided highway begins (or ends)",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-stop-ahead-meaning",
+      "description": "Yellow diamond with octagon symbol = STOP sign ahead",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-signal-ahead-meaning",
+      "description": "Yellow diamond with traffic light symbol = signal ahead",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-ped-crossing-meaning",
+      "description": "Yellow (or yellow-green pentagon) sign with walking-person silhouette = pedestrian crossing",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-bike-crossing-meaning",
+      "description": "Yellow diamond with bicycle symbol = bicycle crossing",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-deer-crossing-meaning",
+      "description": "Yellow diamond with leaping-deer silhouette = deer crossing area",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-slippery-meaning",
+      "description": "Yellow diamond with skidding-car symbol = slippery when wet",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-hill-meaning",
+      "description": "Yellow diamond with descending-truck symbol = steep hill ahead",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        45
+      ]
+    },
+    {
+      "id": "sign-advisory-speed-meaning",
+      "description": "Yellow square plaque with mph numerals = advisory (suggested) speed for a curve or condition",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-rr-crossing-meaning",
+      "description": "Round yellow sign with X and RR = railroad crossing advance warning",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        57
+      ]
+    },
+    {
+      "id": "sign-school-meaning",
+      "description": "Yellow-green pentagon with two children silhouettes = school crossing/school zone",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-work-meaning",
+      "description": "Orange diamond with text or worker symbol = work zone warning",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        59
+      ]
+    },
+    {
+      "id": "sign-flagger-meaning",
+      "description": "Orange diamond with flagger silhouette = flagger ahead - obey their directions",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        59
+      ]
+    },
+    {
+      "id": "sign-hospital-meaning",
+      "description": "Blue square with white H = hospital",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        46
+      ]
+    },
+    {
+      "id": "sign-rest-area-meaning",
+      "description": "Blue square with picnic-table symbol = rest area",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        46
+      ]
+    },
+    {
+      "id": "sign-interstate-meaning",
+      "description": "Red-white-blue shield = interstate route marker",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        47
+      ]
+    },
+    {
+      "id": "sign-us-route-meaning",
+      "description": "White heraldic shield = U.S. route marker",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        47
+      ]
+    },
+    {
+      "id": "sign-no-passing-zone-meaning",
+      "description": "Yellow pennant sign (horizontal triangle) = NO PASSING ZONE - begins here",
+      "topic": "signs",
+      "priority": "SHOULD",
+      "source_pages": [
+        48
+      ]
+    },
+    {
+      "id": "sign-keep-right-meaning",
+      "description": "Keep Right sign: stay to the right of the obstruction/median",
+      "topic": "signs",
+      "priority": "NICE",
+      "source_pages": [
+        47
+      ]
+    },
+    {
+      "id": "sign-no-parking-meaning",
+      "description": "Red circle-and-slash over P = NO PARKING any time",
+      "topic": "signs",
+      "priority": "NICE",
+      "source_pages": [
+        33
+      ]
+    },
+    {
+      "id": "sign-detour-meaning",
+      "description": "Orange DETOUR sign = follow alternate route around work zone",
+      "topic": "signs",
+      "priority": "NICE",
+      "source_pages": [
+        59
+      ]
+    },
+    {
+      "id": "crash-cause-teen-lane",
+      "description": "For teen drivers 15-19, the leading crash cause is failing to keep in the proper lane",
+      "topic": "misc",
+      "priority": "NICE",
+      "source_pages": [
+        7
+      ]
+    },
+    {
+      "id": "crash-cause-65-plus-yield",
+      "description": "For drivers 65+, the leading crash cause is failing to yield right-of-way",
+      "topic": "misc",
+      "priority": "NICE",
+      "source_pages": [
+        7
+      ]
+    },
+    {
+      "id": "suspension-vs-revocation",
+      "description": "Suspension is temporary loss of driving privilege; revocation requires applying for a new license after a set period",
+      "topic": "licensing",
+      "priority": "SHOULD",
+      "source_pages": [
+        80
+      ]
+    },
+    {
+      "id": "denial-vs-disqualification",
+      "description": "Denial = not allowed to obtain a license; Disqualification = loss of CDL privilege",
+      "topic": "licensing",
+      "priority": "NICE",
+      "source_pages": [
+        80
+      ]
+    },
+    {
+      "id": "cancellation-paperwork-error",
+      "description": "Cancellation = license cancelled due to a procedural/paperwork error (not punitive)",
+      "topic": "licensing",
+      "priority": "NICE",
+      "source_pages": [
+        80
+      ]
+    },
+    {
+      "id": "careless-driving-2-violations",
+      "description": "Careless driving = committing 2 or more moving violations during a single drive, OR 1 violation while distracted by in-vehicle activity",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        80
+      ]
+    },
+    {
+      "id": "reckless-driving-willful",
+      "description": "Reckless driving = willful or wanton disregard for safety of persons or property",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": [
+        80
+      ]
+    },
+    {
+      "id": "crash-report-stop-aid",
+      "description": "After a crash: stop, render aid, exchange info, report when required",
+      "topic": "emergencies",
+      "priority": "SHOULD",
+      "source_pages": [
+        71,
+        72
+      ]
+    },
+    {
+      "id": "liability-insurance-required",
+      "description": "Utah requires liability insurance on all motor vehicles",
+      "topic": "vehicle-equipment",
+      "priority": "SHOULD",
+      "source_pages": [
+        73
+      ]
+    },
+    {
+      "id": "crash-report-1500",
+      "description": "A traffic accident report is required when injury, death, or property damage of $1,500 or more occurs",
+      "topic": "emergencies",
+      "priority": "SHOULD",
+      "source_pages": [
+        71
+      ]
+    },
+    {
+      "id": "stopping-distance-perception-reaction",
+      "description": "Total stopping distance = perception distance + reaction distance + braking distance",
+      "topic": "speed-following",
+      "priority": "NICE",
+      "source_pages": [
+        50,
+        88
+      ]
+    },
+    {
+      "id": "headlights-rain-snow",
+      "description": "Use headlights whenever windshield wipers are in continuous use",
+      "topic": "vehicle-equipment",
+      "priority": "NICE",
+      "source_pages": [
+        69
+      ]
+    },
+    {
+      "id": "trailer-brake-1500lbs",
+      "description": "A trailer over 750 lbs gross weight is recommended to have brakes; over 2,000 lbs requires brakes in Utah",
+      "topic": "vehicle-equipment",
+      "priority": "NICE",
+      "source_pages": [
+        98
+      ]
+    },
+    {
+      "id": "no-park-railroad-track",
+      "description": "Never park on a railroad track",
+      "topic": "driving-basics",
+      "priority": "SHOULD",
+      "source_pages": [
+        42
+      ]
+    },
+    {
+      "id": "express-lane-emergency-exception",
+      "description": "Express lane double-white-line crossing is allowed when followed by an emergency/police vehicle directing you to pull over",
+      "topic": "driving-basics",
+      "priority": "NICE",
+      "source_pages": [
+        50
+      ]
+    },
+    {
+      "id": "hawk-signal",
+      "description": "HAWK (High-intensity Activated crossWalK) beacon is a pedestrian signal \u2014 flashing yellow then solid yellow then solid red then alternating flashing red; treat alternating flashing red like a stop sign",
+      "topic": "rules-of-the-road",
+      "priority": "SHOULD",
+      "source_pages": []
+    },
+    {
+      "id": "distraction-passengers",
+      "description": "Passengers can be a major source of distraction \u2014 especially loud or active ones; new drivers should set expectations before driving",
+      "topic": "impairment",
+      "priority": "SHOULD",
+      "source_pages": [
+        62
+      ]
+    },
+    {
+      "id": "pre-drive-distraction-plan",
+      "description": "Before driving: phone away, music set, GPS set, mirrors aimed, seat adjusted \u2014 handle distractions BEFORE wheels move",
+      "topic": "impairment",
+      "priority": "MUST",
+      "source_pages": [
+        62
+      ]
+    }
+  ]
+}

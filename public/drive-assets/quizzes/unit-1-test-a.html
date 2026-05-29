@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 1 - Licensing and Safety - Test A</title>
+<style>
+:root { --primary: #581c87; --accent: #facc15; --green: #16a34a; --red: #dc2626; --text: #18181b; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 760px; margin: 0 auto; padding: 24px; color: var(--text); }
+h1 { color: var(--primary); }
+.meta { color: #71717a; margin-bottom: 24px; font-size: 0.9em; }
+.question { background: #fafafa; border-left: 4px solid var(--primary); padding: 16px 20px; margin: 16px 0; border-radius: 4px; }
+.question.correct { border-left-color: var(--green); }
+.question.wrong { border-left-color: var(--red); }
+.q-num { color: var(--primary); font-weight: 600; font-size: 0.85em; }
+.q-text { font-size: 1.05em; margin: 8px 0 16px; }
+.choices label { display: block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; }
+.choices label:hover { background: #faf5ff; border-color: var(--primary); }
+.choices input[type=radio] { margin-right: 10px; }
+.explanation { margin-top: 12px; padding: 12px; background: #fef3c7; border-radius: 4px; display: none; font-size: 0.92em; }
+.show .explanation { display: block; }
+.submit-btn { background: var(--primary); color: white; border: none; padding: 14px 32px; font-size: 1.1em; border-radius: 6px; cursor: pointer; margin-top: 24px; }
+.submit-btn:hover { background: #6b21a8; }
+.score-card { background: linear-gradient(135deg, var(--primary), #6b21a8); color: white; padding: 24px; border-radius: 8px; margin: 24px 0; }
+.score-card h2 { margin-top: 0; }
+.score-pct { font-size: 3em; font-weight: 700; }
+.pass-badge { background: var(--accent); color: var(--text); padding: 6px 12px; border-radius: 4px; display: inline-block; }
+.fail-badge { background: var(--red); color: white; padding: 6px 12px; border-radius: 4px; display: inline-block; }
+img.sign { max-height: 180px; margin: 8px 0; display: block; }
+.back-link { color: var(--primary); text-decoration: none; }
+.back-link:hover { text-decoration: underline; }
+.empty-state { background: #fef3c7; padding: 16px; border-radius: 6px; margin: 16px 0; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+<!-- HOME-BTN v1 -->
+<a href="../dashboard/index.html" style="position:fixed; top:12px; left:12px; z-index:9999; background:#581c87; color:white; text-decoration:none; padding:6px 14px; border-radius:6px; font-size:13px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.15);">&larr; Home</a>
+
+<h1>Unit 1 - Licensing and Safety - Test A</h1>
+<div class="meta">25 questions &middot; Pass: 80% (20 correct) &middot; Pool: 130 questions from licensing, impairment</div>
+
+<form id="quiz"></form>
+<button class="submit-btn" id="submit">Grade my quiz</button>
+<div id="result"></div>
+<script>
+const QUESTIONS = [{"question": "What does the letter M on a Utah license endorsement signify?", "choices": ["Motor vehicle", "Motorcycle", "Moped only", "Medical exemption"], "correct_index": 1, "explanation": "M = Motorcycle endorsement. It must appear on your license to legally ride a motorcycle in Utah.", "source_page": 22, "priority": "MUST", "canonical_fact_id": "endorsement-m-motorcycle"}, {"question": "A truck driver wants to haul placarded chemicals across Utah. What endorsement is required?", "choices": ["S", "T", "H", "Z"], "correct_index": 2, "explanation": "The H endorsement is required for transporting placarded hazardous materials. T is doubles/triples, S is school bus, Z is taxicab.", "source_page": 22, "priority": "MUST", "canonical_fact_id": "endorsement-h-hazmat"}, {"question": "You want to legally ride a motorcycle in Utah. What endorsement do you need on your license?", "choices": ["M", "H", "S", "Z"], "correct_index": 0, "explanation": "The M endorsement is required to operate a motorcycle. Without it, you can be fined.", "source_page": 22, "priority": "MUST", "canonical_fact_id": "endorsement-m-motorcycle"}, {"question": "To drive on a Utah public highway, you must have what?", "choices": ["Nothing -- just a vehicle is enough", "A valid Utah driver license, learner permit, or temporary driver license", "Only a state ID card", "Only proof of insurance"], "correct_index": 1, "explanation": "Every Utah resident driving on public highways must have a valid Utah driver license, learner permit, or temporary driver license.", "source_page": 14, "priority": "MUST", "canonical_fact_id": "must-have-license-on-highway"}, {"question": "What score is required on the Traffic Safety & Trends Exam?", "choices": ["80%", "90%", "100%", "Pass/fail -- no minimum"], "correct_index": 2, "explanation": "The Traffic Safety & Trends Exam is online only and requires a 100% score. Required for all first-time Class D applicants.", "source_page": 33, "priority": "MUST", "canonical_fact_id": "traffic-safety-trends-100"}, {"question": "When does a texting-while-driving offense become a Class B misdemeanor?", "choices": ["Always -- Class B is the default", "If you cause bodily injury OR have a prior texting offense", "If the text was more than 140 characters", "Only for commercial drivers"], "correct_index": 1, "explanation": "Class B misdemeanor if you cause bodily injury OR have a prior texting offense. Otherwise Class C.", "source_page": 68, "priority": "NICE", "canonical_fact_id": "texting-class-b-injury-or-prior"}, {"question": "What separates road rage from aggressive driving under Utah law?", "choices": ["Speed", "Intent to endanger or intimidate another driver, in response to a roadway incident", "Number of vehicles involved", "Time of day"], "correct_index": 1, "explanation": "Road rage = criminal offense by a driver, in response to a roadway incident, WITH INTENT to endanger or intimidate another driver.", "source_page": 65, "priority": "SHOULD", "canonical_fact_id": "road-rage-definition"}, {"question": "Can the Not-a-Drop Act apply to someone who has never had a driver license?", "choices": ["No -- only license holders can be affected", "Yes -- they can deny a future license", "Only if a parent agrees", "Only for hard liquor"], "correct_index": 1, "explanation": "Yes. Not-a-Drop applies even if you have not been issued a license. DLD can deny a future license.", "source_page": 62, "priority": "NICE", "canonical_fact_id": "not-a-drop-pre-license"}, {"question": "A newly licensed 16-year-old in Utah may carry which passengers during the first 6 months?", "choices": ["Anyone they choose", "Immediate family members only", "Only one friend at a time", "Only passengers age 18+"], "correct_index": 1, "explanation": "For the first 6 months of having a Utah license at age 16, only immediate family members may be in the vehicle (with limited exceptions).", "source_page": 18, "priority": "MUST", "canonical_fact_id": "age-16-family-only-6mo"}, {"question": "If you drive without an installed IID while interlock-restricted, what happens?", "choices": ["A $50 fine only", "Vehicle impound + 1-year revoke + 2 more years of IID", "Just an extension of the IID period", "Loss of registration only"], "correct_index": 1, "explanation": "Driving while interlock-restricted without an IID = impound + 1-year revocation + 2 additional years on IID.", "source_page": 64, "priority": "SHOULD", "canonical_fact_id": "interlock-violation-1-year-revoke"}, {"question": "What does the letter H on a Utah CDL endorsement mean?", "choices": ["Heavy load", "Hazardous materials (hazmat)", "Highway-only", "Hauling oversized loads"], "correct_index": 1, "explanation": "H = Hazardous Materials endorsement. Required to transport placarded hazmat. Requires a federal background check.", "source_page": 22, "priority": "MUST", "canonical_fact_id": "endorsement-h-hazmat"}, {"question": "What is the legal BAC limit for drivers under 21 in Utah?", "choices": ["0.00 -- zero tolerance", "0.02", "0.05", "0.08"], "correct_index": 0, "explanation": "Under 21 = 0.00 BAC. Any measurable alcohol in your system while driving violates Utah's Not-a-Drop / zero-tolerance law.", "source_page": 62, "priority": "MUST", "canonical_fact_id": "under-21-zero-tolerance"}, {"question": "You are pulled over and arrested for suspected DUI. You decide to refuse the breathalyzer to avoid evidence. What happens?", "choices": ["No consequences if not convicted", "Automatic license revocation: 18 months for first refusal (21+)", "A warning the first time", "Required to take a urine test instead"], "correct_index": 1, "explanation": "Implied consent: by driving, you already agreed to the test. Refusal = automatic revocation -- 18 months first offense for adults (21+), on top of any DUI charges.", "source_page": 63, "priority": "MUST", "canonical_fact_id": "implied-consent-law"}, {"question": "Possession or consumption of alcohol by someone under 21 in Utah results in a license suspension of:", "choices": ["30 days first offense", "1 year first offense, 2 years subsequent", "6 months any offense", "Only a fine, no suspension"], "correct_index": 1, "explanation": "Possession/consumption (ages 13-20): 1-year license suspension first offense, 2 years for second or subsequent.", "source_page": 62, "priority": "SHOULD", "canonical_fact_id": "under-21-possession-1-2-year-suspension"}, {"question": "If you are 19 or older with no prior license, how long must you hold the learner permit before getting a license?", "choices": ["No hold required", "30 days", "90 days", "6 months"], "correct_index": 2, "explanation": "Age 19+ with no prior license = 90-day permit hold (plus 40 hours practice). Driver ed is NOT required.", "source_page": 17, "priority": "SHOULD", "canonical_fact_id": "permit-hold-90-days-19-plus"}, {"question": "An under-21 driver convicted of a first DUI has an Ignition Interlock requirement of:", "choices": ["6 months", "18 months", "2 years", "3 years"], "correct_index": 3, "explanation": "Under-21 first DUI = 3-year IID requirement. That is longer than the adult first-DUI period (18 months).", "source_page": 64, "priority": "MUST", "canonical_fact_id": "iid-3-years-under-21-first"}, {"question": "Before getting their first license, an under-19 Utah driver must complete how many hours of practice driving?", "choices": ["20 hours, all daylight", "30 hours, including 5 at night", "40 hours, including 10 after sunset", "50 hours, including 15 at night"], "correct_index": 2, "explanation": "40 hours of supervised practice driving are required, with at least 10 of those hours after sunset.", "source_page": 16, "priority": "MUST", "canonical_fact_id": "practice-40-hours-10-night"}, {"question": "If you hold a learner permit from another state, may you drive in Utah?", "choices": ["Yes, for up to 6 months", "Yes, if a licensed adult is with you", "No, out-of-state learner permits are not valid in Utah", "Yes, but only on non-highway roads"], "correct_index": 2, "explanation": "Out-of-state learner permits do NOT transfer to Utah. Full out-of-state licenses are honored for up to 6 months, but permits are not.", "source_page": 28, "priority": "SHOULD", "canonical_fact_id": "out-of-state-permit-not-valid"}, {"question": "Sam, 16, is stopped at a red light. He pulls out his phone to text a friend 'running 5 min late.' An officer sees it. Is Sam legal?", "choices": ["Yes -- texting at a red light is fine", "Yes -- short texts do not count", "No -- under-18 may only text for medical, safety, criminal, or parent reasons", "Only illegal if moving"], "correct_index": 2, "explanation": "Under-18 HWC exceptions are: medical emergency, safety hazard, criminal activity, or parent/guardian. Texting a friend is none of those. Class C misdemeanor, max $100.", "source_page": 68, "priority": "MUST", "canonical_fact_id": "hwc-under-18-exceptions-only"}, {"question": "What is the minimum age to apply for a Utah entry-level learner permit?", "choices": ["14", "15", "16", "18"], "correct_index": 1, "explanation": "An entry-level learner permit can be obtained at age 15. A full Class D license requires age 16.", "source_page": 17, "priority": "MUST", "canonical_fact_id": "permit-min-age-15"}, {"question": "A first texting-while-driving violation in Utah is what offense, with what maximum fine?", "choices": ["Infraction, $25", "Class C misdemeanor, $100", "Class B misdemeanor, $500", "Felony, $1,000"], "correct_index": 1, "explanation": "Texting violation = Class C misdemeanor, max $100 fine. It becomes Class B if you cause injury or have a prior.", "source_page": 68, "priority": "SHOULD", "canonical_fact_id": "texting-class-c-100"}, {"question": "A driver over 18 may use a wireless device while driving only how?", "choices": ["Texting is fine if quick", "Only via voice commands / hands-free", "Only at red lights", "Never, for any reason"], "correct_index": 1, "explanation": "Over-18 drivers may talk on a phone only via voice commands / hands-free. Manual dialing or texting is prohibited.", "source_page": 68, "priority": "MUST", "canonical_fact_id": "hwc-over-18-voice-only"}, {"question": "What is distraction while driving?", "choices": ["Anything that takes your mind OR body away from driving", "Only phone use", "Only loud passengers", "Only eating"], "correct_index": 0, "explanation": "Distraction = anything that takes your mind OR your body away from the task of driving. Phones, food, kids, GPS -- all qualify.", "source_page": 65, "priority": "SHOULD", "canonical_fact_id": "distraction-definition-mind-or-body"}, {"question": "A 16-year-old licensed Utah driver may NOT drive during which hours?", "choices": ["9 p.m. to 6 a.m.", "10 p.m. to 5 a.m.", "12 a.m. to 5 a.m.", "11 p.m. to 7 a.m."], "correct_index": 2, "explanation": "Age 16 license holders have a 12 a.m. to 5 a.m. curfew, with limited exceptions (school activity, work, emergency, or accompanied by a licensed 21+ adult).", "source_page": 18, "priority": "MUST", "canonical_fact_id": "age-16-curfew-12am-5am"}, {"question": "Restriction code G on a Utah license means what?", "choices": ["Glasses required", "Geographic limit (in-state only)", "Daylight driving only", "Governor-approved permit"], "correct_index": 2, "explanation": "Restriction G = daylight hours only. The driver may not operate a vehicle after sunset.", "source_page": 22, "priority": "SHOULD", "canonical_fact_id": "restriction-g-daylight"}];
+function render(){
+  if (!QUESTIONS || QUESTIONS.length === 0) {
+    document.getElementById("quiz").innerHTML = "<div class='empty-state'>No questions available. Take a unit test first so weak spots can be tracked.</div>";
+    document.getElementById("submit").style.display = "none";
+    return;
+  }
+  const form = document.getElementById("quiz");
+  QUESTIONS.forEach((q, i) => {
+    const div = document.createElement("div");
+    div.className = "question";
+    div.id = "q" + i;
+    let html = "<div class='q-num'>Question " + (i+1) + " &middot; " + q.priority + "</div>";
+    html += "<div class='q-text'>" + q.question + "</div>";
+    if (q.sign_image) html += "<img class='sign' src='../images/signs/" + q.sign_image + "' alt='sign'>";
+    html += "<div class='choices'>";
+    q.choices.forEach((c, ci) => {
+      html += "<label><input type='radio' name='q" + i + "' value='" + ci + "'> " + c + "</label>";
+    });
+    html += "</div>";
+    html += "<div class='explanation'><strong>Answer:</strong> " + q.choices[q.correct_index] + "<br>" + q.explanation + " <em>(Handbook p." + q.source_page + ")</em></div>";
+    div.innerHTML = html;
+    form.appendChild(div);
+  });
+}
+function grade(){
+  let correct = 0;
+  const misses = [];
+  QUESTIONS.forEach((q, i) => {
+    const sel = document.querySelector("input[name=q" + i + "]:checked");
+    const qEl = document.getElementById("q" + i);
+    qEl.classList.add("show");
+    if (sel && parseInt(sel.value) === q.correct_index) {
+      qEl.classList.add("correct");
+      correct++;
+    } else {
+      qEl.classList.add("wrong");
+      misses.push(q.canonical_fact_id);
+    }
+  });
+  const prevMisses = JSON.parse(localStorage.getItem("dl_misses") || "[]");
+  const allMisses = [...prevMisses, ...misses];
+  localStorage.setItem("dl_misses", JSON.stringify(allMisses));
+  const attempts = JSON.parse(localStorage.getItem("dl_attempts") || "[]");
+  const pct_calc = Math.round(correct / QUESTIONS.length * 100);
+  const pass_calc = pct_calc >= 80;
+  attempts.push({ quiz: document.title, score: correct, total: QUESTIONS.length, pct: pct_calc, pass: pass_calc, ts: Date.now() });
+  localStorage.setItem("dl_attempts", JSON.stringify(attempts));
+  const unitScores = JSON.parse(localStorage.getItem("dl_unit_scores") || "{}");
+  unitScores["unit-1-a"] = { pct: pct_calc, ts: Date.now() };
+  localStorage.setItem("dl_unit_scores", JSON.stringify(unitScores));
+  const sr = JSON.parse(localStorage.getItem("dl_sr") || "{}");
+  const DAY_MS = 86400000;
+  QUESTIONS.forEach((q, i) => {
+    const fid = q.canonical_fact_id;
+    if (!fid) return;
+    const sel = document.querySelector("input[name=q" + i + "]:checked");
+    const wasCorrect = sel && parseInt(sel.value) === q.correct_index;
+    const prev = sr[fid] || { interval_days: 0, ease: 2.5 };
+    let interval_days;
+    if (wasCorrect) {
+      interval_days = Math.min(Math.max(Math.round((prev.interval_days || 1) * 2.5), 1), 30);
+    } else {
+      interval_days = 1;
+    }
+    sr[fid] = { next_due_ts: Date.now() + interval_days * DAY_MS, interval_days: interval_days, ease: prev.ease || 2.5, last_seen_ts: Date.now() };
+  });
+  localStorage.setItem("dl_sr", JSON.stringify(sr));
+  // DL_SYNC_BLOCK — fire-and-forget POST to server-side progress API
+  try {
+    var __dlUser = localStorage.getItem("dl_user");
+    if (__dlUser && __dlUser !== "__anon__") {
+      var __body = {
+        user: __dlUser.replace(/^"|"$/g, ""),
+        attempts: JSON.parse(localStorage.getItem("dl_attempts") || "[]"),
+        misses: JSON.parse(localStorage.getItem("dl_misses") || "[]"),
+        unitScores: JSON.parse(localStorage.getItem("dl_unit_scores") || "{}"),
+        sr: JSON.parse(localStorage.getItem("dl_sr") || "{}")
+      };
+      fetch("/api/drive/progress", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(__body),
+        keepalive: true
+      }).catch(function(){});
+    }
+  } catch (e) {}
+  const pct = Math.round(correct / QUESTIONS.length * 100);
+  const passed = pct >= 80;
+  document.getElementById("result").innerHTML =
+    "<div class='score-card'>" +
+    "<h2>Your score</h2>" +
+    "<div class='score-pct'>" + pct + "%</div>" +
+    "<div>" + correct + " / " + QUESTIONS.length + " correct</div>" +
+    "<div style='margin-top:12px'><span class='" + (passed ? "pass-badge" : "fail-badge") + "'>" +
+    (passed ? "&check; Pass (80%+)" : "Below pass &mdash; review and retake") +
+    "</span></div>" +
+    "</div>";
+  document.getElementById("submit").style.display = "none";
+  if (typeof confetti === 'function' && pct >= 80) {
+    var fireworks = function(x) {
+      confetti({ particleCount: 60, angle: 90, spread: 100, origin: { x: x, y: 0.7 }, colors: ['#facc15', '#581c87', '#16a34a', '#dc2626', '#3b82f6'] });
+    };
+    setTimeout(function() { fireworks(0.2); }, 100);
+    setTimeout(function() { fireworks(0.5); }, 400);
+    setTimeout(function() { fireworks(0.8); }, 700);
+    setTimeout(function() { fireworks(0.3); }, 1100);
+    setTimeout(function() { fireworks(0.7); }, 1400);
+    setTimeout(function() { fireworks(0.5); }, 1700);
+  }
+  window.scrollTo({ top: document.getElementById("result").offsetTop - 20, behavior: "smooth" });
+}
+render();
+document.getElementById("submit").addEventListener("click", grade);
+</script>
+</body></html>

@@ -1,0 +1,3660 @@
+{
+  "questions": [
+    {
+      "id": "q-0476",
+      "canonical_fact_id": "pass-bicyclist-3-feet-minimum",
+      "topic": "sharing-road",
+      "subtopic": "bicycles",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 84,
+      "source_doc": "handbook-3.2026",
+      "question": "Utah law requires you to give a bicyclist at least how much space when passing?",
+      "choices": [
+        "1 foot",
+        "2 feet",
+        "3 feet",
+        "5 feet"
+      ],
+      "correct_index": 2,
+      "explanation": "Utah's 3-foot passing law applies whenever you pass a bicyclist or other vulnerable user. If the lane is too narrow, you may need to briefly use the adjacent lane. Handbook p. 84.",
+      "sign_image": null,
+      "tags": [
+        "bicycle",
+        "passing"
+      ]
+    },
+    {
+      "id": "q-0477",
+      "canonical_fact_id": "pass-bicyclist-3-feet-minimum",
+      "topic": "sharing-road",
+      "subtopic": "bicycles",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 84,
+      "source_doc": "handbook-3.2026",
+      "question": "You're on a 2-lane road. A cyclist is ahead in your lane, the lane is too narrow for 3 feet, oncoming traffic is clear, and the centerline is dashed yellow. What should you do?",
+      "choices": [
+        "Pass closely - staying in your lane matters most",
+        "Briefly cross the centerline to give the 3-foot minimum",
+        "Honk so the cyclist moves over",
+        "Cyclists don't get 3 feet on narrow lanes"
+      ],
+      "correct_index": 1,
+      "explanation": "When the lane is too narrow, you may briefly cross a dashed centerline (when safe and not in a no-pass zone) to provide the required 3 feet. Handbook p. 84.",
+      "sign_image": null,
+      "tags": [
+        "bicycle",
+        "passing",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0478",
+      "canonical_fact_id": "pass-bicyclist-3-feet-minimum",
+      "topic": "sharing-road",
+      "subtopic": "bicycles",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 84,
+      "source_doc": "handbook-3.2026",
+      "question": "The 3-foot passing rule in Utah applies to which of the following?",
+      "choices": [
+        "Only adult cyclists in marked bike lanes",
+        "Bicyclists and other vulnerable users on the road",
+        "Only when passing at speeds over 35 mph",
+        "Only on roads without a shoulder"
+      ],
+      "correct_index": 1,
+      "explanation": "The 3-foot minimum applies whenever you pass a bicyclist or vulnerable user, regardless of speed, lane, or shoulder. Handbook p. 84.",
+      "sign_image": null,
+      "tags": [
+        "bicycle",
+        "passing"
+      ]
+    },
+    {
+      "id": "q-0479",
+      "canonical_fact_id": "bike-lane-solid-white",
+      "topic": "sharing-road",
+      "subtopic": "bicycles",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 83,
+      "source_doc": "handbook-3.2026",
+      "question": "How are bicycle lanes marked on Utah roadways?",
+      "choices": [
+        "Dashed white lines",
+        "Solid white lines",
+        "Solid yellow lines",
+        "Green-painted pavement only"
+      ],
+      "correct_index": 1,
+      "explanation": "Bike lanes are marked with solid white lines. Handbook p. 83.",
+      "sign_image": null,
+      "tags": [
+        "bicycle",
+        "bike-lane",
+        "pavement-markings"
+      ]
+    },
+    {
+      "id": "q-0480",
+      "canonical_fact_id": "no-drive-in-bike-lane",
+      "topic": "sharing-road",
+      "subtopic": "bicycles",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 83,
+      "source_doc": "handbook-3.2026",
+      "question": "You need to make a right turn into a driveway, but a bike lane runs along the curb. What's correct?",
+      "choices": [
+        "Drive in the bike lane for the last 50 feet to position for the turn",
+        "You may enter the bike lane briefly to complete the turn",
+        "Stop in the travel lane and back up into the driveway",
+        "Bike lanes never permit any car entry"
+      ],
+      "correct_index": 1,
+      "explanation": "Drivers may not stop, park, or drive in a bike lane except when entering or leaving a driveway/alley, on police-directed duty, or in an emergency. Handbook p. 83.",
+      "sign_image": null,
+      "tags": [
+        "bicycle",
+        "bike-lane"
+      ]
+    },
+    {
+      "id": "q-0481",
+      "canonical_fact_id": "bicycle-equal-rights-as-vehicle",
+      "topic": "sharing-road",
+      "subtopic": "bicycles",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 83,
+      "source_doc": "handbook-3.2026",
+      "question": "On Utah roadways, bicyclists have:",
+      "choices": [
+        "Fewer rights than motor vehicles",
+        "The same rights and responsibilities as motor vehicles",
+        "Right-of-way over all motor vehicles at all times",
+        "Rights only on roads marked with bike lanes"
+      ],
+      "correct_index": 1,
+      "explanation": "Bicycles are vehicles on roadways - same rights, privileges, AND responsibilities as motorists. Handbook p. 83.",
+      "sign_image": null,
+      "tags": [
+        "bicycle"
+      ]
+    },
+    {
+      "id": "q-0482",
+      "canonical_fact_id": "bicycle-no-pass-100-ft",
+      "topic": "sharing-road",
+      "subtopic": "bicycles",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 84,
+      "source_doc": "handbook-3.2026",
+      "question": "Within how many feet of an intersection or railroad crossing is it illegal to pass a cyclist?",
+      "choices": [
+        "50 feet",
+        "75 feet",
+        "100 feet",
+        "200 feet"
+      ],
+      "correct_index": 2,
+      "explanation": "No-pass zones for cyclists include within 100 feet of an intersection, RR crossing, or obstructed bridge/viaduct/tunnel. Handbook p. 84.",
+      "sign_image": null,
+      "tags": [
+        "bicycle",
+        "no-pass-zone"
+      ]
+    },
+    {
+      "id": "q-0483",
+      "canonical_fact_id": "check-before-opening-door",
+      "topic": "sharing-road",
+      "subtopic": "bicycles",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 84,
+      "source_doc": "handbook-3.2026",
+      "question": "You just parallel-parked on Main Street. Before opening your driver's-side door, you should:",
+      "choices": [
+        "Open the door quickly so cyclists have to dodge",
+        "Check for cyclists approaching from behind",
+        "Honk to alert anyone nearby",
+        "Open it - they should ride around your car"
+      ],
+      "correct_index": 1,
+      "explanation": "Always check for cyclists BEFORE opening your door. Opening into a cyclist (dooring) is a serious-injury crash mode. Handbook p. 84.",
+      "sign_image": null,
+      "tags": [
+        "bicycle",
+        "dutch-reach",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0484",
+      "canonical_fact_id": "dim-500-ft-cyclist-night",
+      "topic": "sharing-road",
+      "subtopic": "bicycles",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 84,
+      "source_doc": "handbook-3.2026",
+      "question": "At night, dim your high beams within how many feet of a cyclist you're approaching or passing?",
+      "choices": [
+        "100 feet",
+        "300 feet",
+        "500 feet",
+        "1,000 feet"
+      ],
+      "correct_index": 2,
+      "explanation": "Dim your high beams within 500 feet when approaching or overtaking a cyclist at night. Handbook p. 84.",
+      "sign_image": null,
+      "tags": [
+        "bicycle",
+        "night-driving",
+        "high-beams"
+      ]
+    },
+    {
+      "id": "q-0485",
+      "canonical_fact_id": "ebike-class-1-20mph-pedal",
+      "topic": "sharing-road",
+      "subtopic": "bicycles",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 85,
+      "source_doc": "handbook-3.2026",
+      "question": "A Class 1 e-bike's motor:",
+      "choices": [
+        "Cuts off at 20 mph and only assists while pedaling",
+        "Cuts off at 28 mph and only assists while pedaling",
+        "Can propel the bike without pedaling up to 20 mph",
+        "Has no speed limit if rider is over 16"
+      ],
+      "correct_index": 0,
+      "explanation": "Class 1 e-bikes: motor assists only while pedaling, cuts off at 20 mph. Handbook p. 85.",
+      "sign_image": null,
+      "tags": [
+        "bicycle",
+        "e-bike"
+      ]
+    },
+    {
+      "id": "q-0486",
+      "canonical_fact_id": "ebike-class-2-20mph-throttle",
+      "topic": "sharing-road",
+      "subtopic": "bicycles",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 85,
+      "source_doc": "handbook-3.2026",
+      "question": "What distinguishes a Class 2 e-bike from a Class 1?",
+      "choices": [
+        "Class 2 can be propelled by motor alone, without pedaling",
+        "Class 2 is faster (28 mph) than Class 1",
+        "Class 2 has no motor",
+        "Class 2 is only for kids under 16"
+      ],
+      "correct_index": 0,
+      "explanation": "Class 2 e-bikes can be propelled by motor alone (no pedaling needed), cutting off at 20 mph. Class 1 requires pedaling. Handbook p. 85.",
+      "sign_image": null,
+      "tags": [
+        "bicycle",
+        "e-bike"
+      ]
+    },
+    {
+      "id": "q-0487",
+      "canonical_fact_id": "ebike-class-3-28mph-pedal",
+      "topic": "sharing-road",
+      "subtopic": "bicycles",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 86,
+      "source_doc": "handbook-3.2026",
+      "question": "A Class 3 e-bike's motor assistance cuts off at what speed?",
+      "choices": [
+        "20 mph",
+        "25 mph",
+        "28 mph",
+        "30 mph"
+      ],
+      "correct_index": 2,
+      "explanation": "Class 3 e-bikes are pedal-assist only and cut off at 28 mph; they require a speedometer. Handbook p. 86.",
+      "sign_image": null,
+      "tags": [
+        "bicycle",
+        "e-bike"
+      ]
+    },
+    {
+      "id": "q-0488",
+      "canonical_fact_id": "bicycle-brake-25-ft-from-10mph",
+      "topic": "sharing-road",
+      "subtopic": "bicycles",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 85,
+      "source_doc": "handbook-3.2026",
+      "question": "A bicycle in Utah must have a brake that can stop it within how many feet from 10 mph?",
+      "choices": [
+        "10 feet",
+        "15 feet",
+        "25 feet",
+        "50 feet"
+      ],
+      "correct_index": 2,
+      "explanation": "Every bicycle must have a brake that can stop it within 25 feet from 10 mph. Handbook p. 85.",
+      "sign_image": null,
+      "tags": [
+        "bicycle",
+        "equipment"
+      ]
+    },
+    {
+      "id": "q-0489",
+      "canonical_fact_id": "bicycle-lights-30min-sunrise-sunset",
+      "topic": "sharing-road",
+      "subtopic": "bicycles",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 85,
+      "source_doc": "handbook-3.2026",
+      "question": "When are bicycle lights and reflectors required in Utah?",
+      "choices": [
+        "Only between 10 p.m. and 6 a.m.",
+        "From a half-hour after sunset to a half-hour before sunrise",
+        "Only on roads without streetlights",
+        "Only when carrying a passenger"
+      ],
+      "correct_index": 1,
+      "explanation": "Bicycle lights required from a half-hour after sunset to a half-hour before sunrise: white headlight, red taillight or reflector, side reflectors visible at 500 ft. Handbook p. 85.",
+      "sign_image": null,
+      "tags": [
+        "bicycle",
+        "equipment",
+        "night-driving"
+      ]
+    },
+    {
+      "id": "q-0490",
+      "canonical_fact_id": "cyclist-helmet-recommended",
+      "topic": "sharing-road",
+      "subtopic": "bicycles",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 85,
+      "source_doc": "handbook-3.2026",
+      "question": "Are bicycle helmets required by Utah law?",
+      "choices": [
+        "Yes - for all riders",
+        "Yes - only for riders under 21",
+        "No - they are recommended but not required",
+        "Yes - only at night"
+      ],
+      "correct_index": 2,
+      "explanation": "Utah does not require bike helmets - a CPSC-approved helmet is recommended, not legally required. (Motorcycles are different - under-21 riders DO need DOT helmets.) Handbook p. 85.",
+      "sign_image": null,
+      "tags": [
+        "bicycle",
+        "equipment",
+        "helmet"
+      ]
+    },
+    {
+      "id": "q-0491",
+      "canonical_fact_id": "endorsement-m-motorcycle",
+      "topic": "sharing-road",
+      "subtopic": "motorcycles",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 90,
+      "source_doc": "handbook-3.2026",
+      "question": "What does Utah require on your driver license to legally operate a motorcycle on Utah highways?",
+      "choices": [
+        "A separate motorcycle license only",
+        "An M endorsement on your DL",
+        "A Class B CDL",
+        "No endorsement if you are over 21"
+      ],
+      "correct_index": 1,
+      "explanation": "An M endorsement on your DL is required to operate a motorcycle on Utah highways. Handbook p. 90.",
+      "sign_image": null,
+      "tags": [
+        "motorcycle",
+        "endorsement"
+      ]
+    },
+    {
+      "id": "q-0492",
+      "canonical_fact_id": "motorcycle-under-21-helmet-dot",
+      "topic": "sharing-road",
+      "subtopic": "motorcycles",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 90,
+      "source_doc": "handbook-3.2026",
+      "question": "Utah law requires DOT-approved motorcycle helmets for riders and passengers under what age?",
+      "choices": [
+        "16",
+        "18",
+        "21",
+        "25"
+      ],
+      "correct_index": 2,
+      "explanation": "Riders and passengers under 21 must wear a DOT-approved helmet on a motorcycle. Same rule for street-legal ATVs. Handbook p. 90.",
+      "sign_image": null,
+      "tags": [
+        "motorcycle",
+        "helmet",
+        "under-21"
+      ]
+    },
+    {
+      "id": "q-0493",
+      "canonical_fact_id": "motorcycle-under-21-helmet-dot",
+      "topic": "sharing-road",
+      "subtopic": "motorcycles",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 90,
+      "source_doc": "handbook-3.2026",
+      "question": "Aaron is 20 and has his M endorsement. He wants to ride a friends motorcycle but only has a leather hat - no DOT helmet. Can he legally ride?",
+      "choices": [
+        "Yes - he has the M endorsement",
+        "No - he must wear a DOT-approved helmet because he is under 21",
+        "Yes, but only on roads under 35 mph",
+        "Yes - leather counts as protective gear"
+      ],
+      "correct_index": 1,
+      "explanation": "Even with an M endorsement, riders under 21 must wear a DOT-approved helmet. A leather hat does not count. Handbook p. 90.",
+      "sign_image": null,
+      "tags": [
+        "motorcycle",
+        "helmet",
+        "under-21",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0494",
+      "canonical_fact_id": "give-motorcycle-full-lane",
+      "topic": "sharing-road",
+      "subtopic": "motorcycles",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 90,
+      "source_doc": "handbook-3.2026",
+      "question": "When sharing the road with a motorcycle, you should:",
+      "choices": [
+        "Pass within the same lane to leave them room",
+        "Never share the lane - give the motorcycle the full lane",
+        "Stay close to the centerline so they can pass you",
+        "Share only if they signal you to"
+      ],
+      "correct_index": 1,
+      "explanation": "Always give motorcycles a full lane. Do not share. Handbook p. 90.",
+      "sign_image": null,
+      "tags": [
+        "motorcycle",
+        "lane-sharing"
+      ]
+    },
+    {
+      "id": "q-0495",
+      "canonical_fact_id": "motorcycle-2-sec-follow",
+      "topic": "sharing-road",
+      "subtopic": "motorcycles",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 90,
+      "source_doc": "handbook-3.2026",
+      "question": "What is the minimum recommended following distance when behind a motorcycle?",
+      "choices": [
+        "1 second",
+        "2 seconds",
+        "4 seconds",
+        "6 seconds"
+      ],
+      "correct_index": 1,
+      "explanation": "When following a motorcycle, stay at least 2 seconds back; increase in wet conditions. Handbook p. 90.",
+      "sign_image": null,
+      "tags": [
+        "motorcycle",
+        "following-distance"
+      ]
+    },
+    {
+      "id": "q-0496",
+      "canonical_fact_id": "motorcycle-signals-no-self-cancel",
+      "topic": "sharing-road",
+      "subtopic": "motorcycles",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 90,
+      "source_doc": "handbook-3.2026",
+      "question": "Why should you be cautious when a motorcycles turn signal is flashing?",
+      "choices": [
+        "The signal indicates the motorcycle is broken",
+        "Motorcycle turn signals often do not self-cancel - the rider may not actually be turning",
+        "Motorcycles always cancel their signals automatically",
+        "Signals only flash when riding above 35 mph"
+      ],
+      "correct_index": 1,
+      "explanation": "Many motorcycle turn signals do not self-cancel like car signals do. Do not assume a flashing signal means the rider is turning. Handbook p. 90.",
+      "sign_image": null,
+      "tags": [
+        "motorcycle",
+        "turn-signals"
+      ]
+    },
+    {
+      "id": "q-0497",
+      "canonical_fact_id": "motorcycle-lane-filter-conditions",
+      "topic": "sharing-road",
+      "subtopic": "motorcycles",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 91,
+      "source_doc": "handbook-3.2026",
+      "question": "Which condition is REQUIRED for legal motorcycle lane filtering in Utah?",
+      "choices": [
+        "Speed limit must be 65 mph or higher",
+        "The vehicles being passed must be moving",
+        "The motorcycle must travel at 15 mph or less",
+        "Riding on the right shoulder is allowed"
+      ],
+      "correct_index": 2,
+      "explanation": "Lane filtering is legal only when: 2+ same-direction lanes, posted limit 45 mph or less (or off-ramp), motorcycle 15 mph or less, vehicle being passed is STOPPED, move is safe. Handbook p. 91.",
+      "sign_image": null,
+      "tags": [
+        "motorcycle",
+        "lane-filtering"
+      ]
+    },
+    {
+      "id": "q-0498",
+      "canonical_fact_id": "motorcycle-lane-filter-conditions",
+      "topic": "sharing-road",
+      "subtopic": "motorcycles",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 91,
+      "source_doc": "handbook-3.2026",
+      "question": "You are stopped at a red light on a 40 mph street with two lanes going your way. A motorcycle slides past between lanes at about 10 mph. Is this legal?",
+      "choices": [
+        "No - it is illegal lane splitting",
+        "Yes - this is legal lane filtering",
+        "No - motorcycles must wait in line",
+        "Legal only on freeways"
+      ],
+      "correct_index": 1,
+      "explanation": "Conditions met: 2+ same-direction lanes, posted 45 mph or less, motorcycle 15 mph or less, vehicles stopped, safe move. Legal lane filtering. Handbook p. 91.",
+      "sign_image": null,
+      "tags": [
+        "motorcycle",
+        "lane-filtering",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0499",
+      "canonical_fact_id": "motorcycle-filter-no-on-ramp",
+      "topic": "sharing-road",
+      "subtopic": "motorcycles",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 91,
+      "source_doc": "handbook-3.2026",
+      "question": "Where is motorcycle lane filtering NOT permitted?",
+      "choices": [
+        "On freeway off-ramps",
+        "On freeway on-ramps",
+        "On roads under 45 mph",
+        "On 4-lane highways"
+      ],
+      "correct_index": 1,
+      "explanation": "Lane filtering is not permitted on on-ramps. (Allowed on off-ramps when other conditions are met.) Handbook p. 91.",
+      "sign_image": null,
+      "tags": [
+        "motorcycle",
+        "lane-filtering"
+      ]
+    },
+    {
+      "id": "q-0500",
+      "canonical_fact_id": "motorcycle-dead-red-90-seconds",
+      "topic": "sharing-road",
+      "subtopic": "motorcycles",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 91,
+      "source_doc": "handbook-3.2026",
+      "question": "Under Utahs dead-red rule, a motorcyclist 16+ may proceed through a red light that has not detected them after waiting at least how long?",
+      "choices": [
+        "30 seconds",
+        "60 seconds",
+        "90 seconds",
+        "2 minutes"
+      ],
+      "correct_index": 2,
+      "explanation": "After a complete stop, a motorcycle/moped/bicycle rider 16+ may proceed after waiting at least 90 seconds if signal has not detected them and no other vehicles or pedestrians are near. Handbook p. 91.",
+      "sign_image": null,
+      "tags": [
+        "motorcycle",
+        "dead-red",
+        "traffic-signal"
+      ]
+    },
+    {
+      "id": "q-0501",
+      "canonical_fact_id": "motorcycle-liability-insurance",
+      "topic": "sharing-road",
+      "subtopic": "motorcycles",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 90,
+      "source_doc": "handbook-3.2026",
+      "question": "What insurance is required for street motorcycles in Utah?",
+      "choices": [
+        "No insurance is required for motorcycles",
+        "Liability insurance",
+        "Only collision coverage",
+        "Full coverage including comprehensive"
+      ],
+      "correct_index": 1,
+      "explanation": "All street motorcycles must carry liability insurance, just like cars. Handbook p. 90.",
+      "sign_image": null,
+      "tags": [
+        "motorcycle",
+        "insurance"
+      ]
+    },
+    {
+      "id": "q-0502",
+      "canonical_fact_id": "motorcycle-lane-filter-conditions",
+      "topic": "sharing-road",
+      "subtopic": "motorcycles",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 91,
+      "source_doc": "handbook-3.2026",
+      "question": "A motorcyclist filters between lanes on I-15 at 55 mph while traffic flows at 50 mph. Is this legal?",
+      "choices": [
+        "Yes - lane filtering is legal everywhere in Utah",
+        "No - this is illegal lane splitting (between moving traffic)",
+        "Yes - it is legal as long as the motorcycle goes slower than the cars",
+        "Legal only with an M endorsement"
+      ],
+      "correct_index": 1,
+      "explanation": "Illegal lane SPLITTING. Legal lane FILTERING requires the vehicles being passed to be STOPPED, road 45 mph or less, motorcycle 15 mph or less. Handbook p. 91.",
+      "sign_image": null,
+      "tags": [
+        "motorcycle",
+        "lane-splitting",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0503",
+      "canonical_fact_id": "pedestrian-yield-marked-or-unmarked",
+      "topic": "sharing-road",
+      "subtopic": "pedestrians",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 91,
+      "source_doc": "handbook-3.2026",
+      "question": "Drivers must yield to pedestrians:",
+      "choices": [
+        "Only in marked crosswalks",
+        "Only in marked or unmarked crosswalks at intersections",
+        "Whenever a pedestrian is in or about to enter the roadway, marked crosswalk or not",
+        "Only when the pedestrian raises a hand"
+      ],
+      "correct_index": 2,
+      "explanation": "Drivers must yield to all pedestrians - marked OR unmarked crosswalks, including mid-block. Handbook p. 91.",
+      "sign_image": null,
+      "tags": [
+        "pedestrian",
+        "yield"
+      ]
+    },
+    {
+      "id": "q-0504",
+      "canonical_fact_id": "white-cane-full-stop",
+      "topic": "sharing-road",
+      "subtopic": "pedestrians",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 91,
+      "source_doc": "handbook-3.2026",
+      "question": "A pedestrian is crossing the street using a white cane or guide dog. What MUST you do?",
+      "choices": [
+        "Slow down and pass carefully",
+        "Honk so they know you are there",
+        "Come to a complete stop",
+        "Yield only if they enter your lane"
+      ],
+      "correct_index": 2,
+      "explanation": "White cane or guide dog = complete stop - the highest level of yield obligation. Handbook p. 91.",
+      "sign_image": null,
+      "tags": [
+        "pedestrian",
+        "white-cane",
+        "visually-impaired"
+      ]
+    },
+    {
+      "id": "q-0505",
+      "canonical_fact_id": "white-cane-full-stop",
+      "topic": "sharing-road",
+      "subtopic": "pedestrians",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 91,
+      "source_doc": "handbook-3.2026",
+      "question": "You approach an intersection without a marked crosswalk. A pedestrian with a white cane is starting to step into the street. What is required?",
+      "choices": [
+        "Slow down and steer around them",
+        "Full stop until they finish crossing",
+        "Honk to warn them",
+        "Continue - there is no marked crosswalk"
+      ],
+      "correct_index": 1,
+      "explanation": "White cane or guide dog = full STOP, regardless of crosswalk markings. Handbook p. 91.",
+      "sign_image": null,
+      "tags": [
+        "pedestrian",
+        "white-cane",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0506",
+      "canonical_fact_id": "green-light-still-yield-pedestrians",
+      "topic": "sharing-road",
+      "subtopic": "pedestrians",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 91,
+      "source_doc": "handbook-3.2026",
+      "question": "You have a green light. A pedestrian is still in the crosswalk in front of you. What should you do?",
+      "choices": [
+        "Proceed - your light is green",
+        "Honk to make them hurry",
+        "Yield to the pedestrian until they are clear",
+        "Edge forward to push them along"
+      ],
+      "correct_index": 2,
+      "explanation": "Even with a green light, you must yield to pedestrians in the crosswalk. Handbook p. 91.",
+      "sign_image": null,
+      "tags": [
+        "pedestrian",
+        "yield",
+        "green-light"
+      ]
+    },
+    {
+      "id": "q-0507",
+      "canonical_fact_id": "pedestrian-left-shoulder-facing-traffic",
+      "topic": "sharing-road",
+      "subtopic": "pedestrians",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 91,
+      "source_doc": "handbook-3.2026",
+      "question": "If there is no sidewalk, a pedestrian should walk:",
+      "choices": [
+        "On the right shoulder, in the same direction as traffic",
+        "On the left shoulder, facing oncoming traffic",
+        "In the center of the road for visibility",
+        "On any shoulder - direction does not matter"
+      ],
+      "correct_index": 1,
+      "explanation": "Walk on the LEFT shoulder, FACING traffic - so you can see oncoming vehicles. Handbook p. 91.",
+      "sign_image": null,
+      "tags": [
+        "pedestrian",
+        "no-sidewalk"
+      ]
+    },
+    {
+      "id": "q-0508",
+      "canonical_fact_id": "stop-before-crosswalk-visibility",
+      "topic": "sharing-road",
+      "subtopic": "pedestrians",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 92,
+      "source_doc": "handbook-3.2026",
+      "question": "Why should you stop BEHIND the crosswalk line rather than on top of it?",
+      "choices": [
+        "It is required only at red lights",
+        "So other drivers can see pedestrians and the pedestrian can see traffic",
+        "Stopping farther back wastes time",
+        "Crosswalks have no legal stopping rule"
+      ],
+      "correct_index": 1,
+      "explanation": "Stop BEFORE the crosswalk so other drivers can see the pedestrian and the pedestrian has a clear view of traffic. Handbook p. 92.",
+      "sign_image": null,
+      "tags": [
+        "pedestrian",
+        "crosswalk",
+        "stop-line"
+      ]
+    },
+    {
+      "id": "q-0509",
+      "canonical_fact_id": "never-pass-vehicle-at-crosswalk",
+      "topic": "sharing-road",
+      "subtopic": "pedestrians",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 92,
+      "source_doc": "handbook-3.2026",
+      "question": "A car ahead of you stops at a crosswalk on a multi-lane street. What should you do?",
+      "choices": [
+        "Pass them - they may be daydreaming",
+        "Stop too - they may be yielding to a pedestrian you cannot see",
+        "Honk so they go",
+        "Speed up and go around in the next lane"
+      ],
+      "correct_index": 1,
+      "explanation": "Never pass a vehicle stopped at a crosswalk - they may be yielding to a pedestrian hidden from your view. Handbook p. 92.",
+      "sign_image": null,
+      "tags": [
+        "pedestrian",
+        "crosswalk",
+        "passing",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0510",
+      "canonical_fact_id": "vulnerable-users-list",
+      "topic": "sharing-road",
+      "subtopic": "pedestrians",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 83,
+      "source_doc": "handbook-3.2026",
+      "question": "Which of these is NOT considered a vulnerable user under Utah law?",
+      "choices": [
+        "A skateboarder",
+        "A motorcyclist",
+        "A driver in a passenger car",
+        "A pedestrian"
+      ],
+      "correct_index": 2,
+      "explanation": "Vulnerable users include pedestrians, bicyclists, e-bikes, mopeds, motorcycles, skateboarders, wheelchairs, persons riding animals, and farm tractors without enclosed shells. A regular car driver is NOT in this category. Handbook p. 83.",
+      "sign_image": null,
+      "tags": [
+        "vulnerable-user"
+      ]
+    },
+    {
+      "id": "q-0511",
+      "canonical_fact_id": "distract-vulnerable-user-citation",
+      "topic": "sharing-road",
+      "subtopic": "pedestrians",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 83,
+      "source_doc": "handbook-3.2026",
+      "question": "What is the consequence for intentionally distracting a vulnerable user (e.g., forcing a cyclist off the road)?",
+      "choices": [
+        "Verbal warning only",
+        "Traffic citation plus points on your driving record",
+        "No penalty - it is a free-speech issue",
+        "Civil lawsuit only"
+      ],
+      "correct_index": 1,
+      "explanation": "Distracting a vulnerable user with intent to cause violence/injury or force them off the road = traffic citation + points. Handbook p. 83.",
+      "sign_image": null,
+      "tags": [
+        "vulnerable-user",
+        "citation"
+      ]
+    },
+    {
+      "id": "q-0512",
+      "canonical_fact_id": "school-zone-flashing-slow",
+      "topic": "sharing-road",
+      "subtopic": "pedestrians",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 91,
+      "source_doc": "handbook-3.2026",
+      "question": "You drive past a school zone sign with flashing yellow lights. What does this mean?",
+      "choices": [
+        "The school is closed today",
+        "Obey the slower school-zone speed limit - children are present",
+        "Stop and wait for the lights to turn off",
+        "Posted speed always applies; flashing is just decoration"
+      ],
+      "correct_index": 1,
+      "explanation": "Flashing yellow lights at a school zone mean children are present - obey the slower school-zone speed limit. Handbook p. 91.",
+      "sign_image": null,
+      "tags": [
+        "pedestrian",
+        "school-zone",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0513",
+      "canonical_fact_id": "truck-stop-400-ft-at-55",
+      "topic": "sharing-road",
+      "subtopic": "trucks",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 88,
+      "source_doc": "handbook-3.2026",
+      "question": "At 55 mph, a fully loaded tractor-trailer may take how many feet to come to a complete stop?",
+      "choices": [
+        "100 feet",
+        "200 feet",
+        "More than 400 feet",
+        "Same as a passenger car"
+      ],
+      "correct_index": 2,
+      "explanation": "A fully loaded tractor-trailer at 55 mph may take MORE than 400 feet to stop - about 1/3 longer than a football field. Handbook p. 88.",
+      "sign_image": null,
+      "tags": [
+        "truck",
+        "stopping-distance"
+      ]
+    },
+    {
+      "id": "q-0514",
+      "canonical_fact_id": "truck-stop-400-ft-at-55",
+      "topic": "sharing-road",
+      "subtopic": "trucks",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 88,
+      "source_doc": "handbook-3.2026",
+      "question": "A semi-truck is following one car length behind you on I-15 at 60 mph. What is your safest move?",
+      "choices": [
+        "Brake-check to teach them a lesson",
+        "Maintain speed - not your problem",
+        "Change lanes and let the truck pass",
+        "Speed up to put more distance behind you"
+      ],
+      "correct_index": 2,
+      "explanation": "Trucks need more than 400 feet to stop at 55 mph - more at 60+. The truck cannot stop if you brake. Move over and let it pass. Handbook p. 88.",
+      "sign_image": null,
+      "tags": [
+        "truck",
+        "stopping-distance",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0515",
+      "canonical_fact_id": "truck-stop-400-ft-at-55",
+      "topic": "sharing-road",
+      "subtopic": "trucks",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 88,
+      "source_doc": "handbook-3.2026",
+      "question": "Compared to a passenger car at 55 mph, a fully loaded tractor-trailer needs roughly how much MORE distance to stop?",
+      "choices": [
+        "About the same distance",
+        "A little more - 10 to 20 feet",
+        "Roughly 3 times the distance - over 400 ft vs 130-140 ft",
+        "About 1.1 times the distance"
+      ],
+      "correct_index": 2,
+      "explanation": "Cars stop in 130-140 feet at 55 mph; loaded trucks need more than 400 feet - roughly 3x. Handbook p. 88.",
+      "sign_image": null,
+      "tags": [
+        "truck",
+        "stopping-distance"
+      ]
+    },
+    {
+      "id": "q-0516",
+      "canonical_fact_id": "car-stop-130-140-ft-at-55",
+      "topic": "sharing-road",
+      "subtopic": "trucks",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 88,
+      "source_doc": "handbook-3.2026",
+      "question": "The average passenger car at 55 mph can come to a stop in about how many feet?",
+      "choices": [
+        "50 feet",
+        "130-140 feet",
+        "300 feet",
+        "400 feet"
+      ],
+      "correct_index": 1,
+      "explanation": "A passenger car at 55 mph stops in about 130-140 feet - less than half the length of a football field. Handbook p. 88.",
+      "sign_image": null,
+      "tags": [
+        "car",
+        "stopping-distance"
+      ]
+    },
+    {
+      "id": "q-0517",
+      "canonical_fact_id": "truck-stop-335-ft-finals-only",
+      "topic": "sharing-road",
+      "subtopic": "trucks",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 89,
+      "source_doc": "handbook-3.2026",
+      "question": "Page 89 of the Utah handbook describes a loaded truck at 55 mph as taking at least how many feet to stop - about 1.5x a car?",
+      "choices": [
+        "200 feet",
+        "250 feet",
+        "335 feet",
+        "500 feet"
+      ],
+      "correct_index": 2,
+      "explanation": "A loaded truck at 55 mph takes at least 335 feet to stop - more than 1.5x a car. Handbook p. 89.",
+      "sign_image": null,
+      "tags": [
+        "truck",
+        "stopping-distance"
+      ]
+    },
+    {
+      "id": "q-0518",
+      "canonical_fact_id": "truck-no-zones-20-and-200",
+      "topic": "sharing-road",
+      "subtopic": "trucks",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 89,
+      "source_doc": "handbook-3.2026",
+      "question": "A large trucks blind spot extends how far in front of the cab and how far behind?",
+      "choices": [
+        "10 feet in front, 50 feet behind",
+        "20 feet in front, 200 feet behind",
+        "5 feet in front, 100 feet behind",
+        "Trucks have no blind spots due to mirrors"
+      ],
+      "correct_index": 1,
+      "explanation": "Truck no-zones extend up to 20 ft in front of the cab, on both sides especially alongside the cab, and up to 200 ft behind. Handbook p. 89.",
+      "sign_image": null,
+      "tags": [
+        "truck",
+        "no-zone",
+        "blind-spot"
+      ]
+    },
+    {
+      "id": "q-0519",
+      "canonical_fact_id": "truck-largest-blind-spot-right",
+      "topic": "sharing-road",
+      "subtopic": "trucks",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 89,
+      "source_doc": "handbook-3.2026",
+      "question": "Where is a tractor-trailers LARGEST blind spot?",
+      "choices": [
+        "Directly in front of the cab",
+        "On the left side, behind the cab",
+        "On the right side, starting behind the cab and running the length of the truck",
+        "Directly behind the trailer, within 20 feet"
+      ],
+      "correct_index": 2,
+      "explanation": "The LARGEST truck blind spot is on the RIGHT side - it starts behind the cab and runs the length of the truck. Handbook p. 89.",
+      "sign_image": null,
+      "tags": [
+        "truck",
+        "no-zone",
+        "blind-spot"
+      ]
+    },
+    {
+      "id": "q-0520",
+      "canonical_fact_id": "mirror-test-cant-see-driver",
+      "topic": "sharing-road",
+      "subtopic": "trucks",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 88,
+      "source_doc": "handbook-3.2026",
+      "question": "The handbooks mirror-test rule for sharing the road with trucks says:",
+      "choices": [
+        "If you can see the truck, the driver can see you",
+        "If you cannot see the truck driver in their side mirror, they cannot see you",
+        "If you can see the trucks mirror, you are safe",
+        "Mirrors give truck drivers 360-degree vision"
+      ],
+      "correct_index": 1,
+      "explanation": "Canonical handbook phrasing: If you cannot see the truck driver in their side mirror, they cannot see you. Handbook p. 88-89.",
+      "sign_image": null,
+      "tags": [
+        "truck",
+        "mirror-test",
+        "blind-spot"
+      ]
+    },
+    {
+      "id": "q-0521",
+      "canonical_fact_id": "pass-truck-completely-left",
+      "topic": "sharing-road",
+      "subtopic": "trucks",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 88,
+      "source_doc": "handbook-3.2026",
+      "question": "When passing a tractor-trailer, you should:",
+      "choices": [
+        "Linger alongside so they can see you",
+        "Pass on either side - whichever is open",
+        "Always pass completely and on the LEFT side",
+        "Pass on the right when there is a shoulder available"
+      ],
+      "correct_index": 2,
+      "explanation": "Always pass a tractor-trailer completely and on the LEFT side - never linger alongside. Handbook p. 88.",
+      "sign_image": null,
+      "tags": [
+        "truck",
+        "passing"
+      ]
+    },
+    {
+      "id": "q-0522",
+      "canonical_fact_id": "truck-swings-left-for-right-turn",
+      "topic": "sharing-road",
+      "subtopic": "trucks",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 88,
+      "source_doc": "handbook-3.2026",
+      "question": "A semi-truck ahead of you is signaling a right turn and starts swinging LEFT first. What should you do?",
+      "choices": [
+        "Pass on the right - there is space opening up",
+        "Stay behind - trucks swing wide left to make a right turn",
+        "Honk because they are in the wrong lane",
+        "Pass on the left because they are confused"
+      ],
+      "correct_index": 1,
+      "explanation": "Trucks swing wide LEFT before a right turn - the gap on the right is the pivot zone, which will close on your car. The right side is also the trucks biggest blind spot. Stay behind. Handbook p. 88.",
+      "sign_image": null,
+      "tags": [
+        "truck",
+        "right-turn",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0523",
+      "canonical_fact_id": "pass-truck-see-whole-front",
+      "topic": "sharing-road",
+      "subtopic": "trucks",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 89,
+      "source_doc": "handbook-3.2026",
+      "question": "After passing a truck, you should NOT pull back into its lane until:",
+      "choices": [
+        "You see the trucks headlights in your driver-side mirror",
+        "You see the whole front of the truck in your rearview mirror",
+        "You have gone at least 100 feet past it",
+        "You hear no horn"
+      ],
+      "correct_index": 1,
+      "explanation": "Do not pull back in until you can see the WHOLE FRONT of the truck in your rearview mirror - that means you are far enough ahead to be visible. Handbook p. 89.",
+      "sign_image": null,
+      "tags": [
+        "truck",
+        "passing",
+        "no-zone"
+      ]
+    },
+    {
+      "id": "q-0524",
+      "canonical_fact_id": "trucks-different-from-cars",
+      "topic": "sharing-road",
+      "subtopic": "trucks",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 88,
+      "source_doc": "handbook-3.2026",
+      "question": "Compared to passenger cars, large trucks have:",
+      "choices": [
+        "Shorter stopping distances and tighter turn radii",
+        "Longer stopping/accelerating distances and wider turn radii",
+        "Identical handling and braking",
+        "Better maneuverability due to advanced mirrors"
+      ],
+      "correct_index": 1,
+      "explanation": "Trucks are NOT large cars - they have longer stopping/accelerating distances, wider turning areas, and weigh much more. Handbook p. 88.",
+      "sign_image": null,
+      "tags": [
+        "truck",
+        "maneuverability"
+      ]
+    },
+    {
+      "id": "q-0525",
+      "canonical_fact_id": "truck-center-lane-multi",
+      "topic": "sharing-road",
+      "subtopic": "trucks",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 88,
+      "source_doc": "handbook-3.2026",
+      "question": "On a multi-lane highway, where do tractor-trailers typically travel and why?",
+      "choices": [
+        "The right lane - to give the driver freeway exits",
+        "The left lane - for the fastest speed",
+        "The center lane - to ease on/off-ramp traffic flow",
+        "Always the shoulder - for emergencies"
+      ],
+      "correct_index": 2,
+      "explanation": "On multi-lane highways, tractor-trailers stay in the center lane to help with on/off-ramp traffic flow and keep evasive options open. Handbook p. 88.",
+      "sign_image": null,
+      "tags": [
+        "truck",
+        "lane-position"
+      ]
+    },
+    {
+      "id": "q-0526",
+      "canonical_fact_id": "truck-looks-slower-than-it-is",
+      "topic": "sharing-road",
+      "subtopic": "trucks",
+      "priority": "NICE",
+      "type": "application",
+      "source_page": 88,
+      "source_doc": "handbook-3.2026",
+      "question": "You are approaching an intersection. An oncoming tractor-trailer looks like it is far away. What is the safest assumption?",
+      "choices": [
+        "It IS as far away as it looks - big things look slow",
+        "It may be closer and moving faster than it appears",
+        "Larger vehicles always go under the posted limit",
+        "Visibility is unaffected by vehicle size"
+      ],
+      "correct_index": 1,
+      "explanation": "Trucks often appear slower than they are because of their size. Do not underestimate approach speed. Handbook p. 88.",
+      "sign_image": null,
+      "tags": [
+        "truck",
+        "approach-speed",
+        "intersection"
+      ]
+    },
+    {
+      "id": "q-0527",
+      "canonical_fact_id": "truck-on-hill-may-rollback",
+      "topic": "sharing-road",
+      "subtopic": "trucks",
+      "priority": "NICE",
+      "type": "application",
+      "source_page": 89,
+      "source_doc": "handbook-3.2026",
+      "question": "You are stopped on a steep uphill behind a large truck. What should you do?",
+      "choices": [
+        "Pull up close to save space",
+        "Leave extra room - the truck may roll backward when starting",
+        "Honk to remind them to go",
+        "Move into the next lane"
+      ],
+      "correct_index": 1,
+      "explanation": "Stopped behind a large vehicle on a hill: leave extra room - the truck may stall or roll backward when starting. Handbook p. 89.",
+      "sign_image": null,
+      "tags": [
+        "truck",
+        "hill",
+        "stopped"
+      ]
+    },
+    {
+      "id": "q-0528",
+      "canonical_fact_id": "work-zone-double-fine",
+      "topic": "sharing-road",
+      "subtopic": "work-zones",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "Utah courts must impose what fine penalty for speeding in a work zone?",
+      "choices": [
+        "A flat 200 dollar fine",
+        "At least double the regular speeding fine",
+        "Half the normal fine if no workers are present",
+        "Triple the regular speeding fine"
+      ],
+      "correct_index": 1,
+      "explanation": "Speeding in a work zone: the court must fine AT LEAST TWICE the regular speeding fine. Handbook p. 59, 68.",
+      "sign_image": null,
+      "tags": [
+        "work-zone",
+        "fine"
+      ]
+    },
+    {
+      "id": "q-0529",
+      "canonical_fact_id": "work-zone-double-fine",
+      "topic": "sharing-road",
+      "subtopic": "work-zones",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "It is 11 p.m. on a Sunday. You are driving through a marked work zone with cones up but no workers visible. What is true?",
+      "choices": [
+        "You can drive the normal speed limit because no workers are present",
+        "Double fines apply only when workers are visible",
+        "Slow to the posted work-zone limit; double fines apply whether workers are there or not",
+        "Speed limit only applies during daytime work hours"
+      ],
+      "correct_index": 2,
+      "explanation": "Slow to the posted work-zone speed regardless of workers. Double fines apply at all times. Handbook p. 59, 68.",
+      "sign_image": null,
+      "tags": [
+        "work-zone",
+        "fine",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0530",
+      "canonical_fact_id": "work-zone-orange-signs",
+      "topic": "sharing-road",
+      "subtopic": "work-zones",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 59,
+      "source_doc": "handbook-3.2026",
+      "question": "Work zone signs in Utah are what color?",
+      "choices": [
+        "Yellow with black letters",
+        "Red with white letters",
+        "Orange with black letters or symbols",
+        "White with green letters"
+      ],
+      "correct_index": 2,
+      "explanation": "Work zone signs are diamond or rectangular, ORANGE with black letters/symbols. Handbook p. 59.",
+      "sign_image": null,
+      "tags": [
+        "work-zone",
+        "signs"
+      ]
+    },
+    {
+      "id": "q-0531",
+      "canonical_fact_id": "flagger-overrides-signs",
+      "topic": "sharing-road",
+      "subtopic": "work-zones",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 59,
+      "source_doc": "handbook-3.2026",
+      "question": "A flagger in a work zone directs you to stop, but the traffic light ahead is green. What should you do?",
+      "choices": [
+        "Obey the green light - signals override flaggers",
+        "Obey the flagger - they override signs and signals in work zones",
+        "Stop briefly, then proceed on the green",
+        "Honk and pass through carefully"
+      ],
+      "correct_index": 1,
+      "explanation": "Flagger directions in a work zone OVERRIDE signs and signals. You MUST obey the flagger. Handbook p. 59.",
+      "sign_image": null,
+      "tags": [
+        "work-zone",
+        "flagger"
+      ]
+    },
+    {
+      "id": "q-0532",
+      "canonical_fact_id": "work-zone-slow-even-no-workers",
+      "topic": "sharing-road",
+      "subtopic": "work-zones",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "Even if you see no workers in a marked work zone, you should:",
+      "choices": [
+        "Drive the regular posted speed limit",
+        "Slow down to the work-zone speed limit",
+        "Stop and wait for workers to appear",
+        "Use the shoulder to bypass the zone"
+      ],
+      "correct_index": 1,
+      "explanation": "Slow down in a work zone EVEN if no workers are present. The work-zone speed and rules still apply. Handbook p. 59, 68.",
+      "sign_image": null,
+      "tags": [
+        "work-zone",
+        "speed"
+      ]
+    },
+    {
+      "id": "q-0533",
+      "canonical_fact_id": "work-zone-80pct-not-workers",
+      "topic": "sharing-road",
+      "subtopic": "work-zones",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "In work zone crashes, who makes up over 80 percent of the casualties?",
+      "choices": [
+        "Construction workers and flaggers",
+        "Drivers, passengers, and pedestrians (not workers)",
+        "Law enforcement",
+        "Equipment operators"
+      ],
+      "correct_index": 1,
+      "explanation": "Over 80 percent of work-zone fatalities/injuries are drivers, passengers, and pedestrians - NOT workers. Handbook p. 68.",
+      "sign_image": null,
+      "tags": [
+        "work-zone",
+        "statistics"
+      ]
+    },
+    {
+      "id": "q-0534",
+      "canonical_fact_id": "work-zone-identifiers",
+      "topic": "sharing-road",
+      "subtopic": "work-zones",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 59,
+      "source_doc": "handbook-3.2026",
+      "question": "Which of these is NOT a typical way to identify a work zone?",
+      "choices": [
+        "Orange signs and barrels",
+        "Flashing lights on equipment",
+        "Workers in highly visible clothing",
+        "Red flares on the centerline"
+      ],
+      "correct_index": 3,
+      "explanation": "Work zones are identified by orange signs, orange devices, flashing lights, and highly visible worker clothing - not red flares. Handbook p. 59.",
+      "sign_image": null,
+      "tags": [
+        "work-zone",
+        "identifiers"
+      ]
+    },
+    {
+      "id": "q-0535",
+      "canonical_fact_id": "work-zone-double-fine",
+      "topic": "sharing-road",
+      "subtopic": "work-zones",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 59,
+      "source_doc": "handbook-3.2026",
+      "question": "Speeding fines in a work zone are doubled because:",
+      "choices": [
+        "Cones cost more to replace",
+        "Speeding endangers workers and other drivers in the zone",
+        "Utah courts collect more revenue",
+        "Insurance companies require it"
+      ],
+      "correct_index": 1,
+      "explanation": "The double-fine law deters speeding through zones where workers and drivers face elevated risk. Handbook p. 59, 68.",
+      "sign_image": null,
+      "tags": [
+        "work-zone",
+        "fine"
+      ]
+    },
+    {
+      "id": "q-0536",
+      "canonical_fact_id": "work-zone-slow-even-no-workers",
+      "topic": "sharing-road",
+      "subtopic": "work-zones",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "You enter a work zone with reduced speed signs, and traffic is moving 10 mph above the posted work-zone limit. What should you do?",
+      "choices": [
+        "Match traffic flow - safer than being slower",
+        "Drive the posted work-zone speed regardless of others",
+        "Speed up to clear the zone faster",
+        "Use the shoulder to maintain normal speed"
+      ],
+      "correct_index": 1,
+      "explanation": "Always drive at or below the posted work-zone speed - Utah law forbids exceeding posted limits even when matching traffic. Doubled fines apply. Handbook p. 49, 68.",
+      "sign_image": null,
+      "tags": [
+        "work-zone",
+        "speed",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0537",
+      "canonical_fact_id": "work-zone-orange-signs",
+      "topic": "sharing-road",
+      "subtopic": "work-zones",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 59,
+      "source_doc": "handbook-3.2026",
+      "question": "You see a diamond-shaped orange sign with black symbols ahead. What does this most likely mean?",
+      "choices": [
+        "A general warning unrelated to construction",
+        "Work zone or construction ahead - slow down",
+        "School zone",
+        "Recreational area"
+      ],
+      "correct_index": 1,
+      "explanation": "Orange + black = work zone / construction. Slow down and watch for workers, cones, and lane shifts. Handbook p. 59.",
+      "sign_image": null,
+      "tags": [
+        "work-zone",
+        "signs",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0538",
+      "canonical_fact_id": "school-bus-red-lights-stop",
+      "topic": "sharing-road",
+      "subtopic": "school",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "A school bus ahead has its alternating flashing RED lights on and the stop arm extended. You must:",
+      "choices": [
+        "Slow down and pass carefully on the left",
+        "Stop immediately before reaching the bus",
+        "Stop only if children are visible",
+        "Continue at posted speed"
+      ],
+      "correct_index": 1,
+      "explanation": "Alternating flashing red lights + stop arm = STOP immediately before reaching the bus. Handbook p. 46.",
+      "sign_image": null,
+      "tags": [
+        "school-bus",
+        "stop"
+      ]
+    },
+    {
+      "id": "q-0539",
+      "canonical_fact_id": "school-bus-2-lane-both-stop",
+      "topic": "sharing-road",
+      "subtopic": "school",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "On a 2-lane road, a school bus stops with red lights flashing in the oncoming direction. What must you do?",
+      "choices": [
+        "Continue - you are in the opposite direction",
+        "Stop - both directions must stop on a 2-lane road",
+        "Slow down but you may proceed",
+        "Stop only if children are visible"
+      ],
+      "correct_index": 1,
+      "explanation": "On a 2-lane road, BOTH directions must stop when a school bus is loading/unloading with red lights flashing. Handbook p. 46.",
+      "sign_image": null,
+      "tags": [
+        "school-bus",
+        "2-lane",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0540",
+      "canonical_fact_id": "school-bus-median-only-same-direction",
+      "topic": "sharing-road",
+      "subtopic": "school",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "You are northbound on a 4-lane divided highway with a wide grass median. A school bus southbound stops with red lights flashing. What must you do?",
+      "choices": [
+        "Stop - all directions stop on any divided road",
+        "Continue with caution - the median exempts opposing traffic",
+        "Pull onto the median",
+        "Stop within 100 feet on either side"
+      ],
+      "correct_index": 1,
+      "explanation": "With a physical median (4+ lanes divided), only SAME-direction vehicles must stop. Opposite-direction may proceed with caution. Handbook p. 46.",
+      "sign_image": null,
+      "tags": [
+        "school-bus",
+        "median",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0541",
+      "canonical_fact_id": "school-bus-4-lane-no-median-both-stop",
+      "topic": "sharing-road",
+      "subtopic": "school",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "On a 4-lane road WITHOUT a median or center turn lane, when a school bus stops with red lights flashing, who must stop?",
+      "choices": [
+        "Only same-direction traffic",
+        "Both directions must stop",
+        "Only the lane directly next to the bus",
+        "No one - 4-lane roads exempt opposing traffic"
+      ],
+      "correct_index": 1,
+      "explanation": "On a 4-lane road WITHOUT a median, BOTH directions must stop. The median exception only applies with a physical median or center-turn-only lane. Handbook p. 46.",
+      "sign_image": null,
+      "tags": [
+        "school-bus",
+        "4-lane"
+      ]
+    },
+    {
+      "id": "q-0542",
+      "canonical_fact_id": "school-bus-5-lane-center-turn-only-same-direction",
+      "topic": "sharing-road",
+      "subtopic": "school",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "On a 5-lane road with a shared center turn lane, when a school bus has red lights flashing, who must stop?",
+      "choices": [
+        "All five lanes must stop",
+        "Only vehicles in the same direction as the bus",
+        "Only vehicles in the center turn lane",
+        "No one - center turn lane = exempt road"
+      ],
+      "correct_index": 1,
+      "explanation": "5-lane road with shared center turn lane: only SAME-direction vehicles must stop. The center turn lane acts like a median. Handbook p. 46.",
+      "sign_image": null,
+      "tags": [
+        "school-bus",
+        "5-lane"
+      ]
+    },
+    {
+      "id": "q-0543",
+      "canonical_fact_id": "school-bus-fine-3000",
+      "topic": "sharing-road",
+      "subtopic": "school",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "Illegally passing a school bus with red lights flashing can result in a fine of up to:",
+      "choices": [
+        "100 dollars",
+        "500 dollars",
+        "1,000 dollars",
+        "3,000 dollars"
+      ],
+      "correct_index": 3,
+      "explanation": "Illegally passing a school bus = fine up to 3,000 dollars plus an insurance increase. Handbook p. 46.",
+      "sign_image": null,
+      "tags": [
+        "school-bus",
+        "fine"
+      ]
+    },
+    {
+      "id": "q-0544",
+      "canonical_fact_id": "speed-20-school",
+      "topic": "sharing-road",
+      "subtopic": "school",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "What is the typical posted speed limit in an active Utah school zone?",
+      "choices": [
+        "15 mph",
+        "20 mph",
+        "25 mph",
+        "30 mph"
+      ],
+      "correct_index": 1,
+      "explanation": "School zone speed limit is 20 mph when children are present (school in session, lights flashing, or crosswalk in use). Handbook p. 53.",
+      "sign_image": null,
+      "tags": [
+        "school-zone",
+        "speed"
+      ]
+    },
+    {
+      "id": "q-0545",
+      "canonical_fact_id": "school-zone-flashing-slow",
+      "topic": "sharing-road",
+      "subtopic": "school",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 91,
+      "source_doc": "handbook-3.2026",
+      "question": "It is 7:45 a.m. on a school day. You approach a school zone where the yellow lights are flashing. What does this mean?",
+      "choices": [
+        "School is closed today",
+        "Children are present - obey the slower school-zone limit",
+        "Drive normal speed but watch carefully",
+        "Stop and call for an officer"
+      ],
+      "correct_index": 1,
+      "explanation": "Flashing yellow school zone lights mean children are present - obey the slower school-zone speed limit (typically 20 mph). Handbook p. 91.",
+      "sign_image": null,
+      "tags": [
+        "school-zone",
+        "speed",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0546",
+      "canonical_fact_id": "emergency-vehicle-pull-right-stop",
+      "topic": "sharing-road",
+      "subtopic": "emergency",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 86,
+      "source_doc": "handbook-3.2026",
+      "question": "An emergency vehicle with sirens and lights approaches you from behind. You must:",
+      "choices": [
+        "Stop in your current lane",
+        "Pull to the LEFT and stop",
+        "Pull to the RIGHT side and stop until it passes",
+        "Speed up to clear the road quickly"
+      ],
+      "correct_index": 2,
+      "explanation": "Yield, drive immediately to the RIGHT side of the road, and STOP until the emergency vehicle has passed. Handbook p. 86.",
+      "sign_image": null,
+      "tags": [
+        "emergency-vehicle",
+        "yield"
+      ]
+    },
+    {
+      "id": "q-0547",
+      "canonical_fact_id": "move-over-law",
+      "topic": "sharing-road",
+      "subtopic": "emergency",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 86,
+      "source_doc": "handbook-3.2026",
+      "question": "Utah Move Over Law requires you to slow down AND change lanes when approaching:",
+      "choices": [
+        "Only police vehicles with flashing lights",
+        "Only ambulances and fire trucks",
+        "Any stationary vehicle with flashing hazard lights",
+        "Only tow trucks"
+      ],
+      "correct_index": 2,
+      "explanation": "Move Over Law applies to ANY stationary vehicle with flashing hazards adjacent to the highway - not just emergency vehicles. Handbook p. 86.",
+      "sign_image": null,
+      "tags": [
+        "move-over-law"
+      ]
+    },
+    {
+      "id": "q-0548",
+      "canonical_fact_id": "move-over-law",
+      "topic": "sharing-road",
+      "subtopic": "emergency",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 86,
+      "source_doc": "handbook-3.2026",
+      "question": "A tow truck is stopped on the right shoulder of a 4-lane highway with amber lights flashing, hooking up a stalled car. What should you do?",
+      "choices": [
+        "Drive past at normal speed - it is not an emergency vehicle",
+        "Slow down and change lanes away from the shoulder if safe",
+        "Stop completely until the tow truck leaves",
+        "Pull onto the shoulder behind it"
+      ],
+      "correct_index": 1,
+      "explanation": "Move Over Law applies to any stationary vehicle with flashing hazards/amber lights - including tow trucks. Slow down AND change to a non-adjacent lane if practical. Handbook p. 86.",
+      "sign_image": null,
+      "tags": [
+        "move-over-law",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0549",
+      "canonical_fact_id": "move-over-violation-90-day-suspend",
+      "topic": "sharing-road",
+      "subtopic": "emergency",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 86,
+      "source_doc": "handbook-3.2026",
+      "question": "What is the consequence if you are convicted of violating the Move Over Law and fail to attend the required defensive driving course?",
+      "choices": [
+        "A 50 dollar fine only",
+        "30-day license suspension",
+        "90-day license suspension",
+        "Court appearance with no other penalty"
+      ],
+      "correct_index": 2,
+      "explanation": "Conviction requires a 4-hour live classroom defensive driving course within 90 days. Failing to attend = 90-day license suspension. Handbook p. 86.",
+      "sign_image": null,
+      "tags": [
+        "move-over-law",
+        "suspension"
+      ]
+    },
+    {
+      "id": "q-0550",
+      "canonical_fact_id": "fire-vehicle-500-ft-follow",
+      "topic": "sharing-road",
+      "subtopic": "emergency",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 86,
+      "source_doc": "handbook-3.2026",
+      "question": "Unless you are on official business, you may not follow within how many feet of a fire vehicle responding to an alarm?",
+      "choices": [
+        "100 feet",
+        "200 feet",
+        "500 feet",
+        "1,000 feet"
+      ],
+      "correct_index": 2,
+      "explanation": "Do not follow within 500 feet of a fire vehicle responding to an alarm. Handbook p. 86.",
+      "sign_image": null,
+      "tags": [
+        "fire-vehicle",
+        "following"
+      ]
+    },
+    {
+      "id": "q-0551",
+      "canonical_fact_id": "fire-vehicle-same-block",
+      "topic": "sharing-road",
+      "subtopic": "emergency",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 86,
+      "source_doc": "handbook-3.2026",
+      "question": "When a fire vehicle is stopped responding to an alarm, you may not drive or park:",
+      "choices": [
+        "Within 50 feet of it",
+        "On the same block where it is stopped",
+        "Within 100 feet of it",
+        "Anywhere in the same city block group"
+      ],
+      "correct_index": 1,
+      "explanation": "You may not drive or park on the same block where a fire vehicle has stopped to answer an alarm. Handbook p. 86.",
+      "sign_image": null,
+      "tags": [
+        "fire-vehicle",
+        "parking"
+      ]
+    },
+    {
+      "id": "q-0552",
+      "canonical_fact_id": "move-over-hov-amber",
+      "topic": "sharing-road",
+      "subtopic": "emergency",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 86,
+      "source_doc": "handbook-3.2026",
+      "question": "In the HOV (express) lane, when you approach a stationary vehicle with amber lights, you should:",
+      "choices": [
+        "Continue at the same speed",
+        "Change lanes OUT of the HOV lane if practical",
+        "Stop and wait for the vehicle to move",
+        "Honk before passing"
+      ],
+      "correct_index": 1,
+      "explanation": "HOV variant of the Move Over Law: change lanes OUT of the HOV lane if practical and safe. Handbook p. 86.",
+      "sign_image": null,
+      "tags": [
+        "move-over-law",
+        "hov"
+      ]
+    },
+    {
+      "id": "q-0553",
+      "canonical_fact_id": "move-over-law",
+      "topic": "sharing-road",
+      "subtopic": "emergency",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 86,
+      "source_doc": "handbook-3.2026",
+      "question": "Under the Move Over Law, if you cannot safely change lanes away from a stationary vehicle with flashing hazards, you must at minimum:",
+      "choices": [
+        "Continue at the posted speed",
+        "Slow down and provide as much space as practical",
+        "Stop completely",
+        "Pull onto the shoulder"
+      ],
+      "correct_index": 1,
+      "explanation": "If a lane change is not practical, you must still slow down and give as much room as practical. Handbook p. 86.",
+      "sign_image": null,
+      "tags": [
+        "move-over-law"
+      ]
+    },
+    {
+      "id": "q-0554",
+      "canonical_fact_id": "emergency-vehicle-pull-right-stop",
+      "topic": "sharing-road",
+      "subtopic": "emergency",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 86,
+      "source_doc": "handbook-3.2026",
+      "question": "You are in the HOV lane on I-15. A police car comes up behind you with lights flashing. What do you do?",
+      "choices": [
+        "Stop in the HOV lane immediately",
+        "Pull to the LEFT shoulder - it is closer",
+        "Cross the double white line to the right when safe and pull to the right shoulder",
+        "Speed up to clear the HOV lane faster"
+      ],
+      "correct_index": 2,
+      "explanation": "Pull to the RIGHT, even from the HOV lane. Utah law permits crossing the double white line out of the express lane when followed by emergency/police directing you to pull over. Handbook p. 86, 50.",
+      "sign_image": null,
+      "tags": [
+        "emergency-vehicle",
+        "hov",
+        "express-lane",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0555",
+      "canonical_fact_id": "traffic-stop-procedure",
+      "topic": "sharing-road",
+      "subtopic": "emergency",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 93,
+      "source_doc": "handbook-3.2026",
+      "question": "After pulling over for a traffic stop, what should you do?",
+      "choices": [
+        "Get out of the car to greet the officer",
+        "Stay in the vehicle, put it in park, turn off the engine, roll down the window, and put hands on the wheel",
+        "Leave the engine running and stay in your seat",
+        "Wait until the officer knocks before doing anything"
+      ],
+      "correct_index": 1,
+      "explanation": "Traffic stop procedure: move RIGHT, put in PARK, engine off, STAY in vehicle, window down, hands on the wheel. Handbook p. 93.",
+      "sign_image": null,
+      "tags": [
+        "traffic-stop",
+        "police",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0556",
+      "canonical_fact_id": "headlights-on-1000-ft-visibility",
+      "topic": "vehicle-equipment",
+      "subtopic": "headlights",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 69,
+      "source_doc": "handbook-3.2026",
+      "question": "Utah law requires headlights ON whenever you cannot clearly see people and vehicles how far ahead?",
+      "choices": [
+        "500 feet",
+        "750 feet",
+        "1,000 feet",
+        "2,000 feet"
+      ],
+      "correct_index": 2,
+      "explanation": "Headlights must be ON from sunset to sunrise OR whenever you cannot clearly see persons/vehicles 1,000 feet ahead due to insufficient light or atmospheric conditions. Handbook p. 69.",
+      "sign_image": null,
+      "tags": [
+        "headlights",
+        "visibility"
+      ]
+    },
+    {
+      "id": "q-0557",
+      "canonical_fact_id": "dim-500-ft-oncoming",
+      "topic": "vehicle-equipment",
+      "subtopic": "headlights",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 69,
+      "source_doc": "handbook-3.2026",
+      "question": "You must dim your high beams within how many feet of an oncoming vehicle?",
+      "choices": [
+        "200 feet",
+        "300 feet",
+        "500 feet",
+        "1,000 feet"
+      ],
+      "correct_index": 2,
+      "explanation": "Dim high beams within 500 feet of an oncoming vehicle. Handbook p. 69.",
+      "sign_image": null,
+      "tags": [
+        "headlights",
+        "high-beams",
+        "night-driving"
+      ]
+    },
+    {
+      "id": "q-0558",
+      "canonical_fact_id": "dim-300-ft-following",
+      "topic": "vehicle-equipment",
+      "subtopic": "headlights",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 69,
+      "source_doc": "handbook-3.2026",
+      "question": "When following another vehicle at night, dim your high beams within how many feet of the vehicle ahead?",
+      "choices": [
+        "100 feet",
+        "300 feet",
+        "500 feet",
+        "1,000 feet"
+      ],
+      "correct_index": 1,
+      "explanation": "Dim high beams within 300 feet when following another vehicle. (500 ft for oncoming.) Handbook p. 69.",
+      "sign_image": null,
+      "tags": [
+        "headlights",
+        "high-beams",
+        "night-driving"
+      ]
+    },
+    {
+      "id": "q-0559",
+      "canonical_fact_id": "headlights-rain-snow",
+      "topic": "vehicle-equipment",
+      "subtopic": "headlights",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 69,
+      "source_doc": "handbook-3.2026",
+      "question": "When using your windshield wipers continuously in rain or snow, your headlights must be:",
+      "choices": [
+        "Off - to avoid glare",
+        "On parking-light only",
+        "ON",
+        "On high beam"
+      ],
+      "correct_index": 2,
+      "explanation": "Use headlights whenever windshield wipers are in continuous use. Handbook p. 69.",
+      "sign_image": null,
+      "tags": [
+        "headlights",
+        "wipers",
+        "weather"
+      ]
+    },
+    {
+      "id": "q-0560",
+      "canonical_fact_id": "headlights-on-1000-ft-visibility",
+      "topic": "vehicle-equipment",
+      "subtopic": "headlights",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 69,
+      "source_doc": "handbook-3.2026",
+      "question": "You are driving at 5 p.m. in heavy fog. Visibility ahead is about 600 feet. Should you use headlights?",
+      "choices": [
+        "No - it is still daylight",
+        "Yes - you cannot clearly see 1,000 feet ahead",
+        "No - wait until sunset",
+        "Only fog lights, not headlights"
+      ],
+      "correct_index": 1,
+      "explanation": "Headlights required ANY time you cannot see clearly 1,000 feet ahead - even in daylight in fog/rain/snow. Handbook p. 69.",
+      "sign_image": null,
+      "tags": [
+        "headlights",
+        "fog",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0561",
+      "canonical_fact_id": "no-sunglasses-night",
+      "topic": "vehicle-equipment",
+      "subtopic": "vision",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 70,
+      "source_doc": "handbook-3.2026",
+      "question": "Should you wear sunglasses while driving at night?",
+      "choices": [
+        "Yes - they reduce headlight glare",
+        "No - tinted lenses reduce the light you need for good vision",
+        "Only if they are polarized",
+        "Only when driving above 35 mph"
+      ],
+      "correct_index": 1,
+      "explanation": "Do NOT wear sunglasses or colored/tinted lenses at night. They reduce the light needed for safe vision. Handbook p. 70.",
+      "sign_image": null,
+      "tags": [
+        "vision",
+        "night-driving"
+      ]
+    },
+    {
+      "id": "q-0562",
+      "canonical_fact_id": "night-add-2-seconds-follow",
+      "topic": "vehicle-equipment",
+      "subtopic": "following-distance",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 70,
+      "source_doc": "handbook-3.2026",
+      "question": "How much should you add to your following distance at night compared to daytime?",
+      "choices": [
+        "No change needed",
+        "At least 2 seconds",
+        "5 seconds",
+        "10 seconds"
+      ],
+      "correct_index": 1,
+      "explanation": "Increase your following distance at night by at least 2 seconds. Handbook p. 70.",
+      "sign_image": null,
+      "tags": [
+        "night-driving",
+        "following-distance"
+      ]
+    },
+    {
+      "id": "q-0563",
+      "canonical_fact_id": "liability-insurance-required",
+      "topic": "vehicle-equipment",
+      "subtopic": "insurance",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 73,
+      "source_doc": "handbook-3.2026",
+      "question": "Utah requires which type of insurance on all motor vehicles?",
+      "choices": [
+        "Comprehensive only",
+        "Liability insurance",
+        "Collision only",
+        "No insurance is required"
+      ],
+      "correct_index": 1,
+      "explanation": "Utah requires liability insurance on all motor vehicles. Handbook p. 73.",
+      "sign_image": null,
+      "tags": [
+        "insurance",
+        "liability"
+      ]
+    },
+    {
+      "id": "q-0564",
+      "canonical_fact_id": "hwc-over-18-voice-only",
+      "topic": "vehicle-equipment",
+      "subtopic": "phone-use",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "Drivers over 18 may use a wireless device (HWC) while driving for phone calls only if:",
+      "choices": [
+        "They use voice commands to connect",
+        "The car is moving under 25 mph",
+        "The phone is held below dashboard level",
+        "They use Bluetooth headphones in both ears"
+      ],
+      "correct_index": 0,
+      "explanation": "Drivers over 18 may talk on an HWC while driving only if they use voice commands to connect the call. Hands-free voice tech also allowed for GPS, reporting hazards/criminal activity/medical emergencies. Handbook p. 68.",
+      "sign_image": null,
+      "tags": [
+        "phone",
+        "hwc",
+        "hands-free"
+      ]
+    },
+    {
+      "id": "q-0565",
+      "canonical_fact_id": "hwc-under-18-exceptions-only",
+      "topic": "vehicle-equipment",
+      "subtopic": "phone-use",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "Drivers UNDER 18 may use a wireless device while driving only for which of the following?",
+      "choices": [
+        "Any voice-controlled use, like adults",
+        "Medical emergency, safety hazard, criminal activity, or contacting a parent/guardian",
+        "Texting while stopped at a red light",
+        "GPS navigation in any conditions"
+      ],
+      "correct_index": 1,
+      "explanation": "Under-18 drivers may only use HWC for: medical emergency, reporting safety hazard, reporting criminal activity, OR communicating with a parent/legal guardian. Handbook p. 68.",
+      "sign_image": null,
+      "tags": [
+        "phone",
+        "hwc",
+        "under-18"
+      ]
+    },
+    {
+      "id": "q-0566",
+      "canonical_fact_id": "texting-class-c-100",
+      "topic": "vehicle-equipment",
+      "subtopic": "phone-use",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "A first-offense texting-while-driving conviction in Utah is what kind of crime, with what maximum fine?",
+      "choices": [
+        "Infraction - 25 dollar max",
+        "Class C misdemeanor - 100 dollar max",
+        "Class A misdemeanor - 1,000 dollar max",
+        "Felony - 5,000 dollar max"
+      ],
+      "correct_index": 1,
+      "explanation": "A first texting violation = Class C misdemeanor, max fine 100 dollars. Handbook p. 68.",
+      "sign_image": null,
+      "tags": [
+        "phone",
+        "texting",
+        "fine"
+      ]
+    },
+    {
+      "id": "q-0567",
+      "canonical_fact_id": "texting-class-b-injury-or-prior",
+      "topic": "vehicle-equipment",
+      "subtopic": "phone-use",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "Under what conditions is a texting violation upgraded to a Class B misdemeanor?",
+      "choices": [
+        "When the driver is over 65",
+        "When it causes bodily injury OR the driver has a previous texting offense",
+        "When done at speeds over 35 mph",
+        "When the driver does not have insurance"
+      ],
+      "correct_index": 1,
+      "explanation": "Texting becomes a Class B misdemeanor if it causes bodily injury OR the driver has a previous texting offense. Handbook p. 68.",
+      "sign_image": null,
+      "tags": [
+        "phone",
+        "texting",
+        "misdemeanor"
+      ]
+    },
+    {
+      "id": "q-0568",
+      "canonical_fact_id": "texting-primary-offense",
+      "topic": "vehicle-equipment",
+      "subtopic": "phone-use",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "Texting while driving in Utah is a:",
+      "choices": [
+        "Secondary offense - officer needs another reason to stop you",
+        "Primary offense - officer can pull you over just for texting",
+        "Civil infraction - no possible jail time ever",
+        "Federal violation only"
+      ],
+      "correct_index": 1,
+      "explanation": "Texting is a primary offense in Utah - officers can pull you over solely for observing texting. Handbook p. 68.",
+      "sign_image": null,
+      "tags": [
+        "phone",
+        "texting",
+        "primary-offense"
+      ]
+    },
+    {
+      "id": "q-0569",
+      "canonical_fact_id": "hwc-general-no-manual",
+      "topic": "vehicle-equipment",
+      "subtopic": "phone-use",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 67,
+      "source_doc": "handbook-3.2026",
+      "question": "While driving, Utah law generally prohibits which of the following?",
+      "choices": [
+        "Listening to the radio",
+        "Manual data entry into a wireless device (texting, dialing, browsing, etc.)",
+        "Using a hands-free Bluetooth speaker",
+        "Drinking water"
+      ],
+      "correct_index": 1,
+      "explanation": "Utah law prohibits manual interaction with a handheld wireless device while driving - texting, dialing, browsing, photographing, watching video, etc. Handbook p. 67-68.",
+      "sign_image": null,
+      "tags": [
+        "phone",
+        "hwc",
+        "distraction"
+      ]
+    },
+    {
+      "id": "q-0570",
+      "canonical_fact_id": "hwc-under-18-exceptions-only",
+      "topic": "vehicle-equipment",
+      "subtopic": "phone-use",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "You are 16 and driving. Your mom calls. Can you legally answer using voice-activated hands-free?",
+      "choices": [
+        "No - under 18 cannot use a phone for any reason while driving",
+        "Yes - communicating with a parent/guardian is an allowed exception",
+        "Only if you pull over first",
+        "Only if you are going under 25 mph"
+      ],
+      "correct_index": 1,
+      "explanation": "Under-18 drivers may use HWC to communicate with a parent/legal guardian - one of the four allowed exceptions. Handbook p. 68.",
+      "sign_image": null,
+      "tags": [
+        "phone",
+        "under-18",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0571",
+      "canonical_fact_id": "trailer-brake-1500lbs",
+      "topic": "vehicle-equipment",
+      "subtopic": "trailers",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 98,
+      "source_doc": "handbook-3.2026",
+      "question": "Above what trailer weight does Utah law require brakes on the trailer?",
+      "choices": [
+        "500 lbs",
+        "1,000 lbs",
+        "2,000 lbs",
+        "5,000 lbs"
+      ],
+      "correct_index": 2,
+      "explanation": "Trailers over 2,000 lbs require brakes in Utah. (Over 750 lbs is when brakes are recommended.) Handbook p. 98.",
+      "sign_image": null,
+      "tags": [
+        "trailer",
+        "brakes",
+        "equipment"
+      ]
+    },
+    {
+      "id": "q-0572",
+      "canonical_fact_id": "airbag-with-belt",
+      "topic": "vehicle-equipment",
+      "subtopic": "airbags",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 39,
+      "source_doc": "handbook-3.2026",
+      "question": "Air bags are designed to:",
+      "choices": [
+        "Replace seat belts entirely",
+        "Work WITH safety belts, not as a replacement",
+        "Inflate only in crashes over 60 mph",
+        "Protect rear-seat passengers only"
+      ],
+      "correct_index": 1,
+      "explanation": "Air bags work WITH safety belts - not as a replacement. You still need to be buckled in. Handbook p. 39.",
+      "sign_image": null,
+      "tags": [
+        "airbag",
+        "seat-belt"
+      ]
+    },
+    {
+      "id": "q-0573",
+      "canonical_fact_id": "airbag-deploys-200mph",
+      "topic": "vehicle-equipment",
+      "subtopic": "airbags",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 39,
+      "source_doc": "handbook-3.2026",
+      "question": "Air bags deploy at speeds up to about how many mph?",
+      "choices": [
+        "50 mph",
+        "100 mph",
+        "200 mph",
+        "500 mph"
+      ],
+      "correct_index": 2,
+      "explanation": "Air bags deploy at up to 200 mph - drivers/front passengers should be as far back from the bag as practical. Handbook p. 39.",
+      "sign_image": null,
+      "tags": [
+        "airbag"
+      ]
+    },
+    {
+      "id": "q-0574",
+      "canonical_fact_id": "infant-never-front-air-bag",
+      "topic": "vehicle-equipment",
+      "subtopic": "airbags",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 39,
+      "source_doc": "handbook-3.2026",
+      "question": "An infant in a rear-facing seat may never ride:",
+      "choices": [
+        "In the back seat",
+        "In the front seat with an active passenger air bag",
+        "On a long trip without stops",
+        "In a vehicle with side-curtain air bags"
+      ],
+      "correct_index": 1,
+      "explanation": "Infants must NEVER ride in the front seat with an active passenger-side air bag. The bag can cause fatal injuries to a rear-facing infant. Handbook p. 39.",
+      "sign_image": null,
+      "tags": [
+        "airbag",
+        "infant",
+        "child-seat"
+      ]
+    },
+    {
+      "id": "q-0575",
+      "canonical_fact_id": "disable-airbag-class-b",
+      "topic": "vehicle-equipment",
+      "subtopic": "airbags",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 39,
+      "source_doc": "handbook-3.2026",
+      "question": "Disabling, modifying, or removing your vehicle air bag system is:",
+      "choices": [
+        "Allowed if it is your own car",
+        "A Class B misdemeanor",
+        "An infraction with a 25 dollar fine",
+        "Legal with a written waiver"
+      ],
+      "correct_index": 1,
+      "explanation": "Disabling or modifying the air bag passive restraint system = Class B misdemeanor. Handbook p. 39.",
+      "sign_image": null,
+      "tags": [
+        "airbag",
+        "misdemeanor"
+      ]
+    },
+    {
+      "id": "q-0576",
+      "canonical_fact_id": "headlights-on-1000-ft-visibility",
+      "topic": "vehicle-equipment",
+      "subtopic": "headlights",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 69,
+      "source_doc": "handbook-3.2026",
+      "question": "Headlights are required from:",
+      "choices": [
+        "10 p.m. to 6 a.m.",
+        "Sunset to sunrise (or whenever visibility is reduced below 1,000 ft)",
+        "Only when other cars have lights on",
+        "Only on freeways"
+      ],
+      "correct_index": 1,
+      "explanation": "Headlights required from sunset to sunrise OR any time you cannot see 1,000 ft ahead due to insufficient light/conditions. Handbook p. 69.",
+      "sign_image": null,
+      "tags": [
+        "headlights"
+      ]
+    },
+    {
+      "id": "q-0577",
+      "canonical_fact_id": "dim-500-ft-oncoming",
+      "topic": "vehicle-equipment",
+      "subtopic": "headlights",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 69,
+      "source_doc": "handbook-3.2026",
+      "question": "It is 9 p.m. on a 2-lane highway. You are using high beams. A car is approaching from the opposite direction, about 600 feet away. What do you do?",
+      "choices": [
+        "Keep high beams - the other driver should dim first",
+        "Dim your high beams now - you must dim within 500 ft",
+        "Flash your high beams as a signal",
+        "Pull over to dim"
+      ],
+      "correct_index": 1,
+      "explanation": "Dim your high beams within 500 feet of an oncoming vehicle - at 600 ft you should be preparing to dim. Do not wait for the other driver. Handbook p. 69.",
+      "sign_image": null,
+      "tags": [
+        "headlights",
+        "high-beams",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0578",
+      "canonical_fact_id": "hwc-over-18-voice-only",
+      "topic": "vehicle-equipment",
+      "subtopic": "phone-use",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 68,
+      "source_doc": "handbook-3.2026",
+      "question": "You are 22 years old. While driving, you want to start GPS navigation. What is legal?",
+      "choices": [
+        "Type the destination by hand while driving - adults can use phones freely",
+        "Use voice activation to start the GPS",
+        "Hold the phone in your hand and tap once at a red light",
+        "Only passengers may touch the phone"
+      ],
+      "correct_index": 1,
+      "explanation": "Adults (18+) may use hands-free voice commands for GPS, calls, and certain alerts. Manual entry while driving is prohibited. Handbook p. 67-68.",
+      "sign_image": null,
+      "tags": [
+        "phone",
+        "gps",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0579",
+      "canonical_fact_id": "everyone-buckled",
+      "topic": "vehicle-equipment",
+      "subtopic": "seat-belts",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 37,
+      "source_doc": "handbook-3.2026",
+      "question": "In Utah, everyone in a moving vehicle must:",
+      "choices": [
+        "Be in the front seat",
+        "Have a fastened safety belt or be in an approved child seat",
+        "Have their hands visible",
+        "Wear a hat"
+      ],
+      "correct_index": 1,
+      "explanation": "Everyone in the vehicle must have a fastened safety belt or be in a child seat. Handbook p. 37.",
+      "sign_image": null,
+      "tags": [
+        "seat-belt"
+      ]
+    },
+    {
+      "id": "q-0580",
+      "canonical_fact_id": "unrestrained-under-16-primary",
+      "topic": "vehicle-equipment",
+      "subtopic": "seat-belts",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 38,
+      "source_doc": "handbook-3.2026",
+      "question": "When can an officer stop a vehicle solely for a seat-belt violation?",
+      "choices": [
+        "Never - it is always secondary",
+        "When anyone under 16 is unrestrained",
+        "Only on freeways",
+        "Only after a crash"
+      ],
+      "correct_index": 1,
+      "explanation": "An officer can stop you solely if anyone under 16 is unrestrained (primary offense). 16+ occupants are cited only if stopped for another reason (secondary). Handbook p. 38.",
+      "sign_image": null,
+      "tags": [
+        "seat-belt",
+        "primary-offense"
+      ]
+    },
+    {
+      "id": "q-0581",
+      "canonical_fact_id": "belt-fit-rules",
+      "topic": "vehicle-equipment",
+      "subtopic": "seat-belts",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 37,
+      "source_doc": "handbook-3.2026",
+      "question": "Which is a proper seat-belt fit?",
+      "choices": [
+        "Shoulder belt under the arm or behind the back",
+        "Lap belt across the stomach",
+        "Shoulder belt across the shoulder/chest, lap belt across the hips",
+        "Shoulder belt clipped to keep it slack"
+      ],
+      "correct_index": 2,
+      "explanation": "Shoulder belt across the shoulder/chest; lap belt across the hips (not the stomach). Never put the shoulder belt under your arm or behind your back. Handbook p. 37.",
+      "sign_image": null,
+      "tags": [
+        "seat-belt",
+        "fit"
+      ]
+    },
+    {
+      "id": "q-0582",
+      "canonical_fact_id": "smoking-with-minors-infraction",
+      "topic": "vehicle-equipment",
+      "subtopic": "smoking",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 39,
+      "source_doc": "handbook-3.2026",
+      "question": "Smoking in a vehicle while transporting a minor age 15 or younger is:",
+      "choices": [
+        "Legal if windows are down",
+        "An infraction in Utah",
+        "A Class C misdemeanor",
+        "Allowed with parental consent"
+      ],
+      "correct_index": 1,
+      "explanation": "Smoking while transporting children 15 and younger is an infraction. Handbook p. 39.",
+      "sign_image": null,
+      "tags": [
+        "smoking",
+        "minor",
+        "infraction"
+      ]
+    },
+    {
+      "id": "q-0583",
+      "canonical_fact_id": "kids-12-and-under-back-seat",
+      "topic": "vehicle-equipment",
+      "subtopic": "child-seat",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 38,
+      "source_doc": "handbook-3.2026",
+      "question": "Where should children 12 and younger ride?",
+      "choices": [
+        "In the front passenger seat",
+        "In the back seat",
+        "Wherever there is a free seat",
+        "In the cargo area"
+      ],
+      "correct_index": 1,
+      "explanation": "Children 12 and younger should ride in the back seat. Handbook p. 38.",
+      "sign_image": null,
+      "tags": [
+        "child-seat",
+        "back-seat"
+      ]
+    },
+    {
+      "id": "q-0584",
+      "canonical_fact_id": "child-seat-under-8-or-57-inches",
+      "topic": "vehicle-equipment",
+      "subtopic": "child-seat",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 37,
+      "source_doc": "handbook-3.2026",
+      "question": "Utah law requires children to use a child or booster seat until age:",
+      "choices": [
+        "6 or 48 inches tall",
+        "8 or 57 inches tall",
+        "10 or 60 inches tall",
+        "12 or 65 inches tall"
+      ],
+      "correct_index": 1,
+      "explanation": "Children must use a child/booster seat until they are 8 years old OR 57 inches tall - whichever comes first. Handbook p. 37-38.",
+      "sign_image": null,
+      "tags": [
+        "child-seat",
+        "booster"
+      ]
+    },
+    {
+      "id": "q-0585",
+      "canonical_fact_id": "rear-facing-2-years-30-lbs",
+      "topic": "vehicle-equipment",
+      "subtopic": "child-seat",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 38,
+      "source_doc": "handbook-3.2026",
+      "question": "Children should ride rear-facing in the back seat until at least:",
+      "choices": [
+        "1 year and 20 lbs",
+        "2 years and 30 lbs",
+        "3 years and 40 lbs",
+        "5 years and 50 lbs"
+      ],
+      "correct_index": 1,
+      "explanation": "Rear-facing in the back seat until at least 2 years and 30 lbs (longer if the seat allows). Handbook p. 38.",
+      "sign_image": null,
+      "tags": [
+        "child-seat",
+        "rear-facing"
+      ]
+    },
+    {
+      "id": "q-0586",
+      "canonical_fact_id": "forward-facing-4-years-40-lbs",
+      "topic": "vehicle-equipment",
+      "subtopic": "child-seat",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 38,
+      "source_doc": "handbook-3.2026",
+      "question": "After rear-facing, children should ride forward-facing with a harness until at least:",
+      "choices": [
+        "3 years and 30 lbs",
+        "4 years and 40 lbs",
+        "6 years and 50 lbs",
+        "8 years and 57 inches"
+      ],
+      "correct_index": 1,
+      "explanation": "Forward-facing with harness until at least 4 years and 40 lbs. Handbook p. 38.",
+      "sign_image": null,
+      "tags": [
+        "child-seat",
+        "forward-facing"
+      ]
+    },
+    {
+      "id": "q-0587",
+      "canonical_fact_id": "booster-until-57-inches",
+      "topic": "vehicle-equipment",
+      "subtopic": "child-seat",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 38,
+      "source_doc": "handbook-3.2026",
+      "question": "A booster seat should be used until the child is:",
+      "choices": [
+        "50 inches tall",
+        "57 inches tall and the belt fits properly",
+        "60 inches tall regardless of belt fit",
+        "Age 6 only"
+      ],
+      "correct_index": 1,
+      "explanation": "Booster seat from approximately 4 years / 40 lbs until the seat belt fits properly AND the child is 57 inches tall. Handbook p. 38.",
+      "sign_image": null,
+      "tags": [
+        "child-seat",
+        "booster"
+      ]
+    },
+    {
+      "id": "q-0588",
+      "canonical_fact_id": "seat-10-inches-from-wheel",
+      "topic": "vehicle-equipment",
+      "subtopic": "seating",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 37,
+      "source_doc": "handbook-3.2026",
+      "question": "For proper driving position, how much space should be between your chest and the steering wheel?",
+      "choices": [
+        "5 inches",
+        "8 inches",
+        "10 inches",
+        "15 inches"
+      ],
+      "correct_index": 2,
+      "explanation": "Sit with at least 10 inches between your chest and the steering wheel. Protects you from air bag injury. Handbook p. 37.",
+      "sign_image": null,
+      "tags": [
+        "seating",
+        "airbag"
+      ]
+    },
+    {
+      "id": "q-0589",
+      "canonical_fact_id": "headrest-above-ears",
+      "topic": "vehicle-equipment",
+      "subtopic": "seating",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 37,
+      "source_doc": "handbook-3.2026",
+      "question": "Your headrest should contact the back of your head:",
+      "choices": [
+        "Below your ears",
+        "Above the level of your ears",
+        "Across your shoulders only",
+        "Headrest position does not matter"
+      ],
+      "correct_index": 1,
+      "explanation": "The headrest should contact the back of your head ABOVE the level of your ears to prevent whiplash. Handbook p. 37.",
+      "sign_image": null,
+      "tags": [
+        "seating",
+        "headrest"
+      ]
+    },
+    {
+      "id": "q-0590",
+      "canonical_fact_id": "left-mirror-head-on-window",
+      "topic": "vehicle-equipment",
+      "subtopic": "mirrors",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 37,
+      "source_doc": "handbook-3.2026",
+      "question": "To set the LEFT side mirror correctly, you should:",
+      "choices": [
+        "Sit straight and align the mirror so you see most of your car side",
+        "Rest your head against the left window and adjust so you barely see the rear left edge of your car",
+        "Tilt the mirror down toward the ground",
+        "Mirror position does not matter - use blind spot only"
+      ],
+      "correct_index": 1,
+      "explanation": "Rest your head against the closed left window and set the mirror so you can BARELY see the rear left edge of your vehicle. Reduces blind spots. Handbook p. 37.",
+      "sign_image": null,
+      "tags": [
+        "mirrors"
+      ]
+    },
+    {
+      "id": "q-0591",
+      "canonical_fact_id": "right-mirror-lean-right",
+      "topic": "vehicle-equipment",
+      "subtopic": "mirrors",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 37,
+      "source_doc": "handbook-3.2026",
+      "question": "How do you set the RIGHT side mirror properly?",
+      "choices": [
+        "Same way as the left mirror",
+        "Lean your head right (under the rearview mirror) and adjust so you barely see the right side of your car",
+        "Tilt to point at the rear seat area",
+        "Aim it at the rear bumper"
+      ],
+      "correct_index": 1,
+      "explanation": "Lean right so your head is directly below the rearview mirror, then set the right mirror so you can BARELY see the right side of your vehicle. Handbook p. 37.",
+      "sign_image": null,
+      "tags": [
+        "mirrors"
+      ]
+    },
+    {
+      "id": "q-0592",
+      "canonical_fact_id": "backing-look-through-rear-window",
+      "topic": "vehicle-equipment",
+      "subtopic": "backing",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 40,
+      "source_doc": "handbook-3.2026",
+      "question": "When backing your vehicle, you should primarily:",
+      "choices": [
+        "Use only the rearview mirror",
+        "Use only the backup camera",
+        "Turn your body, place your right arm on the seat back, and look through the rear window",
+        "Steer with one hand and look at side mirrors only"
+      ],
+      "correct_index": 2,
+      "explanation": "Mirrors do not show directly behind you. Turn, put your right arm on the seat back, and look through the rear window. Check behind the vehicle BEFORE getting in. Handbook p. 40.",
+      "sign_image": null,
+      "tags": [
+        "backing",
+        "rearview"
+      ]
+    },
+    {
+      "id": "q-0593",
+      "canonical_fact_id": "no-backing-on-freeway",
+      "topic": "vehicle-equipment",
+      "subtopic": "backing",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 40,
+      "source_doc": "handbook-3.2026",
+      "question": "Where is backing up your vehicle prohibited in Utah?",
+      "choices": [
+        "In any parking lot",
+        "On a freeway or interstate",
+        "On all city streets",
+        "Anywhere a curb exists"
+      ],
+      "correct_index": 1,
+      "explanation": "Do NOT back up on a freeway or interstate. If you miss your exit, continue to the next one. Handbook p. 40.",
+      "sign_image": null,
+      "tags": [
+        "backing",
+        "freeway"
+      ]
+    },
+    {
+      "id": "q-0594",
+      "canonical_fact_id": "airbag-with-belt",
+      "topic": "vehicle-equipment",
+      "subtopic": "airbags",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 39,
+      "source_doc": "handbook-3.2026",
+      "question": "Your car has front and side air bags. You only put on the lap belt and skip the shoulder belt. Are the air bags enough?",
+      "choices": [
+        "Yes - the air bags do the same job",
+        "No - air bags work WITH safety belts, not instead of them",
+        "Yes - if you sit far back from the wheel",
+        "Only if you are under 18"
+      ],
+      "correct_index": 1,
+      "explanation": "Air bags work WITH safety belts, not as a replacement. Without the belt, the air bag can injure you. Wear both. Handbook p. 39.",
+      "sign_image": null,
+      "tags": [
+        "airbag",
+        "seat-belt",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0595",
+      "canonical_fact_id": "liability-insurance-required",
+      "topic": "vehicle-equipment",
+      "subtopic": "insurance",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 73,
+      "source_doc": "handbook-3.2026",
+      "question": "Your friend does not have insurance and asks to borrow your car for a quick run. What is true?",
+      "choices": [
+        "Insurance follows the driver, not the car",
+        "Utah requires liability insurance on the vehicle - your insurance generally covers permissive users",
+        "Insurance is optional if the driver is over 18",
+        "Friends are automatically covered by your insurance"
+      ],
+      "correct_index": 1,
+      "explanation": "Utah requires liability insurance on all motor vehicles. The vehicle must be insured; the policy generally covers permissive users - check with your insurer. Handbook p. 73.",
+      "sign_image": null,
+      "tags": [
+        "insurance",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0596",
+      "canonical_fact_id": "no-park-15-ft-hydrant",
+      "topic": "misc",
+      "subtopic": "parking",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 42,
+      "source_doc": "handbook-3.2026",
+      "question": "You must not park within how many feet of a fire hydrant?",
+      "choices": [
+        "10 feet",
+        "15 feet",
+        "20 feet",
+        "30 feet"
+      ],
+      "correct_index": 1,
+      "explanation": "No parking within 15 feet of a fire hydrant. Handbook p. 42.",
+      "sign_image": null,
+      "tags": [
+        "parking",
+        "hydrant"
+      ]
+    },
+    {
+      "id": "q-0597",
+      "canonical_fact_id": "no-park-20-ft-crosswalk",
+      "topic": "misc",
+      "subtopic": "parking",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 42,
+      "source_doc": "handbook-3.2026",
+      "question": "You must not park within how many feet of a crosswalk at an intersection?",
+      "choices": [
+        "10 feet",
+        "15 feet",
+        "20 feet",
+        "30 feet"
+      ],
+      "correct_index": 2,
+      "explanation": "No parking on a crosswalk or within 20 feet of one. Handbook p. 42.",
+      "sign_image": null,
+      "tags": [
+        "parking",
+        "crosswalk"
+      ]
+    },
+    {
+      "id": "q-0598",
+      "canonical_fact_id": "no-park-30-ft-signal",
+      "topic": "misc",
+      "subtopic": "parking",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 42,
+      "source_doc": "handbook-3.2026",
+      "question": "You must not park within how many feet of a stop sign, yield sign, traffic signal, or flashing beacon?",
+      "choices": [
+        "15 feet",
+        "20 feet",
+        "25 feet",
+        "30 feet"
+      ],
+      "correct_index": 3,
+      "explanation": "No parking within 30 feet of a flashing beacon, stop sign, yield sign, or traffic signal. Handbook p. 42.",
+      "sign_image": null,
+      "tags": [
+        "parking",
+        "traffic-signal"
+      ]
+    },
+    {
+      "id": "q-0599",
+      "canonical_fact_id": "no-park-50-ft-rail",
+      "topic": "misc",
+      "subtopic": "parking",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 42,
+      "source_doc": "handbook-3.2026",
+      "question": "You must not park within how many feet of the nearest rail of a railroad crossing?",
+      "choices": [
+        "20 feet",
+        "30 feet",
+        "50 feet",
+        "100 feet"
+      ],
+      "correct_index": 2,
+      "explanation": "Never park within 50 feet of the nearest rail (and never park ON a railroad track). Handbook p. 42.",
+      "sign_image": null,
+      "tags": [
+        "parking",
+        "railroad"
+      ]
+    },
+    {
+      "id": "q-0600",
+      "canonical_fact_id": "park-12-inches-from-curb",
+      "topic": "misc",
+      "subtopic": "parking",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 42,
+      "source_doc": "handbook-3.2026",
+      "question": "When parallel parked, your vehicle back wheel should be no more than how far from the curb?",
+      "choices": [
+        "6 inches",
+        "12 inches",
+        "18 inches",
+        "24 inches"
+      ],
+      "correct_index": 1,
+      "explanation": "Parked vehicles must be no more than 12 inches from the curb. Handbook p. 42-43.",
+      "sign_image": null,
+      "tags": [
+        "parking",
+        "curb"
+      ]
+    },
+    {
+      "id": "q-0601",
+      "canonical_fact_id": "no-park-30-ft-signal",
+      "topic": "misc",
+      "subtopic": "parking",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 42,
+      "source_doc": "handbook-3.2026",
+      "question": "You spot a curbside parking space: 18 feet from a fire hydrant and 25 feet from a stop sign. Is parking there legal?",
+      "choices": [
+        "Yes - both distances are OK",
+        "No - 18 feet from hydrant is too close",
+        "No - 25 feet from stop sign violates the 30-foot rule",
+        "No - both distances violate Utah law"
+      ],
+      "correct_index": 2,
+      "explanation": "18 feet from the hydrant is OK (15+ rule). But 25 feet from the stop sign violates the 30-foot rule. Find another space. Handbook p. 42.",
+      "sign_image": null,
+      "tags": [
+        "parking",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0602",
+      "canonical_fact_id": "no-park-fire-station-20-75",
+      "topic": "misc",
+      "subtopic": "parking",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 42,
+      "source_doc": "handbook-3.2026",
+      "question": "You must not park within how many feet of a fire station driveway?",
+      "choices": [
+        "10 feet",
+        "20 feet",
+        "30 feet",
+        "50 feet"
+      ],
+      "correct_index": 1,
+      "explanation": "20 feet from a fire station driveway (and 75 feet on the opposite side if signs are posted). Handbook p. 42.",
+      "sign_image": null,
+      "tags": [
+        "parking",
+        "fire-station"
+      ]
+    },
+    {
+      "id": "q-0603",
+      "canonical_fact_id": "downhill-wheels-toward-curb",
+      "topic": "misc",
+      "subtopic": "hill-parking",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 42,
+      "source_doc": "handbook-3.2026",
+      "question": "When parking DOWNHILL with a curb, you should turn your front wheels:",
+      "choices": [
+        "Away from the curb",
+        "Toward the curb",
+        "Straight ahead",
+        "It does not matter if the parking brake is set"
+      ],
+      "correct_index": 1,
+      "explanation": "Downhill with a curb: turn wheels TOWARD the curb so a rolling car catches on the curb. Handbook p. 42.",
+      "sign_image": null,
+      "tags": [
+        "parking",
+        "hill"
+      ]
+    },
+    {
+      "id": "q-0604",
+      "canonical_fact_id": "uphill-wheels-away-curb",
+      "topic": "misc",
+      "subtopic": "hill-parking",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 42,
+      "source_doc": "handbook-3.2026",
+      "question": "When parking UPHILL with a curb, you should turn your front wheels:",
+      "choices": [
+        "Toward the curb",
+        "Away from the curb",
+        "Straight",
+        "Wheels do not matter - only the parking brake"
+      ],
+      "correct_index": 1,
+      "explanation": "Uphill with a curb: turn wheels AWAY from the curb so a rolling car backs INTO the curb instead of into traffic. Handbook p. 42.",
+      "sign_image": null,
+      "tags": [
+        "parking",
+        "hill"
+      ]
+    },
+    {
+      "id": "q-0605",
+      "canonical_fact_id": "uphill-no-curb-right",
+      "topic": "misc",
+      "subtopic": "hill-parking",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 42,
+      "source_doc": "handbook-3.2026",
+      "question": "When parking UPHILL with NO curb, you should turn your front wheels:",
+      "choices": [
+        "Left",
+        "Right",
+        "Straight",
+        "Toward whichever shoulder is wider"
+      ],
+      "correct_index": 1,
+      "explanation": "Uphill with NO curb: turn wheels to the RIGHT - a rolling car drifts off the road, not into traffic. Handbook p. 42.",
+      "sign_image": null,
+      "tags": [
+        "parking",
+        "hill",
+        "no-curb"
+      ]
+    },
+    {
+      "id": "q-0606",
+      "canonical_fact_id": "downhill-wheels-toward-curb",
+      "topic": "misc",
+      "subtopic": "hill-parking",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 42,
+      "source_doc": "handbook-3.2026",
+      "question": "Maya is parking on a steep downhill street with a curb on her right. What is the correct wheel position?",
+      "choices": [
+        "Wheels turned LEFT (away from curb)",
+        "Wheels turned RIGHT (toward the curb)",
+        "Wheels straight",
+        "Does not matter if she sets the parking brake"
+      ],
+      "correct_index": 1,
+      "explanation": "Downhill with curb on the right = wheels toward the curb (RIGHT). Set the parking brake. Handbook p. 42.",
+      "sign_image": null,
+      "tags": [
+        "parking",
+        "hill",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0607",
+      "canonical_fact_id": "park-brake-motor-lock",
+      "topic": "misc",
+      "subtopic": "hill-parking",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 42,
+      "source_doc": "handbook-3.2026",
+      "question": "Before leaving a parked vehicle, you should:",
+      "choices": [
+        "Set the parking brake, stop the motor, and lock the doors",
+        "Just turn off the engine - that is enough",
+        "Roll down windows to vent the cabin",
+        "Leave the engine running if you will be brief"
+      ],
+      "correct_index": 0,
+      "explanation": "Before leaving: set the parking brake, stop the motor, lock the doors. Handbook p. 42.",
+      "sign_image": null,
+      "tags": [
+        "parking",
+        "leaving-vehicle"
+      ]
+    },
+    {
+      "id": "q-0608",
+      "canonical_fact_id": "mountain-downhill-yields-uphill",
+      "topic": "misc",
+      "subtopic": "mountain-driving",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 69,
+      "source_doc": "handbook-3.2026",
+      "question": "On a narrow mountain road where two vehicles cannot pass, who must yield?",
+      "choices": [
+        "The uphill driver - they have momentum to lose",
+        "The downhill driver - they have brakes and can back up easier",
+        "Whoever arrived first",
+        "Larger vehicle has priority"
+      ],
+      "correct_index": 1,
+      "explanation": "On narrow mountain roads, the DOWNHILL driver must yield to the UPHILL driver. Counterintuitive - uphill has more difficulty restarting. Handbook p. 69.",
+      "sign_image": null,
+      "tags": [
+        "mountain",
+        "yield",
+        "narrow-road"
+      ]
+    },
+    {
+      "id": "q-0609",
+      "canonical_fact_id": "mountain-downhill-yields-uphill",
+      "topic": "misc",
+      "subtopic": "mountain-driving",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 69,
+      "source_doc": "handbook-3.2026",
+      "question": "You are driving DOWN a narrow mountain road. A vehicle is coming UP and you cannot both pass. What should you do?",
+      "choices": [
+        "Hold your line - downhill has gravity priority",
+        "Yield to the uphill driver - back up if needed",
+        "Honk and push through",
+        "Both drivers stop and wait for help"
+      ],
+      "correct_index": 1,
+      "explanation": "Downhill yields to uphill - back up to a wider spot if needed. The uphill driver has a harder time starting again. Handbook p. 69.",
+      "sign_image": null,
+      "tags": [
+        "mountain",
+        "yield",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0610",
+      "canonical_fact_id": "mountain-downhill-yields-uphill",
+      "topic": "misc",
+      "subtopic": "mountain-driving",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 69,
+      "source_doc": "handbook-3.2026",
+      "question": "When driving DOWNHILL on a steep mountain road, you should:",
+      "choices": [
+        "Coast in neutral to save fuel",
+        "Use a low gear and proper braking",
+        "Use cruise control to maintain a constant speed",
+        "Disengage the clutch to ease the engine"
+      ],
+      "correct_index": 1,
+      "explanation": "Driving downhill: pick a safe speed, use proper braking, and use a LOW gear. Do NOT coast in neutral or disengage the clutch - you lose engine braking. Handbook p. 69.",
+      "sign_image": null,
+      "tags": [
+        "mountain",
+        "downhill",
+        "gear"
+      ]
+    },
+    {
+      "id": "q-0611",
+      "canonical_fact_id": "mountain-downhill-yields-uphill",
+      "topic": "misc",
+      "subtopic": "mountain-driving",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 69,
+      "source_doc": "handbook-3.2026",
+      "question": "When driving UPHILL on a steep grade, you should:",
+      "choices": [
+        "Stay in the LEFT lane to keep momentum",
+        "Use lower gears; stay in the right lane if you are slow",
+        "Disengage the clutch to keep engine RPMs up",
+        "Tailgate the vehicle ahead to draft"
+      ],
+      "correct_index": 1,
+      "explanation": "Driving uphill: use lower gears. If slow, pull off or stay in the right lane. Handbook p. 69.",
+      "sign_image": null,
+      "tags": [
+        "mountain",
+        "uphill",
+        "gear"
+      ]
+    },
+    {
+      "id": "q-0612",
+      "canonical_fact_id": "hydroplane-over-35",
+      "topic": "misc",
+      "subtopic": "weather",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 70,
+      "source_doc": "handbook-3.2026",
+      "question": "Hydroplaning generally begins at speeds over:",
+      "choices": [
+        "20 mph",
+        "35 mph",
+        "55 mph",
+        "65 mph"
+      ],
+      "correct_index": 1,
+      "explanation": "Hydroplaning starts at speeds over 35 mph - your front tires ride on water instead of the road. Handbook p. 70.",
+      "sign_image": null,
+      "tags": [
+        "weather",
+        "hydroplaning"
+      ]
+    },
+    {
+      "id": "q-0613",
+      "canonical_fact_id": "hydroplane-over-35",
+      "topic": "misc",
+      "subtopic": "weather",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 70,
+      "source_doc": "handbook-3.2026",
+      "question": "You are on a wet road at 50 mph. What is the safest move to reduce hydroplaning risk?",
+      "choices": [
+        "Drive at the posted speed regardless of conditions",
+        "Slow down - hydroplaning starts above 35 mph",
+        "Tap the brakes constantly to clear water",
+        "Pump the steering wheel left-right"
+      ],
+      "correct_index": 1,
+      "explanation": "Hydroplaning starts above 35 mph. Slow down on wet roads - posted speeds may be too fast in heavy rain. Handbook p. 70.",
+      "sign_image": null,
+      "tags": [
+        "weather",
+        "hydroplaning",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0614",
+      "canonical_fact_id": "flood-6-inches-stalls-cars",
+      "topic": "misc",
+      "subtopic": "weather",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 67,
+      "source_doc": "handbook-3.2026",
+      "question": "How much moving water is enough to cause loss of control or stalling for most passenger cars?",
+      "choices": [
+        "1 inch",
+        "3 inches",
+        "6 inches",
+        "1 foot"
+      ],
+      "correct_index": 2,
+      "explanation": "6 inches of water reaches the bottom of most passenger cars - enough to cause loss of control or stalling. Handbook p. 67.",
+      "sign_image": null,
+      "tags": [
+        "weather",
+        "flood"
+      ]
+    },
+    {
+      "id": "q-0615",
+      "canonical_fact_id": "flood-2-feet-carries-suv",
+      "topic": "misc",
+      "subtopic": "weather",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 67,
+      "source_doc": "handbook-3.2026",
+      "question": "How much moving water can carry away most vehicles, including SUVs and pickups?",
+      "choices": [
+        "6 inches",
+        "1 foot",
+        "2 feet",
+        "5 feet"
+      ],
+      "correct_index": 2,
+      "explanation": "2 feet of moving water can carry away most vehicles, including SUVs and pickup trucks. Handbook p. 67.",
+      "sign_image": null,
+      "tags": [
+        "weather",
+        "flood"
+      ]
+    },
+    {
+      "id": "q-0616",
+      "canonical_fact_id": "flood-turn-around",
+      "topic": "misc",
+      "subtopic": "weather",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 67,
+      "source_doc": "handbook-3.2026",
+      "question": "You approach a flooded section of road. The water looks shallow but moving. What is the correct response?",
+      "choices": [
+        "Drive through slowly - your SUV can handle it",
+        "Speed up to plow through",
+        "Turn around - never cross a flooded roadway",
+        "Stop in the water and wait for it to recede"
+      ],
+      "correct_index": 2,
+      "explanation": "Turn around, do not drown. Never cross a flooded roadway - depth is hard to judge, and 6 inches stalls cars, 2 feet carries them away. Handbook p. 67.",
+      "sign_image": null,
+      "tags": [
+        "weather",
+        "flood",
+        "scenario"
+      ]
+    },
+    {
+      "id": "q-0617",
+      "canonical_fact_id": "hydroplane-over-35",
+      "topic": "misc",
+      "subtopic": "weather",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 70,
+      "source_doc": "handbook-3.2026",
+      "question": "Black ice on Utah roadways:",
+      "choices": [
+        "Appears as a bright white patch - easy to spot",
+        "Looks like a wet spot - hard to see",
+        "Only forms above 35 degrees F",
+        "Only forms on bridges"
+      ],
+      "correct_index": 1,
+      "explanation": "Black ice looks like a wet spot, not white ice - that is why it is so dangerous. Common Utah hazard, especially on bridges and shaded areas. Handbook p. 70.",
+      "sign_image": null,
+      "tags": [
+        "weather",
+        "black-ice"
+      ]
+    },
+    {
+      "id": "q-0618",
+      "canonical_fact_id": "animal-no-swerve",
+      "topic": "misc",
+      "subtopic": "emergencies",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 66,
+      "source_doc": "handbook-3.2026",
+      "question": "An animal runs into the road in front of you. What is the safest response?",
+      "choices": [
+        "Swerve hard to avoid it - animals first",
+        "Do not swerve - keep the vehicle under control in your lane and brake firmly",
+        "Speed up to pass before it crosses",
+        "Honk and flash lights but do not slow"
+      ],
+      "correct_index": 1,
+      "explanation": "Do NOT swerve for animals - keep the vehicle under control in your lane. Swerving causes more crashes than the animal would. Handbook p. 66.",
+      "sign_image": null,
+      "tags": [
+        "emergency",
+        "animal"
+      ]
+    },
+    {
+      "id": "q-0619",
+      "canonical_fact_id": "trailer-brake-1500lbs",
+      "topic": "misc",
+      "subtopic": "towing",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 98,
+      "source_doc": "handbook-3.2026",
+      "question": "In Utah, brakes are required on trailers over what weight?",
+      "choices": [
+        "500 lbs",
+        "750 lbs",
+        "1,000 lbs",
+        "2,000 lbs"
+      ],
+      "correct_index": 3,
+      "explanation": "Trailers over 2,000 lbs require brakes in Utah. Over 750 lbs is the recommended threshold. Handbook p. 98.",
+      "sign_image": null,
+      "tags": [
+        "trailer",
+        "towing",
+        "equipment"
+      ]
+    },
+    {
+      "id": "q-0620",
+      "canonical_fact_id": "mountain-downhill-yields-uphill",
+      "topic": "misc",
+      "subtopic": "mountain-driving",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 69,
+      "source_doc": "handbook-3.2026",
+      "question": "On a narrow mountain road approaching a sharp curve with limited visibility, you should:",
+      "choices": [
+        "Maintain speed to clear the curve quickly",
+        "Sound your horn to alert oncoming traffic",
+        "Flash your high beams continuously",
+        "Stop entirely at every curve"
+      ],
+      "correct_index": 1,
+      "explanation": "Sound the horn approaching sharp curves on narrow mountain roads where view is obstructed. Handbook p. 69.",
+      "sign_image": null,
+      "tags": [
+        "mountain",
+        "horn",
+        "curve"
+      ]
+    },
+    {
+      "id": "q-0621",
+      "canonical_fact_id": "animal-no-swerve",
+      "topic": "misc",
+      "subtopic": "weather",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 69,
+      "source_doc": "handbook-3.2026",
+      "question": "If caught in a lightning storm in your vehicle, you should:",
+      "choices": [
+        "Exit the vehicle and lie flat on the ground",
+        "Stay inside a HARD-TOPPED vehicle with doors closed and windows up, avoid touching metal",
+        "Open windows to equalize pressure",
+        "Use the radio to call for help"
+      ],
+      "correct_index": 1,
+      "explanation": "Only a hard-topped vehicle protects you in lightning. Doors closed, windows up, do NOT touch metal surfaces or use a radio with an external antenna. Handbook p. 69.",
+      "sign_image": null,
+      "tags": [
+        "weather",
+        "lightning"
+      ]
+    },
+    {
+      "id": "q-0622",
+      "canonical_fact_id": "narrow-bridge-first-arrived",
+      "topic": "misc",
+      "subtopic": "rural-driving",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 70,
+      "source_doc": "handbook-3.2026",
+      "question": "On a narrow or single-lane bridge, who has the right-of-way?",
+      "choices": [
+        "Larger vehicle has priority",
+        "The first driver to reach the bridge",
+        "Always yield to oncoming traffic",
+        "Drivers must alternate by hour"
+      ],
+      "correct_index": 1,
+      "explanation": "On narrow/single-lane bridges, the FIRST driver to the bridge has the right-of-way. Take turns crossing. Handbook p. 70.",
+      "sign_image": null,
+      "tags": [
+        "rural",
+        "narrow-bridge",
+        "right-of-way"
+      ]
+    },
+    {
+      "id": "q-0623",
+      "canonical_fact_id": "headlights-rain-snow",
+      "topic": "misc",
+      "subtopic": "trip-planning",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 71,
+      "source_doc": "handbook-3.2026",
+      "question": "Before a long trip, you should check which of these vehicle components?",
+      "choices": [
+        "Only the gas tank - that is enough",
+        "Windshield/windows, lights, tires, fluids, belts, hoses, brakes",
+        "Only tire pressure",
+        "Only the oil level"
+      ],
+      "correct_index": 1,
+      "explanation": "Pre-trip inspection: windshield/windows, lights, tires, fluid levels, belts, hoses, brakes. Plus get a good night sleep. Handbook p. 71.",
+      "sign_image": null,
+      "tags": [
+        "trip-planning",
+        "vehicle-check"
+      ]
+    },
+    {
+      "id": "q-0624",
+      "canonical_fact_id": "flood-turn-around",
+      "topic": "misc",
+      "subtopic": "emergencies",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 71,
+      "source_doc": "handbook-3.2026",
+      "question": "If your vehicle enters a body of water, it will typically float for how long?",
+      "choices": [
+        "5-10 seconds",
+        "30-60 seconds",
+        "5 minutes",
+        "Until it fully sinks - hours"
+      ],
+      "correct_index": 1,
+      "explanation": "A submerged vehicle floats for 30-60 seconds. Get out immediately: remove seat belt, lower window, climb out the top. Handbook p. 71.",
+      "sign_image": null,
+      "tags": [
+        "emergency",
+        "submerged"
+      ]
+    },
+    {
+      "id": "q-0625",
+      "canonical_fact_id": "flood-turn-around",
+      "topic": "misc",
+      "subtopic": "emergencies",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 71,
+      "source_doc": "handbook-3.2026",
+      "question": "Your car has entered a lake and is starting to sink. In what order should you escape?",
+      "choices": [
+        "Call 911, then try the door, then break the window",
+        "Remove seat belt, lower the window, climb out the top",
+        "Try to restart the engine to drive out",
+        "Wait until it stops sinking, then push the door open"
+      ],
+      "correct_index": 1,
+      "explanation": "Submerged escape order: remove seat belt, then lower the window, then climb onto the vehicle top, then assess current. Keep shoes on. Handbook p. 71.",
+      "sign_image": null,
+      "tags": [
+        "emergency",
+        "submerged",
+        "scenario"
+      ]
+    }
+  ]
+}

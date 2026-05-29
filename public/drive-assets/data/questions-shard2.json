@@ -1,0 +1,3917 @@
+{
+  "questions": [
+    {
+      "id": "q-0131",
+      "canonical_fact_id": "sign-shape-octagon-stop",
+      "topic": "signs",
+      "subtopic": "shape-color-identity",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "An octagon-shaped sign always means what?",
+      "choices": [
+        "Yield",
+        "Stop",
+        "Warning",
+        "School zone"
+      ],
+      "correct_index": 1,
+      "explanation": "Octagon = STOP. The 8-sided shape is unique to stop signs so it's recognizable even when dirty, snow-covered, or obscured.",
+      "sign_image": null,
+      "tags": [
+        "sign-shape",
+        "stop",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0132",
+      "canonical_fact_id": "sign-shape-octagon-stop",
+      "topic": "signs",
+      "subtopic": "shape-color-identity",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "How many sides does a STOP sign have?",
+      "choices": [
+        "6",
+        "8",
+        "5",
+        "4"
+      ],
+      "correct_index": 1,
+      "explanation": "A stop sign has 8 sides (octagon). The shape is unique to stop signs - no other traffic sign is shaped this way.",
+      "sign_image": null,
+      "tags": [
+        "sign-shape",
+        "stop",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0133",
+      "canonical_fact_id": "sign-color-red-stop-prohibit",
+      "topic": "signs",
+      "subtopic": "shape-color-identity",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a red sign or red circle-with-slash on a sign generally mean?",
+      "choices": [
+        "Caution but allowed",
+        "Stop, yield, or prohibition",
+        "Hospital or service",
+        "School crossing"
+      ],
+      "correct_index": 1,
+      "explanation": "Red on a sign means STOP, YIELD, or PROHIBITION. A red circle with a slash means you cannot do the action shown.",
+      "sign_image": null,
+      "tags": [
+        "sign-color",
+        "red",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0134",
+      "canonical_fact_id": "sign-shape-triangle-yield",
+      "topic": "signs",
+      "subtopic": "shape-color-identity",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A downward-pointing triangular sign with a red border and white interior means what?",
+      "choices": [
+        "Stop completely and wait",
+        "Yield - slow and let other traffic go first",
+        "Warning of curve ahead",
+        "Construction zone"
+      ],
+      "correct_index": 1,
+      "explanation": "A downward-pointing triangle (white with red border) is a YIELD sign. Slow down, stop if necessary, and let traffic with the right-of-way go first.",
+      "sign_image": null,
+      "tags": [
+        "sign-shape",
+        "yield",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0135",
+      "canonical_fact_id": "sign-shape-diamond-warning",
+      "topic": "signs",
+      "subtopic": "shape-color-identity",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond-shaped sign with black symbols or letters is what kind of sign?",
+      "choices": [
+        "Regulatory",
+        "Warning",
+        "Guide",
+        "Service"
+      ],
+      "correct_index": 1,
+      "explanation": "Yellow diamonds are WARNING signs - they warn of possible danger ahead (curves, intersections, slippery roads, animals, etc.).",
+      "sign_image": null,
+      "tags": [
+        "sign-shape",
+        "warning",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0136",
+      "canonical_fact_id": "sign-color-yellow-warning",
+      "topic": "signs",
+      "subtopic": "shape-color-identity",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What color signals a general warning of possible danger ahead?",
+      "choices": [
+        "Orange",
+        "Yellow",
+        "Blue",
+        "Brown"
+      ],
+      "correct_index": 1,
+      "explanation": "YELLOW = general warning. (Orange = construction/work zone. Blue = services. Brown = recreation.)",
+      "sign_image": null,
+      "tags": [
+        "sign-color",
+        "yellow",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0137",
+      "canonical_fact_id": "sign-shape-pentagon-school",
+      "topic": "signs",
+      "subtopic": "shape-color-identity",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A fluorescent yellow-green pentagon (house-shaped) sign means what?",
+      "choices": [
+        "No passing zone",
+        "School zone or school crossing",
+        "Hospital nearby",
+        "Pedestrian crossing"
+      ],
+      "correct_index": 1,
+      "explanation": "A 5-sided fluorescent yellow-green sign marks a SCHOOL zone or school crossing. The pentagon shape is unique to schools.",
+      "sign_image": null,
+      "tags": [
+        "sign-shape",
+        "school",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0138",
+      "canonical_fact_id": "sign-color-yellow-green-school",
+      "topic": "signs",
+      "subtopic": "shape-color-identity",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "Fluorescent yellow-green signs warn drivers about what?",
+      "choices": [
+        "Construction zones",
+        "Pedestrian, school, or bicycle activity",
+        "Hospital and emergency services",
+        "Detours"
+      ],
+      "correct_index": 1,
+      "explanation": "Fluorescent yellow-green is reserved for warnings about pedestrians, schools, and bicyclists - high-vulnerability road users.",
+      "sign_image": null,
+      "tags": [
+        "sign-color",
+        "school",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0139",
+      "canonical_fact_id": "sign-color-orange-construction",
+      "topic": "signs",
+      "subtopic": "shape-color-identity",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 59,
+      "source_doc": "handbook-3.2026",
+      "question": "What color marks construction and work zone signs?",
+      "choices": [
+        "Yellow",
+        "Orange",
+        "Red",
+        "Green"
+      ],
+      "correct_index": 1,
+      "explanation": "Orange signs (with black letters/symbols) mean construction or work zones - workers, equipment, lane changes, or detours.",
+      "sign_image": null,
+      "tags": [
+        "sign-color",
+        "orange",
+        "construction",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0140",
+      "canonical_fact_id": "sign-color-blue-service",
+      "topic": "signs",
+      "subtopic": "shape-color-identity",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "Blue signs along the highway indicate what?",
+      "choices": [
+        "Warnings of road hazards",
+        "Motorist services like hospitals, rest areas, phones",
+        "Construction zones",
+        "Speed limits"
+      ],
+      "correct_index": 1,
+      "explanation": "Blue signs point to motorist services - hospitals (H), rest areas, gas, food, lodging, telephones.",
+      "sign_image": null,
+      "tags": [
+        "sign-color",
+        "blue",
+        "service",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0141",
+      "canonical_fact_id": "sign-color-green-guide-permitted",
+      "topic": "signs",
+      "subtopic": "shape-color-identity",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "Green signs on the road typically provide what kind of information?",
+      "choices": [
+        "Warnings of danger",
+        "Guide/directional info or permitted movements",
+        "Prohibitions",
+        "Construction warnings"
+      ],
+      "correct_index": 1,
+      "explanation": "Green signs give GUIDE information - directions to cities, exit numbers, mileage - or indicate permitted movements.",
+      "sign_image": null,
+      "tags": [
+        "sign-color",
+        "green",
+        "guide",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0142",
+      "canonical_fact_id": "sign-shape-pennant-no-passing",
+      "topic": "signs",
+      "subtopic": "shape-color-identity",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow pennant-shaped sign (horizontal triangle) on the LEFT side of the road means what?",
+      "choices": [
+        "Yield ahead",
+        "No passing zone",
+        "Sharp curve ahead",
+        "School zone ahead"
+      ],
+      "correct_index": 1,
+      "explanation": "The yellow pennant is the NO PASSING ZONE sign. It's always on the LEFT side of the road and marks where a no-passing zone begins.",
+      "sign_image": null,
+      "tags": [
+        "sign-shape",
+        "no-passing",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0143",
+      "canonical_fact_id": "sign-shape-crossbuck-rr",
+      "topic": "signs",
+      "subtopic": "shape-color-identity",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 57,
+      "source_doc": "handbook-3.2026",
+      "question": "A white X-shaped sign with the words RAILROAD CROSSING means what?",
+      "choices": [
+        "A railroad station is nearby",
+        "You are at a railroad crossing - stop if a train is coming",
+        "Trains use the highway",
+        "The road ends ahead"
+      ],
+      "correct_index": 1,
+      "explanation": "A white X-shaped 'Crossbuck' marks a railroad crossing. If a train or railroad vehicle is coming, you must stop behind the stop line or before the intersection.",
+      "sign_image": null,
+      "tags": [
+        "sign-shape",
+        "railroad",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0144",
+      "canonical_fact_id": "sign-shape-rectangle-vert-regulatory",
+      "topic": "signs",
+      "subtopic": "shape-color-identity",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "A vertical white rectangle with black text (like a speed-limit sign) is what kind of sign?",
+      "choices": [
+        "Warning sign",
+        "Regulatory sign",
+        "Guide sign",
+        "Service sign"
+      ],
+      "correct_index": 1,
+      "explanation": "Vertical white rectangles with black text are REGULATORY signs - they tell you the law (speed, parking, lane use, turning).",
+      "sign_image": null,
+      "tags": [
+        "sign-shape",
+        "regulatory",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0145",
+      "canonical_fact_id": "sign-color-brown-rec",
+      "topic": "signs",
+      "subtopic": "shape-color-identity",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "Brown signs on a highway typically mark what?",
+      "choices": [
+        "Construction zones",
+        "Recreation areas, parks, or cultural sites",
+        "Detours",
+        "Hospital zones"
+      ],
+      "correct_index": 1,
+      "explanation": "Brown signs mark recreation, parks, historic sites, and cultural attractions.",
+      "sign_image": null,
+      "tags": [
+        "sign-color",
+        "brown",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0146",
+      "canonical_fact_id": "sign-shape-octagon-stop",
+      "topic": "signs",
+      "subtopic": "shape-color-identity",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "You see an 8-sided red sign partly covered by snow. Even before you can read the word, you know it means what?",
+      "choices": [
+        "Yield",
+        "Stop",
+        "Warning",
+        "Speed limit"
+      ],
+      "correct_index": 1,
+      "explanation": "The octagonal shape is reserved exclusively for stop signs. You can identify a STOP sign by shape alone, even if the lettering is obscured.",
+      "sign_image": null,
+      "tags": [
+        "sign-shape",
+        "stop",
+        "application"
+      ]
+    },
+    {
+      "id": "q-0147",
+      "canonical_fact_id": "sign-shape-triangle-yield",
+      "topic": "signs",
+      "subtopic": "shape-color-identity",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "An upside-down triangular sign (point facing the ground) means what?",
+      "choices": [
+        "Stop",
+        "Yield",
+        "Warning",
+        "School zone"
+      ],
+      "correct_index": 1,
+      "explanation": "A downward-pointing triangle is unique to YIELD signs.",
+      "sign_image": null,
+      "tags": [
+        "sign-shape",
+        "yield"
+      ]
+    },
+    {
+      "id": "q-0148",
+      "canonical_fact_id": "sign-color-yellow-warning",
+      "topic": "signs",
+      "subtopic": "shape-color-identity",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "You're approaching a yellow diamond-shaped sign. What should you do?",
+      "choices": [
+        "Stop completely",
+        "Slow down and prepare for possible danger ahead",
+        "Speed up to clear the area",
+        "Ignore it if no hazard is visible"
+      ],
+      "correct_index": 1,
+      "explanation": "Yellow diamonds warn of possible danger ahead. Slow down and be prepared for what the sign is warning about.",
+      "sign_image": null,
+      "tags": [
+        "sign-shape",
+        "warning",
+        "application"
+      ]
+    },
+    {
+      "id": "q-0149",
+      "canonical_fact_id": "sign-stop-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "What does this sign mean?",
+      "choices": [
+        "Yield",
+        "Stop completely and yield to traffic and pedestrians",
+        "Slow down only",
+        "No entry"
+      ],
+      "correct_index": 1,
+      "explanation": "STOP. Come to a complete stop, then yield to traffic and pedestrians before proceeding.",
+      "sign_image": "mutcd-R1-1-stop.png",
+      "tags": [
+        "sign-image",
+        "stop"
+      ]
+    },
+    {
+      "id": "q-0150",
+      "canonical_fact_id": "sign-yield-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does this sign mean?",
+      "choices": [
+        "Stop completely",
+        "Slow or stop if needed and yield to other traffic and pedestrians",
+        "Merge ahead",
+        "Wrong way"
+      ],
+      "correct_index": 1,
+      "explanation": "YIELD. Slow down (or stop if needed) and let other traffic and pedestrians go first.",
+      "sign_image": "mutcd-R1-2-yield.png",
+      "tags": [
+        "sign-image",
+        "yield"
+      ]
+    },
+    {
+      "id": "q-0151",
+      "canonical_fact_id": "sign-speed-limit-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a SPEED LIMIT sign tell you?",
+      "choices": [
+        "The minimum legal speed",
+        "The maximum legal speed for that road",
+        "The recommended speed",
+        "The advisory speed for a curve"
+      ],
+      "correct_index": 1,
+      "explanation": "A black-on-white SPEED LIMIT sign is the MAXIMUM legal speed (in good conditions). Advisory speed plaques on yellow are different.",
+      "sign_image": "mutcd-R2-1-speed-limit.png",
+      "tags": [
+        "sign-image",
+        "speed"
+      ]
+    },
+    {
+      "id": "q-0152",
+      "canonical_fact_id": "sign-no-u-turn-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a sign showing a red circle and slash over a U-shaped arrow mean?",
+      "choices": [
+        "No left turn",
+        "No U-turn",
+        "No right turn",
+        "Roundabout ahead"
+      ],
+      "correct_index": 1,
+      "explanation": "Red circle and slash over a U-shaped arrow = NO U-TURN at this location.",
+      "sign_image": "mutcd-R3-4-no-u-turn.png",
+      "tags": [
+        "sign-image",
+        "no-u-turn"
+      ]
+    },
+    {
+      "id": "q-0153",
+      "canonical_fact_id": "sign-no-left-turn-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a sign showing a red circle and slash over a left-turn arrow mean?",
+      "choices": [
+        "No U-turn",
+        "No left turn",
+        "Left turn only",
+        "Two-way left turn"
+      ],
+      "correct_index": 1,
+      "explanation": "Red circle with a slash over a left-turn arrow = NO LEFT TURN here.",
+      "sign_image": "mutcd-R3-2-no-left-turn.png",
+      "tags": [
+        "sign-image",
+        "no-left"
+      ]
+    },
+    {
+      "id": "q-0154",
+      "canonical_fact_id": "sign-no-right-turn-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a sign showing a red circle and slash over a right-turn arrow mean?",
+      "choices": [
+        "No right turn",
+        "Right turn only",
+        "No U-turn",
+        "Right lane closed"
+      ],
+      "correct_index": 0,
+      "explanation": "Red circle with a slash over a right-turn arrow = NO RIGHT TURN here.",
+      "sign_image": "mutcd-R3-1-no-right-turn.png",
+      "tags": [
+        "sign-image",
+        "no-right"
+      ]
+    },
+    {
+      "id": "q-0155",
+      "canonical_fact_id": "sign-do-not-enter-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a red square with a white horizontal bar and the words DO NOT ENTER mean?",
+      "choices": [
+        "Road closed for construction",
+        "Do not enter - the road is one-way the wrong direction or otherwise closed to you",
+        "Yield to oncoming traffic",
+        "Detour ahead"
+      ],
+      "correct_index": 1,
+      "explanation": "DO NOT ENTER. The road ahead is one-way against you (an exit ramp or wrong-way entry). Don't drive onto it.",
+      "sign_image": "mutcd-R5-1-do-not-enter.png",
+      "tags": [
+        "sign-image",
+        "do-not-enter"
+      ]
+    },
+    {
+      "id": "q-0156",
+      "canonical_fact_id": "sign-wrong-way-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "You're driving and suddenly see a red rectangular sign that says WRONG WAY. What should you do?",
+      "choices": [
+        "Speed up to get out of the situation",
+        "Immediately stop and turn around safely - you are driving against traffic",
+        "Continue but signal",
+        "Ignore it if no oncoming traffic is visible"
+      ],
+      "correct_index": 1,
+      "explanation": "WRONG WAY means you're driving against traffic on a one-way road. Stop safely and turn around immediately.",
+      "sign_image": "mutcd-R5-1a-wrong-way.png",
+      "tags": [
+        "sign-image",
+        "wrong-way"
+      ]
+    },
+    {
+      "id": "q-0157",
+      "canonical_fact_id": "sign-one-way-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "A black horizontal rectangle with a white arrow and the words ONE WAY tells you what?",
+      "choices": [
+        "The road allows two-way traffic",
+        "Traffic moves only in the direction of the arrow",
+        "Yield to oncoming traffic",
+        "The lane is for left turns only"
+      ],
+      "correct_index": 1,
+      "explanation": "ONE WAY: traffic flows ONLY in the direction the arrow points. Never drive the opposite way.",
+      "sign_image": "mutcd-R6-1R-one-way-right.png",
+      "tags": [
+        "sign-image",
+        "one-way"
+      ]
+    },
+    {
+      "id": "q-0158",
+      "canonical_fact_id": "sign-no-turn-on-red-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "A white rectangular sign that says NO TURN ON RED means what?",
+      "choices": [
+        "Right turns are still allowed on red after stopping",
+        "You cannot turn right on a red light at this intersection - even after stopping",
+        "Left turns on red are prohibited",
+        "All turning is banned"
+      ],
+      "correct_index": 1,
+      "explanation": "NO TURN ON RED overrides the usual right-on-red-after-stop rule. You must wait for green.",
+      "sign_image": "mutcd-R10-11-no-turn-on-red.png",
+      "tags": [
+        "sign-image",
+        "no-turn-on-red"
+      ]
+    },
+    {
+      "id": "q-0159",
+      "canonical_fact_id": "sign-curve-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a yellow diamond-shaped sign with a smooth curved arrow mean?",
+      "choices": [
+        "Sharp 90-degree turn ahead",
+        "Curve in the road ahead - slow down",
+        "Detour ahead",
+        "Lane ends ahead"
+      ],
+      "correct_index": 1,
+      "explanation": "A curved arrow on a yellow diamond means a CURVE is ahead. Reduce speed before entering the curve.",
+      "sign_image": "mutcd-W1-2R-curve-right.png",
+      "tags": [
+        "sign-image",
+        "curve"
+      ]
+    },
+    {
+      "id": "q-0160",
+      "canonical_fact_id": "sign-turn-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a yellow diamond with a sharp right-angle arrow mean?",
+      "choices": [
+        "Gentle curve ahead",
+        "Sharp turn ahead - reduce speed significantly",
+        "T-intersection ahead",
+        "Detour"
+      ],
+      "correct_index": 1,
+      "explanation": "A sharp right-angle arrow means a SHARP TURN (not a gentle curve). Slow down more than for a curve sign.",
+      "sign_image": "mutcd-W1-1R-turn-right.png",
+      "tags": [
+        "sign-image",
+        "turn"
+      ]
+    },
+    {
+      "id": "q-0161",
+      "canonical_fact_id": "sign-merge-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a yellow diamond showing two arrows converging mean?",
+      "choices": [
+        "Lane ends - merge",
+        "Merging traffic - another lane is joining your road",
+        "Two-way traffic",
+        "Divided highway begins"
+      ],
+      "correct_index": 1,
+      "explanation": "Two arrows merging means MERGING TRAFFIC. Be prepared for vehicles entering from the side.",
+      "sign_image": "mutcd-W4-1R-merge-right.png",
+      "tags": [
+        "sign-image",
+        "merge"
+      ]
+    },
+    {
+      "id": "q-0162",
+      "canonical_fact_id": "sign-lane-ends-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a yellow diamond showing one of two lanes ending mean?",
+      "choices": [
+        "Lane ends - merge into the other lane",
+        "New lane is added",
+        "Merging traffic from a side road",
+        "Y-intersection ahead"
+      ],
+      "correct_index": 0,
+      "explanation": "LANE ENDS means your lane is going away. Merge into the remaining lane safely.",
+      "sign_image": "mutcd-W4-2R-lane-ends-right.png",
+      "tags": [
+        "sign-image",
+        "lane-ends"
+      ]
+    },
+    {
+      "id": "q-0163",
+      "canonical_fact_id": "sign-divided-highway-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a yellow diamond showing a road splitting into two divided lanes mean?",
+      "choices": [
+        "Lane ends",
+        "Divided highway begins - opposing lanes are separated by a median",
+        "Two-way traffic",
+        "Y-intersection"
+      ],
+      "correct_index": 1,
+      "explanation": "DIVIDED HIGHWAY BEGINS: the road ahead has a median separating directions of travel. Stay right.",
+      "sign_image": "mutcd-W6-1-divided-highway-begins.png",
+      "tags": [
+        "sign-image",
+        "divided-highway"
+      ]
+    },
+    {
+      "id": "q-0164",
+      "canonical_fact_id": "sign-stop-ahead-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a yellow diamond with the symbol of a STOP sign on it mean?",
+      "choices": [
+        "A stop sign is ahead - be prepared to stop",
+        "You must stop here",
+        "Yield ahead",
+        "Signal ahead"
+      ],
+      "correct_index": 0,
+      "explanation": "STOP AHEAD warns that a stop sign is coming. Begin slowing so you can stop at the actual stop sign.",
+      "sign_image": "mutcd-W3-1-stop-ahead.png",
+      "tags": [
+        "sign-image",
+        "stop-ahead"
+      ]
+    },
+    {
+      "id": "q-0165",
+      "canonical_fact_id": "sign-signal-ahead-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond showing a traffic signal symbol means what?",
+      "choices": [
+        "You must stop here",
+        "A traffic signal is ahead - be prepared for it",
+        "Construction zone",
+        "Detour"
+      ],
+      "correct_index": 1,
+      "explanation": "SIGNAL AHEAD: a traffic light is coming. Be ready to stop if the light changes.",
+      "sign_image": "mutcd-W3-3-signal-ahead.png",
+      "tags": [
+        "sign-image",
+        "signal-ahead"
+      ]
+    },
+    {
+      "id": "q-0166",
+      "canonical_fact_id": "sign-ped-crossing-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a yellow diamond showing a person walking mean?",
+      "choices": [
+        "School zone",
+        "Pedestrian crossing - watch for people crossing the road",
+        "Hospital zone",
+        "Workers ahead"
+      ],
+      "correct_index": 1,
+      "explanation": "Walking-person silhouette on a yellow diamond = PEDESTRIAN CROSSING. Slow and watch for people.",
+      "sign_image": "mutcd-W11-2-pedestrian-crossing.png",
+      "tags": [
+        "sign-image",
+        "ped-crossing"
+      ]
+    },
+    {
+      "id": "q-0167",
+      "canonical_fact_id": "sign-bike-crossing-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a yellow diamond with a bicycle symbol mean?",
+      "choices": [
+        "Bike lane ends",
+        "Bicycle crossing - watch for bicyclists crossing the road",
+        "No bicycles allowed",
+        "Share the road"
+      ],
+      "correct_index": 1,
+      "explanation": "Bicycle symbol on a yellow diamond = BICYCLE CROSSING. Slow and watch for riders.",
+      "sign_image": "mutcd-W11-1-bicycle-crossing.png",
+      "tags": [
+        "sign-image",
+        "bike-crossing"
+      ]
+    },
+    {
+      "id": "q-0168",
+      "canonical_fact_id": "sign-deer-crossing-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a yellow diamond with a leaping deer mean?",
+      "choices": [
+        "A wildlife refuge entrance",
+        "Deer crossing area - watch for animals on or near the road",
+        "Hunting prohibited",
+        "Wildlife viewing area"
+      ],
+      "correct_index": 1,
+      "explanation": "Leaping deer on yellow = DEER CROSSING. Animals may cross unexpectedly, especially at dawn and dusk.",
+      "sign_image": "mutcd-W11-3-deer-crossing.png",
+      "tags": [
+        "sign-image",
+        "deer-crossing"
+      ]
+    },
+    {
+      "id": "q-0169",
+      "canonical_fact_id": "sign-slippery-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a yellow diamond showing a car with wavy skid lines behind it mean?",
+      "choices": [
+        "Sharp curve",
+        "Slippery when wet - the road may be slick in rain or ice",
+        "Car wash ahead",
+        "Detour"
+      ],
+      "correct_index": 1,
+      "explanation": "SLIPPERY WHEN WET. Reduce speed and avoid sudden braking or steering when the road is wet.",
+      "sign_image": "mutcd-W8-5-slippery-when-wet.png",
+      "tags": [
+        "sign-image",
+        "slippery"
+      ]
+    },
+    {
+      "id": "q-0170",
+      "canonical_fact_id": "sign-hill-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 45,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a yellow diamond showing a truck on a downward slope mean?",
+      "choices": [
+        "Truck route",
+        "Steep hill ahead - downgrade",
+        "Truck parking",
+        "Truck inspection ahead"
+      ],
+      "correct_index": 1,
+      "explanation": "Truck-on-slope symbol = STEEP HILL or downgrade. Shift down and watch your speed.",
+      "sign_image": "mutcd-W7-1-hill.png",
+      "tags": [
+        "sign-image",
+        "hill"
+      ]
+    },
+    {
+      "id": "q-0171",
+      "canonical_fact_id": "sign-advisory-speed-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A small yellow square sign with mph numerals attached below a curve warning sign tells you what?",
+      "choices": [
+        "The legal speed limit through the curve",
+        "The advisory (recommended) speed for that curve - safe speed under good conditions",
+        "The minimum speed",
+        "The truck-only speed"
+      ],
+      "correct_index": 1,
+      "explanation": "Yellow advisory-speed plaques aren't legally enforceable speed limits, but they tell you the safe speed for the upcoming curve or condition.",
+      "sign_image": "mutcd-W13-1P-advisory-speed.png",
+      "tags": [
+        "sign-image",
+        "advisory-speed"
+      ]
+    },
+    {
+      "id": "q-0172",
+      "canonical_fact_id": "sign-rr-crossing-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 57,
+      "source_doc": "handbook-3.2026",
+      "question": "A round YELLOW sign with a black X and the letters RR means what?",
+      "choices": [
+        "Hospital nearby",
+        "Railroad crossing ahead - slow down, look, and listen for a train",
+        "Construction zone",
+        "Rural road ends"
+      ],
+      "correct_index": 1,
+      "explanation": "Round yellow RR sign = RAILROAD CROSSING AHEAD (advance warning). Slow down, look, listen, be prepared to stop.",
+      "sign_image": "mutcd-W10-1-railroad-crossing-ahead.png",
+      "tags": [
+        "sign-image",
+        "rr-ahead"
+      ]
+    },
+    {
+      "id": "q-0173",
+      "canonical_fact_id": "sign-school-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A fluorescent yellow-green pentagon showing two walking children means what?",
+      "choices": [
+        "Pedestrian crossing",
+        "School zone or school crossing",
+        "Daycare ahead",
+        "Park entrance"
+      ],
+      "correct_index": 1,
+      "explanation": "Two-child silhouette on the pentagon school sign = SCHOOL CROSSING. Watch for children and reduce speed.",
+      "sign_image": "mutcd-S1-1-school.png",
+      "tags": [
+        "sign-image",
+        "school"
+      ]
+    },
+    {
+      "id": "q-0174",
+      "canonical_fact_id": "sign-work-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 59,
+      "source_doc": "handbook-3.2026",
+      "question": "What does an ORANGE diamond with the words ROAD WORK AHEAD mean?",
+      "choices": [
+        "Construction is finished",
+        "Construction or maintenance work zone - slow down and watch for workers",
+        "Detour required",
+        "Bridge work only"
+      ],
+      "correct_index": 1,
+      "explanation": "ROAD WORK AHEAD warns of an active work zone. Slow down, don't tailgate, watch for workers - and fines are doubled.",
+      "sign_image": "mutcd-CW20-1-road-work-ahead.png",
+      "tags": [
+        "sign-image",
+        "work-zone"
+      ]
+    },
+    {
+      "id": "q-0175",
+      "canonical_fact_id": "sign-flagger-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 59,
+      "source_doc": "handbook-3.2026",
+      "question": "What does an orange diamond showing a person holding a flag mean?",
+      "choices": [
+        "Construction completed ahead",
+        "A flagger is directing traffic ahead - obey their signals",
+        "Pedestrian crossing",
+        "Photo enforcement zone"
+      ],
+      "correct_index": 1,
+      "explanation": "FLAGGER AHEAD. Obey the flagger's directions - they OVERRIDE signs and signals in the work zone.",
+      "sign_image": "mutcd-CW20-7-flagger.png",
+      "tags": [
+        "sign-image",
+        "flagger"
+      ]
+    },
+    {
+      "id": "q-0176",
+      "canonical_fact_id": "sign-hospital-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "A blue square with a large white capital H on it means what?",
+      "choices": [
+        "Highway exit",
+        "Hospital is nearby",
+        "Hotel",
+        "Helipad only"
+      ],
+      "correct_index": 1,
+      "explanation": "Blue H = HOSPITAL nearby. Follow the direction indicated to reach the hospital.",
+      "sign_image": "mutcd-D9-1-hospital.png",
+      "tags": [
+        "sign-image",
+        "hospital"
+      ]
+    },
+    {
+      "id": "q-0177",
+      "canonical_fact_id": "sign-rest-area-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "A blue square with a picnic-table symbol on it indicates what?",
+      "choices": [
+        "Park entrance",
+        "Rest area",
+        "Campground",
+        "Restaurant"
+      ],
+      "correct_index": 1,
+      "explanation": "Picnic table on blue = REST AREA. Public roadside facility with restrooms, parking, and usually picnic spots.",
+      "sign_image": "mutcd-D9-8-rest-area.png",
+      "tags": [
+        "sign-image",
+        "rest-area"
+      ]
+    },
+    {
+      "id": "q-0178",
+      "canonical_fact_id": "sign-interstate-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "A red, white, and blue shield-shaped sign with a number indicates what?",
+      "choices": [
+        "State route number",
+        "U.S. route number",
+        "Interstate highway route number",
+        "County road"
+      ],
+      "correct_index": 2,
+      "explanation": "The red-white-blue shield is the INTERSTATE highway marker. The number tells you which interstate (I-15, I-80, I-70 in Utah).",
+      "sign_image": "mutcd-M1-1-interstate-shield.png",
+      "tags": [
+        "sign-image",
+        "interstate"
+      ]
+    },
+    {
+      "id": "q-0179",
+      "canonical_fact_id": "sign-us-route-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "A white heraldic-shield-shaped sign with a black number indicates what?",
+      "choices": [
+        "Interstate highway",
+        "U.S. route",
+        "State route",
+        "County road"
+      ],
+      "correct_index": 1,
+      "explanation": "The plain white shield is the U.S. ROUTE marker (US-89, US-6, etc.) - a federally-numbered highway that isn't an interstate.",
+      "sign_image": "mutcd-M1-4-us-route.png",
+      "tags": [
+        "sign-image",
+        "us-route"
+      ]
+    },
+    {
+      "id": "q-0180",
+      "canonical_fact_id": "sign-no-passing-zone-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a yellow horizontal pennant (sideways triangle) on the LEFT side of the road mean?",
+      "choices": [
+        "Sharp curve to the left",
+        "No passing zone begins here",
+        "Stop ahead",
+        "Yield ahead"
+      ],
+      "correct_index": 1,
+      "explanation": "The yellow pennant on the LEFT shoulder marks the start of a NO PASSING ZONE. It is the only sign normally posted on the left side of a two-way road.",
+      "sign_image": "mutcd-W14-3-no-passing-zone.png",
+      "tags": [
+        "sign-image",
+        "no-passing-pennant"
+      ]
+    },
+    {
+      "id": "q-0181",
+      "canonical_fact_id": "sign-keep-right-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a black rectangular sign with a down-right arrow and the words KEEP RIGHT mean?",
+      "choices": [
+        "Right turn only",
+        "Stay to the right of the median or obstruction ahead",
+        "Right lane ends",
+        "No left turn"
+      ],
+      "correct_index": 1,
+      "explanation": "KEEP RIGHT tells you to pass an obstruction or median on the right side.",
+      "sign_image": "mutcd-R4-7-keep-right.png",
+      "tags": [
+        "sign-image",
+        "keep-right"
+      ]
+    },
+    {
+      "id": "q-0182",
+      "canonical_fact_id": "sign-no-parking-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 33,
+      "source_doc": "handbook-3.2026",
+      "question": "A white rectangle with a red circle and slash over the letter P, and the words NO PARKING ANY TIME, means what?",
+      "choices": [
+        "Parking is allowed off-peak",
+        "No parking is allowed at any time at this location",
+        "Two-hour parking only",
+        "Permit parking only"
+      ],
+      "correct_index": 1,
+      "explanation": "NO PARKING ANY TIME - the red slash over P means no parking, ever.",
+      "sign_image": "mutcd-R7-1-no-parking-any-time.png",
+      "tags": [
+        "sign-image",
+        "no-parking"
+      ]
+    },
+    {
+      "id": "q-0183",
+      "canonical_fact_id": "sign-detour-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 59,
+      "source_doc": "handbook-3.2026",
+      "question": "An orange diamond sign that says DETOUR means what?",
+      "choices": [
+        "The road ahead is open but slow",
+        "Follow an alternate route around a closed road or work zone",
+        "Road work was completed",
+        "Truck route"
+      ],
+      "correct_index": 1,
+      "explanation": "DETOUR sends you on an alternate route because the regular road is closed.",
+      "sign_image": "mutcd-CW20-2-detour.png",
+      "tags": [
+        "sign-image",
+        "detour"
+      ]
+    },
+    {
+      "id": "q-0184",
+      "canonical_fact_id": "sign-stop-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "An 8-sided red sign with white letters means what?",
+      "choices": [
+        "Yield - slow and let others go",
+        "STOP - come to a complete stop and yield",
+        "Slow children at play",
+        "Wrong way"
+      ],
+      "correct_index": 1,
+      "explanation": "Octagonal red with white letters is the STOP sign. Come to a complete stop, then yield to traffic and pedestrians.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "stop"
+      ]
+    },
+    {
+      "id": "q-0185",
+      "canonical_fact_id": "sign-yield-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A downward-pointing triangular sign with a red border and white interior means what?",
+      "choices": [
+        "You have the right of way",
+        "Slow down or stop if needed and yield to other traffic",
+        "No entry",
+        "Sharp curve ahead"
+      ],
+      "correct_index": 1,
+      "explanation": "Triangle with red border = YIELD. Slow down and let traffic with the right-of-way go first.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "yield"
+      ]
+    },
+    {
+      "id": "q-0186",
+      "canonical_fact_id": "sign-speed-limit-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "A white vertical rectangle with the words SPEED LIMIT 35 means what?",
+      "choices": [
+        "The minimum speed you must drive",
+        "The maximum legal speed for that road in normal conditions",
+        "The recommended speed",
+        "The truck-only speed"
+      ],
+      "correct_index": 1,
+      "explanation": "Black-on-white SPEED LIMIT signs are the MAXIMUM legal speed under good conditions. In bad weather, the basic-speed law still applies.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "speed-limit"
+      ]
+    },
+    {
+      "id": "q-0187",
+      "canonical_fact_id": "sign-no-u-turn-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "A white square showing a red circle and slash over a U-shaped arrow means what?",
+      "choices": [
+        "No left turn",
+        "No U-turn at this location",
+        "No right turn",
+        "Two-way left-turn lane"
+      ],
+      "correct_index": 1,
+      "explanation": "U-shaped arrow with red slash = NO U-TURN at this intersection or location.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "no-u-turn"
+      ]
+    },
+    {
+      "id": "q-0188",
+      "canonical_fact_id": "sign-do-not-enter-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "You see a red square sign with a white horizontal bar. What is its message?",
+      "choices": [
+        "No parking",
+        "Do not enter - the road is one-way the wrong direction",
+        "Wrong way",
+        "Yield"
+      ],
+      "correct_index": 1,
+      "explanation": "DO NOT ENTER (red with white bar). This is the front side of a one-way road, or an exit ramp - don't drive onto it.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "do-not-enter"
+      ]
+    },
+    {
+      "id": "q-0189",
+      "canonical_fact_id": "sign-wrong-way-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "A red rectangular sign reading WRONG WAY means what?",
+      "choices": [
+        "A detour is in effect",
+        "You are headed against traffic flow - stop and turn around immediately",
+        "The road dead-ends ahead",
+        "One-way street ahead"
+      ],
+      "correct_index": 1,
+      "explanation": "WRONG WAY: you've entered a one-way road going the wrong direction. Stop safely and turn around.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "wrong-way"
+      ]
+    },
+    {
+      "id": "q-0190",
+      "canonical_fact_id": "sign-one-way-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "A black horizontal rectangle with white letters reading ONE WAY and an arrow means what?",
+      "choices": [
+        "Two-way traffic ahead",
+        "Traffic moves only in the direction of the arrow",
+        "Right turn only",
+        "Detour direction"
+      ],
+      "correct_index": 1,
+      "explanation": "ONE WAY: drive only in the direction the arrow points.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "one-way"
+      ]
+    },
+    {
+      "id": "q-0191",
+      "canonical_fact_id": "sign-no-turn-on-red-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a sign reading NO TURN ON RED mean at an intersection?",
+      "choices": [
+        "Right turn on red is still allowed after stop",
+        "Right turn on red is prohibited at this intersection",
+        "All turning is banned even when green",
+        "Only emergency vehicles may turn on red"
+      ],
+      "correct_index": 1,
+      "explanation": "NO TURN ON RED: even after coming to a complete stop, you cannot turn on red. Wait for green.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "no-turn-on-red"
+      ]
+    },
+    {
+      "id": "q-0192",
+      "canonical_fact_id": "sign-rr-crossing-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 57,
+      "source_doc": "handbook-3.2026",
+      "question": "A round yellow sign with a black X and the letters RR means what?",
+      "choices": [
+        "Railroad station entrance",
+        "Railroad crossing ahead - slow down, look, and listen",
+        "End of railroad easement",
+        "Rural route number"
+      ],
+      "correct_index": 1,
+      "explanation": "Round yellow RR = ADVANCE WARNING that a railroad crossing is ahead. Slow, look, listen, be ready to stop.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "rr-advance"
+      ]
+    },
+    {
+      "id": "q-0193",
+      "canonical_fact_id": "sign-shape-crossbuck-rr",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 57,
+      "source_doc": "handbook-3.2026",
+      "question": "A white X-shaped sign with the words RAILROAD CROSSING at the actual track location means what?",
+      "choices": [
+        "Train crossing ahead in 500 ft",
+        "You are at the tracks - yield to any train and do not stop on the tracks",
+        "Trains have a separate crossing nearby",
+        "Speed up to clear the crossing"
+      ],
+      "correct_index": 1,
+      "explanation": "The white X CROSSBUCK is at the crossing itself. Yield to any train (they always have right-of-way), and never stop your vehicle on the tracks.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "crossbuck"
+      ]
+    },
+    {
+      "id": "q-0194",
+      "canonical_fact_id": "sign-school-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A fluorescent yellow-green pentagon (5-sided sign) with two child silhouettes means what?",
+      "choices": [
+        "Daycare entrance",
+        "School crossing or school zone",
+        "Park entrance",
+        "Bicycle crossing"
+      ],
+      "correct_index": 1,
+      "explanation": "Yellow-green pentagon with children = SCHOOL CROSSING. Slow down and watch for kids.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "school"
+      ]
+    },
+    {
+      "id": "q-0195",
+      "canonical_fact_id": "sign-flagger-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 59,
+      "source_doc": "handbook-3.2026",
+      "question": "An orange diamond with a worker silhouette holding a flag means what?",
+      "choices": [
+        "End of work zone",
+        "A flagger is controlling traffic ahead - obey them",
+        "A flag-raising ceremony",
+        "Memorial route"
+      ],
+      "correct_index": 1,
+      "explanation": "FLAGGER AHEAD. You must obey the flagger - their directions OVERRIDE signs and signals.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "flagger"
+      ]
+    },
+    {
+      "id": "q-0196",
+      "canonical_fact_id": "sign-work-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 59,
+      "source_doc": "handbook-3.2026",
+      "question": "An orange diamond reading ROAD WORK AHEAD tells you what?",
+      "choices": [
+        "Construction is finished",
+        "An active work zone is coming - slow down, watch for workers",
+        "A detour is in effect",
+        "Speed limit is increased"
+      ],
+      "correct_index": 1,
+      "explanation": "ROAD WORK AHEAD = active work zone. Slow down, don't tailgate, watch for workers - and remember fines are doubled.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "road-work"
+      ]
+    },
+    {
+      "id": "q-0197",
+      "canonical_fact_id": "sign-curve-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond with a smooth curved arrow means what?",
+      "choices": [
+        "90-degree turn ahead",
+        "A curve in the road ahead - reduce speed",
+        "Detour",
+        "Roundabout ahead"
+      ],
+      "correct_index": 1,
+      "explanation": "Curved arrow on yellow = CURVE AHEAD. Slow down before entering it.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "curve"
+      ]
+    },
+    {
+      "id": "q-0198",
+      "canonical_fact_id": "sign-ped-crossing-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond with a walking-person symbol means what?",
+      "choices": [
+        "Hiking trail nearby",
+        "Pedestrian crossing - watch for people crossing the road",
+        "Sidewalk ends",
+        "School zone"
+      ],
+      "correct_index": 1,
+      "explanation": "Walking person on yellow = PEDESTRIAN CROSSING. (School crossing is a yellow-green PENTAGON - same idea but different shape and color.)",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "ped-crossing"
+      ]
+    },
+    {
+      "id": "q-0199",
+      "canonical_fact_id": "sign-no-passing-zone-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow pennant-shaped sign (horizontal triangle pointing right) located on the LEFT shoulder of a two-lane road means what?",
+      "choices": [
+        "Sharp curve to the left",
+        "No passing zone - you cannot pass other vehicles here",
+        "Detour direction",
+        "Bridge ahead"
+      ],
+      "correct_index": 1,
+      "explanation": "The yellow pennant on the LEFT shoulder marks the start of a NO PASSING ZONE. Stay in your lane.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "no-passing"
+      ]
+    },
+    {
+      "id": "q-0200",
+      "canonical_fact_id": "sign-stop-ahead-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond sign showing a small red-and-white octagon symbol means what?",
+      "choices": [
+        "You must stop here",
+        "A stop sign is ahead - prepare to stop",
+        "Yield ahead",
+        "End of stops"
+      ],
+      "correct_index": 1,
+      "explanation": "STOP AHEAD: a stop sign is coming. Start slowing now so you can stop at the actual sign.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "stop-ahead"
+      ]
+    },
+    {
+      "id": "q-0201",
+      "canonical_fact_id": "sign-signal-ahead-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond showing a traffic-light symbol means what?",
+      "choices": [
+        "You must stop",
+        "A traffic signal is ahead - prepare for it",
+        "Construction signal",
+        "End of signal control"
+      ],
+      "correct_index": 1,
+      "explanation": "SIGNAL AHEAD: a traffic light is coming. Be ready to stop if the light is red or changes.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "signal-ahead"
+      ]
+    },
+    {
+      "id": "q-0202",
+      "canonical_fact_id": "sign-slippery-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond showing a car with wavy skid lines means what?",
+      "choices": [
+        "Car wash entrance",
+        "Slippery when wet - the road may be slick",
+        "Detour",
+        "Hairpin curve"
+      ],
+      "correct_index": 1,
+      "explanation": "SLIPPERY WHEN WET. Reduce speed, avoid hard braking, and steer gently when the surface is wet.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "slippery"
+      ]
+    },
+    {
+      "id": "q-0203",
+      "canonical_fact_id": "sign-hill-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 45,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond showing a truck on a steep downward slope means what?",
+      "choices": [
+        "Truck route",
+        "A steep downhill grade is ahead - control your speed",
+        "Truck inspection ahead",
+        "Runaway truck ramp ahead"
+      ],
+      "correct_index": 1,
+      "explanation": "Truck on a slope = STEEP HILL / DOWNGRADE. Downshift, brake before you need to, and watch your speed.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "hill"
+      ]
+    },
+    {
+      "id": "q-0204",
+      "canonical_fact_id": "sign-hospital-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "A blue square with a white H means what?",
+      "choices": [
+        "Highway entrance",
+        "Hospital is nearby",
+        "Hotel",
+        "Heavy truck route"
+      ],
+      "correct_index": 1,
+      "explanation": "Blue H = HOSPITAL nearby.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "hospital"
+      ]
+    },
+    {
+      "id": "q-0205",
+      "canonical_fact_id": "sign-rest-area-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "A blue square showing a picnic-table symbol means what?",
+      "choices": [
+        "State park",
+        "Rest area - public restrooms and parking",
+        "Campground",
+        "Restaurant"
+      ],
+      "correct_index": 1,
+      "explanation": "Picnic table on blue = REST AREA.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "rest-area"
+      ]
+    },
+    {
+      "id": "q-0206",
+      "canonical_fact_id": "sign-turn-meaning",
+      "topic": "signs",
+      "subtopic": "warning-variants",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What is the difference between a CURVE sign and a TURN sign?",
+      "choices": [
+        "They mean the same thing",
+        "A TURN sign indicates a sharper change in direction than a CURVE sign",
+        "TURN means right, CURVE means left",
+        "CURVE is for highways only"
+      ],
+      "correct_index": 1,
+      "explanation": "TURN = sharper (closer to 90 degrees), reduce speed more. CURVE = gentler, reduce speed somewhat. Both are yellow diamonds.",
+      "sign_image": null,
+      "tags": [
+        "sign-warning",
+        "turn-vs-curve"
+      ]
+    },
+    {
+      "id": "q-0207",
+      "canonical_fact_id": "sign-curve-meaning",
+      "topic": "signs",
+      "subtopic": "warning-variants",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a yellow diamond showing an S-shaped (winding) arrow with multiple curves mean?",
+      "choices": [
+        "One sharp curve ahead",
+        "Winding road - several curves ahead",
+        "Detour",
+        "Lane shift"
+      ],
+      "correct_index": 1,
+      "explanation": "Winding/S-shape on yellow = WINDING ROAD. Multiple curves are coming - reduce speed and stay alert.",
+      "sign_image": "mutcd-W1-5R-winding-road-right.png",
+      "tags": [
+        "sign-warning",
+        "winding"
+      ]
+    },
+    {
+      "id": "q-0208",
+      "canonical_fact_id": "sign-curve-meaning",
+      "topic": "signs",
+      "subtopic": "warning-variants",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a yellow diamond showing a reverse (double-bend) arrow mean?",
+      "choices": [
+        "The road forks",
+        "Reverse turn - the road bends one way then the opposite",
+        "U-turn permitted",
+        "Roundabout ahead"
+      ],
+      "correct_index": 1,
+      "explanation": "Reverse turn/curve: the road bends in one direction and then the other in quick succession. Reduce speed.",
+      "sign_image": "mutcd-W1-3R-reverse-turn-right.png",
+      "tags": [
+        "sign-warning",
+        "reverse-turn"
+      ]
+    },
+    {
+      "id": "q-0209",
+      "canonical_fact_id": "sign-divided-highway-meaning",
+      "topic": "signs",
+      "subtopic": "warning-variants",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a yellow diamond showing two divided lanes merging back together mean?",
+      "choices": [
+        "Divided highway begins",
+        "Divided highway ends - lanes will combine; two-way traffic resumes",
+        "Lane added",
+        "T-intersection"
+      ],
+      "correct_index": 1,
+      "explanation": "DIVIDED HIGHWAY ENDS: the median is going away and you will soon have oncoming traffic again. Move right.",
+      "sign_image": "mutcd-W6-2-divided-highway-ends.png",
+      "tags": [
+        "sign-warning",
+        "divided-ends"
+      ]
+    },
+    {
+      "id": "q-0210",
+      "canonical_fact_id": "sign-merge-meaning",
+      "topic": "signs",
+      "subtopic": "warning-variants",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a yellow diamond showing a + (plus) symbol indicate?",
+      "choices": [
+        "Hospital",
+        "Crossroad ahead - intersection ahead",
+        "Four-way stop",
+        "Religious site"
+      ],
+      "correct_index": 1,
+      "explanation": "Plus-symbol on yellow = CROSSROAD AHEAD. Be alert for cross traffic at an intersection.",
+      "sign_image": "mutcd-W2-1-crossroad.png",
+      "tags": [
+        "sign-warning",
+        "crossroad"
+      ]
+    },
+    {
+      "id": "q-0211",
+      "canonical_fact_id": "sign-merge-meaning",
+      "topic": "signs",
+      "subtopic": "warning-variants",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond with a T-symbol means what?",
+      "choices": [
+        "Truck route",
+        "T-intersection - the road ends ahead and you must turn left or right",
+        "T-shaped overpass",
+        "Traffic light ahead"
+      ],
+      "correct_index": 1,
+      "explanation": "T-INTERSECTION: the road dead-ends into a cross street. Plan to turn left or right.",
+      "sign_image": "mutcd-W2-3-t-intersection.png",
+      "tags": [
+        "sign-warning",
+        "t-intersection"
+      ]
+    },
+    {
+      "id": "q-0212",
+      "canonical_fact_id": "sign-merge-meaning",
+      "topic": "signs",
+      "subtopic": "warning-variants",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond with a Y-symbol means what?",
+      "choices": [
+        "Yield ahead",
+        "Y-intersection - the road splits ahead into two roads",
+        "Right-of-way changes",
+        "Truck weigh station"
+      ],
+      "correct_index": 1,
+      "explanation": "Y-INTERSECTION: the road forks into two. Pick your direction.",
+      "sign_image": "mutcd-W2-4-y-intersection.png",
+      "tags": [
+        "sign-warning",
+        "y-intersection"
+      ]
+    },
+    {
+      "id": "q-0213",
+      "canonical_fact_id": "sign-merge-meaning",
+      "topic": "signs",
+      "subtopic": "warning-variants",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a yellow diamond with a T-shape where a side road enters from the right mean?",
+      "choices": [
+        "T-intersection - you must turn",
+        "Side road - another road joins from the right",
+        "Detour to the right",
+        "Right turn only"
+      ],
+      "correct_index": 1,
+      "explanation": "SIDE ROAD: a smaller road joins yours from the side. Watch for vehicles entering or exiting.",
+      "sign_image": "mutcd-W2-2R-side-road-right.png",
+      "tags": [
+        "sign-warning",
+        "side-road"
+      ]
+    },
+    {
+      "id": "q-0214",
+      "canonical_fact_id": "sign-lane-ends-meaning",
+      "topic": "signs",
+      "subtopic": "warning-variants",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond showing two parallel arrows with a new lane joining on the right means what?",
+      "choices": [
+        "Lane ends",
+        "Added lane - a new lane joins from the right (no merging required)",
+        "Two-way traffic",
+        "Right turn only"
+      ],
+      "correct_index": 1,
+      "explanation": "ADDED LANE: a new lane joins from the side. You don't need to merge - both lanes continue.",
+      "sign_image": "mutcd-W4-3R-added-lane-right.png",
+      "tags": [
+        "sign-warning",
+        "added-lane"
+      ]
+    },
+    {
+      "id": "q-0215",
+      "canonical_fact_id": "sign-bike-crossing-meaning",
+      "topic": "signs",
+      "subtopic": "warning-variants",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a yellow diamond with TWO opposing arrows (one up, one down) mean?",
+      "choices": [
+        "Lane ends",
+        "Two-way traffic ahead (you've been on a one-way and oncoming traffic begins)",
+        "Hill",
+        "Roundabout"
+      ],
+      "correct_index": 1,
+      "explanation": "TWO-WAY TRAFFIC: a one-way road becomes two-way. Stay right - oncoming vehicles are now possible.",
+      "sign_image": "mutcd-W6-3-two-way-traffic.png",
+      "tags": [
+        "sign-warning",
+        "two-way"
+      ]
+    },
+    {
+      "id": "q-0216",
+      "canonical_fact_id": "sign-merge-meaning",
+      "topic": "signs",
+      "subtopic": "warning-variants",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A yellow diamond showing two opposing arrows (left and right) means what?",
+      "choices": [
+        "Two-way traffic",
+        "Double arrow - you may pass on either side of an obstruction",
+        "Lane ends in both directions",
+        "Median ahead"
+      ],
+      "correct_index": 1,
+      "explanation": "Double arrow = you may pass an obstruction (like a median or island) on EITHER side.",
+      "sign_image": "mutcd-W12-1-double-arrow.png",
+      "tags": [
+        "sign-warning",
+        "double-arrow"
+      ]
+    },
+    {
+      "id": "q-0217",
+      "canonical_fact_id": "sign-curve-meaning",
+      "topic": "signs",
+      "subtopic": "warning-variants",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does a yellow vertical rectangle with a single black chevron pointing in a direction mean?",
+      "choices": [
+        "End of road",
+        "Chevron - sharp change in roadway direction; follow the chevron",
+        "Lane shift",
+        "Detour arrow"
+      ],
+      "correct_index": 1,
+      "explanation": "Chevron signs are placed in series along sharp curves to show drivers where the road is going. Follow them.",
+      "sign_image": "mutcd-W1-8-chevron.png",
+      "tags": [
+        "sign-warning",
+        "chevron"
+      ]
+    },
+    {
+      "id": "q-0218",
+      "canonical_fact_id": "sign-school-meaning",
+      "topic": "signs",
+      "subtopic": "warning-variants",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "Which sign uses the pentagon (5-sided, house) shape with fluorescent yellow-green color?",
+      "choices": [
+        "No passing zone",
+        "School zone / school crossing",
+        "Pedestrian crossing",
+        "Bicycle route"
+      ],
+      "correct_index": 1,
+      "explanation": "The pentagon shape is reserved for SCHOOL zones and school crossings. Diamonds are for pedestrians and bicyclists generally.",
+      "sign_image": null,
+      "tags": [
+        "sign-warning",
+        "school-shape"
+      ]
+    },
+    {
+      "id": "q-0219",
+      "canonical_fact_id": "sign-bike-crossing-meaning",
+      "topic": "signs",
+      "subtopic": "warning-variants",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "A pentagon-shaped sign is fluorescent yellow-green for what type of warning?",
+      "choices": [
+        "Construction",
+        "School-related warnings (children present)",
+        "Animal crossing",
+        "Slow-moving traffic"
+      ],
+      "correct_index": 1,
+      "explanation": "Fluorescent yellow-green + pentagon = SCHOOL CROSSING. The unique color and shape highlight where children may be present.",
+      "sign_image": null,
+      "tags": [
+        "sign-warning",
+        "school-color"
+      ]
+    },
+    {
+      "id": "q-0220",
+      "canonical_fact_id": "sign-curve-meaning",
+      "topic": "signs",
+      "subtopic": "warning-variants",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "You see a yellow diamond with mph numerals like '35' on a smaller yellow square plaque beneath. The smaller plaque means what?",
+      "choices": [
+        "Speed limit through the curve is 35 mph (legal limit)",
+        "Recommended (advisory) safe speed for the curve is 35 mph",
+        "Minimum speed is 35 mph",
+        "Truck-only speed"
+      ],
+      "correct_index": 1,
+      "explanation": "Advisory speed plaques (yellow with mph) are RECOMMENDED safe speed - not the legal limit, but ignore them at your peril.",
+      "sign_image": null,
+      "tags": [
+        "sign-warning",
+        "advisory-vs-limit"
+      ]
+    },
+    {
+      "id": "q-0221",
+      "canonical_fact_id": "sign-no-u-turn-meaning",
+      "topic": "signs",
+      "subtopic": "regulatory-special",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "You want to make a U-turn at an intersection where you see a sign with a red circle and slash over a U-shaped arrow. What can you do?",
+      "choices": [
+        "Make the U-turn anyway if no traffic is coming",
+        "Wait until the light turns green and then U-turn",
+        "Do not make a U-turn here - find another intersection",
+        "Make a left turn instead of a U-turn"
+      ],
+      "correct_index": 2,
+      "explanation": "The NO U-TURN sign means U-turns are prohibited at THIS location. Find another intersection where U-turns are allowed.",
+      "sign_image": null,
+      "tags": [
+        "regulatory",
+        "no-u-turn",
+        "application"
+      ]
+    },
+    {
+      "id": "q-0222",
+      "canonical_fact_id": "sign-one-way-meaning",
+      "topic": "signs",
+      "subtopic": "regulatory-special",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "You see a one-way arrow sign pointing to the RIGHT. What does this mean for you?",
+      "choices": [
+        "You may turn either direction at the intersection",
+        "Traffic on this road only flows to the right; do not drive left",
+        "The road is closed",
+        "Yield to traffic from the right"
+      ],
+      "correct_index": 1,
+      "explanation": "ONE WAY arrow pointing right means traffic only flows right. Driving the opposite direction is a wrong-way driver violation.",
+      "sign_image": null,
+      "tags": [
+        "regulatory",
+        "one-way",
+        "application"
+      ]
+    },
+    {
+      "id": "q-0223",
+      "canonical_fact_id": "sign-do-not-enter-meaning",
+      "topic": "signs",
+      "subtopic": "regulatory-special",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "You're driving and see a DO NOT ENTER sign at the entrance to a road. What does it indicate?",
+      "choices": [
+        "The road is closed for construction",
+        "The road is one-way against you, or you are approaching an exit-only ramp",
+        "Permit required to enter",
+        "Slow down to enter"
+      ],
+      "correct_index": 1,
+      "explanation": "DO NOT ENTER usually means a one-way road or an exit ramp that's not meant for entry from your direction. Find another route.",
+      "sign_image": null,
+      "tags": [
+        "regulatory",
+        "do-not-enter",
+        "application"
+      ]
+    },
+    {
+      "id": "q-0224",
+      "canonical_fact_id": "sign-wrong-way-meaning",
+      "topic": "signs",
+      "subtopic": "regulatory-special",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "You suddenly see a WRONG WAY sign as you start down a road. What is the safest correct action?",
+      "choices": [
+        "Continue cautiously to the next intersection",
+        "Speed up to clear the area quickly",
+        "Pull over safely and turn around as soon as possible - you are driving against traffic",
+        "Sound your horn"
+      ],
+      "correct_index": 2,
+      "explanation": "WRONG WAY: you've entered a one-way road in the wrong direction. Pull over, turn around safely - head-on crashes are deadly.",
+      "sign_image": null,
+      "tags": [
+        "regulatory",
+        "wrong-way",
+        "application",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0225",
+      "canonical_fact_id": "sign-no-turn-on-red-meaning",
+      "topic": "signs",
+      "subtopic": "regulatory-special",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "You're stopped at a red light and want to turn right. You see a NO TURN ON RED sign. What can you do?",
+      "choices": [
+        "Turn right after a complete stop",
+        "Wait for the green light - the sign prohibits right turns on red here",
+        "Turn right only if no pedestrians are present",
+        "Turn right only if the light has been red for 30+ seconds"
+      ],
+      "correct_index": 1,
+      "explanation": "NO TURN ON RED overrides Utah's normal right-on-red-after-stop rule. You must wait for the green.",
+      "sign_image": null,
+      "tags": [
+        "regulatory",
+        "no-turn-on-red",
+        "application"
+      ]
+    },
+    {
+      "id": "q-0226",
+      "canonical_fact_id": "sign-no-parking-meaning",
+      "topic": "signs",
+      "subtopic": "regulatory-special",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 33,
+      "source_doc": "handbook-3.2026",
+      "question": "A NO PARKING ANY TIME sign (red circle and slash over P) is posted. What can you do?",
+      "choices": [
+        "Park briefly to drop someone off",
+        "Do not park at this location at any time",
+        "Park only on weekends",
+        "Park only at night"
+      ],
+      "correct_index": 1,
+      "explanation": "NO PARKING ANY TIME means parking is prohibited 24/7. Even quick stops can be ticketed.",
+      "sign_image": null,
+      "tags": [
+        "regulatory",
+        "no-parking",
+        "application"
+      ]
+    },
+    {
+      "id": "q-0227",
+      "canonical_fact_id": "sign-keep-right-meaning",
+      "topic": "signs",
+      "subtopic": "regulatory-special",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "You approach a median or obstruction and see a KEEP RIGHT sign with a down-right arrow. What do you do?",
+      "choices": [
+        "Pass it on the left",
+        "Pass it on the right",
+        "Stop and yield",
+        "Either side is OK"
+      ],
+      "correct_index": 1,
+      "explanation": "KEEP RIGHT directs you to go to the right of the obstruction (median, divider, gore area).",
+      "sign_image": null,
+      "tags": [
+        "regulatory",
+        "keep-right",
+        "application"
+      ]
+    },
+    {
+      "id": "q-0228",
+      "canonical_fact_id": "sign-detour-meaning",
+      "topic": "signs",
+      "subtopic": "regulatory-special",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 59,
+      "source_doc": "handbook-3.2026",
+      "question": "You see an orange DETOUR sign with an arrow. What does it mean?",
+      "choices": [
+        "Construction has been completed",
+        "Follow the alternate route shown by the arrow because the regular road is closed",
+        "The detour ends here",
+        "Truck route ahead"
+      ],
+      "correct_index": 1,
+      "explanation": "DETOUR sends you on an alternate path around closed road. Follow the arrows to stay on the detour route.",
+      "sign_image": null,
+      "tags": [
+        "regulatory",
+        "detour",
+        "application"
+      ]
+    },
+    {
+      "id": "q-0229",
+      "canonical_fact_id": "sign-stop-meaning",
+      "topic": "signs",
+      "subtopic": "regulatory-special",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "You arrive at a stop sign at an intersection with no other traffic in sight. What must you do?",
+      "choices": [
+        "Slow down and continue if nothing is coming",
+        "Come to a complete stop, then proceed when safe",
+        "Yield only",
+        "Stop only if a pedestrian is present"
+      ],
+      "correct_index": 1,
+      "explanation": "Stop signs require a COMPLETE stop, even if no one else is around. Then proceed when safe.",
+      "sign_image": null,
+      "tags": [
+        "regulatory",
+        "stop",
+        "application",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0230",
+      "canonical_fact_id": "sign-yield-meaning",
+      "topic": "signs",
+      "subtopic": "regulatory-special",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "You approach a YIELD sign at a freeway on-ramp. What should you do?",
+      "choices": [
+        "Stop completely before merging",
+        "Slow down, find a gap, and merge - stop only if you cannot find a gap",
+        "Drive at full speed onto the freeway",
+        "Wait at the yield sign until told to go"
+      ],
+      "correct_index": 1,
+      "explanation": "YIELD: slow down and merge when there is a safe gap. Stop only if needed to avoid a collision.",
+      "sign_image": null,
+      "tags": [
+        "regulatory",
+        "yield",
+        "application",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0231",
+      "canonical_fact_id": "sign-stop-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "What does this sign mean?",
+      "choices": [
+        "Yield",
+        "Stop completely - 4-way, 2-way, or full stop intersection",
+        "Speed limit 35",
+        "No outlet"
+      ],
+      "correct_index": 1,
+      "explanation": "STOP - octagonal red. Complete stop required, then proceed when safe.",
+      "sign_image": "mutcd-R1-1-stop.svg",
+      "tags": [
+        "sign-image",
+        "stop"
+      ]
+    },
+    {
+      "id": "q-0232",
+      "canonical_fact_id": "sign-yield-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does this sign mean?",
+      "choices": [
+        "Stop",
+        "Yield - slow down and let traffic with right-of-way go first",
+        "Wrong way",
+        "School zone"
+      ],
+      "correct_index": 1,
+      "explanation": "YIELD - downward triangle with red border. Slow down, stop if needed, and let other traffic and pedestrians go first.",
+      "sign_image": "mutcd-R1-2-yield.svg",
+      "tags": [
+        "sign-image",
+        "yield"
+      ]
+    },
+    {
+      "id": "q-0233",
+      "canonical_fact_id": "sign-divided-highway-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "What does this sign mean?",
+      "choices": [
+        "Divided highway begins",
+        "Divided highway ends - one road resumes",
+        "Lane added",
+        "Y-intersection"
+      ],
+      "correct_index": 1,
+      "explanation": "DIVIDED HIGHWAY ENDS - two separated lanes are about to combine into a single roadway with two-way traffic.",
+      "sign_image": "mutcd-W6-2-divided-highway-ends.png",
+      "tags": [
+        "sign-image",
+        "divided-ends"
+      ]
+    },
+    {
+      "id": "q-0234",
+      "canonical_fact_id": "sign-no-passing-zone-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 48,
+      "source_doc": "handbook-3.2026",
+      "question": "On a two-lane road, you see a yellow pennant-shaped sign on the LEFT side. What must you do?",
+      "choices": [
+        "Pass quickly while you still can",
+        "Do not pass any vehicles - you've entered a no-passing zone",
+        "Yield to oncoming traffic only",
+        "Use the shoulder to pass"
+      ],
+      "correct_index": 1,
+      "explanation": "Yellow pennant on the LEFT = NO PASSING ZONE begins. Stay in your lane until the zone ends (marked by pavement striping).",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "no-passing",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0235",
+      "canonical_fact_id": "sign-shape-rectangle-vert-regulatory",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "Speed-limit, parking, lane-use, and turn-restriction signs are usually what colors?",
+      "choices": [
+        "Yellow with black symbols",
+        "White with black, red, or green letters and symbols",
+        "Orange with black",
+        "Blue with white"
+      ],
+      "correct_index": 1,
+      "explanation": "Regulatory signs are usually white with black/red/green text or symbols. They tell you the rules.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "regulatory-color"
+      ]
+    },
+    {
+      "id": "q-0236",
+      "canonical_fact_id": "sign-shape-rectangle-horiz-info",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "Horizontal rectangular signs in green or blue typically provide what?",
+      "choices": [
+        "Warnings",
+        "Guide or service information (directions, exits, services)",
+        "Speed limits",
+        "Construction warnings"
+      ],
+      "correct_index": 1,
+      "explanation": "Horizontal rectangles in green/blue = GUIDE or SERVICE info. Green = directions/exits, blue = services like hospitals/rest areas.",
+      "sign_image": null,
+      "tags": [
+        "sign-text",
+        "guide-shape"
+      ]
+    },
+    {
+      "id": "q-0237",
+      "canonical_fact_id": "sign-no-left-turn-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "What does this sign mean?",
+      "choices": [
+        "No U-turn",
+        "No left turn at this location",
+        "Left turn only",
+        "Two-way left-turn lane"
+      ],
+      "correct_index": 1,
+      "explanation": "NO LEFT TURN. Find another intersection where left turns are allowed.",
+      "sign_image": "mutcd-R3-2-no-left-turn.svg",
+      "tags": [
+        "sign-image",
+        "no-left"
+      ]
+    },
+    {
+      "id": "q-0238",
+      "canonical_fact_id": "sign-no-turn-on-red-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 46,
+      "source_doc": "handbook-3.2026",
+      "question": "What does this sign mean?",
+      "choices": [
+        "Right turn only on green",
+        "No right turn on red - must wait for green",
+        "Right lane must turn right",
+        "No right turn ever"
+      ],
+      "correct_index": 1,
+      "explanation": "NO RIGHT TURN ON RED. Even after stopping, you must wait for green to turn.",
+      "sign_image": "mutcd-R10-11-no-turn-on-red.png",
+      "tags": [
+        "sign-image",
+        "no-turn-on-red"
+      ]
+    },
+    {
+      "id": "q-0239",
+      "canonical_fact_id": "sign-do-not-enter-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 47,
+      "source_doc": "handbook-3.2026",
+      "question": "What does this sign mean?",
+      "choices": [
+        "No parking",
+        "Do not enter - the roadway is closed to you",
+        "Stop",
+        "Wrong way"
+      ],
+      "correct_index": 1,
+      "explanation": "DO NOT ENTER: don't drive onto this road. It's a one-way against you or an exit ramp.",
+      "sign_image": "mutcd-R5-1-do-not-enter.png",
+      "tags": [
+        "sign-image",
+        "do-not-enter"
+      ]
+    },
+    {
+      "id": "q-0240",
+      "canonical_fact_id": "sign-wrong-way-meaning",
+      "topic": "signs",
+      "subtopic": "specific-sign",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 49,
+      "source_doc": "handbook-3.2026",
+      "question": "What does this sign mean?",
+      "choices": [
+        "Detour",
+        "Wrong way - you are driving against traffic on a one-way road; stop and turn around",
+        "Reverse direction permitted",
+        "Two-way traffic"
+      ],
+      "correct_index": 1,
+      "explanation": "WRONG WAY: red rectangular sign indicating you've entered a one-way road in the wrong direction. Turn around immediately and safely.",
+      "sign_image": "mutcd-R5-1a-wrong-way.png",
+      "tags": [
+        "sign-image",
+        "wrong-way",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0241",
+      "canonical_fact_id": "pavement-yellow-opposing",
+      "topic": "pavement-markings",
+      "subtopic": "white-vs-yellow",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "Yellow pavement lines separate traffic moving in which direction?",
+      "choices": [
+        "The same direction",
+        "Opposing (opposite) directions",
+        "Across an intersection",
+        "Toward a shoulder"
+      ],
+      "correct_index": 1,
+      "explanation": "YELLOW = OPPOSING. Yellow lines separate traffic going in opposite directions. (White = same direction.) This is the DLD's most-flagged pavement fact.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "yellow",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0242",
+      "canonical_fact_id": "pavement-white-same-direction",
+      "topic": "pavement-markings",
+      "subtopic": "white-vs-yellow",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "White pavement lines separate traffic moving in which direction?",
+      "choices": [
+        "Opposite directions",
+        "The same direction",
+        "Across an intersection",
+        "Onto a freeway exit"
+      ],
+      "correct_index": 1,
+      "explanation": "WHITE = SAME direction. White lines separate lanes of traffic that flow the same way.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "white",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0243",
+      "canonical_fact_id": "pavement-yellow-opposing",
+      "topic": "pavement-markings",
+      "subtopic": "white-vs-yellow",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "You're on a two-way road and you see a single solid YELLOW line on your left. What does that tell you?",
+      "choices": [
+        "You can pass freely",
+        "Traffic on the other side of that line is going the OPPOSITE direction; passing is restricted",
+        "The road is one-way",
+        "The shoulder is on the left"
+      ],
+      "correct_index": 1,
+      "explanation": "Yellow always = opposing-direction traffic. The marking type (solid, dashed, double) tells you whether passing is allowed.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "yellow",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0244",
+      "canonical_fact_id": "pavement-white-same-direction",
+      "topic": "pavement-markings",
+      "subtopic": "white-vs-yellow",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "You're driving on a multi-lane road and see WHITE lines between lanes. What do they indicate?",
+      "choices": [
+        "Opposing traffic",
+        "Lanes going in the same direction as you",
+        "The edge of the road only",
+        "School zone"
+      ],
+      "correct_index": 1,
+      "explanation": "White lines separate same-direction lanes. The line style tells you whether you can change lanes.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "white",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0245",
+      "canonical_fact_id": "pavement-yellow-opposing",
+      "topic": "pavement-markings",
+      "subtopic": "white-vs-yellow",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "Which statement is TRUE about line color on the road?",
+      "choices": [
+        "Yellow = same direction, white = opposing",
+        "Yellow = opposing direction, white = same direction",
+        "Color has no meaning - only the line pattern matters",
+        "All center lines are white"
+      ],
+      "correct_index": 1,
+      "explanation": "Yellow = opposing, white = same. Memorize this - it's tested almost every time.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "color-rule",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0246",
+      "canonical_fact_id": "pavement-white-same-direction",
+      "topic": "pavement-markings",
+      "subtopic": "edge-lines",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "The line marking the RIGHT edge of the road is which color?",
+      "choices": [
+        "Yellow",
+        "White",
+        "Red",
+        "Blue"
+      ],
+      "correct_index": 1,
+      "explanation": "The right edge line is WHITE because there's no opposing-direction traffic to your right.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "edge-line",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0247",
+      "canonical_fact_id": "pavement-yellow-opposing",
+      "topic": "pavement-markings",
+      "subtopic": "edge-lines",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "On a two-way undivided road, the LEFT edge of your lane (toward the center of the road) is marked by what color?",
+      "choices": [
+        "White",
+        "Yellow",
+        "Orange",
+        "No line is required"
+      ],
+      "correct_index": 1,
+      "explanation": "The CENTER line on a two-way road is YELLOW because oncoming traffic is on the other side.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "center-line",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0248",
+      "canonical_fact_id": "pavement-white-same-direction",
+      "topic": "pavement-markings",
+      "subtopic": "white-vs-yellow",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "You see a road with white dashed lines between two lanes. The traffic in both lanes is going which way?",
+      "choices": [
+        "Opposite directions",
+        "The same direction as you",
+        "Toward an intersection",
+        "Into a turn lane"
+      ],
+      "correct_index": 1,
+      "explanation": "Dashed white = same direction. The dashing tells you lane changes are permitted.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "white",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0249",
+      "canonical_fact_id": "pavement-yellow-opposing",
+      "topic": "pavement-markings",
+      "subtopic": "white-vs-yellow",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "A two-lane road has a solid yellow center line with a dashed yellow line ON YOUR SIDE. What does this mean?",
+      "choices": [
+        "Both directions are no-passing",
+        "Passing is permitted in your direction; passing is not permitted from the other direction",
+        "Passing is prohibited in your direction; oncoming traffic can pass",
+        "Stay in the right lane only"
+      ],
+      "correct_index": 1,
+      "explanation": "Broken (dashed) line on YOUR side = you can pass when safe. The solid yellow on the other side means oncoming traffic cannot pass.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "dashed-yellow",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0250",
+      "canonical_fact_id": "pavement-yellow-opposing",
+      "topic": "pavement-markings",
+      "subtopic": "white-vs-yellow",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "Solid yellow on the OTHER (oncoming) side of the road only means what for you?",
+      "choices": [
+        "You cannot pass",
+        "Oncoming traffic cannot pass, but you can if a broken line is on your side",
+        "Only emergency vehicles can pass",
+        "The road is a no-passing zone"
+      ],
+      "correct_index": 1,
+      "explanation": "The line on your side controls YOU. If your side is dashed, you can pass. The solid yellow on the other side restricts the OTHER direction.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "yellow-other-side",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0251",
+      "canonical_fact_id": "pavement-yellow-opposing",
+      "topic": "pavement-markings",
+      "subtopic": "white-vs-yellow",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "The handbook calls one pavement rule the 'flagship' fact for the DLD test. What is it?",
+      "choices": [
+        "White = opposing, yellow = same",
+        "Yellow lines separate opposing traffic; white lines separate same-direction traffic",
+        "All lines are white",
+        "Lane lines vary by city"
+      ],
+      "correct_index": 1,
+      "explanation": "DLD specifically flags this rule: yellow = opposing, white = same. Confusing the two is the #1 test miss.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "flagship",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0252",
+      "canonical_fact_id": "pavement-yellow-opposing",
+      "topic": "pavement-markings",
+      "subtopic": "white-vs-yellow",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "True or false: A line between you and oncoming traffic can be white.",
+      "choices": [
+        "True - line color doesn't matter",
+        "True - some states use white",
+        "False - between you and oncoming traffic the line is always yellow",
+        "False - only highways use yellow"
+      ],
+      "correct_index": 2,
+      "explanation": "In Utah and across the U.S., yellow is reserved for separating opposite-direction traffic. White means same direction.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "true-false",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0253",
+      "canonical_fact_id": "pavement-yellow-opposing",
+      "topic": "pavement-markings",
+      "subtopic": "white-vs-yellow",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "You're approaching an unfamiliar road. A pavement line ahead is bright yellow. What do you instantly know?",
+      "choices": [
+        "You're on a one-way road",
+        "Oncoming traffic is on the other side of that line",
+        "You should stop",
+        "The road is closed"
+      ],
+      "correct_index": 1,
+      "explanation": "Yellow always tells you opposing-direction traffic is on the other side.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "yellow-inference",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0254",
+      "canonical_fact_id": "pavement-white-same-direction",
+      "topic": "pavement-markings",
+      "subtopic": "white-vs-yellow",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "On a one-way street, all pavement lines (between lanes and at the edges) should be what color?",
+      "choices": [
+        "Yellow",
+        "White",
+        "Mixed yellow and white",
+        "Red"
+      ],
+      "correct_index": 1,
+      "explanation": "A one-way street has no opposing-direction traffic, so all lines (between lanes and on both edges) are WHITE.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "one-way",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0255",
+      "canonical_fact_id": "pavement-yellow-opposing",
+      "topic": "pavement-markings",
+      "subtopic": "white-vs-yellow",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "The DLD sample test asks about yellow vs white lines. Which is the correct answer to 'yellow lines separate traffic moving in __ directions'?",
+      "choices": [
+        "The same",
+        "Opposing (opposite)",
+        "Right-turn",
+        "Truck-only"
+      ],
+      "correct_index": 1,
+      "explanation": "Yellow = opposing (opposite). Memorize the pair: yellow = opposite, white = same.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "sample-test",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0256",
+      "canonical_fact_id": "dashed-yellow-passing-permitted",
+      "topic": "pavement-markings",
+      "subtopic": "solid-vs-broken",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "A broken (dashed) line on YOUR side of the yellow center stripe means what?",
+      "choices": [
+        "Passing is prohibited",
+        "Passing is permitted when safe to do so",
+        "Lane is closed",
+        "Slow zone"
+      ],
+      "correct_index": 1,
+      "explanation": "Broken/dashed line on your side = passing PERMITTED (when it's safe to do so).",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "dashed-yellow",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0257",
+      "canonical_fact_id": "solid-yellow-no-pass",
+      "topic": "pavement-markings",
+      "subtopic": "solid-vs-broken",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "A solid yellow line on YOUR side of the center stripe means what?",
+      "choices": [
+        "Passing is permitted",
+        "Passing is prohibited in your direction",
+        "You may pass on the shoulder",
+        "The lane is for trucks only"
+      ],
+      "correct_index": 1,
+      "explanation": "Solid yellow on your side = passing PROHIBITED in your direction. The line on YOUR side controls YOUR right to pass.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "solid-yellow",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0258",
+      "canonical_fact_id": "double-solid-yellow-no-pass-both",
+      "topic": "pavement-markings",
+      "subtopic": "double-yellow",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "Double solid yellow lines down the center of a road mean what?",
+      "choices": [
+        "Passing permitted in both directions",
+        "Passing prohibited in both directions",
+        "The road is a freeway",
+        "Slow zone"
+      ],
+      "correct_index": 1,
+      "explanation": "Double solid yellow = NO PASSING in either direction. Both sides of traffic are restricted.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "double-yellow",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0259",
+      "canonical_fact_id": "double-solid-yellow-no-pass-both",
+      "topic": "pavement-markings",
+      "subtopic": "double-yellow",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "You approach a section of road where the center line goes from a single dashed yellow line to a double solid yellow line. What is happening?",
+      "choices": [
+        "Construction zone begins",
+        "A no-passing zone is starting - you cannot pass for both directions",
+        "The road is one-way",
+        "Speed limit increases"
+      ],
+      "correct_index": 1,
+      "explanation": "Double solid yellow marks a no-passing zone - usually because of limited visibility (hill, curve, intersection).",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "double-yellow",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0260",
+      "canonical_fact_id": "dashed-yellow-passing-permitted",
+      "topic": "pavement-markings",
+      "subtopic": "solid-vs-broken",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "On a two-lane road you see a solid yellow line on YOUR side and a dashed yellow on the OTHER side. What is your situation?",
+      "choices": [
+        "You may pass; the other direction may not",
+        "You may NOT pass; oncoming traffic IS allowed to pass when their side is broken",
+        "Neither direction can pass",
+        "Both directions can pass"
+      ],
+      "correct_index": 1,
+      "explanation": "Your line is solid - you can't pass. Their line is dashed - they can pass when safe. The line on YOUR side controls YOU.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "solid-vs-dashed",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0261",
+      "canonical_fact_id": "double-white-no-cross",
+      "topic": "pavement-markings",
+      "subtopic": "double-white",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 50,
+      "source_doc": "handbook-3.2026",
+      "question": "Double solid WHITE lines (such as those separating an express/carpool lane from general lanes) mean what?",
+      "choices": [
+        "You may cross when safe",
+        "Crossing is PROHIBITED - do not cross the double white line",
+        "Only motorcycles may cross",
+        "Yield to traffic"
+      ],
+      "correct_index": 1,
+      "explanation": "Double solid white lines = crossing PROHIBITED. On Utah's I-15 these separate the express/carpool lanes - you can only enter/exit at marked access points (broken white lines).",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "double-white",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0262",
+      "canonical_fact_id": "double-white-no-cross",
+      "topic": "pavement-markings",
+      "subtopic": "double-white",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 50,
+      "source_doc": "handbook-3.2026",
+      "question": "On I-15 you're in the express (carpool) lane. The lane is separated by a double white line. When can you move out of it?",
+      "choices": [
+        "Whenever traffic permits",
+        "Only at access points - sections where the line becomes dashed (broken) white",
+        "Anywhere if you signal first",
+        "Only at on-ramps"
+      ],
+      "correct_index": 1,
+      "explanation": "You can ONLY enter or exit the express lane at marked access points (broken/dashed white lines). Crossing the double white is illegal.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "express-lane",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0263",
+      "canonical_fact_id": "double-white-no-cross",
+      "topic": "pavement-markings",
+      "subtopic": "double-white",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 50,
+      "source_doc": "handbook-3.2026",
+      "question": "Exception: when can you cross a double white line out of the express lane?",
+      "choices": [
+        "Anytime if traffic is light",
+        "When followed by an emergency or police vehicle with flashing lights, when safe to do so",
+        "When you miss your exit",
+        "Never - no exceptions"
+      ],
+      "correct_index": 1,
+      "explanation": "Exception: if an emergency vehicle is behind you with flashing lights, you may cross the double white line right out of the express lane when safe.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "double-white",
+        "exception"
+      ]
+    },
+    {
+      "id": "q-0264",
+      "canonical_fact_id": "double-white-no-cross",
+      "topic": "pavement-markings",
+      "subtopic": "double-white",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 50,
+      "source_doc": "handbook-3.2026",
+      "question": "An access point in the express lane is identified by what pavement marking?",
+      "choices": [
+        "Double solid white",
+        "White dotted/broken striping",
+        "Yellow striping",
+        "Painted arrows"
+      ],
+      "correct_index": 1,
+      "explanation": "Access points use BROKEN (dotted) white striping instead of the solid double white - signaling where it's legal to enter or exit the express lane.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "express-access"
+      ]
+    },
+    {
+      "id": "q-0265",
+      "canonical_fact_id": "dashed-yellow-passing-permitted",
+      "topic": "pavement-markings",
+      "subtopic": "solid-vs-broken",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "You want to pass a slow-moving vehicle. You glance at the center line. Which marking would tell you it's legal to attempt the pass?",
+      "choices": [
+        "Solid yellow on your side",
+        "Broken (dashed) yellow on your side",
+        "Double solid yellow",
+        "Yellow X painted on the road"
+      ],
+      "correct_index": 1,
+      "explanation": "Broken yellow on YOUR side means you may pass when safe. Solid yellow on your side means no.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "passing-decision",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0266",
+      "canonical_fact_id": "solid-yellow-no-pass",
+      "topic": "pavement-markings",
+      "subtopic": "solid-vs-broken",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "Which of these means PASSING IS PROHIBITED for you?",
+      "choices": [
+        "Broken yellow on your side",
+        "Solid yellow on your side",
+        "Broken white on your side",
+        "Solid white right-edge line"
+      ],
+      "correct_index": 1,
+      "explanation": "Solid yellow on your side = passing prohibited (in your direction).",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "no-pass",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0267",
+      "canonical_fact_id": "dashed-yellow-passing-permitted",
+      "topic": "pavement-markings",
+      "subtopic": "solid-vs-broken",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "A broken (dashed) WHITE line between two lanes going the same direction means what?",
+      "choices": [
+        "Lane change is prohibited",
+        "Lane change/passing is permitted when safe",
+        "The lane is for buses only",
+        "Slow zone"
+      ],
+      "correct_index": 1,
+      "explanation": "Broken white between same-direction lanes = lane change permitted when safe.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "dashed-white"
+      ]
+    },
+    {
+      "id": "q-0268",
+      "canonical_fact_id": "double-white-no-cross",
+      "topic": "pavement-markings",
+      "subtopic": "solid-vs-broken",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "A SOLID white line between two lanes going the same direction means what?",
+      "choices": [
+        "Lane change is required",
+        "Lane change is discouraged; cross only if necessary",
+        "Lane change permitted freely",
+        "Bicycle lane"
+      ],
+      "correct_index": 1,
+      "explanation": "A single solid white line discourages lane changes (cross only if needed). A DOUBLE solid white prohibits crossing entirely.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "solid-white"
+      ]
+    },
+    {
+      "id": "q-0269",
+      "canonical_fact_id": "solid-yellow-no-pass",
+      "topic": "pavement-markings",
+      "subtopic": "solid-vs-broken",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "You're on a two-lane road approaching a hill. The yellow center line transitions from broken to solid on your side. What's happening?",
+      "choices": [
+        "A passing zone is starting",
+        "A no-passing zone is starting - visibility is limited over the hill",
+        "The road becomes one-way",
+        "Construction zone"
+      ],
+      "correct_index": 1,
+      "explanation": "A broken-to-solid transition on your side means a no-passing zone is starting - usually because of a hill, curve, or intersection where visibility is limited.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "no-pass-transition",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0270",
+      "canonical_fact_id": "solid-yellow-no-pass",
+      "topic": "pavement-markings",
+      "subtopic": "solid-vs-broken",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "On YOUR side, solid yellow line + broken yellow line on the OTHER side means what?",
+      "choices": [
+        "You can pass; oncoming traffic cannot",
+        "You CANNOT pass; oncoming traffic CAN pass",
+        "Neither direction can pass",
+        "Both directions can pass"
+      ],
+      "correct_index": 1,
+      "explanation": "Your side controls you. Solid on your side = you can't pass. The dashed line on the OTHER side allows oncoming traffic to pass.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "asymmetric",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0271",
+      "canonical_fact_id": "double-solid-yellow-no-pass-both",
+      "topic": "pavement-markings",
+      "subtopic": "double-yellow",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "What is the rule for double solid yellow lines?",
+      "choices": [
+        "You may cross to pass",
+        "You may cross to make a left turn into a driveway or side road (when safe), but you cannot pass",
+        "Crossing is permitted only at intersections",
+        "You may cross anywhere"
+      ],
+      "correct_index": 1,
+      "explanation": "You may cross a double yellow to make a left turn into a driveway/road (when safe), but you cannot use them to PASS another vehicle.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "double-yellow-turn",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0272",
+      "canonical_fact_id": "double-solid-yellow-no-pass-both",
+      "topic": "pavement-markings",
+      "subtopic": "double-yellow",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "You need to make a left turn into a driveway across a double solid yellow line. Can you?",
+      "choices": [
+        "No - the double yellow forbids any crossing",
+        "Yes - you may cross a double yellow to turn left into a driveway or side road when safe",
+        "Only at an intersection",
+        "Only at night"
+      ],
+      "correct_index": 1,
+      "explanation": "Double yellow lines prohibit PASSING but you can still cross them to make a left turn into a driveway or side road, when safe.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "double-yellow-driveway"
+      ]
+    },
+    {
+      "id": "q-0273",
+      "canonical_fact_id": "pavement-yellow-opposing",
+      "topic": "pavement-markings",
+      "subtopic": "edge-lines",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "On a divided highway with a median, the left edge line of your roadway (on the side closest to the median) is what color?",
+      "choices": [
+        "Yellow",
+        "White",
+        "Both yellow and white",
+        "There is no edge line"
+      ],
+      "correct_index": 0,
+      "explanation": "On a divided highway, the left edge of your roadway (next to the median) is YELLOW because the lanes across the median are going the opposite direction.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "divided-edge"
+      ]
+    },
+    {
+      "id": "q-0274",
+      "canonical_fact_id": "pavement-white-same-direction",
+      "topic": "pavement-markings",
+      "subtopic": "edge-lines",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "The right edge line of any road (separating the travel lane from the shoulder) is what color?",
+      "choices": [
+        "Yellow",
+        "White",
+        "Orange",
+        "Red"
+      ],
+      "correct_index": 1,
+      "explanation": "The right edge is always WHITE - there's no opposing-direction traffic to your right.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "right-edge"
+      ]
+    },
+    {
+      "id": "q-0275",
+      "canonical_fact_id": "pavement-white-same-direction",
+      "topic": "pavement-markings",
+      "subtopic": "edge-lines",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "If you drift over the right white edge line, you've drifted onto what?",
+      "choices": [
+        "The opposing lane",
+        "The shoulder or onto the side of the road",
+        "A bike lane only",
+        "A bus lane"
+      ],
+      "correct_index": 1,
+      "explanation": "Crossing the right white edge line means you've left the travel lane and are on the shoulder. Steer gently back - don't jerk the wheel.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "edge-drift"
+      ]
+    },
+    {
+      "id": "q-0276",
+      "canonical_fact_id": "bike-lane-solid-white",
+      "topic": "pavement-markings",
+      "subtopic": "bike-lane",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "A bike lane on the right side of the road is marked by what?",
+      "choices": [
+        "A double yellow line",
+        "A solid white line plus a bicycle symbol painted on the pavement",
+        "Orange paint",
+        "A green line only"
+      ],
+      "correct_index": 1,
+      "explanation": "Bike lanes are usually marked with a solid white line and a bicycle symbol painted on the pavement.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "bike-lane"
+      ]
+    },
+    {
+      "id": "q-0277",
+      "canonical_fact_id": "bike-lane-solid-white",
+      "topic": "pavement-markings",
+      "subtopic": "bike-lane",
+      "priority": "SHOULD",
+      "type": "application",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "Generally, can you drive your car in a marked bike lane?",
+      "choices": [
+        "Yes - bike lanes are for everyone",
+        "No - bike lanes are for bicyclists. You may briefly cross only to make a turn or enter/exit a driveway",
+        "Yes - if no bike is present",
+        "Only after 9 PM"
+      ],
+      "correct_index": 1,
+      "explanation": "Don't drive in a bike lane. You may briefly cross it to make a turn or enter/exit a driveway, but driving in it is illegal.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "bike-lane-use"
+      ]
+    },
+    {
+      "id": "q-0278",
+      "canonical_fact_id": "double-solid-yellow-no-pass-both",
+      "topic": "pavement-markings",
+      "subtopic": "double-yellow",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "Which of these allows you to cross a double yellow line legally?",
+      "choices": [
+        "Passing a slow vehicle",
+        "Making a left turn into a driveway or side road when safe",
+        "Anytime you want to",
+        "Only at night"
+      ],
+      "correct_index": 1,
+      "explanation": "You may cross a double yellow to turn into a driveway or side road (when safe). You cannot cross to pass another vehicle.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "double-yellow-legal"
+      ]
+    },
+    {
+      "id": "q-0279",
+      "canonical_fact_id": "pavement-yellow-opposing",
+      "topic": "pavement-markings",
+      "subtopic": "shared-turn-lane",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "A shared center two-way left-turn lane is marked by what?",
+      "choices": [
+        "Solid white lines",
+        "Solid yellow line on the outside and broken yellow line on the inside - on both sides of the lane",
+        "A single dashed yellow line",
+        "Red paint"
+      ],
+      "correct_index": 1,
+      "explanation": "The center two-way left-turn lane has a solid yellow line on the outside and a broken yellow line on the inside - on both sides. Only for left turns, not for through travel or passing.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "two-way-turn",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0280",
+      "canonical_fact_id": "pavement-yellow-opposing",
+      "topic": "pavement-markings",
+      "subtopic": "shared-turn-lane",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "You may enter a shared center left-turn lane up to how far before your intended turn?",
+      "choices": [
+        "No distance limit",
+        "500 feet",
+        "100 feet",
+        "1,000 feet"
+      ],
+      "correct_index": 1,
+      "explanation": "Utah law: you may not enter the shared center turn lane more than 500 feet before your turn (unless the last car using it is more than 500 ft from the intersection).",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "500-ft",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0281",
+      "canonical_fact_id": "stop-before-crosswalk-visibility",
+      "topic": "pavement-markings",
+      "subtopic": "stop-line-crosswalk",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "At a stop sign or signal, where exactly must you stop?",
+      "choices": [
+        "At the center of the intersection",
+        "Behind the stop line or crosswalk - if neither exists, before the intersection or sign",
+        "On top of the stop line",
+        "Inside the crosswalk"
+      ],
+      "correct_index": 1,
+      "explanation": "Stop BEHIND the stop line or crosswalk. If neither exists, stop before the intersection or stop sign.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "stop-line",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0282",
+      "canonical_fact_id": "stop-before-crosswalk-visibility",
+      "topic": "pavement-markings",
+      "subtopic": "stop-line-crosswalk",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "You arrive at a stop sign. There's no stop line painted on the road but there is a crosswalk. Where do you stop?",
+      "choices": [
+        "On top of the crosswalk",
+        "In the middle of the crosswalk",
+        "Behind the crosswalk (before it)",
+        "Past the crosswalk"
+      ],
+      "correct_index": 2,
+      "explanation": "Stop BEHIND the crosswalk so pedestrians have safe space.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "crosswalk-stop",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0283",
+      "canonical_fact_id": "never-pass-vehicle-at-crosswalk",
+      "topic": "pavement-markings",
+      "subtopic": "stop-line-crosswalk",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "You're approaching a crosswalk and another car has stopped just before it. What should you do?",
+      "choices": [
+        "Pass the stopped car carefully",
+        "Stop also - the stopped car may be yielding to a pedestrian you can't see",
+        "Honk to make them go",
+        "Drive around them"
+      ],
+      "correct_index": 1,
+      "explanation": "If another vehicle stops at a crosswalk, never pass them - they may be yielding to a pedestrian you cannot see.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "crosswalk-pass",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0284",
+      "canonical_fact_id": "stop-before-crosswalk-visibility",
+      "topic": "pavement-markings",
+      "subtopic": "stop-line-crosswalk",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "Pedestrian crosswalks are marked by what pavement paint?",
+      "choices": [
+        "Yellow zigzag lines",
+        "Solid white lines (parallel bars, ladder stripes, or solid blocks across the road)",
+        "Red lines",
+        "Orange lines"
+      ],
+      "correct_index": 1,
+      "explanation": "Crosswalks are painted with white markings - parallel lines, ladder stripes, or solid white blocks across the road.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "crosswalk-marking",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0285",
+      "canonical_fact_id": "stop-before-crosswalk-visibility",
+      "topic": "pavement-markings",
+      "subtopic": "stop-line-crosswalk",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "A pedestrian is in an UNMARKED crosswalk (one with no painted lines but at an intersection). What do you do?",
+      "choices": [
+        "Honk and go around them",
+        "Yield - you must yield to pedestrians at marked or unmarked crosswalks",
+        "Only marked crosswalks require yielding",
+        "Speed up to clear the intersection"
+      ],
+      "correct_index": 1,
+      "explanation": "You must yield to pedestrians at crosswalks - whether they're marked or unmarked. Every intersection has implied crosswalks.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "unmarked-crosswalk",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0286",
+      "canonical_fact_id": "pavement-white-same-direction",
+      "topic": "pavement-markings",
+      "subtopic": "arrows",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "White arrows painted on the pavement at an intersection tell you what?",
+      "choices": [
+        "Decoration",
+        "The legal direction(s) that lane allows you to turn or proceed",
+        "Where the next exit is",
+        "The speed limit"
+      ],
+      "correct_index": 1,
+      "explanation": "White lane arrows indicate the LEGAL movements for that lane: straight only, left turn only, right turn only, or combinations.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "lane-arrow"
+      ]
+    },
+    {
+      "id": "q-0287",
+      "canonical_fact_id": "pavement-white-same-direction",
+      "topic": "pavement-markings",
+      "subtopic": "arrows",
+      "priority": "MUST",
+      "type": "application",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "You're in a lane with a white arrow on the pavement pointing only LEFT, but you want to go straight. What must you do?",
+      "choices": [
+        "Go straight anyway if no one is around",
+        "Change lanes safely BEFORE the intersection - that lane is for left turns only",
+        "Stop and back up",
+        "Make the left turn anyway"
+      ],
+      "correct_index": 1,
+      "explanation": "A lane with a left-only arrow is for left turns ONLY. If you want to go straight, change to a through lane before the intersection.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "left-only-lane",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0288",
+      "canonical_fact_id": "stop-before-crosswalk-visibility",
+      "topic": "pavement-markings",
+      "subtopic": "stop-line-crosswalk",
+      "priority": "MUST",
+      "type": "recall",
+      "source_page": 54,
+      "source_doc": "handbook-3.2026",
+      "question": "A solid white line painted across the road at an intersection is called a what?",
+      "choices": [
+        "Crosswalk",
+        "Stop line (also called a stop bar) - you must stop behind it",
+        "Lane divider",
+        "Yield line"
+      ],
+      "correct_index": 1,
+      "explanation": "A stop bar/stop line is the thick solid white line painted across the road where vehicles must stop at a stop sign or signal.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "stop-line",
+        "must"
+      ]
+    },
+    {
+      "id": "q-0289",
+      "canonical_fact_id": "pavement-white-same-direction",
+      "topic": "pavement-markings",
+      "subtopic": "arrows",
+      "priority": "SHOULD",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "Painted white arrows in a lane curving back the opposite direction can indicate what kind of lane?",
+      "choices": [
+        "Bicycle lane",
+        "Two-way left-turn lane (the arrows show turns in both directions)",
+        "Bus-only lane",
+        "HOV lane"
+      ],
+      "correct_index": 1,
+      "explanation": "Two-way left-turn lanes have curving arrows in both directions painted on the pavement to show they're shared.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "two-way-arrows"
+      ]
+    },
+    {
+      "id": "q-0290",
+      "canonical_fact_id": "pavement-yellow-opposing",
+      "topic": "pavement-markings",
+      "subtopic": "yield-line",
+      "priority": "NICE",
+      "type": "recall",
+      "source_page": 53,
+      "source_doc": "handbook-3.2026",
+      "question": "A row of solid white triangles painted across a lane (pointing toward you) is called what?",
+      "choices": [
+        "Crosswalk",
+        "Yield line - shows where you must yield (often used at roundabouts)",
+        "Stop line",
+        "Lane separator"
+      ],
+      "correct_index": 1,
+      "explanation": "Yield lines (also called 'shark's teeth') are solid white triangles pointing toward approaching drivers - they mark where you must yield, often at roundabouts.",
+      "sign_image": null,
+      "tags": [
+        "pavement",
+        "yield-line",
+        "nice"
+      ]
+    }
+  ]
+}

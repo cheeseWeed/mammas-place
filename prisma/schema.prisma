@@ -1,0 +1,29 @@
+// Prisma schema for the Utah Driver License multi-user progress store.
+// Backed by Neon Postgres in prod, can use a local Postgres in dev.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// One row per registered driver-study user.
+// Bulk fields (attempts, misses, scores, sr, deckCompletions) live as JSONB
+// for simplicity — small data per user (under a few KB), no need to normalize.
+model DriveUser {
+  name             String   @id // normalized lowercase username
+  pinHash          String
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  attempts         Json     @default("[]") // QuizAttempt[]
+  misses           Json     @default("[]") // string[]
+  unitScores       Json     @default("{}") // Record<string, UnitScore>
+  sr               Json     @default("{}") // Record<string, SrRecord>
+  mode             String?  // 'quick' | 'deep' | null
+  deckCompletions  Json     @default("{}") // Record<string, number>
+
+  @@map("drive_users")
+}

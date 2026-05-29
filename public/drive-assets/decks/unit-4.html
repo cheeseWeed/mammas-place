@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 4: Impairment</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<style>
+:root { --primary: #581c87; --accent: #facc15; --text: #18181b; }
+.reveal { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+.reveal h1, .reveal h2 { color: var(--primary); }
+.reveal .must-tag { background: var(--accent); color: var(--text); padding: 2px 8px; border-radius: 4px; font-size: 0.7em; }
+.reveal .should-tag { background: #e4e4e7; color: var(--text); padding: 2px 8px; border-radius: 4px; font-size: 0.7em; }
+.reveal .nice-tag { background: #f4f4f5; color: #71717a; padding: 2px 8px; border-radius: 4px; font-size: 0.7em; }
+.reveal a { color: var(--primary); }
+.reveal .learn-more { font-size: 0.65em; opacity: 0.7; margin-top: 1em; }
+.reveal .weird-utah { background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 1em; border-radius: 8px; }
+.reveal .priority-must { border-left: 6px solid var(--accent); padding-left: 12px; }
+.reveal table { font-size: 0.75em; margin: 0.5em auto; }
+.reveal table th { background: #f4f4f5; color: var(--primary); padding: 6px 10px; }
+.reveal table td { padding: 6px 10px; border-bottom: 1px solid #e4e4e7; }
+.reveal .scenario { background: #faf5ff; border-left: 6px solid var(--primary); padding: 1em; border-radius: 6px; text-align: left; font-size: 0.85em; }
+.reveal .move { background: #ecfdf5; border-left: 6px solid #10b981; padding: 1em; border-radius: 6px; text-align: left; font-size: 0.85em; }
+.reveal .tag-row { margin-bottom: 0.5em; }
+.reveal ul { display: inline-block; text-align: left; }
+.reveal .big-num { font-size: 2.5em; color: var(--primary); font-weight: bold; }
+
+/* SIZE-CAP-PATCH v1 — clamp default Reveal heading sizes so long titles fit */
+.reveal h1 { font-size: 1.8em !important; line-height: 1.15; margin-bottom: 0.3em; }
+.reveal h2 { font-size: 1.3em !important; line-height: 1.2; margin-bottom: 0.4em; }
+.reveal h3 { font-size: 1.1em !important; }
+.reveal .slides section { padding: 0 24px; box-sizing: border-box; }
+.reveal p, .reveal li { font-size: 0.85em; line-height: 1.4; }
+.reveal table { font-size: 0.7em; }
+
+
+/* BIG-NUM-CAP v1 — clamp .big-num so long phrases like "Class D = your normal license" don't overflow */
+.reveal .big-num { font-size: 1.4em !important; line-height: 1.2; word-wrap: break-word; }
+.reveal .scenario-box, .reveal .answer-box { font-size: 0.75em; }
+.reveal h2 { font-size: 1.2em !important; }
+
+/* OVERFLOW-FIX v2 */
+/* OVERFLOW-FIX v2 — shrink everything further so slides fit within Reveal's 960x700 viewport */
+.reveal h1 { font-size: 1.4em !important; line-height: 1.15; margin-bottom: 0.2em; }
+.reveal h2 { font-size: 1.05em !important; line-height: 1.2; margin-bottom: 0.3em; }
+.reveal h3 { font-size: 0.95em !important; }
+.reveal .big-num { font-size: 1.15em !important; line-height: 1.2; word-wrap: break-word; }
+.reveal p, .reveal li { font-size: 0.7em !important; line-height: 1.35; }
+.reveal ul, .reveal ol { margin: 0.3em auto; }
+.reveal table { font-size: 0.55em !important; }
+.reveal .scenario-box, .reveal .answer-box { font-size: 0.65em !important; padding: 0.6em !important; }
+.reveal .learn-more { font-size: 0.55em !important; margin-top: 0.4em; }
+.reveal .tag-row { margin-bottom: 0.3em; }
+.reveal .must-tag, .reveal .should-tag, .reveal .nice-tag { font-size: 0.6em !important; }
+.reveal .ladder li { font-size: 0.55em !important; padding: 0.15em 0; }
+
+/* Knowledge-check slides: aggressively shrink */
+.reveal section[data-knowledge-check="true"] h2 { font-size: 0.95em !important; margin-bottom: 0.3em; }
+.reveal section[data-knowledge-check="true"] p { font-size: 0.75em !important; margin: 0.4em 0 !important; }
+.reveal section[data-knowledge-check="true"] .kc-choices { max-width: 500px !important; margin: 0 auto !important; }
+.reveal section[data-knowledge-check="true"] .kc-choices label { font-size: 0.65em !important; padding: 6px 10px !important; margin: 3px 0 !important; line-height: 1.2; }
+.reveal section[data-knowledge-check="true"] button { font-size: 0.7em !important; padding: 6px 16px !important; margin-top: 8px !important; }
+.reveal section[data-knowledge-check="true"] .kc-result { font-size: 0.65em !important; padding: 8px !important; margin-top: 8px !important; }
+.reveal section[data-knowledge-check="true"] hr { margin: 12px 0 !important; }
+
+/* CLASS-SWEEP v1 */
+/* CLASS-SWEEP v1 — size the rest of the content classes used across decks */
+.reveal .recap-card { font-size: 0.65em !important; padding: 0.4em 0.6em !important; margin: 0.3em 0 !important; line-height: 1.3; }
+.reveal .callout { font-size: 0.7em !important; padding: 0.5em !important; }
+.reveal .callout.small { font-size: 0.6em !important; }
+.reveal .scenario { font-size: 0.7em !important; padding: 0.5em !important; }
+.reveal .small { font-size: 0.6em !important; }
+.reveal .q { font-size: 0.75em !important; }
+.reveal .answer { font-size: 0.7em !important; }
+.reveal .pill, .reveal .pill-stop, .reveal .pill-go { font-size: 0.6em !important; padding: 0.2em 0.5em !important; }
+.reveal .matrix { font-size: 0.55em !important; }
+.reveal .move { font-size: 0.7em !important; }
+.reveal .big-number { font-size: 1.2em !important; line-height: 1.15; word-wrap: break-word; }
+
+/* Force a centered scrollable container that respects the brand color scrollbar */
+.reveal .slides > section { scrollbar-color: #c4b5fd #faf5ff; }
+
+/* TIGHTEN-COLS v1 */
+/* TIGHTEN-COLS v1 — shrink padding/font in 2-column go-look and multi-Q kc grids so right column fits */
+.reveal section[data-go-look="true"] div[style*="display:grid"] > div { padding: 8px !important; }
+.reveal section[data-go-look="true"] div[style*="display:grid"] .kc-choices { max-width: 100% !important; }
+.reveal section[data-go-look="true"] div[style*="display:grid"] .kc-choices label {
+  font-size: 0.55em !important;
+  padding: 5px 8px !important;
+  margin: 3px 0 !important;
+  line-height: 1.2 !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] p {
+  font-size: 0.65em !important;
+  margin: 0.4em 0 !important;
+  line-height: 1.3 !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] h2 {
+  font-size: 0.85em !important;
+  margin-bottom: 0.4em !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] button {
+  font-size: 0.65em !important;
+  padding: 5px 12px !important;
+  margin-top: 6px !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] a[href*="zerofatalities"] {
+  font-size: 0.65em !important;
+  padding: 5px 10px !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] .kc-result {
+  font-size: 0.55em !important;
+  padding: 6px !important;
+}
+/* Same for multi-Q knowledge-checks in 2-col or 3-col grids */
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] > div { padding: 6px !important; }
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] .kc-choices label {
+  font-size: 0.55em !important;
+  padding: 4px 8px !important;
+  margin: 2px 0 !important;
+  line-height: 1.2 !important;
+}
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] p {
+  font-size: 0.6em !important;
+  margin: 0.3em 0 !important;
+}
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] button {
+  font-size: 0.6em !important;
+  padding: 4px 10px !important;
+}
+
+/* CONTENT-TIGHTEN v1 */
+/* CONTENT-TIGHTEN v1 — trim tall content slides (sign + bullets + learn-more) so they fit */
+.reveal section[data-priority] img.sign { max-height: 130px !important; margin: 4px auto !important; }
+.reveal section[data-priority] p { font-size: 0.65em !important; margin: 0.3em 0 !important; line-height: 1.35; }
+.reveal section[data-priority] ul, .reveal section[data-priority] ol { margin: 0.3em 0 !important; }
+.reveal section[data-priority] li { font-size: 0.65em !important; line-height: 1.3 !important; margin: 0.15em 0 !important; }
+.reveal section[data-priority] .learn-more { font-size: 0.5em !important; margin-top: 0.3em !important; }
+.reveal section[data-priority] .tag-row { margin-bottom: 0.3em !important; }
+.reveal section[data-priority] h1 { font-size: 1.5em !important; margin-bottom: 0.2em !important; }
+.reveal section[data-priority] h2 { font-size: 1.1em !important; margin-bottom: 0.3em !important; }
+.reveal section[data-priority] table { font-size: 0.55em !important; margin: 0.3em auto !important; }
+.reveal section[data-priority] .scenario-box, .reveal section[data-priority] .answer-box { font-size: 0.6em !important; padding: 0.4em !important; margin: 0.3em 0 !important; }
+
+/* COL-DIVIDERS v1 */
+/* COL-DIVIDERS v1 — vertical separator line between 2-Q/3-Q knowledge-check grid columns */
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] > div:not(:last-child) {
+  border-right: 2px dashed #c4b5fd !important;
+  padding-right: 12px !important;
+}
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] > div:not(:first-child) {
+  padding-left: 12px !important;
+}
+
+/* GOLOOK-DIVIDER v1 */
+/* GOLOOK-DIVIDER v1 — vertical separator between go-look's left (link) and right (Q) columns */
+.reveal section[data-go-look="true"] div[style*="display:grid"] > div:not(:last-child) {
+  border-right: 2px dashed #fcd34d !important;
+  padding-right: 10px !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] > div:not(:first-child) {
+  padding-left: 10px !important;
+}
+
+</style></head>
+<body>
+<!-- HOME-BTN v1 -->
+<a href="../dashboard/index.html" style="position:fixed; top:12px; left:12px; z-index:9999; background:#581c87; color:white; text-decoration:none; padding:6px 14px; border-radius:6px; font-size:13px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.15);">&larr; Home</a>
+<div class="reveal"><div class="slides">
+
+<section data-priority="MUST">
+  <h1>Unit 4: Impairment</h1>
+  <p>Alcohol, drugs, fatigue, distraction &mdash; what the rules are and how to stay clear of them.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook pages 61&ndash;70 &middot; ~18 minutes</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-priority="MUST">
+  <h2>What this unit gives you</h2>
+  <p>Four straight answers to four normal questions:</p>
+  <ul>
+    <li>What are the alcohol rules at your age?</li>
+    <li>What about prescription or over-the-counter meds?</li>
+    <li>What do you do when you are tired behind the wheel?</li>
+    <li>When can you use your phone in the car?</li>
+  </ul>
+  <p class="learn-more">No scare stats. Just the rules, the consequences, and the move.</p>
+</section>
+
+<section data-fact-id="alcohol-reduces-4-systems" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST</span></div>
+  <h2>What does BAC even mean?</h2>
+  <p><strong>BAC = Blood Alcohol Concentration</strong> &mdash; the percentage of alcohol in your blood.</p>
+  <p>The number on a breathalyzer. Higher number = more impairment of four things:</p>
+  <ul>
+    <li>Judgment</li>
+    <li>Vision</li>
+    <li>Color distinction</li>
+    <li>Reaction time</li>
+  </ul>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 61 &middot; Fact ID: alcohol-reduces-4-systems</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="vision-impaired-at-0.02" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD</span></div>
+  <h2>Vision starts slipping at 0.02</h2>
+  <p>For <em>everyone</em> &mdash; not a legal limit, just biology.</p>
+  <p>That is why the Utah limit is set conservatively. The rule is not drink until you feel buzzed. Impairment starts with the first drink.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 61 &middot; Fact ID: vision-impaired-at-0.02</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="adult-bac-limit-0.05" data-priority="MUST" class="priority-must weird-utah">
+  <div class="tag-row"><span class="must-tag">MUST</span> <span style="font-size: 0.7em; color: #92400e;">WEIRD UTAH</span></div>
+  <h2>The Utah adult limit is 0.05 &mdash; lowest in the U.S.</h2>
+  <p class="big-num">0.05</p>
+  <p>Every other state is 0.08. Utah moved to 0.05 in 2018 and stayed there. If you ever take a test in another state, do not get tricked &mdash; <strong>0.05 is the Utah answer</strong>.</p>
+  <p>CDL (commercial license) is even stricter: <strong>0.04</strong>.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 62 &middot; Fact IDs: adult-bac-limit-0.05, cdl-bac-limit-0.04</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="under-21-zero-tolerance" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST</span></div>
+  <h2>Under 21? The limit is zero.</h2>
+  <p class="big-num">0.00</p>
+  <p>No I only had a sip exception. No but I am fine exception.</p>
+  <p>Any measurable alcohol = violation. This is called <strong>zero tolerance</strong>, and every state has a version of it.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 62 &middot; Fact ID: under-21-zero-tolerance</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">At what blood alcohol level (BAC) does vision begin to be impaired for all drivers?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u4-kc4" value="0"> 0.02
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u4-kc4" value="1"> 0.05
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u4-kc4" value="2"> 0.08
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u4-kc4" value="3"> 0.10
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u4-kc4', 0, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> 0.02<br>
+    Vision is impacted at just 0.02 BAC -- well below any legal driving limit. This is part of why Utah&#x27;s adult limit is set at 0.05.
+  </div>
+</section>
+
+
+<section data-fact-id="not-a-drop-6-months-first" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST</span></div>
+  <h2>Not-a-Drop Act &mdash; 6-month denial</h2>
+  <p>Under 21 + any measurable alcohol while driving =</p>
+  <p class="big-num">6 months</p>
+  <p>...driving privileges denied. First offense.</p>
+  <p>Second offense within 10 years = <strong>2 years OR until you turn 21</strong> &mdash; whichever is longer.</p>
+  <p>This applies even if you do not have a license yet. They can deny a future one.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 62 &middot; Fact ID: not-a-drop-6-months-first</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="under-21-possession-1-2-year-suspension" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD</span></div>
+  <h2>Two separate rules &mdash; do not mix them up</h2>
+  <table>
+    <tr><th>Situation</th><th>Penalty</th></tr>
+    <tr><td>Driving under 21 with any alcohol (Not-a-Drop)</td><td>6 months first offense</td></tr>
+    <tr><td>Possessing or drinking under 21 (not driving)</td><td>1 year first, 2 year second</td></tr>
+  </table>
+  <p>Both can apply to the same situation. They are different statutes.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 62 &middot; Fact ID: under-21-possession-1-2-year-suspension</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">What is the legal BAC limit for drivers under 21 in Utah?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u4-kc5" value="0"> 0.00 -- zero tolerance
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u4-kc5" value="1"> 0.02
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u4-kc5" value="2"> 0.05
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u4-kc5" value="3"> 0.08
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u4-kc5', 0, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> 0.00 -- zero tolerance<br>
+    Under 21 = 0.00 BAC. Any measurable alcohol in your system while driving violates Utah&#x27;s Not-a-Drop / zero-tolerance law.
+  </div>
+</section>
+
+
+<section data-fact-id="iid-3-years-under-21-first" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST</span></div>
+  <h2>First DUI under 21 = 3-year IID</h2>
+  <p><strong>IID</strong> = Ignition Interlock Device. A breathalyzer wired to the ignition &mdash; the car will not start if it detects alcohol.</p>
+  <p class="big-num">3 years</p>
+  <p>That is the under-21 first-offense IID period. <strong>Adults get 18 months for a first DUI &mdash; under-21 is longer.</strong></p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 64 &middot; Fact ID: iid-3-years-under-21-first</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">Alcohol and impairing drugs reduce which four driver systems?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u4-kc-1" value="0"> Judgment, vision, color distinction, reaction time
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u4-kc-1" value="1"> Hearing, balance, smell, taste
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u4-kc-1" value="2"> Memory, math, language, music
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u4-kc-1" value="3"> Heart rate, breathing, sweating, vision
+    </label>
+  </div>
+  <button onclick="checkKC('u4-kc-1', 0, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Judgment, vision, color distinction, reaction time<br>
+    Alcohol and impairing drugs reduce judgment, vision, color distinction, and reaction time -- all four critical to driving.
+  </div>
+</section>
+
+
+<section data-fact-id="implied-consent-law" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST</span></div>
+  <h2>Implied consent &mdash; refusing the test still costs you the license</h2>
+  <img class="sign" src="../images/signs/mutcd-R5-1-do-not-enter.png" alt="Red square with white horizontal bar and white DO NOT ENTER text" style="max-height: 180px; margin: 8px auto; display:block;">
+  <p>By driving in Utah, you have already agreed to take a chemical test (breath, blood, urine, saliva) if an officer asks. That is the <strong>Implied Consent Law</strong>.</p>
+  <p><strong>Refuse the test? License revoked.</strong></p>
+  <table>
+    <tr><th>Who</th><th>First refusal</th><th>Second</th></tr>
+    <tr><td>21+</td><td>18 months</td><td>36 months</td></tr>
+    <tr><td>Under 21</td><td>2 years</td><td>36 months OR until 21</td></tr>
+  </table>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 63 &middot; Fact IDs: implied-consent-law, refusal-21-plus-18-or-36-months</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="alcohol-restricted-2-3-5-10-years" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD</span></div>
+  <h2>Alcohol-restricted status &mdash; the tiers</h2>
+  <p>After a DUI conviction, you become alcohol-restricted for a set period:</p>
+  <table>
+    <tr><th>Tier</th><th>Length</th></tr>
+    <tr><td>Standard tiers</td><td>2, 3, 5, or 10 years</td></tr>
+    <tr><td>Automobile homicide / felony DUI</td><td>LIFETIME</td></tr>
+  </table>
+  <p>Driving with any measurable alcohol during this period = 1-year revocation on top.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 63 &middot; Fact ID: alcohol-restricted-2-3-5-10-years</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="impairing-drugs-all-three-categories" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST</span></div>
+  <h2>Drugs means all three categories</h2>
+  <p>Utah DUI law treats impairing drugs the same way regardless of source:</p>
+  <ul>
+    <li><strong>Illegal</strong> (street drugs)</li>
+    <li><strong>Over-the-counter</strong> (cold meds, sleep aids, antihistamines)</li>
+    <li><strong>Prescription</strong> (even if the doctor wrote it for you)</li>
+  </ul>
+  <p>If it impairs your driving, it counts. Doctor approval is not a free pass &mdash; you are still responsible for whether you can drive safely.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 61 &middot; Fact ID: impairing-drugs-all-three-categories</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="meds-cause-drowsiness" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD</span></div>
+  <h2>Read the label. Ask the pharmacist.</h2>
+  <p>May cause drowsiness on a label is a real warning. Cold meds, allergy meds, sleep aids, and many prescriptions can impair driving.</p>
+  <div class="move"><strong>The move:</strong> first dose of a new med? Skip driving that day if you can. See how it hits you.</div>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 31, 66 &middot; Fact ID: meds-cause-drowsiness</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check (3 questions)</h2>
+  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start;">
+    <div>
+      <p style="margin: 1em 0; font-size: 0.7em;">How long is the Alcohol-Restricted Driver status in Utah?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u4-kc6-a" value="0"> Always 1 year
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u4-kc6-a" value="1"> 2, 3, 5, or 10 years depending on offense
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u4-kc6-a" value="2"> Always 5 years
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u4-kc6-a" value="3"> Always 6 months
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u4-kc6-a', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> 2, 3, 5, or 10 years depending on offense<br>
+    Alcohol-Restricted status lasts 2, 3, 5, or 10 years depending on the offense count and type.
+  </div>
+    </div>
+    <div>
+      <p style="margin: 1em 0; font-size: 0.7em;">Utah&#x27;s Implied Consent Law means what?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u4-kc6-b" value="0"> You consent to a vehicle search by registering
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u4-kc6-b" value="1"> By driving, you have agreed to submit to a chemical test if a peace officer asks
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u4-kc6-b" value="2"> You consent to traffic stops by getting a license
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u4-kc6-b" value="3"> Only commercial drivers must take chemical tests
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u4-kc6-b', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> By driving, you have agreed to submit to a chemical test if a peace officer asks<br>
+    By driving in Utah, you have already AGREED to submit to a chemical test (breath/blood/urine/oral fluids) if a peace officer asks based on suspicion.
+  </div>
+    </div>
+    <div>
+      <p style="margin: 1em 0; font-size: 0.7em;">An under-21 driver convicted of a first DUI has an Ignition Interlock requirement of:</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u4-kc6-c" value="0"> 6 months
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u4-kc6-c" value="1"> 18 months
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u4-kc6-c" value="2"> 2 years
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u4-kc6-c" value="3"> 3 years
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u4-kc6-c', 3, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> 3 years<br>
+    Under-21 first DUI = 3-year IID requirement. That is longer than the adult first-DUI period (18 months). Handbook p. 64.
+  </div>
+    </div>
+  </div>
+</section>
+
+
+<section data-fact-id="drowsy-warning-signs-list" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD</span></div>
+  <h2>Drowsy driving &mdash; the warning signs</h2>
+  <p>Your body sends signals before you nod off. Catch any of these:</p>
+  <ul>
+    <li>Cannot remember the last few miles</li>
+    <li>Hit a rumble strip or drifted in your lane</li>
+    <li>Yawning, heavy eyes, wandering thoughts</li>
+    <li>Tailgating without meaning to</li>
+    <li>Missing signs or exits</li>
+  </ul>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 67 &middot; Fact ID: drowsy-warning-signs-list</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="power-nap-20-min" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST</span></div>
+  <h2>Drowsy? Here is the move.</h2>
+  <img class="sign" src="../images/signs/mutcd-D9-8-rest-area.png" alt="Blue square with white picnic-table symbol indicating rest area" style="max-height: 180px; margin: 8px auto; display:block;">
+  <div class="move">
+    <strong>Pull over. Switch drivers, or take a 20-minute power nap.</strong>
+    <p style="margin-top: 0.6em;">On a long trip, plan to stop every <strong>2 hours</strong>. Most people need <strong>7&ndash;9 hours</strong> of sleep to drive their best.</p>
+  </div>
+  <p>Coffee plus open window does not actually fix sleep debt &mdash; it just delays the crash by a few minutes.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 66&ndash;67 &middot; Fact IDs: power-nap-20-min, long-trip-stop-every-2-hours</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="distraction-definition-mind-or-body" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD</span></div>
+  <h2>What counts as distraction</h2>
+  <p>Anything that takes your <strong>mind</strong> or <strong>body</strong> away from driving.</p>
+  <p>Not just phones. Also: eating, makeup, fiddling with radio or GPS, reaching for something on the floor, loud passengers, an argument in the car.</p>
+  <div class="move"><strong>The move (before you drive):</strong> set GPS, queue music, eat, secure loose stuff. Now you do not need to mid-drive.</div>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 65 &middot; Fact ID: distraction-definition-mind-or-body</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">Which of these is a warning sign you are too drowsy to drive?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u4-kc7" value="0"> Singing along to the radio
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u4-kc7" value="1"> Cannot remember the last few miles, drifting in lane, or hitting rumble strips
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u4-kc7" value="2"> Holding the wheel with one hand
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u4-kc7" value="3"> Stopping for gas
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u4-kc7', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Cannot remember the last few miles, drifting in lane, or hitting rumble strips<br>
+    Drowsy warning signs include: cannot remember the last few miles, drift in lane, hit rumble strip, missing signs, heavy eyes, constant yawning.
+  </div>
+</section>
+
+
+<section data-fact-id="texting-class-c-100" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST</span></div>
+  <h2>Texting while driving = Class C, $100 max</h2>
+  <img class="sign" src="../images/signs/mutcd-R5-1a-wrong-way.png" alt="Red rectangular sign with white WRONG WAY text in two lines" style="max-height: 180px; margin: 8px auto; display:block;">
+  <p>Texting while operating a moving vehicle is a <strong>Class C misdemeanor</strong>, max fine <strong>$100</strong>.</p>
+  <p>If you cause injury, or you have a prior texting offense: bumps up to <strong>Class B misdemeanor</strong>.</p>
+  <p>Officers can pull you over <em>just</em> for texting. It is a primary offense &mdash; they do not need another reason.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 68 &middot; Fact ID: texting-class-c-100</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">At what point does alcohol impairment begin?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u4-kc-2" value="0"> Only when you reach 0.05 BAC
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u4-kc-2" value="1"> After two or more drinks
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u4-kc-2" value="2"> With the very first drink
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u4-kc-2" value="3"> Only after you feel drunk
+    </label>
+  </div>
+  <button onclick="checkKC('u4-kc-2', 2, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> With the very first drink<br>
+    Impairment begins with the first drink. You do not have to feel drunk to be impaired enough to drive unsafely.
+  </div>
+</section>
+
+
+<section data-fact-id="hwc-under-18-exceptions-only" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST</span></div>
+  <h2>Phone rules split at age 18</h2>
+  <table>
+    <tr><th>Under 18</th><th>18 and over</th></tr>
+    <tr><td>Phone use allowed <em>only</em> for: medical emergency, safety hazard, criminal activity, or parent/guardian.</td><td>May talk via <strong>voice commands</strong> (hands-free). No manual dialing or typing.</td></tr>
+  </table>
+  <p>So at 16: even hands-free chatting with a friend = not allowed. Parent? Fine.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 67&ndash;68 &middot; Fact IDs: hwc-under-18-exceptions-only, hwc-over-18-voice-only</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="hwc-general-no-manual" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST</span></div>
+  <h2>The no-manual rule (every age, every driver)</h2>
+  <p>While operating a moving vehicle on a highway, you may NOT manually:</p>
+  <ul>
+    <li>Write, send, or read a text / IM / email</li>
+    <li>Dial a number</li>
+    <li>Access the internet</li>
+    <li>Take a photo or record video</li>
+    <li>Enter data into a wireless device</li>
+  </ul>
+  <p>Voice command around all of those? Legal (if you are 18+).</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 67 &middot; Fact ID: hwc-general-no-manual</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="distraction-passengers" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD</span></div>
+  <h2>Passengers count too</h2>
+  <p>The GDL (Graduated Driver License) limits passengers under 21 for a reason &mdash; loud car, friends being friends, your attention splits.</p>
+  <div class="move"><strong>The move:</strong> if the car gets chaotic, pull over and reset. Quiet down or I pull over is a real driver tool.</div>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 65 &middot; Fact ID: distraction-passengers</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="pre-drive-distraction-plan" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST</span></div>
+  <h2>If alcohol is in the picture &mdash; the plan</h2>
+  <p>Decide before, not after.</p>
+  <ul>
+    <li>Designated driver who did not drink</li>
+    <li>Rideshare (Uber, Lyft)</li>
+    <li>Sleep over &mdash; stay where you are</li>
+    <li>Call a parent. Seriously. Come get me beats every other option.</li>
+  </ul>
+  <p>None of these depend on you doing math on how impaired you feel.</p>
+  <p class="learn-more">Empowerment framing &middot; Fact ID: pre-drive-distraction-plan</p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">A driver UNDER 18 may use a wireless device while driving ONLY for which purposes?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u4-kc8" value="0"> Any quick communication
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u4-kc8" value="1"> Medical emergency, safety hazard, criminal activity, OR contacting parent/guardian
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u4-kc8" value="2"> Texting friends about ETA
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u4-kc8" value="3"> Music control only
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u4-kc8', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Medical emergency, safety hazard, criminal activity, OR contacting parent/guardian<br>
+    Under 18 may only use a wireless device for medical emergency, safety hazard, criminal activity, OR contacting parent/legal guardian.
+  </div>
+</section>
+
+
+<section data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SCENARIO</span></div>
+  <h2>Scenario: One sip under 21</h2>
+  <div class="scenario">
+    <p><strong>Jordan, 18,</strong> has a sip of beer at a friend house. Drives home. Officer pulls him over for a broken taillight, smells alcohol.</p>
+  </div>
+  <p style="margin-top: 0.8em;"><strong>The result:</strong> Not-a-Drop Act &mdash; <strong>6-month license denial</strong>. Possession statute &mdash; 1-year suspension on top. Only a sip is not a defense; under 21 means zero.</p>
+  <p class="learn-more">Tests: under-21-zero-tolerance, not-a-drop-6-months-first</p>
+</section>
+
+<section data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SCENARIO</span></div>
+  <h2>Scenario: Refusing the breathalyzer</h2>
+  <div class="scenario">
+    <p><strong>Andre, 22,</strong> gets pulled over, suspected DUI. He refuses the breathalyzer thinking it will protect him.</p>
+  </div>
+  <p style="margin-top: 0.8em;"><strong>The result:</strong> Implied Consent kicks in &mdash; <strong>18-month automatic revocation</strong> for first refusal, separate from any DUI charges. The refusal itself is the violation.</p>
+  <p class="learn-more">Tests: implied-consent-law, refusal-21-plus-18-or-36-months</p>
+</section>
+
+<section data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SCENARIO</span></div>
+  <h2>Scenario: Cold medicine + driving</h2>
+  <div class="scenario">
+    <p><strong>Brian</strong> takes a nighttime cold med (sleep aid included) two hours before driving to a friend house.</p>
+  </div>
+  <p style="margin-top: 0.8em;"><strong>The result:</strong> OTC meds count. Sleep aid plus driving = impaired. If a test shows the metabolite after a crash, that is a DUI charge &mdash; not just a civil ticket. Read the label, swap to non-drowsy, or do not drive.</p>
+  <p class="learn-more">Tests: impairing-drugs-all-three-categories, meds-cause-drowsiness</p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">Which categories of drugs are considered impairing drugs under Utah law?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u4-kc-3" value="0"> Illegal drugs only
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u4-kc-3" value="1"> Prescription drugs only
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u4-kc-3" value="2"> Illegal, over-the-counter, AND prescription drugs
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u4-kc-3" value="3"> Only drugs with warning labels
+    </label>
+  </div>
+  <button onclick="checkKC('u4-kc-3', 2, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Illegal, over-the-counter, AND prescription drugs<br>
+    Impairing drugs include all three: illegal, over-the-counter, AND prescription. A doctor note does NOT exempt you from DUI law.
+  </div>
+</section>
+
+
+<section data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SCENARIO</span></div>
+  <h2>Scenario: Texting at a red light</h2>
+  <div class="scenario">
+    <p><strong>Sam, 16,</strong> stopped at a red light. Pulls out his phone to text a friend running 5 min late. Patrol officer in the next lane sees him.</p>
+  </div>
+  <p style="margin-top: 0.8em;"><strong>The result:</strong> Under 18 + texting a friend is not one of the four exceptions (medical, hazard, criminal, parent/guardian). Class C misdemeanor, max $100 fine. Stopped at a light still counts as operating a moving vehicle in traffic.</p>
+  <p class="learn-more">Tests: hwc-under-18-exceptions-only, texting-class-c-100</p>
+</section>
+
+<section data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SCENARIO</span></div>
+  <h2>Scenario: Hands-free at 22</h2>
+  <div class="scenario">
+    <p><strong>Marisa, 22,</strong> uses voice command to dial her mom on the freeway. Talks hands-free for 5 minutes.</p>
+  </div>
+  <p style="margin-top: 0.8em;"><strong>The result:</strong> Legal. Over 18 may talk via voice commands. No manual dialing happened. Whether the call is mom, GPS, or general chat does not matter at 18+ &mdash; only the manual rule applies.</p>
+  <p class="learn-more">Tests: hwc-over-18-voice-only</p>
+</section>
+
+<section data-fact-id="flood-6-inches-stalls-cars" data-priority="MUST" class="priority-must">
+  <div class="tag-row"><span class="must-tag">MUST</span></div>
+  <h2>Flooded road? Turn around.</h2>
+  <img class="sign" src="../images/signs/mutcd-W8-5-slippery-when-wet.png" alt="Yellow diamond with black car symbol showing skid marks indicating slippery road" style="max-height: 180px; margin: 8px auto; display:block;">
+  <table>
+    <tr><th>Water depth</th><th>What happens</th></tr>
+    <tr><td><strong>6 inches</strong></td><td>Stalls most passenger cars</td></tr>
+    <tr><td><strong>2 feet</strong></td><td>Sweeps away most vehicles &mdash; including SUVs and trucks</td></tr>
+  </table>
+  <p>You cannot see what is under the water. The road might be washed out. The water might be moving faster than it looks.</p>
+  <div class="move"><strong>The move:</strong> Turn around. Find another route. Turn Around, Do Not Drown is the literal slogan.</div>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 67 &middot; Fact IDs: flood-6-inches-stalls-cars, flood-2-feet-carries-suv</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-priority="MUST" class="priority-must">
+  <h2>Recap &mdash; the top 5 MUSTs</h2>
+  <table>
+    <tr><th>#</th><th>Rule</th><th>Number to remember</th></tr>
+    <tr><td>1</td><td>Utah adult BAC limit</td><td><strong>0.05</strong> (lowest in U.S.)</td></tr>
+    <tr><td>2</td><td>Under-21 BAC limit (Not-a-Drop)</td><td><strong>0.00</strong> &mdash; 6-month denial</td></tr>
+    <tr><td>3</td><td>First DUI under 21 = IID</td><td><strong>3 years</strong></td></tr>
+    <tr><td>4</td><td>Refuse breathalyzer (21+, first)</td><td><strong>18-month revoke</strong></td></tr>
+    <tr><td>5</td><td>Texting penalty</td><td>Class C, <strong>$100 max</strong></td></tr>
+  </table>
+  <p class="learn-more">Plus: prescription and OTC drugs count. Drowsy = pull over, 20-min nap. Flooded road = turn around.</p>
+</section>
+
+<section data-tour="true">
+  <h2 style="color:#581c87;">Want to see all of this in pictures?</h2>
+  <p style="margin: 0.6em 0; font-size: 0.85em;">Zerofatalities&apos; Visual Driver Handbook covers what you just studied with animations, photos, and real Utah locations. Most impairment content is text &mdash; see the index for the chapters that cover it.</p>
+  <div style="background: linear-gradient(135deg, #fef9c3, #fed7aa); padding: 1em; border-radius: 10px; border: 2px solid #fde68a; max-width: 640px; margin: 0.8em auto; text-align: left;">
+    <ul style="list-style:none; padding:0; margin:0; font-size: 0.75em;">
+      <li style="padding: 5px 0;">
+        <a href="https://visualhandbook.zerofatalities.com/handbook-index/" target="_blank" rel="noopener" style="color: #581c87; text-decoration: none; font-weight: 600;">Full handbook index</a>
+      </li>
+    </ul>
+  </div>
+  <p style="margin-top: 0.8em; font-size: 0.7em; color: #71717a;">All open in a new tab. Come back here when you&apos;re done.</p>
+</section>
+
+<section data-state="finish">
+  <h1 style="color:#581c87; font-size: 2em; text-align:center;">&#127881; You finished Unit 4! &#127881;</h1>
+  <p style="text-align:center; font-size: 0.9em; margin-top: 1em;"><strong>Next up: Unit 5 &mdash; Sharing the Road and Your Vehicle.</strong> Bikes, trucks, motorcycles, and what to actually keep in the glove box.</p>
+  <p class="learn-more" style="text-align:center;">You have got this.</p>
+</section>
+
+</div></div>
+<script>
+  function checkKC(name, correctIndex, btn) {
+    var sel = document.querySelector('input[name="' + name + '"]:checked');
+    var resultEl = btn.nextElementSibling;
+    if (!sel) {
+      resultEl.style.display = 'block';
+      resultEl.innerHTML = '<em>Pick an answer first.</em>';
+      return;
+    }
+    var labels = document.querySelectorAll('input[name="' + name + '"]');
+    labels.forEach(function(input, i) {
+      var lbl = input.parentElement;
+      if (i === correctIndex) lbl.style.borderColor = '#16a34a', lbl.style.background = '#dcfce7';
+      else if (input.checked) lbl.style.borderColor = '#dc2626', lbl.style.background = '#fee2e2';
+    });
+    resultEl.style.display = 'block';
+    btn.disabled = true;
+    btn.style.opacity = '0.5';
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>Reveal.initialize({ hash: true, slideNumber: false, transition: 'fade', controls: true, progress: true });</script>
+<script>
+  Reveal.on('slidechanged', function(event) {
+    var slides = document.querySelectorAll('.reveal .slides > section');
+    var isLast = event.currentSlide === slides[slides.length - 1];
+    if (isLast && typeof confetti === 'function') {
+      confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+      setTimeout(function() {
+        confetti({ particleCount: 80, spread: 100, origin: { y: 0.5, x: 0.2 } });
+        confetti({ particleCount: 80, spread: 100, origin: { y: 0.5, x: 0.8 } });
+      }, 400);
+      // Record deck completion
+      try {
+        var unitKey = "unit-4";
+        var completions = JSON.parse(localStorage.getItem("dl_deck_completions") || "{}");
+        completions[unitKey] = Date.now();
+        localStorage.setItem("dl_deck_completions", JSON.stringify(completions));
+        var __dlUser = localStorage.getItem("dl_user");
+        if (__dlUser && __dlUser !== "__anon__") {
+          fetch("/api/drive/progress", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              user: __dlUser.replace(/^"|"$/g, ""),
+              deckCompletions: completions
+            }),
+            keepalive: true
+          }).catch(function(){});
+        }
+      } catch (e) {}
+    }
+  });
+</script>
+</body></html>

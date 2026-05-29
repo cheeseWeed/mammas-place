@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 2: Driving Basics</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<style>
+:root { --primary: #581c87; --accent: #facc15; --text: #18181b; }
+.reveal { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+.reveal h1, .reveal h2 { color: var(--primary); }
+.reveal .must-tag { background: var(--accent); color: var(--text); padding: 2px 8px; border-radius: 4px; font-size: 0.7em; }
+.reveal .should-tag { background: #e4e4e7; color: var(--text); padding: 2px 8px; border-radius: 4px; font-size: 0.7em; }
+.reveal .nice-tag { background: #f4f4f5; color: #71717a; padding: 2px 8px; border-radius: 4px; font-size: 0.7em; }
+.reveal a { color: var(--primary); }
+.reveal .learn-more { font-size: 0.65em; opacity: 0.7; margin-top: 1em; }
+.reveal .weird-utah { background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 1em; border-radius: 8px; }
+.reveal .priority-must { border-left: 6px solid var(--accent); padding-left: 12px; }
+.reveal table { font-size: 0.7em; margin: 0.5em auto; }
+.reveal table th { background: #f4f4f5; color: var(--primary); }
+.reveal .scenario { background: #f5f3ff; border-left: 4px solid var(--primary); padding: 0.75em 1em; border-radius: 6px; text-align: left; font-size: 0.8em; }
+.reveal .answer-box { background: #fefce8; border-left: 4px solid var(--accent); padding: 0.75em 1em; border-radius: 6px; text-align: left; font-size: 0.8em; margin-top: 0.5em; }
+.reveal ul, .reveal ol { display: inline-block; text-align: left; }
+.reveal .tag-row { margin-bottom: 0.5em; }
+.reveal small { font-size: 0.6em; }
+
+/* SIZE-CAP-PATCH v1 — clamp default Reveal heading sizes so long titles fit */
+.reveal h1 { font-size: 1.8em !important; line-height: 1.15; margin-bottom: 0.3em; }
+.reveal h2 { font-size: 1.3em !important; line-height: 1.2; margin-bottom: 0.4em; }
+.reveal h3 { font-size: 1.1em !important; }
+.reveal .slides section { padding: 0 24px; box-sizing: border-box; }
+.reveal p, .reveal li { font-size: 0.85em; line-height: 1.4; }
+.reveal table { font-size: 0.7em; }
+
+
+/* BIG-NUM-CAP v1 — clamp .big-num so long phrases like "Class D = your normal license" don't overflow */
+.reveal .big-num { font-size: 1.4em !important; line-height: 1.2; word-wrap: break-word; }
+.reveal .scenario-box, .reveal .answer-box { font-size: 0.75em; }
+.reveal h2 { font-size: 1.2em !important; }
+
+/* OVERFLOW-FIX v2 */
+/* OVERFLOW-FIX v2 — shrink everything further so slides fit within Reveal's 960x700 viewport */
+.reveal h1 { font-size: 1.4em !important; line-height: 1.15; margin-bottom: 0.2em; }
+.reveal h2 { font-size: 1.05em !important; line-height: 1.2; margin-bottom: 0.3em; }
+.reveal h3 { font-size: 0.95em !important; }
+.reveal .big-num { font-size: 1.15em !important; line-height: 1.2; word-wrap: break-word; }
+.reveal p, .reveal li { font-size: 0.7em !important; line-height: 1.35; }
+.reveal ul, .reveal ol { margin: 0.3em auto; }
+.reveal table { font-size: 0.55em !important; }
+.reveal .scenario-box, .reveal .answer-box { font-size: 0.65em !important; padding: 0.6em !important; }
+.reveal .learn-more { font-size: 0.55em !important; margin-top: 0.4em; }
+.reveal .tag-row { margin-bottom: 0.3em; }
+.reveal .must-tag, .reveal .should-tag, .reveal .nice-tag { font-size: 0.6em !important; }
+.reveal .ladder li { font-size: 0.55em !important; padding: 0.15em 0; }
+
+/* Knowledge-check slides: aggressively shrink */
+.reveal section[data-knowledge-check="true"] h2 { font-size: 0.95em !important; margin-bottom: 0.3em; }
+.reveal section[data-knowledge-check="true"] p { font-size: 0.75em !important; margin: 0.4em 0 !important; }
+.reveal section[data-knowledge-check="true"] .kc-choices { max-width: 500px !important; margin: 0 auto !important; }
+.reveal section[data-knowledge-check="true"] .kc-choices label { font-size: 0.65em !important; padding: 6px 10px !important; margin: 3px 0 !important; line-height: 1.2; }
+.reveal section[data-knowledge-check="true"] button { font-size: 0.7em !important; padding: 6px 16px !important; margin-top: 8px !important; }
+.reveal section[data-knowledge-check="true"] .kc-result { font-size: 0.65em !important; padding: 8px !important; margin-top: 8px !important; }
+.reveal section[data-knowledge-check="true"] hr { margin: 12px 0 !important; }
+
+/* CLASS-SWEEP v1 */
+/* CLASS-SWEEP v1 — size the rest of the content classes used across decks */
+.reveal .recap-card { font-size: 0.65em !important; padding: 0.4em 0.6em !important; margin: 0.3em 0 !important; line-height: 1.3; }
+.reveal .callout { font-size: 0.7em !important; padding: 0.5em !important; }
+.reveal .callout.small { font-size: 0.6em !important; }
+.reveal .scenario { font-size: 0.7em !important; padding: 0.5em !important; }
+.reveal .small { font-size: 0.6em !important; }
+.reveal .q { font-size: 0.75em !important; }
+.reveal .answer { font-size: 0.7em !important; }
+.reveal .pill, .reveal .pill-stop, .reveal .pill-go { font-size: 0.6em !important; padding: 0.2em 0.5em !important; }
+.reveal .matrix { font-size: 0.55em !important; }
+.reveal .move { font-size: 0.7em !important; }
+.reveal .big-number { font-size: 1.2em !important; line-height: 1.15; word-wrap: break-word; }
+
+/* Force a centered scrollable container that respects the brand color scrollbar */
+.reveal .slides > section { scrollbar-color: #c4b5fd #faf5ff; }
+
+/* TIGHTEN-COLS v1 */
+/* TIGHTEN-COLS v1 — shrink padding/font in 2-column go-look and multi-Q kc grids so right column fits */
+.reveal section[data-go-look="true"] div[style*="display:grid"] > div { padding: 8px !important; }
+.reveal section[data-go-look="true"] div[style*="display:grid"] .kc-choices { max-width: 100% !important; }
+.reveal section[data-go-look="true"] div[style*="display:grid"] .kc-choices label {
+  font-size: 0.55em !important;
+  padding: 5px 8px !important;
+  margin: 3px 0 !important;
+  line-height: 1.2 !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] p {
+  font-size: 0.65em !important;
+  margin: 0.4em 0 !important;
+  line-height: 1.3 !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] h2 {
+  font-size: 0.85em !important;
+  margin-bottom: 0.4em !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] button {
+  font-size: 0.65em !important;
+  padding: 5px 12px !important;
+  margin-top: 6px !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] a[href*="zerofatalities"] {
+  font-size: 0.65em !important;
+  padding: 5px 10px !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] .kc-result {
+  font-size: 0.55em !important;
+  padding: 6px !important;
+}
+/* Same for multi-Q knowledge-checks in 2-col or 3-col grids */
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] > div { padding: 6px !important; }
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] .kc-choices label {
+  font-size: 0.55em !important;
+  padding: 4px 8px !important;
+  margin: 2px 0 !important;
+  line-height: 1.2 !important;
+}
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] p {
+  font-size: 0.6em !important;
+  margin: 0.3em 0 !important;
+}
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] button {
+  font-size: 0.6em !important;
+  padding: 4px 10px !important;
+}
+
+/* CONTENT-TIGHTEN v1 */
+/* CONTENT-TIGHTEN v1 — trim tall content slides (sign + bullets + learn-more) so they fit */
+.reveal section[data-priority] img.sign { max-height: 130px !important; margin: 4px auto !important; }
+.reveal section[data-priority] p { font-size: 0.65em !important; margin: 0.3em 0 !important; line-height: 1.35; }
+.reveal section[data-priority] ul, .reveal section[data-priority] ol { margin: 0.3em 0 !important; }
+.reveal section[data-priority] li { font-size: 0.65em !important; line-height: 1.3 !important; margin: 0.15em 0 !important; }
+.reveal section[data-priority] .learn-more { font-size: 0.5em !important; margin-top: 0.3em !important; }
+.reveal section[data-priority] .tag-row { margin-bottom: 0.3em !important; }
+.reveal section[data-priority] h1 { font-size: 1.5em !important; margin-bottom: 0.2em !important; }
+.reveal section[data-priority] h2 { font-size: 1.1em !important; margin-bottom: 0.3em !important; }
+.reveal section[data-priority] table { font-size: 0.55em !important; margin: 0.3em auto !important; }
+.reveal section[data-priority] .scenario-box, .reveal section[data-priority] .answer-box { font-size: 0.6em !important; padding: 0.4em !important; margin: 0.3em 0 !important; }
+
+/* COL-DIVIDERS v1 */
+/* COL-DIVIDERS v1 — vertical separator line between 2-Q/3-Q knowledge-check grid columns */
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] > div:not(:last-child) {
+  border-right: 2px dashed #c4b5fd !important;
+  padding-right: 12px !important;
+}
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] > div:not(:first-child) {
+  padding-left: 12px !important;
+}
+
+/* GOLOOK-DIVIDER v1 */
+/* GOLOOK-DIVIDER v1 — vertical separator between go-look's left (link) and right (Q) columns */
+.reveal section[data-go-look="true"] div[style*="display:grid"] > div:not(:last-child) {
+  border-right: 2px dashed #fcd34d !important;
+  padding-right: 10px !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] > div:not(:first-child) {
+  padding-left: 10px !important;
+}
+
+</style></head>
+<body>
+<!-- HOME-BTN v1 -->
+<a href="../dashboard/index.html" style="position:fixed; top:12px; left:12px; z-index:9999; background:#581c87; color:white; text-decoration:none; padding:6px 14px; border-radius:6px; font-size:13px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.15);">&larr; Home</a>
+<div class="reveal"><div class="slides">
+
+<!-- 1. Title -->
+<section>
+  <h1>Unit 2: Driving Basics</h1>
+  <p>How to actually <em>operate</em> a car — confidently.</p>
+  <p style="font-size:0.7em;opacity:0.8;">~20 minutes &middot; 28 slides &middot; Utah Driver Handbook REV 3.2026 pp. 37-49</p>
+  <p class="learn-more">Unit 1 covered the paperwork. This unit is what your hands and eyes actually do.</p>
+</section>
+
+<!-- 2. Intro -->
+<section>
+  <h2>What you'll walk away with</h2>
+  <ul>
+    <li>A repeatable pre-drive setup so the car fits <em>you</em></li>
+    <li>Three-step lane changes that feel automatic</li>
+    <li>The parking-distance numbers (15 / 20 / 30 / 50 ft)</li>
+    <li>Hill parking that won't roll away</li>
+    <li>Freeway moves: following, merging, passing</li>
+  </ul>
+  <p class="learn-more">If a slide has a yellow <span class="must-tag">MUST</span> tag, expect it on the test.</p>
+</section>
+
+<!-- 3. Pre-drive setup -->
+<section data-fact-id="seat-10-inches-from-wheel" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD KNOW</span></div>
+  <h2>Sit down before you start the car</h2>
+  <p class="priority-must">Back against the seat. Feet flat on the floor. <strong>10 inches</strong> of space between your chest and the steering wheel.</p>
+  <ul>
+    <li>Top of the wheel: <strong>no higher than your shoulders</strong>, below your chin</li>
+    <li>Headrest touches the back of your head <strong>above your ears</strong> (not your neck)</li>
+  </ul>
+  <p class="learn-more">Why? If the air bag fires, you want chest distance and a headrest that catches your head, not your neck. Handbook p. 37.</p>
+</section>
+
+<!-- 4. Mirror aim -->
+<section data-fact-id="left-mirror-head-on-window" data-priority="NICE">
+  <div class="tag-row"><span class="nice-tag">NICE TO KNOW</span></div>
+  <h2>Aim mirrors so you can see <em>past</em> your car</h2>
+  <ul>
+    <li><strong>Left mirror:</strong> rest your head against the closed left window, set the mirror so you can <em>barely</em> see the rear left edge of your car</li>
+    <li><strong>Right mirror:</strong> lean right until your head is under the rearview mirror, set so you can <em>barely</em> see the right side of your car</li>
+  </ul>
+  <p>Done right, your blind spots almost disappear.</p>
+  <p class="learn-more">Handbook p. 37 &middot; <a href="https://visualhandbook.zerofatalities.com">zerofatalities.com</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">For proper driving position, how much space should be between your chest and the steering wheel?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u2-kc4" value="0"> 5 inches
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u2-kc4" value="1"> 8 inches
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u2-kc4" value="2"> 10 inches
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u2-kc4" value="3"> 15 inches
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u2-kc4', 2, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> 10 inches<br>
+    Sit with at least 10 inches between your chest and the steering wheel. Protects you from air bag injury. Handbook p. 37.
+  </div>
+</section>
+
+
+<!-- 5. Air bags + seating -->
+<section data-fact-id="airbag-with-belt" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD KNOW</span></div>
+  <h2>Air bags work <em>with</em> your seat belt, not instead of it</h2>
+  <ul>
+    <li>Air bags deploy at up to <strong>200 mph</strong> — that's why distance matters</li>
+    <li>Sit as far back from the air bag as is practical</li>
+    <li>Infants <strong>never</strong> ride in the front seat with a passenger-side air bag</li>
+    <li>Disabling/removing the air bag system = Class B misdemeanor</li>
+  </ul>
+  <p class="learn-more">The belt holds you in position so the air bag can do its job. Handbook p. 39.</p>
+</section>
+
+<!-- 6. Buckle up + kids -->
+<section data-fact-id="everyone-buckled" data-priority="MUST">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span></div>
+  <h2>Everyone in the car gets a seat belt</h2>
+  <p class="priority-must">Every person in your vehicle <strong>must</strong> have a fastened seat belt or be in a child seat. No exceptions.</p>
+  <ul>
+    <li>Kids <strong>12 and under</strong> ride in the back seat</li>
+    <li>Lap belt across hips (not stomach). Shoulder belt across chest (not under arm, not behind back)</li>
+  </ul>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 37-38. This is a DLD sample-test canonical fact.</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-7-preparing-your-vehicle/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">Air bags are designed to:</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u2-kc5" value="0"> Replace seat belts entirely
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u2-kc5" value="1"> Work WITH safety belts, not as a replacement
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u2-kc5" value="2"> Inflate only in crashes over 60 mph
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u2-kc5" value="3"> Protect rear-seat passengers only
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u2-kc5', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Work WITH safety belts, not as a replacement<br>
+    Air bags work WITH safety belts - not as a replacement. You still need to be buckled in. Handbook p. 39.
+  </div>
+</section>
+
+
+<!-- 7. Three-step lane change -->
+<section data-fact-id="lane-change-procedure" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD KNOW</span></div>
+  <h2>The 3-step lane change</h2>
+  <ol>
+    <li><strong>Mirrors</strong> — check rearview and side</li>
+    <li><strong>Signal</strong> — at least 2 seconds before you move</li>
+    <li><strong>Shoulder check</strong> — look over your shoulder for the blind spot, <em>then</em> merge</li>
+  </ol>
+  <p>Same three steps every time. Mirror, signal, shoulder check.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 40, 44.</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-go-look="true">
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+    <div style="background: linear-gradient(135deg, #fef9c3, #fed7aa); padding: 1.2em; border-radius: 10px; border: 2px solid #fde68a;">
+    <h2 style="color:#581c87; margin-bottom: 0.5em;">Go look at the picture</h2>
+    <p style="margin: 0.6em 0; font-size: 0.85em;">Open Zerofatalities and look at <strong>lane changes — the 3-step procedure with the blind-spot animation</strong>. Then come back and answer below.</p>
+    <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/lane-changes/" target="_blank" rel="noopener" style="display:inline-block; background:#581c87; color:white; text-decoration:none; padding:8px 16px; border-radius:6px; margin: 0.5em 0; font-size:0.8em;">Open Zerofatalities →</a>
+  </div>
+    <div style="padding: 1em; background: #faf5ff; border-left: 4px solid #581c87; border-radius: 6px;">
+    <p style="margin: 0.5em 0; font-size: 0.85em; font-weight: 600; color: #581c87;">Now answer:</p>
+    <p style="margin: 0.5em 0; font-size: 0.85em;">In the 3-step lane change, what is the LAST thing you do right before you steer into the new lane?</p>
+    <div class="kc-choices" style="text-align:left; max-width:520px; margin:0 auto;">
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-1" value="0"> Turn on the signal
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-1" value="1"> Check the rearview mirror
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-1" value="2"> Shoulder check for the blind spot
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-1" value="3"> Honk the horn
+      </label>
+    </div>
+    <button onclick="checkKC('gl-u2-1', 2, this)" style="background:#581c87; color:white; border:none; padding:6px 16px; border-radius:5px; margin-top:8px; cursor:pointer; font-size:0.75em;">Check answer</button>
+    <div class="kc-result" style="display:none; margin-top:10px; padding:10px; background:#fef3c7; border-radius:4px; font-size:0.7em;">
+      <strong>Answer:</strong> Shoulder check for the blind spot<br>Mirror, signal, shoulder check — in that order. Mirrors don't show the blind spot, so the over-the-shoulder glance is the LAST step before you move.
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- 8. Backing up -->
+<section data-fact-id="backing-look-through-rear-window" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD KNOW</span></div>
+  <h2>When backing up, look out the back window</h2>
+  <p>Mirrors don't show you what's <em>directly behind</em> the car. Backup cameras can miss low or fast-moving things (kids, bikes).</p>
+  <ul>
+    <li>Walk behind the car <em>before</em> getting in</li>
+    <li>Right arm on the seat back, turn and look through the rear window</li>
+    <li>Steer in the direction you want the <strong>rear</strong> of the car to move</li>
+    <li>Never back up on a freeway or interstate</li>
+  </ul>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 40.</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">Yellow pavement lines separate traffic moving in which direction?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u2-kc-1" value="0"> The same direction
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u2-kc-1" value="1"> Opposing (opposite) directions
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u2-kc-1" value="2"> Across an intersection
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u2-kc-1" value="3"> Toward a shoulder
+    </label>
+  </div>
+  <button onclick="checkKC('u2-kc-1', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Opposing (opposite) directions<br>
+    YELLOW = OPPOSING. Yellow lines separate traffic going in opposite directions. (White = same direction.) This is the DLD&#x27;s most-flagged pavement fact.
+  </div>
+</section>
+
+
+<!-- 9. Zipper merge -->
+<section data-fact-id="zipper-merge" data-priority="MUST">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span></div>
+  <h2>Use the zipper merge — both lanes, then alternate</h2>
+  <img class="sign" src="../images/signs/mutcd-W4-2R-lane-ends-right.png" alt="Yellow diamond with arrows showing right lane ending and traffic merging left" style="max-height: 180px; margin: 8px auto; display:block;">
+  <p class="priority-must">When two lanes merge into one (construction, ramp), use <strong>both lanes</strong> all the way to the merge point, then take turns one-by-one into the single lane.</p>
+  <p>Drivers who merge early actually make the line <em>longer</em>. Zipper is the law in Utah — refusing to zipper is an infraction.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 41. This is a DLD sample-test canonical fact.</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- 10. Gore area -->
+<section data-fact-id="gore-area-no-drive" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD KNOW</span></div>
+  <h2>The gore area is the painted triangle — stay out</h2>
+  <p>That triangular wedge between two solid white lines where ramps meet the freeway? That's the <strong>gore area</strong>.</p>
+  <p>It's illegal to drive on, cross, or park in. If you missed your exit, take the next one — don't cut back across the gore.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 41.</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- 11. Parking distances -->
+<section data-fact-id="no-park-15-ft-hydrant" data-priority="MUST">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span></div>
+  <h2>Parking distances: 15 / 20 / 30 / 50</h2>
+  <img class="sign" src="../images/signs/mutcd-R7-1-no-parking-any-time.png" alt="White rectangle with red circle and slash over a P, text NO PARKING ANY TIME" style="max-height: 180px; margin: 8px auto; display:block;">
+  <table>
+    <thead><tr><th>Distance</th><th>From what</th></tr></thead>
+    <tbody>
+      <tr><td><strong>15 ft</strong></td><td>Fire hydrant</td></tr>
+      <tr><td><strong>20 ft</strong></td><td>Crosswalk, fire-station driveway</td></tr>
+      <tr><td><strong>30 ft</strong></td><td>Stop sign, yield sign, traffic signal, flashing beacon</td></tr>
+      <tr><td><strong>50 ft</strong></td><td>Nearest rail of a railroad track</td></tr>
+    </tbody>
+  </table>
+  <p>Also: back wheel no more than <strong>12 inches</strong> from the curb.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 42. Memory trick: smaller things (hydrants) = smaller distances.</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-go-look="true">
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+    <div style="background: linear-gradient(135deg, #fef9c3, #fed7aa); padding: 1.2em; border-radius: 10px; border: 2px solid #fde68a;">
+    <h2 style="color:#581c87; margin-bottom: 0.5em;">Go look at the picture</h2>
+    <p style="margin: 0.6em 0; font-size: 0.85em;">Open Zerofatalities and look at <strong>parallel parking — the curb-distance diagram and the no-park zones</strong>. Then come back and answer below.</p>
+    <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/parking/" target="_blank" rel="noopener" style="display:inline-block; background:#581c87; color:white; text-decoration:none; padding:8px 16px; border-radius:6px; margin: 0.5em 0; font-size:0.8em;">Open Zerofatalities →</a>
+  </div>
+    <div style="padding: 1em; background: #faf5ff; border-left: 4px solid #581c87; border-radius: 6px;">
+    <p style="margin: 0.5em 0; font-size: 0.85em; font-weight: 600; color: #581c87;">Now answer:</p>
+    <p style="margin: 0.5em 0; font-size: 0.85em;">When you parallel park, how close should your back wheel be to the curb?</p>
+    <div class="kc-choices" style="text-align:left; max-width:520px; margin:0 auto;">
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-2" value="0"> Touching the curb
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-2" value="1"> Within 6 inches
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-2" value="2"> Within 12 inches
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-2" value="3"> Within 18 inches
+      </label>
+    </div>
+    <button onclick="checkKC('gl-u2-2', 2, this)" style="background:#581c87; color:white; border:none; padding:6px 16px; border-radius:5px; margin-top:8px; cursor:pointer; font-size:0.75em;">Check answer</button>
+    <div class="kc-result" style="display:none; margin-top:10px; padding:10px; background:#fef3c7; border-radius:4px; font-size:0.7em;">
+      <strong>Answer:</strong> Within 12 inches<br>The back wheel must be no more than 12 inches from the curb. Handbook p. 42.
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- 12. Hill parking -->
+<section data-fact-id="downhill-wheels-toward-curb" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD KNOW</span></div>
+  <h2>Hill parking: three scenarios</h2>
+  <table>
+    <thead><tr><th>Situation</th><th>Wheels turn</th></tr></thead>
+    <tbody>
+      <tr><td>Downhill, curb present</td><td><strong>Toward</strong> the curb</td></tr>
+      <tr><td>Uphill, curb present</td><td><strong>Away</strong> from the curb</td></tr>
+      <tr><td>Uphill, no curb</td><td>To the <strong>right</strong> (toward shoulder)</td></tr>
+    </tbody>
+  </table>
+  <p>Front tire should touch the curb. Then: parking brake, motor off, lock doors.</p>
+  <p class="learn-more">Logic: if the brake fails, the curb (or shoulder) catches you instead of traffic. Handbook p. 42.</p>
+</section>
+
+<!-- 13. Passing -->
+<section data-fact-id="pass-return-200-ft-oncoming" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD KNOW</span></div>
+  <h2>Passing: leave 200 ft before you cut back in</h2>
+  <ul>
+    <li>Left lane is for <strong>passing</strong>, not cruising</li>
+    <li>When returning to your lane, be at least <strong>200 ft</strong> ahead of oncoming traffic</li>
+    <li>Never pass on the shoulder</li>
+    <li>Never pass: at intersections/crosswalks, before a railroad crossing or bridge, on a curve or hill that blocks your view, in a no-passing zone</li>
+  </ul>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 44.</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-go-look="true">
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+    <div style="background: linear-gradient(135deg, #fef9c3, #fed7aa); padding: 1.2em; border-radius: 10px; border: 2px solid #fde68a;">
+    <h2 style="color:#581c87; margin-bottom: 0.5em;">Go look at the picture</h2>
+    <p style="margin: 0.6em 0; font-size: 0.85em;">Open Zerofatalities and look at <strong>passing — the diagram showing when to cut back in front of oncoming traffic</strong>. Then come back and answer below.</p>
+    <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/passing/" target="_blank" rel="noopener" style="display:inline-block; background:#581c87; color:white; text-decoration:none; padding:8px 16px; border-radius:6px; margin: 0.5em 0; font-size:0.8em;">Open Zerofatalities →</a>
+  </div>
+    <div style="padding: 1em; background: #faf5ff; border-left: 4px solid #581c87; border-radius: 6px;">
+    <p style="margin: 0.5em 0; font-size: 0.85em; font-weight: 600; color: #581c87;">Now answer:</p>
+    <p style="margin: 0.5em 0; font-size: 0.85em;">When passing on a 2-lane road, how far ahead of oncoming traffic must you be before you return to your lane?</p>
+    <div class="kc-choices" style="text-align:left; max-width:520px; margin:0 auto;">
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-3" value="0"> 100 feet
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-3" value="1"> 200 feet
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-3" value="2"> 300 feet
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-3" value="3"> 500 feet
+      </label>
+    </div>
+    <button onclick="checkKC('gl-u2-3', 1, this)" style="background:#581c87; color:white; border:none; padding:6px 16px; border-radius:5px; margin-top:8px; cursor:pointer; font-size:0.75em;">Check answer</button>
+    <div class="kc-result" style="display:none; margin-top:10px; padding:10px; background:#fef3c7; border-radius:4px; font-size:0.7em;">
+      <strong>Answer:</strong> 200 feet<br>You must be at least 200 ft ahead of oncoming traffic before you cut back in. Handbook p. 44.
+    </div>
+  </div>
+  </div>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check (3 questions)</h2>
+  <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start;">
+    <div>
+      <p style="margin: 1em 0; font-size: 0.7em;">You must not park within how many feet of a fire hydrant?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u2-kc6-a" value="0"> 10 feet
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u2-kc6-a" value="1"> 15 feet
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u2-kc6-a" value="2"> 20 feet
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u2-kc6-a" value="3"> 30 feet
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u2-kc6-a', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> 15 feet<br>
+    No parking within 15 feet of a fire hydrant. Handbook p. 42.
+  </div>
+    </div>
+    <div>
+      <p style="margin: 1em 0; font-size: 0.7em;">You must not park within how many feet of a stop sign, yield sign, traffic signal, or flashing beacon?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u2-kc6-b" value="0"> 15 feet
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u2-kc6-b" value="1"> 20 feet
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u2-kc6-b" value="2"> 25 feet
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u2-kc6-b" value="3"> 30 feet
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u2-kc6-b', 3, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> 30 feet<br>
+    No parking within 30 feet of a flashing beacon, stop sign, yield sign, or traffic signal. Handbook p. 42.
+  </div>
+    </div>
+    <div>
+      <p style="margin: 1em 0; font-size: 0.7em;">You must not park within how many feet of a crosswalk at an intersection?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u2-kc6-c" value="0"> 10 feet
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u2-kc6-c" value="1"> 15 feet
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u2-kc6-c" value="2"> 20 feet
+    </label>
+    <label style="display:block; padding: 6px 10px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer; font-size: 0.65em;">
+      <input type="radio" name="kc-u2-kc6-c" value="3"> 30 feet
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u2-kc6-c', 2, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> 20 feet<br>
+    No parking on a crosswalk or within 20 feet of one. Handbook p. 42.
+  </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 14. Snowplow rule -->
+<section data-fact-id="no-pass-snowplow-blade-side" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD KNOW</span></div>
+  <h2>Snowplow with flashing yellow lights? Don't pass on the blade side.</h2>
+  <p>A working snowplow's blade is sticking out — usually to the right. Passing on that side puts your car against a steel plow blade.</p>
+  <ul>
+    <li>Don't pass on whichever side the blade is deployed</li>
+    <li>If you see <strong>3 or more snowplows</strong> in a staggered line (echelon), don't pass on <em>either</em> side</li>
+  </ul>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 44. Common Utah winter situation.</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- 15. Signal 2 sec -->
+<section data-fact-id="signal-2-sec-before-turn" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD KNOW</span></div>
+  <h2>Signal at least 2 seconds before you turn or change lanes</h2>
+  <p>Same number for both: <strong>2 seconds</strong> minimum lead time.</p>
+  <p>Signaling as you start the maneuver is too late — other drivers need that warning to react.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 44.</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-go-look="true">
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+    <div style="background: linear-gradient(135deg, #fef9c3, #fed7aa); padding: 1.2em; border-radius: 10px; border: 2px solid #fde68a;">
+    <h2 style="color:#581c87; margin-bottom: 0.5em;">Go look at the picture</h2>
+    <p style="margin: 0.6em 0; font-size: 0.85em;">Open Zerofatalities and look at <strong>signaling — the turn-signal arrow diagrams and the hand-signal positions</strong>. Then come back and answer below.</p>
+    <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/signaling/" target="_blank" rel="noopener" style="display:inline-block; background:#581c87; color:white; text-decoration:none; padding:8px 16px; border-radius:6px; margin: 0.5em 0; font-size:0.8em;">Open Zerofatalities &rarr;</a>
+  </div>
+    <div style="padding: 1em; background: #faf5ff; border-left: 4px solid #581c87; border-radius: 6px;">
+    <p style="margin: 0.5em 0; font-size: 0.85em; font-weight: 600; color: #581c87;">Now answer:</p>
+    <p style="margin: 0.5em 0; font-size: 0.85em;">How early must you signal before a turn or lane change?</p>
+    <div class="kc-choices" style="text-align:left; max-width:520px; margin:0 auto;">
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-6" value="0"> Right as you start the maneuver
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-6" value="1"> About 1 second before
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-6" value="2"> At least 2 seconds before
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-6" value="3"> At least 5 seconds before
+      </label>
+    </div>
+    <button onclick="checkKC('gl-u2-6', 2, this)" style="background:#581c87; color:white; border:none; padding:6px 16px; border-radius:5px; margin-top:8px; cursor:pointer; font-size:0.75em;">Check answer</button>
+    <div class="kc-result" style="display:none; margin-top:10px; padding:10px; background:#fef3c7; border-radius:4px; font-size:0.7em;">
+      <strong>Answer:</strong> At least 2 seconds before<br>Signal at least 2 seconds before any turn or lane change &mdash; that's the minimum warning other drivers need to react. Handbook p. 44.
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- 16. U-turns -->
+<section data-fact-id="u-turn-500-ft-sight" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD KNOW</span></div>
+  <h2>U-turns need 500 ft of clear sight in both directions</h2>
+  <img class="sign" src="../images/signs/mutcd-R3-4-no-u-turn.png" alt="White square with red circle and red slash over a U-shaped arrow" style="max-height: 180px; margin: 8px auto; display:block;">
+  <p>Never U-turn on a curve or near the top of a hill if you can't see <strong>500 feet</strong> each way.</p>
+  <p>Also never U-turn:</p>
+  <ul>
+    <li>Where a sign prohibits it</li>
+    <li>On a railroad track or grade crossing</li>
+    <li>On a freeway</li>
+  </ul>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 48, 49.</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">White pavement lines separate traffic moving in which direction?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u2-kc-2" value="0"> Opposite directions
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u2-kc-2" value="1"> The same direction
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u2-kc-2" value="2"> Across an intersection
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u2-kc-2" value="3"> Onto a freeway exit
+    </label>
+  </div>
+  <button onclick="checkKC('u2-kc-2', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> The same direction<br>
+    WHITE = SAME direction. White lines separate lanes of traffic that flow the same way.
+  </div>
+</section>
+
+
+<!-- 17. On-ramps + flex lanes -->
+<section data-fact-id="ramp-yields-to-interstate" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD KNOW</span></div>
+  <h2>On-ramps yield. Flex lanes are green-arrow / red-X.</h2>
+  <img class="sign" src="../images/signs/mutcd-R1-2-yield.png" alt="White downward-pointing triangle with red border and red YIELD letters" style="max-height: 180px; margin: 8px auto; display:block;">
+  <ul>
+    <li><strong>On-ramps:</strong> you yield to drivers already on the interstate &mdash; match their speed and find the gap</li>
+    <li><strong>Flex lanes</strong> (rush hour, double-dashed yellow on both sides): <span style="color:#16a34a;font-weight:bold;">green arrow = open</span>, <span style="color:#dc2626;font-weight:bold;">red X = closed</span></li>
+    <li>Never use an entrance ramp to <em>exit</em> the freeway — illegal, even in a jam</li>
+  </ul>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 49, 60.</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-go-look="true">
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+    <div style="background: linear-gradient(135deg, #fef9c3, #fed7aa); padding: 1.2em; border-radius: 10px; border: 2px solid #fde68a;">
+    <h2 style="color:#581c87; margin-bottom: 0.5em;">Go look at the picture</h2>
+    <p style="margin: 0.6em 0; font-size: 0.85em;">Open Zerofatalities and look at <strong>Utah&apos;s flex lanes — the overhead green-arrow / red-X signals</strong>. Then come back and answer below.</p>
+    <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/flex-lanes/" target="_blank" rel="noopener" style="display:inline-block; background:#581c87; color:white; text-decoration:none; padding:8px 16px; border-radius:6px; margin: 0.5em 0; font-size:0.8em;">Open Zerofatalities →</a>
+  </div>
+    <div style="padding: 1em; background: #faf5ff; border-left: 4px solid #581c87; border-radius: 6px;">
+    <p style="margin: 0.5em 0; font-size: 0.85em; font-weight: 600; color: #581c87;">Now answer:</p>
+    <p style="margin: 0.5em 0; font-size: 0.85em;">On a Utah flex lane, what does a green ARROW overhead mean, and what does a red X mean?</p>
+    <div class="kc-choices" style="text-align:left; max-width:520px; margin:0 auto;">
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-4" value="0"> Green arrow = open in your direction; red X = lane is closed
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-4" value="1"> Green arrow = stop; red X = go
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-4" value="2"> Both mean the lane is open
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-4" value="3"> Green arrow = HOV only; red X = HOV closed
+      </label>
+    </div>
+    <button onclick="checkKC('gl-u2-4', 0, this)" style="background:#581c87; color:white; border:none; padding:6px 16px; border-radius:5px; margin-top:8px; cursor:pointer; font-size:0.75em;">Check answer</button>
+    <div class="kc-result" style="display:none; margin-top:10px; padding:10px; background:#fef3c7; border-radius:4px; font-size:0.7em;">
+      <strong>Answer:</strong> Green arrow = open in your direction; red X = lane is closed<br>Flex lanes reverse direction by time of day. The overhead signal tells you whether the lane is open for your direction. Handbook p. 49.
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- 18. Two-second following -->
+<section data-fact-id="freeway-2-sec-follow" data-priority="MUST">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span></div>
+  <h2>The 2-second rule: how far back you sit</h2>
+  <p class="priority-must">On the freeway, keep at least <strong>2 seconds</strong> of following distance behind the car ahead.</p>
+  <p>How to measure: when the car ahead passes a landmark (sign, shadow line), count "one-thousand-one, one-thousand-two." If you reach the landmark first, you're too close.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 49. DLD sample-test canonical.</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-go-look="true">
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+    <div style="background: linear-gradient(135deg, #fef9c3, #fed7aa); padding: 1.2em; border-radius: 10px; border: 2px solid #fde68a;">
+    <h2 style="color:#581c87; margin-bottom: 0.5em;">Go look at the picture</h2>
+    <p style="margin: 0.6em 0; font-size: 0.85em;">Open Zerofatalities and look at <strong>freeway driving — on-ramps, the acceleration lane, and merge animations</strong>. Then come back and answer below.</p>
+    <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/freeway-driving/" target="_blank" rel="noopener" style="display:inline-block; background:#581c87; color:white; text-decoration:none; padding:8px 16px; border-radius:6px; margin: 0.5em 0; font-size:0.8em;">Open Zerofatalities →</a>
+  </div>
+    <div style="padding: 1em; background: #faf5ff; border-left: 4px solid #581c87; border-radius: 6px;">
+    <p style="margin: 0.5em 0; font-size: 0.85em; font-weight: 600; color: #581c87;">Now answer:</p>
+    <p style="margin: 0.5em 0; font-size: 0.85em;">You&apos;re on an on-ramp to I-15 and traffic on the interstate is heavy with no clear gap. What do you do?</p>
+    <div class="kc-choices" style="text-align:left; max-width:520px; margin:0 auto;">
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-5" value="0"> Push in regardless — interstate traffic must yield to you
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-5" value="1"> Use the acceleration lane to match speed, then merge at a gap — interstate has priority
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-5" value="2"> Stop at the end of the ramp and wait for an opening
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-5" value="3"> Back up and try a different exit
+      </label>
+    </div>
+    <button onclick="checkKC('gl-u2-5', 1, this)" style="background:#581c87; color:white; border:none; padding:6px 16px; border-radius:5px; margin-top:8px; cursor:pointer; font-size:0.75em;">Check answer</button>
+    <div class="kc-result" style="display:none; margin-top:10px; padding:10px; background:#fef3c7; border-radius:4px; font-size:0.7em;">
+      <strong>Answer:</strong> Use the acceleration lane to match speed, then merge at a gap — interstate has priority<br>On-ramp traffic yields to interstate traffic. Accelerate to match speed and merge smoothly. Handbook p. 60.
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- 19. When 2 sec isn't enough -->
+<section data-fact-id="freeway-2-sec-follow" data-priority="MUST">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span></div>
+  <h2>Rain, fog, or snow? Stretch it out.</h2>
+  <p>2 seconds is the <strong>minimum</strong> in good weather. Under adverse conditions, increase it.</p>
+  <table>
+    <thead><tr><th>Condition</th><th>Target gap</th></tr></thead>
+    <tbody>
+      <tr><td>Dry, clear</td><td>2 seconds</td></tr>
+      <tr><td>Rain</td><td>4 seconds</td></tr>
+      <tr><td>Snow / heavy fog</td><td>6+ seconds</td></tr>
+    </tbody>
+  </table>
+  <p>And: slow below the posted limit if visibility or traction demands it.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 49.</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-go-look="true">
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+    <div style="background: linear-gradient(135deg, #fef9c3, #fed7aa); padding: 1.2em; border-radius: 10px; border: 2px solid #fde68a;">
+    <h2 style="color:#581c87; margin-bottom: 0.5em;">Go look at the picture</h2>
+    <p style="margin: 0.6em 0; font-size: 0.85em;">Open Zerofatalities and look at <strong>stopping &mdash; the perception/reaction/braking distance visual showing how far the car travels before it actually stops</strong>. Then come back and answer below.</p>
+    <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/stopping/" target="_blank" rel="noopener" style="display:inline-block; background:#581c87; color:white; text-decoration:none; padding:8px 16px; border-radius:6px; margin: 0.5em 0; font-size:0.8em;">Open Zerofatalities &rarr;</a>
+  </div>
+    <div style="padding: 1em; background: #faf5ff; border-left: 4px solid #581c87; border-radius: 6px;">
+    <p style="margin: 0.5em 0; font-size: 0.85em; font-weight: 600; color: #581c87;">Now answer:</p>
+    <p style="margin: 0.5em 0; font-size: 0.85em;">What is the MINIMUM following distance on a freeway in good conditions?</p>
+    <div class="kc-choices" style="text-align:left; max-width:520px; margin:0 auto;">
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-7" value="0"> 1 second
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-7" value="1"> 2 seconds
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-7" value="2"> 5 seconds
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u2-7" value="3"> Half the speed, in feet
+      </label>
+    </div>
+    <button onclick="checkKC('gl-u2-7', 1, this)" style="background:#581c87; color:white; border:none; padding:6px 16px; border-radius:5px; margin-top:8px; cursor:pointer; font-size:0.75em;">Check answer</button>
+    <div class="kc-result" style="display:none; margin-top:10px; padding:10px; background:#fef3c7; border-radius:4px; font-size:0.7em;">
+      <strong>Answer:</strong> 2 seconds<br>2-second minimum gap on the freeway in good weather. Double it in rain, triple it in snow or heavy fog. Handbook p. 49.
+    </div>
+  </div>
+  </div>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">You&#x27;re on the on-ramp to I-15 and traffic on the interstate is heavy with no clear gap. What do you do?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u2-kc7" value="0"> Push in regardless — interstate must yield to merging traffic
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u2-kc7" value="1"> Use the acceleration lane to match speed, then merge at a gap. Yield — interstate traffic has priority
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u2-kc7" value="2"> Stop on the ramp and wait for a gap
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u2-kc7" value="3"> Drive on the shoulder past the slow traffic
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u2-kc7', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Use the acceleration lane to match speed, then merge at a gap. Yield — interstate traffic has priority<br>
+    On-ramp traffic yields to interstate traffic. Use the acceleration lane to match speed, then merge when safe. Handbook p. 60.
+  </div>
+</section>
+
+
+<!-- 20. City speeds -->
+<section data-fact-id="speed-25-business-residential" data-priority="MUST">
+  <div class="tag-row"><span class="must-tag">MUST KNOW</span></div>
+  <h2>City and town speeds: 25 in neighborhoods</h2>
+  <img class="sign" src="../images/signs/mutcd-R2-1-speed-limit.png" alt="White rectangular sign with black SPEED LIMIT text above large numerals" style="max-height: 180px; margin: 8px auto; display:block;">
+  <p class="priority-must">In any <strong>business or residential area</strong>, the speed limit is <strong>25 mph</strong> unless posted otherwise.</p>
+  <p>Even matching the flow of other cars doesn't make it legal to exceed the posted limit.</p>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 54.</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- 21. Highway speeds -->
+<section data-fact-id="speed-65-80-rural-interstate" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SHOULD KNOW</span></div>
+  <h2>Highway speeds: 65, 70, 75, or 80 &mdash; obey the sign</h2>
+  <img class="sign" src="../images/signs/mutcd-R2-1-speed-limit.png" alt="White rectangular sign with black SPEED LIMIT text above large numerals" style="max-height: 180px; margin: 8px auto; display:block;">
+  <p>Utah rural interstates are posted from <strong>65 to 80 mph</strong>, with transition zones as you approach cities.</p>
+  <ul>
+    <li>The posted limit is the legal ceiling &mdash; never above, regardless of traffic flow</li>
+    <li>If you're in the left lane and someone catches up behind you, move safely right</li>
+  </ul>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 49, 54.</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- 22. Scenario 1: Pre-drive with toddler -->
+<section data-fact-id="rear-facing-2-years-30-lbs" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SCENARIO</span></div>
+  <h2>What's wrong with this picture?</h2>
+  <div class="scenario">Tasha is borrowing her aunt's car. She slides the seat back to give herself 10 inches of chest space, but now the headrest is hitting her neck. Her 14-month-old nephew is in the back, forward-facing.</div>
+  <div class="answer-box"><strong>Two fixes:</strong> (1) Raise the headrest until it touches the back of her head <em>above her ears</em>. (2) A 14-month-old is too young to be forward-facing &mdash; rear-facing until at least <strong>2 years and 30 lbs</strong>.</div>
+  <p class="learn-more">Tests: seat-10-inches-from-wheel, headrest-above-ears, rear-facing-2-years-30-lbs.</p>
+</section>
+
+<!-- 23. Scenario 2: Zipper merge under fire -->
+<section data-fact-id="zipper-merge" data-priority="MUST">
+  <div class="tag-row"><span class="must-tag">SCENARIO</span></div>
+  <h2>Who's actually right at the merge point?</h2>
+  <div class="scenario">Two lanes of I-15 are merging into one because of construction. Some drivers merged into the right lane early; others stay in the left lane to the cones. A driver behind you honks at someone using the zipper.</div>
+  <div class="answer-box"><strong>The zipper crowd is correct.</strong> Use both lanes to the merge, then alternate one-by-one. Drivers who merge early make the line longer for everyone. The honker is wrong.</div>
+  <p class="learn-more">Tests: zipper-merge, lane-change-procedure.</p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">A broken (dashed) line on YOUR side of the yellow center stripe means what?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u2-kc-3" value="0"> Passing is prohibited
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u2-kc-3" value="1"> Passing is permitted when safe to do so
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u2-kc-3" value="2"> Lane is closed
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u2-kc-3" value="3"> Slow zone
+    </label>
+  </div>
+  <button onclick="checkKC('u2-kc-3', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Passing is permitted when safe to do so<br>
+    Broken/dashed line on your side = passing PERMITTED (when it&#x27;s safe to do so).
+  </div>
+</section>
+
+
+<!-- 24. Scenario 3: Downtown parking -->
+<section data-fact-id="no-park-30-ft-signal" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SCENARIO</span></div>
+  <h2>Can Owen park here?</h2>
+  <div class="scenario">Owen finds a curbside spot downtown that's 18 ft from a fire hydrant and 25 ft from a stop sign. Curb is unmarked.</div>
+  <div class="answer-box"><strong>No.</strong> 18 ft from a hydrant is fine (rule is 15 ft minimum). But <strong>25 ft from a stop sign breaks the 30-ft rule</strong>. Find another spot.</div>
+  <p class="learn-more">Tests: no-park-15-ft-hydrant, no-park-30-ft-signal.</p>
+</section>
+
+<!-- 25. Scenario 4: Following in rain -->
+<section data-fact-id="freeway-2-sec-follow" data-priority="MUST">
+  <div class="tag-row"><span class="must-tag">SCENARIO</span></div>
+  <h2>The rain just started on I-15. What changes?</h2>
+  <div class="scenario">Diego is doing the posted 70 mph on I-15 with a 2-second gap. Heavy rain starts. The car ahead is suddenly hard to see clearly.</div>
+  <div class="answer-box"><strong>Two moves:</strong> (1) Increase the following gap &mdash; 2 seconds is the minimum for <em>good</em> conditions. Aim for 4 seconds in rain. (2) Slow down. Posted limit is the ceiling, not the target.</div>
+  <p class="learn-more">Tests: freeway-2-sec-follow, never-exceed-posted-limit.</p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">What&#x27;s the default speed limit in a business or residential area (unless posted otherwise)?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u2-kc8" value="0"> 15 mph
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u2-kc8" value="1"> 20 mph
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u2-kc8" value="2"> 25 mph
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u2-kc8" value="3"> 35 mph
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u2-kc8', 2, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> 25 mph<br>
+    25 mph in business or residential areas. Handbook p. 54.
+  </div>
+</section>
+
+
+<!-- 26. Scenario 5: Left-lane camper -->
+<section data-fact-id="left-lane-must-move-right" data-priority="SHOULD">
+  <div class="tag-row"><span class="should-tag">SCENARIO</span></div>
+  <h2>You're at the posted limit in the left lane. Someone wants past.</h2>
+  <div class="scenario">Diego is cruising in the left lane of I-15 at the posted speed limit. A car pulls up behind him, clearly wanting to pass.</div>
+  <div class="answer-box"><strong>Move safely to the right.</strong> The left lane is for passing. Even at the posted limit, blocking traffic in the left lane can get you a citation for impeding traffic. Don't speed up &mdash; move over.</div>
+  <p class="learn-more">Tests: left-lane-must-move-right, left-lane-for-passing.</p>
+</section>
+
+<!-- 27. Weird Utah sidebar -->
+<section data-fact-id="zipper-merge" data-priority="MUST">
+  <div class="weird-utah">
+    <div class="tag-row"><span class="must-tag">WEIRD UTAH</span></div>
+    <h2>The Zipper Is the Law</h2>
+    <p>Utah is one of the few states that <strong>codifies the zipper merge</strong>. Not zippering &mdash; merging early when both lanes were marked for use &mdash; is technically a traffic infraction.</p>
+    <p>Next time someone honks at a "late merger" on I-15, they're honking at the person who's actually following the law. Wild.</p>
+  </div>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p. 41.</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<!-- 28. Recap top 5 MUSTs -->
+<section>
+  <h2>Top 5 MUSTs from Unit 2</h2>
+  <ol style="font-size:0.85em;">
+    <li><strong>Everyone</strong> in the car gets a seat belt or child seat. Kids 12 and under in the back.</li>
+    <li><strong>Zipper merge:</strong> use both lanes to the merge point, then alternate.</li>
+    <li><strong>Parking distances:</strong> 15 ft hydrant, 20 ft crosswalk, 30 ft stop sign/signal, 50 ft railroad.</li>
+    <li><strong>2-second following distance</strong> on the freeway. More in rain, fog, or snow.</li>
+    <li><strong>25 mph</strong> in business or residential areas unless posted otherwise.</li>
+  </ol>
+  <p class="learn-more">Quiz yourself: can you name all four parking distances without scrolling back?</p>
+</section>
+
+<!-- 28b. Visual Concepts Tour -->
+<section data-tour="true">
+  <h2 style="color:#581c87;">Want to see all of this in pictures?</h2>
+  <p style="margin: 0.6em 0; font-size: 0.85em;">Zerofatalities&apos; Visual Driver Handbook covers what you just studied with animations, photos, and real Utah locations. Each link opens a specific topic.</p>
+  <div style="background: linear-gradient(135deg, #fef9c3, #fed7aa); padding: 1em; border-radius: 10px; border: 2px solid #fde68a; max-width: 640px; margin: 0.8em auto; text-align: left;">
+    <ul style="list-style:none; padding:0; margin:0; font-size: 0.75em;">
+      <li style="padding: 5px 0; border-bottom: 1px solid #fcd34d;">
+        <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/flex-lanes/" target="_blank" rel="noopener" style="color: #581c87; text-decoration: none; font-weight: 600;">Flex lanes</a>
+      </li>
+      <li style="padding: 5px 0; border-bottom: 1px solid #fcd34d;">
+        <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/freeway-driving/" target="_blank" rel="noopener" style="color: #581c87; text-decoration: none; font-weight: 600;">Freeway driving</a>
+      </li>
+      <li style="padding: 5px 0; border-bottom: 1px solid #fcd34d;">
+        <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/parking/" target="_blank" rel="noopener" style="color: #581c87; text-decoration: none; font-weight: 600;">Parking</a>
+      </li>
+      <li style="padding: 5px 0; border-bottom: 1px solid #fcd34d;">
+        <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/lane-changes/" target="_blank" rel="noopener" style="color: #581c87; text-decoration: none; font-weight: 600;">Lane changes</a>
+      </li>
+      <li style="padding: 5px 0; border-bottom: 1px solid #fcd34d;">
+        <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/passing/" target="_blank" rel="noopener" style="color: #581c87; text-decoration: none; font-weight: 600;">Passing</a>
+      </li>
+      <li style="padding: 5px 0; border-bottom: 1px solid #fcd34d;">
+        <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/stopping/" target="_blank" rel="noopener" style="color: #581c87; text-decoration: none; font-weight: 600;">Stopping distance</a>
+      </li>
+      <li style="padding: 5px 0;">
+        <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/signaling/" target="_blank" rel="noopener" style="color: #581c87; text-decoration: none; font-weight: 600;">Signaling</a>
+      </li>
+    </ul>
+  </div>
+  <p style="margin-top: 0.8em; font-size: 0.7em; color: #71717a;">All open in a new tab. Come back here when you&apos;re done.</p>
+</section>
+
+<!-- 29. Next -->
+<section data-state="finish">
+  <h1 style="color:#581c87; font-size: 2em; text-align:center;">&#127881; You finished Unit 2! &#127881;</h1>
+  <p style="text-align:center; font-size: 0.9em; margin-top: 1em;"><strong>Next: Unit 3 &mdash; Rules of the Road.</strong> Signs, signals, intersections, who-goes-first. This is the biggest unit on the test. You've now got the mechanics; next we add the traffic-law layer on top.</p>
+  <p class="learn-more" style="text-align:center;">Estimated time for Unit 3: ~25 minutes.</p>
+</section>
+
+</div></div>
+<script>
+  function checkKC(name, correctIndex, btn) {
+    var sel = document.querySelector('input[name="' + name + '"]:checked');
+    var resultEl = btn.nextElementSibling;
+    if (!sel) {
+      resultEl.style.display = 'block';
+      resultEl.innerHTML = '<em>Pick an answer first.</em>';
+      return;
+    }
+    var labels = document.querySelectorAll('input[name="' + name + '"]');
+    labels.forEach(function(input, i) {
+      var lbl = input.parentElement;
+      if (i === correctIndex) lbl.style.borderColor = '#16a34a', lbl.style.background = '#dcfce7';
+      else if (input.checked) lbl.style.borderColor = '#dc2626', lbl.style.background = '#fee2e2';
+    });
+    resultEl.style.display = 'block';
+    btn.disabled = true;
+    btn.style.opacity = '0.5';
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>Reveal.initialize({ hash: true, slideNumber: false, transition: 'fade', controls: true, progress: true });</script>
+<script>
+  Reveal.on('slidechanged', function(event) {
+    var slides = document.querySelectorAll('.reveal .slides > section');
+    var isLast = event.currentSlide === slides[slides.length - 1];
+    if (isLast && typeof confetti === 'function') {
+      confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+      setTimeout(function() {
+        confetti({ particleCount: 80, spread: 100, origin: { y: 0.5, x: 0.2 } });
+        confetti({ particleCount: 80, spread: 100, origin: { y: 0.5, x: 0.8 } });
+      }, 400);
+      // Record deck completion
+      try {
+        var unitKey = "unit-2";
+        var completions = JSON.parse(localStorage.getItem("dl_deck_completions") || "{}");
+        completions[unitKey] = Date.now();
+        localStorage.setItem("dl_deck_completions", JSON.stringify(completions));
+        var __dlUser = localStorage.getItem("dl_user");
+        if (__dlUser && __dlUser !== "__anon__") {
+          fetch("/api/drive/progress", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              user: __dlUser.replace(/^"|"$/g, ""),
+              deckCompletions: completions
+            }),
+            keepalive: true
+          }).catch(function(){});
+        }
+      } catch (e) {}
+    }
+  });
+</script>
+</body></html>

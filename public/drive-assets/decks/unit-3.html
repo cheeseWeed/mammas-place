@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 3: Rules of the Road</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<style>
+:root { --primary: #581c87; --accent: #facc15; --text: #18181b; }
+.reveal { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+.reveal h1, .reveal h2 { color: var(--primary); }
+.reveal .must-tag { background: var(--accent); color: var(--text); padding: 2px 8px; border-radius: 4px; font-size: 0.7em; }
+.reveal .should-tag { background: #e4e4e7; color: var(--text); padding: 2px 8px; border-radius: 4px; font-size: 0.7em; }
+.reveal .nice-tag { background: #f4f4f5; color: #71717a; padding: 2px 8px; border-radius: 4px; font-size: 0.7em; }
+.reveal a { color: var(--primary); }
+.reveal .learn-more { font-size: 0.65em; opacity: 0.7; margin-top: 1em; }
+.reveal .weird-utah { background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 1em; border-radius: 8px; }
+.reveal .priority-must { border-left: 6px solid var(--accent); padding-left: 12px; }
+.reveal .ladder { font-family: "SF Mono", Monaco, monospace; background: #faf5ff; padding: 1em; border-left: 4px solid var(--primary); text-align: left; }
+.reveal .ladder ol { font-size: 0.6em; }
+.reveal table { font-size: 0.65em; margin: 0 auto; }
+.reveal th { background: #f3e8ff; color: var(--primary); }
+.reveal .scenario { background: #fef9c3; padding: 0.8em 1em; border-radius: 8px; text-align: left; font-size: 0.8em; }
+.reveal .answer { background: #dcfce7; padding: 0.8em 1em; border-radius: 8px; text-align: left; font-size: 0.8em; margin-top: 0.6em; }
+.reveal .callout { font-size: 0.85em; }
+.reveal .small { font-size: 0.7em; }
+.reveal .matrix th, .reveal .matrix td { padding: 6px 10px; border: 1px solid #e4e4e7; }
+.reveal .pill { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 0.7em; margin: 2px; }
+.reveal .pill-stop { background: #fecaca; color: #7f1d1d; }
+.reveal .pill-go { background: #bbf7d0; color: #14532d; }
+
+/* SIZE-CAP-PATCH v1 — clamp default Reveal heading sizes so long titles fit */
+.reveal h1 { font-size: 1.8em !important; line-height: 1.15; margin-bottom: 0.3em; }
+.reveal h2 { font-size: 1.3em !important; line-height: 1.2; margin-bottom: 0.4em; }
+.reveal h3 { font-size: 1.1em !important; }
+.reveal .slides section { padding: 0 24px; box-sizing: border-box; }
+.reveal p, .reveal li { font-size: 0.85em; line-height: 1.4; }
+.reveal table { font-size: 0.7em; }
+
+
+/* BIG-NUM-CAP v1 — clamp .big-num so long phrases like "Class D = your normal license" don't overflow */
+.reveal .big-num { font-size: 1.4em !important; line-height: 1.2; word-wrap: break-word; }
+.reveal .scenario-box, .reveal .answer-box { font-size: 0.75em; }
+.reveal h2 { font-size: 1.2em !important; }
+
+/* OVERFLOW-FIX v2 */
+/* OVERFLOW-FIX v2 — shrink everything further so slides fit within Reveal's 960x700 viewport */
+.reveal h1 { font-size: 1.4em !important; line-height: 1.15; margin-bottom: 0.2em; }
+.reveal h2 { font-size: 1.05em !important; line-height: 1.2; margin-bottom: 0.3em; }
+.reveal h3 { font-size: 0.95em !important; }
+.reveal .big-num { font-size: 1.15em !important; line-height: 1.2; word-wrap: break-word; }
+.reveal p, .reveal li { font-size: 0.7em !important; line-height: 1.35; }
+.reveal ul, .reveal ol { margin: 0.3em auto; }
+.reveal table { font-size: 0.55em !important; }
+.reveal .scenario-box, .reveal .answer-box { font-size: 0.65em !important; padding: 0.6em !important; }
+.reveal .learn-more { font-size: 0.55em !important; margin-top: 0.4em; }
+.reveal .tag-row { margin-bottom: 0.3em; }
+.reveal .must-tag, .reveal .should-tag, .reveal .nice-tag { font-size: 0.6em !important; }
+.reveal .ladder li { font-size: 0.55em !important; padding: 0.15em 0; }
+
+/* Knowledge-check slides: aggressively shrink */
+.reveal section[data-knowledge-check="true"] h2 { font-size: 0.95em !important; margin-bottom: 0.3em; }
+.reveal section[data-knowledge-check="true"] p { font-size: 0.75em !important; margin: 0.4em 0 !important; }
+.reveal section[data-knowledge-check="true"] .kc-choices { max-width: 500px !important; margin: 0 auto !important; }
+.reveal section[data-knowledge-check="true"] .kc-choices label { font-size: 0.65em !important; padding: 6px 10px !important; margin: 3px 0 !important; line-height: 1.2; }
+.reveal section[data-knowledge-check="true"] button { font-size: 0.7em !important; padding: 6px 16px !important; margin-top: 8px !important; }
+.reveal section[data-knowledge-check="true"] .kc-result { font-size: 0.65em !important; padding: 8px !important; margin-top: 8px !important; }
+.reveal section[data-knowledge-check="true"] hr { margin: 12px 0 !important; }
+
+/* CLASS-SWEEP v1 */
+/* CLASS-SWEEP v1 — size the rest of the content classes used across decks */
+.reveal .recap-card { font-size: 0.65em !important; padding: 0.4em 0.6em !important; margin: 0.3em 0 !important; line-height: 1.3; }
+.reveal .callout { font-size: 0.7em !important; padding: 0.5em !important; }
+.reveal .callout.small { font-size: 0.6em !important; }
+.reveal .scenario { font-size: 0.7em !important; padding: 0.5em !important; }
+.reveal .small { font-size: 0.6em !important; }
+.reveal .q { font-size: 0.75em !important; }
+.reveal .answer { font-size: 0.7em !important; }
+.reveal .pill, .reveal .pill-stop, .reveal .pill-go { font-size: 0.6em !important; padding: 0.2em 0.5em !important; }
+.reveal .matrix { font-size: 0.55em !important; }
+.reveal .move { font-size: 0.7em !important; }
+.reveal .big-number { font-size: 1.2em !important; line-height: 1.15; word-wrap: break-word; }
+
+/* Force a centered scrollable container that respects the brand color scrollbar */
+.reveal .slides > section { scrollbar-color: #c4b5fd #faf5ff; }
+
+/* TIGHTEN-COLS v1 */
+/* TIGHTEN-COLS v1 — shrink padding/font in 2-column go-look and multi-Q kc grids so right column fits */
+.reveal section[data-go-look="true"] div[style*="display:grid"] > div { padding: 8px !important; }
+.reveal section[data-go-look="true"] div[style*="display:grid"] .kc-choices { max-width: 100% !important; }
+.reveal section[data-go-look="true"] div[style*="display:grid"] .kc-choices label {
+  font-size: 0.55em !important;
+  padding: 5px 8px !important;
+  margin: 3px 0 !important;
+  line-height: 1.2 !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] p {
+  font-size: 0.65em !important;
+  margin: 0.4em 0 !important;
+  line-height: 1.3 !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] h2 {
+  font-size: 0.85em !important;
+  margin-bottom: 0.4em !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] button {
+  font-size: 0.65em !important;
+  padding: 5px 12px !important;
+  margin-top: 6px !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] a[href*="zerofatalities"] {
+  font-size: 0.65em !important;
+  padding: 5px 10px !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] .kc-result {
+  font-size: 0.55em !important;
+  padding: 6px !important;
+}
+/* Same for multi-Q knowledge-checks in 2-col or 3-col grids */
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] > div { padding: 6px !important; }
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] .kc-choices label {
+  font-size: 0.55em !important;
+  padding: 4px 8px !important;
+  margin: 2px 0 !important;
+  line-height: 1.2 !important;
+}
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] p {
+  font-size: 0.6em !important;
+  margin: 0.3em 0 !important;
+}
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] button {
+  font-size: 0.6em !important;
+  padding: 4px 10px !important;
+}
+
+/* CONTENT-TIGHTEN v1 */
+/* CONTENT-TIGHTEN v1 — trim tall content slides (sign + bullets + learn-more) so they fit */
+.reveal section[data-priority] img.sign { max-height: 130px !important; margin: 4px auto !important; }
+.reveal section[data-priority] p { font-size: 0.65em !important; margin: 0.3em 0 !important; line-height: 1.35; }
+.reveal section[data-priority] ul, .reveal section[data-priority] ol { margin: 0.3em 0 !important; }
+.reveal section[data-priority] li { font-size: 0.65em !important; line-height: 1.3 !important; margin: 0.15em 0 !important; }
+.reveal section[data-priority] .learn-more { font-size: 0.5em !important; margin-top: 0.3em !important; }
+.reveal section[data-priority] .tag-row { margin-bottom: 0.3em !important; }
+.reveal section[data-priority] h1 { font-size: 1.5em !important; margin-bottom: 0.2em !important; }
+.reveal section[data-priority] h2 { font-size: 1.1em !important; margin-bottom: 0.3em !important; }
+.reveal section[data-priority] table { font-size: 0.55em !important; margin: 0.3em auto !important; }
+.reveal section[data-priority] .scenario-box, .reveal section[data-priority] .answer-box { font-size: 0.6em !important; padding: 0.4em !important; margin: 0.3em 0 !important; }
+
+/* COL-DIVIDERS v1 */
+/* COL-DIVIDERS v1 — vertical separator line between 2-Q/3-Q knowledge-check grid columns */
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] > div:not(:last-child) {
+  border-right: 2px dashed #c4b5fd !important;
+  padding-right: 12px !important;
+}
+.reveal section[data-knowledge-check="true"] div[style*="display:grid"] > div:not(:first-child) {
+  padding-left: 12px !important;
+}
+
+/* GOLOOK-DIVIDER v1 */
+/* GOLOOK-DIVIDER v1 — vertical separator between go-look's left (link) and right (Q) columns */
+.reveal section[data-go-look="true"] div[style*="display:grid"] > div:not(:last-child) {
+  border-right: 2px dashed #fcd34d !important;
+  padding-right: 10px !important;
+}
+.reveal section[data-go-look="true"] div[style*="display:grid"] > div:not(:first-child) {
+  padding-left: 10px !important;
+}
+
+</style></head>
+<body>
+<!-- HOME-BTN v1 -->
+<a href="../dashboard/index.html" style="position:fixed; top:12px; left:12px; z-index:9999; background:#581c87; color:white; text-decoration:none; padding:6px 14px; border-radius:6px; font-size:13px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.15);">&larr; Home</a>
+<div class="reveal"><div class="slides">
+
+<section data-fact-id="unit-3-intro" data-priority="MUST">
+  <h1>Rules of the Road</h1>
+  <p>Unit 3 - the one that matters most.</p>
+  <p class="callout"><strong>Right-of-way is the #1 topic on the DLD test.</strong> Master this unit and you have already won the test.</p>
+  <p class="small">~32 slides &middot; about 25 minutes</p>
+</section>
+
+<section data-fact-id="never-assume-right-of-way" data-priority="MUST" class="priority-must">
+  <h2>One sentence to live by</h2>
+  <p style="font-size:1.4em;">Right-of-way is something you <em>give</em>, not take.</p>
+  <p class="callout">Never assume you have it. When in doubt - yield.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more">Handbook p.60 &middot; <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/">zerofatalities</a></p>
+</section>
+
+<section data-fact-id="priority-ladder-intro" data-priority="MUST" class="priority-must">
+  <h2>Who goes first? The priority ladder</h2>
+  <p>When two rules collide, the higher tier wins. Memorize this and almost every who-goes-first question answers itself.</p>
+  <span class="must-tag">MUST</span>
+</section>
+
+<section data-fact-id="priority-ladder-full" data-priority="MUST" class="priority-must">
+  <h2>The 15-tier ladder</h2>
+  <div class="ladder"><ol>
+    <li><strong>TRAINS</strong> - beat everything, even ambulances</li>
+    <li><strong>Emergency vehicles</strong> (lights + siren)</li>
+    <li><strong>Police officer</strong> directing traffic</li>
+    <li><strong>Flagger</strong> in a work zone</li>
+    <li><strong>School bus</strong> with flashing reds</li>
+    <li><strong>Pedestrians</strong> (white cane = full stop)</li>
+    <li><strong>Cars already in the intersection</strong></li>
+    <li>Oncoming traffic when YOU are turning left</li>
+    <li>Car on your <strong>right</strong> at a 4-way stop tie</li>
+    <li>Car on your <strong>right</strong> when signals are out</li>
+    <li>Traffic already in a roundabout</li>
+    <li>Traffic already on the interstate</li>
+    <li>Street traffic when you are leaving a driveway</li>
+    <li>First driver to a narrow/one-lane bridge</li>
+    <li>Uphill driver on a mountain road (downhill yields)</li>
+  </ol></div>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more">Synthesis: unit-3-rules-of-road.md &middot; Handbook p.60</p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">Which statement best matches the handbook&#x27;s rule about right-of-way?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc4" value="0"> Right-of-way is yours when you arrive first
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc4" value="1"> Right-of-way is something you give, not take — never assume you have it
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc4" value="2"> Right-of-way always belongs to the larger vehicle
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc4" value="3"> Right-of-way is determined by speed
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u3-kc4', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Right-of-way is something you give, not take — never assume you have it<br>
+    Never assume you have the right-of-way — it&#x27;s something you GIVE, not take. Handbook p. 60.
+  </div>
+</section>
+
+<section data-go-look="true">
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+    <div style="background: linear-gradient(135deg, #fef9c3, #fed7aa); padding: 1.2em; border-radius: 10px; border: 2px solid #fde68a;">
+    <h2 style="color:#581c87; margin-bottom: 0.5em;">Go look at the picture</h2>
+    <p style="margin: 0.6em 0; font-size: 0.85em;">Open Zerofatalities and look at <strong>yielding the right-of-way — the diagrams showing who waits for whom</strong>. Then come back and answer below.</p>
+    <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/yielding-right-of-way/" target="_blank" rel="noopener" style="display:inline-block; background:#581c87; color:white; text-decoration:none; padding:8px 16px; border-radius:6px; margin: 0.5em 0; font-size:0.8em;">Open Zerofatalities →</a>
+  </div>
+    <div style="padding: 1em; background: #faf5ff; border-left: 4px solid #581c87; border-radius: 6px;">
+    <p style="margin: 0.5em 0; font-size: 0.85em; font-weight: 600; color: #581c87;">Now answer:</p>
+    <p style="margin: 0.5em 0; font-size: 0.85em;">You&apos;re pulling out of your driveway onto a residential street. A car is coming down the street. Who has the right-of-way?</p>
+    <div class="kc-choices" style="text-align:left; max-width:520px; margin:0 auto;">
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-1" value="0"> You — first to be there has priority
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-1" value="1"> The car on the street — driveway traffic yields
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-1" value="2"> Whoever is faster
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-1" value="3"> Yield to the car on the right
+      </label>
+    </div>
+    <button onclick="checkKC('gl-u3-1', 1, this)" style="background:#581c87; color:white; border:none; padding:6px 16px; border-radius:5px; margin-top:8px; cursor:pointer; font-size:0.75em;">Check answer</button>
+    <div class="kc-result" style="display:none; margin-top:10px; padding:10px; background:#fef3c7; border-radius:4px; font-size:0.7em;">
+      <strong>Answer:</strong> The car on the street — driveway traffic yields<br>When entering a street from a driveway or private road, yield to traffic already on the street. Ladder tier 13. Handbook p. 60.
+    </div>
+  </div>
+  </div>
+</section>
+
+
+<section data-fact-id="trains-right-of-way-always" data-priority="MUST" class="priority-must">
+  <h2>Trains always win</h2>
+  <img class="sign" src="../images/signs/mutcd-R15-1-railroad-crossbuck.png" alt="White X-shaped sign with black text RAIL ROAD CROSSING" style="max-height: 180px; margin: 8px auto; display:block;">
+  <p style="font-size:1.3em;">A 100-car freight train at 55 mph needs <strong>more than a mile</strong> to stop. That is ~18 football fields.</p>
+  <p>Trains have right-of-way over <strong>ambulances, fire engines, police, cars, and pedestrians</strong> - 100% of the time. Verbatim from the handbook.</p>
+  <p class="callout">Flashing lights at a crossing? Stop. Gates coming down? Stop. NEVER drive around lowered gates.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.96-97 &middot; ladder tier 1</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="trax-65-in-21-seconds" data-priority="SHOULD">
+  <h2>TRAX is a train too</h2>
+  <img class="sign" src="../images/signs/mutcd-W10-1-railroad-crossing-ahead.png" alt="Round yellow sign with black X and RR letters indicating railroad crossing ahead" style="max-height: 180px; margin: 8px auto; display:block;">
+  <p>Salt Lake City light rail follows the <strong>same crossing rules</strong> as freight trains.</p>
+  <p style="font-size:1.2em;">TRAX trains hit <strong>65 mph in 21 seconds</strong>. You will not beat one.</p>
+  <p>Stop. Wait for the gates to fully raise AND lights to stop flashing before crossing.</p>
+  <span class="should-tag">SHOULD</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.97</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="emergency-vehicle-pull-right-stop" data-priority="MUST" class="priority-must">
+  <h2>Sirens behind you? Pull right, stop.</h2>
+  <p>Emergency vehicle with lights and/or siren approaching:</p>
+  <ol>
+    <li>Drive immediately to the <strong>RIGHT side</strong> of the road</li>
+    <li><strong>STOP</strong> until it passes</li>
+  </ol>
+  <p class="callout">If you are stopped at a red light and a siren comes up behind you, DO NOT run the red. Pull right if you can. Stay put if you cannot.</p>
+  <p>Do NOT follow within <strong>500 feet</strong> of a responding fire truck.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.86 &middot; ladder tier 2</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">You stop at a railroad crossing — gates down, lights flashing, train approaching. An ambulance with lights and siren pulls up behind you. What do you do?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc5" value="0"> Drive around the gates to clear the way for the ambulance
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc5" value="1"> Pull onto the tracks to make room
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc5" value="2"> Wait — trains have the right-of-way 100% of the time, even over emergency vehicles. The ambulance must wait too
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc5" value="3"> Reverse onto the shoulder past the ambulance
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u3-kc5', 2, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Wait — trains have the right-of-way 100% of the time, even over emergency vehicles. The ambulance must wait too<br>
+    Trains have the right-of-way over ambulances, fire engines, cars, police, and pedestrians. Never drive around lowered gates. Handbook p. 96.
+  </div>
+</section>
+
+
+<section data-fact-id="move-over-law" data-priority="MUST" class="priority-must">
+  <h2>Move Over Law - for ANY stopped car</h2>
+  <img class="sign" src="../images/signs/mutcd-CW21-1-workers-ahead.png" alt="Orange diamond with worker silhouette indicating workers ahead" style="max-height: 180px; margin: 8px auto; display:block;">
+  <p>See a car stopped on the shoulder with <strong>flashing hazard lights</strong>? Slow down AND change lanes (to a lane not adjacent) if safe.</p>
+  <p class="callout">This applies to <strong>any</strong> stationary vehicle with hazards - not just emergency vehicles. Tow trucks, broken-down sedans, all of them.</p>
+  <p>Violation = 4-hour live classroom defensive driving course within 90 days. Skip the class = 90-day license suspension.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.86</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="officer-overrides-signal" data-priority="MUST" class="priority-must">
+  <h2>When a cop directs traffic</h2>
+  <img class="sign" src="../images/signs/mutcd-R3-3-no-turns.png" alt="White square with red circle and slash over a curved arrow indicating no turns" style="max-height: 180px; margin: 8px auto; display:block;">
+  <p>Officer directions <strong>override the traffic signals</strong>.</p>
+  <p class="callout">Green light + officer holding up a hand = STOP. Red light + officer waving you through = go.</p>
+  <p>Same logic applies to <strong>flaggers in work zones</strong> (next slide).</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.56 &middot; ladder tier 3</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check (2 questions)</h2>
+  <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap: 16px; align-items: start;">
+    <div>
+      <p style="margin: 1em 0; font-size: 0.95em;">You&#x27;re stopped at a red light. An ambulance with lights and siren comes up behind you. What do you do?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc6-a" value="0"> Run the red light immediately to clear the way
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc6-a" value="1"> Stay put — the light is red, the ambulance will go around
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc6-a" value="2"> Pull to the right when safe and stop; clear the intersection cautiously only if you can do so safely
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc6-a" value="3"> Honk and wait for the light to turn green
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u3-kc6-a', 2, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Pull to the right when safe and stop; clear the intersection cautiously only if you can do so safely<br>
+    Yield to emergency vehicles by pulling to the right and stopping. If you&#x27;re at an intersection, clear it carefully — don&#x27;t run a red light unsafely. Handbook p. 86.
+  </div>
+    </div>
+    <div>
+      <p style="margin: 1em 0; font-size: 0.95em;">On a 4-lane road, a regular passenger car is stopped on the right shoulder with hazard lights flashing. It&#x27;s NOT an emergency vehicle. What must you do?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc6-b" value="0"> Maintain speed — the Move Over law only applies to emergency vehicles
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc6-b" value="1"> Slow down and change lanes away from the stopped vehicle if practical
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc6-b" value="2"> Stop completely on the shoulder behind them
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc6-b" value="3"> Honk to ask if they need help
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u3-kc6-b', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Slow down and change lanes away from the stopped vehicle if practical<br>
+    The Move Over Law applies to ANY stationary vehicle with hazards — not just emergency vehicles. Slow and change lanes if practical. Handbook p. 86.
+  </div>
+    </div>
+  </div>
+</section>
+
+
+<section data-fact-id="flagger-overrides-signs" data-priority="MUST" class="priority-must">
+  <h2>Flaggers beat signs and signals</h2>
+  <img class="sign" src="../images/signs/mutcd-CW20-7-flagger.png" alt="Orange diamond with silhouette of flagger holding a flag" style="max-height: 180px; margin: 8px auto; display:block;">
+  <p>In a work zone, a <strong>flagger with a STOP/SLOW paddle</strong> overrides every sign and signal in the zone.</p>
+  <p>Green light? Does not matter. Posted speed? Does not matter. Do what the flagger tells you.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.59 &middot; ladder tier 4</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="school-bus-red-lights-stop" data-priority="MUST" class="priority-must">
+  <h2>School bus, flashing reds = STOP</h2>
+  <img class="sign" src="../images/signs/mutcd-R1-1-stop.png" alt="Red octagonal STOP sign with white border and white letters" style="max-height: 180px; margin: 8px auto; display:block;">
+  <p>The rule depends on the road. Memorize the 4-row table on the next slide - a favorite test trap.</p>
+  <p class="callout">Illegal pass of a stopped school bus: <strong>up to $3,000 fine</strong>, insurance hike, and the bus driver can report you.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.46 &middot; ladder tier 5</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">An octagon-shaped sign always means what?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u3-kc-1" value="0"> Yield
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u3-kc-1" value="1"> Stop
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u3-kc-1" value="2"> Warning
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u3-kc-1" value="3"> School zone
+    </label>
+  </div>
+  <button onclick="checkKC('u3-kc-1', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Stop<br>
+    Octagon = STOP. The 8-sided shape is unique to stop signs so it&#x27;s recognizable even when dirty, snow-covered, or obscured.
+  </div>
+</section>
+
+
+<section data-fact-id="school-bus-matrix" data-priority="MUST" class="priority-must">
+  <h2>School bus - by road type</h2>
+  <table class="matrix">
+    <thead><tr><th>Road</th><th>Same direction</th><th>Opposite direction</th></tr></thead>
+    <tbody>
+      <tr><td>2-lane road</td><td><span class="pill pill-stop">STOP</span></td><td><span class="pill pill-stop">STOP</span></td></tr>
+      <tr><td>4-lane, NO median</td><td><span class="pill pill-stop">STOP</span></td><td><span class="pill pill-stop">STOP</span></td></tr>
+      <tr><td>Divided (median, 4+ lanes)</td><td><span class="pill pill-stop">STOP</span></td><td><span class="pill pill-go">Keep going</span></td></tr>
+      <tr><td>5-lane w/ center turn lane</td><td><span class="pill pill-stop">STOP</span></td><td><span class="pill pill-go">Keep going</span></td></tr>
+    </tbody>
+  </table>
+  <p class="callout small"><strong>Shortcut:</strong> If there is a <strong>median or a center turn lane between you and the bus</strong>, opposite-direction traffic does NOT have to stop. Otherwise EVERYONE stops.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.46</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-go-look="true">
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+    <div style="background: linear-gradient(135deg, #fef9c3, #fed7aa); padding: 1.2em; border-radius: 10px; border: 2px solid #fde68a;">
+    <h2 style="color:#581c87; margin-bottom: 0.5em;">Go look at the picture</h2>
+    <p style="margin: 0.6em 0; font-size: 0.85em;">Open Zerofatalities and look at <strong>traffic controls &mdash; the officer hand signals, the flagger paddle, and the school-bus stop diagram by road type</strong>. Then come back and answer below.</p>
+    <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/traffic-controls/" target="_blank" rel="noopener" style="display:inline-block; background:#581c87; color:white; text-decoration:none; padding:8px 16px; border-radius:6px; margin: 0.5em 0; font-size:0.8em;">Open Zerofatalities &rarr;</a>
+  </div>
+    <div style="padding: 1em; background: #faf5ff; border-left: 4px solid #581c87; border-radius: 6px;">
+    <p style="margin: 0.5em 0; font-size: 0.85em; font-weight: 600; color: #581c87;">Now answer:</p>
+    <p style="margin: 0.5em 0; font-size: 0.85em;">On a 2-lane road, a school bus traveling the opposite way stops with its red lights flashing. What must you do?</p>
+    <div class="kc-choices" style="text-align:left; max-width:520px; margin:0 auto;">
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-7" value="0"> Continue at posted speed &mdash; opposite traffic isn&apos;t affected
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-7" value="1"> Stop &mdash; on a 2-lane road, BOTH directions must stop
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-7" value="2"> Slow to 20 mph and pass with caution
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-7" value="3"> Honk to warn kids you&apos;re coming
+      </label>
+    </div>
+    <button onclick="checkKC('gl-u3-7', 1, this)" style="background:#581c87; color:white; border:none; padding:6px 16px; border-radius:5px; margin-top:8px; cursor:pointer; font-size:0.75em;">Check answer</button>
+    <div class="kc-result" style="display:none; margin-top:10px; padding:10px; background:#fef3c7; border-radius:4px; font-size:0.7em;">
+      <strong>Answer:</strong> Stop &mdash; on a 2-lane road, BOTH directions must stop<br>On a 2-lane road, traffic in both directions stops for a school bus with flashing red lights. Same rule on a 4-lane road with no median. A median or a center turn lane is the ONLY thing that exempts the opposite direction. Handbook p. 46.
+    </div>
+  </div>
+  </div>
+</section>
+
+<section data-fact-id="pedestrian-yield-marked-or-unmarked" data-priority="MUST" class="priority-must">
+  <h2>Pedestrians at crosswalks</h2>
+  <img class="sign" src="../images/signs/mutcd-W11-2-pedestrian-crossing.png" alt="Yellow diamond with walking-person silhouette indicating pedestrian crossing" style="max-height: 180px; margin: 8px auto; display:block;">
+  <p style="font-size:1.2em;">Yield to <strong>ALL</strong> pedestrians - entering or in the crosswalk - <strong>marked OR unmarked</strong>.</p>
+  <p>Yes, even if you have a green light. Yes, even if there are no painted lines.</p>
+  <p class="callout">Never pass a vehicle stopped at a crosswalk - there may be a pedestrian you cannot see.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.54, p.91, p.92 &middot; ladder tier 6</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="white-cane-full-stop" data-priority="MUST" class="priority-must">
+  <h2>White cane or guide dog</h2>
+  <p style="font-size:1.4em;">FULL STOP. No exceptions.</p>
+  <p>White cane or guide dog means a blind pedestrian. They get a complete stop regardless of crosswalk markings, regardless of your signal.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.91</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="implied-crosswalks" data-priority="SHOULD">
+  <h2>Implied crosswalks (no lines)</h2>
+  <p>Every intersection of two streets has a <strong>crosswalk</strong> on each leg - even if there are no painted lines.</p>
+  <p>That sidewalk corner where it would naturally cross? That is the unmarked crosswalk. Pedestrians have right-of-way there.</p>
+  <span class="should-tag">SHOULD</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.54</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="four-way-stop-yield-right" data-priority="MUST" class="priority-must">
+  <h2>4-way stop priority</h2>
+  <img class="sign" src="../images/signs/mutcd-R1-1-stop.png" alt="Red octagonal STOP sign with white border and white letters" style="max-height: 180px; margin: 8px auto; display:block;">
+  <ol>
+    <li><strong>First to arrive</strong> goes first.</li>
+    <li>Tie? <strong>Yield to the car on your RIGHT.</strong></li>
+    <li>Going straight beats turning across traffic.</li>
+  </ol>
+  <p class="callout">If two cars face each other and one is turning left, the one going straight goes first.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.60 &middot; ladder tier 9</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-go-look="true">
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+    <div style="background: linear-gradient(135deg, #fef9c3, #fed7aa); padding: 1.2em; border-radius: 10px; border: 2px solid #fde68a;">
+    <h2 style="color:#581c87; margin-bottom: 0.5em;">Go look at the picture</h2>
+    <p style="margin: 0.6em 0; font-size: 0.85em;">Open Zerofatalities and look at <strong>intersections — especially the continuous flow intersection (CFI) and diverging diamond interchange (DDI) animations</strong>. Then come back and answer below.</p>
+    <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/intersections/" target="_blank" rel="noopener" style="display:inline-block; background:#581c87; color:white; text-decoration:none; padding:8px 16px; border-radius:6px; margin: 0.5em 0; font-size:0.8em;">Open Zerofatalities →</a>
+  </div>
+    <div style="padding: 1em; background: #faf5ff; border-left: 4px solid #581c87; border-radius: 6px;">
+    <p style="margin: 0.5em 0; font-size: 0.85em; font-weight: 600; color: #581c87;">Now answer:</p>
+    <p style="margin: 0.5em 0; font-size: 0.85em;">In a diverging diamond interchange (DDI), what is unusual about the traffic flow on the bridge over the freeway?</p>
+    <div class="kc-choices" style="text-align:left; max-width:520px; margin:0 auto;">
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-2" value="0"> Traffic stops at three signals
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-2" value="1"> Traffic briefly crosses over so you drive on the LEFT side of the road across the bridge
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-2" value="2"> You must come to a complete stop in the middle
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-2" value="3"> Traffic in both directions shares a single lane
+      </label>
+    </div>
+    <button onclick="checkKC('gl-u3-2', 1, this)" style="background:#581c87; color:white; border:none; padding:6px 16px; border-radius:5px; margin-top:8px; cursor:pointer; font-size:0.75em;">Check answer</button>
+    <div class="kc-result" style="display:none; margin-top:10px; padding:10px; background:#fef3c7; border-radius:4px; font-size:0.7em;">
+      <strong>Answer:</strong> Traffic briefly crosses over so you drive on the LEFT side of the road across the bridge<br>The DDI swaps traffic to the left side over the bridge so left turns onto the freeway don&apos;t have to cross oncoming traffic. Follow the lane markings and arrows — it feels strange but it&apos;s safer.
+    </div>
+  </div>
+  </div>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">A pedestrian carrying a white cane begins to cross a side street as you approach. There&#x27;s no marked crosswalk. What must you do?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc7" value="0"> Slow down and pass carefully
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc7" value="1"> Honk to alert them you&#x27;re coming
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc7" value="2"> Come to a complete stop — the white cane requires a full stop regardless of crosswalk markings
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc7" value="3"> Only yield if they&#x27;re in a marked crosswalk
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u3-kc7', 2, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Come to a complete stop — the white cane requires a full stop regardless of crosswalk markings<br>
+    A pedestrian with a white cane (or guide dog) requires a full STOP, marked crosswalk or not. Handbook p. 91.
+  </div>
+</section>
+
+
+<section data-fact-id="yellow-about-to-stop" data-priority="MUST" class="priority-must">
+  <h2>What yellow really means</h2>
+  <img class="sign" src="../images/signs/mutcd-W3-3-signal-ahead.png" alt="Yellow diamond with black traffic light symbol indicating signal ahead" style="max-height: 180px; margin: 8px auto; display:block;">
+  <p style="font-size:1.3em;">Yellow = the light is about to turn red. <strong>Stop if you can safely.</strong></p>
+  <p>Yellow does NOT mean speed up to beat the red. That is a ticket. And, often, a crash.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.55</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="right-on-red-unless-posted" data-priority="MUST" class="priority-must">
+  <h2>Red, green, and right-on-red</h2>
+  <img class="sign" src="../images/signs/mutcd-R10-11-no-turn-on-red.png" alt="White rectangle with red circle and slash over a right-turn arrow above text ON RED" style="max-height: 180px; margin: 8px auto; display:block;">
+  <ul>
+    <li><strong>Red</strong> - full stop behind the line, crosswalk, or intersection.</li>
+    <li><strong>Green</strong> - go IF the way is clear (yield to pedestrians and cars still in the intersection).</li>
+    <li><strong>Right on red</strong> - OK after a complete stop, <strong>unless</strong> a sign says No Turn on Red.</li>
+  </ul>
+  <p class="callout small">A right-on-red rolling stop is the cheapest ticket cops write. Come to a real stop.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.56</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="flashing-yellow-vs-red" data-priority="MUST" class="priority-must">
+  <h2>Flashing yellow vs flashing red</h2>
+  <img class="sign" src="../images/signs/mutcd-W3-1-stop-ahead.png" alt="Yellow diamond with black octagonal stop sign symbol indicating stop sign ahead" style="max-height: 180px; margin: 8px auto; display:block;">
+  <table class="matrix">
+    <thead><tr><th>Signal</th><th>Treat it like</th></tr></thead>
+    <tbody>
+      <tr><td>Flashing <strong>yellow</strong></td><td>Slow down, proceed with caution</td></tr>
+      <tr><td>Flashing <strong>red</strong></td><td>Stop sign - full stop, then go when clear</td></tr>
+      <tr><td>Flashing yellow <strong>arrow</strong></td><td>Turn permitted, but YIELD to oncoming + pedestrians</td></tr>
+      <tr><td>Red arrow</td><td>Turn prohibited. Wait.</td></tr>
+    </tbody>
+  </table>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.55-56</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-go-look="true">
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+    <div style="background: linear-gradient(135deg, #fef9c3, #fed7aa); padding: 1.2em; border-radius: 10px; border: 2px solid #fde68a;">
+    <h2 style="color:#581c87; margin-bottom: 0.5em;">Go look at the picture</h2>
+    <p style="margin: 0.6em 0; font-size: 0.85em;">Open Zerofatalities and look at <strong>traffic signals &mdash; the flashing yellow arrow, red arrow, and all the signal-state diagrams</strong>. Then come back and answer below.</p>
+    <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/traffic-signals/" target="_blank" rel="noopener" style="display:inline-block; background:#581c87; color:white; text-decoration:none; padding:8px 16px; border-radius:6px; margin: 0.5em 0; font-size:0.8em;">Open Zerofatalities &rarr;</a>
+  </div>
+    <div style="padding: 1em; background: #faf5ff; border-left: 4px solid #581c87; border-radius: 6px;">
+    <p style="margin: 0.5em 0; font-size: 0.85em; font-weight: 600; color: #581c87;">Now answer:</p>
+    <p style="margin: 0.5em 0; font-size: 0.85em;">What does a FLASHING YELLOW ARROW mean at a left-turn signal?</p>
+    <div class="kc-choices" style="text-align:left; max-width:520px; margin:0 auto;">
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-6" value="0"> Turn prohibited
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-6" value="1"> Turn allowed &mdash; but yield to oncoming traffic and pedestrians
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-6" value="2"> Same as a green arrow &mdash; you have priority
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-6" value="3"> Stop and wait for a steady arrow
+      </label>
+    </div>
+    <button onclick="checkKC('gl-u3-6', 1, this)" style="background:#581c87; color:white; border:none; padding:6px 16px; border-radius:5px; margin-top:8px; cursor:pointer; font-size:0.75em;">Check answer</button>
+    <div class="kc-result" style="display:none; margin-top:10px; padding:10px; background:#fef3c7; border-radius:4px; font-size:0.7em;">
+      <strong>Answer:</strong> Turn allowed &mdash; but yield to oncoming traffic and pedestrians<br>Flashing yellow arrow = turn permitted, but you have NO priority. Yield to oncoming traffic AND pedestrians before turning. Handbook p. 56.
+    </div>
+  </div>
+  </div>
+</section>
+
+<section data-fact-id="left-turn-yields-to-oncoming" data-priority="MUST" class="priority-must">
+  <h2>Left turn on green = YIELD</h2>
+  <img class="sign" src="../images/signs/mutcd-R3-5L-left-turn-only.png" alt="White square with black left-turn arrow, indicating lane is for left turns only" style="max-height: 180px; margin: 8px auto; display:block;">
+  <p>A solid green light gives you permission to enter the intersection, NOT priority over oncoming.</p>
+  <p>Yield to all oncoming traffic before you turn left. Only a <strong>green arrow</strong> gives you priority.</p>
+  <p class="callout">Stranded by a red left arrow that never changes? If safe and you are turning from a one-way onto a one-way, you may proceed.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.56, p.60 &middot; ladder tier 8</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check (2 questions)</h2>
+  <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap: 16px; align-items: start;">
+    <div>
+      <p style="margin: 1em 0; font-size: 0.95em;">At a red light, you want to turn right. What&#x27;s the rule?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc8-a" value="0"> Always prohibited
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc8-a" value="1"> Allowed after a complete stop, unless a sign prohibits it
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc8-a" value="2"> Allowed without stopping if no traffic is coming
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc8-a" value="3"> Only allowed on weekdays
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u3-kc8-a', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Allowed after a complete stop, unless a sign prohibits it<br>
+    Right on red is allowed after a complete stop, unless posted otherwise. Handbook p. 56.
+  </div>
+    </div>
+    <div>
+      <p style="margin: 1em 0; font-size: 0.95em;">A steady YELLOW light means:</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc8-b" value="0"> Speed up to beat the red
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc8-b" value="1"> Stop if you can do so safely — the light is about to turn red
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc8-b" value="2"> Yield to traffic on the cross street
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc8-b" value="3"> Caution only — proceed at normal speed
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u3-kc8-b', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Stop if you can do so safely — the light is about to turn red<br>
+    Yellow = light is about to change to red. Stop if you can safely. Handbook p. 55.
+  </div>
+    </div>
+  </div>
+</section>
+
+
+<section data-fact-id="roundabout-yield-to-circle" data-priority="MUST" class="priority-must">
+  <h2>Roundabouts</h2>
+  <img class="sign" src="../images/signs/mutcd-R4-7-keep-right.png" alt="White rectangle with black down-right arrow above text KEEP RIGHT" style="max-height: 180px; margin: 8px auto; display:block;">
+  <ol>
+    <li>Slow down on approach</li>
+    <li>Yield to traffic already in the circle AND pedestrians at the entry</li>
+    <li>Enter when clear - flow is <strong>counterclockwise</strong></li>
+    <li><strong>Signal</strong> your intent to exit</li>
+  </ol>
+  <p class="callout small">Roundabouts are NOT 4-way stops. Do not stop unless you have to.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.13, p.55 &middot; ladder tier 11</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-go-look="true">
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+    <div style="background: linear-gradient(135deg, #fef9c3, #fed7aa); padding: 1.2em; border-radius: 10px; border: 2px solid #fde68a;">
+    <h2 style="color:#581c87; margin-bottom: 0.5em;">Go look at the picture</h2>
+    <p style="margin: 0.6em 0; font-size: 0.85em;">Open Zerofatalities and look at <strong>roundabouts — the counterclockwise flow, yield lines, and pedestrian crossings at each entry</strong>. Then come back and answer below.</p>
+    <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/roundabouts/" target="_blank" rel="noopener" style="display:inline-block; background:#581c87; color:white; text-decoration:none; padding:8px 16px; border-radius:6px; margin: 0.5em 0; font-size:0.8em;">Open Zerofatalities →</a>
+  </div>
+    <div style="padding: 1em; background: #faf5ff; border-left: 4px solid #581c87; border-radius: 6px;">
+    <p style="margin: 0.5em 0; font-size: 0.85em; font-weight: 600; color: #581c87;">Now answer:</p>
+    <p style="margin: 0.5em 0; font-size: 0.85em;">You approach a roundabout. A pedestrian is in the crosswalk at your entry, and a car is circulating in the roundabout heading toward your entry. What do you do?</p>
+    <div class="kc-choices" style="text-align:left; max-width:520px; margin:0 auto;">
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-3" value="0"> Enter — circulating cars yield to entering cars
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-3" value="1"> Yield to the pedestrian only, then enter
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-3" value="2"> Yield to BOTH the pedestrian and the circulating car
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-3" value="3"> Stop completely as if at a stop sign
+      </label>
+    </div>
+    <button onclick="checkKC('gl-u3-3', 2, this)" style="background:#581c87; color:white; border:none; padding:6px 16px; border-radius:5px; margin-top:8px; cursor:pointer; font-size:0.75em;">Check answer</button>
+    <div class="kc-result" style="display:none; margin-top:10px; padding:10px; background:#fef3c7; border-radius:4px; font-size:0.7em;">
+      <strong>Answer:</strong> Yield to BOTH the pedestrian and the circulating car<br>At a roundabout: yield to pedestrians AND to traffic already in the circle before entering. Handbook p. 55.
+    </div>
+  </div>
+  </div>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">What does a red sign or red circle-with-slash on a sign generally mean?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u3-kc-2" value="0"> Caution but allowed
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u3-kc-2" value="1"> Stop, yield, or prohibition
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u3-kc-2" value="2"> Hospital or service
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u3-kc-2" value="3"> School crossing
+    </label>
+  </div>
+  <button onclick="checkKC('u3-kc-2', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Stop, yield, or prohibition<br>
+    Red on a sign means STOP, YIELD, or PROHIBITION. A red circle with a slash means you cannot do the action shown.
+  </div>
+</section>
+
+
+<section data-fact-id="ramp-yields-to-interstate" data-priority="MUST" class="priority-must">
+  <h2>On-ramps yield</h2>
+  <img class="sign" src="../images/signs/mutcd-R1-2-yield.png" alt="White downward-pointing triangle with red border and red YIELD letters" style="max-height: 180px; margin: 8px auto; display:block;">
+  <p>You are on the ramp. Interstate traffic has the right-of-way.</p>
+  <p>Use the acceleration lane to match the speed of traffic, find a gap, and merge smoothly. If there is no gap and the ramp is ending, you may need to stop.</p>
+  <p class="callout small">Interstate drivers are NOT required to move over for you - though many will if they can.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.60 &middot; ladder tier 12</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="driveway-yields-to-street" data-priority="MUST" class="priority-must">
+  <h2>Driveways yield to the street</h2>
+  <img class="sign" src="../images/signs/mutcd-R1-2-yield.png" alt="White downward-pointing triangle with red border and red YIELD letters" style="max-height: 180px; margin: 8px auto; display:block;">
+  <p>Coming out of a driveway or private road? You yield to <strong>all</strong> traffic on the public road.</p>
+  <p>This includes the sidewalk - yield to pedestrians and cyclists too. Full stop before the sidewalk.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.45, p.60 &middot; ladder tier 13</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-8/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="narrow-bridge-first-arrived" data-priority="SHOULD">
+  <h2>Narrow bridges &amp; one-lane roads</h2>
+  <p>On a rural narrow or single-lane bridge, the <strong>first driver to the bridge</strong> has the right-of-way.</p>
+  <p>Take turns. Be polite. Out in the country this often becomes a friendly wave.</p>
+  <span class="should-tag">SHOULD</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.70 &middot; ladder tier 14</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="mountain-downhill-yields-uphill" data-priority="SHOULD">
+  <h2>Mountain roads - downhill yields</h2>
+  <p>Two cars meet on a narrow mountain road, one going uphill, one going downhill. Who backs up?</p>
+  <p style="font-size:1.2em;"><strong>The downhill driver yields.</strong></p>
+  <p class="callout small">Counterintuitive - gravity does NOT win. Reason: uphill drivers have less control restarting from a stop on a grade.</p>
+  <span class="should-tag">SHOULD</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.69 &middot; ladder tier 15</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">You&#x27;re pulling out of your driveway onto a residential street. A car is coming down the street. Who has the right-of-way?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc9" value="0"> You — first to be there has priority
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc9" value="1"> The car on the street — driveway traffic yields to street traffic
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc9" value="2"> Tied — yield to the right
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc9" value="3"> You — but only if you signal first
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u3-kc9', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> The car on the street — driveway traffic yields to street traffic<br>
+    When entering a street from a driveway or private road, yield to traffic already on the street. Handbook p. 60.
+  </div>
+</section>
+
+
+<section data-fact-id="pavement-markings-recap" data-priority="MUST" class="priority-must">
+  <h2>Pavement markings - quick recap</h2>
+  <img class="sign" src="../images/signs/mutcd-W14-3-no-passing-zone.png" alt="Yellow pennant-shaped sign with black text NO PASSING ZONE" style="max-height: 180px; margin: 8px auto; display:block;">
+  <table class="matrix">
+    <thead><tr><th>Color/style</th><th>Meaning</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Yellow</strong></td><td>Traffic in OPPOSING directions</td></tr>
+      <tr><td><strong>White</strong></td><td>Traffic in the SAME direction</td></tr>
+      <tr><td>Broken (dashed) on your side</td><td>Passing permitted</td></tr>
+      <tr><td>Solid on your side</td><td>Passing prohibited</td></tr>
+      <tr><td>Double solid yellow</td><td>No passing either direction</td></tr>
+      <tr><td>Double solid white</td><td>No crossing (express-lane separator)</td></tr>
+    </tbody>
+  </table>
+  <p class="callout small">Yellow = opposing, White = same. The DLD test asks this almost every time.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.53</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-go-look="true">
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+    <div style="background: linear-gradient(135deg, #fef9c3, #fed7aa); padding: 1.2em; border-radius: 10px; border: 2px solid #fde68a;">
+    <h2 style="color:#581c87; margin-bottom: 0.5em;">Go look at the picture</h2>
+    <p style="margin: 0.6em 0; font-size: 0.85em;">Open Zerofatalities and look at <strong>pavement markings — yield lines (shark&apos;s teeth), stop bars, and the different lane-line styles</strong>. Then come back and answer below.</p>
+    <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/pavement-markings/" target="_blank" rel="noopener" style="display:inline-block; background:#581c87; color:white; text-decoration:none; padding:8px 16px; border-radius:6px; margin: 0.5em 0; font-size:0.8em;">Open Zerofatalities →</a>
+  </div>
+    <div style="padding: 1em; background: #faf5ff; border-left: 4px solid #581c87; border-radius: 6px;">
+    <p style="margin: 0.5em 0; font-size: 0.85em; font-weight: 600; color: #581c87;">Now answer:</p>
+    <p style="margin: 0.5em 0; font-size: 0.85em;">A row of solid white triangles painted across a lane (pointing toward you) is called what?</p>
+    <div class="kc-choices" style="text-align:left; max-width:520px; margin:0 auto;">
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-4" value="0"> Crosswalk
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-4" value="1"> Yield line (shark&apos;s teeth) — shows where you must yield, often at roundabouts
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-4" value="2"> Stop line
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-4" value="3"> Lane separator
+      </label>
+    </div>
+    <button onclick="checkKC('gl-u3-4', 1, this)" style="background:#581c87; color:white; border:none; padding:6px 16px; border-radius:5px; margin-top:8px; cursor:pointer; font-size:0.75em;">Check answer</button>
+    <div class="kc-result" style="display:none; margin-top:10px; padding:10px; background:#fef3c7; border-radius:4px; font-size:0.7em;">
+      <strong>Answer:</strong> Yield line (shark&apos;s teeth) — shows where you must yield, often at roundabouts<br>Solid white triangles pointing toward approaching drivers mark where you must yield. Common at roundabout entries.
+    </div>
+  </div>
+  </div>
+</section>
+
+<section data-fact-id="speed-limits-recap" data-priority="MUST" class="priority-must">
+  <h2>Speed limits - four numbers to know</h2>
+  <img class="sign" src="../images/signs/mutcd-R2-1-speed-limit.png" alt="White rectangular sign with black SPEED LIMIT text above large numerals" style="max-height: 180px; margin: 8px auto; display:block;">
+  <table class="matrix">
+    <thead><tr><th>Speed</th><th>Where</th></tr></thead>
+    <tbody>
+      <tr><td><strong>20 mph</strong></td><td>School zone (during recess, opening/closing hours, OR flashing lights)</td></tr>
+      <tr><td><strong>25 mph</strong></td><td>Any business or residential area</td></tr>
+      <tr><td><strong>55 mph</strong></td><td>Major highways, as posted</td></tr>
+      <tr><td><strong>65-80 mph</strong></td><td>Rural interstate, as posted (transition zones marked)</td></tr>
+    </tbody>
+  </table>
+  <p class="callout small"><strong>Basic speed law:</strong> never drive faster than is reasonably safe - even at the posted limit. Snow, fog, rain: slow down.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.54</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="school-zone-flashing-slow" data-priority="MUST" class="priority-must">
+  <h2>School zones - when 20 is the law</h2>
+  <img class="sign" src="../images/signs/mutcd-S1-1-school.png" alt="Fluorescent yellow-green pentagon with two black walking-child silhouettes indicating school crossing" style="max-height: 180px; margin: 8px auto; display:block;">
+  <p>Lights flashing on the school zone sign = <strong>20 mph</strong>, period. Even if you do not see any kids.</p>
+  <p>Also 20 mph during school opening/closing hours and recess, lights or not.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.54, p.91</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="work-zone-double-fine" data-priority="MUST" class="priority-must">
+  <h2>Work zones - double fines, flaggers rule</h2>
+  <img class="sign" src="../images/signs/mutcd-CW20-1-road-work-ahead.png" alt="Orange diamond with black text ROAD WORK AHEAD" style="max-height: 180px; margin: 8px auto; display:block;">
+  <ul>
+    <li>Orange signs = work zone ahead</li>
+    <li>Speeding fines are <strong>DOUBLED</strong> in work zones</li>
+    <li>Slow down even if you do not see any workers - that is the law</li>
+    <li>The flagger paddle beats every sign and signal in the zone</li>
+  </ul>
+  <p class="callout small">Drivers, not workers, are the ones most often hurt in work zones. Slow down at the first cone &mdash; not at the last one.</p>
+  <span class="must-tag">MUST</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.59</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-go-look="true">
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start;">
+    <div style="background: linear-gradient(135deg, #fef9c3, #fed7aa); padding: 1.2em; border-radius: 10px; border: 2px solid #fde68a;">
+    <h2 style="color:#581c87; margin-bottom: 0.5em;">Go look at the picture</h2>
+    <p style="margin: 0.6em 0; font-size: 0.85em;">Open Zerofatalities and look at <strong>traffic signs — the full reference of shapes and colors (regulatory, warning, guide, construction)</strong>. Then come back and answer below.</p>
+    <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/traffic-signs/" target="_blank" rel="noopener" style="display:inline-block; background:#581c87; color:white; text-decoration:none; padding:8px 16px; border-radius:6px; margin: 0.5em 0; font-size:0.8em;">Open Zerofatalities →</a>
+  </div>
+    <div style="padding: 1em; background: #faf5ff; border-left: 4px solid #581c87; border-radius: 6px;">
+    <p style="margin: 0.5em 0; font-size: 0.85em; font-weight: 600; color: #581c87;">Now answer:</p>
+    <p style="margin: 0.5em 0; font-size: 0.85em;">An orange diamond-shaped sign with black letters means what?</p>
+    <div class="kc-choices" style="text-align:left; max-width:520px; margin:0 auto;">
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-5" value="0"> School zone
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-5" value="1"> Construction or work zone — workers, equipment, lane changes, or detours ahead
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-5" value="2"> Recreational area
+      </label>
+      <label style="display:block; padding:8px 12px; margin:4px 0; background:white; border:1px solid #e4e4e7; border-radius:4px; cursor:pointer; font-size:0.75em;">
+        <input type="radio" name="gl-u3-5" value="3"> Mandatory stop
+      </label>
+    </div>
+    <button onclick="checkKC('gl-u3-5', 1, this)" style="background:#581c87; color:white; border:none; padding:6px 16px; border-radius:5px; margin-top:8px; cursor:pointer; font-size:0.75em;">Check answer</button>
+    <div class="kc-result" style="display:none; margin-top:10px; padding:10px; background:#fef3c7; border-radius:4px; font-size:0.7em;">
+      <strong>Answer:</strong> Construction or work zone — workers, equipment, lane changes, or detours ahead<br>Orange = work zone. Slow down, watch for flaggers, and remember: speeding fines are DOUBLED in work zones.
+    </div>
+  </div>
+  </div>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">What&#x27;s the maximum speed when passing a school during recess or when school-zone lights are flashing?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc10" value="0"> 15 mph
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc10" value="1"> 20 mph
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc10" value="2"> 25 mph
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="kc-u3-kc10" value="3"> 30 mph
+    </label>
+  </div>
+  <button onclick="checkKC('kc-u3-kc10', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> 20 mph<br>
+    20 mph in a school zone when children are present, lights are flashing, or during school opening/closing hours. Handbook p. 54.
+  </div>
+</section>
+
+
+<section data-fact-id="hawk-signal" data-priority="SHOULD">
+  <h2>HAWK signal</h2>
+  <p>The HAWK (High-intensity Activated crossWalK) signal is the pedestrian-activated beacon over a crosswalk. Read it in this order:</p>
+  <table class="matrix">
+    <thead><tr><th>Signal state</th><th>You do</th></tr></thead>
+    <tbody>
+      <tr><td>Dark (off)</td><td>Proceed normally</td></tr>
+      <tr><td>Flashing yellow</td><td>Slow down, prepare to stop</td></tr>
+      <tr><td>Solid yellow</td><td>Stop if safe</td></tr>
+      <tr><td>Solid red</td><td>Full stop</td></tr>
+      <tr><td>Flashing red</td><td>Stop, then proceed when pedestrian is clear</td></tr>
+    </tbody>
+  </table>
+  <span class="should-tag">SHOULD</span>
+  <p class="learn-more">UDOT pedestrian beacon reference</p>
+</section>
+
+<section data-fact-id="scenario-4way-tie" data-priority="MUST" class="priority-must">
+  <h2>Scenario: 4-way stop tie</h2>
+  <div class="scenario"><strong>Setup:</strong> Marcus arrives at a 4-way stop at the exact moment another car arrives on his RIGHT. Both going straight.</div>
+  <div class="answer"><strong>Answer:</strong> Yield to the car on the right. Marcus waits.</div>
+  <p class="callout small">Ladder tier 9: yield to the right.</p>
+  <span class="must-tag">MUST</span>
+</section>
+
+<section data-knowledge-check="true">
+  <h2 style="color:#581c87;">Quick check</h2>
+  <p style="margin: 1em 0; font-size: 0.95em;">A downward-pointing triangular sign with a red border and white interior means what?</p>
+  <div class="kc-choices" style="text-align: left; max-width: 600px; margin: 0 auto;">
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u3-kc-3" value="0"> Stop completely and wait
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u3-kc-3" value="1"> Yield - slow and let other traffic go first
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u3-kc-3" value="2"> Warning of curve ahead
+    </label>
+    <label style="display:block; padding: 10px 14px; margin: 6px 0; background: white; border: 1px solid #e4e4e7; border-radius: 4px; cursor: pointer;">
+      <input type="radio" name="u3-kc-3" value="3"> Construction zone
+    </label>
+  </div>
+  <button onclick="checkKC('u3-kc-3', 1, this)" style="background: #581c87; color: white; border: none; padding: 10px 24px; border-radius: 6px; margin-top: 16px; cursor: pointer;">Check answer</button>
+  <div class="kc-result" style="display:none; margin-top: 16px; padding: 12px; background: #fef3c7; border-radius: 4px; font-size: 0.9em;">
+    <strong>Answer:</strong> Yield - slow and let other traffic go first<br>
+    A downward-pointing triangle (white with red border) is a YIELD sign. Slow down, stop if necessary, and let traffic with the right-of-way go first.
+  </div>
+</section>
+
+
+<section data-fact-id="scenario-ambulance-red" data-priority="MUST" class="priority-must">
+  <h2>Scenario: Ambulance behind you at a red</h2>
+  <div class="scenario"><strong>Setup:</strong> You are stopped at a red light. An ambulance roars up behind you, siren going.</div>
+  <div class="answer"><strong>Answer:</strong> Pull to the RIGHT and stop. Do NOT run the red light. If you cannot pull right safely, stay put - the ambulance will route around you.</div>
+  <p class="callout small">Ladder tier 2: emergency vehicles get yielded TO, not panicked over.</p>
+  <span class="must-tag">MUST</span>
+</section>
+
+<section data-fact-id="scenario-bus-median" data-priority="MUST" class="priority-must">
+  <h2>Scenario: School bus across a median</h2>
+  <div class="scenario"><strong>Setup:</strong> You are southbound on a divided 4-lane highway with a grass median. A school bus heading NORTH on the other side of the median flashes its reds.</div>
+  <div class="answer"><strong>Answer:</strong> Keep going. With a median, opposite-direction traffic does NOT have to stop. Only northbound traffic behind the bus must stop.</div>
+  <p class="callout small">School bus matrix - median + opposite direction = exempt.</p>
+  <span class="must-tag">MUST</span>
+</section>
+
+<section data-fact-id="scenario-train-ambulance" data-priority="MUST" class="priority-must">
+  <h2>Scenario: Train + ambulance</h2>
+  <img class="sign" src="../images/signs/mutcd-R15-1-railroad-crossbuck.png" alt="White X-shaped sign with black text RAIL ROAD CROSSING" style="max-height: 180px; margin: 8px auto; display:block;">
+  <div class="scenario"><strong>Setup:</strong> The crossing gates are coming down, lights flashing - a train is coming. An ambulance with siren pulls up behind you.</div>
+  <div class="answer"><strong>Answer:</strong> Everyone waits. Trains beat ambulances. NEVER drive around the gates to make room. The ambulance is also required to stop.</div>
+  <p class="callout small">Ladder tier 1 beats tier 2. Always.</p>
+  <span class="must-tag">MUST</span>
+</section>
+
+<section data-fact-id="scenario-flagger-green" data-priority="MUST" class="priority-must">
+  <h2>Scenario: Flagger vs green light</h2>
+  <div class="scenario"><strong>Setup:</strong> Work zone. Your light is GREEN. A flagger is holding a STOP paddle toward you.</div>
+  <div class="answer"><strong>Answer:</strong> Stop. Obey the flagger. Flaggers override signals.</div>
+  <p class="callout small">Ladder tier 4: flagger beats traffic light.</p>
+  <span class="must-tag">MUST</span>
+</section>
+
+<section data-fact-id="scenario-white-cane" data-priority="MUST" class="priority-must">
+  <h2>Scenario: White cane crossing</h2>
+  <div class="scenario"><strong>Setup:</strong> A pedestrian with a white cane steps off the curb to cross a side street. No painted crosswalk.</div>
+  <div class="answer"><strong>Answer:</strong> Full stop. White cane = mandatory stop, marked crosswalk or not, signal or not.</div>
+  <p class="callout small">Ladder tier 6, with the white-cane intensifier.</p>
+  <span class="must-tag">MUST</span>
+</section>
+
+<section data-fact-id="weird-utah-trains-beat-ambulances" data-priority="NICE">
+  <div class="weird-utah">
+    <h2>Weird Utah moment</h2>
+    <p style="font-size:1.1em;"><strong>Trains beat ambulances. By law. In writing.</strong></p>
+    <p>The Utah handbook spells it out: Trains have the right-of-way 100% of the time over ambulances, fire engines, cars, police, and pedestrians.</p>
+    <p>Most state handbooks dance around this. Utah just says it. A train carrying 100 cars at 55 mph needs more than a mile to stop - it physically <em>cannot</em> yield. So everyone else does.</p>
+    <p class="small">Bonus: TRAX light rail counts as a train. Treat it the same.</p>
+  </div>
+  <span class="nice-tag">NICE</span>
+  <p class="learn-more"><a href="https://drive.google.com/file/d/1n8nMqhEBKn99TZmm0NSCm9LWlqEHt9Tq/view" target="_blank" rel="noopener" style="color:#581c87;">Handbook p.96</a> &nbsp;|&nbsp; <a href="https://visualhandbook.zerofatalities.com/" target="_blank" rel="noopener" style="color:#581c87;">Zero Fatalities</a></p>
+</section>
+
+<section data-fact-id="recap-top-7" data-priority="MUST" class="priority-must">
+  <h2>Top 7 right-of-way MUSTs</h2>
+  <ol style="font-size:0.85em;">
+    <li><strong>Trains beat everything</strong> - even ambulances</li>
+    <li>Sirens behind you = <strong>pull right, stop</strong></li>
+    <li>School bus reds = stop. Median? Opposite direction is exempt</li>
+    <li>Yield to <strong>all</strong> pedestrians, marked or unmarked. White cane = full stop</li>
+    <li>4-way stop tie = yield to the <strong>right</strong></li>
+    <li>Left turn on solid green = <strong>yield to oncoming</strong></li>
+    <li>Yellow = stop if safe. NEVER speed up</li>
+  </ol>
+  <span class="must-tag">MUST</span>
+</section>
+
+<section data-tour="true">
+  <h2 style="color:#581c87;">Want to see all of this in pictures?</h2>
+  <p style="margin: 0.6em 0; font-size: 0.85em;">Zerofatalities&apos; Visual Driver Handbook covers what you just studied with animations, photos, and real Utah locations. Each link opens a specific topic.</p>
+  <div style="background: linear-gradient(135deg, #fef9c3, #fed7aa); padding: 1em; border-radius: 10px; border: 2px solid #fde68a; max-width: 640px; margin: 0.8em auto; text-align: left;">
+    <ul style="list-style:none; padding:0; margin:0; font-size: 0.75em;">
+      <li style="padding: 5px 0; border-bottom: 1px solid #fcd34d;">
+        <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/intersections/" target="_blank" rel="noopener" style="color: #581c87; text-decoration: none; font-weight: 600;">Continuous flow intersection</a>
+      </li>
+      <li style="padding: 5px 0; border-bottom: 1px solid #fcd34d;">
+        <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/intersections/" target="_blank" rel="noopener" style="color: #581c87; text-decoration: none; font-weight: 600;">Diverging diamond</a>
+      </li>
+      <li style="padding: 5px 0; border-bottom: 1px solid #fcd34d;">
+        <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/roundabouts/" target="_blank" rel="noopener" style="color: #581c87; text-decoration: none; font-weight: 600;">Roundabouts</a>
+      </li>
+      <li style="padding: 5px 0; border-bottom: 1px solid #fcd34d;">
+        <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/traffic-signals/" target="_blank" rel="noopener" style="color: #581c87; text-decoration: none; font-weight: 600;">Traffic signals (flashing yellow arrow, HAWK)</a>
+      </li>
+      <li style="padding: 5px 0; border-bottom: 1px solid #fcd34d;">
+        <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/traffic-controls/" target="_blank" rel="noopener" style="color: #581c87; text-decoration: none; font-weight: 600;">Traffic controls (school bus, flagger)</a>
+      </li>
+      <li style="padding: 5px 0; border-bottom: 1px solid #fcd34d;">
+        <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/pavement-markings/" target="_blank" rel="noopener" style="color: #581c87; text-decoration: none; font-weight: 600;">Pavement markings</a>
+      </li>
+      <li style="padding: 5px 0; border-bottom: 1px solid #fcd34d;">
+        <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/yielding-right-of-way/" target="_blank" rel="noopener" style="color: #581c87; text-decoration: none; font-weight: 600;">Yielding ROW priority ladder</a>
+      </li>
+      <li style="padding: 5px 0;">
+        <a href="https://visualhandbook.zerofatalities.com/handbook/section-9/traffic-signs/" target="_blank" rel="noopener" style="color: #581c87; text-decoration: none; font-weight: 600;">Signs reference</a>
+      </li>
+    </ul>
+  </div>
+  <p style="margin-top: 0.8em; font-size: 0.7em; color: #71717a;">All open in a new tab. Come back here when you&apos;re done.</p>
+</section>
+
+<section data-state="finish" data-fact-id="unit-3-outro" data-priority="MUST">
+  <h1 style="color:#581c87; font-size: 2em; text-align:center;">&#127881; You finished Unit 3! &#127881;</h1>
+  <p style="text-align:center; font-size: 0.9em; margin-top: 1em;">You just beat the biggest unit. Right-of-way is the most-tested topic on the DLD test, and you have the priority ladder in your head now.</p>
+  <p class="callout" style="text-align:center;">Next: <strong>Unit 4 - Staying Safe &amp; Legal</strong>. DUI, distractions, crashes, weather. Shorter unit. Harder topic.</p>
+  <p class="small" style="text-align:center;">Take a break. You earned one.</p>
+</section>
+
+</div></div>
+<script>
+  function checkKC(name, correctIndex, btn) {
+    var sel = document.querySelector('input[name="' + name + '"]:checked');
+    var resultEl = btn.nextElementSibling;
+    if (!sel) {
+      resultEl.style.display = 'block';
+      resultEl.innerHTML = '<em>Pick an answer first.</em>';
+      return;
+    }
+    var labels = document.querySelectorAll('input[name="' + name + '"]');
+    labels.forEach(function(input, i) {
+      var lbl = input.parentElement;
+      if (i === correctIndex) lbl.style.borderColor = '#16a34a', lbl.style.background = '#dcfce7';
+      else if (input.checked) lbl.style.borderColor = '#dc2626', lbl.style.background = '#fee2e2';
+    });
+    resultEl.style.display = 'block';
+    btn.disabled = true;
+    btn.style.opacity = '0.5';
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>Reveal.initialize({ hash: true, slideNumber: false, transition: "fade", controls: true, progress: true  });</script>
+<script>
+  Reveal.on('slidechanged', function(event) {
+    var slides = document.querySelectorAll('.reveal .slides > section');
+    var isLast = event.currentSlide === slides[slides.length - 1];
+    if (isLast && typeof confetti === 'function') {
+      confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+      setTimeout(function() {
+        confetti({ particleCount: 80, spread: 100, origin: { y: 0.5, x: 0.2 } });
+        confetti({ particleCount: 80, spread: 100, origin: { y: 0.5, x: 0.8 } });
+      }, 400);
+      // Record deck completion
+      try {
+        var unitKey = "unit-3";
+        var completions = JSON.parse(localStorage.getItem("dl_deck_completions") || "{}");
+        completions[unitKey] = Date.now();
+        localStorage.setItem("dl_deck_completions", JSON.stringify(completions));
+        var __dlUser = localStorage.getItem("dl_user");
+        if (__dlUser && __dlUser !== "__anon__") {
+          fetch("/api/drive/progress", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              user: __dlUser.replace(/^"|"$/g, ""),
+              deckCompletions: completions
+            }),
+            keepalive: true
+          }).catch(function(){});
+        }
+      } catch (e) {}
+    }
+  });
+</script>
+</body></html>
