@@ -41,6 +41,7 @@ export default function Footer() {
               <li><Link href="/shipping" className="text-purple-300 hover:text-yellow-300 transition-colors">Shipping & Returns</Link></li>
               <li><Link href="/about" className="text-purple-300 hover:text-yellow-300 transition-colors">About Us</Link></li>
               <li><Link href="/drive" className="text-purple-300 hover:text-yellow-300 transition-colors">Driver Study</Link></li>
+              <li><Link href="/geography" className="text-purple-300 hover:text-yellow-300 transition-colors">🗺️ Geography</Link></li>
             </ul>
           </div>
 
