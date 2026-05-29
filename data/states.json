@@ -55,13 +55,21 @@
         "name": "U.S. Space & Rocket Center",
         "type": "landmark",
         "description": "A huge museum in Huntsville filled with real NASA rockets, space capsules, and a moon-bound Saturn V.",
-        "fact": "Its outdoor Saturn V is one of only three left in the world."
+        "fact": "Its outdoor Saturn V is one of only three left in the world.",
+        "latLon": [
+          34.7113,
+          -86.6543
+        ]
       },
       {
         "name": "Vulcan Statue",
         "type": "landmark",
         "description": "A giant iron statue of the Roman god of the forge standing on a hill above Birmingham.",
-        "fact": "At 56 feet tall, it's the largest cast-iron statue in the world."
+        "fact": "At 56 feet tall, it's the largest cast-iron statue in the world.",
+        "latLon": [
+          33.4881,
+          -86.7958
+        ]
       }
     ],
     "parks": [
@@ -204,7 +212,11 @@
         "name": "Denali",
         "type": "peak",
         "description": "The tallest mountain in North America, capped in snow year-round.",
-        "fact": "Its name means 'the tall one' in the Athabaskan language."
+        "fact": "Its name means 'the tall one' in the Athabaskan language.",
+        "latLon": [
+          63.0692,
+          -151.007
+        ]
       },
       {
         "name": "Yukon River",
@@ -240,7 +252,11 @@
         "name": "Trans-Alaska Pipeline",
         "type": "landmark",
         "description": "An 800-mile silver pipeline that carries oil from the Arctic Ocean down to a southern port.",
-        "fact": "It zig-zags on purpose so it can flex during earthquakes."
+        "fact": "It zig-zags on purpose so it can flex during earthquakes.",
+        "latLon": [
+          64.0671,
+          -145.7717
+        ]
       }
     ],
     "parks": [
@@ -378,7 +394,11 @@
         "name": "Grand Canyon",
         "type": "canyon",
         "description": "A mile-deep gorge carved by the Colorado River over millions of years.",
-        "fact": "It's so wide that you could fit four Empire State Buildings stacked end-to-end inside it."
+        "fact": "It's so wide that you could fit four Empire State Buildings stacked end-to-end inside it.",
+        "latLon": [
+          36.1069,
+          -112.1129
+        ]
       },
       {
         "name": "Colorado River",
@@ -414,13 +434,21 @@
         "name": "Hoover Dam",
         "type": "landmark",
         "description": "A giant concrete dam on the Colorado River that holds back Lake Mead between Arizona and Nevada.",
-        "fact": "It used enough concrete to pave a road from New York to San Francisco."
+        "fact": "It used enough concrete to pave a road from New York to San Francisco.",
+        "latLon": [
+          36.0161,
+          -114.7377
+        ]
       },
       {
         "name": "London Bridge at Lake Havasu",
         "type": "landmark",
         "description": "An old stone bridge from London, England that was taken apart and rebuilt in the Arizona desert.",
-        "fact": "Each numbered stone was shipped across the ocean and reassembled in 1971."
+        "fact": "Each numbered stone was shipped across the ocean and reassembled in 1971.",
+        "latLon": [
+          34.4669,
+          -114.3439
+        ]
       }
     ],
     "parks": [
@@ -605,13 +633,21 @@
         "name": "Little Rock Central High School",
         "type": "landmark",
         "description": "A historic school where nine brave Black students helped end segregation in 1957.",
-        "fact": "It's the only working high school in the U.S. that's also a National Historic Site."
+        "fact": "It's the only working high school in the U.S. that's also a National Historic Site.",
+        "latLon": [
+          34.7372,
+          -92.2983
+        ]
       },
       {
         "name": "Old State House",
         "type": "landmark",
         "description": "A graceful white building in Little Rock that served as Arkansas's first capitol.",
-        "fact": "It's one of the oldest surviving state capitol buildings west of the Mississippi."
+        "fact": "It's one of the oldest surviving state capitol buildings west of the Mississippi.",
+        "latLon": [
+          34.7461,
+          -92.2747
+        ]
       }
     ],
     "parks": [
@@ -778,13 +814,21 @@
         "name": "Lake Tahoe",
         "type": "lake",
         "description": "A huge, deep mountain lake with water so clear you can see 70 feet down.",
-        "fact": "It's the second-deepest lake in the United States."
+        "fact": "It's the second-deepest lake in the United States.",
+        "latLon": [
+          39.0968,
+          -120.0324
+        ]
       },
       {
         "name": "Mount Whitney",
         "type": "peak",
         "description": "The tallest mountain in the lower 48 states, with a rocky pyramid summit.",
-        "fact": "Its peak is 14,505 feet — the same height as 14 Empire State Buildings."
+        "fact": "Its peak is 14,505 feet — the same height as 14 Empire State Buildings.",
+        "latLon": [
+          36.5786,
+          -118.292
+        ]
       },
       {
         "name": "Redwood Forests",
@@ -796,19 +840,31 @@
         "name": "Golden Gate Bridge",
         "type": "landmark",
         "description": "A bright orange suspension bridge stretching across the entrance to San Francisco Bay.",
-        "fact": "Its color is officially called 'International Orange' and was chosen to stand out in fog."
+        "fact": "Its color is officially called 'International Orange' and was chosen to stand out in fog.",
+        "latLon": [
+          37.8199,
+          -122.4783
+        ]
       },
       {
         "name": "Hollywood Sign",
         "type": "landmark",
         "description": "Forty-five-foot-tall white letters spelling HOLLYWOOD on a hillside above Los Angeles.",
-        "fact": "It originally said 'HOLLYWOODLAND' as an advertisement for a housing development."
+        "fact": "It originally said 'HOLLYWOODLAND' as an advertisement for a housing development.",
+        "latLon": [
+          34.1341,
+          -118.3215
+        ]
       },
       {
         "name": "Golden Gate Bridge Trail Trolleys",
         "type": "landmark",
         "description": "San Francisco's famous moving cable cars that climb the city's steepest hills.",
-        "fact": "They're the only moving National Historic Landmark in the United States."
+        "fact": "They're the only moving National Historic Landmark in the United States.",
+        "latLon": [
+          37.8076,
+          -122.4209
+        ]
       }
     ],
     "parks": [
@@ -987,13 +1043,21 @@
         "name": "United States Air Force Academy Chapel",
         "type": "landmark",
         "description": "A row of 17 silver spires that look like jet wings pointing at the sky in Colorado Springs.",
-        "fact": "It's the most visited man-made attraction in Colorado."
+        "fact": "It's the most visited man-made attraction in Colorado.",
+        "latLon": [
+          38.9956,
+          -104.8917
+        ]
       },
       {
         "name": "Red Rocks Amphitheatre",
         "type": "landmark",
         "description": "An outdoor concert stage tucked between two giant red sandstone cliffs.",
-        "fact": "The two main rocks are taller than Niagara Falls."
+        "fact": "The two main rocks are taller than Niagara Falls.",
+        "latLon": [
+          39.6655,
+          -105.2057
+        ]
       }
     ],
     "parks": [
@@ -1166,13 +1230,21 @@
         "name": "Mark Twain House",
         "type": "landmark",
         "description": "The colorful Hartford home where Mark Twain wrote 'The Adventures of Tom Sawyer' and 'Huckleberry Finn'.",
-        "fact": "It was one of the first homes in America to have a telephone."
+        "fact": "It was one of the first homes in America to have a telephone.",
+        "latLon": [
+          41.7669,
+          -72.7011
+        ]
       },
       {
         "name": "USS Nautilus Submarine",
         "type": "landmark",
         "description": "The world's first nuclear-powered submarine, now a museum visitors can walk through in Groton.",
-        "fact": "It was the first sub to ever travel under the North Pole."
+        "fact": "It was the first sub to ever travel under the North Pole.",
+        "latLon": [
+          41.3878,
+          -72.0894
+        ]
       }
     ],
     "parks": [
@@ -1345,13 +1417,21 @@
         "name": "Old Swedes Church",
         "type": "landmark",
         "description": "A small stone church in Wilmington built in 1698 and still used for worship today.",
-        "fact": "It's one of the oldest churches in America still standing on its original foundation."
+        "fact": "It's one of the oldest churches in America still standing on its original foundation.",
+        "latLon": [
+          39.7335,
+          -75.541
+        ]
       },
       {
         "name": "Cape Henlopen Lighthouse",
         "type": "landmark",
         "description": "A historic guiding light at the spot where Delaware Bay meets the Atlantic Ocean.",
-        "fact": "The original 1767 tower fell into the sea — the current one keeps a safer distance."
+        "fact": "The original 1767 tower fell into the sea — the current one keeps a safer distance.",
+        "latLon": [
+          38.7867,
+          -75.0939
+        ]
       }
     ],
     "parks": [
@@ -1489,31 +1569,51 @@
         "name": "White House",
         "type": "landmark",
         "description": "The official home and office of the U.S. President, painted white and surrounded by a fence on Pennsylvania Avenue.",
-        "fact": "Every president except George Washington has lived there."
+        "fact": "Every president except George Washington has lived there.",
+        "latLon": [
+          38.8977,
+          -77.0365
+        ]
       },
       {
         "name": "U.S. Capitol",
         "type": "landmark",
         "description": "The white-domed building where Congress meets to make America's laws.",
-        "fact": "The bronze 'Statue of Freedom' on top of the dome is almost 20 feet tall."
+        "fact": "The bronze 'Statue of Freedom' on top of the dome is almost 20 feet tall.",
+        "latLon": [
+          38.8899,
+          -77.0091
+        ]
       },
       {
         "name": "Washington Monument",
         "type": "landmark",
         "description": "A 555-foot white marble obelisk honoring George Washington — the tallest stone structure in the world.",
-        "fact": "Look closely and you can see where construction stopped for 23 years — the stone color slightly changes."
+        "fact": "Look closely and you can see where construction stopped for 23 years — the stone color slightly changes.",
+        "latLon": [
+          38.8895,
+          -77.0353
+        ]
       },
       {
         "name": "Lincoln Memorial",
         "type": "landmark",
         "description": "A Greek-style temple holding a 19-foot marble statue of Abraham Lincoln looking out over the reflecting pool.",
-        "fact": "The Gettysburg Address is carved into one of the walls inside."
+        "fact": "The Gettysburg Address is carved into one of the walls inside.",
+        "latLon": [
+          38.8893,
+          -77.0502
+        ]
       },
       {
         "name": "Smithsonian National Air and Space Museum",
         "type": "landmark",
         "description": "A huge museum on the National Mall packed with real spacecraft, airplanes, and a moon rock you can touch.",
-        "fact": "It holds the actual Wright Brothers' first airplane and Apollo 11's command module."
+        "fact": "It holds the actual Wright Brothers' first airplane and Apollo 11's command module.",
+        "latLon": [
+          38.8882,
+          -77.0199
+        ]
       }
     ],
     "parks": [
@@ -1609,7 +1709,11 @@
         "name": "Everglades",
         "type": "wetland",
         "description": "A slow, grassy river the size of a small state, full of alligators and wading birds.",
-        "fact": "It's the only place on Earth where alligators and crocodiles live together."
+        "fact": "It's the only place on Earth where alligators and crocodiles live together.",
+        "latLon": [
+          25.2866,
+          -80.8987
+        ]
       },
       {
         "name": "Florida Keys",
@@ -1633,7 +1737,11 @@
         "name": "Lake Okeechobee",
         "type": "lake",
         "description": "A huge but very shallow freshwater lake — the largest lake in Florida.",
-        "fact": "It's so big you can't see across it, but it averages only 9 feet deep."
+        "fact": "It's so big you can't see across it, but it averages only 9 feet deep.",
+        "latLon": [
+          26.952,
+          -80.82
+        ]
       },
       {
         "name": "St. Johns River",
@@ -1645,19 +1753,31 @@
         "name": "Kennedy Space Center",
         "type": "landmark",
         "description": "NASA's main launch site on Florida's east coast where astronauts blast off to space.",
-        "fact": "Every American moon mission launched from this place."
+        "fact": "Every American moon mission launched from this place.",
+        "latLon": [
+          28.5728,
+          -80.649
+        ]
       },
       {
         "name": "Walt Disney World",
         "type": "landmark",
         "description": "A giant theme park resort near Orlando with castles, rides, and four big parks.",
-        "fact": "It's about twice the size of the entire island of Manhattan."
+        "fact": "It's about twice the size of the entire island of Manhattan.",
+        "latLon": [
+          28.3852,
+          -81.5639
+        ]
       },
       {
         "name": "Castillo de San Marcos",
         "type": "landmark",
         "description": "A 350-year-old Spanish stone fort guarding the harbor at St. Augustine.",
-        "fact": "Its walls are made of coquina — a soft stone of seashells that absorbs cannonballs instead of shattering."
+        "fact": "Its walls are made of coquina — a soft stone of seashells that absorbs cannonballs instead of shattering.",
+        "latLon": [
+          29.8978,
+          -81.3111
+        ]
       }
     ],
     "parks": [
@@ -1842,13 +1962,21 @@
         "name": "Stone Mountain",
         "type": "landmark",
         "description": "A huge dome of bare granite rising 825 feet above the trees east of Atlanta.",
-        "fact": "It's the largest piece of exposed granite in the world."
+        "fact": "It's the largest piece of exposed granite in the world.",
+        "latLon": [
+          33.8053,
+          -84.1452
+        ]
       },
       {
         "name": "Martin Luther King Jr. Birthplace",
         "type": "landmark",
         "description": "The Atlanta house where the famous civil rights leader was born in 1929.",
-        "fact": "It's part of a National Historical Park you can visit for free."
+        "fact": "It's part of a National Historical Park you can visit for free.",
+        "latLon": [
+          33.7556,
+          -84.3729
+        ]
       }
     ],
     "parks": [
@@ -1985,7 +2113,11 @@
         "name": "Mauna Kea",
         "type": "volcano",
         "description": "A dormant volcano so tall its peak is often dusted with snow.",
-        "fact": "Measured from the seafloor, it's the tallest mountain on Earth — taller than Everest."
+        "fact": "Measured from the seafloor, it's the tallest mountain on Earth — taller than Everest.",
+        "latLon": [
+          19.8207,
+          -155.4681
+        ]
       },
       {
         "name": "Kilauea",
@@ -2021,13 +2153,21 @@
         "name": "USS Arizona Memorial",
         "type": "landmark",
         "description": "A white memorial floating above the sunken battleship USS Arizona at Pearl Harbor.",
-        "fact": "Oil from the ship still slowly leaks to the surface — sailors call them 'black tears'."
+        "fact": "Oil from the ship still slowly leaks to the surface — sailors call them 'black tears'.",
+        "latLon": [
+          21.3649,
+          -157.9501
+        ]
       },
       {
         "name": "Iolani Palace",
         "type": "landmark",
         "description": "The only royal palace on U.S. soil, once home to Hawaii's kings and queens.",
-        "fact": "It had electric lights and telephones before the White House did."
+        "fact": "It had electric lights and telephones before the White House did.",
+        "latLon": [
+          21.3069,
+          -157.8583
+        ]
       }
     ],
     "parks": [
@@ -2212,13 +2352,21 @@
         "name": "Idaho State Capitol",
         "type": "landmark",
         "description": "A bright sandstone capitol building in Boise heated entirely by underground hot springs.",
-        "fact": "It's the only U.S. state capitol heated by geothermal water."
+        "fact": "It's the only U.S. state capitol heated by geothermal water.",
+        "latLon": [
+          43.6178,
+          -116.1996
+        ]
       },
       {
         "name": "Experimental Breeder Reactor I",
         "type": "landmark",
         "description": "A small desert lab building where electricity was first ever made from atomic energy.",
-        "fact": "On December 20, 1951 it lit four light bulbs — the world's first nuclear power."
+        "fact": "On December 20, 1951 it lit four light bulbs — the world's first nuclear power.",
+        "latLon": [
+          43.5106,
+          -112.6494
+        ]
       }
     ],
     "parks": [
@@ -2403,19 +2551,31 @@
         "name": "Willis Tower",
         "type": "landmark",
         "description": "A black 110-story skyscraper in Chicago with glass-floored balconies sticking out of its side.",
-        "fact": "It was the tallest building in the world for nearly 25 years."
+        "fact": "It was the tallest building in the world for nearly 25 years.",
+        "latLon": [
+          41.8789,
+          -87.6359
+        ]
       },
       {
         "name": "Cloud Gate (The Bean)",
         "type": "landmark",
         "description": "A giant polished silver sculpture shaped like a bean in downtown Chicago's Millennium Park.",
-        "fact": "Its mirror surface has no visible seams — they were polished completely smooth."
+        "fact": "Its mirror surface has no visible seams — they were polished completely smooth.",
+        "latLon": [
+          41.8827,
+          -87.6233
+        ]
       },
       {
         "name": "Navy Pier",
         "type": "landmark",
         "description": "A long Chicago pier on Lake Michigan with a 200-foot Ferris wheel and amusement rides.",
-        "fact": "When it opened in 1916 it was the largest pier in the world."
+        "fact": "When it opened in 1916 it was the largest pier in the world.",
+        "latLon": [
+          41.8917,
+          -87.6086
+        ]
       }
     ],
     "parks": [
@@ -2606,13 +2766,21 @@
         "name": "Indianapolis Motor Speedway",
         "type": "landmark",
         "description": "A famous 2.5-mile oval racetrack that hosts the Indianapolis 500 race every May.",
-        "fact": "The track is paved with bricks under the finish line — winners kiss the bricks."
+        "fact": "The track is paved with bricks under the finish line — winners kiss the bricks.",
+        "latLon": [
+          39.795,
+          -86.2347
+        ]
       },
       {
         "name": "Soldiers' and Sailors' Monument",
         "type": "landmark",
         "description": "A tall stone monument in downtown Indianapolis with a goddess of victory on top.",
-        "fact": "It's only 15 feet shorter than the Statue of Liberty."
+        "fact": "It's only 15 feet shorter than the Statue of Liberty.",
+        "latLon": [
+          39.7684,
+          -86.1581
+        ]
       }
     ],
     "parks": [
@@ -2791,13 +2959,21 @@
         "name": "Iowa State Capitol",
         "type": "landmark",
         "description": "A grand Des Moines capitol with a real golden dome covered in 23-karat gold leaf.",
-        "fact": "It's the only state capitol building in America with five domes."
+        "fact": "It's the only state capitol building in America with five domes.",
+        "latLon": [
+          41.5912,
+          -93.6035
+        ]
       },
       {
         "name": "Field of Dreams Movie Site",
         "type": "landmark",
         "description": "The real Iowa cornfield baseball diamond from the famous movie 'Field of Dreams'.",
-        "fact": "The original house and field are still there and visitors can play ball for free."
+        "fact": "The original house and field are still there and visitors can play ball for free.",
+        "latLon": [
+          42.4961,
+          -90.8514
+        ]
       }
     ],
     "parks": [
@@ -2970,13 +3146,21 @@
         "name": "Eisenhower Presidential Library",
         "type": "landmark",
         "description": "A museum in Abilene about Dwight D. Eisenhower, who led the Allies in WWII and became president.",
-        "fact": "His boyhood home next door has been preserved exactly as it was in 1898."
+        "fact": "His boyhood home next door has been preserved exactly as it was in 1898.",
+        "latLon": [
+          38.9445,
+          -97.2199
+        ]
       },
       {
         "name": "Kansas State Capitol",
         "type": "landmark",
         "description": "A Topeka capitol with a copper dome taller than the U.S. Capitol building in Washington.",
-        "fact": "Visitors can climb 296 steps to walk out onto the dome itself."
+        "fact": "Visitors can climb 296 steps to walk out onto the dome itself.",
+        "latLon": [
+          39.0483,
+          -95.6781
+        ]
       }
     ],
     "parks": [
@@ -3155,19 +3339,31 @@
         "name": "Churchill Downs",
         "type": "landmark",
         "description": "The Louisville racetrack with twin spires where the Kentucky Derby horse race is run each May.",
-        "fact": "The Derby has been run every single year since 1875 — the longest-running sports event in America."
+        "fact": "The Derby has been run every single year since 1875 — the longest-running sports event in America.",
+        "latLon": [
+          38.2069,
+          -85.7714
+        ]
       },
       {
         "name": "Abraham Lincoln Birthplace",
         "type": "landmark",
         "description": "A small marble building protecting a log cabin like the one Abraham Lincoln was born in.",
-        "fact": "There are 56 steps leading up to it — one for each year of Lincoln's life."
+        "fact": "There are 56 steps leading up to it — one for each year of Lincoln's life.",
+        "latLon": [
+          37.5347,
+          -85.7367
+        ]
       },
       {
         "name": "Louisville Slugger Museum",
         "type": "landmark",
         "description": "A baseball bat factory with a 120-foot-tall steel bat leaning against its front wall.",
-        "fact": "The giant bat weighs 68,000 pounds — a real one weighs about 2 pounds."
+        "fact": "The giant bat weighs 68,000 pounds — a real one weighs about 2 pounds.",
+        "latLon": [
+          38.257,
+          -85.7634
+        ]
       }
     ],
     "parks": [
@@ -3346,13 +3542,21 @@
         "name": "French Quarter",
         "type": "landmark",
         "description": "The oldest neighborhood in New Orleans, full of iron balconies, jazz music, and brightly painted buildings.",
-        "fact": "Some buildings date back to the 1700s, when Louisiana was ruled by Spain."
+        "fact": "Some buildings date back to the 1700s, when Louisiana was ruled by Spain.",
+        "latLon": [
+          29.9584,
+          -90.0644
+        ]
       },
       {
         "name": "Louisiana State Capitol",
         "type": "landmark",
         "description": "The tallest state capitol in America — a 34-story tower in Baton Rouge.",
-        "fact": "It was built in just 14 months during the Great Depression."
+        "fact": "It was built in just 14 months during the Great Depression.",
+        "latLon": [
+          30.4571,
+          -91.1874
+        ]
       }
     ],
     "parks": [
@@ -3501,7 +3705,11 @@
         "name": "Mount Katahdin",
         "type": "peak",
         "description": "Maine's tallest mountain and the northern end of the Appalachian Trail.",
-        "fact": "Its name means 'greatest mountain' in the Penobscot language."
+        "fact": "Its name means 'greatest mountain' in the Penobscot language.",
+        "latLon": [
+          45.9043,
+          -68.9213
+        ]
       },
       {
         "name": "Penobscot River",
@@ -3531,13 +3739,21 @@
         "name": "Portland Head Light",
         "type": "landmark",
         "description": "A white lighthouse perched on rocky cliffs at the entrance to Portland Harbor.",
-        "fact": "It's the oldest lighthouse in Maine — finished in 1791 on orders from George Washington."
+        "fact": "It's the oldest lighthouse in Maine — finished in 1791 on orders from George Washington.",
+        "latLon": [
+          43.6231,
+          -70.2079
+        ]
       },
       {
         "name": "Bath Iron Works",
         "type": "landmark",
         "description": "A historic Maine shipyard that has been building U.S. Navy warships for over 130 years.",
-        "fact": "The huge red 'Hammerhead Crane' can be seen from miles down the river."
+        "fact": "The huge red 'Hammerhead Crane' can be seen from miles down the river.",
+        "latLon": [
+          43.905,
+          -69.8133
+        ]
       }
     ],
     "parks": [
@@ -3716,13 +3932,21 @@
         "name": "Fort McHenry",
         "type": "landmark",
         "description": "A star-shaped fort in Baltimore Harbor whose huge flag inspired the Star-Spangled Banner.",
-        "fact": "Francis Scott Key wrote the poem after seeing the flag still flying at dawn after a battle in 1814."
+        "fact": "Francis Scott Key wrote the poem after seeing the flag still flying at dawn after a battle in 1814.",
+        "latLon": [
+          39.2632,
+          -76.5803
+        ]
       },
       {
         "name": "U.S. Naval Academy",
         "type": "landmark",
         "description": "The college in Annapolis where young men and women train to become U.S. Navy and Marine officers.",
-        "fact": "Its grand chapel is sometimes called the 'Cathedral of the Navy'."
+        "fact": "Its grand chapel is sometimes called the 'Cathedral of the Navy'.",
+        "latLon": [
+          38.9847,
+          -76.4827
+        ]
       }
     ],
     "parks": [
@@ -3895,19 +4119,31 @@
         "name": "Freedom Trail",
         "type": "landmark",
         "description": "A red-brick line painted through downtown Boston that connects 16 important Revolutionary War sites.",
-        "fact": "It's 2.5 miles long and ends near the spot where the Boston Tea Party happened."
+        "fact": "It's 2.5 miles long and ends near the spot where the Boston Tea Party happened.",
+        "latLon": [
+          42.3601,
+          -71.0589
+        ]
       },
       {
         "name": "Plymouth Rock",
         "type": "landmark",
         "description": "A simple boulder on the Massachusetts shore said to mark where the Pilgrims first stepped ashore in 1620.",
-        "fact": "Today it sits under a stone canopy and is only about half its original size."
+        "fact": "Today it sits under a stone canopy and is only about half its original size.",
+        "latLon": [
+          41.9583,
+          -70.6622
+        ]
       },
       {
         "name": "Fenway Park",
         "type": "landmark",
         "description": "The oldest baseball stadium in Major League Baseball, home to the Boston Red Sox since 1912.",
-        "fact": "Its tall left-field wall is nicknamed the 'Green Monster'."
+        "fact": "Its tall left-field wall is nicknamed the 'Green Monster'.",
+        "latLon": [
+          42.3467,
+          -71.0972
+        ]
       }
     ],
     "parks": [
@@ -4074,7 +4310,11 @@
         "name": "Sleeping Bear Dunes",
         "type": "coastline",
         "description": "Towering sand dunes that rise 450 feet above Lake Michigan.",
-        "fact": "You can run down them, but the climb back up takes about an hour."
+        "fact": "You can run down them, but the climb back up takes about an hour.",
+        "latLon": [
+          44.8819,
+          -86.0584
+        ]
       },
       {
         "name": "Mount Arvon",
@@ -4086,13 +4326,21 @@
         "name": "Mackinac Bridge",
         "type": "landmark",
         "description": "A five-mile suspension bridge connecting Michigan's Lower and Upper peninsulas.",
-        "fact": "It's so long that one cable contains 42,000 miles of wire."
+        "fact": "It's so long that one cable contains 42,000 miles of wire.",
+        "latLon": [
+          45.8174,
+          -84.7278
+        ]
       },
       {
         "name": "Henry Ford Museum",
         "type": "landmark",
         "description": "A huge Dearborn museum filled with old cars, planes, trains, and the chair Lincoln was sitting in.",
-        "fact": "It even has the actual bus where Rosa Parks refused to give up her seat."
+        "fact": "It even has the actual bus where Rosa Parks refused to give up her seat.",
+        "latLon": [
+          42.3036,
+          -83.2342
+        ]
       }
     ],
     "parks": [
@@ -4265,13 +4513,21 @@
         "name": "Mall of America",
         "type": "landmark",
         "description": "The biggest shopping mall in the United States, with an indoor theme park in the middle.",
-        "fact": "It's so big that seven Yankee Stadiums could fit inside it."
+        "fact": "It's so big that seven Yankee Stadiums could fit inside it.",
+        "latLon": [
+          44.8548,
+          -93.2422
+        ]
       },
       {
         "name": "Spoonbridge and Cherry",
         "type": "landmark",
         "description": "A giant outdoor sculpture in Minneapolis of a silver spoon balancing a bright red cherry.",
-        "fact": "The cherry's stem doubles as a fountain that sprays water in the summer."
+        "fact": "The cherry's stem doubles as a fountain that sprays water in the summer.",
+        "latLon": [
+          44.9692,
+          -93.2895
+        ]
       }
     ],
     "parks": [
@@ -4450,13 +4706,21 @@
         "name": "Mississippi State Capitol",
         "type": "landmark",
         "description": "A bright stone capitol in Jackson topped by a golden eagle with an 8-foot wingspan.",
-        "fact": "The eagle is covered in real gold leaf and can be seen for miles."
+        "fact": "The eagle is covered in real gold leaf and can be seen for miles.",
+        "latLon": [
+          32.3037,
+          -90.1822
+        ]
       },
       {
         "name": "Elvis Presley Birthplace",
         "type": "landmark",
         "description": "The tiny two-room shotgun house in Tupelo where rock-and-roll legend Elvis Presley was born.",
-        "fact": "His family built the entire house themselves for about $180."
+        "fact": "His family built the entire house themselves for about $180.",
+        "latLon": [
+          34.2618,
+          -88.6989
+        ]
       }
     ],
     "parks": [
@@ -4635,13 +4899,21 @@
         "name": "Gateway Arch",
         "type": "landmark",
         "description": "A shiny stainless-steel arch in St. Louis that stands 630 feet tall on the Mississippi riverfront.",
-        "fact": "It's the tallest man-made monument in the United States."
+        "fact": "It's the tallest man-made monument in the United States.",
+        "latLon": [
+          38.6247,
+          -90.1848
+        ]
       },
       {
         "name": "Harry S. Truman Library",
         "type": "landmark",
         "description": "An Independence museum about the president who ended World War II and started NASA's space age.",
-        "fact": "Truman went to work there himself almost every day after he left the White House."
+        "fact": "Truman went to work there himself almost every day after he left the White House.",
+        "latLon": [
+          39.0828,
+          -94.4147
+        ]
       }
     ],
     "parks": [
@@ -4820,13 +5092,21 @@
         "name": "Berkeley Pit",
         "type": "landmark",
         "description": "A giant old copper mine in Butte that filled with water and turned into a strange green-blue lake.",
-        "fact": "Scientists have discovered new kinds of microbes living in its acidic water."
+        "fact": "Scientists have discovered new kinds of microbes living in its acidic water.",
+        "latLon": [
+          46.0167,
+          -112.5111
+        ]
       },
       {
         "name": "Going-to-the-Sun Road",
         "type": "landmark",
         "description": "A famous mountain road that climbs over the Continental Divide through Glacier country.",
-        "fact": "It took 11 years to build and crosses some of the steepest cliffs in America."
+        "fact": "It took 11 years to build and crosses some of the steepest cliffs in America.",
+        "latLon": [
+          48.7414,
+          -113.7181
+        ]
       }
     ],
     "parks": [
@@ -4999,13 +5279,21 @@
         "name": "Chimney Rock",
         "type": "peak",
         "description": "A tall stone spire that pioneers used as a landmark on the Oregon Trail.",
-        "fact": "It rises nearly 300 feet above the Platte River valley."
+        "fact": "It rises nearly 300 feet above the Platte River valley.",
+        "latLon": [
+          41.7036,
+          -103.3503
+        ]
       },
       {
         "name": "Carhenge",
         "type": "landmark",
         "description": "A roadside copy of England's Stonehenge built entirely out of old gray-painted cars near Alliance.",
-        "fact": "It uses 39 cars arranged in exactly the same circle as the real Stonehenge."
+        "fact": "It uses 39 cars arranged in exactly the same circle as the real Stonehenge.",
+        "latLon": [
+          42.1422,
+          -102.8583
+        ]
       }
     ],
     "parks": [
@@ -5160,7 +5448,11 @@
         "name": "Lake Tahoe",
         "type": "lake",
         "description": "A huge blue lake half in Nevada, half in California, high in the mountains.",
-        "fact": "Its water is so clear you can see down 70 feet."
+        "fact": "Its water is so clear you can see down 70 feet.",
+        "latLon": [
+          39.0968,
+          -120.0324
+        ]
       },
       {
         "name": "Lake Mead",
@@ -5178,13 +5470,21 @@
         "name": "Hoover Dam",
         "type": "landmark",
         "description": "A 726-foot concrete dam on the Colorado River that holds back Lake Mead.",
-        "fact": "Its concrete is still slowly hardening — and will keep getting stronger for over 100 years."
+        "fact": "Its concrete is still slowly hardening — and will keep getting stronger for over 100 years.",
+        "latLon": [
+          36.0161,
+          -114.7377
+        ]
       },
       {
         "name": "Las Vegas Strip",
         "type": "landmark",
         "description": "A four-mile stretch of huge themed hotels and bright neon lights in Las Vegas.",
-        "fact": "It's so bright that astronauts say it's the brightest spot on Earth from space."
+        "fact": "It's so bright that astronauts say it's the brightest spot on Earth from space.",
+        "latLon": [
+          36.1147,
+          -115.1728
+        ]
       }
     ],
     "parks": [
@@ -5327,7 +5627,11 @@
         "name": "Mount Washington",
         "type": "peak",
         "description": "The tallest peak in the northeast, famous for sudden, violent storms.",
-        "fact": "Wind speeds on the summit once hit 231 mph — a world record for over 60 years."
+        "fact": "Wind speeds on the summit once hit 231 mph — a world record for over 60 years.",
+        "latLon": [
+          44.2706,
+          -71.3033
+        ]
       },
       {
         "name": "Connecticut River",
@@ -5357,13 +5661,21 @@
         "name": "Mount Washington Cog Railway",
         "type": "landmark",
         "description": "The world's first mountain-climbing railway, chugging up to the top of Mount Washington since 1869.",
-        "fact": "Some sections of its track are so steep that passengers tilt almost 38 degrees."
+        "fact": "Some sections of its track are so steep that passengers tilt almost 38 degrees.",
+        "latLon": [
+          44.2706,
+          -71.355
+        ]
       },
       {
         "name": "Strawbery Banke Museum",
         "type": "landmark",
         "description": "A whole Portsmouth neighborhood of 300-year-old preserved houses that visitors can walk through.",
-        "fact": "It has 37 historic buildings still standing on their original spots."
+        "fact": "It has 37 historic buildings still standing on their original spots.",
+        "latLon": [
+          43.0747,
+          -70.7517
+        ]
       }
     ],
     "parks": [
@@ -5542,19 +5854,31 @@
         "name": "Lucy the Elephant",
         "type": "landmark",
         "description": "A six-story-tall wooden elephant building on the beach in Margate City.",
-        "fact": "Built in 1881, she's the oldest roadside attraction still standing in America."
+        "fact": "Built in 1881, she's the oldest roadside attraction still standing in America.",
+        "latLon": [
+          39.3458,
+          -74.4858
+        ]
       },
       {
         "name": "Cape May Lighthouse",
         "type": "landmark",
         "description": "A 157-foot red-and-white lighthouse at the southern tip of New Jersey.",
-        "fact": "Visitors can still climb its 199 spiral steps to the top."
+        "fact": "Visitors can still climb its 199 spiral steps to the top.",
+        "latLon": [
+          38.9342,
+          -74.9603
+        ]
       },
       {
         "name": "Thomas Edison's Lab",
         "type": "landmark",
         "description": "The West Orange laboratory where Thomas Edison invented movies and the recorded music industry.",
-        "fact": "More than half of Edison's 1,093 patents came from this single building."
+        "fact": "More than half of Edison's 1,093 patents came from this single building.",
+        "latLon": [
+          40.7878,
+          -74.2389
+        ]
       }
     ],
     "parks": [
@@ -5715,7 +6039,11 @@
         "name": "White Sands",
         "type": "desert",
         "description": "Snow-white sand dunes made of pure gypsum, sparkling in the sun.",
-        "fact": "These are the largest gypsum dunes in the world."
+        "fact": "These are the largest gypsum dunes in the world.",
+        "latLon": [
+          32.7872,
+          -106.3257
+        ]
       },
       {
         "name": "Wheeler Peak",
@@ -5727,19 +6055,31 @@
         "name": "Carlsbad Caverns",
         "type": "canyon",
         "description": "A vast underground network of huge cave chambers and twisting tunnels.",
-        "fact": "Hundreds of thousands of bats fly out of its main entrance each summer evening."
+        "fact": "Hundreds of thousands of bats fly out of its main entrance each summer evening.",
+        "latLon": [
+          32.1479,
+          -104.5567
+        ]
       },
       {
         "name": "Very Large Array",
         "type": "landmark",
         "description": "A field of 27 huge white radio telescopes spread across the Plains of San Agustin.",
-        "fact": "Each dish is 82 feet across — together they listen for signals from distant galaxies."
+        "fact": "Each dish is 82 feet across — together they listen for signals from distant galaxies.",
+        "latLon": [
+          34.0784,
+          -107.6184
+        ]
       },
       {
         "name": "Loretto Chapel Staircase",
         "type": "landmark",
         "description": "A small Santa Fe chapel famous for a spiral staircase that has no center pole holding it up.",
-        "fact": "Nobody knows how the mystery carpenter built it — he left without giving his name."
+        "fact": "Nobody knows how the mystery carpenter built it — he left without giving his name.",
+        "latLon": [
+          35.6859,
+          -105.9378
+        ]
       }
     ],
     "parks": [
@@ -5906,31 +6246,51 @@
         "name": "Mount Marcy",
         "type": "peak",
         "description": "New York's highest mountain, deep in the Adirondacks.",
-        "fact": "At 5,343 feet, it's the source of the mighty Hudson River."
+        "fact": "At 5,343 feet, it's the source of the mighty Hudson River.",
+        "latLon": [
+          44.1126,
+          -73.9237
+        ]
       },
       {
         "name": "Niagara Falls",
         "type": "river",
         "description": "One of the world's most famous waterfalls, on the border with Canada.",
-        "fact": "Over 750,000 gallons of water plunge over the falls every second."
+        "fact": "Over 750,000 gallons of water plunge over the falls every second.",
+        "latLon": [
+          43.0828,
+          -79.0739
+        ]
       },
       {
         "name": "Statue of Liberty",
         "type": "landmark",
         "description": "A towering copper statue holding a torch on Liberty Island, a gift from France to celebrate American freedom.",
-        "fact": "She's over 305 feet tall and was given to the U.S. in 1886."
+        "fact": "She's over 305 feet tall and was given to the U.S. in 1886.",
+        "latLon": [
+          40.6892,
+          -74.0445
+        ]
       },
       {
         "name": "Empire State Building",
         "type": "landmark",
         "description": "A 102-story Art Deco skyscraper that towers above midtown Manhattan.",
-        "fact": "It was built in just 410 days during the Great Depression."
+        "fact": "It was built in just 410 days during the Great Depression.",
+        "latLon": [
+          40.7484,
+          -73.9857
+        ]
       },
       {
         "name": "Brooklyn Bridge",
         "type": "landmark",
         "description": "A stone and steel suspension bridge connecting Manhattan and Brooklyn across the East River.",
-        "fact": "When it opened in 1883 it was the longest suspension bridge in the world."
+        "fact": "When it opened in 1883 it was the longest suspension bridge in the world.",
+        "latLon": [
+          40.7061,
+          -73.9969
+        ]
       }
     ],
     "parks": [
@@ -6103,19 +6463,31 @@
         "name": "Wright Brothers National Memorial",
         "type": "landmark",
         "description": "A tall granite monument at Kitty Hawk marking the spot of the first powered airplane flight.",
-        "fact": "The first flight on December 17, 1903 lasted just 12 seconds and went 120 feet."
+        "fact": "The first flight on December 17, 1903 lasted just 12 seconds and went 120 feet.",
+        "latLon": [
+          36.0144,
+          -75.6692
+        ]
       },
       {
         "name": "Biltmore Estate",
         "type": "landmark",
         "description": "America's largest house — a 250-room French chateau-style mansion in Asheville.",
-        "fact": "It has its own bowling alley, indoor pool, and a working dairy farm."
+        "fact": "It has its own bowling alley, indoor pool, and a working dairy farm.",
+        "latLon": [
+          35.5404,
+          -82.5524
+        ]
       },
       {
         "name": "USS North Carolina Battleship",
         "type": "landmark",
         "description": "A massive WWII battleship now docked in Wilmington as a floating museum.",
-        "fact": "Her nine giant guns could fire shells more than 23 miles."
+        "fact": "Her nine giant guns could fire shells more than 23 miles.",
+        "latLon": [
+          34.2358,
+          -77.9542
+        ]
       }
     ],
     "parks": [
@@ -6294,13 +6666,21 @@
         "name": "Enchanted Highway",
         "type": "landmark",
         "description": "A 32-mile stretch of country road lined with the world's largest scrap-metal sculptures.",
-        "fact": "One sculpture, 'Geese in Flight', is the largest scrap-metal sculpture in the world."
+        "fact": "One sculpture, 'Geese in Flight', is the largest scrap-metal sculpture in the world.",
+        "latLon": [
+          46.7572,
+          -102.45
+        ]
       },
       {
         "name": "International Peace Garden",
         "type": "landmark",
         "description": "A flower-filled garden right on the border with Canada that celebrates peace between the two nations.",
-        "fact": "Visitors can stand with one foot in the U.S. and the other in Canada."
+        "fact": "Visitors can stand with one foot in the U.S. and the other in Canada.",
+        "latLon": [
+          48.9994,
+          -100.0598
+        ]
       }
     ],
     "parks": [
@@ -6473,19 +6853,31 @@
         "name": "Rock and Roll Hall of Fame",
         "type": "landmark",
         "description": "A glass pyramid museum on Cleveland's Lake Erie shore honoring famous rock musicians.",
-        "fact": "Its building was designed by the same architect who designed the Louvre's glass pyramid in Paris."
+        "fact": "Its building was designed by the same architect who designed the Louvre's glass pyramid in Paris.",
+        "latLon": [
+          41.5086,
+          -81.6953
+        ]
       },
       {
         "name": "Pro Football Hall of Fame",
         "type": "landmark",
         "description": "A football-shaped museum in Canton dedicated to the greatest NFL players, coaches, and teams.",
-        "fact": "Canton was chosen because the NFL was founded there in 1920."
+        "fact": "Canton was chosen because the NFL was founded there in 1920.",
+        "latLon": [
+          40.821,
+          -81.3899
+        ]
       },
       {
         "name": "Cincinnati's Roebling Suspension Bridge",
         "type": "landmark",
         "description": "A blue suspension bridge over the Ohio River that was a practice run for the Brooklyn Bridge.",
-        "fact": "Built in 1866, it was the world's longest suspension bridge at the time."
+        "fact": "Built in 1866, it was the world's longest suspension bridge at the time.",
+        "latLon": [
+          39.0961,
+          -84.5106
+        ]
       }
     ],
     "parks": [
@@ -6658,13 +7050,21 @@
         "name": "Oklahoma City National Memorial",
         "type": "landmark",
         "description": "A field of 168 empty chairs honoring those lost in the 1995 Oklahoma City bombing.",
-        "fact": "Each chair is engraved with the name of one victim — including 19 small chairs for children."
+        "fact": "Each chair is engraved with the name of one victim — including 19 small chairs for children.",
+        "latLon": [
+          35.4729,
+          -97.517
+        ]
       },
       {
         "name": "Golden Driller",
         "type": "landmark",
         "description": "A 76-foot-tall statue of an oil worker holding a real oil derrick in Tulsa.",
-        "fact": "He's the tallest free-standing statue in the United States."
+        "fact": "He's the tallest free-standing statue in the United States.",
+        "latLon": [
+          36.1366,
+          -95.9344
+        ]
       }
     ],
     "parks": [
@@ -6825,7 +7225,11 @@
         "name": "Crater Lake",
         "type": "lake",
         "description": "The deepest lake in the United States, sitting inside a collapsed volcano.",
-        "fact": "It's 1,949 feet deep — and its water is bluer than the sky."
+        "fact": "It's 1,949 feet deep — and its water is bluer than the sky.",
+        "latLon": [
+          42.9446,
+          -122.109
+        ]
       },
       {
         "name": "Mount Hood",
@@ -6843,13 +7247,21 @@
         "name": "Astoria Column",
         "type": "landmark",
         "description": "A 125-foot painted tower on a hilltop overlooking the mouth of the Columbia River.",
-        "fact": "Visitors can climb 164 spiral steps to the top and toss balsa-wood gliders off."
+        "fact": "Visitors can climb 164 spiral steps to the top and toss balsa-wood gliders off.",
+        "latLon": [
+          46.1817,
+          -123.8228
+        ]
       },
       {
         "name": "Pittock Mansion",
         "type": "landmark",
         "description": "A grand stone French chateau on a hill above Portland with sweeping mountain views.",
-        "fact": "On clear days you can see five different snow-capped volcanoes from its lawn."
+        "fact": "On clear days you can see five different snow-capped volcanoes from its lawn.",
+        "latLon": [
+          45.5249,
+          -122.7163
+        ]
       }
     ],
     "parks": [
@@ -7028,19 +7440,31 @@
         "name": "Liberty Bell",
         "type": "landmark",
         "description": "A famous cracked bronze bell in Philadelphia that became a symbol of American freedom.",
-        "fact": "Nobody knows exactly when the famous crack first appeared."
+        "fact": "Nobody knows exactly when the famous crack first appeared.",
+        "latLon": [
+          39.9496,
+          -75.1503
+        ]
       },
       {
         "name": "Independence Hall",
         "type": "landmark",
         "description": "The red-brick Philadelphia building where the Declaration of Independence and Constitution were signed.",
-        "fact": "Its clock tower still uses the same bell rung when the Declaration was first read aloud in 1776."
+        "fact": "Its clock tower still uses the same bell rung when the Declaration was first read aloud in 1776.",
+        "latLon": [
+          39.9489,
+          -75.15
+        ]
       },
       {
         "name": "Fallingwater",
         "type": "landmark",
         "description": "A famous house designed by Frank Lloyd Wright that's built right on top of a waterfall.",
-        "fact": "Parts of the house actually hang out over the falling water with no posts underneath."
+        "fact": "Parts of the house actually hang out over the falling water with no posts underneath.",
+        "latLon": [
+          39.9061,
+          -79.4683
+        ]
       }
     ],
     "parks": [
@@ -7219,13 +7643,21 @@
         "name": "The Breakers Mansion",
         "type": "landmark",
         "description": "A 70-room limestone mansion in Newport once owned by the wealthy Vanderbilt family.",
-        "fact": "It has 30 rooms just for the servants who took care of it."
+        "fact": "It has 30 rooms just for the servants who took care of it.",
+        "latLon": [
+          41.4694,
+          -71.2986
+        ]
       },
       {
         "name": "Touro Synagogue",
         "type": "landmark",
         "description": "The oldest synagogue building still standing in the United States, in Newport.",
-        "fact": "George Washington personally wrote it a letter promising religious freedom in 1790."
+        "fact": "George Washington personally wrote it a letter promising religious freedom in 1790.",
+        "latLon": [
+          41.488,
+          -71.3119
+        ]
       }
     ],
     "parks": [
@@ -7386,19 +7818,31 @@
         "name": "Fort Sumter",
         "type": "landmark",
         "description": "A small island fort in Charleston Harbor where the first shots of the Civil War were fired in 1861.",
-        "fact": "Visitors today can only reach it by boat."
+        "fact": "Visitors today can only reach it by boat.",
+        "latLon": [
+          32.7522,
+          -79.8747
+        ]
       },
       {
         "name": "Angel Oak Tree",
         "type": "landmark",
         "description": "A massive live oak tree near Charleston with branches that stretch out 187 feet across.",
-        "fact": "It's believed to be about 400-500 years old."
+        "fact": "It's believed to be about 400-500 years old.",
+        "latLon": [
+          32.7039,
+          -80.0664
+        ]
       },
       {
         "name": "Arthur Ravenel Jr. Bridge",
         "type": "landmark",
         "description": "A graceful diamond-shaped cable bridge soaring across the Cooper River in Charleston.",
-        "fact": "Its two towers stand higher than the Washington Monument."
+        "fact": "Its two towers stand higher than the Washington Monument.",
+        "latLon": [
+          32.8042,
+          -79.9233
+        ]
       }
     ],
     "parks": [
@@ -7547,7 +7991,11 @@
         "name": "Badlands",
         "type": "canyon",
         "description": "Sharp, striped buttes and gullies carved out of soft prairie rock.",
-        "fact": "They contain one of the world's richest beds of fossil mammals."
+        "fact": "They contain one of the world's richest beds of fossil mammals.",
+        "latLon": [
+          43.8554,
+          -101.9777
+        ]
       },
       {
         "name": "Missouri River",
@@ -7577,19 +8025,31 @@
         "name": "Mount Rushmore",
         "type": "landmark",
         "description": "Four giant 60-foot heads of U.S. presidents carved into a granite cliff in the Black Hills.",
-        "fact": "It took 14 years and almost 400 workers to carve the faces."
+        "fact": "It took 14 years and almost 400 workers to carve the faces.",
+        "latLon": [
+          43.8791,
+          -103.4591
+        ]
       },
       {
         "name": "Crazy Horse Memorial",
         "type": "landmark",
         "description": "An enormous mountain carving of Lakota warrior Crazy Horse still being slowly carved out of stone.",
-        "fact": "When finished, it will be the largest sculpture in the world — bigger than Mount Rushmore."
+        "fact": "When finished, it will be the largest sculpture in the world — bigger than Mount Rushmore.",
+        "latLon": [
+          43.8367,
+          -103.6236
+        ]
       },
       {
         "name": "Corn Palace",
         "type": "landmark",
         "description": "A building in Mitchell whose outside walls are completely redecorated every year using real corn cobs.",
-        "fact": "It takes about 275,000 ears of corn to redecorate it each year."
+        "fact": "It takes about 275,000 ears of corn to redecorate it each year.",
+        "latLon": [
+          43.7128,
+          -98.0289
+        ]
       }
     ],
     "parks": [
@@ -7756,7 +8216,11 @@
         "name": "Clingmans Dome",
         "type": "peak",
         "description": "Tennessee's highest mountain, with a futuristic spiral observation tower.",
-        "fact": "At 6,643 feet, it's the highest point on the entire Appalachian Trail."
+        "fact": "At 6,643 feet, it's the highest point on the entire Appalachian Trail.",
+        "latLon": [
+          35.5628,
+          -83.4986
+        ]
       },
       {
         "name": "Reelfoot Lake",
@@ -7768,19 +8232,31 @@
         "name": "Graceland",
         "type": "landmark",
         "description": "Elvis Presley's Memphis mansion, kept exactly the way it was when he lived there.",
-        "fact": "It's the second-most visited house in America — only the White House gets more visitors."
+        "fact": "It's the second-most visited house in America — only the White House gets more visitors.",
+        "latLon": [
+          35.0461,
+          -90.0228
+        ]
       },
       {
         "name": "Parthenon Replica",
         "type": "landmark",
         "description": "A full-size copy of the ancient Greek Parthenon temple, built in Nashville's Centennial Park.",
-        "fact": "Inside stands a 42-foot golden statue of the goddess Athena."
+        "fact": "Inside stands a 42-foot golden statue of the goddess Athena.",
+        "latLon": [
+          36.1497,
+          -86.8133
+        ]
       },
       {
         "name": "Lookout Mountain Incline Railway",
         "type": "landmark",
         "description": "A red trolley car that climbs Lookout Mountain on tracks so steep it feels like an elevator.",
-        "fact": "Near the top, the grade is 72.7% — one of the steepest passenger railways in the world."
+        "fact": "Near the top, the grade is 72.7% — one of the steepest passenger railways in the world.",
+        "latLon": [
+          35.005,
+          -85.3417
+        ]
       }
     ],
     "parks": [
@@ -7971,19 +8447,31 @@
         "name": "The Alamo",
         "type": "landmark",
         "description": "A small Spanish mission in San Antonio where a famous 1836 battle for Texas independence was fought.",
-        "fact": "Texans still say 'Remember the Alamo!' nearly 200 years later."
+        "fact": "Texans still say 'Remember the Alamo!' nearly 200 years later.",
+        "latLon": [
+          29.426,
+          -98.4861
+        ]
       },
       {
         "name": "Texas State Capitol",
         "type": "landmark",
         "description": "A massive pink granite capitol in Austin that's taller than the U.S. Capitol in Washington.",
-        "fact": "Its pink granite was hauled in by a special railroad built just for the project."
+        "fact": "Its pink granite was hauled in by a special railroad built just for the project.",
+        "latLon": [
+          30.2747,
+          -97.7404
+        ]
       },
       {
         "name": "Space Center Houston",
         "type": "landmark",
         "description": "NASA's Houston visitor center where astronauts have trained for every American spaceflight since the 1960s.",
-        "fact": "When astronauts say 'Houston, we have a problem,' this is the Houston they're calling."
+        "fact": "When astronauts say 'Houston, we have a problem,' this is the Houston they're calling.",
+        "latLon": [
+          29.5519,
+          -95.0975
+        ]
       }
     ],
     "parks": [
@@ -8162,19 +8650,31 @@
         "name": "Salt Lake Temple",
         "type": "landmark",
         "description": "A six-spired granite temple in Salt Lake City that took 40 years for pioneers to build.",
-        "fact": "Its walls are nine feet thick at the base."
+        "fact": "Its walls are nine feet thick at the base.",
+        "latLon": [
+          40.7706,
+          -111.8919
+        ]
       },
       {
         "name": "Golden Spike National Historical Park",
         "type": "landmark",
         "description": "The spot where the first railroad to cross the U.S. was completed with a golden spike in 1869.",
-        "fact": "Visitors can still see two restored locomotives meet nose-to-nose, just like they did that day."
+        "fact": "Visitors can still see two restored locomotives meet nose-to-nose, just like they did that day.",
+        "latLon": [
+          41.6181,
+          -112.5489
+        ]
       },
       {
         "name": "This Is the Place Monument",
         "type": "landmark",
         "description": "A tall stone monument at the mouth of Emigration Canyon marking the end of the Mormon pioneer trail.",
-        "fact": "Brigham Young pointed at this valley in 1847 and said, 'This is the right place.'"
+        "fact": "Brigham Young pointed at this valley in 1847 and said, 'This is the right place.'",
+        "latLon": [
+          40.7522,
+          -111.8147
+        ]
       }
     ],
     "parks": [
@@ -8359,7 +8859,11 @@
         "name": "Mount Mansfield",
         "type": "peak",
         "description": "Vermont's tallest mountain, with a ridge that looks like a face in profile.",
-        "fact": "At 4,395 feet, its summit ridge looks like a giant lying down."
+        "fact": "At 4,395 feet, its summit ridge looks like a giant lying down.",
+        "latLon": [
+          44.5436,
+          -72.8142
+        ]
       },
       {
         "name": "Lake Willoughby",
@@ -8377,13 +8881,21 @@
         "name": "Vermont State House",
         "type": "landmark",
         "description": "A small but bright capitol in Montpelier with a golden dome topped by a wooden statue of agriculture.",
-        "fact": "Vermont's capital is the smallest of any U.S. state capital — fewer than 8,000 people live there."
+        "fact": "Vermont's capital is the smallest of any U.S. state capital — fewer than 8,000 people live there.",
+        "latLon": [
+          44.2624,
+          -72.5807
+        ]
       },
       {
         "name": "Bennington Battle Monument",
         "type": "landmark",
         "description": "A 306-foot stone tower marking a Revolutionary War battle that helped turn the tide against the British.",
-        "fact": "It's the tallest structure in the entire state of Vermont."
+        "fact": "It's the tallest structure in the entire state of Vermont.",
+        "latLon": [
+          42.8825,
+          -73.205
+        ]
       }
     ],
     "parks": [
@@ -8562,19 +9074,31 @@
         "name": "Mount Vernon",
         "type": "landmark",
         "description": "George Washington's white-columned home overlooking the Potomac River.",
-        "fact": "Washington designed most of the house himself and is buried on the property."
+        "fact": "Washington designed most of the house himself and is buried on the property.",
+        "latLon": [
+          38.7081,
+          -77.0861
+        ]
       },
       {
         "name": "Monticello",
         "type": "landmark",
         "description": "Thomas Jefferson's mountaintop home outside Charlottesville, designed by Jefferson himself.",
-        "fact": "Its image is on the back of the U.S. nickel."
+        "fact": "Its image is on the back of the U.S. nickel.",
+        "latLon": [
+          38.0086,
+          -78.4533
+        ]
       },
       {
         "name": "Colonial Williamsburg",
         "type": "landmark",
         "description": "An entire restored 18th-century town where costumed guides live and work like colonial Virginians.",
-        "fact": "It's the world's largest living-history museum."
+        "fact": "It's the world's largest living-history museum.",
+        "latLon": [
+          37.2707,
+          -76.7075
+        ]
       }
     ],
     "parks": [
@@ -8741,7 +9265,11 @@
         "name": "Mount Rainier",
         "type": "volcano",
         "description": "A massive snow-capped volcano towering over Seattle.",
-        "fact": "It carries the most glacier ice of any mountain in the lower 48."
+        "fact": "It carries the most glacier ice of any mountain in the lower 48.",
+        "latLon": [
+          46.8523,
+          -121.7603
+        ]
       },
       {
         "name": "Pacific Coast",
@@ -8753,19 +9281,31 @@
         "name": "Space Needle",
         "type": "landmark",
         "description": "A 605-foot tower in Seattle shaped like a flying saucer balanced on three legs.",
-        "fact": "Built for the 1962 World's Fair, it can sway up to one inch per ten mph of wind."
+        "fact": "Built for the 1962 World's Fair, it can sway up to one inch per ten mph of wind.",
+        "latLon": [
+          47.6205,
+          -122.3493
+        ]
       },
       {
         "name": "Grand Coulee Dam",
         "type": "landmark",
         "description": "One of the world's biggest concrete dams, holding back the Columbia River in eastern Washington.",
-        "fact": "It contains enough concrete to build a sidewalk twice around the Earth."
+        "fact": "It contains enough concrete to build a sidewalk twice around the Earth.",
+        "latLon": [
+          47.9567,
+          -118.9817
+        ]
       },
       {
         "name": "Pike Place Market",
         "type": "landmark",
         "description": "Seattle's famous waterfront market where vendors toss whole fish through the air to each other.",
-        "fact": "It opened in 1907 and is one of the oldest continuously running farmers' markets in America."
+        "fact": "It opened in 1907 and is one of the oldest continuously running farmers' markets in America.",
+        "latLon": [
+          47.609,
+          -122.3414
+        ]
       }
     ],
     "parks": [
@@ -8944,13 +9484,21 @@
         "name": "New River Gorge Bridge",
         "type": "landmark",
         "description": "A long steel arch bridge soaring 876 feet above the New River — once the highest bridge in America.",
-        "fact": "Every October, hundreds of people parachute off it on 'Bridge Day'."
+        "fact": "Every October, hundreds of people parachute off it on 'Bridge Day'.",
+        "latLon": [
+          38.0697,
+          -81.0775
+        ]
       },
       {
         "name": "West Virginia State Capitol",
         "type": "landmark",
         "description": "A grand limestone capitol in Charleston with a gold-leafed dome reaching 292 feet into the sky.",
-        "fact": "Its dome is five feet taller than the U.S. Capitol dome in Washington."
+        "fact": "Its dome is five feet taller than the U.S. Capitol dome in Washington.",
+        "latLon": [
+          38.3365,
+          -81.6125
+        ]
       }
     ],
     "parks": [
@@ -9129,13 +9677,21 @@
         "name": "Wisconsin State Capitol",
         "type": "landmark",
         "description": "A white granite capitol in Madison topped with a gilded bronze statue called 'Wisconsin'.",
-        "fact": "By law, no building in downtown Madison can be taller than its dome."
+        "fact": "By law, no building in downtown Madison can be taller than its dome.",
+        "latLon": [
+          43.0747,
+          -89.3842
+        ]
       },
       {
         "name": "House on the Rock",
         "type": "landmark",
         "description": "A strange Spring Green attraction full of giant rooms packed with the world's biggest collections of odd things.",
-        "fact": "Its 'Infinity Room' juts 218 feet out over the valley with no supports underneath."
+        "fact": "Its 'Infinity Room' juts 218 feet out over the valley with no supports underneath.",
+        "latLon": [
+          43.0942,
+          -90.1356
+        ]
       }
     ],
     "parks": [
@@ -9302,19 +9858,31 @@
         "name": "Devils Tower",
         "type": "mountains",
         "description": "A flat-topped tower of fluted volcanic rock rising 867 feet above the plains.",
-        "fact": "It was America's first national monument."
+        "fact": "It was America's first national monument.",
+        "latLon": [
+          44.5902,
+          -104.7146
+        ]
       },
       {
         "name": "Buffalo Bill Center of the West",
         "type": "landmark",
         "description": "A massive Cody museum complex of five museums celebrating cowboys, Native Americans, and the Wild West.",
-        "fact": "It's been called the 'Smithsonian of the West'."
+        "fact": "It's been called the 'Smithsonian of the West'.",
+        "latLon": [
+          44.5267,
+          -109.0681
+        ]
       },
       {
         "name": "Wyoming State Capitol",
         "type": "landmark",
         "description": "A sandstone capitol in Cheyenne topped with a 24-karat gold-leaf dome that shines in the sun.",
-        "fact": "Bison heads decorate the columns inside — Wyoming's state mammal."
+        "fact": "Bison heads decorate the columns inside — Wyoming's state mammal.",
+        "latLon": [
+          41.14,
+          -104.8202
+        ]
       }
     ],
     "parks": [

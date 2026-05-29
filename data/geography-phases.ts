@@ -79,15 +79,15 @@ export const GEOGRAPHY_PHASES: GeographyPhase[] = [
     title: 'Drag & Match',
     subtitle: 'Drag the name onto the right state. Snap = right. Shake = try again.',
     route: '/geography/drag-match',
-    shipped: false,
+    shipped: true,
   },
   {
     id: 'silhouette-puzzle',
     number: '5',
     title: 'Silhouette Puzzle',
-    subtitle: 'Drag each state shape into the USA outline.',
+    subtitle: 'Drag each state shape onto its spot on the map.',
     route: '/geography/silhouette-puzzle',
-    shipped: false,
+    shipped: true,
   },
   {
     id: 'state-deep-dive',
@@ -103,15 +103,15 @@ export const GEOGRAPHY_PHASES: GeographyPhase[] = [
     title: 'Distance Measure',
     subtitle: 'Click two places. See how far apart they are. Then guess the next one.',
     route: '/geography/distance',
-    shipped: false,
+    shipped: true,
   },
   {
     id: 'physical-quiz',
     number: '8',
     title: 'Physical Features Quiz',
-    subtitle: 'Find the Mississippi. Find the Rockies. Find the Great Lakes.',
+    subtitle: 'Rivers, mountains, landmarks — match each one to its state.',
     route: '/geography/physical-quiz',
-    shipped: false,
+    shipped: true,
   },
 ];
 

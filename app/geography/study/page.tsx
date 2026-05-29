@@ -45,6 +45,8 @@ export default function GeographyStudyPage() {
   const [showCapitalStars, setShowCapitalStars] = useState(true);
   const [showCapitalNames, setShowCapitalNames] = useState(true);
   const [showRegionColors, setShowRegionColors] = useState(true);
+  const [showLandmarks, setShowLandmarks] = useState(false);
+  const [showPhysical, setShowPhysical] = useState(false);
 
   // Tooltip state: which state postal is hovered + cursor position to anchor.
   // tooltipStage controls what's rendered: 0 = nothing, 1 = basic, 2 = with bonus.
@@ -170,10 +172,24 @@ export default function GeographyStudyPage() {
               />
               Region colors
             </label>
-
-            {/* TODO Phase 1.5: add a "Physical features" toggle here once
-                public/geography/us-states-physical.svg exists. Pass the value
-                into <USMap> via the existing `showPhysicalLayer` prop. */}
+            <label className="flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-gray-800 hover:text-emerald-700 transition-colors">
+              <input
+                type="checkbox"
+                checked={showLandmarks}
+                onChange={(e) => setShowLandmarks(e.target.checked)}
+                className="w-4 h-4 accent-emerald-600 cursor-pointer"
+              />
+              Landmarks
+            </label>
+            <label className="flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-gray-800 hover:text-emerald-700 transition-colors">
+              <input
+                type="checkbox"
+                checked={showPhysical}
+                onChange={(e) => setShowPhysical(e.target.checked)}
+                className="w-4 h-4 accent-emerald-600 cursor-pointer"
+              />
+              Physical features
+            </label>
 
             {/* Echo of the currently-hovered state — helps touch devices where
                 the floating tooltip may not fire. */}
@@ -194,9 +210,12 @@ export default function GeographyStudyPage() {
           hiddenStateLabels={hiddenStateLabels}
           hiddenCapitalNames={hiddenCapitalNames}
           showCapitalStars={showCapitalStars}
+          showLandmarks={showLandmarks}
+          showPhysicalLayer={showPhysical}
           regionTints={regionTints}
           onStateHover={setHoveredPostal}
           onStateClick={setDrawerPostal}
+          onLandmarkClick={(postal) => setDrawerPostal(postal)}
         />
       </div>
 

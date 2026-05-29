@@ -27,7 +27,10 @@ export type GeographyProgress = {
   'drag-match'?: { attempts: number; bestScore: number; misses: string[] };
   'silhouette-puzzle'?: { attempts: number; bestScore: number; misses: string[] };
   'state-deep-dive'?: { lastVisited?: number; statesViewed?: string[] };
-  'distance'?: { attempts: number; bestScore: number };
+  // Phase 6.5 Distance Measure: count of completed measurements +
+  // best guess accuracy (lowest absolute miles-off ever achieved on this
+  // device, in Guess sub-mode). Undefined bestGuessAccuracy = no guess yet.
+  'distance'?: { measurements: number; bestGuessAccuracy?: number };
   'physical-quiz'?: { attempts: number; bestScore: number; misses: string[] };
   [key: string]: unknown;
 };

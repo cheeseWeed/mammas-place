@@ -5,6 +5,8 @@ import { useEffect, useRef, useState } from 'react';
 import statesData from '@/data/states.json';
 import LabelLayer from './LabelLayer';
 import CapitalLayer from './CapitalLayer';
+import LandmarkLayer from './LandmarkLayer';
+import PhysicalLayer from './PhysicalLayer';
 
 type StateRecord = {
   postal: string;
@@ -23,8 +25,24 @@ export type USMapProps = {
   showCapitalNames?: boolean;
   showCapitalStars?: boolean;
   showPhysicalLayer?: boolean;
+  // Landmark pin layer. Opt-in (default off). When on, renders one orange
+  // triangle per geocoded landmark via LandmarkLayer. Click fires
+  // onLandmarkClick with the state postal so callers can open a drawer.
+  showLandmarks?: boolean;
+  onLandmarkClick?: (statePostal: string) => void;
   onStateClick?: (postal: string) => void;
   onStateHover?: (postal: string | null) => void;
+  // Phase 6.5 (Distance Measure): fires on ANY click within the SVG with the
+  // click's coordinates converted to SVG viewBox space (0..VIEW_W, 0..VIEW_H).
+  // Fires alongside onStateClick when a state is clicked. Use this for
+  // arbitrary-point interactions like distance measurement. Use the helper
+  // svgPointToLatLon() from lib/geography/distance.ts to map the result back
+  // to lat/lon.
+  onMapPointerClick?: (svgX: number, svgY: number) => void;
+  // Phase 6.5: optional children rendered INSIDE the SVG (above the political
+  // base, alongside the capital/label/landmark layers). Use this to inject
+  // overlays like DistanceTool that need to share the SVG coordinate space.
+  svgChildren?: React.ReactNode;
   highlightedStates?: Set<string>;
   wrongStates?: Set<string>;
   // Per-state region tints. Each entry is a postal → region name (e.g.
@@ -73,16 +91,47 @@ export default function USMap({
   showCapitalNames = true,
   showCapitalStars = true,
   showPhysicalLayer = false,
+  showLandmarks = false,
+  onLandmarkClick,
   onStateClick,
   onStateHover,
+  onMapPointerClick,
+  svgChildren,
   highlightedStates,
   wrongStates,
   regionTints,
   className,
 }: USMapProps) {
   const containerRef = useRef<SVGGElement | null>(null);
+  const svgRef = useRef<SVGSVGElement | null>(null);
   const [svgMarkup, setSvgMarkup] = useState<string | null>(null);
   const states = statesData as StateRecord[];
+
+  // Phase 6.5: convert a screen-space click to SVG viewBox coordinates and
+  // forward to onMapPointerClick. Uses getBoundingClientRect + the SVG's
+  // intrinsic viewBox (which we know is VIEW_W x VIEW_H with xMidYMid meet
+  // preservation). Accounts for letterboxing: the SVG is centered within
+  // its bounding box and scaled uniformly to fit, so the actual rendered
+  // map may not fill the entire client rect.
+  const handleSvgClick = (e: React.MouseEvent<SVGSVGElement>) => {
+    if (!onMapPointerClick) return;
+    const svg = svgRef.current;
+    if (!svg) return;
+    const rect = svg.getBoundingClientRect();
+    // Uniform scale to fit (preserveAspectRatio="xMidYMid meet"): the smaller
+    // of the two axis ratios wins; the other axis is letterboxed.
+    const scale = Math.min(rect.width / VIEW_W, rect.height / VIEW_H);
+    if (!scale || !Number.isFinite(scale)) return;
+    const renderedW = VIEW_W * scale;
+    const renderedH = VIEW_H * scale;
+    const padX = (rect.width - renderedW) / 2;
+    const padY = (rect.height - renderedH) / 2;
+    const svgX = (e.clientX - rect.left - padX) / scale;
+    const svgY = (e.clientY - rect.top - padY) / scale;
+    // Clamp to viewBox; clicks in the letterbox area still report nearest edge.
+    if (svgX < 0 || svgY < 0 || svgX > VIEW_W || svgY > VIEW_H) return;
+    onMapPointerClick(svgX, svgY);
+  };
 
   // Load the raw political SVG once on mount.
   useEffect(() => {
@@ -100,14 +149,6 @@ export default function USMap({
       cancelled = true;
     };
   }, []);
-
-  // Warn (once) if caller asks for a layer we don't have yet.
-  useEffect(() => {
-    if (showPhysicalLayer) {
-      // eslint-disable-next-line no-console
-      console.warn('USMap: physical layer asset is not yet available; ignoring showPhysicalLayer.');
-    }
-  }, [showPhysicalLayer]);
 
   // After the inner SVG markup mounts, attach event handlers + apply fills.
   useEffect(() => {
@@ -183,12 +224,14 @@ export default function USMap({
         }
       `}</style>
       <svg
+        ref={svgRef}
         viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
         xmlns="http://www.w3.org/2000/svg"
         preserveAspectRatio="xMidYMid meet"
         className="block w-full h-full max-w-full max-h-full"
         role="img"
         aria-label="Map of the United States"
+        onClick={onMapPointerClick ? handleSvgClick : undefined}
       >
         {svgMarkup && (
           <g
@@ -198,6 +241,9 @@ export default function USMap({
             dangerouslySetInnerHTML={{ __html: svgMarkup }}
           />
         )}
+        {/* Physical features draw OVER the political states but UNDER the
+            capital stars + state-name labels so text/icons stay readable. */}
+        {showPhysicalLayer && <PhysicalLayer />}
         {(showCapitalStars || showCapitalNames) && (
           <CapitalLayer
             hiddenCapitalNames={hiddenCapitalNames}
@@ -206,6 +252,10 @@ export default function USMap({
           />
         )}
         {showStateLabels && <LabelLayer hiddenStateLabels={hiddenStateLabels} />}
+        {showLandmarks && <LandmarkLayer onLandmarkClick={onLandmarkClick} />}
+        {/* Phase 6.5: caller-injected overlay layer (e.g. DistanceTool).
+            Renders ABOVE everything else so its line + label sit on top. */}
+        {svgChildren}
       </svg>
     </div>
   );
