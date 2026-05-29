@@ -13,3 +13,11 @@ export { default as DragMatchEngine } from './DragMatchEngine';
 export { default as PhysicalQuizEngine } from './PhysicalQuizEngine';
 export { default as SilhouetteEngine } from './SilhouetteEngine';
 export { default as DistanceTool } from './DistanceTool';
+export {
+  default as WorldMap,
+  CONTINENT_TINTS,
+  defaultContinentTints,
+} from './WorldMap';
+export { default as CountryTooltip } from './CountryTooltip';
+export { default as CountryDetailDrawer } from './CountryDetailDrawer';
+export { default as WorldQuizEngine } from './WorldQuizEngine';

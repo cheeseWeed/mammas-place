@@ -32,6 +32,14 @@ export type GeographyProgress = {
   // device, in Guess sub-mode). Undefined bestGuessAccuracy = no guess yet.
   'distance'?: { measurements: number; bestGuessAccuracy?: number };
   'physical-quiz'?: { attempts: number; bestScore: number; misses: string[] };
+  // ----- World phases (parallel to the US slots above) -----
+  // World study map — same shape as 'study'. statesViewed stores ISO-2 codes.
+  'world-study'?: { lastVisited?: number; countriesViewed?: string[] };
+  // World quizzes — misses store ISO-2 country codes.
+  'world-name-quiz'?: { attempts: number; bestScore: number; misses: string[] };
+  'world-capital-quiz'?: { attempts: number; bestScore: number; misses: string[] };
+  'world-flag-match'?: { attempts: number; bestScore: number; misses: string[] };
+  'world-continent-quiz'?: { attempts: number; bestScore: number; misses: string[] };
   [key: string]: unknown;
 };
 
