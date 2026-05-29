@@ -18,6 +18,20 @@ export {
   CONTINENT_TINTS,
   defaultContinentTints,
 } from './WorldMap';
+export { default as WorldLandmarkLayer } from './WorldLandmarkLayer';
 export { default as CountryTooltip } from './CountryTooltip';
 export { default as CountryDetailDrawer } from './CountryDetailDrawer';
+export { default as CountryQuiz } from './CountryQuiz';
 export { default as WorldQuizEngine } from './WorldQuizEngine';
+export {
+  default as WorldPhysicalQuizEngine,
+  worldFlatPoolSize,
+  worldModeBViable,
+  WORLD_TOTAL_FEATURE_COUNT,
+} from './WorldPhysicalQuizEngine';
+export type {
+  WorldPhysicalQuizMode,
+  WorldPhysicalTypeBucket,
+  WorldContinent,
+  WorldPhysicalQuizEngineProps,
+} from './WorldPhysicalQuizEngine';

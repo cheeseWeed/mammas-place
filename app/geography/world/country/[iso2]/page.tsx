@@ -135,7 +135,7 @@ export default async function CountryDeepDivePage({
     <div className="min-h-screen bg-gradient-to-b from-sky-50 via-indigo-50 to-white py-8 sm:py-12 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Breadcrumb / back links */}
-        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6 text-sm">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-4 text-sm">
           <Link
             href="/geography"
             className="inline-flex items-center gap-1 font-semibold text-sky-700 hover:text-sky-500 transition-colors"
@@ -151,6 +151,16 @@ export default async function CountryDeepDivePage({
           </Link>
           <span className="text-gray-300">/</span>
           <span className="font-semibold text-gray-700">{country.name}</span>
+        </div>
+
+        {/* Top-of-page quiz CTA — sky/indigo to match the World section. */}
+        <div className="mb-6">
+          <Link
+            href={`/geography/world/country/${country.iso2.toLowerCase()}/quiz`}
+            className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-br from-sky-600 to-indigo-600 px-5 py-3 text-base font-black text-white shadow-md transition-all hover:from-sky-500 hover:to-indigo-500 hover:shadow-lg"
+          >
+            <span aria-hidden="true">🎯</span> Quiz Me on {country.name}
+          </Link>
         </div>
 
         {/* Header card */}

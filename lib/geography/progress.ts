@@ -40,6 +40,11 @@ export type GeographyProgress = {
   'world-capital-quiz'?: { attempts: number; bestScore: number; misses: string[] };
   'world-flag-match'?: { attempts: number; bestScore: number; misses: string[] };
   'world-continent-quiz'?: { attempts: number; bestScore: number; misses: string[] };
+  // Misses store "Feature (Country)" labels — same shape as 'physical-quiz'.
+  'world-physical-quiz'?: { attempts: number; bestScore: number; misses: string[] };
+  // Per-country deep-dive quiz (sibling of the US state-quiz). misses store
+  // ISO-2 country codes the kid got wrong on their best run.
+  'world-country-quiz'?: { attempts: number; bestScore: number; misses: string[] };
   [key: string]: unknown;
 };
 

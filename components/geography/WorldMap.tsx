@@ -22,6 +22,7 @@ import {
   ISO3_TO_CONTINENT,
   LABELED_COUNTRIES,
 } from './worldCountryData';
+import WorldLandmarkLayer from './WorldLandmarkLayer';
 
 const VIEW_W = 960;
 const VIEW_H = 540;
@@ -64,6 +65,13 @@ export type WorldMapProps = {
   // shows relative country sizes accurately, good for kids. Mercator exists
   // for familiarity (school maps); Natural Earth 1 is rounded/decorative.
   projection?: 'equalEarth' | 'mercator' | 'naturalEarth1';
+  // Landmark pins overlay. Renders WorldLandmarkLayer inside the same SVG so
+  // pins share the projection and sit on top of country fills.
+  showLandmarks?: boolean;
+  onLandmarkHover?: (
+    info: { country: string; iso2: string; name: string } | null,
+  ) => void;
+  onLandmarkClick?: (iso2: string) => void;
 };
 
 // Convenience helper for callers that want continent-colored mode without
@@ -110,6 +118,9 @@ export default function WorldMap({
   continentTints,
   className,
   projection = 'equalEarth',
+  showLandmarks = false,
+  onLandmarkHover,
+  onLandmarkClick,
 }: WorldMapProps) {
   const [topology, setTopology] = useState<Topology | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -262,6 +273,17 @@ export default function WorldMap({
             </path>
           );
         })}
+
+        {/* Landmark pins. Rendered after country paths so they sit on top of
+            fills/hover-filters; rendered before labels so country labels stay
+            on top of pins for readability. */}
+        {showLandmarks && (
+          <WorldLandmarkLayer
+            projection={projection}
+            onLandmarkHover={onLandmarkHover}
+            onLandmarkClick={onLandmarkClick}
+          />
+        )}
 
         {showCountryLabels &&
           countries.filter(shouldLabel).map((c) => (

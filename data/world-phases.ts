@@ -14,7 +14,8 @@ export type WorldPhaseId =
   | 'world-capital-quiz'
   | 'world-flag-match'
   | 'world-continent-quiz'
-  | 'world-country-deep-dive';
+  | 'world-country-deep-dive'
+  | 'world-physical-quiz';
 
 export type WorldPhase = {
   id: WorldPhaseId;
@@ -74,6 +75,14 @@ export const WORLD_PHASES: WorldPhase[] = [
     // Deep-dive entry point is the study map itself (click a country to drill in),
     // matching the US Phase 6 (State Deep-Dive) pattern.
     route: '/geography/world/study',
+    shipped: true,
+  },
+  {
+    id: 'world-physical-quiz',
+    number: 'W7',
+    title: 'World Features Quiz',
+    subtitle: 'Find the Amazon. Find the Eiffel Tower. Find the Himalayas.',
+    route: '/geography/world/physical-quiz',
     shipped: true,
   },
 ];

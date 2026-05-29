@@ -211,7 +211,7 @@ export default function CountryDetailDrawer({ iso2, onClose }: CountryDetailDraw
                     <span aria-hidden="true">📖</span> Country Page
                   </Link>
                   <Link
-                    href={`/geography/world/name-quiz`}
+                    href={`/geography/world/country/${country.iso2.toLowerCase()}/quiz`}
                     onClick={onClose}
                     className="rounded-xl bg-indigo-600 p-3 text-center font-bold text-white shadow-md transition-all hover:bg-indigo-500 hover:shadow-lg active:bg-indigo-700"
                   >

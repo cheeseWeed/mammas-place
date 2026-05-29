@@ -165,13 +165,9 @@ export default function WorldStudyPage() {
           showCountryLabels={showCountryNames}
           onCountryHover={setHoveredIso3}
           onCountryClick={handleCountryClick}
+          showLandmarks={showLandmarks}
+          onLandmarkClick={(iso2) => setDrawerIso2(iso2)}
         />
-        {/* TODO: WorldMap doesn't currently accept a `showLandmarks` prop.
-            We render the toggle for UX parity with the US study page; when the
-            world LandmarkLayer ships, wire it here. */}
-        {showLandmarks && (
-          <div className="sr-only">Landmark pins toggle is on (rendering pending).</div>
-        )}
       </div>
 
       {/* Staged floating tooltip. */}
