@@ -716,7 +716,55 @@ function renderAll() {
   renderUnits();
   renderFinals();
 }
-renderAll();
+
+// Hydrate localStorage from server BEFORE rendering, so progress from
+// other devices shows up immediately.
+function hydrateThenRender() {
+  var rawUser = localStorage.getItem('dl_user');
+  if (!rawUser || rawUser === '__anon__') {
+    renderAll();
+    return;
+  }
+  // dl_user may be raw or JSON-quoted depending on which code wrote it
+  var user = rawUser.replace(/^"|"$/g, '');
+  // Greet by name in the title — capitalize first letter
+  var displayName = user.charAt(0).toUpperCase() + user.slice(1);
+  var titleEl = document.getElementById('title');
+  if (titleEl) titleEl.textContent = 'Hello, ' + displayName;
+  fetch('/api/drive/progress?user=' + encodeURIComponent(user), { cache: 'no-store' })
+    .then(function (res) {
+      if (!res.ok) throw new Error('no-record');
+      return res.json();
+    })
+    .then(function (data) {
+      if (data && Array.isArray(data.attempts)) {
+        localStorage.setItem('dl_attempts', JSON.stringify(data.attempts));
+      }
+      if (data && Array.isArray(data.misses)) {
+        localStorage.setItem('dl_misses', JSON.stringify(data.misses));
+      }
+      if (data && data.unitScores && typeof data.unitScores === 'object') {
+        localStorage.setItem('dl_unit_scores', JSON.stringify(data.unitScores));
+      }
+      if (data && data.sr && typeof data.sr === 'object') {
+        localStorage.setItem('dl_sr', JSON.stringify(data.sr));
+      }
+      if (data && data.deckCompletions && typeof data.deckCompletions === 'object') {
+        localStorage.setItem('dl_deck_completions', JSON.stringify(data.deckCompletions));
+      }
+      if (data && (data.mode === 'quick' || data.mode === 'deep')) {
+        localStorage.setItem('dl_mode', JSON.stringify(data.mode));
+      }
+    })
+    .catch(function () {
+      // No record / offline / parse error — fall through to whatever's in localStorage
+    })
+    .finally(function () {
+      renderAll();
+    });
+}
+
+hydrateThenRender();
 </script>
 
 </body></html>
