@@ -41,6 +41,12 @@ type Quarter = {
   design: string;
 };
 
+type Flag = {
+  path: string;
+  adoptedYear?: number;
+  description?: string;
+};
+
 type StateRecord = {
   postal: string;
   name: string;
@@ -61,6 +67,7 @@ type StateRecord = {
   funFacts?: string[];
   physicalFeatures?: PhysicalFeature[];
   parks?: Park[];
+  flag?: Flag;
 };
 
 const STATES = statesData as StateRecord[];
@@ -171,17 +178,34 @@ export default async function StateDeepDivePage({
 
         {/* Header card */}
         <header className="bg-gradient-to-br from-emerald-600 to-teal-600 text-white rounded-2xl shadow-md p-6 sm:p-8 mb-6">
-          <div className="flex items-baseline justify-between flex-wrap gap-2 mb-2">
-            <h1 className="text-3xl sm:text-4xl font-black">{state.name}</h1>
-            <span className="text-sm sm:text-base font-bold bg-white/20 px-3 py-1 rounded-full">
-              {state.postal}
-            </span>
+          <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6 mb-3">
+            {/* Flag on the right, header text on the left */}
+            <div className="flex-1 min-w-0">
+              <div className="flex items-baseline justify-between flex-wrap gap-2 mb-2">
+                <h1 className="text-3xl sm:text-4xl font-black">{state.name}</h1>
+                <span className="text-sm sm:text-base font-bold bg-white/20 px-3 py-1 rounded-full">
+                  {state.postal}
+                </span>
+              </div>
+              {state.nickname && (
+                <p className="text-emerald-50 text-lg sm:text-xl font-semibold italic">
+                  {state.nickname}
+                </p>
+              )}
+            </div>
+            {state.flag?.path && (
+              <div className="shrink-0 self-center sm:self-start">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={state.flag.path}
+                  alt={`Flag of ${state.name}`}
+                  className="w-32 sm:w-40 h-auto rounded-md shadow-lg ring-2 ring-white/40 bg-white"
+                />
+              </div>
+            )}
           </div>
-          {state.nickname && (
-            <p className="text-emerald-50 text-lg sm:text-xl font-semibold italic mb-3">
-              {state.nickname}
-            </p>
-          )}
+          <div className="mb-3" />
+          {/* nickname moved into the left column above */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm sm:text-base">
             <div>
               <span className="font-semibold text-emerald-100">Capital:</span>{' '}
@@ -228,6 +252,33 @@ export default async function StateDeepDivePage({
 
         {/* Content sections */}
         <div className="space-y-5">
+          {/* Flag — bigger display + adoption year + description */}
+          {state.flag?.path && (
+            <SectionCard title="State Flag">
+              <div className="flex flex-col sm:flex-row gap-5 items-start">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={state.flag.path}
+                  alt={`Flag of ${state.name}`}
+                  className="w-full sm:w-64 h-auto rounded-lg shadow-md ring-1 ring-gray-200 bg-white shrink-0"
+                />
+                <div className="flex-1 space-y-2">
+                  {state.flag.adoptedYear !== undefined && (
+                    <div className="text-sm">
+                      <span className="font-semibold text-emerald-700">Adopted:</span>{' '}
+                      <span className="text-gray-800">{state.flag.adoptedYear}</span>
+                    </div>
+                  )}
+                  {state.flag.description && (
+                    <p className="text-sm sm:text-base text-gray-800 leading-relaxed">
+                      {state.flag.description}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </SectionCard>
+          )}
+
           {/* Symbols */}
           {(state.stateBird || state.stateFlower || state.stateTree || state.stateAnimal || state.quarter) && (
             <SectionCard title="State Symbols">
