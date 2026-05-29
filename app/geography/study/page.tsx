@@ -22,20 +22,39 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { USMap, StateTooltip } from '@/components/geography';
+import { USMap, StateTooltip, StateDetailDrawer } from '@/components/geography';
+import { REGION_TINTS } from '@/components/geography/USMap';
 import statesData from '@/data/states.json';
 import { updatePhase } from '@/lib/geography/progress';
 
-type StateRecord = { postal: string; name: string; capital: string };
+type StateRecord = {
+  postal: string;
+  name: string;
+  capital: string;
+  nickname?: string;
+  region?: string;
+  population?: number;
+};
+
+// Tooltip reveal timings (ms from hover start).
+const STAGE1_DELAY = 1500;  // basic: name + capital
+const STAGE2_DELAY = 3000;  // bonus: nickname + region + population
 
 export default function GeographyStudyPage() {
   const [showStateNames, setShowStateNames] = useState(true);
   const [showCapitalStars, setShowCapitalStars] = useState(true);
   const [showCapitalNames, setShowCapitalNames] = useState(true);
+  const [showRegionColors, setShowRegionColors] = useState(true);
 
   // Tooltip state: which state postal is hovered + cursor position to anchor.
+  // tooltipStage controls what's rendered: 0 = nothing, 1 = basic, 2 = with bonus.
   const [hoveredPostal, setHoveredPostal] = useState<string | null>(null);
+  const [tooltipStage, setTooltipStage] = useState<0 | 1 | 2>(0);
   const [cursor, setCursor] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+
+  // Deep-dive drawer: which state postal is currently open (null = closed).
+  // Click on a state opens the drawer; hover continues to drive the tooltip.
+  const [drawerPostal, setDrawerPostal] = useState<string | null>(null);
 
   // Static state lookup by postal for tooltip name/capital fields.
   const states = statesData as StateRecord[];
@@ -53,6 +72,19 @@ export default function GeographyStudyPage() {
   const hiddenStateLabels = showStateNames ? undefined : allPostals;
   const hiddenCapitalNames = showCapitalNames ? undefined : allPostals;
 
+  // Build per-state region-color map. Each state gets its region's tint color.
+  // Toggle controls whether USMap actually paints them.
+  const regionTints = useMemo(() => {
+    if (!showRegionColors) return undefined;
+    const m = new Map<string, string>();
+    states.forEach((s) => {
+      if (s.region && REGION_TINTS[s.region]) {
+        m.set(s.postal, REGION_TINTS[s.region]);
+      }
+    });
+    return m;
+  }, [states, showRegionColors]);
+
   // Track mouse position for tooltip anchor. Window-level so it works
   // regardless of which child element the cursor is over inside the map SVG.
   useEffect(() => {
@@ -60,6 +92,20 @@ export default function GeographyStudyPage() {
     window.addEventListener('mousemove', handler);
     return () => window.removeEventListener('mousemove', handler);
   }, []);
+
+  // Staged tooltip reveal. Whenever hoveredPostal changes, reset to stage 0
+  // and schedule stage 1 at 1.5s, stage 2 at 3.0s. Leaving a state cancels
+  // both timers and snaps back to nothing.
+  useEffect(() => {
+    setTooltipStage(0);
+    if (!hoveredPostal) return;
+    const t1 = setTimeout(() => setTooltipStage(1), STAGE1_DELAY);
+    const t2 = setTimeout(() => setTooltipStage(2), STAGE2_DELAY);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, [hoveredPostal]);
 
   // Mark phase visited on mount. Tiny — this proves the progress wrapper works
   // for future phases. No-op on the server (handled inside progress.ts).
@@ -115,6 +161,15 @@ export default function GeographyStudyPage() {
               />
               Capital names
             </label>
+            <label className="flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-gray-800 hover:text-emerald-700 transition-colors">
+              <input
+                type="checkbox"
+                checked={showRegionColors}
+                onChange={(e) => setShowRegionColors(e.target.checked)}
+                className="w-4 h-4 accent-emerald-600 cursor-pointer"
+              />
+              Region colors
+            </label>
 
             {/* TODO Phase 1.5: add a "Physical features" toggle here once
                 public/geography/us-states-physical.svg exists. Pass the value
@@ -139,19 +194,37 @@ export default function GeographyStudyPage() {
           hiddenStateLabels={hiddenStateLabels}
           hiddenCapitalNames={hiddenCapitalNames}
           showCapitalStars={showCapitalStars}
+          regionTints={regionTints}
           onStateHover={setHoveredPostal}
+          onStateClick={setDrawerPostal}
         />
       </div>
 
-      {/* Floating tooltip — follows the cursor while a state is hovered. */}
-      {hoveredState && (
+      {/* Staged floating tooltip — only renders after the appropriate delay.
+          Stage 1 (1.5s): name + capital. Stage 2 (3.0s): adds nickname,
+          region, and population on additional lines below. */}
+      {hoveredState && tooltipStage >= 1 && (
         <StateTooltip
           name={hoveredState.name}
           capital={hoveredState.capital}
           x={cursor.x}
           y={cursor.y}
+          extra={
+            tooltipStage >= 2
+              ? {
+                  nickname: hoveredState.nickname,
+                  region: hoveredState.region,
+                  population: hoveredState.population,
+                }
+              : undefined
+          }
         />
       )}
+
+      {/* Deep-dive drawer — opens when a state is clicked. Drawer owns its own
+          dismiss (escape key, backdrop click, close button) and calls onClose
+          back to clear the postal here. */}
+      <StateDetailDrawer postal={drawerPostal} onClose={() => setDrawerPostal(null)} />
     </div>
   );
 }

@@ -2,5 +2,6 @@ export { default as USMap } from './USMap';
 export { default as LabelLayer } from './LabelLayer';
 export { default as CapitalLayer } from './CapitalLayer';
 export { default as StateTooltip } from './StateTooltip';
+export { default as StateDetailDrawer } from './StateDetailDrawer';
 export { default as QuizPrompt } from './QuizPrompt';
 export { default as QuizEngine } from './QuizEngine';

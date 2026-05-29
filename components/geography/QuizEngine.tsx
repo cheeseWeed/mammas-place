@@ -19,7 +19,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import statesData from '@/data/states.json';
-import USMap from './USMap';
+import USMap, { REGION_TINTS } from './USMap';
 import QuizPrompt from './QuizPrompt';
 import StateTooltip from './StateTooltip';
 
@@ -89,13 +89,26 @@ export default function QuizEngine({
   // quiz — it just shows different info based on allowHoverNames:
   //   off (default): the OPPOSITE piece (capital in name quiz; state in capital quiz)
   //   on ("peek"):   both name + capital
+  // Both stages are delayed so a quick glance doesn't reveal the answer:
+  // stage 1 at 1.5s = primary info, stage 2 at 3.0s = bonus (only in peek mode).
   const [hoveredPostal, setHoveredPostal] = useState<string | null>(null);
+  const [tooltipStage, setTooltipStage] = useState<0 | 1 | 2>(0);
   const [cursor, setCursor] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   useEffect(() => {
     const handler = (e: MouseEvent) => setCursor({ x: e.clientX, y: e.clientY });
     window.addEventListener('mousemove', handler);
     return () => window.removeEventListener('mousemove', handler);
   }, []);
+  useEffect(() => {
+    setTooltipStage(0);
+    if (!hoveredPostal) return;
+    const t1 = setTimeout(() => setTooltipStage(1), 1500);
+    const t2 = setTimeout(() => setTooltipStage(2), 3000);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, [hoveredPostal]);
 
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -211,6 +224,20 @@ export default function QuizEngine({
   // defeats the point. Kid should know that Lincoln is in Nebraska.
   const promptText = mode === 'capital' ? current.capital : current.name;
 
+  // Region tint: when a region is active, tint only that region's states so
+  // the kid sees the "working area." Other states stay default gray. When
+  // no region (all 50), no tint at all — too busy mid-quiz.
+  const regionTints = useMemo(() => {
+    if (!region) return undefined;
+    const tint = REGION_TINTS[region];
+    if (!tint) return undefined;
+    const m = new Map<string, string>();
+    ALL_STATES.forEach((s) => {
+      if (s.region === region) m.set(s.postal, tint);
+    });
+    return m;
+  }, [region]);
+
   // Layout: fills parent height (parent is expected to be a flex container
   // sized to the viewport). Top strip is the prompt; remainder is the map,
   // sized via aspect-ratio so the natural 959:593 SVG shape is preserved
@@ -251,17 +278,25 @@ export default function QuizEngine({
           onStateHover={setHoveredPostal}
           highlightedStates={highlightedStates}
           wrongStates={wrongStates}
+          regionTints={regionTints}
         />
       </div>
-      {hoveredStateRec && (
+      {hoveredStateRec && tooltipStage >= 1 && (
         <StateTooltip
           name={hoveredStateRec.name}
           capital={hoveredStateRec.capital}
           x={cursor.x}
           y={cursor.y}
-          // Default: show the OPPOSITE piece (teaches the pairing without
-          // giving the answer). Peek-mode: show both.
-          mode={allowHoverNames ? 'both' : mode === 'name' ? 'capital' : 'name'}
+          // Stage 1: in peek mode show both; otherwise just the OPPOSITE piece.
+          // Stage 2 (peek only): we already show both at stage 1, so the second
+          // stage isn't used to add info here — peek mode shows everything at 1.5s.
+          // In non-peek mode, stage 2 escalates to 'both' so persistent hover
+          // eventually reveals the full pairing (still costs 3s, vs instant).
+          mode={
+            allowHoverNames || tooltipStage >= 2
+              ? 'both'
+              : mode === 'name' ? 'capital' : 'name'
+          }
         />
       )}
     </div>

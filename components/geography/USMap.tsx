@@ -27,6 +27,12 @@ export type USMapProps = {
   onStateHover?: (postal: string | null) => void;
   highlightedStates?: Set<string>;
   wrongStates?: Set<string>;
+  // Per-state region tints. Each entry is a postal → region name (e.g.
+  // 'Northeast'). USMap looks up the tint color from REGION_TINTS.
+  // Quiz mode: pass only the active region's states. Study mode: pass all
+  // 50 keyed by their region so the whole map is color-coded.
+  // Wrong/highlighted state colors always win over the regional tint.
+  regionTints?: Map<string, string>;
   className?: string;
 };
 
@@ -39,14 +45,25 @@ const FILL_DEFAULT = '#e5e7eb';
 const FILL_HIGHLIGHT = '#86efac';
 const FILL_WRONG = '#fca5a5';
 
-// Extracts <defs> + the inner SVG markup (everything inside the outer <svg> tag)
-// from the raw SVG text so we can inject it inside our own <svg> wrapper.
+// Per-region tints. Soft enough that labels stay readable. Picked to be
+// visually distinct from each other AND from the quiz feedback colors
+// (green/red) so a state's feedback flash always reads clearly.
+export const REGION_TINTS: Record<string, string> = {
+  Northeast: '#fde68a',  // amber-200
+  Midwest: '#bae6fd',    // sky-200
+  South: '#fbcfe8',      // pink-200
+  West: '#bbf7d0',       // emerald-200
+};
+
+// Extracts the inner SVG markup and strips out <title> children so the browser
+// doesn't render its own native tooltip on top of our React StateTooltip.
 function extractInnerSvg(raw: string): string {
   const openMatch = raw.match(/<svg[^>]*>/i);
   const closeIdx = raw.lastIndexOf('</svg>');
   if (!openMatch || closeIdx === -1) return raw;
   const start = openMatch.index! + openMatch[0].length;
-  return raw.slice(start, closeIdx);
+  const inner = raw.slice(start, closeIdx);
+  return inner.replace(/<title>[^<]*<\/title>/g, '');
 }
 
 export default function USMap({
@@ -60,6 +77,7 @@ export default function USMap({
   onStateHover,
   highlightedStates,
   wrongStates,
+  regionTints,
   className,
 }: USMapProps) {
   const containerRef = useRef<SVGGElement | null>(null);
@@ -104,10 +122,12 @@ export default function USMap({
       const postal = el.id?.toUpperCase();
       if (!postal || !validPostals.has(postal)) return;
 
-      // Fill based on current state buckets.
+      // Fill priority: wrong > highlight > region tint > default.
       let fill = FILL_DEFAULT;
+      const tint = regionTints?.get(postal);
+      if (tint) fill = tint;
+      if (highlightedStates?.has(postal)) fill = FILL_HIGHLIGHT;
       if (wrongStates?.has(postal)) fill = FILL_WRONG;
-      else if (highlightedStates?.has(postal)) fill = FILL_HIGHLIGHT;
       el.setAttribute('fill', fill);
       el.style.transition = 'fill 200ms ease, filter 150ms ease';
       el.style.cursor = onStateClick ? 'pointer' : 'default';

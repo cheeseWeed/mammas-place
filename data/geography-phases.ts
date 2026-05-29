@@ -80,9 +80,9 @@ export const GEOGRAPHY_PHASES: GeographyPhase[] = [
     id: 'state-deep-dive',
     number: '6',
     title: 'State Deep-Dive',
-    subtitle: 'Click a state to learn its facts, rivers, mountains, and parks.',
-    route: '/geography/state',
-    shipped: false,
+    subtitle: "Pick any state on the Study Map, or browse Utah's deep-dive as an example.",
+    route: '/geography/state/ut',
+    shipped: true,
   },
   {
     id: 'distance',
