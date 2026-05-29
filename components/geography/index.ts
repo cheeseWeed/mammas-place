@@ -5,3 +5,5 @@ export { default as StateTooltip } from './StateTooltip';
 export { default as StateDetailDrawer } from './StateDetailDrawer';
 export { default as QuizPrompt } from './QuizPrompt';
 export { default as QuizEngine } from './QuizEngine';
+export { default as StateQuiz } from './StateQuiz';
+export { default as FlagMatchEngine } from './FlagMatchEngine';

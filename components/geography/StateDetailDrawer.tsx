@@ -3,6 +3,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import Link from 'next/link';
 import statesData from '@/data/states.json';
 
 export type StateDetailDrawerProps = {
@@ -190,6 +191,24 @@ export default function StateDetailDrawer({ postal, onClose }: StateDetailDrawer
                 <span>Admitted {state.admittedYear}</span>
               </div>
             </header>
+
+            {/* 1b. Primary action buttons — Study / Quiz */}
+            <div className="grid grid-cols-2 gap-2 border-b border-gray-100 bg-white px-6 py-4">
+              <Link
+                href={`/geography/state/${state.postal.toLowerCase()}`}
+                onClick={onClose}
+                className="rounded-xl bg-emerald-600 p-3 text-center font-bold text-white shadow-md transition-all hover:bg-emerald-500 hover:shadow-lg active:bg-emerald-700"
+              >
+                <span aria-hidden="true">📖</span> Study Full Page
+              </Link>
+              <Link
+                href={`/geography/state/${state.postal.toLowerCase()}/quiz`}
+                onClick={onClose}
+                className="rounded-xl bg-teal-600 p-3 text-center font-bold text-white shadow-md transition-all hover:bg-teal-500 hover:shadow-lg active:bg-teal-700"
+              >
+                <span aria-hidden="true">🎯</span> Quiz Me
+              </Link>
+            </div>
 
             <div className="flex-1 space-y-6 px-6 py-6">
               {/* 2. Symbols grid */}

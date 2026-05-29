@@ -52,13 +52,25 @@ export default function CapitalLayer({
         if (!projectedCap || !projectedCen) return null;
         const ext = EXTERNAL_LABELS[s.postal];
         // Name position: under the external state name (if external), else
-        // 12px below the star.
+        // below the star — but if the capital is geographically near the
+        // state's centroid (Jefferson City, Frankfort, Springfield, etc.),
+        // the state name renders right above the star and the capital name
+        // ends up squashed under it. Detect that and push the capital name
+        // further down to avoid collision with the state name above.
+        const distToCentroid = Math.hypot(
+          projectedCap[0] - projectedCen[0],
+          projectedCap[1] - projectedCen[1],
+        );
+        // If the capital is within ~30px of the centroid, the state name is
+        // likely sitting right above the star — push capital name down a
+        // bit more to clear.
+        const inlineOffset = distToCentroid < 30 ? 18 : 12;
         const namePos = ext
           ? {
               x: projectedCen[0] + ext[0],
-              y: projectedCen[1] + ext[1] + 11, // ~one line below the state name
+              y: projectedCen[1] + ext[1] + 11,
             }
-          : { x: projectedCap[0], y: projectedCap[1] + 12 };
+          : { x: projectedCap[0], y: projectedCap[1] + inlineOffset };
         return {
           postal: s.postal,
           capital: s.capital,
@@ -71,8 +83,11 @@ export default function CapitalLayer({
       .filter((v): v is NonNullable<typeof v> => v !== null);
   }, [projection]);
 
+  // Small empirical nudge: d3-geo's default Albers USA drifts a few pixels
+  // from the source SVG's painted state outlines. -3px x, -5px y brings the
+  // stars onto their capitals visually (tuned by eye, not regression).
   return (
-    <g className="us-map-capital-layer" pointerEvents="none">
+    <g className="us-map-capital-layer" pointerEvents="none" transform="translate(-3, -5)">
       {capitals.map((c) => (
         <g key={c.postal}>
           {showStars && (

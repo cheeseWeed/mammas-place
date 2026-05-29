@@ -23,6 +23,7 @@ export type GeographyProgress = {
   'name-quiz'?: { attempts: number; bestScore: number; misses: string[] };
   // Phase 3+ slots — keep optional; phase authors define their own shape.
   'capital-quiz'?: { attempts: number; bestScore: number; misses: string[] };
+  'flag-match'?: { attempts: number; bestScore: number; misses: string[] };
   'drag-match'?: { attempts: number; bestScore: number; misses: string[] };
   'silhouette-puzzle'?: { attempts: number; bestScore: number; misses: string[] };
   'state-deep-dive'?: { lastVisited?: number; statesViewed?: string[] };

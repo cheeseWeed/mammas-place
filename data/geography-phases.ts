@@ -12,6 +12,7 @@ export type GeographyPhaseId =
   | 'study'
   | 'name-quiz'
   | 'capital-quiz'
+  | 'flag-match'
   | 'drag-match'
   | 'silhouette-puzzle'
   | 'state-deep-dive'
@@ -61,6 +62,18 @@ export const GEOGRAPHY_PHASES: GeographyPhase[] = [
     hiddenCapitalNames: 'some',
   },
   {
+    // Slotted at 3.5 so adding this phase doesn't renumber drag-match,
+    // silhouette-puzzle, etc. (their cards/links would all need updating).
+    // Hub renders display order by array position, so the registry's
+    // sequence here is what determines card order.
+    id: 'flag-match',
+    number: '3.5',
+    title: 'Flag Match',
+    subtitle: 'Match each flag to its state. Or each state to its flag.',
+    route: '/geography/flag-match',
+    shipped: true,
+  },
+  {
     id: 'drag-match',
     number: '4',
     title: 'Drag & Match',
@@ -80,8 +93,8 @@ export const GEOGRAPHY_PHASES: GeographyPhase[] = [
     id: 'state-deep-dive',
     number: '6',
     title: 'State Deep-Dive',
-    subtitle: "Pick any state on the Study Map, or browse Utah's deep-dive as an example.",
-    route: '/geography/state/ut',
+    subtitle: 'Click any state on the map to see its facts, parks, symbols, and take a per-state quiz.',
+    route: '/geography/study',
     shipped: true,
   },
   {

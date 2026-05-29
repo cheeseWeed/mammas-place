@@ -70,8 +70,9 @@ export default function LabelLayer({ hiddenStateLabels }: LabelLayerProps) {
       .filter((v): v is NonNullable<typeof v> => v !== null);
   }, [projection]);
 
+  // Same -3,-5 nudge as CapitalLayer so labels stay aligned with the stars.
   return (
-    <g className="us-map-label-layer" pointerEvents="none">
+    <g className="us-map-label-layer" pointerEvents="none" transform="translate(-3, -5)">
       {labels.map((l) => {
         if (hiddenStateLabels?.has(l.postal)) return null;
         return (
