@@ -45,15 +45,42 @@ export function levelLabel(level: SpellingLevel): string {
 // ===== Placement test =====
 
 /**
- * Returns 12 words for placement: 2 per level from L1-L6, ramped easy → hard.
- * If a level has fewer than 2 words available, takes what's there. If a level
- * has none, the placement is silently shorter (caller still scores it sanely).
+ * Hand-curated placement words: 2 per level from L1-L6, ramped easy → hard.
+ * Picked to be representative of each level's difficulty — NOT alphabetical
+ * (the previous "first two from the level" approach gave us "a" at L3, which
+ * is too easy and inflates scores for non-readers).
+ *
+ * Each word here MUST exist in data/spelling/words.json at the matching level.
+ * Verified against the 1587-word bank in May 2026.
  */
+const PLACEMENT_WORDS_BY_LEVEL: Record<number, string[]> = {
+  1: ['cat', 'dog'],            // CVC, universally recognized
+  2: ['ship', 'frog'],          // digraph + blend
+  3: ['said', 'were'],          // irregular sight words (NOT "a" — too easy)
+  4: ['beach', 'snake'],        // long vowels + silent e
+  5: ['rabbit', 'kitchen'],     // double letters / two-syllable
+  6: ['believe', 'separate'],   // commonly misspelled tricky words
+};
+
 export function buildPlacementWords(allWords: Word[]): Word[] {
   const out: Word[] = [];
+  const byKey = new Map<string, Word>();
+  for (const w of allWords) {
+    byKey.set(`${w.level}:${w.word.toLowerCase()}`, w);
+  }
   for (let lvl = 1; lvl <= 6; lvl += 1) {
-    const atLevel = allWords.filter((w) => w.level === lvl);
-    out.push(...atLevel.slice(0, 2));
+    const wanted = PLACEMENT_WORDS_BY_LEVEL[lvl] ?? [];
+    for (const name of wanted) {
+      const w = byKey.get(`${lvl}:${name.toLowerCase()}`);
+      if (w) {
+        out.push(w);
+      } else {
+        // Fallback: take the first word at this level (alphabetical) — keeps
+        // placement working even if data drifts. Soft failure, not hard error.
+        const first = allWords.find((x) => x.level === lvl);
+        if (first) out.push(first);
+      }
+    }
   }
   return out;
 }

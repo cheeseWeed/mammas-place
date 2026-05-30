@@ -158,6 +158,17 @@ const PATTERN_TO_RULE_ID: Record<string, string> = {
   'irregular-plural': 'plurals-irregular',
   'double-letter': 'double-consonant',
   'tricky-ie-ei': 'i-before-e',
+  // additional aliases — pattern → most-relevant rule we have
+  cvc: 'short-vowels',
+  contraction: 'contractions',
+  possessive: 'possessives',
+  'soft-c': 'soft-c-hard-c',
+  'soft-g': 'soft-g-hard-g',
+  schwa: 'schwa',
+  'change-y-to-i': 'change-y-to-i',
+  'drop-e': 'drop-silent-e',
+  'vowel-team': 'vowel-teams',
+  'y-as-vowel': 'y-as-vowel',
 };
 
 function normalize(s: string): string {
