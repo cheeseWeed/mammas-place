@@ -17,7 +17,8 @@ export type LoginGateSection =
   | 'geography'
   | 'spelling'
   | 'math'
-  | 'languageArts';
+  | 'languageArts'
+  | 'chess';
 
 const COOKIE_NAME = 'dl_user';
 
@@ -54,6 +55,11 @@ const SECTION_COPY: Record<
     headline: 'Who’s reading?',
     subhead: 'Log in to track your Language Arts progress and earn MP.',
     accent: 'rose',
+  },
+  chess: {
+    headline: 'Who’s playing?',
+    subhead: 'Log in so the Chess board can save your game and pay you in MP.',
+    accent: 'purple',
   },
 };
 

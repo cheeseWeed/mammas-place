@@ -306,6 +306,17 @@ export default function Header() {
                       <div className="text-xs text-gray-600">Homophones, grammar, more</div>
                     </div>
                   </Link>
+                  <Link
+                    href="/chess"
+                    onClick={() => setActiveDropdown(null)}
+                    className="flex items-start gap-3 p-2 rounded-lg hover:bg-emerald-50 transition-colors group"
+                  >
+                    <span className="text-2xl">♟️</span>
+                    <div>
+                      <div className="font-bold text-purple-900 group-hover:text-emerald-700">Chess</div>
+                      <div className="text-xs text-gray-600">Full rules · 4 piece sets</div>
+                    </div>
+                  </Link>
                 </div>
               )}
             </div>
@@ -452,6 +463,13 @@ export default function Header() {
               className="text-white hover:bg-purple-700 hover:text-yellow-300 px-6 py-2.5 rounded-xl text-sm transition-colors flex items-center gap-2"
             >
               📚 Language Arts
+            </Link>
+            <Link
+              href="/chess"
+              onClick={() => setMenuOpen(false)}
+              className="text-white hover:bg-purple-700 hover:text-yellow-300 px-6 py-2.5 rounded-xl text-sm transition-colors flex items-center gap-2"
+            >
+              ♟️ Chess
             </Link>
           </div>
 

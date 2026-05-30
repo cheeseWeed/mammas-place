@@ -50,6 +50,9 @@ model DriveUser {
   math             Json     @default("{}")
   // Language Arts: { homophones: {...}, grammar: {...}, ..., lastSession?: number }
   languageArts     Json     @default("{}")
+  // Chess: { current?: SavedChessGame, recentGames: SavedChessGame[], totals: {...}, ... }
+  // Shape defined in lib/chess/game-state.ts (ChessProgress).
+  chess            Json     @default("{}")
 
   // ----- MP Money (closed-loop family economy) -----
   // Balance kept in cents to avoid float drift. See app/money/PLAN.md.
