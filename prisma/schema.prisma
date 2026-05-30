@@ -10,20 +10,42 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// One row per registered driver-study user.
-// Bulk fields (attempts, misses, scores, sr, deckCompletions) live as JSONB
-// for simplicity — small data per user (under a few KB), no need to normalize.
+// One row per registered learner.
+//
+// Originally created for the Driver License study tool (hence the table name
+// `drive_users` and the legacy Drive-specific JSON blobs at the top), but now
+// acts as the shared LearnerProfile across every learning section in the app
+// (Drive, Geography, Spelling, ...). New sections add a JSONB column for
+// their per-user progress; profile fields (age, grade, displayName) sit at
+// the row level so all sections can read/write them through one place.
+//
+// Bulk fields stay as JSONB for simplicity — small data per user (under a
+// few KB each), no need to normalize.
 model DriveUser {
   name             String   @id // normalized lowercase username
   pinHash          String
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
+
+  // ----- Drive (Utah Driver License study) -----
   attempts         Json     @default("[]") // QuizAttempt[]
   misses           Json     @default("[]") // string[]
   unitScores       Json     @default("{}") // Record<string, UnitScore>
   sr               Json     @default("{}") // Record<string, SrRecord>
   mode             String?  // 'quick' | 'deep' | null
   deckCompletions  Json     @default("{}") // Record<string, number>
+
+  // ----- Shared learner profile (all sections) -----
+  ageYears         Int?     // optional — collected at registration or settings
+  gradeLevel       String?  // "preschool" | "K" | "1".."12"
+  displayName      String?  // pretty-cased name for UI; falls back to `name`
+
+  // ----- Per-section progress blobs -----
+  // Spelling: { level: number, attempts: SpellingAttempt[], misses: string[], lastSession?: number, ... }
+  spelling         Json     @default("{}")
+  // Geography: { phases: Record<string, unknown>, lastActive?: number, ... }
+  // Currently opt-in — Geography defaults to anonymous localStorage.
+  geography        Json     @default("{}")
 
   @@map("drive_users")
 }

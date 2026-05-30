@@ -1,0 +1,1675 @@
+[
+  {
+    "id": "every-word-needs-vowel",
+    "level": 0,
+    "title": "Every Word Needs a Vowel",
+    "shortRule": "Almost every word in English has at least one vowel — A, E, I, O, U, or sometimes Y.",
+    "longExplanation": "Vowels are like the air in a balloon — without them, the word goes flat and you can't say it. Try to say 'ct' or 'bg' out loud — your mouth gets stuck! Add a vowel and the word pops to life: cat, big.",
+    "examples": [
+      {
+        "word": "sun",
+        "explain": "U is the vowel that makes 'sun' a sayable word."
+      },
+      {
+        "word": "by",
+        "explain": "No A E I O U here — Y is the vowel doing the work."
+      },
+      {
+        "word": "apple",
+        "explain": "Two vowels: A and E. Big words often have more than one."
+      }
+    ],
+    "exceptions": [
+      "shh",
+      "hmm"
+    ],
+    "miniQuiz": [
+      {
+        "prompt": "Find the vowel in the word 'pig'.",
+        "answer": "I"
+      },
+      {
+        "prompt": "How many vowels are in 'banana'?",
+        "answer": "3",
+        "hint": "Count every A!"
+      }
+    ],
+    "relatedRules": [
+      "vowels-consonants",
+      "y-as-vowel"
+    ]
+  },
+  {
+    "id": "vowels-consonants",
+    "level": 0,
+    "title": "Vowels and Consonants",
+    "shortRule": "The vowels are A, E, I, O, U (and sometimes Y). All the other letters are consonants.",
+    "longExplanation": "Think of vowels as the singers of the alphabet — they make smooth, open sounds you can hold for a long time: aaaa, eeee, iiii. Consonants are the helpers that bump into the vowels (like b, k, t). Every word in English needs at least one vowel — vowels are the glue.",
+    "examples": [
+      {
+        "word": "cat",
+        "explain": "C and T are consonants. A is the vowel in the middle that holds the word together."
+      },
+      {
+        "word": "go",
+        "explain": "G is a consonant, O is the vowel. Even tiny words have a vowel."
+      },
+      {
+        "word": "my",
+        "explain": "There is no A, E, I, O, or U here — so the Y is acting like a vowel today!"
+      }
+    ],
+    "exceptions": [
+      "hmm",
+      "psst",
+      "shh"
+    ],
+    "miniQuiz": [
+      {
+        "prompt": "Name the five main vowels.",
+        "answer": "A E I O U"
+      },
+      {
+        "prompt": "Is the letter B a vowel or a consonant?",
+        "answer": "consonant"
+      },
+      {
+        "prompt": "What vowel is in the word 'dog'?",
+        "answer": "O"
+      }
+    ],
+    "relatedRules": [
+      "every-word-needs-vowel",
+      "y-as-vowel"
+    ]
+  },
+  {
+    "id": "blends-l-family",
+    "level": 1,
+    "title": "L-Blends: BL, CL, FL, GL, PL, SL",
+    "shortRule": "When a consonant teams up with L, you hear BOTH sounds quickly: bl, cl, fl, gl, pl, sl.",
+    "longExplanation": "A blend is different from a digraph. In a digraph (like SH), two letters make ONE new sound. In a blend, you hear BOTH letters — they just slide together fast. Try saying 'b-l' slowly, then speed it up: bl, bl, bl. That's 'blue'!",
+    "examples": [
+      {
+        "word": "blue",
+        "explain": "B + L slide together: bl + 'ue'."
+      },
+      {
+        "word": "clap",
+        "explain": "C + L blend: cl + 'ap'."
+      },
+      {
+        "word": "flag",
+        "explain": "F + L blend: fl + 'ag'."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "Spell the color of the sky.",
+        "answer": "blue"
+      },
+      {
+        "prompt": "What word means 'to hit your hands together'? Starts with CL.",
+        "answer": "clap"
+      },
+      {
+        "prompt": "Spell the thing you raise up a pole. Starts with FL.",
+        "answer": "flag"
+      }
+    ],
+    "relatedRules": [
+      "blends-r-family",
+      "blends-s-family"
+    ]
+  },
+  {
+    "id": "blends-r-family",
+    "level": 1,
+    "title": "R-Blends: BR, CR, DR, FR, GR, PR, TR",
+    "shortRule": "When a consonant teams up with R, you hear BOTH sounds quickly: br, cr, dr, fr, gr, pr, tr.",
+    "longExplanation": "R-blends are everywhere! Bread, crab, drum, frog, grass, prize, tree. Both letters say their sound — just speed them up so they slide into one another. Like a skateboard rolling: 'br-rr-room!'",
+    "examples": [
+      {
+        "word": "frog",
+        "explain": "F + R blend: fr + 'og'."
+      },
+      {
+        "word": "tree",
+        "explain": "T + R blend: tr + 'ee'."
+      },
+      {
+        "word": "drum",
+        "explain": "D + R blend: dr + 'um'."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "Spell the green animal that hops and says 'ribbit'.",
+        "answer": "frog"
+      },
+      {
+        "prompt": "Spell the tall plant with leaves and bark.",
+        "answer": "tree"
+      },
+      {
+        "prompt": "Spell the thing you bang with sticks. Starts with DR.",
+        "answer": "drum"
+      }
+    ],
+    "relatedRules": [
+      "blends-l-family",
+      "blends-s-family"
+    ]
+  },
+  {
+    "id": "digraph-ch",
+    "level": 1,
+    "title": "CH says 'ch'",
+    "shortRule": "C and H together make a 'ch' sound, like a train: 'chug-chug'.",
+    "longExplanation": "CH is another two-letter team that makes one sound. Most of the time it sounds like the start of 'cheese' or 'church'. Sometimes (in fancy words) it sounds like K (school) or SH (chef), but those are rare guests.",
+    "examples": [
+      {
+        "word": "chip",
+        "explain": "CH at the front, then 'ip'."
+      },
+      {
+        "word": "much",
+        "explain": "CH at the end, like 'muh' + 'ch'."
+      },
+      {
+        "word": "chair",
+        "explain": "CH starts the word for something you sit on."
+      }
+    ],
+    "exceptions": [
+      "school",
+      "chef",
+      "chorus"
+    ],
+    "miniQuiz": [
+      {
+        "prompt": "What two letters make the 'ch' sound in 'cheese'?",
+        "answer": "ch"
+      },
+      {
+        "prompt": "Spell the word for the seat you sit on at the table.",
+        "answer": "chair"
+      }
+    ],
+    "relatedRules": [
+      "digraph-sh",
+      "digraph-th",
+      "digraph-wh"
+    ]
+  },
+  {
+    "id": "digraph-ck",
+    "level": 1,
+    "title": "CK at the End",
+    "shortRule": "After a short vowel at the end of a one-syllable word, use CK to make the K sound.",
+    "longExplanation": "CK is a team that says K. The rule: short vowel + CK at the end. Think of CK as best friends who always stick together at the end of short words like 'duck' and 'rock'. If the vowel is long or there's another consonant, use plain K (book, milk).",
+    "examples": [
+      {
+        "word": "duck",
+        "explain": "Short U sound, then CK at the end."
+      },
+      {
+        "word": "back",
+        "explain": "Short A sound + CK."
+      },
+      {
+        "word": "kick",
+        "explain": "Short I sound + CK."
+      }
+    ],
+    "exceptions": [
+      "book",
+      "milk",
+      "park"
+    ],
+    "miniQuiz": [
+      {
+        "prompt": "Spell the word for a small pond bird that says 'quack'.",
+        "answer": "duck"
+      },
+      {
+        "prompt": "Add CK to 'ro' to make a hard thing you find outside.",
+        "answer": "rock"
+      }
+    ],
+    "relatedRules": [
+      "short-vowels"
+    ]
+  },
+  {
+    "id": "digraph-sh",
+    "level": 1,
+    "title": "SH says 'shhh'",
+    "shortRule": "When S and H stand together, they say 'shhh' — like asking someone to be quiet.",
+    "longExplanation": "Two letters that make ONE sound are called a digraph. SH is one of the easiest: it sounds just like a librarian shushing you. You'll see SH at the start (ship) or end (fish) of lots of words.",
+    "examples": [
+      {
+        "word": "ship",
+        "explain": "SH at the front — 'shhh' + 'ip'."
+      },
+      {
+        "word": "fish",
+        "explain": "SH at the end — 'fi' + 'shhh'."
+      },
+      {
+        "word": "shop",
+        "explain": "SH at the front again, like 'shhh' + 'op'."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "What two letters make the 'shhh' sound?",
+        "answer": "sh"
+      },
+      {
+        "prompt": "Spell the word for a small boat that floats.",
+        "answer": "ship"
+      },
+      {
+        "prompt": "Add 'sh' to '-ell' to make a word.",
+        "answer": "shell"
+      }
+    ],
+    "relatedRules": [
+      "digraph-ch",
+      "digraph-th",
+      "digraph-wh"
+    ]
+  },
+  {
+    "id": "digraph-th",
+    "level": 1,
+    "title": "TH — Tongue Between Teeth",
+    "shortRule": "T and H together make the 'th' sound — stick your tongue between your teeth.",
+    "longExplanation": "TH has two flavors: a soft buzzy one (this, that, the) and a quiet windy one (think, three, math). Both ask you to put your tongue gently between your teeth and blow. It looks a little silly in the mirror!",
+    "examples": [
+      {
+        "word": "think",
+        "explain": "Quiet TH — windy sound, then 'ink'."
+      },
+      {
+        "word": "that",
+        "explain": "Buzzy TH — your tongue tickles when you say it."
+      },
+      {
+        "word": "math",
+        "explain": "TH at the end of the word."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "What two letters make the sound in 'three'?",
+        "answer": "th"
+      },
+      {
+        "prompt": "Spell the number that comes after two.",
+        "answer": "three"
+      }
+    ],
+    "relatedRules": [
+      "digraph-sh",
+      "digraph-ch",
+      "digraph-wh"
+    ]
+  },
+  {
+    "id": "digraph-wh",
+    "level": 1,
+    "title": "WH — Blow Out a Candle",
+    "shortRule": "WH usually sounds like a soft 'w' — like you're blowing out a birthday candle.",
+    "longExplanation": "WH shows up in lots of question words: who, what, when, where, why. Most of the time it sounds just like W. In a few words (like 'who' and 'whole') it sounds like H — the W is hiding!",
+    "examples": [
+      {
+        "word": "what",
+        "explain": "WH sounds like W — 'wuh' + 'at'."
+      },
+      {
+        "word": "when",
+        "explain": "Another question word with WH at the front."
+      },
+      {
+        "word": "whale",
+        "explain": "WH + 'ale' — the giant ocean animal."
+      }
+    ],
+    "exceptions": [
+      "who",
+      "whole",
+      "whose"
+    ],
+    "miniQuiz": [
+      {
+        "prompt": "Spell the question word that asks about time.",
+        "answer": "when"
+      },
+      {
+        "prompt": "Spell the giant ocean animal that starts with WH.",
+        "answer": "whale"
+      }
+    ],
+    "relatedRules": [
+      "digraph-sh",
+      "digraph-ch",
+      "digraph-th"
+    ]
+  },
+  {
+    "id": "y-as-vowel",
+    "level": 1,
+    "title": "Y is a Sneaky Vowel",
+    "shortRule": "Y is usually a consonant at the start of a word, but acts like a vowel anywhere else.",
+    "longExplanation": "Y wears two hats. At the start of a word it sounds like a consonant (yes, yellow). At the end or middle of a word, it sneaks in as a vowel — sometimes sounding like long E (happy) and sometimes like long I (cry, my).",
+    "examples": [
+      {
+        "word": "yes",
+        "explain": "Y is at the front, acting like a consonant."
+      },
+      {
+        "word": "happy",
+        "explain": "Y is at the end, sounding like 'ee' — a vowel job."
+      },
+      {
+        "word": "sky",
+        "explain": "Y is the only vowel, sounding like long I."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "In the word 'yellow', is Y a vowel or a consonant?",
+        "answer": "consonant"
+      },
+      {
+        "prompt": "In the word 'baby', is Y a vowel or a consonant?",
+        "answer": "vowel"
+      }
+    ],
+    "relatedRules": [
+      "vowels-consonants",
+      "change-y-to-i"
+    ]
+  },
+  {
+    "id": "blends-s-family",
+    "level": 2,
+    "title": "S-Blends: SC, SK, SL, SM, SN, SP, ST, SW",
+    "shortRule": "S loves teaming up with other letters — sc, sk, sl, sm, sn, sp, st, sw all blend BOTH sounds together.",
+    "longExplanation": "S is the friendliest letter — it can team up with almost anyone! Each S-blend keeps both sounds. Snake = sn + ake. Star = st + ar. Swim = sw + im. Hiss the S, then bump right into the next letter.",
+    "examples": [
+      {
+        "word": "star",
+        "explain": "S + T blend: st + 'ar' — the twinkly thing in the sky."
+      },
+      {
+        "word": "snake",
+        "explain": "S + N blend: sn + 'ake'."
+      },
+      {
+        "word": "swim",
+        "explain": "S + W blend: sw + 'im'."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "Spell the twinkly light in the night sky. Starts with ST.",
+        "answer": "star"
+      },
+      {
+        "prompt": "Spell the slithery animal. Starts with SN.",
+        "answer": "snake"
+      },
+      {
+        "prompt": "Spell what you do in a pool. Starts with SW.",
+        "answer": "swim"
+      }
+    ],
+    "relatedRules": [
+      "blends-l-family",
+      "blends-r-family"
+    ]
+  },
+  {
+    "id": "long-vowels",
+    "level": 2,
+    "title": "Long Vowel Sounds",
+    "shortRule": "Long vowels say their own name — A, E, I, O, U — just like in the alphabet song.",
+    "longExplanation": "When a vowel says its name, that's a LONG vowel. A says 'ay' (cake), E says 'ee' (see), I says 'eye' (kite), O says 'oh' (boat), U says 'you' (cute). Long vowels often need help from another letter — like a silent E at the end, or two vowels together.",
+    "examples": [
+      {
+        "word": "cake",
+        "explain": "Long A says its name, thanks to the silent E."
+      },
+      {
+        "word": "boat",
+        "explain": "Long O — the A is helping the O say its name."
+      },
+      {
+        "word": "kite",
+        "explain": "Long I — silent E makes the I say 'eye'."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "What sound does the A make in 'cake'?",
+        "answer": "ay",
+        "hint": "It says its own name."
+      },
+      {
+        "prompt": "Spell the sweet treat you eat at a birthday party.",
+        "answer": "cake"
+      },
+      {
+        "prompt": "Spell what floats on the water.",
+        "answer": "boat"
+      }
+    ],
+    "relatedRules": [
+      "short-vowels",
+      "silent-e",
+      "vowel-teams"
+    ]
+  },
+  {
+    "id": "short-vowels",
+    "level": 2,
+    "title": "Short Vowel Sounds",
+    "shortRule": "When a word has just one vowel between two consonants, the vowel usually says its short sound.",
+    "longExplanation": "Short vowels are quick little sounds: A says 'ah' (cat), E says 'eh' (bed), I says 'ih' (pig), O says 'ah/aw' (dog), U says 'uh' (sun). These short words are called CVC words — consonant, vowel, consonant.",
+    "examples": [
+      {
+        "word": "cat",
+        "explain": "Short A sound: 'ah'."
+      },
+      {
+        "word": "bed",
+        "explain": "Short E sound: 'eh'."
+      },
+      {
+        "word": "pig",
+        "explain": "Short I sound: 'ih'."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "What sound does the A make in 'cat'?",
+        "answer": "ah",
+        "hint": "It's a short, quick sound."
+      },
+      {
+        "prompt": "Spell the small pink farm animal. Short I sound.",
+        "answer": "pig"
+      },
+      {
+        "prompt": "Spell what you sleep in. Short E sound.",
+        "answer": "bed"
+      }
+    ],
+    "relatedRules": [
+      "long-vowels",
+      "silent-e",
+      "digraph-ck"
+    ]
+  },
+  {
+    "id": "vowel-teams",
+    "level": 2,
+    "title": "Vowel Teams — When 2 Vowels Go Walking",
+    "shortRule": "When two vowels walk together, the first one usually does the talking — and says its name.",
+    "longExplanation": "There's a famous saying: 'When two vowels go walking, the first one does the talking.' That means in words like 'boat' or 'rain', the first vowel says its long name and the second vowel is quiet. It's a great trick — but not perfect (like 'said' or 'eight').",
+    "examples": [
+      {
+        "word": "rain",
+        "explain": "AI team — A says its name, I is quiet."
+      },
+      {
+        "word": "boat",
+        "explain": "OA team — O says its name, A is quiet."
+      },
+      {
+        "word": "team",
+        "explain": "EA team — E says its name, A is quiet."
+      }
+    ],
+    "exceptions": [
+      "said",
+      "eight",
+      "great",
+      "bread"
+    ],
+    "miniQuiz": [
+      {
+        "prompt": "Spell the water that falls from clouds.",
+        "answer": "rain"
+      },
+      {
+        "prompt": "Spell a group of people who play together.",
+        "answer": "team"
+      }
+    ],
+    "relatedRules": [
+      "long-vowels"
+    ]
+  },
+  {
+    "id": "compound-words",
+    "level": 3,
+    "title": "Compound Words",
+    "shortRule": "A compound word is two whole words stuck together to make a new word.",
+    "longExplanation": "Take 'sun' and add 'shine' — you get 'sunshine'! Both little words keep their spelling. You don't drop letters or add letters; you just shove them together like Lego bricks. If you can break the word into two real words, it's probably a compound.",
+    "examples": [
+      {
+        "word": "sunshine",
+        "explain": "sun + shine. Both whole words stuck together."
+      },
+      {
+        "word": "rainbow",
+        "explain": "rain + bow. The colors that come after rain."
+      },
+      {
+        "word": "football",
+        "explain": "foot + ball. The game you play with a ball and your feet."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "Put 'sun' and 'shine' together to make one word.",
+        "answer": "sunshine"
+      },
+      {
+        "prompt": "Put 'rain' and 'bow' together.",
+        "answer": "rainbow"
+      },
+      {
+        "prompt": "Put 'star' and 'fish' together.",
+        "answer": "starfish"
+      }
+    ],
+    "relatedRules": []
+  },
+  {
+    "id": "digraph-ph",
+    "level": 3,
+    "title": "PH says F",
+    "shortRule": "P and H together make the F sound — like in 'phone'.",
+    "longExplanation": "PH is a sneaky digraph. It looks like it should sound like P, but it actually says F. These words come from Greek! Whenever you see PH, just pretend it's an F: phone = fone, phase = faze.",
+    "examples": [
+      {
+        "word": "phone",
+        "explain": "PH = F. Sounds like 'fone'."
+      },
+      {
+        "word": "graph",
+        "explain": "PH at the end — sounds like 'graf'."
+      },
+      {
+        "word": "elephant",
+        "explain": "PH in the middle — el-e-FANT."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "Spell the thing you call your grandma on. (PH word.)",
+        "answer": "phone"
+      },
+      {
+        "prompt": "Spell the big animal with a trunk. (Has PH in the middle.)",
+        "answer": "elephant"
+      }
+    ],
+    "relatedRules": [
+      "digraph-sh",
+      "digraph-ch"
+    ]
+  },
+  {
+    "id": "irregular-sight-words",
+    "level": 3,
+    "title": "Sight Words That Break the Rules",
+    "shortRule": "Some common words don't follow the rules — you just have to remember them by sight.",
+    "longExplanation": "English borrowed words from lots of languages, so some words spell themselves in weird ways. Words like 'said', 'was', 'of', and 'one' don't sound like they look. We call them SIGHT WORDS — you learn them by seeing them over and over until they stick.",
+    "examples": [
+      {
+        "word": "said",
+        "explain": "Looks like it should rhyme with 'paid' — but it rhymes with 'bed'!"
+      },
+      {
+        "word": "was",
+        "explain": "Looks like 'wass' — but sounds like 'wuz'."
+      },
+      {
+        "word": "of",
+        "explain": "Spelled with an F but sounds like a V — 'uv'."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "Spell the past-tense word for 'say'. (Rhymes with 'bed'.)",
+        "answer": "said"
+      },
+      {
+        "prompt": "Spell the past-tense word for 'is'. (Sounds like 'wuz'.)",
+        "answer": "was"
+      }
+    ],
+    "relatedRules": []
+  },
+  {
+    "id": "plurals-add-s",
+    "level": 3,
+    "title": "Plurals — Just Add S",
+    "shortRule": "To make most words mean 'more than one', just add an S at the end.",
+    "longExplanation": "One cat, two cats. One dog, two dogs. Easy! For most nouns, just stick an S on the end and it means more than one. This is the most common plural rule in English.",
+    "examples": [
+      {
+        "word": "cats",
+        "explain": "More than one cat = cat + s."
+      },
+      {
+        "word": "dogs",
+        "explain": "More than one dog = dog + s."
+      },
+      {
+        "word": "books",
+        "explain": "More than one book = book + s."
+      }
+    ],
+    "exceptions": [
+      "mice",
+      "feet",
+      "children"
+    ],
+    "miniQuiz": [
+      {
+        "prompt": "Make 'cat' mean more than one.",
+        "answer": "cats"
+      },
+      {
+        "prompt": "Make 'book' mean more than one.",
+        "answer": "books"
+      }
+    ],
+    "relatedRules": [
+      "plurals-add-es",
+      "plurals-y-to-i",
+      "plurals-irregular"
+    ]
+  },
+  {
+    "id": "contractions",
+    "level": 4,
+    "title": "Contractions — Squishing Words Together",
+    "shortRule": "A contraction smooshes two words into one and uses an apostrophe to mark the missing letters.",
+    "longExplanation": "When we talk fast, we mash words together. 'Do not' becomes 'don't'. 'I will' becomes 'I'll'. The apostrophe (') is like a tiny gravestone showing where letters used to be. Some are sneaky: 'will not' becomes 'won't' — the whole word changes!",
+    "examples": [
+      {
+        "word": "don't",
+        "explain": "do + not. The apostrophe replaces the O in 'not'."
+      },
+      {
+        "word": "I'll",
+        "explain": "I + will. The apostrophe replaces 'wi'."
+      },
+      {
+        "word": "won't",
+        "explain": "will + not — but this one is tricky! It changes spelling."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "Squish 'do not' into a contraction.",
+        "answer": "don't"
+      },
+      {
+        "prompt": "Squish 'I am' into a contraction.",
+        "answer": "I'm"
+      },
+      {
+        "prompt": "Squish 'can not' into a contraction.",
+        "answer": "can't"
+      }
+    ],
+    "relatedRules": [
+      "possessives"
+    ]
+  },
+  {
+    "id": "plurals-add-es",
+    "level": 4,
+    "title": "Plurals — Add ES",
+    "shortRule": "When a word ends in s, x, z, ch, or sh, add ES (not just S) to make it plural.",
+    "longExplanation": "Try to say 'foxs' — your tongue gets stuck! That's why we add ES: foxes, buses, dishes, watches, buzzes. The extra E gives your mouth a little break so you can say the S clearly. Trick to remember: think 'sex chez' — s, x, z, ch, sh.",
+    "examples": [
+      {
+        "word": "boxes",
+        "explain": "box ends in X, so add ES."
+      },
+      {
+        "word": "dishes",
+        "explain": "dish ends in SH, so add ES."
+      },
+      {
+        "word": "buses",
+        "explain": "bus ends in S, so add ES."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "Make 'fox' mean more than one.",
+        "answer": "foxes"
+      },
+      {
+        "prompt": "Make 'dish' mean more than one.",
+        "answer": "dishes"
+      },
+      {
+        "prompt": "Make 'church' mean more than one.",
+        "answer": "churches"
+      }
+    ],
+    "relatedRules": [
+      "plurals-add-s",
+      "plurals-y-to-i"
+    ]
+  },
+  {
+    "id": "plurals-irregular",
+    "level": 4,
+    "title": "Weird Plurals — Mice, Feet, Children",
+    "shortRule": "A few words change shape completely when there's more than one. You have to remember them.",
+    "longExplanation": "Some plurals don't follow ANY rule. One mouse, two MICE (not 'mouses'). One foot, two FEET. One child, three CHILDREN. These are old English words that kept their old plural forms. You just have to learn them by heart.",
+    "examples": [
+      {
+        "word": "mice",
+        "explain": "Plural of mouse — the whole word changes!"
+      },
+      {
+        "word": "feet",
+        "explain": "Plural of foot — OO becomes EE."
+      },
+      {
+        "word": "children",
+        "explain": "Plural of child — adds REN at the end."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "What is the plural of 'mouse'?",
+        "answer": "mice"
+      },
+      {
+        "prompt": "What is the plural of 'foot'?",
+        "answer": "feet"
+      },
+      {
+        "prompt": "What is the plural of 'tooth'?",
+        "answer": "teeth"
+      }
+    ],
+    "relatedRules": [
+      "plurals-add-s",
+      "plurals-add-es"
+    ]
+  },
+  {
+    "id": "silent-e",
+    "level": 4,
+    "title": "Silent E (Magic E)",
+    "shortRule": "When a word ends in E, the E is silent but it makes the vowel say its own name.",
+    "longExplanation": "Look at 'cap' — the A says 'ah'. Now add a silent E: 'cape' — the A jumps up and says its name! The E is like a quiet ninja at the end of the word; you don't hear it, but it does the magic. It works for almost every vowel: tube, hope, kite, theme.",
+    "examples": [
+      {
+        "word": "cake",
+        "without": "cak",
+        "explain": "The E makes the A say its name."
+      },
+      {
+        "word": "kite",
+        "without": "kit",
+        "explain": "Without the E it's a baby cat. With the E, it flies!"
+      },
+      {
+        "word": "hope",
+        "without": "hop",
+        "explain": "Hop means jump. Hope means to wish."
+      }
+    ],
+    "exceptions": [
+      "have",
+      "give",
+      "live",
+      "love",
+      "come",
+      "some"
+    ],
+    "miniQuiz": [
+      {
+        "prompt": "Add the silent E to make 'rid' mean 'to travel on a bike'.",
+        "answer": "ride"
+      },
+      {
+        "prompt": "Spell the word for 'a wish' (it's 'hop' with silent E).",
+        "answer": "hope"
+      },
+      {
+        "prompt": "Add silent E to 'cap' to make a superhero's cloak.",
+        "answer": "cape"
+      }
+    ],
+    "relatedRules": [
+      "long-vowels",
+      "drop-silent-e"
+    ]
+  },
+  {
+    "id": "change-y-to-i",
+    "level": 5,
+    "title": "Change Y to I",
+    "shortRule": "When a word ends in a consonant + Y, change the Y to I before adding most endings.",
+    "longExplanation": "Cry + s = cries (change Y to I, then add ES). Baby + s = babies. Happy + er = happier. The Y at the end of these words is acting like a vowel, but when we add an ending it transforms into an I. Tip: keep the Y if there's a vowel right before it (play → plays) or if you're adding -ING (cry → crying).",
+    "examples": [
+      {
+        "word": "cries",
+        "explain": "cry → change Y to I → add ES = cries."
+      },
+      {
+        "word": "babies",
+        "explain": "baby → change Y to I → add ES = babies."
+      },
+      {
+        "word": "happier",
+        "explain": "happy → change Y to I → add ER = happier."
+      }
+    ],
+    "exceptions": [
+      "plays",
+      "crying",
+      "flying"
+    ],
+    "miniQuiz": [
+      {
+        "prompt": "Make 'baby' mean more than one.",
+        "answer": "babies"
+      },
+      {
+        "prompt": "Make 'cry' mean it's happening now (add S).",
+        "answer": "cries"
+      },
+      {
+        "prompt": "Make 'happy' mean 'more happy'.",
+        "answer": "happier"
+      }
+    ],
+    "relatedRules": [
+      "plurals-y-to-i",
+      "y-as-vowel"
+    ]
+  },
+  {
+    "id": "double-consonant",
+    "level": 5,
+    "title": "Double the Consonant Rule",
+    "shortRule": "When a short word ends in one vowel + one consonant, DOUBLE the last consonant before adding -ING or -ED.",
+    "longExplanation": "Look at 'hop'. If you just add -ing, you get 'hoping' — which is a different word! To keep the short vowel sound, you double the last letter: hopping. Think of the double letter as a guard, blocking the new ending from making the vowel long. Hop → hopping. Run → running. Sit → sitting.",
+    "examples": [
+      {
+        "word": "hopping",
+        "explain": "hop has short O. Double the P so it stays short: hopping."
+      },
+      {
+        "word": "running",
+        "explain": "run has short U. Double the N: running."
+      },
+      {
+        "word": "sitting",
+        "explain": "sit has short I. Double the T: sitting."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "Add -ING to 'hop' (it means jumping, not wishing).",
+        "answer": "hopping"
+      },
+      {
+        "prompt": "Add -ING to 'run'.",
+        "answer": "running"
+      },
+      {
+        "prompt": "Add -ED to 'stop'.",
+        "answer": "stopped"
+      }
+    ],
+    "relatedRules": [
+      "drop-silent-e",
+      "short-vowels"
+    ]
+  },
+  {
+    "id": "drop-silent-e",
+    "level": 5,
+    "title": "Drop the E Before Adding -ING or -ED",
+    "shortRule": "When a word ends in silent E, drop the E before adding an ending that starts with a vowel.",
+    "longExplanation": "The silent E was helping the vowel say its name. When you add -ING or -ED, the new vowel can do that job instead, so you don't need the E anymore. Hope + ing = hoping (drop the E). Bake + ed = baked (drop the E). Bye-bye, silent ninja!",
+    "examples": [
+      {
+        "word": "hoping",
+        "explain": "hope - e + ing = hoping. Drop the E!"
+      },
+      {
+        "word": "baked",
+        "explain": "bake - e + ed = baked."
+      },
+      {
+        "word": "riding",
+        "explain": "ride - e + ing = riding."
+      }
+    ],
+    "exceptions": [
+      "seeing",
+      "agreeing"
+    ],
+    "miniQuiz": [
+      {
+        "prompt": "Add -ING to 'hope'.",
+        "answer": "hoping"
+      },
+      {
+        "prompt": "Add -ED to 'bake'.",
+        "answer": "baked"
+      },
+      {
+        "prompt": "Add -ING to 'ride'.",
+        "answer": "riding"
+      }
+    ],
+    "relatedRules": [
+      "silent-e",
+      "double-consonant"
+    ]
+  },
+  {
+    "id": "homophones-here-hear",
+    "level": 5,
+    "title": "Homophones: here vs hear",
+    "shortRule": "HERE = a place (this spot). HEAR = what you do with your ears.",
+    "longExplanation": "HERE means this place ('come HERE'). HEAR is what you do with your EARs ('I HEAR a bird'). Easy trick: HEAR has the word EAR inside it — and you hear with your ears!",
+    "examples": [
+      {
+        "word": "here",
+        "explain": "A place: 'Sit HERE.'"
+      },
+      {
+        "word": "hear",
+        "explain": "Use your ears: 'I HEAR music.' (Has EAR inside!)"
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "Which one has 'ear' inside it?",
+        "answer": "hear"
+      },
+      {
+        "prompt": "Fill in: 'Come ___ right now.'",
+        "answer": "here"
+      },
+      {
+        "prompt": "Fill in: 'Did you ___ that noise?'",
+        "answer": "hear"
+      }
+    ],
+    "relatedRules": [
+      "homophones-to-too-two"
+    ]
+  },
+  {
+    "id": "homophones-its",
+    "level": 5,
+    "title": "Homophones: its vs it's",
+    "shortRule": "ITS = belongs to it (no apostrophe!). IT'S = it is (with apostrophe).",
+    "longExplanation": "This one is sneaky! Usually an apostrophe means 'belongs to', but NOT here. ITS (no apostrophe) means belongs to it: 'The dog wags ITS tail.' IT'S (with apostrophe) means IT IS: 'IT'S raining.' Trick: if you can swap it for 'it is', use IT'S.",
+    "examples": [
+      {
+        "word": "its",
+        "explain": "Belongs to it: 'The cat licks ITS paw.' No apostrophe."
+      },
+      {
+        "word": "it's",
+        "explain": "Means 'it is': 'IT'S cold outside.'"
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "Which means 'it is'?",
+        "answer": "it's"
+      },
+      {
+        "prompt": "Fill in: 'The dog wagged ___ tail.'",
+        "answer": "its"
+      },
+      {
+        "prompt": "Fill in: '___ time for bed.' (Means 'it is'.)",
+        "answer": "it's"
+      }
+    ],
+    "relatedRules": [
+      "homophones-to-too-two",
+      "homophones-there",
+      "homophones-your",
+      "possessives"
+    ]
+  },
+  {
+    "id": "homophones-there",
+    "level": 5,
+    "title": "Homophones: there, their, they're",
+    "shortRule": "THERE = a place. THEIR = belongs to them. THEY'RE = they are.",
+    "longExplanation": "All three sound the same but have very different jobs. THERE points to a place (look over THERE — see the HERE inside it?). THEIR shows ownership (THEIR house — the I is for 'I own it'). THEY'RE is a contraction of THEY ARE (apostrophe = missing letters).",
+    "examples": [
+      {
+        "word": "there",
+        "explain": "A place: 'Look over THERE.' (Contains 'here'!)"
+      },
+      {
+        "word": "their",
+        "explain": "Belongs to them: 'THEIR cat is fluffy.'"
+      },
+      {
+        "word": "they're",
+        "explain": "Means 'they are': 'THEY'RE my friends.'"
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "Which one means 'they are'?",
+        "answer": "they're"
+      },
+      {
+        "prompt": "Which one shows a place?",
+        "answer": "there"
+      },
+      {
+        "prompt": "Fill in: '___ dog is brown.' (Belongs to them.)",
+        "answer": "their"
+      }
+    ],
+    "relatedRules": [
+      "homophones-to-too-two",
+      "homophones-your",
+      "homophones-its"
+    ]
+  },
+  {
+    "id": "homophones-to-too-two",
+    "level": 5,
+    "title": "Homophones: to, too, two",
+    "shortRule": "These three sound the same but mean different things: TO (toward), TOO (also/very), TWO (the number 2).",
+    "longExplanation": "Homophones are words that SOUND alike but are spelled differently. To, too, and two are the trickiest. TO = direction (I go TO school). TOO = also or very (me TOO, way TOO hot). TWO = the number after one. Memory trick: TOO has an extra O because it means EXTRA.",
+    "examples": [
+      {
+        "word": "to",
+        "explain": "Direction word: 'Go TO the store.'"
+      },
+      {
+        "word": "too",
+        "explain": "Means also or very: 'I want some TOO.' Extra O for extra meaning."
+      },
+      {
+        "word": "two",
+        "explain": "The number 2: 'I have TWO eyes.'"
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "Which one means the number 2?",
+        "answer": "two"
+      },
+      {
+        "prompt": "Which one means 'also'?",
+        "answer": "too"
+      },
+      {
+        "prompt": "Fill in: 'I'm going ___ the park.'",
+        "answer": "to"
+      }
+    ],
+    "relatedRules": [
+      "homophones-there",
+      "homophones-your",
+      "homophones-its"
+    ]
+  },
+  {
+    "id": "homophones-your",
+    "level": 5,
+    "title": "Homophones: your vs you're",
+    "shortRule": "YOUR = belongs to you. YOU'RE = you are.",
+    "longExplanation": "YOUR shows that something belongs to you (YOUR book). YOU'RE is a smooshed-together way of saying YOU ARE (the apostrophe stands for the missing A). Trick: if you can swap it for 'you are' and it still makes sense, use YOU'RE.",
+    "examples": [
+      {
+        "word": "your",
+        "explain": "Belongs to you: 'Is this YOUR backpack?'"
+      },
+      {
+        "word": "you're",
+        "explain": "Means 'you are': 'YOU'RE my best friend.'"
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "Which means 'you are'?",
+        "answer": "you're"
+      },
+      {
+        "prompt": "Fill in: 'Is this ___ jacket?'",
+        "answer": "your"
+      },
+      {
+        "prompt": "Fill in: '___ so silly!' (Means 'you are'.)",
+        "answer": "you're"
+      }
+    ],
+    "relatedRules": [
+      "homophones-to-too-two",
+      "homophones-there",
+      "homophones-its"
+    ]
+  },
+  {
+    "id": "plurals-y-to-i",
+    "level": 5,
+    "title": "Plurals — Change Y to I, Then Add ES",
+    "shortRule": "When a word ends in consonant + Y, change Y to I and add ES to make it plural.",
+    "longExplanation": "One baby, two babies. One puppy, two puppies. The Y at the end turns into an I, and we add ES. But watch out — if a VOWEL comes right before the Y, just add S (boy → boys, key → keys).",
+    "examples": [
+      {
+        "word": "babies",
+        "explain": "baby → babi + es."
+      },
+      {
+        "word": "puppies",
+        "explain": "puppy → puppi + es."
+      },
+      {
+        "word": "cherries",
+        "explain": "cherry → cherri + es."
+      }
+    ],
+    "exceptions": [
+      "boys",
+      "toys",
+      "keys"
+    ],
+    "miniQuiz": [
+      {
+        "prompt": "Make 'puppy' mean more than one.",
+        "answer": "puppies"
+      },
+      {
+        "prompt": "Make 'fly' mean more than one.",
+        "answer": "flies"
+      },
+      {
+        "prompt": "Make 'boy' mean more than one. (Trick — there's a vowel before Y!)",
+        "answer": "boys"
+      }
+    ],
+    "relatedRules": [
+      "change-y-to-i",
+      "plurals-add-es"
+    ]
+  },
+  {
+    "id": "possessives",
+    "level": 5,
+    "title": "Possessives — 's and s'",
+    "shortRule": "Add 's to show one person owns something. Add just s' if MORE THAN ONE person owns it.",
+    "longExplanation": "The dog's bone = the bone belongs to ONE dog. The dogs' bones = the bones belong to MANY dogs. The apostrophe says 'this belongs to'. If the owner is one (singular), apostrophe goes BEFORE the S. If the owners are many (plural ending in S), apostrophe goes AFTER the S.",
+    "examples": [
+      {
+        "word": "dog's",
+        "explain": "Belongs to one dog. Apostrophe + S."
+      },
+      {
+        "word": "dogs'",
+        "explain": "Belongs to many dogs. S + apostrophe."
+      },
+      {
+        "word": "Sam's",
+        "explain": "Belongs to Sam (one person)."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "How do you write 'the toy that belongs to Sam'?",
+        "answer": "Sam's toy"
+      },
+      {
+        "prompt": "How do you write 'the cage that belongs to two birds'?",
+        "answer": "birds' cage"
+      }
+    ],
+    "relatedRules": [
+      "contractions"
+    ]
+  },
+  {
+    "id": "soft-c-hard-c",
+    "level": 5,
+    "title": "Soft C and Hard C",
+    "shortRule": "C says S when it's followed by E, I, or Y. Otherwise it says K.",
+    "longExplanation": "C is a copycat. If E, I, or Y come right after it, C copies the S sound (city, cent, cycle). With any other letter, C says K (cat, cup, cot). Memory trick: C is SOFT around the SOFT vowels E and I, and HARD around the HARD ones.",
+    "examples": [
+      {
+        "word": "city",
+        "explain": "C is followed by I, so it sounds like S."
+      },
+      {
+        "word": "cat",
+        "explain": "C is followed by A, so it sounds like K."
+      },
+      {
+        "word": "cent",
+        "explain": "C is followed by E, so it sounds like S."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "What sound does C make in 'city'?",
+        "answer": "s"
+      },
+      {
+        "prompt": "What sound does C make in 'cat'?",
+        "answer": "k"
+      },
+      {
+        "prompt": "Does the C in 'cycle' sound like S or K?",
+        "answer": "s"
+      }
+    ],
+    "relatedRules": [
+      "soft-g-hard-g"
+    ]
+  },
+  {
+    "id": "soft-g-hard-g",
+    "level": 5,
+    "title": "Soft G and Hard G",
+    "shortRule": "G usually says J when it's followed by E, I, or Y. Otherwise it says its hard G sound.",
+    "longExplanation": "Just like C, G has two sounds. Soft G (sounds like J) shows up before E, I, or Y: giant, gym, gentle. Hard G (the usual 'guh') shows up everywhere else: go, gum, gas. Watch out — G has more exceptions than C (get, girl, give all have hard G even though I or E follows).",
+    "examples": [
+      {
+        "word": "giant",
+        "explain": "G is followed by I, so it sounds like J."
+      },
+      {
+        "word": "go",
+        "explain": "G is followed by O, so it's the hard G sound."
+      },
+      {
+        "word": "gym",
+        "explain": "G is followed by Y, so it sounds like J."
+      }
+    ],
+    "exceptions": [
+      "get",
+      "girl",
+      "give",
+      "gift"
+    ],
+    "miniQuiz": [
+      {
+        "prompt": "What sound does G make in 'giant'?",
+        "answer": "j"
+      },
+      {
+        "prompt": "What sound does G make in 'go'?",
+        "answer": "g"
+      },
+      {
+        "prompt": "Does the G in 'gym' sound like G or J?",
+        "answer": "j"
+      }
+    ],
+    "relatedRules": [
+      "soft-c-hard-c"
+    ]
+  },
+  {
+    "id": "i-before-e",
+    "level": 6,
+    "title": "I Before E Except After C",
+    "shortRule": "I before E, except after C, OR when it sounds like A as in 'neighbor' and 'weigh'.",
+    "longExplanation": "The classic spelling rhyme! Most words spell it IE (friend, piece, believe). But after the letter C, flip it to EI (receive, ceiling, deceive). And if the sound is 'ay' (like A), it's also EI (eight, weigh, neighbor). It's an old rule with some exceptions (weird, science) — but it's right most of the time.",
+    "examples": [
+      {
+        "word": "friend",
+        "explain": "I before E. No C, no 'ay' sound."
+      },
+      {
+        "word": "receive",
+        "explain": "Comes after C, so it's EI."
+      },
+      {
+        "word": "weigh",
+        "explain": "Sounds like 'ay', so it's EI."
+      }
+    ],
+    "exceptions": [
+      "weird",
+      "science",
+      "their",
+      "either"
+    ],
+    "miniQuiz": [
+      {
+        "prompt": "Spell the word for someone you like and play with.",
+        "answer": "friend"
+      },
+      {
+        "prompt": "Does 'receive' use IE or EI?",
+        "answer": "ei",
+        "hint": "It comes right after a C."
+      },
+      {
+        "prompt": "Spell the number that comes after seven.",
+        "answer": "eight"
+      }
+    ],
+    "relatedRules": []
+  },
+  {
+    "id": "schwa",
+    "level": 6,
+    "title": "The Schwa — The 'Uh' Sound",
+    "shortRule": "When a vowel is in the quiet part of a word, it often sounds like 'uh'. That lazy 'uh' is called the schwa.",
+    "longExplanation": "Say 'banana' out loud — bUH-NAN-UH. Those two faint 'uh' sounds are schwas. They happen on syllables you don't stress (the quiet ones). The tricky part: any vowel can sound like schwa, so you can't tell from the sound what to spell. You have to remember the word.",
+    "examples": [
+      {
+        "word": "banana",
+        "explain": "The first A and last A sound like 'uh' — those are schwas."
+      },
+      {
+        "word": "pencil",
+        "explain": "The I sounds like 'uh' — pen-cUHl."
+      },
+      {
+        "word": "about",
+        "explain": "The first A sounds like 'uh' — UH-bout."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "In 'banana', which vowel is loudest (stressed)?",
+        "answer": "a",
+        "hint": "The middle A — buh-NAN-uh."
+      },
+      {
+        "prompt": "Spell the long yellow fruit that monkeys love.",
+        "answer": "banana"
+      }
+    ],
+    "relatedRules": [
+      "vowels-consonants"
+    ]
+  },
+  {
+    "id": "suffix-tion-sion",
+    "level": 6,
+    "title": "-TION vs -SION",
+    "shortRule": "Both endings sound like 'shun', but -TION is more common. Use -SION after L or S, or when the base word ends in -de or -se.",
+    "longExplanation": "These endings turn verbs into nouns. ACT becomes ACTION. DECIDE becomes DECISION. The 'shun' sound is usually spelled -TION (action, nation, vacation). Use -SION when the base word ends in -SE (confuse → confusion) or after L or S (tension, mansion). When in doubt, try -TION first.",
+    "examples": [
+      {
+        "word": "action",
+        "explain": "From 'act' + ion. Spelled with TION."
+      },
+      {
+        "word": "vision",
+        "explain": "From 'vise' / 'visual'. Spelled with SION."
+      },
+      {
+        "word": "vacation",
+        "explain": "Big trip away from home. Ends in TION."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "Spell the word that means 'a fun trip away from home'.",
+        "answer": "vacation"
+      },
+      {
+        "prompt": "Spell the word that means 'doing something'. (From 'act'.)",
+        "answer": "action"
+      }
+    ],
+    "relatedRules": [
+      "schwa"
+    ]
+  },
+  {
+    "id": "prefix-pre-dis-mis",
+    "level": 7,
+    "title": "Prefixes: PRE-, DIS-, MIS-",
+    "shortRule": "PRE- means 'before'. DIS- means 'not' or 'opposite'. MIS- means 'wrong'.",
+    "longExplanation": "More prefix friends! PRE- = before (PREview = see before, PREschool = before school). DIS- = not or opposite (DISagree = not agree, DISlike = not like). MIS- = wrong or bad (MISspell = spell wrong, MIStake = a wrong step).",
+    "examples": [
+      {
+        "word": "preview",
+        "explain": "pre + view = see it before."
+      },
+      {
+        "word": "disagree",
+        "explain": "dis + agree = not agree."
+      },
+      {
+        "word": "misspell",
+        "explain": "mis + spell = spell it wrong. Notice the double S!"
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "What does PRE- mean?",
+        "answer": "before"
+      },
+      {
+        "prompt": "Add DIS- to 'like' to mean 'not like'.",
+        "answer": "dislike"
+      },
+      {
+        "prompt": "Add MIS- to 'spell' to mean 'spell wrong'.",
+        "answer": "misspell"
+      }
+    ],
+    "relatedRules": [
+      "prefix-un-re"
+    ]
+  },
+  {
+    "id": "prefix-un-re",
+    "level": 7,
+    "title": "Prefixes: UN- and RE-",
+    "shortRule": "A prefix is a little word-part stuck on the front. UN- means 'not'. RE- means 'again'.",
+    "longExplanation": "Prefixes change a word's meaning without changing its spelling. UN- means NOT or the opposite: happy → UNhappy (not happy). RE- means AGAIN: do → REdo (do again). You don't drop letters from the base word — just stick the prefix right on the front.",
+    "examples": [
+      {
+        "word": "unhappy",
+        "explain": "un + happy = not happy."
+      },
+      {
+        "word": "redo",
+        "explain": "re + do = do again."
+      },
+      {
+        "word": "unlock",
+        "explain": "un + lock = the opposite of lock."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "What does 'unhappy' mean?",
+        "answer": "not happy"
+      },
+      {
+        "prompt": "Add RE- to 'do' to mean 'do it again'.",
+        "answer": "redo"
+      },
+      {
+        "prompt": "Add UN- to 'lock' to mean 'open the lock'.",
+        "answer": "unlock"
+      }
+    ],
+    "relatedRules": [
+      "prefix-pre-dis-mis"
+    ]
+  },
+  {
+    "id": "suffix-ed-ing",
+    "level": 7,
+    "title": "Suffixes: -ED and -ING",
+    "shortRule": "-ED makes a verb past (happened already). -ING makes a verb happening right now.",
+    "longExplanation": "Yesterday I JUMPed. Right now I am JUMPing. -ED puts an action in the past. -ING puts it in the present (happening now). Watch the rules: short-vowel CVC words double the consonant (hop → hopping), and silent-E words drop the E (bake → baking).",
+    "examples": [
+      {
+        "word": "jumped",
+        "explain": "jump + ed = happened in the past."
+      },
+      {
+        "word": "jumping",
+        "explain": "jump + ing = happening now."
+      },
+      {
+        "word": "baked",
+        "explain": "bake - e + ed = baked."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "Add -ED to 'jump' (it happened yesterday).",
+        "answer": "jumped"
+      },
+      {
+        "prompt": "Add -ING to 'jump' (happening right now).",
+        "answer": "jumping"
+      },
+      {
+        "prompt": "Add -ING to 'bake' (drop the E!).",
+        "answer": "baking"
+      }
+    ],
+    "relatedRules": [
+      "double-consonant",
+      "drop-silent-e"
+    ]
+  },
+  {
+    "id": "suffix-ful-less",
+    "level": 7,
+    "title": "Suffixes: -FUL and -LESS",
+    "shortRule": "A suffix is a word-part stuck on the END. -FUL means 'full of'. -LESS means 'without'.",
+    "longExplanation": "Opposites! HOPEful = full of hope. HOPEless = without hope. Watch out — even though FULL has two Ls, the suffix -FUL has only ONE L (helpful, careful, joyful). LESS keeps both Ss (helpless, careless).",
+    "examples": [
+      {
+        "word": "helpful",
+        "explain": "help + ful = full of help. ONE L in -ful."
+      },
+      {
+        "word": "hopeless",
+        "explain": "hope + less = without hope."
+      },
+      {
+        "word": "careful",
+        "explain": "care + ful = full of care."
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "What does -FUL mean?",
+        "answer": "full of"
+      },
+      {
+        "prompt": "Add -LESS to 'hope' to mean 'without hope'.",
+        "answer": "hopeless"
+      },
+      {
+        "prompt": "How many Ls in the suffix -FUL?",
+        "answer": "1",
+        "hint": "Just one — it lost an L when it became a suffix."
+      }
+    ],
+    "relatedRules": [
+      "suffix-ly-ness",
+      "suffix-ed-ing"
+    ]
+  },
+  {
+    "id": "suffix-ly-ness",
+    "level": 7,
+    "title": "Suffixes: -LY and -NESS",
+    "shortRule": "-LY turns a word into an adverb ('in this way'). -NESS turns it into a noun ('the state of being').",
+    "longExplanation": "Add -LY to describe HOW you do something: quick → quickLY, slow → slowLY. Add -NESS to name the QUALITY of something: kind → kindNESS, happy → happiNESS. (Notice happy changed Y to I before adding -NESS!)",
+    "examples": [
+      {
+        "word": "quickly",
+        "explain": "quick + ly = in a quick way."
+      },
+      {
+        "word": "kindness",
+        "explain": "kind + ness = the quality of being kind."
+      },
+      {
+        "word": "happiness",
+        "explain": "happy → happi + ness. Y changed to I first!"
+      }
+    ],
+    "exceptions": [],
+    "miniQuiz": [
+      {
+        "prompt": "Add -LY to 'slow'.",
+        "answer": "slowly"
+      },
+      {
+        "prompt": "Add -NESS to 'kind'.",
+        "answer": "kindness"
+      },
+      {
+        "prompt": "Add -NESS to 'happy'. (Remember to change Y!)",
+        "answer": "happiness"
+      }
+    ],
+    "relatedRules": [
+      "suffix-ful-less",
+      "change-y-to-i"
+    ]
+  }
+]

@@ -11,6 +11,21 @@
 //
 // All functions are SSR-safe: when there's no window (Next.js server render),
 // reads return empty/undefined and writes no-op.
+//
+// TODO (LearnerProfile sync — opt-in): when Geography wants to sync progress
+// to the shared LearnerProfile (so multiple devices stay in step), wrap
+// localStorage reads/writes here so they also push to a new
+// `/api/learner/geography` endpoint, mirroring the shape of
+// `/api/learner/spelling`. The DB column already exists
+// (`DriveUser.geography` JSONB). Recommended flow:
+//   1. Add `app/api/learner/geography/route.ts` (copy `spelling` route).
+//   2. In `readProgress`, when `getLoggedInName()` returns a name, prefer
+//      a fetched copy over localStorage (and seed localStorage from it).
+//   3. In `writeProgress`, fire-and-forget a PUT to the API when logged in.
+//   4. Keep the localStorage path as the offline/anonymous fallback so
+//      open-play behaviour doesn't regress.
+// See `lib/learner/profile.ts` for `getLoggedInName` and the API patterns
+// already used by Spelling.
 
 const STORAGE_KEY = 'mammas-geography-progress';
 
