@@ -419,22 +419,31 @@ export default function Header() {
             </Link>
           </div>
 
-          {/* Mobile MP Money — chip is desktop-only, so render an explicit row here */}
+          {/* Mobile MP Money — chip is desktop-only, so render an explicit row here.
+              The balance tile is a link to /portal/money so kids can tap to see
+              their orders + earnings. */}
           {mounted && (learner ? (
-            <div className="flex items-center justify-between bg-yellow-400 text-purple-900 px-4 py-3 rounded-xl font-bold text-sm mt-2">
-              <span className="truncate">
-                <span className="font-black">{balanceCents === null ? '…' : centsToMP(balanceCents)}</span>
-                <span className="opacity-70"> · </span>
-                <span className="capitalize">{learner}</span>
-              </span>
+            <>
+              <Link
+                href="/portal/money"
+                onClick={() => setMenuOpen(false)}
+                className="flex items-center justify-between bg-yellow-400 hover:bg-yellow-300 text-purple-900 px-4 py-3 rounded-xl font-bold text-sm mt-2 transition-colors"
+              >
+                <span className="truncate">
+                  <span className="font-black">{balanceCents === null ? '…' : centsToMP(balanceCents)}</span>
+                  <span className="opacity-70"> · </span>
+                  <span className="capitalize">{learner}</span>
+                </span>
+                <span className="text-xs ml-3 shrink-0">See →</span>
+              </Link>
               <button
                 type="button"
                 onClick={() => { logout(); setMenuOpen(false); }}
-                className="text-xs underline ml-3 shrink-0"
+                className="text-yellow-300 hover:text-yellow-200 text-xs underline px-4 pb-1 text-left"
               >
                 Log out
               </button>
-            </div>
+            </>
           ) : (
             <Link
               href="/shop/login"

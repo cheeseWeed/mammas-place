@@ -38,9 +38,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true });
   }
 
-  // First-time setup — anyone with the page can seed it.
+  // First-time setup — anyone can seed, but only to the well-known 0000.
+  // This stops a kid from quietly setting a custom PIN before mom logs in
+  // and locking her out. Worst case = same as /parent/login's first-time
+  // path: kid clicks a button, row seeds to 0000, mom logs in with 0000
+  // and rotates from here using currentPin: '0000'.
   await prisma.parentConfig.create({
-    data: { id: 1, parentPinHash: hashParentPin(body.newPin) },
+    data: { id: 1, parentPinHash: hashParentPin('0000') },
   });
   return NextResponse.json({ ok: true, firstTime: true });
 }

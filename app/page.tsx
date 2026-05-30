@@ -44,6 +44,15 @@ export default function HomePage() {
               View Sales
             </Link>
           </div>
+          <div className="mt-6 inline-flex flex-wrap items-center justify-center gap-2 text-sm text-purple-100">
+            <span>Earn MP by learning →</span>
+            <Link href="/shop/login" className="bg-purple-900/40 hover:bg-purple-900/60 text-yellow-300 hover:text-yellow-200 font-bold px-3 py-1.5 rounded-full border border-yellow-300/50 transition-colors">
+              Log in for MP
+            </Link>
+            <Link href="/portal/money" className="bg-purple-900/40 hover:bg-purple-900/60 text-yellow-300 hover:text-yellow-200 font-bold px-3 py-1.5 rounded-full border border-yellow-300/50 transition-colors">
+              See my MP
+            </Link>
+          </div>
         </div>
       </section>
 

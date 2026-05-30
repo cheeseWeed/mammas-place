@@ -26,19 +26,26 @@ export default function BalanceChip() {
   // centsToMP returns "X.YYMP" (e.g. "10.54MP", "10MP" for whole amounts).
   const amount = balanceCents === null ? (loading ? '…' : '—') : centsToMP(balanceCents);
 
+  // Chip is the link to the kid's own account page. Tap the chip → see balance,
+  // orders, and earnings detail. Logout is a separate button so a tap won't sign
+  // them out by accident.
   return (
-    <div className="hidden sm:inline-flex items-center gap-2 bg-yellow-400 text-purple-900 font-bold text-xs px-3 py-2 rounded-full shadow">
-      <span className="font-black">{amount}</span>
-      <span className="opacity-70">·</span>
-      <span className="capitalize max-w-[8ch] truncate" title={learner}>
-        {learner}
-      </span>
+    <div className="hidden sm:inline-flex items-center gap-2 bg-yellow-400 text-purple-900 font-bold text-xs rounded-full shadow">
+      <Link
+        href="/portal/money"
+        className="flex items-center gap-2 pl-3 py-2 hover:text-purple-700 transition-colors"
+        title="See my MP"
+      >
+        <span className="font-black">{amount}</span>
+        <span className="opacity-70">·</span>
+        <span className="capitalize max-w-[8ch] truncate">{learner}</span>
+      </Link>
       <button
         type="button"
         onClick={logout}
         aria-label="Log out"
         title="Log out"
-        className="ml-1 text-purple-900/70 hover:text-purple-900 font-black text-sm leading-none"
+        className="pr-3 py-2 text-purple-900/70 hover:text-purple-900 font-black text-sm leading-none"
       >
         ×
       </button>

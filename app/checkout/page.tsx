@@ -116,9 +116,14 @@ export default function CheckoutPage() {
           </div>
         </div>
 
-        <Link href="/shop" className="bg-purple-700 hover:bg-purple-600 text-white font-black px-8 py-4 rounded-2xl text-lg inline-block transition-colors">
-          Keep Shopping ✨
-        </Link>
+        <div className="flex flex-wrap gap-3 justify-center">
+          <Link href="/portal/money" className="bg-yellow-400 hover:bg-yellow-300 text-purple-900 font-black px-6 py-3 rounded-2xl text-base inline-block transition-colors">
+            💰 See my MP
+          </Link>
+          <Link href="/shop" className="bg-purple-700 hover:bg-purple-600 text-white font-black px-6 py-3 rounded-2xl text-base inline-block transition-colors">
+            Keep Shopping ✨
+          </Link>
+        </div>
       </div>
     );
   }
@@ -268,13 +273,23 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              <button
-                type="button"
-                disabled
-                className="mt-5 w-full bg-yellow-200 cursor-not-allowed text-purple-900/60 font-black py-4 rounded-2xl text-lg"
-              >
-                Not enough MP yet
-              </button>
+              <div className="mt-5 grid sm:grid-cols-2 gap-3">
+                <Link
+                  href="/portal/money"
+                  className="bg-yellow-400 hover:bg-yellow-300 text-purple-900 font-black py-3 rounded-2xl text-base text-center transition-colors"
+                >
+                  💰 See my MP
+                </Link>
+                <Link
+                  href="/shop"
+                  className="bg-purple-700 hover:bg-purple-600 text-white font-black py-3 rounded-2xl text-base text-center transition-colors"
+                >
+                  Keep Browsing
+                </Link>
+              </div>
+              <p className="text-xs text-gray-500 mt-3">
+                Earn more MP by finishing learning rounds in Math, Spelling, and Geography.
+              </p>
             </section>
           )}
 
