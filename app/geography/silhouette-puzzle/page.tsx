@@ -14,8 +14,16 @@ import Link from 'next/link';
 import statesData from '@/data/states.json';
 import { SilhouetteEngine } from '@/components/geography';
 import { readPhase, updatePhase } from '@/lib/geography/progress';
-import { newIdempotencyKey, submitEarn } from '@/lib/money/earn-client';
+import {
+  isPending,
+  newIdempotencyKey,
+  submitEarn,
+  type EarnResponse,
+} from '@/lib/money/earn-client';
 import { useLearner } from '@/context/LearnerContext';
+import PendingEarnPrompt from '@/components/PendingEarnPrompt';
+
+type PendingEarn = Extract<EarnResponse, { pending: true }>;
 
 type RoundSize = 5 | 10 | 20 | 50;
 type Region = null | 'Northeast' | 'Midwest' | 'South' | 'West';
@@ -48,13 +56,16 @@ export default function SilhouettePuzzlePage() {
   const [result, setResult] = useState<Result | null>(null);
   // MP earned message for the most recent finished round.
   const [earnNote, setEarnNote] = useState<string | null>(null);
-  const { learner, refresh: refreshBalance } = useLearner();
+  // Anon-kid pending earn — populated when the server returns a pending preview.
+  const [pendingEarn, setPendingEarn] = useState<PendingEarn | null>(null);
+  const { refresh: refreshBalance } = useLearner();
 
   function startRound(size: RoundSize, region: Region) {
     setResult(null);
     setActiveRegion(region);
     setActiveSize(size);
     setEarnNote(null);
+    setPendingEarn(null);
   }
 
   function handleComplete(roundResult: { score: number; total: number; misses: string[] }) {
@@ -80,27 +91,30 @@ export default function SilhouettePuzzlePage() {
     });
     setActiveSize(null);
 
-    // MP earn — only for logged-in learners. Server decides cents.
-    if (learner) {
-      const key = newIdempotencyKey('geo-silhouette-puzzle');
-      void submitEarn(
-        'geography',
-        'quiz',
-        { correct: roundResult.score, total: roundResult.total, quiz: 'silhouette-puzzle' },
-        key,
-      ).then((res) => {
-        if ('error' in res) {
-          setEarnNote(`MP didn't record: ${res.error}`);
-          return;
-        }
-        if (res.centsEarned > 0) {
-          setEarnNote(`+${(res.centsEarned / 100).toFixed(2)}MP earned — ${res.reason}`);
-          void refreshBalance();
-        } else {
-          setEarnNote(res.reason || 'No MP this round.');
-        }
-      });
-    }
+    // MP earn — server decides cents. Anon kids get a pending preview they
+    // can claim by registering/logging in from the results card.
+    const key = newIdempotencyKey('geo-silhouette-puzzle');
+    void submitEarn(
+      'geography',
+      'quiz',
+      { correct: roundResult.score, total: roundResult.total, quiz: 'silhouette-puzzle' },
+      key,
+    ).then((res) => {
+      if ('error' in res) {
+        setEarnNote(`MP didn't record: ${res.error}`);
+        return;
+      }
+      if (isPending(res)) {
+        setPendingEarn(res);
+        return;
+      }
+      if (res.centsEarned > 0) {
+        setEarnNote(`+${(res.centsEarned / 100).toFixed(2)}MP earned — ${res.reason}`);
+        void refreshBalance();
+      } else {
+        setEarnNote(res.reason || 'No MP this round.');
+      }
+    });
   }
 
   const showOverlay = activeSize === null;
@@ -161,6 +175,12 @@ export default function SilhouettePuzzlePage() {
                 <ResultsCard
                   result={result}
                   earnNote={earnNote}
+                  pendingEarn={pendingEarn}
+                  onPendingClaimed={(cents) => {
+                    setPendingEarn(null);
+                    setEarnNote(`+${(cents / 100).toFixed(2)}MP earned (banked!)`);
+                    void refreshBalance();
+                  }}
                   onPlayAgain={() => startRound(result.size, result.region)}
                   onBack={() => setResult(null)}
                 />
@@ -263,11 +283,15 @@ function RoundPicker({ onPick }: { onPick: (size: RoundSize, region: Region) => 
 function ResultsCard({
   result,
   earnNote,
+  pendingEarn,
+  onPendingClaimed,
   onPlayAgain,
   onBack,
 }: {
   result: Result;
   earnNote: string | null;
+  pendingEarn: PendingEarn | null;
+  onPendingClaimed: (cents: number) => void;
   onPlayAgain: () => void;
   onBack: () => void;
 }) {
@@ -292,11 +316,23 @@ function ResultsCard({
         </p>
       </div>
 
-      {earnNote && (
+      {pendingEarn ? (
+        <PendingEarnPrompt
+          pending={{
+            section: pendingEarn.section,
+            kind: pendingEarn.kind,
+            payload: pendingEarn.payload,
+            idempotencyKey: pendingEarn.idempotencyKey,
+            centsEarned: pendingEarn.centsEarned,
+            reason: pendingEarn.reason,
+          }}
+          onClaimed={onPendingClaimed}
+        />
+      ) : earnNote ? (
         <div className="bg-yellow-50 border-2 border-yellow-300 rounded-xl p-3 mb-4 text-center text-sm font-bold text-yellow-900">
           💰 {earnNote}
         </div>
-      )}
+      ) : null}
 
       {result.misses.length > 0 && (
         <div className="bg-emerald-50 rounded-xl p-3 md:p-4 mb-4 border border-emerald-100">
