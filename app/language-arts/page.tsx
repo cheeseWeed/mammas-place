@@ -46,32 +46,42 @@ export default function LanguageArtsHubPage() {
               <Card
                 phaseLabel="Phase L2"
                 title="Grammar Basics"
-                subtitle="Parts of speech, subject/verb agreement, tense. Coming soon."
-                href="#"
+                subtitle="Parts of speech, subject-verb agreement, and verb tense. Multiple-choice drill with the rule shown on a miss."
+                href="/language-arts/grammar"
+                cta="Start drilling"
+                shipped
               />
               <Card
                 phaseLabel="Phase L3"
                 title="Punctuation"
-                subtitle="Commas, apostrophes, quotation marks, semicolons. Coming soon."
-                href="#"
+                subtitle="Commas, apostrophes, quotation marks, end punctuation — plus semicolons, colons, and dash vs hyphen on hard tier."
+                href="/language-arts/punctuation"
+                cta="Start drilling"
+                shipped
               />
               <Card
                 phaseLabel="Phase L4"
                 title="Phonics & Sounds"
-                subtitle="Vowel teams, blends, digraphs. Pairs with Spelling. Coming soon."
-                href="#"
+                subtitle="Short & long vowels, consonant blends, digraphs, vowel teams. Listen-and-pick drill with the rules along the way."
+                href="/language-arts/phonics"
+                cta="Start drilling"
+                shipped
               />
               <Card
                 phaseLabel="Phase L5"
                 title="Dictionary Skills"
-                subtitle="Looking up words, pronunciation guides, multiple definitions. Coming soon."
-                href="#"
+                subtitle="Alphabetical order, guide words, pronunciation, multiple meanings, parts of speech, and word origins."
+                href="/language-arts/dictionary"
+                cta="Start drilling"
+                shipped
               />
               <Card
                 phaseLabel="Phase L6"
                 title="Thesaurus Skills"
-                subtitle="Finding the right shade of meaning. Coming soon."
-                href="#"
+                subtitle="Synonyms, antonyms, shade of meaning, repetition fixes, and strength scales. Pick a skill or mix them up."
+                href="/language-arts/thesaurus"
+                cta="Start drilling"
+                shipped
               />
             </div>
           </section>

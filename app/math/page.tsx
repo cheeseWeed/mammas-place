@@ -48,14 +48,18 @@ export default function MathHubPage() {
               <PhaseCard
                 phaseLabel="Phase 2"
                 title="Fact Families"
-                subtitle="Master triangles like 4×6=24 / 24÷6=4. Coming soon."
-                href="#"
+                subtitle="Master triangles like 4×6=24 / 24÷6=4. Fill in the blank — no timer."
+                href="/math/fact-families"
+                cta="Start fact families"
+                shipped
               />
               <PhaseCard
                 phaseLabel="Phase 3"
                 title="Word Problems"
-                subtitle="Read it, picture it, solve it. Coming soon."
-                href="#"
+                subtitle="Read it, picture it, solve it. Type the answer."
+                href="/math/word-problems"
+                cta="Start word problems"
+                shipped
               />
             </div>
           </section>

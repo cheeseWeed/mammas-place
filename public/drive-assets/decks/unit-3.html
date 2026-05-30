@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script src="/drive-assets/earn-toast.js"></script>
 <style>
 :root { --primary: #581c87; --accent: #facc15; --text: #18181b; }
 .reveal { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
@@ -1197,18 +1198,8 @@
         var completions = JSON.parse(localStorage.getItem("dl_deck_completions") || "{}");
         completions[unitKey] = Date.now();
         localStorage.setItem("dl_deck_completions", JSON.stringify(completions));
-        var __dlUser = localStorage.getItem("dl_user");
-        if (__dlUser && __dlUser !== "__anon__") {
-          fetch("/api/drive/progress", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              user: __dlUser.replace(/^"|"$/g, ""),
-              deckCompletions: completions
-            }),
-            keepalive: true
-          }).catch(function(){});
-        }
+        // Server POST + MP-earn toast (anonymous-friendly via shared helper)
+        if (window.driveEarnToast) window.driveEarnToast.postProgressAndShow();
       } catch (e) {}
     }
   });
