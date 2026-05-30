@@ -240,6 +240,14 @@ export function computeDriveQuizReward(p: DriveQuizPayload): { cents: number; re
 
 // ---------- Orchestrator ----------
 
+// Public preview: same math as awardEarn would do, but no DB writes.
+// Lets the API route show an anonymous kid "you would have earned X.XX MP"
+// so they can choose to log in and claim it. Pure function — never
+// throws, never touches the database.
+export function previewReward(req: EarnRequest): { cents: number; reason: string } {
+  return computeReward(req);
+}
+
 function computeReward(req: EarnRequest): { cents: number; reason: string } {
   switch (req.section) {
     case 'math':

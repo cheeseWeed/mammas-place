@@ -24,8 +24,28 @@ const LearnerContext = createContext<LearnerContextValue | null>(null);
 const STORAGE_KEY = 'dl_user';
 const ANON_SENTINEL = '__anon__';
 
+// The COOKIE is the source of truth — the server sets it on login/register
+// and clears it on logout. localStorage is a convenience cache that some
+// older code paths still write; it can drift out of sync (e.g. /shop/login
+// sets the cookie but not localStorage), so we trust the cookie first and
+// only fall back to localStorage when no cookie is set (covers the legacy
+// Drive HTML pages that wrote localStorage before the cookie flow existed).
+function readCookieUser(): string | null {
+  if (typeof document === 'undefined') return null;
+  const match = document.cookie
+    .split(';')
+    .map((c) => c.trim())
+    .find((c) => c.startsWith(`${STORAGE_KEY}=`));
+  if (!match) return null;
+  const raw = decodeURIComponent(match.slice(STORAGE_KEY.length + 1));
+  if (!raw || raw === ANON_SENTINEL) return null;
+  return raw;
+}
+
 function readStored(): string | null {
   if (typeof window === 'undefined') return null;
+  const fromCookie = readCookieUser();
+  if (fromCookie) return fromCookie;
   try {
     const v = localStorage.getItem(STORAGE_KEY);
     if (!v || v === ANON_SENTINEL) return null;

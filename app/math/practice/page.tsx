@@ -28,8 +28,9 @@ import {
   type Operation,
   type RoundConfig,
 } from '@/lib/math/engine';
-import { newIdempotencyKey, submitEarn } from '@/lib/money/earn-client';
+import { isPending, newIdempotencyKey, submitEarn, type EarnResponse } from '@/lib/money/earn-client';
 import { centsToMP } from '@/lib/money/format';
+import PendingEarnPrompt from '@/components/PendingEarnPrompt';
 
 export default function MathPracticePage() {
   return (
@@ -556,6 +557,7 @@ function ResultsCard({
   const [earnState, setEarnState] = useState<
     | { kind: 'pending' }
     | { kind: 'done'; cents: number; reason: string; capped: boolean }
+    | { kind: 'pendingClaim'; response: Extract<EarnResponse, { pending: true }> }
     | { kind: 'error'; message: string }
   >({ kind: 'pending' });
 
@@ -583,6 +585,10 @@ function ResultsCard({
       );
       if ('error' in res) {
         setEarnState({ kind: 'error', message: res.error });
+        return;
+      }
+      if (isPending(res)) {
+        setEarnState({ kind: 'pendingClaim', response: res });
         return;
       }
       setEarnState({
@@ -613,6 +619,26 @@ function ResultsCard({
         <Stat label="Avg time" value={`${avgSec}s`} emoji="⏱️" />
       </div>
 
+      {earnState.kind === 'pendingClaim' ? (
+        <PendingEarnPrompt
+          pending={{
+            section: earnState.response.section,
+            kind: earnState.response.kind,
+            payload: earnState.response.payload,
+            idempotencyKey: earnState.response.idempotencyKey,
+            centsEarned: earnState.response.centsEarned,
+            reason: earnState.response.reason,
+          }}
+          onClaimed={(cents) =>
+            setEarnState({
+              kind: 'done',
+              cents,
+              reason: earnState.response.reason,
+              capped: false,
+            })
+          }
+        />
+      ) : (
       <div className="rounded-2xl border-2 border-yellow-300 bg-yellow-50 p-4 mb-6 text-center">
         {earnState.kind === 'pending' && (
           <div className="text-yellow-800 font-bold">Calculating MP…</div>
@@ -639,6 +665,7 @@ function ResultsCard({
           </div>
         )}
       </div>
+      )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <button

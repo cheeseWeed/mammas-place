@@ -16,7 +16,23 @@ export type EarnSection =
 
 export type EarnResponse =
   | { ok: true; centsEarned: number; balanceCents: number; reason: string; capped?: boolean; capCents?: number }
+  | {
+      ok: true;
+      pending: true;
+      centsEarned: number;
+      reason: string;
+      section: EarnSection;
+      kind: string;
+      payload: Record<string, unknown>;
+      idempotencyKey: string;
+    }
   | { error: string };
+
+export function isPending(
+  res: EarnResponse,
+): res is Extract<EarnResponse, { pending: true }> {
+  return 'pending' in res && res.pending === true;
+}
 
 export async function submitEarn(
   section: EarnSection,

@@ -1,10 +1,18 @@
 // POST /api/money/earn
 //
-// Kid-authenticated (must be logged in via `dl_user` cookie). The CLIENT
-// sends what happened — section, kind, and a payload describing the round.
-// The SERVER decides the reward in cents. Kids cannot self-credit by
-// hand-crafting requests; the worst they can do is replay a round they
+// The CLIENT sends what happened — section, kind, and a payload describing
+// the round. The SERVER decides the reward in cents. Kids cannot self-credit
+// by hand-crafting requests; the worst they can do is replay a round they
 // already submitted, which the idempotency key rejects as a no-op.
+//
+// Two auth states:
+//   LOGGED IN  → credit the kid's balance, return as usual.
+//   ANONYMOUS  → DO NOT credit, but return a preview (computed cents +
+//                payload + idempotency key) so the client can show a
+//                "+X.XX MP — log in to keep it" prompt. If the kid logs
+//                in and re-submits with the same idempotency key, they
+//                claim the held earn (no replay risk — the unique key on
+//                the eventual MpEarning row stops double-credit).
 //
 // Body:
 //   {
@@ -14,12 +22,16 @@
 //     idempotencyKey: string  (client supplies — UUID is fine)
 //   }
 //
-// Response:
+// Response (logged in):
 //   { ok: true, centsEarned, balanceCents, reason, capped?, capCents? }
+//
+// Response (anonymous):
+//   { ok: true, pending: true, centsEarned, reason,
+//     section, kind, payload, idempotencyKey }
 
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import { awardEarn, type EarnRequest } from '@/lib/money/earn';
+import { awardEarn, previewReward, type EarnRequest } from '@/lib/money/earn';
 import { isValidUser, normalizeUser } from '@/lib/drive-progress';
 
 const COOKIE_NAME = 'dl_user';
@@ -152,16 +164,8 @@ function buildEarnRequest(body: Record<string, unknown>): EarnRequest | { error:
 }
 
 export async function POST(req: NextRequest) {
-  const jar = await cookies();
-  const cookieUser = jar.get(COOKIE_NAME)?.value;
-  if (!cookieUser || cookieUser === '__anon__') {
-    return NextResponse.json({ error: 'Log in to earn MP' }, { status: 401 });
-  }
-  if (!isValidUser(cookieUser)) {
-    return NextResponse.json({ error: 'Bad cookie' }, { status: 400 });
-  }
-  const userKey = normalizeUser(cookieUser);
-
+  // Parse the body first — both authed and anonymous paths need the same
+  // shape validation.
   let body: Record<string, unknown>;
   try {
     body = (await req.json()) as Record<string, unknown>;
@@ -173,6 +177,29 @@ export async function POST(req: NextRequest) {
   if ('error' in built) {
     return NextResponse.json({ error: built.error }, { status: 400 });
   }
+
+  const jar = await cookies();
+  const cookieUser = jar.get(COOKIE_NAME)?.value;
+
+  // Anonymous: return a preview the client can hold + replay after login.
+  if (!cookieUser || cookieUser === '__anon__') {
+    const { cents, reason } = previewReward(built);
+    return NextResponse.json({
+      ok: true,
+      pending: true,
+      centsEarned: cents,
+      reason,
+      section: built.section,
+      kind: built.kind,
+      payload: built.payload,
+      idempotencyKey: built.idempotencyKey,
+    });
+  }
+
+  if (!isValidUser(cookieUser)) {
+    return NextResponse.json({ error: 'Bad cookie' }, { status: 400 });
+  }
+  const userKey = normalizeUser(cookieUser);
 
   try {
     const result = await awardEarn(userKey, built);
