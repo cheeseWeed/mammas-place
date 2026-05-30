@@ -12,6 +12,15 @@ import {
   readStore,
   writeStore,
 } from '@/lib/drive-progress';
+import { awardEarn } from '@/lib/money/earn';
+
+// Quiz IDs containing any of these substrings count as final/simulator for
+// reward purposes (250c base instead of 75c). Matches /drive-assets/exams.
+const FINAL_OR_SIM_TOKENS = ['final', 'simulator', 'sim-', 'mega'];
+function isFinalOrSim(quizId: string): boolean {
+  const lower = quizId.toLowerCase();
+  return FINAL_OR_SIM_TOKENS.some((t) => lower.includes(t));
+}
 
 export async function GET(req: NextRequest) {
   const userParam = req.nextUrl.searchParams.get('user');
@@ -61,7 +70,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'No record' }, { status: 404 });
   }
 
-  // Attempts: concat (bounded at 500)
+  // Attempts: concat (bounded at 500). Track NEW attempts for MP earning.
+  const newAttempts: QuizAttempt[] = [];
   if (Array.isArray(body.attempts)) {
     const incoming = body.attempts as QuizAttempt[];
     // Dedupe by ts+quiz so a noisy double-fetch can't double-log.
@@ -74,6 +84,7 @@ export async function POST(req: NextRequest) {
         !seen.has(`${a.ts}|${a.quiz}`)
       ) {
         record.attempts.push(a);
+        newAttempts.push(a);
         seen.add(`${a.ts}|${a.quiz}`);
       }
     }
@@ -120,12 +131,18 @@ export async function POST(req: NextRequest) {
     record.mode = body.mode;
   }
 
-  // Deck completions: merge by unit key (last-write-wins by timestamp)
+  // Deck completions: merge by unit key (last-write-wins by timestamp).
+  // Track decks newly completed in THIS request (no prior entry) so we
+  // only award MP once per deck per user.
+  const newlyCompletedDecks: string[] = [];
   if (body.deckCompletions && typeof body.deckCompletions === 'object') {
     if (!record.deckCompletions) record.deckCompletions = {};
     for (const [k, v] of Object.entries(body.deckCompletions as Record<string, unknown>)) {
       if (typeof v === 'number' && v > 0) {
         const existing = record.deckCompletions[k];
+        if (!existing) {
+          newlyCompletedDecks.push(k);
+        }
         if (!existing || v > existing) {
           record.deckCompletions[k] = v;
         }
@@ -136,5 +153,57 @@ export async function POST(req: NextRequest) {
   record.updatedAt = Date.now();
   await writeStore(store);
 
-  return NextResponse.json({ ok: true });
+  // MP earning — server-decided, idempotency-keyed. Quiz attempts pay per
+  // attempt (re-takes earn too, but only if the quiz isn't a duplicate
+  // ts+quiz, which we filtered above). Deck completions pay once per deck
+  // per user (idempotency key has no timestamp so a second writeStore for
+  // the same deck no-ops on the unique constraint).
+  let totalEarnedCents = 0;
+  const earnNotes: string[] = [];
+
+  for (const a of newAttempts) {
+    if (!a.quiz || typeof a.score !== 'number' || typeof a.total !== 'number' || a.total < 1) continue;
+    try {
+      const res = await awardEarn(userKey, {
+        section: 'drive',
+        kind: 'quiz',
+        idempotencyKey: `drive-quiz-${userKey}-${a.ts}-${a.quiz}`,
+        payload: {
+          quiz: a.quiz,
+          correct: a.score,
+          total: a.total,
+          isFinalOrSim: isFinalOrSim(a.quiz),
+        },
+      });
+      if (res.centsEarned > 0) {
+        totalEarnedCents += res.centsEarned;
+        earnNotes.push(res.reason);
+      }
+    } catch {
+      // Earn failure must not break progress save.
+    }
+  }
+
+  for (const deck of newlyCompletedDecks) {
+    try {
+      const res = await awardEarn(userKey, {
+        section: 'drive',
+        kind: 'deck',
+        idempotencyKey: `drive-deck-${userKey}-${deck}`,
+        payload: { deck },
+      });
+      if (res.centsEarned > 0) {
+        totalEarnedCents += res.centsEarned;
+        earnNotes.push(res.reason);
+      }
+    } catch {
+      // ignore
+    }
+  }
+
+  return NextResponse.json({
+    ok: true,
+    earnedCents: totalEarnedCents,
+    earnReasons: earnNotes,
+  });
 }

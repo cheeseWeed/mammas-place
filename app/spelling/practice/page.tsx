@@ -24,6 +24,8 @@ import {
   type SpellingProgress,
 } from '@/lib/learner/profile';
 import { levelLabel, type SpellingLevel } from '@/lib/spelling/engine';
+import { useLearner } from '@/context/LearnerContext';
+import { newIdempotencyKey, submitEarn } from '@/lib/money/earn-client';
 
 const QUESTIONS_PER_SESSION = 15;
 const MAX_STORED_MISSES = 100;
@@ -51,7 +53,7 @@ type LoadState =
   | { kind: 'loading' }
   | { kind: 'redirecting' }
   | { kind: 'ready'; level: SpellingLevel; misses: string[]; progress: SpellingProgress }
-  | { kind: 'done'; summary: SessionSummary; startLevel: SpellingLevel };
+  | { kind: 'done'; summary: SessionSummary; startLevel: SpellingLevel; earnNote: string | null };
 
 type SessionSummary = {
   correctCount: number;
@@ -62,6 +64,7 @@ type SessionSummary = {
 
 function PracticeInner() {
   const router = useRouter();
+  const { learner, refresh: refreshBalance } = useLearner();
   const [loadState, setLoadState] = useState<LoadState>({ kind: 'loading' });
   // Holds the latest progress so we can merge against it at session end.
   const [progressSnapshot, setProgressSnapshot] = useState<SpellingProgress>({});
@@ -131,10 +134,42 @@ function PracticeInner() {
       setLoadState((prev) => {
         const startLevel =
           prev.kind === 'ready' ? prev.level : summary.finalLevel;
-        return { kind: 'done', summary, startLevel };
+        return { kind: 'done', summary, startLevel, earnNote: null };
       });
+
+      // MP earn — server decides cents; we just hand it the session shape.
+      if (learner) {
+        const total = summary.correctCount + summary.missCount;
+        const key = newIdempotencyKey('spelling-session');
+        const res = await submitEarn(
+          'spelling',
+          'quiz',
+          { correct: summary.correctCount, total, level: summary.finalLevel },
+          key,
+        );
+        if ('error' in res) {
+          setLoadState((prev) =>
+            prev.kind === 'done'
+              ? { ...prev, earnNote: `MP didn't record: ${res.error}` }
+              : prev,
+          );
+        } else if (res.centsEarned > 0) {
+          setLoadState((prev) =>
+            prev.kind === 'done'
+              ? { ...prev, earnNote: `+${(res.centsEarned / 100).toFixed(2)}MP — ${res.reason}` }
+              : prev,
+          );
+          void refreshBalance();
+        } else {
+          setLoadState((prev) =>
+            prev.kind === 'done'
+              ? { ...prev, earnNote: res.reason || 'No MP earned this session.' }
+              : prev,
+          );
+        }
+      }
     },
-    [progressSnapshot, prevSessions],
+    [progressSnapshot, prevSessions, learner, refreshBalance],
   );
 
   // ===== render =====
@@ -171,6 +206,7 @@ function PracticeInner() {
           <ResultsScreen
             summary={loadState.summary}
             startLevel={loadState.startLevel}
+            earnNote={loadState.earnNote}
             onPracticeAgain={() => {
               // Reload progress so the next session honors the new level/misses.
               setLoadState({ kind: 'loading' });
@@ -258,10 +294,12 @@ function RedirectingCard() {
 function ResultsScreen({
   summary,
   startLevel,
+  earnNote,
   onPracticeAgain,
 }: {
   summary: SessionSummary;
   startLevel: SpellingLevel;
+  earnNote: string | null;
   onPracticeAgain: () => void;
 }) {
   const total = summary.correctCount + summary.missCount;
@@ -279,6 +317,12 @@ function ResultsScreen({
         You got <strong>{summary.correctCount}</strong> of{' '}
         <strong>{total}</strong> right ({pct}%).
       </p>
+
+      {earnNote && (
+        <div className="bg-yellow-50 border-2 border-yellow-300 rounded-2xl p-3 mb-4 text-center text-sm font-bold text-yellow-900">
+          💰 {earnNote}
+        </div>
+      )}
 
       <div className="bg-amber-50 rounded-2xl p-5 mb-6 text-left space-y-2">
         <p className="text-amber-900">
