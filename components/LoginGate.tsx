@@ -12,7 +12,12 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-export type LoginGateSection = 'drive' | 'geography' | 'spelling';
+export type LoginGateSection =
+  | 'drive'
+  | 'geography'
+  | 'spelling'
+  | 'math'
+  | 'languageArts';
 
 const COOKIE_NAME = 'dl_user';
 
@@ -39,6 +44,16 @@ const SECTION_COPY: Record<
     headline: 'Who’s spelling?',
     subhead: 'Log in to track your Spelling progress and bee streaks.',
     accent: 'amber',
+  },
+  math: {
+    headline: 'Who’s drilling?',
+    subhead: 'Log in so the Math Arena can save your scores and pay you in MP.',
+    accent: 'sky',
+  },
+  languageArts: {
+    headline: 'Who’s reading?',
+    subhead: 'Log in to track your Language Arts progress and earn MP.',
+    accent: 'rose',
   },
 };
 
@@ -224,39 +239,62 @@ function SectionLoginCard({
   const busy = status.kind === 'busy';
 
   // Tailwind doesn't dynamic-class well; map accent to fixed class strings.
-  const accentClasses =
-    copy.accent === 'emerald'
-      ? {
-          card: 'border-emerald-100',
-          heading: 'text-emerald-900',
-          label: 'text-emerald-900',
-          inputWrap: 'border-emerald-200 focus:border-emerald-500 bg-emerald-50 text-emerald-900',
-          primary: 'bg-emerald-900 hover:bg-emerald-800 disabled:bg-emerald-300',
-          secondary: 'bg-yellow-100 hover:bg-yellow-200 disabled:bg-yellow-50 text-emerald-900 border-yellow-300',
-          link: 'text-emerald-700 hover:text-emerald-900',
-          mute: 'text-emerald-700',
-        }
-      : copy.accent === 'amber'
-      ? {
-          card: 'border-amber-100',
-          heading: 'text-amber-900',
-          label: 'text-amber-900',
-          inputWrap: 'border-amber-200 focus:border-amber-500 bg-amber-50 text-amber-900',
-          primary: 'bg-amber-900 hover:bg-amber-800 disabled:bg-amber-300',
-          secondary: 'bg-yellow-100 hover:bg-yellow-200 disabled:bg-yellow-50 text-amber-900 border-yellow-300',
-          link: 'text-amber-700 hover:text-amber-900',
-          mute: 'text-amber-700',
-        }
-      : {
-          card: 'border-purple-100',
-          heading: 'text-purple-900',
-          label: 'text-purple-900',
-          inputWrap: 'border-purple-200 focus:border-purple-500 bg-purple-50 text-purple-900',
-          primary: 'bg-purple-900 hover:bg-purple-800 disabled:bg-purple-300',
-          secondary: 'bg-yellow-100 hover:bg-yellow-200 disabled:bg-yellow-50 text-purple-900 border-yellow-300',
-          link: 'text-purple-700 hover:text-purple-900',
-          mute: 'text-purple-600',
-        };
+  const ACCENT_MAP: Record<string, {
+    card: string; heading: string; label: string; inputWrap: string;
+    primary: string; secondary: string; link: string; mute: string;
+  }> = {
+    emerald: {
+      card: 'border-emerald-100',
+      heading: 'text-emerald-900',
+      label: 'text-emerald-900',
+      inputWrap: 'border-emerald-200 focus:border-emerald-500 bg-emerald-50 text-emerald-900',
+      primary: 'bg-emerald-900 hover:bg-emerald-800 disabled:bg-emerald-300',
+      secondary: 'bg-yellow-100 hover:bg-yellow-200 disabled:bg-yellow-50 text-emerald-900 border-yellow-300',
+      link: 'text-emerald-700 hover:text-emerald-900',
+      mute: 'text-emerald-700',
+    },
+    amber: {
+      card: 'border-amber-100',
+      heading: 'text-amber-900',
+      label: 'text-amber-900',
+      inputWrap: 'border-amber-200 focus:border-amber-500 bg-amber-50 text-amber-900',
+      primary: 'bg-amber-900 hover:bg-amber-800 disabled:bg-amber-300',
+      secondary: 'bg-yellow-100 hover:bg-yellow-200 disabled:bg-yellow-50 text-amber-900 border-yellow-300',
+      link: 'text-amber-700 hover:text-amber-900',
+      mute: 'text-amber-700',
+    },
+    sky: {
+      card: 'border-sky-100',
+      heading: 'text-sky-900',
+      label: 'text-sky-900',
+      inputWrap: 'border-sky-200 focus:border-sky-500 bg-sky-50 text-sky-900',
+      primary: 'bg-sky-700 hover:bg-sky-800 disabled:bg-sky-300',
+      secondary: 'bg-yellow-100 hover:bg-yellow-200 disabled:bg-yellow-50 text-sky-900 border-yellow-300',
+      link: 'text-sky-700 hover:text-sky-900',
+      mute: 'text-sky-700',
+    },
+    rose: {
+      card: 'border-rose-100',
+      heading: 'text-rose-900',
+      label: 'text-rose-900',
+      inputWrap: 'border-rose-200 focus:border-rose-500 bg-rose-50 text-rose-900',
+      primary: 'bg-rose-700 hover:bg-rose-800 disabled:bg-rose-300',
+      secondary: 'bg-yellow-100 hover:bg-yellow-200 disabled:bg-yellow-50 text-rose-900 border-yellow-300',
+      link: 'text-rose-700 hover:text-rose-900',
+      mute: 'text-rose-700',
+    },
+    purple: {
+      card: 'border-purple-100',
+      heading: 'text-purple-900',
+      label: 'text-purple-900',
+      inputWrap: 'border-purple-200 focus:border-purple-500 bg-purple-50 text-purple-900',
+      primary: 'bg-purple-900 hover:bg-purple-800 disabled:bg-purple-300',
+      secondary: 'bg-yellow-100 hover:bg-yellow-200 disabled:bg-yellow-50 text-purple-900 border-yellow-300',
+      link: 'text-purple-700 hover:text-purple-900',
+      mute: 'text-purple-600',
+    },
+  };
+  const accentClasses = ACCENT_MAP[copy.accent] ?? ACCENT_MAP.purple;
 
   return (
     <div
@@ -352,7 +390,7 @@ function SectionLoginCard({
         </div>
 
         <p className={`text-center text-xs pt-2 ${accentClasses.mute}`}>
-          One login works across every learning section (Drive, Geography, Spelling).
+          One login works across every learning section (Drive, Geography, Spelling, Math, Language Arts).
         </p>
       </form>
     </div>

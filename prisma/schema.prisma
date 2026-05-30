@@ -46,12 +46,17 @@ model DriveUser {
   // Geography: { phases: Record<string, unknown>, lastActive?: number, ... }
   // Currently opt-in — Geography defaults to anonymous localStorage.
   geography        Json     @default("{}")
+  // Math: { roundsPlayed: number, bestStreak: number, lastSession?: number, history: MathRound[], ... }
+  math             Json     @default("{}")
+  // Language Arts: { homophones: {...}, grammar: {...}, ..., lastSession?: number }
+  languageArts     Json     @default("{}")
 
   // ----- MP Money (closed-loop family economy) -----
   // Balance kept in cents to avoid float drift. See app/money/PLAN.md.
   balanceCents     Int      @default(0)
   transactions     MpTransaction[]
   orders           MpOrder[]
+  earnings         MpEarning[]
 
   @@map("drive_users")
 }
@@ -85,6 +90,25 @@ model MpOrder {
 
   @@index([userName, createdAt])
   @@map("mp_orders")
+}
+
+// Kid-earned MP from learning sections. Idempotency key prevents the same
+// round/quiz from crediting twice on accidental re-submit. `cents` is what
+// the server computed (kid client cannot dictate it).
+model MpEarning {
+  id           String   @id @default(cuid())
+  userName     String
+  user         DriveUser @relation(fields: [userName], references: [name], onDelete: Cascade)
+  section      String   // 'math' | 'languageArts' | 'spelling' | 'geography' | 'drive'
+  kind         String   // section-defined: e.g. 'math.round', 'spelling.quiz', 'drive.deck'
+  cents        Int      // always positive
+  idempotencyKey String @unique
+  meta         Json?    // {score, total, streak, ...} for debugging
+  createdAt    DateTime @default(now())
+
+  @@index([userName, createdAt])
+  @@index([userName, section])
+  @@map("mp_earnings")
 }
 
 // Singleton row holding the parent's admin PIN (hashed). First /api/money/parent/setup
