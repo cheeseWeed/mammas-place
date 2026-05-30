@@ -14,6 +14,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import countriesData from '@/data/countries.json';
 import { readPhase, updatePhase } from '@/lib/geography/progress';
+import { newIdempotencyKey, submitEarn } from '@/lib/money/earn-client';
+import { useLearner } from '@/context/LearnerContext';
 
 type RoundSize = 5 | 10 | 20 | 50;
 type FlagMatchMode = 'find-flag' | 'name-country';
@@ -74,12 +76,16 @@ export default function WorldFlagMatchPage() {
   const [activeContinent, setActiveContinent] = useState<Continent>(null);
   const [activeMode, setActiveMode] = useState<FlagMatchMode>('find-flag');
   const [result, setResult] = useState<Result | null>(null);
+  // MP earned message for the most recent finished round.
+  const [earnNote, setEarnNote] = useState<string | null>(null);
+  const { learner, refresh: refreshBalance } = useLearner();
 
   function startRound(size: RoundSize, continent: Continent, mode: FlagMatchMode) {
     setResult(null);
     setActiveContinent(continent);
     setActiveMode(mode);
     setActiveSize(size);
+    setEarnNote(null);
   }
 
   function handleComplete(roundResult: { score: number; total: number; misses: string[] }) {
@@ -104,6 +110,28 @@ export default function WorldFlagMatchPage() {
       misses: roundResult.misses,
     });
     setActiveSize(null);
+
+    // MP earn — only for logged-in learners. Server decides cents.
+    if (learner) {
+      const key = newIdempotencyKey('geo-world-flag-match');
+      void submitEarn(
+        'geography',
+        'quiz',
+        { correct: roundResult.score, total: roundResult.total, quiz: 'world-flag-match' },
+        key,
+      ).then((res) => {
+        if ('error' in res) {
+          setEarnNote(`MP didn't record: ${res.error}`);
+          return;
+        }
+        if (res.centsEarned > 0) {
+          setEarnNote(`+${(res.centsEarned / 100).toFixed(2)}MP earned — ${res.reason}`);
+          void refreshBalance();
+        } else {
+          setEarnNote(res.reason || 'No MP this round.');
+        }
+      });
+    }
   }
 
   const showOverlay = activeSize === null;
@@ -162,6 +190,7 @@ export default function WorldFlagMatchPage() {
               ) : (
                 <ResultsCard
                   result={result}
+                  earnNote={earnNote}
                   onPlayAgain={() => startRound(result.size, result.continent, result.mode)}
                   onBack={() => setResult(null)}
                 />
@@ -488,10 +517,12 @@ function RoundPicker({
 
 function ResultsCard({
   result,
+  earnNote,
   onPlayAgain,
   onBack,
 }: {
   result: Result;
+  earnNote: string | null;
   onPlayAgain: () => void;
   onBack: () => void;
 }) {
@@ -517,6 +548,12 @@ function ResultsCard({
           {result.continent ? ` · ${result.continent}` : ''} · {cheer}
         </p>
       </div>
+
+      {earnNote && (
+        <div className="bg-yellow-50 border-2 border-yellow-300 rounded-xl p-3 mb-4 text-center text-sm font-bold text-yellow-900">
+          💰 {earnNote}
+        </div>
+      )}
 
       {result.misses.length > 0 && (
         <div className="bg-sky-50 rounded-xl p-3 md:p-4 mb-4 border border-sky-100">

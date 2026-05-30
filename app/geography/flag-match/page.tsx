@@ -20,6 +20,8 @@ import statesData from '@/data/states.json';
 import { FlagMatchEngine } from '@/components/geography';
 import type { FlagMatchMode } from '@/components/geography/FlagMatchEngine';
 import { readPhase, updatePhase } from '@/lib/geography/progress';
+import { newIdempotencyKey, submitEarn } from '@/lib/money/earn-client';
+import { useLearner } from '@/context/LearnerContext';
 
 type RoundSize = 5 | 10 | 20 | 50;
 type Region = null | 'Northeast' | 'Midwest' | 'South' | 'West';
@@ -52,12 +54,16 @@ export default function FlagMatchPage() {
   const [activeRegion, setActiveRegion] = useState<Region>(null);
   const [activeMode, setActiveMode] = useState<FlagMatchMode>('find-flag');
   const [result, setResult] = useState<Result | null>(null);
+  // MP earned message for the most recent finished round.
+  const [earnNote, setEarnNote] = useState<string | null>(null);
+  const { learner, refresh: refreshBalance } = useLearner();
 
   function startRound(size: RoundSize, region: Region, mode: FlagMatchMode) {
     setResult(null);
     setActiveRegion(region);
     setActiveMode(mode);
     setActiveSize(size);
+    setEarnNote(null);
   }
 
   function handleComplete(roundResult: { score: number; total: number; misses: string[] }) {
@@ -82,6 +88,28 @@ export default function FlagMatchPage() {
       misses: roundResult.misses,
     });
     setActiveSize(null);
+
+    // MP earn — only for logged-in learners. Server decides cents.
+    if (learner) {
+      const key = newIdempotencyKey('geo-flag-match');
+      void submitEarn(
+        'geography',
+        'quiz',
+        { correct: roundResult.score, total: roundResult.total, quiz: 'flag-match' },
+        key,
+      ).then((res) => {
+        if ('error' in res) {
+          setEarnNote(`MP didn't record: ${res.error}`);
+          return;
+        }
+        if (res.centsEarned > 0) {
+          setEarnNote(`+${(res.centsEarned / 100).toFixed(2)}MP earned — ${res.reason}`);
+          void refreshBalance();
+        } else {
+          setEarnNote(res.reason || 'No MP this round.');
+        }
+      });
+    }
   }
 
   const showOverlay = activeSize === null;
@@ -146,6 +174,7 @@ export default function FlagMatchPage() {
               ) : (
                 <ResultsCard
                   result={result}
+                  earnNote={earnNote}
                   onPlayAgain={() => startRound(result.size, result.region, result.mode)}
                   onBack={() => setResult(null)}
                 />
@@ -302,10 +331,12 @@ function RoundPicker({
 
 function ResultsCard({
   result,
+  earnNote,
   onPlayAgain,
   onBack,
 }: {
   result: Result;
+  earnNote: string | null;
   onPlayAgain: () => void;
   onBack: () => void;
 }) {
@@ -333,6 +364,12 @@ function ResultsCard({
           {result.region ? ` · ${result.region}` : ''} · {cheer}
         </p>
       </div>
+
+      {earnNote && (
+        <div className="bg-yellow-50 border-2 border-yellow-300 rounded-xl p-3 mb-4 text-center text-sm font-bold text-yellow-900">
+          💰 {earnNote}
+        </div>
+      )}
 
       {result.misses.length > 0 && (
         <div className="bg-emerald-50 rounded-xl p-3 md:p-4 mb-4 border border-emerald-100">
