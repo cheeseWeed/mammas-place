@@ -22,7 +22,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
-import { USMap, StateTooltip, StateDetailDrawer } from '@/components/geography';
+import { USMap, StateTooltip, StateDetailDrawer, StateZoomView } from '@/components/geography';
 import { REGION_TINTS } from '@/components/geography/USMap';
 import statesData from '@/data/states.json';
 import { updatePhase } from '@/lib/geography/progress';
@@ -57,6 +57,11 @@ export default function GeographyStudyPage() {
   // Deep-dive drawer: which state postal is currently open (null = closed).
   // Click on a state opens the drawer; hover continues to drive the tooltip.
   const [drawerPostal, setDrawerPostal] = useState<string | null>(null);
+
+  // Zoom view (full-screen close-up): which state postal is currently open
+  // in the zoom modal (null = closed). Triggered by the drawer's "View Up
+  // Close" button, which fires onViewUpClose with the postal here.
+  const [zoomPostal, setZoomPostal] = useState<string | null>(null);
 
   // Static state lookup by postal for tooltip name/capital fields.
   const states = statesData as StateRecord[];
@@ -242,8 +247,22 @@ export default function GeographyStudyPage() {
 
       {/* Deep-dive drawer — opens when a state is clicked. Drawer owns its own
           dismiss (escape key, backdrop click, close button) and calls onClose
-          back to clear the postal here. */}
-      <StateDetailDrawer postal={drawerPostal} onClose={() => setDrawerPostal(null)} />
+          back to clear the postal here. The "View Up Close" button on the
+          drawer fires onViewUpClose, which closes the drawer and opens the
+          full-screen zoom view modal instead. */}
+      <StateDetailDrawer
+        postal={drawerPostal}
+        onClose={() => setDrawerPostal(null)}
+        onViewUpClose={(postal) => {
+          setDrawerPostal(null);
+          setZoomPostal(postal);
+        }}
+      />
+
+      {/* Full-screen close-up modal — opens from the drawer's "View Up Close"
+          button. Self-contained: backdrop click, ESC, and close button all
+          call onClose. */}
+      <StateZoomView postal={zoomPostal} onClose={() => setZoomPostal(null)} />
     </div>
   );
 }

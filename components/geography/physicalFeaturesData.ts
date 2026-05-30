@@ -129,6 +129,64 @@ export const RIVERS: readonly RiverFeature[] = [
       [36.99, -89.13], // Cairo, IL (mouth — joins Mississippi)
     ],
   },
+  {
+    name: 'Snake River',
+    // Yellowstone NP, WY → Columbia River confluence at Tri-Cities, WA
+    points: [
+      [44.13, -110.20], // headwaters, Yellowstone NP, WY
+      [43.48, -110.76], // Jackson Hole, WY
+      [43.49, -111.99], // Idaho Falls, ID
+      [42.59, -114.46], // Twin Falls, ID
+      [43.61, -116.20], // Boise, ID
+      [44.27, -116.96], // Hells Canyon, ID/OR border
+      [45.92, -116.78], // Lewiston, ID / Clarkston, WA
+      [46.57, -118.20], // Lower Granite Dam area, WA
+      [46.26, -119.27], // mouth at Columbia River, Tri-Cities, WA
+    ],
+  },
+  {
+    name: 'Tennessee River',
+    // Knoxville, TN → Ohio River at Paducah, KY
+    points: [
+      [35.96, -83.92], // Knoxville, TN (forms at French Broad + Holston)
+      [35.74, -84.04], // Loudon, TN
+      [35.10, -85.31], // Chattanooga, TN
+      [34.51, -86.97], // Decatur, AL
+      [34.74, -87.67], // Florence/Muscle Shoals, AL
+      [36.05, -88.10], // Tennessee River bend, TN/KY (Kentucky Lake)
+      [36.71, -88.10], // Kentucky Dam area, KY
+      [37.07, -88.60], // mouth at Ohio River, Paducah, KY
+    ],
+  },
+  {
+    name: 'Arkansas River',
+    // Leadville area, CO → Mississippi River near Arkansas City, AR
+    points: [
+      [39.25, -106.30], // headwaters near Leadville, CO
+      [38.84, -104.82], // Pueblo, CO
+      [38.04, -102.62], // Lamar, CO
+      [37.04, -100.92], // Dodge City, KS
+      [37.69, -97.34],  // Wichita, KS
+      [36.15, -95.99],  // Tulsa, OK
+      [35.47, -94.40],  // Fort Smith, AR
+      [34.75, -92.36],  // Little Rock, AR
+      [33.61, -91.20],  // mouth at Mississippi, near Arkansas City, AR
+    ],
+  },
+  {
+    name: 'Hudson River',
+    // Adirondacks, NY → New York Harbor
+    points: [
+      [44.13, -74.04], // Lake Tear of the Clouds area, Adirondacks, NY (source)
+      [43.30, -73.64], // Glens Falls, NY
+      [42.65, -73.75], // Albany, NY
+      [42.05, -73.93], // Hudson, NY
+      [41.70, -73.93], // Poughkeepsie, NY
+      [41.25, -73.97], // Bear Mountain, NY
+      [40.85, -73.94], // George Washington Bridge, NY/NJ
+      [40.70, -74.02], // New York Harbor mouth, NY/NJ
+    ],
+  },
 ] as const;
 
 // ---------------------------------------------------------------------------
@@ -233,6 +291,53 @@ export const LAKES: readonly LakeFeature[] = [
       [41.45, -113.00],
     ],
   },
+  {
+    name: 'Lake Champlain',
+    // Long, narrow N-S lake between NY and VT.
+    points: [
+      [45.02, -73.34], // north tip near Canadian border
+      [44.85, -73.21], // VT shore, Alburgh area
+      [44.50, -73.20], // Burlington, VT
+      [44.10, -73.30], // central east shore
+      [43.85, -73.40], // Crown Point, NY
+      [43.65, -73.45], // Ticonderoga, NY (south end)
+      [43.85, -73.45], // sweep north on NY side
+      [44.10, -73.45],
+      [44.50, -73.40], // Plattsburgh, NY
+      [44.85, -73.40],
+    ],
+  },
+  {
+    name: 'Lake Okeechobee',
+    // Big round-ish lake in south-central FL, ~35mi across.
+    points: [
+      [27.20, -80.95], // east shore
+      [27.20, -80.78],
+      [27.05, -80.65], // SE corner
+      [26.85, -80.65],
+      [26.70, -80.75], // south shore
+      [26.70, -80.95],
+      [26.80, -81.10], // SW corner
+      [27.00, -81.15], // west shore
+      [27.15, -81.10],
+      [27.20, -80.95],
+    ],
+  },
+  {
+    name: 'Salton Sea',
+    // Long, narrow inland sea in SE California desert.
+    points: [
+      [33.52, -116.10], // north tip
+      [33.45, -116.00], // NE shore
+      [33.30, -115.85],
+      [33.15, -115.70],
+      [33.00, -115.65], // south tip
+      [33.05, -115.75],
+      [33.20, -115.85],
+      [33.35, -116.00], // SW back up
+      [33.45, -116.10],
+    ],
+  },
 ] as const;
 
 // ---------------------------------------------------------------------------
@@ -323,6 +428,63 @@ export const MOUNTAIN_RANGES: readonly MountainFeature[] = [
       [45.30, -122.40],
       [47.00, -121.80],
       [48.50, -121.30],
+    ],
+  },
+  {
+    name: 'Ozark Mountains',
+    // Rugged plateau across S. MO, N. AR, and corners of OK/KS.
+    points: [
+      [37.80, -93.50], // northern MO edge
+      [37.95, -92.30], // central MO
+      [37.95, -91.20], // E. MO edge
+      [37.20, -90.80], // SE MO
+      [36.50, -91.30], // N AR border
+      [35.90, -92.00], // central AR
+      [35.50, -92.80], // S. central AR
+      [35.55, -93.80], // SW AR
+      [35.80, -94.50], // OK border, AR
+      [36.40, -94.70], // NE OK
+      [37.00, -94.60], // SE KS corner
+      [37.65, -94.00],
+    ],
+  },
+  {
+    name: 'Adirondack Mountains',
+    // Roughly circular dome of mountains in upstate NY.
+    points: [
+      [44.40, -75.00], // NW
+      [44.55, -74.40], // N
+      [44.50, -73.85], // NE
+      [44.20, -73.65], // E
+      [43.75, -73.65], // SE
+      [43.40, -73.85], // S
+      [43.30, -74.40], // SW
+      [43.50, -75.00], // W
+      [43.95, -75.10],
+    ],
+  },
+  {
+    name: 'Coast Ranges',
+    // Pacific coastal ranges from S. CA up through WA Olympics.
+    points: [
+      [48.00, -124.00], // Olympic Peninsula, WA
+      [47.40, -123.50], // central WA Olympics
+      [46.40, -123.50], // SW WA
+      [45.50, -123.50], // OR Coast Range north
+      [44.00, -123.80], // OR Coast Range central
+      [42.50, -124.10], // S. OR coast
+      [40.50, -124.00], // N. CA coast
+      [39.00, -123.50], // Mendocino, CA
+      [37.50, -122.50], // Bay Area
+      [36.00, -121.50], // Big Sur
+      [34.50, -120.20], // Santa Barbara coast
+      [34.30, -119.30], // S. CA Transverse Ranges
+      [35.50, -120.80], // sweep back north (inland CA Coast Range)
+      [37.00, -121.80],
+      [39.50, -123.00],
+      [42.00, -123.50],
+      [45.00, -123.30],
+      [47.00, -123.30],
     ],
   },
 ] as const;

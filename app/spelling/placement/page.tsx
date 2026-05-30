@@ -9,9 +9,11 @@
 // - On finish: scorePlacement → write `{ placementCompleted, level, placedAt }`
 //   to the learner's spelling progress.
 // - SSR-safe: all audio calls live inside useEffect or event handlers.
-// - No-audio fallback: if SpeechSynthesis isn't available (or the kid hasn't
-//   triggered it yet), a 5-second timer reveals the word as text so the kid
-//   can still take the test.
+// - No-audio fallback: if SpeechSynthesis isn't available, the word is shown
+//   as plain text (audio IS the test, so no audio = no test possible).
+// - Peek-on-demand: a "Hold to peek" button reveals the word only while the
+//   pointer/touch is DOWN. Replaces the old 5-second auto-reveal — kids
+//   shouldn't be able to just wait for the answer.
 
 import Link from 'next/link';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -38,8 +40,6 @@ import { writeSpellingProgress } from '@/lib/learner/profile';
 // `audioSpelling`, `homophones`). Cast through `unknown` to satisfy strict mode.
 const ALL_WORDS = wordsData as unknown as Word[];
 
-// How long to wait before showing the word as text fallback (no-audio kids).
-const FALLBACK_REVEAL_MS = 5000;
 // How long to show the green/red feedback flash before auto-advancing.
 const FEEDBACK_MS = 1500;
 // Fade transition between questions.
@@ -78,13 +78,13 @@ function PlacementInner() {
   const [outcomes, setOutcomes] = useState<AttemptOutcome[]>([]);
   const [input, setInput] = useState('');
   const [feedback, setFeedback] = useState<null | 'right' | 'wrong'>(null);
-  const [revealFallback, setRevealFallback] = useState(false);
+  const [isPeeking, setIsPeeking] = useState(false);
+  const [peekCount, setPeekCount] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
   const [finalLevel, setFinalLevel] = useState<SpellingLevel | null>(null);
   const [audioOk, setAudioOk] = useState<boolean>(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
-  const fallbackTimerRef = useRef<number | null>(null);
   const feedbackTimerRef = useRef<number | null>(null);
   const fadeTimerRef = useRef<number | null>(null);
 
@@ -96,14 +96,14 @@ function PlacementInner() {
   const currentWord = placementWords[idx];
   const totalQuestions = placementWords.length;
 
-  // Speak + arm fallback timer whenever the question changes.
+  // Speak whenever the question changes.
   useEffect(() => {
     if (phase !== 'question' || !currentWord) return;
 
     // Reset per-question UI state.
     setInput('');
     setFeedback(null);
-    setRevealFallback(false);
+    setIsPeeking(false);
     setFadeIn(false);
     if (fadeTimerRef.current) window.clearTimeout(fadeTimerRef.current);
     fadeTimerRef.current = window.setTimeout(() => setFadeIn(true), 20);
@@ -120,15 +120,7 @@ function PlacementInner() {
     // Focus the input so they can just start typing.
     inputRef.current?.focus();
 
-    // Arm fallback reveal timer (covers both: no audio, and audio
-    // blocked-but-not-thrown e.g. autoplay policy).
-    if (fallbackTimerRef.current) window.clearTimeout(fallbackTimerRef.current);
-    fallbackTimerRef.current = window.setTimeout(() => {
-      setRevealFallback(true);
-    }, FALLBACK_REVEAL_MS);
-
     return () => {
-      if (fallbackTimerRef.current) window.clearTimeout(fallbackTimerRef.current);
       if (fadeTimerRef.current) window.clearTimeout(fadeTimerRef.current);
     };
   }, [phase, idx, currentWord]);
@@ -160,6 +152,18 @@ function PlacementInner() {
     if (!currentWord || !isAudioSupported()) return;
     void spellOutWord(currentWord.word);
   }, [currentWord]);
+
+  // Peek button — pointer DOWN reveals, pointer UP/LEAVE/CANCEL hides.
+  const handlePeekDown = useCallback(() => {
+    setIsPeeking((wasPeeking) => {
+      if (!wasPeeking) setPeekCount((c) => c + 1);
+      return true;
+    });
+  }, []);
+
+  const handlePeekUp = useCallback(() => {
+    setIsPeeking(false);
+  }, []);
 
   const advance = useCallback(
     (nextOutcomes: AttemptOutcome[]) => {
@@ -193,12 +197,8 @@ function PlacementInner() {
       const nextOutcomes = [...outcomes, outcome];
       setOutcomes(nextOutcomes);
       setFeedback(correct ? 'right' : 'wrong');
-
-      // Cancel the fallback reveal timer; we're moving on.
-      if (fallbackTimerRef.current) {
-        window.clearTimeout(fallbackTimerRef.current);
-        fallbackTimerRef.current = null;
-      }
+      // If they're holding peek when submitting, drop it.
+      setIsPeeking(false);
 
       if (feedbackTimerRef.current) window.clearTimeout(feedbackTimerRef.current);
       feedbackTimerRef.current = window.setTimeout(() => {
@@ -261,7 +261,8 @@ function PlacementInner() {
             input={input}
             setInput={setInput}
             feedback={feedback}
-            revealFallback={revealFallback}
+            isPeeking={isPeeking}
+            peekCount={peekCount}
             audioOk={audioOk}
             fadeIn={fadeIn}
             currentWord={currentWord}
@@ -271,6 +272,8 @@ function PlacementInner() {
             onSpellOut={handleSpellOut}
             onSubmit={handleFormSubmit}
             onSkip={handleSkip}
+            onPeekDown={handlePeekDown}
+            onPeekUp={handlePeekUp}
           />
         )}
 
@@ -348,7 +351,8 @@ type QuestionScreenProps = {
   input: string;
   setInput: (v: string) => void;
   feedback: null | 'right' | 'wrong';
-  revealFallback: boolean;
+  isPeeking: boolean;
+  peekCount: number;
   audioOk: boolean;
   fadeIn: boolean;
   currentWord: Word;
@@ -358,6 +362,8 @@ type QuestionScreenProps = {
   onSpellOut: () => void;
   onSubmit: (e: React.FormEvent) => void;
   onSkip: () => void;
+  onPeekDown: () => void;
+  onPeekUp: () => void;
 };
 
 function QuestionScreen({
@@ -366,7 +372,8 @@ function QuestionScreen({
   input,
   setInput,
   feedback,
-  revealFallback,
+  isPeeking,
+  peekCount,
   audioOk,
   fadeIn,
   currentWord,
@@ -376,9 +383,15 @@ function QuestionScreen({
   onSpellOut,
   onSubmit,
   onSkip,
+  onPeekDown,
+  onPeekUp,
 }: QuestionScreenProps) {
   const submitted = feedback !== null;
-  const showFallbackWord = revealFallback || !audioOk;
+  // Audio is the test — if it's not working we have to show the word.
+  const showNoAudioFallback = !audioOk;
+  // Peek reveal: visible while button is held, but only when audio works
+  // (no-audio mode already shows the word permanently).
+  const showPeekReveal = audioOk && isPeeking && !submitted;
 
   return (
     <div
@@ -404,7 +417,7 @@ function QuestionScreen({
       </div>
 
       {/* Listen buttons */}
-      <div className="flex flex-col items-center gap-3 mb-6">
+      <div className="flex flex-col items-center gap-3 mb-4">
         <button
           type="button"
           onClick={onListen}
@@ -430,18 +443,60 @@ function QuestionScreen({
           >
             Spell it out
           </button>
+          {audioOk && (
+            <button
+              type="button"
+              onPointerDown={onPeekDown}
+              onPointerUp={onPeekUp}
+              onPointerLeave={onPeekUp}
+              onPointerCancel={onPeekUp}
+              onContextMenu={(e) => e.preventDefault()}
+              disabled={submitted}
+              aria-label="Hold to peek at the word"
+              className="select-none touch-none text-sm bg-yellow-100 hover:bg-yellow-200 disabled:opacity-50 text-amber-900 font-semibold py-2 px-4 rounded-full border-2 border-yellow-300 transition-colors"
+              style={{
+                WebkitUserSelect: 'none',
+                WebkitTouchCallout: 'none',
+              }}
+            >
+              👁 Hold to peek
+            </button>
+          )}
         </div>
+        {audioOk && peekCount > 0 && (
+          <p className="text-xs text-amber-600">
+            Peeked {peekCount} {peekCount === 1 ? 'time' : 'times'} this test
+          </p>
+        )}
       </div>
 
-      {/* Fallback text reveal (no audio / blocked / 5-sec timer) */}
-      {showFallbackWord && !submitted && (
+      {/* No-audio fallback: audio IS the test, so without audio show the word. */}
+      {showNoAudioFallback && !submitted && (
         <div className="mb-4 text-center">
           <p className="text-xs text-amber-700 mb-1">
-            {audioOk ? 'Need a peek?' : 'Audio isn’t working — type this word:'}
+            Audio isn&apos;t working — type this word:
           </p>
           <p className="text-3xl font-mono font-bold text-amber-900 bg-amber-50 inline-block px-6 py-2 rounded-xl border-2 border-amber-200">
             {currentWord.word}
           </p>
+        </div>
+      )}
+
+      {/* Peek reveal card — reserved space (min-height) so layout doesn't jump. */}
+      {audioOk && !submitted && (
+        <div className="mb-4 flex justify-center items-center" style={{ minHeight: '4.5rem' }}>
+          <div
+            aria-live="polite"
+            className={`inline-block px-6 py-2 rounded-xl border-2 transition-all duration-150 ${
+              showPeekReveal
+                ? 'bg-sky-50 border-sky-300 opacity-100 blur-0'
+                : 'bg-transparent border-transparent opacity-0 blur-sm pointer-events-none'
+            }`}
+          >
+            <p className="text-3xl font-mono font-bold text-sky-900 select-none">
+              {currentWord.word}
+            </p>
+          </div>
         </div>
       )}
 

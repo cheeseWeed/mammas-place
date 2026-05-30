@@ -23,6 +23,7 @@ import {
   LABELED_COUNTRIES,
 } from './worldCountryData';
 import WorldLandmarkLayer from './WorldLandmarkLayer';
+import WorldPhysicalLayer from './WorldPhysicalLayer';
 
 const VIEW_W = 960;
 const VIEW_H = 540;
@@ -72,6 +73,9 @@ export type WorldMapProps = {
     info: { country: string; iso2: string; name: string } | null,
   ) => void;
   onLandmarkClick?: (iso2: string) => void;
+  // Physical-features overlay (rivers, lakes, mountain ranges, deserts).
+  // Defaults to false; the study page wires a toggle that flips it.
+  showPhysicalLayer?: boolean;
 };
 
 // Convenience helper for callers that want continent-colored mode without
@@ -121,6 +125,7 @@ export default function WorldMap({
   showLandmarks = false,
   onLandmarkHover,
   onLandmarkClick,
+  showPhysicalLayer = false,
 }: WorldMapProps) {
   const [topology, setTopology] = useState<Topology | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -273,6 +278,12 @@ export default function WorldMap({
             </path>
           );
         })}
+
+        {/* Physical-features overlay (rivers / lakes / mountain ranges /
+            deserts). Rendered before pins so landmark triangles stay on top
+            of feature fills; rendered before labels so country names stay
+            readable above everything. */}
+        {showPhysicalLayer && <WorldPhysicalLayer projection={projection} />}
 
         {/* Landmark pins. Rendered after country paths so they sit on top of
             fills/hover-filters; rendered before labels so country labels stay

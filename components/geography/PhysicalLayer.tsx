@@ -37,6 +37,12 @@ const LAKE_STROKE = '#0369a1';      // sky-700
 const MOUNTAIN_FILL = '#a8a29e';    // stone-400 — muted tan/gray
 const MOUNTAIN_STROKE = '#78716c';  // stone-500
 
+// Label colors — italic small text so it reads as "natural feature" rather
+// than competing with the state names painted by LabelLayer.
+const RIVER_LABEL_FILL = '#075985';     // sky-800
+const LAKE_LABEL_FILL = '#075985';      // sky-800
+const MOUNTAIN_LABEL_FILL = '#44403c';  // stone-700
+
 // Convert a list of [lat, lon] into "x,y x,y x,y" suitable for an SVG
 // points= attribute. Returns null if NO points project (off-map). Drops
 // individual points the projection returns null for (e.g. coords outside
@@ -53,6 +59,36 @@ function projectPoints(
   }
   if (out.length < 2) return null;
   return out.join(' ');
+}
+
+// For a polyline (river), pick the middle projected point as the label
+// anchor. For a closed polygon (lake / mountain range), average all
+// projected points to get a rough centroid. Returns null if not enough
+// points project on-map.
+function labelAnchor(
+  points: readonly LatLon[],
+  project: (coord: [number, number]) => [number, number] | null,
+  mode: 'midpoint' | 'centroid',
+): [number, number] | null {
+  const projected: Array<[number, number]> = [];
+  for (const [lat, lon] of points) {
+    const p = project([lon, lat]);
+    if (!p) continue;
+    projected.push([p[0], p[1]]);
+  }
+  if (projected.length < 1) return null;
+  if (mode === 'midpoint') {
+    return projected[Math.floor(projected.length / 2)] ?? null;
+  }
+  // Simple arithmetic mean of vertices. Not the polygon's true centroid, but
+  // good enough for "where to put a name" on a kid map.
+  let sx = 0;
+  let sy = 0;
+  for (const [x, y] of projected) {
+    sx += x;
+    sy += y;
+  }
+  return [sx / projected.length, sy / projected.length];
 }
 
 export default function PhysicalLayer({
@@ -73,7 +109,11 @@ export default function PhysicalLayer({
       RIVERS.map((r) => ({
         name: r.name,
         d: projectPoints(r.points, projection),
-      })).filter((r): r is { name: string; d: string } => r.d !== null),
+        anchor: labelAnchor(r.points, projection, 'midpoint'),
+      })).filter(
+        (r): r is { name: string; d: string; anchor: [number, number] | null } =>
+          r.d !== null,
+      ),
     [projection],
   );
 
@@ -82,7 +122,11 @@ export default function PhysicalLayer({
       LAKES.map((l) => ({
         name: l.name,
         d: projectPoints(l.points, projection),
-      })).filter((l): l is { name: string; d: string } => l.d !== null),
+        anchor: labelAnchor(l.points, projection, 'centroid'),
+      })).filter(
+        (l): l is { name: string; d: string; anchor: [number, number] | null } =>
+          l.d !== null,
+      ),
     [projection],
   );
 
@@ -91,7 +135,11 @@ export default function PhysicalLayer({
       MOUNTAIN_RANGES.map((m) => ({
         name: m.name,
         d: projectPoints(m.points, projection),
-      })).filter((m): m is { name: string; d: string } => m.d !== null),
+        anchor: labelAnchor(m.points, projection, 'centroid'),
+      })).filter(
+        (m): m is { name: string; d: string; anchor: [number, number] | null } =>
+          m.d !== null,
+      ),
     [projection],
   );
 
@@ -149,6 +197,82 @@ export default function PhysicalLayer({
             <title>{l.name}</title>
           </polygon>
         ))}
+
+      {/* Labels — rendered LAST so they sit on top of every feature.
+          Small italic text, semi-transparent. Drawn with a thin white
+          stroke (paintOrder: stroke) for legibility against tinted
+          regions, same trick LabelLayer uses for state names. */}
+      {showMountains &&
+        mountains.map((m) =>
+          m.anchor ? (
+            <text
+              key={`mtn-lbl-${m.name}`}
+              x={m.anchor[0]}
+              y={m.anchor[1]}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fontSize={8}
+              fontStyle="italic"
+              fill={MOUNTAIN_LABEL_FILL}
+              fillOpacity={0.85}
+              stroke="#ffffff"
+              strokeWidth={2}
+              strokeOpacity={0.7}
+              paintOrder="stroke"
+              style={{ userSelect: 'none' }}
+            >
+              {m.name}
+            </text>
+          ) : null,
+        )}
+
+      {showRivers &&
+        rivers.map((r) =>
+          r.anchor ? (
+            <text
+              key={`river-lbl-${r.name}`}
+              x={r.anchor[0]}
+              y={r.anchor[1]}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fontSize={8}
+              fontStyle="italic"
+              fill={RIVER_LABEL_FILL}
+              fillOpacity={0.9}
+              stroke="#ffffff"
+              strokeWidth={2}
+              strokeOpacity={0.75}
+              paintOrder="stroke"
+              style={{ userSelect: 'none' }}
+            >
+              {r.name}
+            </text>
+          ) : null,
+        )}
+
+      {showLakes &&
+        lakes.map((l) =>
+          l.anchor ? (
+            <text
+              key={`lake-lbl-${l.name}`}
+              x={l.anchor[0]}
+              y={l.anchor[1]}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fontSize={8}
+              fontStyle="italic"
+              fill={LAKE_LABEL_FILL}
+              fillOpacity={0.9}
+              stroke="#ffffff"
+              strokeWidth={2}
+              strokeOpacity={0.75}
+              paintOrder="stroke"
+              style={{ userSelect: 'none' }}
+            >
+              {l.name}
+            </text>
+          ) : null,
+        )}
     </g>
   );
 }

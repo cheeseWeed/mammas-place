@@ -5,6 +5,7 @@ export { default as PhysicalLayer } from './PhysicalLayer';
 export { default as LandmarkLayer } from './LandmarkLayer';
 export { default as StateTooltip } from './StateTooltip';
 export { default as StateDetailDrawer } from './StateDetailDrawer';
+export { default as StateZoomView } from './StateZoomView';
 export { default as QuizPrompt } from './QuizPrompt';
 export { default as QuizEngine } from './QuizEngine';
 export { default as StateQuiz } from './StateQuiz';
@@ -19,8 +20,10 @@ export {
   defaultContinentTints,
 } from './WorldMap';
 export { default as WorldLandmarkLayer } from './WorldLandmarkLayer';
+export { default as WorldPhysicalLayer } from './WorldPhysicalLayer';
 export { default as CountryTooltip } from './CountryTooltip';
 export { default as CountryDetailDrawer } from './CountryDetailDrawer';
+export { default as CountryZoomView } from './CountryZoomView';
 export { default as CountryQuiz } from './CountryQuiz';
 export { default as WorldQuizEngine } from './WorldQuizEngine';
 export {

@@ -214,6 +214,8 @@ export default function SpellingEngine({
   const [activeRule, setActiveRule] = useState<Rule | null>(null);
   const [audioOk, setAudioOk] = useState(false);
   const [fadeIn, setFadeIn] = useState(true);
+  const [isPeeking, setIsPeeking] = useState(false);
+  const [peekCount, setPeekCount] = useState(0);
 
   // ---- refs (counters / timers that mustn't trigger re-renders) ----
   const patternMissCountsRef = useRef<Map<string, number>>(new Map());
@@ -260,6 +262,7 @@ export default function SpellingEngine({
 
     setInput('');
     setFeedback(null);
+    setIsPeeking(false);
     setFadeIn(false);
     if (fadeTimerRef.current) window.clearTimeout(fadeTimerRef.current);
     fadeTimerRef.current = window.setTimeout(() => setFadeIn(true), 20);
@@ -293,6 +296,18 @@ export default function SpellingEngine({
     if (!currentWord || !isAudioSupported()) return;
     void spellOutWord(currentWord.word);
   }, [currentWord]);
+
+  // Peek button — pointer DOWN reveals, pointer UP/LEAVE/CANCEL hides.
+  const handlePeekDown = useCallback(() => {
+    setIsPeeking((wasPeeking) => {
+      if (!wasPeeking) setPeekCount((c) => c + 1);
+      return true;
+    });
+  }, []);
+
+  const handlePeekUp = useCallback(() => {
+    setIsPeeking(false);
+  }, []);
 
   // ---- flow ----
 
@@ -359,6 +374,8 @@ export default function SpellingEngine({
       }
 
       setFeedback(correct ? 'right' : 'wrong');
+      // If they were holding peek when submitting, drop it.
+      setIsPeeking(false);
 
       // Track misses (capped lifetime list maintained by the page).
       const nextMisses = correct
@@ -439,7 +456,9 @@ export default function SpellingEngine({
   const submitted = feedback !== null;
   const displayQuestionNum = Math.min(questionIndex + 1, totalQuestions);
 
-  const showFallbackWord = !audioOk;
+  // Audio IS the test — if it's not working, show the word as a fallback.
+  const showNoAudioFallback = !audioOk;
+  const showPeekReveal = audioOk && isPeeking && !submitted;
 
   // Top bar values — read level from CURRENT state (may have shifted up/down).
   const topBar = useMemo(
@@ -479,7 +498,7 @@ export default function SpellingEngine({
           }}
         >
           {/* Listen buttons */}
-          <div className="flex flex-col items-center gap-3 mb-6">
+          <div className="flex flex-col items-center gap-3 mb-4">
             <button
               type="button"
               onClick={handleListen}
@@ -505,11 +524,35 @@ export default function SpellingEngine({
               >
                 Spell out
               </button>
+              {audioOk && (
+                <button
+                  type="button"
+                  onPointerDown={handlePeekDown}
+                  onPointerUp={handlePeekUp}
+                  onPointerLeave={handlePeekUp}
+                  onPointerCancel={handlePeekUp}
+                  onContextMenu={(e) => e.preventDefault()}
+                  disabled={submitted}
+                  aria-label="Hold to peek at the word"
+                  className="select-none touch-none text-sm bg-yellow-100 hover:bg-yellow-200 disabled:opacity-50 text-amber-900 font-semibold py-2 px-4 rounded-full border-2 border-yellow-300 transition-colors"
+                  style={{
+                    WebkitUserSelect: 'none',
+                    WebkitTouchCallout: 'none',
+                  }}
+                >
+                  👁 Hold to peek
+                </button>
+              )}
             </div>
+            {audioOk && peekCount > 0 && (
+              <p className="text-xs text-amber-600">
+                Peeked {peekCount} {peekCount === 1 ? 'time' : 'times'} this session
+              </p>
+            )}
           </div>
 
-          {/* No-audio fallback: surface the word as text so the kid can play. */}
-          {showFallbackWord && !submitted && (
+          {/* No-audio fallback: audio IS the test, so without audio show the word. */}
+          {showNoAudioFallback && !submitted && (
             <div className="mb-4 text-center">
               <p className="text-xs text-amber-700 mb-1">
                 Audio isn&apos;t working — type this word:
@@ -517,6 +560,27 @@ export default function SpellingEngine({
               <p className="text-3xl font-mono font-bold text-amber-900 bg-amber-50 inline-block px-6 py-2 rounded-xl border-2 border-amber-200">
                 {currentWord.word}
               </p>
+            </div>
+          )}
+
+          {/* Peek reveal card — reserved space so layout doesn't jump. */}
+          {audioOk && !submitted && (
+            <div
+              className="mb-4 flex justify-center items-center"
+              style={{ minHeight: '4.5rem' }}
+            >
+              <div
+                aria-live="polite"
+                className={`inline-block px-6 py-2 rounded-xl border-2 transition-all duration-150 ${
+                  showPeekReveal
+                    ? 'bg-sky-50 border-sky-300 opacity-100 blur-0'
+                    : 'bg-transparent border-transparent opacity-0 blur-sm pointer-events-none'
+                }`}
+              >
+                <p className="text-3xl font-mono font-bold text-sky-900 select-none">
+                  {currentWord.word}
+                </p>
+              </div>
             </div>
           )}
 

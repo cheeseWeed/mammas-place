@@ -9,6 +9,12 @@ import statesData from '@/data/states.json';
 export type StateDetailDrawerProps = {
   postal: string | null; // when null, drawer is closed
   onClose: () => void;
+  // Optional: when supplied, the drawer renders a "View Up Close" button
+  // that closes the drawer and fires this with the current postal so the
+  // parent page can open the StateZoomView modal. When undefined, the
+  // button is hidden — preserves backwards compatibility for any other
+  // caller of this drawer.
+  onViewUpClose?: (postal: string) => void;
 };
 
 // --- Local types for the bits of states.json this drawer reads ---
@@ -103,7 +109,11 @@ function formatNumber(n: number): string {
   return n.toLocaleString('en-US');
 }
 
-export default function StateDetailDrawer({ postal, onClose }: StateDetailDrawerProps) {
+export default function StateDetailDrawer({
+  postal,
+  onClose,
+  onViewUpClose,
+}: StateDetailDrawerProps) {
   const isOpen = postal !== null;
   const state = postal ? STATES.find((s) => s.postal === postal) ?? null : null;
 
@@ -208,6 +218,17 @@ export default function StateDetailDrawer({ postal, onClose }: StateDetailDrawer
               >
                 <span aria-hidden="true">🎯</span> Quiz Me
               </Link>
+              {/* "View Up Close" — only when the parent supplied a handler.
+                  Spans both columns so it reads as a distinct primary action. */}
+              {onViewUpClose && (
+                <button
+                  type="button"
+                  onClick={() => onViewUpClose(state.postal)}
+                  className="col-span-2 rounded-xl bg-amber-500 p-3 text-center font-bold text-white shadow-md transition-all hover:bg-amber-400 hover:shadow-lg active:bg-amber-600"
+                >
+                  <span aria-hidden="true">🔍</span> View Up Close
+                </button>
+              )}
             </div>
 
             <div className="flex-1 space-y-6 px-6 py-6">

@@ -18,6 +18,7 @@ import {
   WorldMap,
   CountryTooltip,
   CountryDetailDrawer,
+  CountryZoomView,
   defaultContinentTints,
 } from '@/components/geography';
 import countriesData from '@/data/countries.json';
@@ -41,6 +42,7 @@ export default function WorldStudyPage() {
   const [showContinentColors, setShowContinentColors] = useState(true);
   const [showCountryNames, setShowCountryNames] = useState(false);
   const [showLandmarks, setShowLandmarks] = useState(false);
+  const [showPhysical, setShowPhysical] = useState(false);
 
   // Tooltip state: which country iso3 is hovered + cursor position.
   // tooltipStage controls what's rendered: 0 = nothing, 1 = basic, 2 = with bonus.
@@ -50,6 +52,11 @@ export default function WorldStudyPage() {
 
   // Drawer state: which country iso2 is open (null = closed).
   const [drawerIso2, setDrawerIso2] = useState<string | null>(null);
+
+  // Zoom view (full-screen close-up): which country iso2 is currently open
+  // in the zoom modal (null = closed). Triggered by the drawer's "View Up
+  // Close" button.
+  const [zoomIso2, setZoomIso2] = useState<string | null>(null);
 
   const countries = countriesData as CountryRecord[];
 
@@ -144,6 +151,15 @@ export default function WorldStudyPage() {
               />
               Landmark pins
             </label>
+            <label className="flex items-center gap-1.5 cursor-pointer text-xs sm:text-sm font-medium text-gray-800 hover:text-sky-700 transition-colors">
+              <input
+                type="checkbox"
+                checked={showPhysical}
+                onChange={(e) => setShowPhysical(e.target.checked)}
+                className="w-4 h-4 accent-sky-600 cursor-pointer"
+              />
+              Physical features
+            </label>
 
             {/* Echo of the currently-hovered country — touch-device fallback. */}
             {hoveredCountry && (
@@ -167,6 +183,7 @@ export default function WorldStudyPage() {
           onCountryClick={handleCountryClick}
           showLandmarks={showLandmarks}
           onLandmarkClick={(iso2) => setDrawerIso2(iso2)}
+          showPhysicalLayer={showPhysical}
         />
       </div>
 
@@ -189,8 +206,20 @@ export default function WorldStudyPage() {
         />
       )}
 
-      {/* Deep-dive drawer. */}
-      <CountryDetailDrawer iso2={drawerIso2} onClose={() => setDrawerIso2(null)} />
+      {/* Deep-dive drawer. The "View Up Close" button on the drawer fires
+          onViewUpClose, which closes the drawer and opens the full-screen
+          zoom view modal instead. */}
+      <CountryDetailDrawer
+        iso2={drawerIso2}
+        onClose={() => setDrawerIso2(null)}
+        onViewUpClose={(iso2) => {
+          setDrawerIso2(null);
+          setZoomIso2(iso2);
+        }}
+      />
+
+      {/* Full-screen close-up modal. Self-contained close: backdrop, ESC, X. */}
+      <CountryZoomView iso2={zoomIso2} onClose={() => setZoomIso2(null)} />
     </div>
   );
 }

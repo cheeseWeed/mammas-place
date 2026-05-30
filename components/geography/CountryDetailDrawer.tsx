@@ -18,6 +18,12 @@ import countriesData from '@/data/countries.json';
 export type CountryDetailDrawerProps = {
   iso2: string | null; // when null, drawer is closed
   onClose: () => void;
+  // Optional: when supplied, the drawer renders a "View Up Close" button
+  // that closes the drawer and fires this with the current iso2 so the
+  // parent page can open the CountryZoomView modal. When undefined, the
+  // button is hidden — preserves backwards compatibility for any other
+  // caller of this drawer.
+  onViewUpClose?: (iso2: string) => void;
 };
 
 // Shape mirrors data/countries.json (sibling agent's schema). Every field is
@@ -104,7 +110,11 @@ function currencyLabel(c: CountryRecord): string | null {
   return c.currency ?? c.currencyCode ?? null;
 }
 
-export default function CountryDetailDrawer({ iso2, onClose }: CountryDetailDrawerProps) {
+export default function CountryDetailDrawer({
+  iso2,
+  onClose,
+  onViewUpClose,
+}: CountryDetailDrawerProps) {
   const isOpen = iso2 !== null;
   const country = iso2 ? findCountry(iso2) : null;
 
@@ -217,6 +227,17 @@ export default function CountryDetailDrawer({ iso2, onClose }: CountryDetailDraw
                   >
                     <span aria-hidden="true">🎯</span> Quiz Me
                   </Link>
+                  {/* "View Up Close" — only when the parent supplied a handler.
+                      Spans both columns so it reads as a distinct primary action. */}
+                  {onViewUpClose && country.iso2 && (
+                    <button
+                      type="button"
+                      onClick={() => onViewUpClose(country.iso2!)}
+                      className="col-span-2 rounded-xl bg-amber-500 p-3 text-center font-bold text-white shadow-md transition-all hover:bg-amber-400 hover:shadow-lg active:bg-amber-600"
+                    >
+                      <span aria-hidden="true">🔍</span> View Up Close
+                    </button>
+                  )}
                 </>
               )}
             </div>
