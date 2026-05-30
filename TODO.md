@@ -70,15 +70,89 @@ Closed-loop family economy. Kids earn **MP** (the unit), spend it in `/shop`. No
 
 ---
 
-## 🎯 Next session — Phase 6+ ideas (MP Money roadmap)
+## 🎯 Next session — Phase 6: MP Cards (planned, not built)
 
-From `app/money/PLAN.md`:
-- **Phase 6: Gift cards** — printable `GIFT-XXXXXX` codes that redeem a fixed amount. Birthdays/visitors.
+Full spec: **`app/money/PLAN-Phase6-Cards.md`** (read this first next session).
+
+Two flavors, shared infrastructure:
+- **MP Account Card** — short 4-digit card number per kid (e.g. `MP·7821`). Printable. *Receive-only* (can credit, can't spend — PIN still required to spend). Lets grandparents/visitors top kids up via a public `/give` page.
+- **MP Gift Cards** — single-use `MP-XXXXXX` codes parents print for birthdays/surprises. Kid redeems at `/portal/money/redeem`.
+
+Suggested phase order (each ships independently):
+- **6a** — Account card: number gen + kid sees printable card + parent reroll. Cheapest win.
+- **6b** — `/give` public deposit page (needs rate-limit + per-call cap).
+- **6c** — Gift cards full (create/print/redeem/revoke).
+
+What's NOT changing in Phase 6:
+- Admin adding money — already lives at `/admin/mp-bank` "Top up" button.
+- Kid seeing balance — already at `/portal/money` + header chip.
+- The card UX is a layer on top of existing balance, not a replacement.
+
+---
+
+## 🎯 Future learning section — Language Arts
+
+Doable and natural fit alongside Spelling and Geography. Reuses the same `DriveUser` table — just add a `languageArts Json @default("{}")` column when the section ships. No new auth, no new login, no new schema upheaval.
+
+### Scope (full)
+- **Grammar** — parts of speech, sentence structure (subject/verb/object), tense, agreement, common error patterns
+- **Punctuation** — comma, semicolon, colon, apostrophe, quotation marks, dash vs hyphen, Oxford comma
+- **Synonyms / Antonyms / Homonyms / Homophones** — the "-nyms" family — drills for "their/they're/there", "affect/effect", "to/too/two"
+- **Phonics / phonemes** — letter sounds, blends, digraphs, vowel teams (overlaps with Spelling — share a phoneme map)
+- **Word usage** — "when to use which word" — register/tone (formal vs casual), connotation, idioms
+- **Dictionary skills** — looking up a word, pronunciation guides, etymology, multiple definitions, parts of speech labels
+- **Thesaurus skills** — finding alternatives, choosing the right shade of meaning, avoiding word repetition
+
+### How it fits the existing pattern
+- `/language-arts/page.tsx` landing page (mirrors `/drive`, `/geography`)
+- `/language-arts/PLAN.md` architecture spec (mirrors `/drive` + `/money` + `/geography` discipline)
+- Reuses `LearnerContext` — same name+PIN login as Drive/Shop/Geography
+- Per-skill progress as nested JSONB: `{ grammar: {...}, punctuation: {...}, nyms: {...}, phonics: {...}, dictionary: {...} }`
+- Spaced repetition for vocab — reuse the `sr` pattern from Drive
+- Auto-credit hooks (Phase 7) — completing a unit = +MP
+
+### Doability — high
+- Content scope is large but mostly fact-based (drillable)
+- Could lean on existing public-domain reference content (Merriam-Webster's free API, Wiktionary, basic grammar references)
+- AI generation for question/example variants is a strong fit
+- Phaseable: ship phonics first (matches youngest kids), grammar later
+
+### Suggested first slice
+Phase L1: Homophones + commonly confused words (their/they're/there, your/you're, its/it's, affect/effect, to/too/two). 1 deck + 1 quiz + spaced repetition. ~1 session of build.
+
+---
+
+## 🎯 Future games section — Chess
+
+### Scope
+- Play chess against the computer (Stockfish via WASM is free, runs in the browser, no API cost)
+- Difficulty levels (beginner / casual / strong)
+- Save unfinished games (per learner — same DriveUser row, `chess` JSONB column)
+- Optional later: puzzles ("mate in 2"), opening trainer, end-game drills
+
+### Doability — high
+- **chessboardjs / chess.js** — standard open-source pair for board UI + rules
+- **Stockfish.wasm** — full chess engine in the browser, no server cost, no API key
+- Storage: `DriveUser.chess Json @default("{}")` — `{ games: [...], stats: {wins, losses, draws}, lastPosition }`
+- No real money / earnings hook unless we want one (could earn MP for a win against a higher-rated bot)
+
+### Suggested first slice
+Phase C1: Play vs Stockfish at a chosen difficulty, save/resume one in-progress game, win/loss/draw counter. ~1 session.
+
+### Future
+- Two-player local (siblings at the same screen)
+- Puzzles from a free puzzle DB (Lichess publishes one under CC license)
+- Online-vs-friend would need a real-time channel — defer
+
+---
+
+## 🎯 Other roadmap items (later)
+
 - **Phase 7: Auto-credit hooks** — `/drive` deck completion → +0.50MP. Quiz ≥80% → +0.25MP.
 - **Phase 8: Wishlist / layaway** — out-of-funds path that signals parent.
 - **Phase 9: Daily spend cap** — per-kid daily max set in parent admin.
 - **Parent PIN rotation UI** — currently only via `/api/money/parent/setup`. Add a settings panel to `/admin/mp-bank`.
-- **DisplayName field** — schema has it; UI doesn't capture it on register. Add at registration or in `/portal/money`.
+- **DisplayName field** — schema has it; UI doesn't capture it on register. Phase 6 is a natural moment to add this (card looks better as "Lilly" than "lilly").
 
 ---
 
