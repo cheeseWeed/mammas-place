@@ -35,10 +35,26 @@ So a 10-question hard math round at 100% earns: `0.25 × 10 + 1.00 × 10 × 2.0 
 | # | Phase | What kid does | Ship priority |
 |---|---|---|---|
 | **1** | **Quick Drill** | Pick op set (+/−/×/÷ or mix), difficulty, round size, timer. Race the clock, answer typed, Enter to submit. On expire: reveal + auto-advance. | ✅ **Shipped** |
-| 2 | Fact Families | Master triangles (4×6=24 / 24÷6=4). Different drill mode, same engine for problem generation. | Future |
-| 3 | Word Problems | Read it, picture it, solve it. Hand-authored item bank with categories. | Future |
+| **2** | **Fact Families** | Master triangles (4×6=24 / 24÷6=4). One equation at a time with a "Family: a, b, c" chip pinned to the top; no timer, accuracy is what matters. | ✅ **Shipped 2026-05-30** |
+| **3** | **Word Problems** | Read it, picture it, solve it. Hand-authored item bank, kid-friendly framing across all four ops. | ✅ **Shipped 2026-05-30** |
 | 4 | Fractions / Decimals | New problem types in the engine; reuse round loop. | Future |
 | 5 | Multi-step / Order of Ops | PEMDAS. Bigger problem text + scratch-pad UI. | Future |
+
+### Phase 2 shipped notes (2026-05-30)
+
+- Route: `app/math/fact-families/page.tsx`. Generator: `lib/math/fact-families.ts`.
+- 40 generated families per round; round sizes 5/10/15/20.
+- Op family selector: addsub / muldiv / mix. Difficulty: easy / medium / hard (drives the number ranges).
+- Deliberately **no timer** — fact families are a memory drill, not a race; speed pressure would teach the wrong thing.
+- Anon-earn wired via `<PendingEarnPrompt>` (same pattern as Quick Drill).
+
+### Phase 3 shipped notes (2026-05-30)
+
+- Route: `app/math/word-problems/page.tsx`. Items: `lib/math/word-problems.ts`.
+- 40 hand-authored items, 13/13/14 split across easy/medium/hard. Mix of all four ops.
+- Op filter: any / + / − / × / ÷ / mix. Round size 5/10/15 (items are hand-authored, so the pool sets the ceiling).
+- Kid-friendly contexts (chores, snacks, road trips). No timer — reading + setup time varies per item.
+- Anon-earn wired via `<PendingEarnPrompt>`.
 
 ## File layout (locked)
 

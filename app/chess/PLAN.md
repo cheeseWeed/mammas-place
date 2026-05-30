@@ -166,16 +166,16 @@ Stored in `DriveUser.chess` JSONB column (added in Phase 4) as a single in-progr
 
 ## Phase ladder
 
-| Phase | What ships | Time estimate (rough) |
+| Phase | Status | What ships |
 |---|---|---|
-| **1 — Engine + 2-player** | Pure engine with all rules. Board UI. Click-to-move with legal-square highlights. Move list. Undo. Promotion picker. Game-over screen. Themed checkmate/stalemate/draw banners. Player names. **No AI yet.** | 1 deep session |
-| **2 — Themes + polish** | Classic + Storybook + Royal + Holiday SVG sets. Theme picker on the start screen. Subtle move animation (CSS transform on the piece). Capture spark. Quiet move sound. | Half session |
-| **3 — AI: Cub / Knight / Wizard** | All three difficulty levels. AI move indicator ("Wizard is thinking…"). On Cub, optional "Why?" button that shows the AI's reasoning in plain English ("I went here because it attacks your knight"). | 1 session |
-| **4 — Save + Resume + MP earn** | `chess` JSONB column. `/api/chess/game` route. Save & quit button. Resume on return. POST `/api/money/earn` on win/draw. | Half session |
-| 5 | Move sounds (per-piece + capture + check + checkmate jingle), PGN export, board-flip button, FEN import | Future |
-| 6 | Opening book — first 6 plies of 8 common openings so AI doesn't blunder its opening | Future |
-| 7 | Puzzle mode — daily "mate in 1/2/3" tactics, earns MP, spaced repetition | Future |
-| 8 | Online play — code-based room (Lilly's game) for sibling-vs-sibling on different devices. Requires real-time channel (Pusher / Vercel KV pub-sub). | Future, only if asked |
+| **1 — Engine + 2-player** | ✅ Shipped | Pure engine with all rules. Board UI. Click-to-move with legal-square highlights. Move list. Undo. Promotion picker. Game-over screen. Themed checkmate/stalemate/draw banners. Player names. **No AI yet.** |
+| **2 — Themes + polish** | ✅ Shipped | Classic + Storybook + Royal + Holiday SVG sets. Theme picker on the start screen. Subtle move animation (CSS transform on the piece). Capture spark. Quiet move sound. |
+| **3 — AI: Cub / Knight / Wizard** | 🟡 In progress (wire-in agent running 2026-05-30) | All three difficulty levels. AI move indicator ("Wizard is thinking…"). On Cub, optional "Why?" button that shows the AI's reasoning in plain English ("I went here because it attacks your knight"). |
+| **4 — Save + Resume + MP earn** | 🟡 In progress (wire-in agent running 2026-05-30) | `chess` JSONB column. `/api/chess/game` route. Save & quit button. Resume on return. POST `/api/money/earn` on win/draw. |
+| 5 | Future | Move sounds (per-piece + capture + check + checkmate jingle), PGN export, board-flip button, FEN import |
+| 6 | Future | Opening book — first 6 plies of 8 common openings so AI doesn't blunder its opening |
+| 7 | Future | Puzzle mode — daily "mate in 1/2/3" tactics, earns MP, spaced repetition |
+| 8 | Future (only if asked) | Online play — code-based room (Lilly's game) for sibling-vs-sibling on different devices. Requires real-time channel (Pusher / Vercel KV pub-sub). |
 
 ---
 

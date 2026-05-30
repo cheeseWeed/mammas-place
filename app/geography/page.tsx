@@ -10,7 +10,7 @@ import { GEOGRAPHY_PHASES, type GeographyPhase } from '@/data/geography-phases';
 import { WORLD_PHASES, type WorldPhase } from '@/data/world-phases';
 
 export const metadata: Metadata = {
-  title: "Geography Explorer - Mamma's Place",
+  title: 'Geography Explorer',
   description:
     'Learn the United States and the world, one step at a time. Explore maps and test what you know with quizzes and games.',
 };

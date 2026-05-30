@@ -26,8 +26,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mamma's Place - Your Everything Store | Groceries, Tires, Tools, Toys & More",
-  description: "Whatever you want, we got it! Shop Mamma's Place for everything - automotive, groceries, home goods, tools, clothing, toys, and more. Your one-stop marketplace with free shipping over $50.",
+  metadataBase: new URL('https://mammas-place.vercel.app'),
+  title: {
+    default: "Mamma's Place - Homeschool Learning & Family Shop",
+    template: "%s | Mamma's Place",
+  },
+  description:
+    "Homeschool learning hub and family shop — geography, spelling, math, language arts, chess, driver study, and more, all in one place.",
+  openGraph: {
+    title: "Mamma's Place - Homeschool Learning & Family Shop",
+    description:
+      "Homeschool learning hub and family shop — geography, spelling, math, language arts, chess, driver study, and more, all in one place.",
+    type: 'website',
+    locale: 'en_US',
+    siteName: "Mamma's Place",
+    url: 'https://mammas-place.vercel.app',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: "Mamma's Place - Homeschool Learning & Family Shop",
+    description:
+      "Homeschool learning hub and family shop — geography, spelling, math, language arts, chess, driver study, and more, all in one place.",
+  },
 };
 
 export default function RootLayout({

@@ -15,11 +15,25 @@ Reading, writing, and the tricky-words layer for the mammasplace kids. Same disc
 | # | Phase | What kid does | Ship priority |
 |---|---|---|---|
 | **L1** | **Homophones & Confused Words** | Fill-in-the-blank sentence; pick from the set (its/it's, your/you're, their/they're/there, to/too/two, affect/effect, then/than, lose/loose, whose/who's, were/where/wear, accept/except). | ✅ **Shipped** |
-| L2 | Grammar Basics | Parts of speech, subject/verb agreement, tense, agreement. | Future |
-| L3 | Punctuation | Commas, apostrophes, quotes, semicolons, dashes vs hyphens. | Future |
-| L4 | Phonics & Sounds | Vowel teams, blends, digraphs. Pairs with Spelling (shared phoneme map). | Future |
-| L5 | Dictionary Skills | Look-ups, pronunciation guides, multiple definitions. | Future |
-| L6 | Thesaurus Skills | Right shade of meaning, avoiding word repetition. | Future |
+| **L2** | **Grammar Basics** | Parts of speech, subject/verb agreement, tense. Choice-list answers; rule + hint on wrong. | ✅ **Shipped 2026-05-30** |
+| **L3** | **Punctuation** | Commas, apostrophes, quotes, end-punct, semicolons, colons, dash vs hyphen. Mix of *fix-mode* (find the missing/wrong mark) and *fill-mode* (pick the right one). | ✅ **Shipped 2026-05-30** |
+| **L4** | **Phonics & Sounds** | Vowel teams, blends, digraphs. Phonemes are word-anchored (e.g. "the *ay* in *day*"), not IPA — the kid can sound it out. | ✅ **Shipped 2026-05-30** |
+| **L5** | **Dictionary Skills** | Alphabetical order, guide words, pronunciation guides, multiple definitions, POS labels, etymology. | ✅ **Shipped 2026-05-30** |
+| **L6** | **Thesaurus Skills** | Synonyms, antonyms, shade of meaning, avoiding word repetition, strength scale. | ✅ **Shipped 2026-05-30** |
+
+### Phase L2-L6 shipped notes (2026-05-30)
+
+All five phases follow the L1 page pattern: `config → playing → results` with `<PendingEarnPrompt>` wired in. Earn payload is `('languageArts', 'drill', {correct, total, tier}, key)` — the reward calc doesn't distinguish phases (one MP curve for the whole section).
+
+| Phase | Route | Items file | Item count (easy/med/hard) | Distinctive UI |
+|---|---|---|---|---|
+| L2 Grammar | `app/language-arts/grammar/page.tsx` | `lib/languageArts/grammar.ts` | 52 (20/20/12) — 20 POS / 16 agreement / 16 tense | Choice list |
+| L3 Punctuation | `app/language-arts/punctuation/page.tsx` | `lib/languageArts/punctuation.ts` | 63 (24/23/16) | Two item modes: fix-mode + fill-mode |
+| L4 Phonics | `app/language-arts/phonics/page.tsx` | `lib/languageArts/phonics.ts` | 72 (vowels/blends/digraphs/vowel-teams) | Word-anchored phonemes (no IPA) |
+| L5 Dictionary | `app/language-arts/dictionary/page.tsx` | `lib/languageArts/dictionary.ts` | 68 | Standard choice list across 6 sub-skills |
+| L6 Thesaurus | `app/language-arts/thesaurus/page.tsx` | `lib/languageArts/thesaurus.ts` | 65 | Shade-of-meaning items show the synonym group |
+
+~360 new drill items total across the five phases.
 
 ## File layout (locked)
 

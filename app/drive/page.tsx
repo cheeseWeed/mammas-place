@@ -5,7 +5,7 @@ import Link from 'next/link';
 import DriveLoginForm from '@/components/DriveLoginForm';
 
 export const metadata: Metadata = {
-  title: "Driver Study - Mamma's Place",
+  title: 'Driver Study',
   description:
     'Utah Driver License study tool — slide decks, practice quizzes, and full exam simulator',
 };
