@@ -77,6 +77,7 @@ h1 { color: var(--primary); margin: 0 0 6px; }
 .back-link { display: inline-block; margin-bottom: 12px; color: var(--gray); text-decoration: none; font-size: 0.9em; }
 .back-link:hover { color: var(--primary); }
 </style>
+<script src="/drive-assets/earn-toast.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </head>
 <body>
@@ -189,24 +190,8 @@ function recordAttempt(quizName, score, total) {
   });
   if (attempts.length > 200) attempts = attempts.slice(attempts.length - 200);
   lsSet(LS.attempts, attempts);
-  // DL_SYNC_BLOCK
-  try {
-    var __dlUser = localStorage.getItem("dl_user");
-    if (__dlUser && __dlUser !== "__anon__") {
-      fetch("/api/drive/progress", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          user: __dlUser.replace(/^"|"$/g, ""),
-          attempts: JSON.parse(localStorage.getItem("dl_attempts") || "[]"),
-          misses: JSON.parse(localStorage.getItem("dl_misses") || "[]"),
-          unitScores: JSON.parse(localStorage.getItem("dl_unit_scores") || "{}"),
-          sr: JSON.parse(localStorage.getItem("dl_sr") || "{}")
-        }),
-        keepalive: true
-      }).catch(function(){});
-    }
-  } catch (e) {}
+  // DL_SYNC_BLOCK — server POST + MP-earn toast (anonymous-friendly)
+  try { if (window.driveEarnToast) window.driveEarnToast.postProgressAndShow(); } catch (e) {}
 }
 
 // ============================================================

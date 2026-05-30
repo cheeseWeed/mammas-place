@@ -56,6 +56,7 @@ button.ghost{background:#fff;color:var(--purple);border:1.5px solid var(--purple
 .timer.warn{background:var(--red);color:#fff}
 @media (max-width:540px){.score .pct{font-size:2.4rem}header h1{font-size:1.1rem}}
 </style>
+<script src="/drive-assets/earn-toast.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 </head>
 <body>
@@ -334,25 +335,8 @@ function grade(){
       sr[fid]={next_due_ts:Date.now()+interval_days*DAY_MS, interval_days:interval_days, ease:prev.ease||2.5, last_seen_ts:Date.now()};
     });
     localStorage.setItem("dl_sr", JSON.stringify(sr));
-  // DL_SYNC_BLOCK — fire-and-forget POST to server-side progress API
-  try {
-    var __dlUser = localStorage.getItem("dl_user");
-    if (__dlUser && __dlUser !== "__anon__") {
-      var __body = {
-        user: __dlUser.replace(/^"|"$/g, ""),
-        attempts: JSON.parse(localStorage.getItem("dl_attempts") || "[]"),
-        misses: JSON.parse(localStorage.getItem("dl_misses") || "[]"),
-        unitScores: JSON.parse(localStorage.getItem("dl_unit_scores") || "{}"),
-        sr: JSON.parse(localStorage.getItem("dl_sr") || "{}")
-      };
-      fetch("/api/drive/progress", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(__body),
-        keepalive: true
-      }).catch(function(){});
-    }
-  } catch (e) {}
+  // DL_SYNC_BLOCK — server POST + MP-earn toast (anonymous-friendly)
+  try { if (window.driveEarnToast) window.driveEarnToast.postProgressAndShow(); } catch (e) {}
   } catch(e){}
 }
 
