@@ -34,6 +34,8 @@ export default function ShopLoginForm() {
   const router = useRouter();
   const [user, setUser] = useState<string>(readSavedUser);
   const [pin, setPin] = useState('');
+  // Optional pretty-cased display name; only sent on register, ignored on login.
+  const [displayName, setDisplayName] = useState('');
   const [status, setStatus] = useState<Status>({ kind: 'idle' });
   const userInputRef = useRef<HTMLInputElement>(null);
   const pinInputRef = useRef<HTMLInputElement>(null);
@@ -65,10 +67,15 @@ export default function ShopLoginForm() {
     }
     setStatus({ kind: 'busy' });
     try {
+      const trimmedDisplay = displayName.trim();
+      const body: Record<string, string> = { user: user.trim(), pin };
+      if (action === 'register' && trimmedDisplay) {
+        body.displayName = trimmedDisplay;
+      }
       const res = await fetch(`/api/drive/${action}`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ user: user.trim(), pin }),
+        body: JSON.stringify(body),
       });
       if (res.ok) {
         const data = (await res.json().catch(() => ({}))) as { user?: unknown };
@@ -183,6 +190,26 @@ export default function ShopLoginForm() {
             placeholder="e.g. Lilly"
             maxLength={30}
             autoComplete="username"
+            disabled={busy}
+            className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-4 py-2 bg-purple-50 text-purple-900"
+          />
+        </div>
+
+        <div>
+          <label
+            htmlFor="shop-display"
+            className="block text-sm font-medium text-purple-900 mb-1"
+          >
+            Display name <span className="text-purple-500 font-normal">(only when registering)</span>
+          </label>
+          <input
+            id="shop-display"
+            type="text"
+            value={displayName}
+            onChange={(e) => setDisplayName(e.target.value)}
+            placeholder="How you want it shown (optional)"
+            maxLength={30}
+            autoComplete="off"
             disabled={busy}
             className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-4 py-2 bg-purple-50 text-purple-900"
           />

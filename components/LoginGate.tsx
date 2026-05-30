@@ -136,6 +136,8 @@ function SectionLoginCard({
   const copy = SECTION_COPY[section];
   const [user, setUser] = useState<string>(readSavedUser);
   const [pin, setPin] = useState('');
+  // Optional pretty-cased display name; only sent on register, ignored on login.
+  const [displayName, setDisplayName] = useState('');
   const [status, setStatus] = useState<Status>({ kind: 'idle' });
   const userInputRef = useRef<HTMLInputElement>(null);
   const pinInputRef = useRef<HTMLInputElement>(null);
@@ -170,10 +172,15 @@ function SectionLoginCard({
       // We deliberately reuse the existing /api/drive/{login,register}
       // endpoints — there's only one user table and one cookie, so any
       // section's login flow is the same flow.
+      const trimmedDisplay = displayName.trim();
+      const body: Record<string, string> = { user: user.trim(), pin };
+      if (action === 'register' && trimmedDisplay) {
+        body.displayName = trimmedDisplay;
+      }
       const res = await fetch(`/api/drive/${action}`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ user: user.trim(), pin }),
+        body: JSON.stringify(body),
       });
       if (res.ok) {
         const data = (await res.json()) as { user?: string };
@@ -334,6 +341,26 @@ function SectionLoginCard({
             placeholder="e.g. Lilly"
             maxLength={30}
             autoComplete="username"
+            disabled={busy}
+            className={`w-full rounded-xl border-2 focus:outline-none px-4 py-2 ${accentClasses.inputWrap}`}
+          />
+        </div>
+
+        <div>
+          <label
+            htmlFor={`gate-${section}-display`}
+            className={`block text-sm font-medium mb-1 ${accentClasses.label}`}
+          >
+            Display name <span className="font-normal opacity-70">(only when registering)</span>
+          </label>
+          <input
+            id={`gate-${section}-display`}
+            type="text"
+            value={displayName}
+            onChange={(e) => setDisplayName(e.target.value)}
+            placeholder="How you want it shown (optional)"
+            maxLength={30}
+            autoComplete="off"
             disabled={busy}
             className={`w-full rounded-xl border-2 focus:outline-none px-4 py-2 ${accentClasses.inputWrap}`}
           />

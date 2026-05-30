@@ -100,6 +100,23 @@ export default function MpBankDashboard() {
   const [formBusy, setFormBusy] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
 
+  // Settings panel (collapsible) — change parent PIN.
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [pinCurrent, setPinCurrent] = useState('');
+  const [pinNew, setPinNew] = useState('');
+  const [pinConfirm, setPinConfirm] = useState('');
+  const [pinBusy, setPinBusy] = useState(false);
+  // Toast: ephemeral feedback for the PIN rotation. Auto-dismisses after ~3s.
+  const [pinToast, setPinToast] = useState<
+    { kind: 'success' | 'error'; message: string } | null
+  >(null);
+
+  useEffect(() => {
+    if (!pinToast) return;
+    const t = window.setTimeout(() => setPinToast(null), 3500);
+    return () => window.clearTimeout(t);
+  }, [pinToast]);
+
   // Centralised 401 handling: any parent-gated endpoint that comes back 401
   // means the cookie expired or was cleared — bounce to login.
   const handleUnauth = useCallback(() => {
@@ -252,6 +269,63 @@ export default function MpBankDashboard() {
       setFormError(err instanceof Error ? err.message : 'Network error');
     } finally {
       setFormBusy(false);
+    }
+  };
+
+  const submitPinChange = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!/^\d{4}$/.test(pinCurrent)) {
+      setPinToast({ kind: 'error', message: 'Current PIN must be exactly 4 digits.' });
+      return;
+    }
+    if (!/^\d{4}$/.test(pinNew)) {
+      setPinToast({ kind: 'error', message: 'New PIN must be exactly 4 digits.' });
+      return;
+    }
+    if (pinNew !== pinConfirm) {
+      setPinToast({ kind: 'error', message: 'New PIN and confirmation do not match.' });
+      return;
+    }
+    if (pinNew === pinCurrent) {
+      setPinToast({ kind: 'error', message: 'New PIN must be different from current PIN.' });
+      return;
+    }
+    setPinBusy(true);
+    try {
+      const res = await fetch('/api/money/parent/setup', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ currentPin: pinCurrent, newPin: pinNew }),
+      });
+      if (res.status === 401) {
+        // Could be wrong current PIN OR cookie expired. The route returns
+        // 'Parent login required' for the latter; bounce to login in that case.
+        const data = (await res.json().catch(() => ({}))) as { error?: unknown };
+        const msg = typeof data.error === 'string' ? data.error : 'Unauthorized.';
+        if (msg === 'Parent login required') {
+          handleUnauth();
+          return;
+        }
+        setPinToast({ kind: 'error', message: msg });
+        return;
+      }
+      if (!res.ok) {
+        const data = (await res.json().catch(() => ({}))) as { error?: unknown };
+        const msg = typeof data.error === 'string' ? data.error : `HTTP ${res.status}`;
+        setPinToast({ kind: 'error', message: msg });
+        return;
+      }
+      setPinCurrent('');
+      setPinNew('');
+      setPinConfirm('');
+      setPinToast({ kind: 'success', message: 'PIN updated.' });
+    } catch (err) {
+      setPinToast({
+        kind: 'error',
+        message: err instanceof Error ? err.message : 'Network error',
+      });
+    } finally {
+      setPinBusy(false);
     }
   };
 
@@ -597,7 +671,148 @@ export default function MpBankDashboard() {
             </div>
           )}
         </section>
+
+        {/* Section 4: Settings — change parent PIN (collapsible) */}
+        <section className="bg-white rounded-2xl shadow-lg border-2 border-purple-100 p-6">
+          <button
+            type="button"
+            onClick={() => setSettingsOpen((v) => !v)}
+            className="w-full flex items-center justify-between gap-3 text-left"
+            aria-expanded={settingsOpen}
+          >
+            <div>
+              <h2 className="text-2xl font-bold text-purple-900">Settings</h2>
+              <p className="text-xs text-purple-600 mt-1">
+                Change the parent PIN that unlocks this dashboard.
+              </p>
+            </div>
+            <span
+              className={`text-purple-700 text-2xl leading-none transition-transform ${settingsOpen ? 'rotate-180' : ''}`}
+              aria-hidden="true"
+            >
+              ⌃
+            </span>
+          </button>
+
+          {settingsOpen && (
+            <form
+              onSubmit={submitPinChange}
+              className="mt-5 bg-purple-50 rounded-xl p-4 border border-purple-200 max-w-xl"
+            >
+              <div className="font-semibold text-purple-900 mb-3 text-sm">
+                Change parent PIN
+              </div>
+              <div className="grid sm:grid-cols-3 gap-3">
+                <div>
+                  <label
+                    htmlFor="pin-current"
+                    className="block text-xs font-medium text-purple-900 mb-1"
+                  >
+                    Current PIN
+                  </label>
+                  <input
+                    id="pin-current"
+                    type="password"
+                    inputMode="numeric"
+                    pattern="\d{4}"
+                    autoComplete="current-password"
+                    value={pinCurrent}
+                    onChange={(e) =>
+                      setPinCurrent(e.target.value.replace(/\D/g, '').slice(0, 4))
+                    }
+                    maxLength={4}
+                    placeholder="• • • •"
+                    disabled={pinBusy}
+                    className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-3 py-2 bg-white text-purple-900 tracking-[0.4em] text-center"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="pin-new"
+                    className="block text-xs font-medium text-purple-900 mb-1"
+                  >
+                    New PIN
+                  </label>
+                  <input
+                    id="pin-new"
+                    type="password"
+                    inputMode="numeric"
+                    pattern="\d{4}"
+                    autoComplete="new-password"
+                    value={pinNew}
+                    onChange={(e) =>
+                      setPinNew(e.target.value.replace(/\D/g, '').slice(0, 4))
+                    }
+                    maxLength={4}
+                    placeholder="• • • •"
+                    disabled={pinBusy}
+                    className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-3 py-2 bg-white text-purple-900 tracking-[0.4em] text-center"
+                  />
+                </div>
+                <div>
+                  <label
+                    htmlFor="pin-confirm"
+                    className="block text-xs font-medium text-purple-900 mb-1"
+                  >
+                    Confirm new PIN
+                  </label>
+                  <input
+                    id="pin-confirm"
+                    type="password"
+                    inputMode="numeric"
+                    pattern="\d{4}"
+                    autoComplete="new-password"
+                    value={pinConfirm}
+                    onChange={(e) =>
+                      setPinConfirm(e.target.value.replace(/\D/g, '').slice(0, 4))
+                    }
+                    maxLength={4}
+                    placeholder="• • • •"
+                    disabled={pinBusy}
+                    className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-3 py-2 bg-white text-purple-900 tracking-[0.4em] text-center"
+                  />
+                </div>
+              </div>
+              <div className="mt-4 flex items-center gap-3">
+                <button
+                  type="submit"
+                  disabled={pinBusy}
+                  className="bg-purple-900 hover:bg-purple-800 disabled:bg-purple-300 text-white font-bold px-4 py-2 rounded-xl text-sm transition-colors"
+                >
+                  {pinBusy ? 'Saving…' : 'Update PIN'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setPinCurrent('');
+                    setPinNew('');
+                    setPinConfirm('');
+                  }}
+                  disabled={pinBusy}
+                  className="text-purple-700 hover:text-purple-900 underline text-sm"
+                >
+                  Clear
+                </button>
+              </div>
+            </form>
+          )}
+        </section>
       </main>
+
+      {/* Toast — fixed bottom-right, ephemeral feedback for PIN rotation */}
+      {pinToast && (
+        <div
+          role="status"
+          aria-live="polite"
+          className={`fixed bottom-6 right-6 z-50 max-w-sm px-4 py-3 rounded-xl shadow-lg border-2 font-semibold text-sm ${
+            pinToast.kind === 'success'
+              ? 'bg-green-100 border-green-300 text-green-900'
+              : 'bg-red-100 border-red-300 text-red-900'
+          }`}
+        >
+          {pinToast.message}
+        </div>
+      )}
     </div>
   );
 }

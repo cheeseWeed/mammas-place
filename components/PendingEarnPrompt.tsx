@@ -48,6 +48,8 @@ export default function PendingEarnPrompt({
   const { refresh } = useLearner();
   const [user, setUser] = useState('');
   const [pin, setPin] = useState('');
+  // Optional pretty-cased display name; only sent on register, ignored on login.
+  const [displayName, setDisplayName] = useState('');
   const [status, setStatus] = useState<Status>({ kind: 'idle' });
   const userInputRef = useRef<HTMLInputElement>(null);
 
@@ -64,10 +66,15 @@ export default function PendingEarnPrompt({
 
     // Step 1: log in or register. Server sets the dl_user cookie.
     try {
+      const trimmedDisplay = displayName.trim();
+      const body: Record<string, string> = { user: user.trim(), pin };
+      if (action === 'register' && trimmedDisplay) {
+        body.displayName = trimmedDisplay;
+      }
       const res = await fetch(`/api/drive/${action}`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ user: user.trim(), pin }),
+        body: JSON.stringify(body),
       });
       if (!res.ok) {
         const data = (await res.json().catch(() => ({}))) as { error?: string };
@@ -184,6 +191,18 @@ export default function PendingEarnPrompt({
             className="rounded-xl border-2 border-yellow-300 focus:border-yellow-500 focus:outline-none bg-white text-purple-900 px-3 py-2 tracking-[0.4em] text-center font-bold"
           />
         </div>
+
+        {/* Optional display name (only used on register; login ignores it). */}
+        <input
+          type="text"
+          value={displayName}
+          onChange={(e) => setDisplayName(e.target.value)}
+          placeholder="Display name (optional — only when registering)"
+          maxLength={30}
+          autoComplete="off"
+          disabled={busy}
+          className="w-full rounded-xl border-2 border-yellow-300 focus:border-yellow-500 focus:outline-none bg-white text-purple-900 px-3 py-2"
+        />
 
         {status.kind === 'error' && (
           <div className="text-sm font-bold text-red-700 bg-red-50 border border-red-200 rounded-xl px-3 py-2">
