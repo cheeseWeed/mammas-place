@@ -1,76 +1,79 @@
-// Checkout — shipping form, payment form, promo codes, order placement with confetti
+// Checkout — MP Money flow. Closed-loop family economy: no shipping, no card, no tax.
+// Three states by learner: anonymous → login prompt; logged-in low balance → "ask Dad";
+// logged-in funded → big yellow Pay button. Server (/api/money/order) re-prices and is
+// the sole authority on balance — client cents value is a hint only.
 'use client';
 
 import { useState, useEffect } from 'react';
 import { useCart } from '@/context/CartContext';
-import { applyPromoCode } from '@/lib/cart';
+import { useLearner } from '@/context/LearnerContext';
+import { centsToMP } from '@/lib/money/format';
 import * as gtag from '@/lib/gtag';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import Confetti from 'react-confetti';
+
+// Server response shapes for /api/money/order.
+interface OrderSuccess {
+  ok: true;
+  orderId: string;
+  balanceCents: number;
+  totalCents: number;
+}
+interface OrderInsufficient {
+  error: 'Insufficient funds';
+  balanceCents: number;
+  neededCents: number;
+}
+interface OrderError {
+  error: string;
+}
 
 export default function CheckoutPage() {
   const { cart, clearCart } = useCart();
-  const router = useRouter();
+  const { learner, balanceCents, loading: learnerLoading, refresh } = useLearner();
 
-  const [promoCode, setPromoCode] = useState('');
-  const [appliedPromo, setAppliedPromo] = useState('');
-  const [promoDiscount, setPromoDiscount] = useState(0);
-  const [promoError, setPromoError] = useState('');
-  const [orderPlaced, setOrderPlaced] = useState(false);
+  const [placing, setPlacing] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [orderResult, setOrderResult] = useState<OrderSuccess | null>(null);
   const [showConfetti, setShowConfetti] = useState(false);
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
-  const [form, setForm] = useState({
-    email: '',
-    firstName: '',
-    lastName: '',
-    address: '',
-    city: '',
-    state: '',
-    zip: '',
-    cardName: '',
-    cardNumber: '',
-    expiry: '',
-    cvv: '',
-  });
 
-  // Track window size for confetti
+  // Cart subtotal is dollars (float); convert to authoritative cents for display + server hint.
+  const subtotalCents = Math.round(cart.subtotal * 100);
+  const itemDiscountCents = Math.round(cart.discount * 100);
+  const totalCents = subtotalCents - itemDiscountCents;
+
+  // Confetti needs viewport dims; track resize so it covers the whole screen on rotate/resize.
   useEffect(() => {
     const handleResize = () => {
       setWindowSize({ width: window.innerWidth, height: window.innerHeight });
     };
-
-    // Set initial size
     handleResize();
-
-    // Add resize listener
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Trigger confetti when order is placed
   useEffect(() => {
-    if (orderPlaced) {
+    if (orderResult) {
       setShowConfetti(true);
-      // Stop confetti after 5 seconds
-      const timer = setTimeout(() => {
-        setShowConfetti(false);
-      }, 5000);
+      const timer = setTimeout(() => setShowConfetti(false), 5000);
       return () => clearTimeout(timer);
     }
-  }, [orderPlaced]);
+  }, [orderResult]);
 
-  // Track begin_checkout on mount
+  // begin_checkout fires once when there are items to check out. Analytics-only.
   useEffect(() => {
-    if (cart.items.length > 0) {
+    if (cart.items.length > 0 && !orderResult) {
       gtag.beginCheckout(
         cart.total,
         cart.items.map((i) => ({ id: i.productId, name: i.product.name, price: i.product.price, quantity: i.quantity }))
       );
     }
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  if (cart.items.length === 0 && !orderPlaced) {
+  // Empty-cart guard (skip while showing success so clearCart() doesn't bounce the user).
+  if (cart.items.length === 0 && !orderResult) {
     return (
       <div className="max-w-2xl mx-auto px-4 py-20 text-center">
         <div className="text-7xl mb-4">🛒</div>
@@ -82,7 +85,8 @@ export default function CheckoutPage() {
     );
   }
 
-  if (orderPlaced) {
+  // Success screen.
+  if (orderResult) {
     return (
       <div className="max-w-2xl mx-auto px-4 py-20 text-center">
         {showConfetti && (
@@ -93,32 +97,25 @@ export default function CheckoutPage() {
             numberOfPieces={300}
           />
         )}
-
-        {/* DEMO ORDER WARNING */}
-        <div className="mb-6 rounded-2xl p-5 border-4 border-blue-500 shadow-xl" style={{background: 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)'}}>
-          <div className="text-4xl mb-2">🎓</div>
-          <h2 className="text-2xl font-black text-blue-900 mb-2">DEMO ORDER - Nothing Actually Charged or Shipped!</h2>
-          <p className="text-blue-800 font-bold text-base">This is a practice/learning application. No real transaction occurred.</p>
-        </div>
-
         <div className="text-7xl mb-4">🎉</div>
-        <h1 className="text-3xl font-black text-purple-900 mb-2">Order Confirmed!</h1>
-        <p className="text-gray-600 mb-2">Thank you for shopping at Mamma&apos;s Place!</p>
-        <p className="text-gray-700 mb-8">A confirmation will be sent to <strong>{form.email}</strong></p>
+        <h1 className="text-3xl font-black text-purple-900 mb-2">Order placed! 🎉</h1>
+        <p className="text-gray-700 mb-6">Thanks, {learner}!</p>
+
         <div className="bg-purple-50 border border-purple-200 rounded-2xl p-6 mb-8 text-left">
-          <h2 className="font-black text-purple-900 mb-3">Order Summary</h2>
-          <div className="space-y-2 text-sm">
-            <div className="flex justify-between"><span>Subtotal</span><span>${cart.subtotal.toFixed(2)}</span></div>
-            {cart.discount > 0 && <div className="flex justify-between text-green-600"><span>Item Savings</span><span>−${cart.discount.toFixed(2)}</span></div>}
-            {promoDiscount > 0 && <div className="flex justify-between text-green-600"><span>Promo ({appliedPromo})</span><span>−${(cart.subtotal * promoDiscount).toFixed(2)}</span></div>}
-            <div className="flex justify-between"><span>Tax</span><span>${cart.tax.toFixed(2)}</span></div>
-            <div className="flex justify-between"><span>Shipping</span><span>{cart.shipping === 0 ? 'FREE' : `$${cart.shipping.toFixed(2)}`}</span></div>
-            <div className="flex justify-between font-black text-lg text-purple-900 border-t border-purple-200 pt-2 mt-2">
-              <span>Total Paid</span>
-              <span>${(cart.total - cart.subtotal * promoDiscount).toFixed(2)}</span>
-            </div>
+          <div className="flex justify-between mb-3">
+            <span className="font-bold text-gray-700">Order ID</span>
+            <span className="font-mono text-sm text-purple-900">{orderResult.orderId}</span>
+          </div>
+          <div className="flex justify-between mb-3">
+            <span className="font-bold text-gray-700">Paid</span>
+            <span className="font-black text-purple-900">{centsToMP(orderResult.totalCents)}</span>
+          </div>
+          <div className="flex justify-between border-t border-purple-200 pt-3">
+            <span className="font-bold text-gray-700">New MP balance</span>
+            <span className="font-black text-xl text-purple-900">{centsToMP(orderResult.balanceCents)}</span>
           </div>
         </div>
+
         <Link href="/shop" className="bg-purple-700 hover:bg-purple-600 text-white font-black px-8 py-4 rounded-2xl text-lg inline-block transition-colors">
           Keep Shopping ✨
         </Link>
@@ -126,227 +123,211 @@ export default function CheckoutPage() {
     );
   }
 
-  const handleApplyPromo = () => {
-    const discount = applyPromoCode(promoCode);
-    if (discount > 0) {
-      setPromoDiscount(discount);
-      setAppliedPromo(promoCode.toUpperCase());
-      setPromoError('');
-      gtag.promoCodeApplied(promoCode.toUpperCase());
-    } else {
-      setPromoError('Invalid promo code. Try MAMMA10, PRINCESS20, UNICORN15, PONY25, or SAVE30');
-      setPromoDiscount(0);
-      setAppliedPromo('');
-    }
-  };
-
-  const promoSavings = cart.subtotal * promoDiscount;
-  const finalTotal = cart.total - promoSavings;
-
-  const handlePlaceOrder = (e: React.FormEvent) => {
-    e.preventDefault();
-    gtag.purchase(
-      `ORDER-${Date.now()}`,
-      finalTotal,
-      cart.items.map((i) => ({ id: i.productId, name: i.product.name, price: i.product.price, quantity: i.quantity }))
+  // Anonymous: no balance, no form — just a login nudge.
+  if (!learnerLoading && learner === null) {
+    return (
+      <div className="max-w-2xl mx-auto px-4 py-20">
+        <div className="bg-white rounded-2xl shadow-sm border border-purple-100 p-8 text-center">
+          <div className="text-6xl mb-4">🔐</div>
+          <h1 className="text-3xl font-black text-purple-900 mb-3">Log in to use MP Money</h1>
+          <p className="text-gray-700 mb-6">
+            You need to be logged in to spend your MP.
+            <br />
+            Your cart will be waiting for you!
+          </p>
+          <Link
+            href="/shop/login"
+            className="bg-yellow-400 hover:bg-yellow-300 active:bg-yellow-500 text-purple-900 font-black px-8 py-4 rounded-2xl text-lg inline-block shadow-md transition-all hover:scale-105"
+          >
+            Log In ✨
+          </Link>
+          <div className="mt-4">
+            <Link href="/cart" className="text-sm text-purple-600 hover:underline font-medium">← Back to cart</Link>
+          </div>
+        </div>
+      </div>
     );
-    setOrderPlaced(true);
-    clearCart();
-  };
+  }
 
-  const updateForm = (field: string, value: string) => {
-    setForm((prev) => ({ ...prev, [field]: value }));
+  // Server is authoritative; until we have a balance number, treat as not-enough.
+  const haveEnough = balanceCents !== null && balanceCents >= totalCents;
+  const shortfallCents = balanceCents === null ? totalCents : Math.max(0, totalCents - balanceCents);
+  const afterCents = balanceCents === null ? 0 : balanceCents - totalCents;
+
+  const handlePlaceOrder = async () => {
+    if (placing) return;
+    setPlacing(true);
+    setErrorMsg(null);
+    try {
+      const res = await fetch('/api/money/order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          user: learner,
+          items: cart.items.map((i) => ({ productId: i.productId, qty: i.quantity })),
+        }),
+      });
+      const data: OrderSuccess | OrderInsufficient | OrderError = await res.json();
+
+      if (res.ok && 'ok' in data && data.ok) {
+        gtag.purchase(
+          data.orderId,
+          data.totalCents / 100,
+          cart.items.map((i) => ({ id: i.productId, name: i.product.name, price: i.product.price, quantity: i.quantity }))
+        );
+        clearCart();
+        await refresh();
+        setOrderResult(data);
+        return;
+      }
+
+      if (res.status === 402 && 'balanceCents' in data) {
+        // Race condition: balance dropped between page load and click. Refresh + show friendly insufficient state.
+        await refresh();
+        setErrorMsg(null);
+      } else {
+        setErrorMsg('error' in data && data.error ? data.error : 'Something went wrong. Try again?');
+      }
+    } catch {
+      setErrorMsg('Network error. Try again?');
+    } finally {
+      setPlacing(false);
+    }
   };
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-6">
-      {/* DEMO WARNING BANNER */}
-      <div className="mb-6 rounded-2xl p-5 text-center border-4 border-orange-500 shadow-xl" style={{background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)'}}>
-        <div className="text-3xl mb-2">🎓</div>
-        <h2 className="text-2xl font-black text-gray-900 mb-2">DEMO SITE - For Learning Purposes Only</h2>
-        <p className="text-gray-800 font-bold text-lg">This is a practice e-commerce application. No real purchases will be made.</p>
-      </div>
-
       <h1 className="text-3xl font-black text-purple-900 mb-6">Checkout 🛍️</h1>
 
-      <form onSubmit={handlePlaceOrder}>
-        <div className="flex flex-col lg:flex-row gap-6">
-          {/* LEFT - Form */}
-          <div className="flex-1 space-y-5">
-            {/* Contact */}
-            <section className="bg-white rounded-2xl shadow-sm border border-purple-100 p-5">
-              <h2 className="font-black text-purple-900 text-lg mb-4 flex items-center gap-2">
-                <span className="w-7 h-7 bg-purple-700 text-white rounded-full flex items-center justify-center text-sm font-black">1</span>
-                Contact Information
-              </h2>
-              <input
-                required
-                type="email"
-                placeholder="Email address"
-                value={form.email}
-                onChange={(e) => updateForm('email', e.target.value)}
-                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400"
-              />
+      <div className="flex flex-col lg:flex-row gap-6">
+        {/* LEFT - Pay panel */}
+        <div className="flex-1 space-y-5">
+          {learnerLoading ? (
+            <section className="bg-white rounded-2xl shadow-sm border border-purple-100 p-8 text-center text-gray-500">
+              Loading your balance…
             </section>
-
-            {/* Shipping */}
-            <section className="bg-white rounded-2xl shadow-sm border border-purple-100 p-5">
-              <h2 className="font-black text-purple-900 text-lg mb-4 flex items-center gap-2">
-                <span className="w-7 h-7 bg-purple-700 text-white rounded-full flex items-center justify-center text-sm font-black">2</span>
-                Shipping Address
-              </h2>
-              <div className="grid grid-cols-2 gap-3">
-                <input required type="text" placeholder="First name" value={form.firstName} onChange={(e) => updateForm('firstName', e.target.value)} className="border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400" />
-                <input required type="text" placeholder="Last name" value={form.lastName} onChange={(e) => updateForm('lastName', e.target.value)} className="border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400" />
-                <input required type="text" placeholder="Address" value={form.address} onChange={(e) => updateForm('address', e.target.value)} className="col-span-2 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400" />
-                <input required type="text" placeholder="City" value={form.city} onChange={(e) => updateForm('city', e.target.value)} className="border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400" />
-                <div className="grid grid-cols-2 gap-3">
-                  <input required type="text" placeholder="State" value={form.state} onChange={(e) => updateForm('state', e.target.value)} className="border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400" />
-                  <input required type="text" placeholder="ZIP" value={form.zip} onChange={(e) => updateForm('zip', e.target.value)} className="border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400" />
-                </div>
-              </div>
-            </section>
-
-            {/* Payment */}
-            <section className="bg-white rounded-2xl shadow-sm border border-purple-100 p-5">
-              <h2 className="font-black text-purple-900 text-lg mb-4 flex items-center gap-2">
-                <span className="w-7 h-7 bg-purple-700 text-white rounded-full flex items-center justify-center text-sm font-black">3</span>
-                Payment
-              </h2>
-
-              {/* TEST CARD WARNING */}
-              <div className="mb-4 rounded-xl p-4 border-3 border-red-500" style={{background: 'linear-gradient(135deg, #fee2e2 0%, #fecaca 100%)'}}>
-                <div className="flex items-start gap-3">
-                  <span className="text-2xl">⚠️</span>
-                  <div>
-                    <p className="font-black text-red-900 text-base mb-1">DO NOT Enter Real Credit Card Information!</p>
-                    <p className="text-red-800 text-sm font-bold">This is a demo site. Use test card:</p>
-                    <p className="text-red-900 font-mono font-bold text-base mt-1">4111 1111 1111 1111</p>
-                    <p className="text-red-700 text-sm mt-1">Any future date and CVV will work</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-3">
-                <input required type="text" placeholder="Name on card" value={form.cardName} onChange={(e) => updateForm('cardName', e.target.value)} className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400" />
-                <input required type="text" placeholder="Card number (e.g. 4111 1111 1111 1111)" value={form.cardNumber} onChange={(e) => updateForm('cardNumber', e.target.value)} maxLength={19} className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400" />
-                <div className="grid grid-cols-2 gap-3">
-                  <input required type="text" placeholder="MM/YY" value={form.expiry} onChange={(e) => updateForm('expiry', e.target.value)} maxLength={5} className="border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400" />
-                  <input required type="text" placeholder="CVV" value={form.cvv} onChange={(e) => updateForm('cvv', e.target.value)} maxLength={4} className="border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400" />
-                </div>
-              </div>
-              <p className="text-sm text-gray-700 mt-3 flex items-center gap-1">
-                🔒 Your payment info is secure and encrypted
-              </p>
-            </section>
-          </div>
-
-          {/* RIGHT - Order Summary */}
-          <div className="w-full lg:w-96 shrink-0">
-            <div className="bg-white rounded-2xl shadow-sm border border-purple-100 p-5 sticky top-[110px]">
-              <h2 className="font-black text-purple-900 text-xl mb-4">Order Summary</h2>
-
-              {/* Items */}
-              <div className="space-y-3 mb-4">
-                {cart.items.map((item) => (
-                  <div key={item.productId} className="flex gap-3 items-center text-sm">
-                    <div className="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center text-xl shrink-0">
-                      {item.product.category === 'ponies' ? '🐴' : item.product.category === 'unicorns' ? '🦄' : '👑'}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="font-semibold text-gray-800 truncate">{item.product.name}</p>
-                      <p className="text-gray-700 text-sm">Qty: {item.quantity}</p>
-                    </div>
-                    <span className="font-bold text-purple-800 shrink-0">${(item.product.price * item.quantity).toFixed(2)}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="border-t border-gray-100 pt-4 space-y-2">
-                {/* Promo Code */}
-                <div className="mb-3">
-                  <label className="text-sm font-bold text-gray-700 uppercase tracking-wide mb-1 block">Promo Code</label>
-                  <div className="flex gap-2">
-                    <input
-                      type="text"
-                      value={promoCode}
-                      onChange={(e) => setPromoCode(e.target.value)}
-                      placeholder="Enter code"
-                      className="flex-1 border border-gray-200 rounded-xl px-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400 uppercase"
-                    />
-                    <button
-                      type="button"
-                      onClick={handleApplyPromo}
-                      className="bg-purple-700 hover:bg-purple-600 text-white font-bold px-4 py-2 rounded-xl text-sm transition-colors"
-                    >
-                      Apply
-                    </button>
-                  </div>
-                  {promoError && <p className="text-red-600 text-sm mt-1">{promoError}</p>}
-                  {appliedPromo && <p className="text-green-600 text-sm mt-1 font-bold">✅ {appliedPromo} applied! {(promoDiscount * 100).toFixed(0)}% off</p>}
-                </div>
-
-                {/* Price Breakdown */}
-                <div className="text-sm space-y-2">
-                  <div className="flex justify-between text-gray-600">
-                    <span>Subtotal</span>
-                    <span>${cart.subtotal.toFixed(2)}</span>
-                  </div>
-                  {cart.discount > 0 && (
-                    <div className="flex justify-between text-green-600 font-medium">
-                      <span>Item Savings 🏷️</span>
-                      <span>−${cart.discount.toFixed(2)}</span>
-                    </div>
-                  )}
-                  {promoSavings > 0 && (
-                    <div className="flex justify-between text-green-600 font-medium">
-                      <span>Promo ({appliedPromo}) 🎟️</span>
-                      <span>−${promoSavings.toFixed(2)}</span>
-                    </div>
-                  )}
-                  <div className="flex justify-between text-gray-600">
-                    <span>Tax (8%)</span>
-                    <span>${cart.tax.toFixed(2)}</span>
-                  </div>
-                  <div className="flex justify-between text-gray-600">
-                    <span>Shipping</span>
-                    <span className={cart.shipping === 0 ? 'text-green-600 font-bold' : ''}>
-                      {cart.shipping === 0 ? 'FREE 🎉' : `$${cart.shipping.toFixed(2)}`}
-                    </span>
-                  </div>
-
-                  {(cart.discount + promoSavings) > 0 && (
-                    <div className="bg-green-50 border border-green-200 rounded-xl p-2 flex justify-between text-green-700 font-bold text-sm">
-                      <span>You saved!</span>
-                      <span>−${(cart.discount + promoSavings).toFixed(2)}</span>
-                    </div>
-                  )}
-
-                  <div className="border-t border-gray-100 pt-3 flex justify-between font-black text-xl text-gray-900">
-                    <span>Total</span>
-                    <span className="text-purple-800">${finalTotal.toFixed(2)}</span>
-                  </div>
-                </div>
-
-                <button
-                  type="submit"
-                  className="mt-4 w-full bg-yellow-400 hover:bg-yellow-300 active:bg-yellow-500 text-purple-900 font-black py-4 rounded-2xl text-lg shadow-md transition-all hover:scale-105"
-                >
-                  Place Order — ${finalTotal.toFixed(2)} 🎉
-                </button>
-
-                <p className="text-center text-sm text-gray-700 mt-2">
-                  🔒 Secure checkout · 30-day returns · SSL encrypted
+          ) : haveEnough ? (
+            <section className="bg-white rounded-2xl shadow-sm border border-purple-100 p-6">
+              <div className="text-center mb-5">
+                <div className="text-5xl mb-3">💰</div>
+                <h2 className="font-black text-purple-900 text-2xl mb-1">Pay with MP Money</h2>
+                <p className="text-gray-700 text-sm">
+                  Logged in as <span className="font-bold text-purple-800">{learner}</span>
                 </p>
+              </div>
 
-                <div className="text-center mt-2">
-                  <Link href="/cart" className="text-sm text-purple-600 hover:underline font-medium">← Back to cart</Link>
+              <div className="bg-purple-50 border border-purple-200 rounded-xl p-4 mb-5">
+                <div className="flex justify-between text-sm text-gray-700 mb-1">
+                  <span>Your balance</span>
+                  <span className="font-bold">{centsToMP(balanceCents ?? 0)}</span>
+                </div>
+                <div className="flex justify-between text-sm text-gray-700 mb-2">
+                  <span>This order</span>
+                  <span className="font-bold">−{centsToMP(totalCents)}</span>
+                </div>
+                <div className="flex justify-between border-t border-purple-200 pt-2 text-base">
+                  <span className="font-bold text-purple-900">After this order</span>
+                  <span className="font-black text-purple-900">{centsToMP(afterCents)}</span>
                 </div>
               </div>
-            </div>
+
+              <button
+                type="button"
+                onClick={handlePlaceOrder}
+                disabled={placing}
+                className="w-full bg-yellow-400 hover:bg-yellow-300 active:bg-yellow-500 disabled:bg-yellow-200 disabled:cursor-not-allowed text-purple-900 font-black py-4 rounded-2xl text-lg shadow-md transition-all hover:scale-105 disabled:hover:scale-100"
+              >
+                {placing ? 'Placing order…' : `Pay ${centsToMP(totalCents)} ✨`}
+              </button>
+
+              {errorMsg && (
+                <p className="text-red-600 text-sm mt-3 text-center font-medium">{errorMsg}</p>
+              )}
+            </section>
+          ) : (
+            <section className="bg-white rounded-2xl shadow-sm border border-purple-100 p-8 text-center">
+              <div className="text-6xl mb-4">🐷</div>
+              <h2 className="font-black text-purple-900 text-2xl mb-2">Almost there!</h2>
+              <p className="text-gray-700 text-base mb-4">
+                You need{' '}
+                <span className="font-black text-purple-900 text-xl">{centsToMP(shortfallCents)}</span>{' '}
+                more.
+              </p>
+              <p className="text-gray-700 text-base mb-6">
+                Ask Dad to top you up. 💖
+              </p>
+
+              <div className="bg-purple-50 border border-purple-200 rounded-xl p-4 mb-2 text-left">
+                <div className="flex justify-between text-sm text-gray-700 mb-1">
+                  <span>Your balance</span>
+                  <span className="font-bold">{centsToMP(balanceCents ?? 0)}</span>
+                </div>
+                <div className="flex justify-between text-sm text-gray-700">
+                  <span>This order</span>
+                  <span className="font-bold">{centsToMP(totalCents)}</span>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                disabled
+                className="mt-5 w-full bg-yellow-200 cursor-not-allowed text-purple-900/60 font-black py-4 rounded-2xl text-lg"
+              >
+                Not enough MP yet
+              </button>
+            </section>
+          )}
+
+          <div className="text-center">
+            <Link href="/cart" className="text-sm text-purple-600 hover:underline font-medium">← Back to cart</Link>
           </div>
         </div>
-      </form>
+
+        {/* RIGHT - Order Summary (cents-precise, no tax, no shipping) */}
+        <div className="w-full lg:w-96 shrink-0">
+          <div className="bg-white rounded-2xl shadow-sm border border-purple-100 p-5 sticky top-[110px]">
+            <h2 className="font-black text-purple-900 text-xl mb-4">Order Summary</h2>
+
+            <div className="space-y-3 mb-4">
+              {cart.items.map((item) => (
+                <div key={item.productId} className="flex gap-3 items-center text-sm">
+                  <div className="w-10 h-10 rounded-lg bg-purple-50 flex items-center justify-center text-xl shrink-0">
+                    {item.product.category === 'ponies' ? '🐴' : item.product.category === 'unicorns' ? '🦄' : '👑'}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-semibold text-gray-800 truncate">{item.product.name}</p>
+                    <p className="text-gray-700 text-sm">Qty: {item.quantity}</p>
+                  </div>
+                  <span className="font-bold text-purple-800 shrink-0">
+                    {centsToMP(Math.round(item.product.price * 100) * item.quantity)}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <div className="border-t border-gray-100 pt-4 space-y-2 text-sm">
+              <div className="flex justify-between text-gray-600">
+                <span>Subtotal</span>
+                <span>{centsToMP(subtotalCents)}</span>
+              </div>
+              {itemDiscountCents > 0 && (
+                <div className="flex justify-between text-green-600 font-medium">
+                  <span>Item Savings 🏷️</span>
+                  <span>−{centsToMP(itemDiscountCents)}</span>
+                </div>
+              )}
+              <div className="border-t border-gray-100 pt-3 flex justify-between font-black text-xl text-gray-900">
+                <span>Total</span>
+                <span className="text-purple-800">{centsToMP(totalCents)}</span>
+              </div>
+            </div>
+
+            <p className="text-center text-sm text-gray-700 mt-4">
+              💜 Family money · No tax · No shipping
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

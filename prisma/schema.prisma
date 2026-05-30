@@ -47,5 +47,52 @@ model DriveUser {
   // Currently opt-in — Geography defaults to anonymous localStorage.
   geography        Json     @default("{}")
 
+  // ----- MP Money (closed-loop family economy) -----
+  // Balance kept in cents to avoid float drift. See app/money/PLAN.md.
+  balanceCents     Int      @default(0)
+  transactions     MpTransaction[]
+  orders           MpOrder[]
+
   @@map("drive_users")
+}
+
+// Append-only ledger. Every credit/debit is a row; balance on DriveUser is the
+// running total. Never mutate; reversals create a new row with negated cents.
+model MpTransaction {
+  id        String   @id @default(cuid())
+  userName  String
+  user      DriveUser @relation(fields: [userName], references: [name], onDelete: Cascade)
+  cents     Int      // positive = credit, negative = debit
+  type      String   // 'earn' | 'spend' | 'gift' | 'refund' | 'adjust'
+  reason    String
+  orderId   String?
+  createdAt DateTime @default(now())
+
+  @@index([userName, createdAt])
+  @@map("mp_transactions")
+}
+
+// Closed-loop "order" — no shipping, no payment processor. items is a snapshot
+// of the cart at purchase time so price changes don't rewrite history.
+model MpOrder {
+  id          String   @id @default(cuid())
+  userName    String
+  user        DriveUser @relation(fields: [userName], references: [name], onDelete: Cascade)
+  items       Json     // [{ productId, name, qty, priceCents }]
+  totalCents  Int
+  status      String   @default("fulfilled") // 'fulfilled' | 'cancelled' | 'pending'
+  createdAt   DateTime @default(now())
+
+  @@index([userName, createdAt])
+  @@map("mp_orders")
+}
+
+// Singleton row holding the parent's admin PIN (hashed). First /api/money/parent/setup
+// POST seeds it; after that, currentPin required to change.
+model ParentConfig {
+  id            Int      @id @default(1)
+  parentPinHash String
+  updatedAt     DateTime @updatedAt
+
+  @@map("mp_parent_config")
 }

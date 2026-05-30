@@ -42,13 +42,53 @@ For the kids preparing for the Utah DLD written test. Lives at `/drive` with ass
 
 ---
 
-## 🎯 Next session — MP Money (replace cash with per-user store credit)
+## ✅ MP Money — shipped (2026-05-29)
 
-### Vision
-- Kids "earn" MP money (chores, grades, driving practice, completing study units)
+Closed-loop family economy. Kids earn **MP** (the unit), spend it in `/shop`. No real money. One name+PIN works for both `/drive` and `/shop` (TODO Option A).
+
+**Currency:** displayed as `10MP` (whole) or `10.54MP` (fractional). Internally stored in 1/100 units (`balanceCents` Int) to avoid float drift.
+
+**Architecture spec:** `app/money/PLAN.md` (locked, mirrors `app/geography/PLAN.md` discipline).
+
+### What shipped
+- `prisma/schema.prisma` — added `DriveUser.balanceCents`, `MpTransaction`, `MpOrder`, `ParentConfig`
+- `lib/money/{balance,parent,format}.ts` — server-only ledger helpers, atomic Prisma transactions
+- `context/LearnerContext.tsx` — shop-side learner state, reads same `dl_user` as `/drive`
+- 10 API routes: `/api/money/{balance,order,transactions,orders,credit,debit,parent/login,parent/setup,admin/learners,admin/orders}`
+- `/shop/login` — name+PIN form mirroring `DriveLoginForm`
+- `components/BalanceChip.tsx` + Header wiring — desktop pill + mobile menu row
+- `/checkout` — full rewrite: "Pay with MP" flow, anonymous prompt, insufficient-funds "Ask Dad to top you up", server re-prices items
+- `/admin/mp-bank` — parent-gated dashboard: learner balances, top up/deduct, all-orders feed, per-kid transaction log
+- `/admin/mp-bank/login` — parent PIN gate (initial PIN: **0000**, change after first login)
+- `/portal/money` — kid's own balance + order history + transactions
+- TypeScript clean. `npm run build` passes.
+
+### ⚠️ Before this works in production
+1. **`npx prisma db push`** against Neon to materialize the new tables (`mp_transactions`, `mp_orders`, `mp_parent_config`) and the `balance_cents` column. Until this runs, all `/api/money/*` endpoints will 500.
+2. First parent visit: go to `/admin/mp-bank` → enter `0000` → it seeds the ParentConfig row. Change the PIN via `/api/money/parent/setup` (UI for PIN rotation is not built yet — easy add).
+3. Deploy is still manual per existing notes: `git push origin master && npx vercel --prod --yes`.
+
+---
+
+## 🎯 Next session — Phase 6+ ideas (MP Money roadmap)
+
+From `app/money/PLAN.md`:
+- **Phase 6: Gift cards** — printable `GIFT-XXXXXX` codes that redeem a fixed amount. Birthdays/visitors.
+- **Phase 7: Auto-credit hooks** — `/drive` deck completion → +0.50MP. Quiz ≥80% → +0.25MP.
+- **Phase 8: Wishlist / layaway** — out-of-funds path that signals parent.
+- **Phase 9: Daily spend cap** — per-kid daily max set in parent admin.
+- **Parent PIN rotation UI** — currently only via `/api/money/parent/setup`. Add a settings panel to `/admin/mp-bank`.
+- **DisplayName field** — schema has it; UI doesn't capture it on register. Add at registration or in `/portal/money`.
+
+---
+
+## (Original notes — kept for reference)
+
+### Vision (shipped)
+- Kids "earn" MP (chores, grades, driving practice, completing study units)
 - They spend it in the mamma's place store on real or pretend goods
 - No real money handled — closed-loop family economy
-- Optional: gift cards (printed codes that unlock a balance) for visitors/birthdays
+- Optional: gift cards (printed codes that unlock a balance) for visitors/birthdays — Phase 6
 
 ### What needs to change
 

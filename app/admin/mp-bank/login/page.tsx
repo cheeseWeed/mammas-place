@@ -1,0 +1,118 @@
+'use client';
+
+// Parent gate for /admin/mp-bank. 4-digit PIN, posts to /api/money/parent/login.
+// First-time use: PIN 0000 seeds the ParentConfig row (see the login route).
+// Separate from the staff /admin portal — different cookie, different concern.
+
+import { useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
+
+type Status =
+  | { kind: 'idle' }
+  | { kind: 'busy' }
+  | { kind: 'error'; message: string };
+
+export default function MpBankLoginPage() {
+  const router = useRouter();
+  const [pin, setPin] = useState('');
+  const [status, setStatus] = useState<Status>({ kind: 'idle' });
+  const pinRef = useRef<HTMLInputElement>(null);
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!/^\d{4}$/.test(pin)) {
+      setStatus({ kind: 'error', message: 'PIN must be exactly 4 digits.' });
+      return;
+    }
+    setStatus({ kind: 'busy' });
+    try {
+      const res = await fetch('/api/money/parent/login', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ pin }),
+      });
+      if (res.ok) {
+        router.push('/admin/mp-bank');
+        router.refresh();
+        return;
+      }
+      const data = (await res.json().catch(() => ({}))) as { error?: unknown };
+      const errMsg = typeof data.error === 'string' ? data.error : 'Wrong PIN';
+      setStatus({ kind: 'error', message: errMsg });
+    } catch (err) {
+      setStatus({
+        kind: 'error',
+        message: err instanceof Error ? err.message : 'Network error',
+      });
+    }
+  };
+
+  const busy = status.kind === 'busy';
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 flex items-center justify-center px-4">
+      <div className="w-full max-w-sm">
+        <div className="text-center mb-8">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-yellow-400 border-4 border-yellow-300 mb-3">
+            <span className="text-purple-900 font-black text-xl">MP</span>
+          </div>
+          <h1 className="text-white font-black text-2xl">Parent / MP Bank</h1>
+          <p className="text-yellow-200 text-sm mt-1">Family store-credit admin</p>
+        </div>
+
+        <form
+          onSubmit={submit}
+          className="bg-white rounded-2xl p-6 shadow-2xl border-2 border-purple-100"
+        >
+          <h2 className="text-purple-900 font-bold text-lg mb-1 text-center">
+            Enter parent PIN
+          </h2>
+          <p className="text-center text-gray-600 text-xs mb-5">
+            First time? Use PIN <span className="font-mono font-bold">0000</span> to
+            set up the parent gate.
+          </p>
+
+          <label
+            htmlFor="mp-parent-pin"
+            className="block text-sm font-medium text-purple-900 mb-1"
+          >
+            4-digit PIN
+          </label>
+          <input
+            id="mp-parent-pin"
+            ref={pinRef}
+            type="password"
+            inputMode="numeric"
+            pattern="\d{4}"
+            value={pin}
+            onChange={(e) => setPin(e.target.value.replace(/\D/g, '').slice(0, 4))}
+            placeholder="• • • •"
+            maxLength={4}
+            autoComplete="current-password"
+            autoFocus
+            disabled={busy}
+            className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-4 py-3 bg-purple-50 text-purple-900 tracking-[0.4em] text-center text-xl"
+          />
+
+          {status.kind === 'error' && (
+            <div className="mt-3 rounded-xl bg-yellow-100 border border-yellow-300 text-purple-900 text-sm px-4 py-3">
+              {status.message}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={busy}
+            className="mt-5 w-full bg-purple-900 hover:bg-purple-800 disabled:bg-purple-300 text-white font-bold py-3 rounded-xl transition-colors"
+          >
+            {busy ? 'Checking…' : 'Unlock MP Bank'}
+          </button>
+        </form>
+
+        <p className="text-center text-purple-200 text-xs mt-6">
+          Mamma&apos;s Place · Parent gate (separate from staff admin)
+        </p>
+      </div>
+    </div>
+  );
+}

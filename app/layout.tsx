@@ -6,6 +6,7 @@ import { CartProvider } from "@/context/CartContext";
 import { ToastProvider } from "@/context/ToastContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { AdminAuthProvider } from "@/context/AdminAuthContext";
+import { LearnerProvider } from "@/context/LearnerContext";
 import { PasscodeProvider } from "@/context/PasscodeContext";
 import PasscodeGate from "@/components/PasscodeGate";
 import Header from "@/components/Header";
@@ -44,6 +45,7 @@ export default function RootLayout({
         <PasscodeGate>
         <AdminAuthProvider>
         <AuthProvider>
+        <LearnerProvider>
         <CartProvider>
           <ToastProvider>
             <Header />
@@ -53,6 +55,7 @@ export default function RootLayout({
             <Footer />
           </ToastProvider>
         </CartProvider>
+        </LearnerProvider>
         </AuthProvider>
         </AdminAuthProvider>
         </PasscodeGate>

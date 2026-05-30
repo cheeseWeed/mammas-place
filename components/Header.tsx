@@ -6,9 +6,13 @@ import { useCart } from '@/context/CartContext';
 import { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { getCategorySubcategoryMap } from '@/lib/products';
+import BalanceChip from '@/components/BalanceChip';
+import { useLearner } from '@/context/LearnerContext';
+import { centsToMP } from '@/lib/money/format';
 
 export default function Header() {
   const { itemCount } = useCart();
+  const { learner, balanceCents, logout } = useLearner();
   const [search, setSearch] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -285,6 +289,9 @@ export default function Header() {
             </div>
           </nav>
 
+          {/* MP Money balance chip — anchors right-side cluster before Cart */}
+          <BalanceChip />
+
           {/* Cart */}
           <Link href="/cart" className="relative flex items-center gap-1 bg-yellow-400 hover:bg-yellow-300 text-purple-900 font-bold px-3 py-2 rounded-full transition-colors text-sm">
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -411,6 +418,32 @@ export default function Header() {
               🐝 Spelling
             </Link>
           </div>
+
+          {/* Mobile MP Money — chip is desktop-only, so render an explicit row here */}
+          {mounted && (learner ? (
+            <div className="flex items-center justify-between bg-yellow-400 text-purple-900 px-4 py-3 rounded-xl font-bold text-sm mt-2">
+              <span className="truncate">
+                <span className="font-black">{balanceCents === null ? '…' : centsToMP(balanceCents)}</span>
+                <span className="opacity-70"> · </span>
+                <span className="capitalize">{learner}</span>
+              </span>
+              <button
+                type="button"
+                onClick={() => { logout(); setMenuOpen(false); }}
+                className="text-xs underline ml-3 shrink-0"
+              >
+                Log out
+              </button>
+            </div>
+          ) : (
+            <Link
+              href="/shop/login"
+              onClick={() => setMenuOpen(false)}
+              className="text-yellow-300 border border-yellow-300/60 hover:bg-purple-700 px-4 py-3 rounded-xl font-bold text-sm transition-colors text-center mt-2"
+            >
+              Log in for MP
+            </Link>
+          ))}
 
           <Link
             href="/cart"
