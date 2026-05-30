@@ -58,12 +58,12 @@ function ChessHubAuthed() {
           >
             <div>
               <div className="text-yellow-300 text-xs font-black uppercase tracking-wider mb-2">
-                Phase 1 — Ready to play
+                Ready to play
               </div>
               <h2 className="text-3xl md:text-4xl font-black mb-2">Start a game</h2>
               <p className="text-purple-100 text-sm md:text-base mb-4">
-                Two players on the same device. Tap-to-move, legal-square
-                highlights, undo, promotion picker, full rules.
+                Two players on the same device, or play vs Cub / Knight /
+                Wizard AI. Tap-to-move, full rules, MP for wins and draws.
               </p>
             </div>
             <div className="text-yellow-300 font-black group-hover:translate-x-1 transition-transform">
@@ -71,19 +71,22 @@ function ChessHubAuthed() {
             </div>
           </Link>
 
-          {/* Resume slot — Phase 4 stub */}
-          <div className="bg-gray-100 rounded-3xl p-6 border-2 border-gray-200 relative opacity-70">
-            <div className="absolute top-3 right-3 bg-gray-300 text-gray-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wide">
-              Coming Soon
+          {/* Resume slot — links to play page which auto-detects saved games */}
+          <Link
+            href="/chess/play"
+            className="bg-white rounded-3xl p-6 border-2 border-purple-200 hover:border-purple-400 shadow-md hover:shadow-lg transition-all relative group"
+          >
+            <div className="absolute top-3 right-3 bg-emerald-100 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wide">
+              Shipped
             </div>
-            <div className="text-xs font-black uppercase tracking-wide text-gray-500 mb-2">
+            <div className="text-xs font-black uppercase tracking-wide text-purple-600 mb-2">
               Phase 4
             </div>
-            <h3 className="text-lg font-black text-gray-700 mb-2">Resume game</h3>
-            <p className="text-sm text-gray-600">
-              Your in-progress game will live here once save &amp; resume ships.
+            <h3 className="text-lg font-black text-purple-900 mb-2">Resume game</h3>
+            <p className="text-sm text-purple-700">
+              If you have a game in progress, you&apos;ll see a Resume button on the Play page.
             </p>
-          </div>
+          </Link>
         </div>
 
         {/* Phase grid */}
@@ -111,11 +114,13 @@ function ChessHubAuthed() {
               phaseLabel="Phase 3"
               title="AI: Cub / Knight / Wizard"
               subtitle="Three difficulties. On Cub mode, the AI explains its move."
+              shipped
             />
             <PhaseCard
               phaseLabel="Phase 4"
               title="Save + MP earn"
               subtitle="Resume across devices. Wins and draws earn MP."
+              shipped
             />
           </div>
         </section>
