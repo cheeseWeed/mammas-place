@@ -66,12 +66,29 @@ export function LearnerProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     void refresh();
-    // Refresh when another tab updates dl_user
+    // Refresh when another tab updates dl_user (multi-kid handoff in
+    // separate windows).
     const onStorage = (e: StorageEvent) => {
       if (e.key === STORAGE_KEY) void refresh();
     };
     window.addEventListener('storage', onStorage);
-    return () => window.removeEventListener('storage', onStorage);
+
+    // Session-only login: clear localStorage on window close so the next
+    // tab/window load matches the (already-session-only) cookie. Keeps
+    // the shared family laptop honest — closing the browser = logged out.
+    const onBeforeUnload = () => {
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch {
+        // ignore
+      }
+    };
+    window.addEventListener('beforeunload', onBeforeUnload);
+
+    return () => {
+      window.removeEventListener('storage', onStorage);
+      window.removeEventListener('beforeunload', onBeforeUnload);
+    };
   }, [refresh]);
 
   const setLearner = useCallback((name: string | null) => {
@@ -89,6 +106,13 @@ export function LearnerProvider({ children }: { children: ReactNode }) {
   const logout = useCallback(() => {
     try {
       localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // ignore
+    }
+    try {
+      // Expire the session cookie immediately. Path must match the
+      // original set (login/register routes use path: '/').
+      document.cookie = `${STORAGE_KEY}=; Path=/; Max-Age=0; SameSite=Lax`;
     } catch {
       // ignore
     }

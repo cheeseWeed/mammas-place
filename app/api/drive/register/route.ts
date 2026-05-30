@@ -15,7 +15,8 @@ import {
 } from '@/lib/drive-progress';
 
 const COOKIE_NAME = 'dl_user';
-const COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year
+// Session cookie (no maxAge) — browser drops on window close. Multi-kid
+// shared-laptop setup, requested by user 2026-05-30.
 
 export async function POST(req: NextRequest) {
   let body: { user?: unknown; pin?: unknown };
@@ -56,7 +57,7 @@ export async function POST(req: NextRequest) {
     httpOnly: false, // client JS in dashboard reads this too
     sameSite: 'lax',
     path: '/',
-    maxAge: COOKIE_MAX_AGE,
+    // No maxAge → session cookie, dropped on browser close.
   });
 
   return NextResponse.json({ ok: true, user: userKey });
