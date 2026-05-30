@@ -4,6 +4,77 @@ Working notes for the next feature session. Pairs with `IMPROVEMENTS.md` (the lo
 
 ---
 
+## ✅ Just Shipped (2026-05-30) — Math + Language Arts + cross-section MP earning
+
+Branch: `dglazier/feature/language-arts-and-math` (not yet merged to master).
+
+### Math Arena — `/math`
+- `/math` hub (Phase 1 shipped; Phase 2-3 listed as Coming Soon)
+- `/math/practice` — config → playing → results
+  - Operations: +, −, ×, ÷ — multi-select; "Mix all four" shortcut
+  - Difficulty: Easy / Medium / Hard (number ranges in `lib/math/engine.ts`)
+  - Round size: 5 / 10 / 15 / 20 questions
+  - **Per-question timer: 5 / 10 / 15 / 20 / 30 / 45 / 60 seconds (kid picks)**
+  - On timer expire: reveal correct answer for ~1.2s, mark wrong, auto-advance (per user spec)
+  - **Integer-only division** (no remainders) — engine builds dividend from (quotient × divisor)
+  - Live streak counter, per-question timer bar (sky → amber → red)
+- Spec: `app/math/PLAN.md`
+
+### Language Arts — `/language-arts`
+- `/language-arts` hub (Phase L1 shipped; L2-L6 Coming Soon: Grammar / Punctuation / Phonics / Dictionary / Thesaurus)
+- `/language-arts/homophones` — Phase L1 fill-in-the-blank drill
+  - 10 sets, 47 sentences: its/it's, your/you're, their/they're/there, to/too/two, affect/effect, then/than, lose/loose, whose/who's, were/where/wear, accept/except
+  - Tier (Easy 2-way / Medium 3-way / Hard subtle)
+  - Round size 5/10/15/20
+  - On wrong answer: rule for that set + optional item hint surface for ~1.6s
+- Content + helpers: `lib/languageArts/homophones.ts`
+- Spec: `app/language-arts/PLAN.md`
+
+### Cross-section MP earning — **server-decided**, no daily cap
+**Single rule kids hear: "the better you do, the more you earn."**
+
+- New table `mp_earnings` (idempotency key prevents double-credit)
+- New route `POST /api/money/earn` — kid-cookie auth (no parent gate); server decides cents from {section, kind, payload}
+- New lib `lib/money/earn.ts` — pure reward formulas per section + orchestrator
+- New lib `lib/money/earn-client.ts` — `submitEarn()` helper for any section to call
+- **No daily cap** (per user 2026-05-30). Merit curve handles grind-prevention. `DAILY_EARN_CAP_CENTS` sits at `Number.MAX_SAFE_INTEGER` so the response shape stays stable if we reintroduce one.
+- **Atomicity (fixed 2026-05-30):** MpEarning row + balance increment + MpTransaction ledger row all live in **one** `prisma.$transaction`. If any one fails, none commit — kid can't lose money to a half-write that replays as 'duplicate'. Original first pass had two separate transactions; the cross-session review flagged it.
+- Reward formulas in `lib/money/earn.ts`:
+  - **Math:** `100c × accuracy^1.5 × difficulty(1/1.5/2.25) × speed(0.75-1.25) × streak(1-1.5)`
+  - **Spelling quiz:** `80c × accuracy^1.5 × (1 + (level-1)×0.15)` (Spelling page still needs to call this)
+  - **Language Arts drill:** `70c × accuracy^1.5 × tier(1/1.3/1.75)`
+  - **Geography quiz:** size-based base × accuracy^1.5 (50/80/120/200c for 5/10/20/50 questions)
+  - **Drive deck:** flat 25c · **Drive quiz/exam:** 75c/250c × accuracy^1.5, only at ≥80% accuracy
+- Quantized to 25¢ (.25 MP) so balances look clean
+- Idempotency: client generates a UUID per round mount (`newIdempotencyKey()`); replays are no-ops
+
+### Sections currently wired to earn:
+- ✅ Math (`/math/practice`) — wired
+- ✅ Language Arts (`/language-arts/homophones`) — wired
+- ✅ **Geography Name Quiz** (`/geography/name-quiz`) — wired as proof-of-concept on existing section
+
+### Sections that still need the `submitEarn()` call (one ~10-line addition each):
+- ⏳ **Spelling practice** (`app/spelling/practice/page.tsx`) — call with section=`spelling`, kind=`quiz`, payload=`{correct, total, level}`
+- ⏳ **Drive quizzes/decks** (under `app/drive/`) — call with section=`drive`, kind=`quiz` or `deck`. Important: pass `isFinalOrSim:true` on the 3 finals + 50-Q simulator to bump them from 75c → 250c base.
+- ⏳ **Geography remaining quizzes**: capital-quiz, flag-match, drag-match, silhouette-puzzle, physical-quiz, per-state quizzes, world capital/flag/name/physical quizzes. All have `onComplete({score, total, ...})`-style callbacks — copy the pattern from `/geography/name-quiz/page.tsx`.
+
+### Schema additions (need `npx prisma db push` against Neon before this works in prod)
+- `DriveUser.math` JSONB column (default `{}`)
+- `DriveUser.languageArts` JSONB column (default `{}`)
+- `mp_earnings` table (new)
+
+### Header / nav
+- Learn dropdown (desktop + mobile) now lists: Geography · Drive · Spelling · **🧮 Math Arena** · **📚 Language Arts**
+- `LoginGate` knows the two new sections (sky accent for Math, rose for Language Arts)
+
+### Deploy checklist for next session
+1. **`npx prisma db push`** against Neon — materializes new columns + `mp_earnings` table
+2. `git push origin dglazier/feature/language-arts-and-math` then merge to master (or open PR)
+3. `npx vercel --prod --yes` (manual deploy still required per existing notes)
+4. Verify: log in as a kid → run a math round → check `/portal/money` shows the earn
+
+---
+
 ## ✅ Recently Shipped (2026-05-29)
 
 ### `/drive` — Utah Driver License study tool
