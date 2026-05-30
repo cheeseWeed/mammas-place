@@ -49,16 +49,13 @@ When extending `HOMOPHONE_ITEMS`:
 
 ## Reward curve (the rule kids hear: "the better you do, the more you earn")
 
-```
-cents = 70 × accuracy^1.5 × tierMult
-```
+Identical to Math (and every other section). See `app/math/PLAN.md` for the worked formula. Summary:
 
-| Factor | Range | Notes |
-|---|---|---|
-| `accuracy^1.5` | 0.0 → 1.0 | 100% earns much more than 80%. 0 correct = no earn. |
-| `tierMult` | 1.0 / 1.3 / 1.75 | Easy / Medium / Hard tier. |
+- **0.25 MP** per question attempted (flat)
+- **1.00 MP** per correct × tier multiplier (Easy 1.0×, Medium 1.5×, Hard 2.0×)
+- **Fibonacci bonus** (5/8/13/21/34 MP at 80/85/90/95/100%) × size multiplier × tier
 
-Quantized to 25¢. **No daily cap** (per user 2026-05-30) — same across every learning section. The merit curve handles grind-prevention; no kid hits an arbitrary ceiling.
+A 10-item hard homophones drill at 100% earns 49.70 MP. A 3/10 easy still pays 5.50 MP. **No daily cap.**
 
 ## Non-goals (don't build)
 

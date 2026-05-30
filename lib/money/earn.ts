@@ -101,13 +101,49 @@ export type EarnResult =
   | { ok: true; centsEarned: 0; balanceCents: number; reason: 'duplicate' };
 
 // ---------- Reward formulas (pure functions, easy to unit-test later) ----------
+//
+// Single rule (2026-05-30 lock-in):
+//
+//   reward = 0.25 MP per question attempted
+//          + 1.00 MP per correct answer × difficultyMult
+//          + accuracyBonus (Fibonacci) × sizeBonusMult × difficultyMult
+//
+// Per-question pieces are flat. The Fibonacci bonus kicks in at 80% and
+// grows steeply (5/8/13/21/34 at 80/85/90/95/100%) so chasing perfection
+// is meaningfully more rewarding than coasting at 80%.
+//
+// Round-size multiplier on the bonus: bonusMult = min(2.0, total / 25).
+// 25Q quiz = 1.0×, 50Q = 1.5×, 100Q = 2.0× (capped). 10Q = 0.4×.
+//
+// Per-question math is in WHOLE cents (no quantization, no 25c floor) so
+// "0.10 MP for trying with 0 right" actually works.
 
-// Round any cents to a value the UI can display cleanly (whole MP or .50 MP).
-// We don't issue fractional cents; smallest grain is 25 cents (.25 MP).
-function quantizeCents(c: number): number {
-  if (c <= 0) return 0;
-  // round down to nearest 25 cents — feels generous-enough without odd .07 MP
-  return Math.max(25, Math.floor(c / 25) * 25);
+const ATTEMPT_CENTS = 25;          // 0.25 MP per question, just for showing up
+const RIGHT_CENTS = 100;           // 1.00 MP per correct answer (× difficultyMult)
+
+// Difficulty multipliers (apply to right-answer pay AND bonus, not attempts).
+const DIFF_EASY = 1.0;
+const DIFF_MEDIUM = 1.5;
+const DIFF_HARD = 2.0;
+
+// Fibonacci accuracy bonus rungs. Indexed by integer percent above 80.
+// Anything < 80 returns 0. Above 100% just stays 34.
+function fibAccuracyBonusCents(accuracyFraction: number): number {
+  const pct100 = Math.round(accuracyFraction * 100);
+  if (pct100 >= 100) return 3400;
+  if (pct100 >= 95) return 2100;
+  if (pct100 >= 90) return 1300;
+  if (pct100 >= 85) return 800;
+  if (pct100 >= 80) return 500;
+  return 0;
+}
+
+// Round size scales the Fibonacci bonus. 25Q = baseline (1.0×).
+// total = 25 → 1.0, total = 50 → 2.0, total = 100 → 4.0… so cap at 2.0
+// so 100Q exam tops out at 2× the 25Q bonus (matches user spec).
+function sizeBonusMultiplier(total: number): number {
+  if (total <= 0) return 0;
+  return Math.min(2.0, total / 25);
 }
 
 function pct(correct: number, total: number): number {
@@ -115,93 +151,90 @@ function pct(correct: number, total: number): number {
   return Math.max(0, Math.min(1, correct / total));
 }
 
-// Math: base 100c × accuracyCurve × difficultyMult × speedMult × streakMult
-// - accuracyCurve: pct^1.5 so 100% earns much more than 80%
-// - difficultyMult: 1.0 / 1.5 / 2.25
-// - speedMult: 0.75..1.25 (slow answers = 0.75; ~half-timer = 1.0; very fast = 1.25)
-// - streakMult: 1 + min(streak,10)/20 → up to 1.5×
+// The shared backbone every section uses. Returns whole cents.
+function scoreCents(opts: {
+  correct: number;
+  total: number;
+  difficultyMult: number;
+}): number {
+  const { correct, total, difficultyMult } = opts;
+  if (total <= 0) return 0;
+  const attempts = ATTEMPT_CENTS * total;
+  const right = RIGHT_CENTS * correct * difficultyMult;
+  const bonus = fibAccuracyBonusCents(pct(correct, total))
+    * sizeBonusMultiplier(total)
+    * difficultyMult;
+  // Round to nearest whole cent so the displayed MP is always two-decimal-clean.
+  return Math.round(attempts + right + bonus);
+}
+
+// Math: difficulty drives the multiplier.
 export function computeMathReward(p: MathRoundPayload): { cents: number; reason: string } {
-  const acc = pct(p.correct, p.total);
-  if (acc <= 0) return { cents: 0, reason: 'No correct answers — no MP earned.' };
-  const accuracyCurve = Math.pow(acc, 1.5);
-  const diffMult = p.difficulty === 'hard' ? 2.25 : p.difficulty === 'medium' ? 1.5 : 1.0;
-
-  const timerMs = Math.max(1, p.perQuestionSeconds) * 1000;
-  // Faster answers earn more; clamp to [0.75, 1.25].
-  const speedRatio = p.avgAnswerMs > 0 ? Math.min(1, p.avgAnswerMs / timerMs) : 1;
-  const speedMult = 1.25 - 0.5 * speedRatio;
-
-  const streakMult = 1 + Math.min(10, Math.max(0, p.bestStreak)) / 20;
-
-  const raw = 100 * accuracyCurve * diffMult * speedMult * streakMult;
-  const cents = quantizeCents(raw);
-
-  const pctText = `${Math.round(acc * 100)}%`;
-  const streakText = p.bestStreak >= 5 ? ` · streak ${p.bestStreak}` : '';
+  const difficultyMult =
+    p.difficulty === 'hard' ? DIFF_HARD :
+    p.difficulty === 'medium' ? DIFF_MEDIUM :
+    DIFF_EASY;
+  const cents = scoreCents({ correct: p.correct, total: p.total, difficultyMult });
   return {
     cents,
-    reason: `Math ${p.difficulty}: ${p.correct}/${p.total} (${pctText})${streakText}`,
+    reason: `Math ${p.difficulty}: ${p.correct}/${p.total} (${Math.round(pct(p.correct, p.total) * 100)}%)`,
   };
 }
 
-// Spelling quiz: base 80c × accuracy^1.5 × levelMult (1 + (level-1) × 0.15)
+// Spelling: levels 1-7 map to three difficulty bands.
+// L1-L2 = easy, L3-L5 = medium, L6-L7 = hard.
 export function computeSpellingReward(p: SpellingQuizPayload): { cents: number; reason: string } {
-  const acc = pct(p.correct, p.total);
-  if (acc <= 0) return { cents: 0, reason: 'No correct answers — no MP earned.' };
-  const levelMult = 1 + Math.max(0, p.level - 1) * 0.15;
-  const raw = 80 * Math.pow(acc, 1.5) * levelMult;
-  const cents = quantizeCents(raw);
+  const difficultyMult =
+    p.level >= 6 ? DIFF_HARD :
+    p.level >= 3 ? DIFF_MEDIUM :
+    DIFF_EASY;
+  const cents = scoreCents({ correct: p.correct, total: p.total, difficultyMult });
   return {
     cents,
-    reason: `Spelling L${p.level}: ${p.correct}/${p.total} (${Math.round(acc * 100)}%)`,
+    reason: `Spelling L${p.level}: ${p.correct}/${p.total} (${Math.round(pct(p.correct, p.total) * 100)}%)`,
   };
 }
 
-// Language Arts drill: base 70c × accuracy^1.5 × tierMult
+// Language Arts: tier maps directly.
 export function computeLangArtsReward(p: LangArtsDrillPayload): { cents: number; reason: string } {
-  const acc = pct(p.correct, p.total);
-  if (acc <= 0) return { cents: 0, reason: 'No correct answers — no MP earned.' };
-  const tierMult = p.tier === 'hard' ? 1.75 : p.tier === 'medium' ? 1.3 : 1.0;
-  const raw = 70 * Math.pow(acc, 1.5) * tierMult;
-  const cents = quantizeCents(raw);
+  const difficultyMult =
+    p.tier === 'hard' ? DIFF_HARD :
+    p.tier === 'medium' ? DIFF_MEDIUM :
+    DIFF_EASY;
+  const cents = scoreCents({ correct: p.correct, total: p.total, difficultyMult });
   return {
     cents,
-    reason: `Language Arts (${p.tier}): ${p.correct}/${p.total} (${Math.round(acc * 100)}%)`,
+    reason: `Language Arts (${p.tier}): ${p.correct}/${p.total} (${Math.round(pct(p.correct, p.total) * 100)}%)`,
   };
 }
 
-// Geography quiz: base scales with round size: 50c (small) → 200c (50-state).
-// Then × accuracy^1.5.
+// Geography: no difficulty tier. All quizzes use easy (1.0×). Round size
+// already drives reward via attempts + the size bonus multiplier on the
+// Fibonacci tier.
 export function computeGeographyReward(p: GeographyQuizPayload): { cents: number; reason: string } {
-  const acc = pct(p.correct, p.total);
-  if (acc <= 0) return { cents: 0, reason: 'No correct answers — no MP earned.' };
-  // Size scale: 5 → 50, 10 → 80, 20 → 120, 50 → 200 (cents, before accuracy)
-  const sizeBase = p.total >= 50 ? 200 : p.total >= 20 ? 120 : p.total >= 10 ? 80 : 50;
-  const raw = sizeBase * Math.pow(acc, 1.5);
-  const cents = quantizeCents(raw);
+  const cents = scoreCents({ correct: p.correct, total: p.total, difficultyMult: DIFF_EASY });
   const qLabel = p.quiz ? ` ${p.quiz}` : '';
   return {
     cents,
-    reason: `Geography${qLabel}: ${p.correct}/${p.total} (${Math.round(acc * 100)}%)`,
+    reason: `Geography${qLabel}: ${p.correct}/${p.total} (${Math.round(pct(p.correct, p.total) * 100)}%)`,
   };
 }
 
-// Drive deck completion: flat 25c (decks are study material; quizzes pay more).
+// Drive deck completion: flat 50c (study time deserves something but not
+// as much as a quiz). Idempotency-keyed per (user, deck) upstream.
 export function computeDriveDeckReward(p: DriveDeckPayload): { cents: number; reason: string } {
-  return { cents: 25, reason: `Drive deck complete: ${p.deck}` };
+  return { cents: 50, reason: `Drive deck complete: ${p.deck}` };
 }
 
-// Drive quiz/exam: base 75c (or 250c on final/sim) × accuracy^1.5. Must hit
-// >= 80% to earn at all (matches the existing "pass" threshold).
+// Drive quiz/exam: finals & 50-Q simulator pay at "hard" rate; regular
+// practice quizzes at "easy". No pass-gate — partial credit pays partially
+// (consistent with the rest of the app).
 export function computeDriveQuizReward(p: DriveQuizPayload): { cents: number; reason: string } {
-  const acc = pct(p.correct, p.total);
-  if (acc < 0.8) return { cents: 0, reason: `Drive ${p.quiz}: below pass threshold.` };
-  const base = p.isFinalOrSim ? 250 : 75;
-  const raw = base * Math.pow(acc, 1.5);
-  const cents = quantizeCents(raw);
+  const difficultyMult = p.isFinalOrSim ? DIFF_HARD : DIFF_EASY;
+  const cents = scoreCents({ correct: p.correct, total: p.total, difficultyMult });
   return {
     cents,
-    reason: `Drive ${p.isFinalOrSim ? 'exam' : 'quiz'} ${p.quiz}: ${p.correct}/${p.total} (${Math.round(acc * 100)}%)`,
+    reason: `Drive ${p.isFinalOrSim ? 'exam' : 'quiz'} ${p.quiz}: ${p.correct}/${p.total} (${Math.round(pct(p.correct, p.total) * 100)}%)`,
   };
 }
 

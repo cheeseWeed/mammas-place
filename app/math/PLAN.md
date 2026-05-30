@@ -14,17 +14,21 @@ Math practice for the mammasplace kids. Same discipline as `app/geography/PLAN.m
 ## Reward curve (the rule kids hear: "the better you do, the more you earn")
 
 ```
-cents = 100 × accuracy^1.5 × difficultyMult × speedMult × streakMult
+reward = 0.25 MP × total           ← attempt pay, always
+       + 1.00 MP × correct × diff  ← right-answer pay
+       + fibBonus × sizeMult × diff ← accuracy bonus (≥80% only)
 ```
 
-| Factor | Range | Notes |
-|---|---|---|
-| `accuracy^1.5` | 0.0 → 1.0 | 100% is dramatically more than 80%. 0 correct = no earn, no exceptions. |
-| `difficultyMult` | 1.0 / 1.5 / 2.25 | Easy / Medium / Hard. Hard is worth >2× easy at the same accuracy. |
-| `speedMult` | 0.75 → 1.25 | `avgAnswerMs / timerMs` slow→0.75, half-timer→1.0, very fast→1.25. |
-| `streakMult` | 1.0 → 1.5 | `1 + min(streak, 10)/20`. Caps at 10-in-a-row. |
+| Piece | Value |
+|---|---|
+| **Attempt pay** | 0.25 MP per question, flat (even with 0 right) |
+| **Right pay** | 1.00 MP per correct × difficulty (Easy 1.0×, Medium 1.5×, Hard 2.0×) |
+| **Fibonacci bonus** | 5/8/13/21/34 MP at 80/85/90/95/100% accuracy (zero below 80%) |
+| **Size multiplier** | `min(2.0, total / 25)` — 25Q baseline, 50Q = 1.5×, 100Q+ = 2.0× |
 
-Quantized to nearest 25¢ (.25 MP). **No daily cap** (per user 2026-05-30) — the merit curve already makes grinding the same easy round inefficient relative to attempting harder content. The `DAILY_EARN_CAP_CENTS` constant exists at `Number.MAX_SAFE_INTEGER` so the response shape stays stable if we ever reintroduce a cap.
+So a 10-question hard math round at 100% earns: `0.25 × 10 + 1.00 × 10 × 2.0 + 34 × 0.4 × 2.0 = 2.50 + 20.00 + 27.20 = 49.70 MP`. A 10/10 easy round earns 26.10 MP. A 3/10 easy round still earns 5.50 MP (participation + 3 right + no bonus).
+
+**No daily cap** (per user 2026-05-30). The `DAILY_EARN_CAP_CENTS` constant exists at `Number.MAX_SAFE_INTEGER` so the response shape stays stable if we ever reintroduce one. Per-question cents are whole numbers (no quantization) so "0.10 MP for trying with 0 right" displays cleanly.
 
 ## Phase ladder
 

@@ -62,7 +62,7 @@ export default function MathHubPage() {
 
           <div className="bg-gradient-to-r from-sky-600 to-cyan-700 rounded-2xl shadow-lg p-6 md:p-8 text-white text-center">
             <p className="text-sky-50 mb-3 text-sm">
-              MP rewards scale with accuracy, speed, difficulty, and streak. The better you do, the more you earn.
+              MP rewards scale with accuracy and difficulty. The better you do, the more you earn.
             </p>
             <Link
               href="/"
