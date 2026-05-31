@@ -104,22 +104,15 @@ export function rowToProduct(row: ProductRow): Product {
   };
 }
 
-// Category-visibility helpers (localStorage-backed) now live in
-// lib/products-client.ts since they're pure client-side. Re-exported here
-// for any server code that may still import them; client components should
-// import from products-client directly to avoid pulling prisma.
-import {
-  getHiddenCategories,
-  setHiddenCategories,
-  toggleCategoryVisibility,
-  isCategoryHidden,
-} from './products-client';
-export {
-  getHiddenCategories,
-  setHiddenCategories,
-  toggleCategoryVisibility,
-  isCategoryHidden,
-};
+// Category-visibility helpers (localStorage-backed) live in
+// lib/products-client.ts. They are NOT re-exported here: this is a server
+// module that imports prisma, so pulling in a 'use client' module would
+// either crash the server caller (Next 15 refuses cross-boundary calls)
+// or drag prisma into a client bundle. Client components must import
+// from '@/lib/products-client' directly.
+//
+// Server-side, hidden categories are not knowable (no window/localStorage),
+// so server reads return the full list — the client re-filters in the UI.
 
 // ---- DB reads (server-only; client uses /api/products) -----------------
 export async function getAllProductsIncludingUnavailable(): Promise<Product[]> {
@@ -146,10 +139,9 @@ export async function getPublishedProducts(): Promise<Product[]> {
 // the hidden list (no window) — they get every available product; the client
 // is responsible for re-filtering if it cares about hides.
 export async function getAllProducts(): Promise<Product[]> {
-  const all = await getAvailableProducts();
-  const hidden = getHiddenCategories();
-  if (hidden.length === 0) return all;
-  return all.filter((p) => !hidden.includes(p.category));
+  // Hidden-category filter is client-side only (localStorage). Server returns
+  // the full available set; the client re-filters where it matters.
+  return getAvailableProducts();
 }
 
 export async function getProductById(id: string): Promise<Product | undefined> {
@@ -233,9 +225,9 @@ export async function getAllCategories(): Promise<string[]> {
 }
 
 export async function getVisibleCategories(): Promise<string[]> {
-  const cats = await getAllCategories();
-  const hidden = getHiddenCategories();
-  return cats.filter((c) => !hidden.includes(c));
+  // Hidden-category filter is client-side only (localStorage); server
+  // returns all categories and the client re-filters.
+  return getAllCategories();
 }
 
 export async function getCategories(): Promise<string[]> {
@@ -279,12 +271,11 @@ export async function getAudiobooks(): Promise<Product[]> {
 }
 
 export async function getComingSoonProducts(): Promise<Product[]> {
-  const hidden = getHiddenCategories();
+  // Hidden-category filter is client-side only (localStorage); server
+  // returns all coming-soon items and the client re-filters where needed.
   const rows = (await prisma.product.findMany({
     where: { isComingSoon: true },
     orderBy: { createdAt: 'asc' },
   })) as unknown as ProductRow[];
-  return rows
-    .map(rowToProduct)
-    .filter((p) => !hidden.includes(p.category));
+  return rows.map(rowToProduct);
 }

@@ -6,6 +6,8 @@
 // React-side fetch hook is below — pages call useProducts() to lazy-load
 // the catalog on mount, then pipe the array through these helpers.
 
+'use client';
+
 import { useEffect, useState } from 'react';
 import type { Product } from '@/types';
 

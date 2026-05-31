@@ -852,18 +852,27 @@ function CategoryVisibilityManager() {
 
   useEffect(() => {
     setMounted(true);
-    // Import the functions dynamically to avoid SSR issues
-    // getAllCategories is async (DB-backed) now — await it before stuffing
-    // the result into setState. getHiddenCategories stays sync (localStorage).
-    import('@/lib/products').then(async ({ getAllCategories, getHiddenCategories }) => {
-      const cats = await getAllCategories();
-      setAllCategories(cats);
+    // Fetch categories from the public products endpoint (no prisma in the
+    // client bundle). Visibility helpers are pure-localStorage and live in
+    // products-client.
+    (async () => {
+      try {
+        const res = await fetch('/api/products');
+        const data = await res.json();
+        const products: Array<{ category?: string }> = data.products || [];
+        const cats = Array.from(new Set(products.map((p) => p.category).filter(Boolean))) as string[];
+        cats.sort();
+        setAllCategories(cats);
+      } catch {
+        // ignore — categories list just stays empty
+      }
+      const { getHiddenCategories } = await import('@/lib/products-client');
       setHiddenCategoriesState(getHiddenCategories());
-    });
+    })();
   }, []);
 
   const handleToggleCategory = async (category: string) => {
-    const { toggleCategoryVisibility, getHiddenCategories } = await import('@/lib/products');
+    const { toggleCategoryVisibility, getHiddenCategories } = await import('@/lib/products-client');
     toggleCategoryVisibility(category);
     setHiddenCategoriesState(getHiddenCategories());
 
