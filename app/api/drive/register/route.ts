@@ -21,8 +21,10 @@ import {
 import { prisma } from '@/lib/prisma';
 
 const COOKIE_NAME = 'dl_user';
-// Session cookie (no maxAge) — browser drops on window close. Multi-kid
-// shared-laptop setup, requested by user 2026-05-30.
+// 2-hour absolute TTL. Server-issued maxAge means powered-off laptops /
+// browser crashes still log the kid out after 2 hours. Multi-kid shared-
+// laptop setup. See /api/drive/login for full rationale.
+const COOKIE_MAX_AGE_SEC = 2 * 60 * 60;
 
 // Best-effort displayName sanitization. Keep it short, strip dangerous junk,
 // fall back to undefined if it's empty/invalid so the column stays NULL.
@@ -89,7 +91,7 @@ export async function POST(req: NextRequest) {
     httpOnly: false, // client JS in dashboard reads this too
     sameSite: 'lax',
     path: '/',
-    // No maxAge → session cookie, dropped on browser close.
+    maxAge: COOKIE_MAX_AGE_SEC,
   });
 
   return NextResponse.json({ ok: true, user: userKey });

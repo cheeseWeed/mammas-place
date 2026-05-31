@@ -22,7 +22,8 @@ export type DadOutcome =
   | 'pickup_tab'
   | 'maybe_later'
   | 'no'
-  | 'bad_luck';
+  | 'bad_luck'
+  | 'greedy'; // "I see what you did there" — kid asked for way more than the cart
 
 export type DadContext = 'portal' | 'checkout';
 
@@ -34,10 +35,11 @@ export interface DadDecision {
 
 export interface DadDecisionInput {
   userName: string;        // normalized
-  centsAsked: number;      // 100..5000 (1..50 MP)
+  centsAsked: number;      // 100..100_000 (1..1000 MP) — kid can ask anything
   reason: string;          // 1..200 chars
   context: DadContext;
-  shortfallCents?: number; // only used when context === 'checkout'
+  shortfallCents?: number; // amount needed to complete the order
+  cartTotalCents?: number; // total cart value — Dad uses this to spot greed
 }
 
 // ---------- Reply bank ----------
@@ -209,6 +211,39 @@ const REPLIES: Record<DadOutcome, readonly string[]> = {
     "What part of NO is confusing?",
     "Not happening, sport.",
     "Big swing, big miss. No.",
+  ],
+  greedy: [
+    "Whoa whoa whoa. Do you want my truck, too?",
+    "Do you want a tile to the house, too?",
+    "What's next, the lawnmower?",
+    "Did you also want my left arm, kiddo?",
+    "I see what you did there. Try a smaller number.",
+    "Nice try. Cut that ask in half. Then in half again.",
+    "Buddy. Read the room.",
+    "That's a lot of MP for one ask. Try again with a smaller number.",
+    "Hahahaha. No.",
+    "I am NOT made of money. Lower the ask.",
+    "Bold strategy. Did not work.",
+    "Do you also want my Sunday paper?",
+    "Were you planning on buying a small island?",
+    "{ask} MP?! For real?",
+    "I admire the confidence. The answer is still no.",
+    "What do you think this is, the lottery?",
+    "Asking for {ask} MP is a bold move, Cotton.",
+    "If I had {ask} MP I'd retire.",
+    "I'd give you {ask} MP if I had {ask} MP.",
+    "{ask} MP is more than the cart. You're trying to pocket the rest, aren't you?",
+    "Negative, ghost rider. That's way too much.",
+    "Sneaky kid. I see you.",
+    "Nice try. The skim is denied.",
+    "I wasn't born yesterday. Ask for what you need.",
+    "Asking for change AND the deposit, eh?",
+    "Pad the ask much? Try again.",
+    "Caught red-handed. Ask smaller.",
+    "Dad math: that's WAY too much.",
+    "Sure, and a pony. And a yacht. The answer is no.",
+    "I see your hustle. Respectfully — no.",
+    "Trying to fund a side project, kiddo?",
   ],
   bad_luck: [
     "Tough crowd today. Better luck next time.",
@@ -438,12 +473,32 @@ async function loadCadence(userName: string): Promise<CadenceScore> {
   return { delta, lastAskMs, asksToday };
 }
 
-// Amount-asked signal (greed check).
+// Amount-asked signal — graduated penalty for big asks (not a hard cap).
+// User explicitly removed the kid-side cap; kids can ask whatever they want.
+// The decision engine takes care of saying no to absurd asks via this delta
+// AND the dedicated `greedy` outcome.
 function scoreAmount(centsAsked: number): number {
   const mp = centsAsked / 100;
   if (mp <= 10) return 0;
   if (mp <= 25) return -5;
-  return -12; // 26..50 MP — greedy
+  if (mp <= 50) return -12;
+  if (mp <= 100) return -25; // way over — but might still get yes_partial
+  return -40;                // 100+ MP — dad math says lol no
+}
+
+// "Greedy" detector — kid asked for more than the cart can possibly cost.
+// At checkout: anything > cart * 1.5 is suspicious (they're trying to pocket
+// the extra). At portal: anything > 100 MP is just yikes.
+function isGreedyAsk(args: {
+  centsAsked: number;
+  context: DadContext;
+  cartTotalCents?: number;
+}): boolean {
+  if (args.context === 'checkout' && (args.cartTotalCents ?? 0) > 0) {
+    return args.centsAsked > Math.max(args.cartTotalCents! * 1.5, 1000);
+  }
+  // Portal: no cart context. 100+ MP is the threshold.
+  return args.centsAsked > 10_000;
 }
 
 // ---------- Outcome roll ----------
@@ -458,6 +513,7 @@ interface WeightBag {
   maybe_later: number;
   no: number;
   bad_luck: number;
+  greedy: number;
 }
 
 function baseWeights(): WeightBag {
@@ -469,6 +525,7 @@ function baseWeights(): WeightBag {
     maybe_later: 15,
     no: 20,
     bad_luck: 10,
+    greedy: 0,        // only enabled when isGreedyAsk() returns true
   };
 }
 
@@ -476,10 +533,11 @@ function clampWeights(w: WeightBag): WeightBag {
   return {
     yes_full: Math.max(1, w.yes_full),
     yes_partial: Math.max(1, w.yes_partial),
-    pickup_tab: Math.max(0, w.pickup_tab), // can stay at 0 (portal context)
+    pickup_tab: Math.max(0, w.pickup_tab),
     maybe_later: Math.max(1, w.maybe_later),
     no: Math.max(1, w.no),
     bad_luck: Math.max(1, w.bad_luck),
+    greedy: Math.max(0, w.greedy),
   };
 }
 
@@ -514,6 +572,7 @@ export function decideOutcome(args: {
   cadence: CadenceScore;
   amountDelta: number;
   shortfallCents?: number;
+  cartTotalCents?: number;
   centsAsked: number;
 }): { outcome: DadOutcome; weights: WeightBag } {
   const weights = baseWeights();
@@ -536,6 +595,21 @@ export function decideOutcome(args: {
     weights.no += 10;
   }
 
+  // Greedy ask: Dad notices. The greedy outcome dominates but doesn't fully
+  // kill the others — sometimes Dad is in a good mood and gives them a
+  // partial-yes even on a sketchy ask.
+  if (isGreedyAsk({
+    centsAsked: args.centsAsked,
+    context: args.context,
+    cartTotalCents: args.cartTotalCents,
+  })) {
+    weights.greedy = 60; // dominates roll
+    weights.yes_full = 1; // basically gone
+    weights.pickup_tab = 0;
+    weights.yes_partial = Math.max(2, Math.round(weights.yes_partial * 0.3));
+    weights.no += 10;
+  }
+
   const clamped = clampWeights(weights);
   const outcome = rollWeighted(clamped);
   return { outcome, weights: clamped };
@@ -547,16 +621,19 @@ function roundToQuarterMP(cents: number): number {
   return Math.max(25, Math.round(cents / 25) * 25);
 }
 
-function pickReply(outcome: DadOutcome, centsGranted: number): string {
+function pickReply(outcome: DadOutcome, centsGranted: number, centsAsked: number): string {
   const bank = REPLIES[outcome];
   const template = bank[Math.floor(Math.random() * bank.length)];
-  // Render the {amount} placeholder using the same centsToMP-style formatting
-  // we use elsewhere. Inline here to avoid pulling in the format module just
-  // for this string substitution (and to avoid a server/client export tangle).
-  if (template.includes('{amount}')) {
-    return template.replace(/\{amount\}/g, formatCentsInline(centsGranted));
+  // Render the {amount} (granted) and {ask} (originally asked) placeholders.
+  // Inline format to avoid a server/client export tangle on centsToMP.
+  let out = template;
+  if (out.includes('{amount}')) {
+    out = out.replace(/\{amount\}/g, formatCentsInline(centsGranted));
   }
-  return template;
+  if (out.includes('{ask}')) {
+    out = out.replace(/\{ask\}/g, formatCentsInline(centsAsked));
+  }
+  return out;
 }
 
 function formatCentsInline(cents: number): string {
@@ -592,6 +669,7 @@ export async function computeDecision(input: DadDecisionInput): Promise<{
     cadence,
     amountDelta,
     shortfallCents: input.shortfallCents,
+    cartTotalCents: input.cartTotalCents,
     centsAsked: input.centsAsked,
   });
 
@@ -608,18 +686,21 @@ export async function computeDecision(input: DadDecisionInput): Promise<{
       break;
     }
     case 'pickup_tab': {
-      // Cover the full shortfall, capped at 50 MP. Only available in checkout.
+      // Cover the full shortfall — Dad's covering the cart, not a windfall.
+      // No cap; if the cart is 30 MP and the kid has 0, Dad covers 30 MP.
       const need = Math.max(0, input.shortfallCents ?? 0);
-      centsGranted = Math.min(5000, need);
+      centsGranted = need;
       break;
     }
     case 'maybe_later':
     case 'no':
     case 'bad_luck':
+    case 'greedy':
       centsGranted = 0;
       break;
   }
 
-  const dadReply = pickReply(outcome, centsGranted);
+  // Templates that include {ask} get the original ask value, not the granted.
+  const dadReply = pickReply(outcome, centsGranted, input.centsAsked);
   return { outcome, centsGranted, dadReply };
 }

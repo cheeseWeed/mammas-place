@@ -19,7 +19,7 @@ import {
   pickPrompt,
 } from '@/lib/money/dad';
 
-type Outcome = 'yes_full' | 'yes_partial' | 'pickup_tab' | 'maybe_later' | 'no' | 'bad_luck';
+type Outcome = 'yes_full' | 'yes_partial' | 'pickup_tab' | 'maybe_later' | 'no' | 'bad_luck' | 'greedy';
 type Context = 'portal' | 'checkout';
 
 interface DadResponse {
@@ -33,13 +33,16 @@ interface AskDadPanelProps {
   context: Context;
   // Optional shortfall passed only at checkout — enables Dad's pickup-tab outcome.
   shortfallCents?: number;
+  // Cart total at checkout — Dad uses it to detect "asking for way more than
+  // the cart can possibly cost" (greedy outcome).
+  cartTotalCents?: number;
   // Bubbled up so the parent page can refresh balance / retry the order /
   // close the panel after a granted ask.
   onResult?: (result: DadResponse) => void;
   // When the parent wants to reset the form (e.g. after retrying an order).
   // Bump this number and the panel returns to the empty-form state.
   resetSignal?: number;
-  // Defaults to "🙋 Top me off". Checkout overrides to mention the tab.
+  // Defaults to a rotating Dad submit label. Checkout overrides to mention the tab.
   submitLabel?: string;
   // Prefill amount — checkout passes the shortfall so the kid doesn't have
   // to retype it.
@@ -48,7 +51,9 @@ interface AskDadPanelProps {
 
 const REASON_MAX = 200;
 const AMOUNT_MIN_MP = 1;
-const AMOUNT_MAX_MP = 50;
+// No upper cap on the kid side — they can ask whatever they want. The server
+// has a sanity cap (1000 MP) and Dad's `greedy` outcome handles absurd asks.
+const AMOUNT_MAX_MP = 1000;
 const THINKING_MS = 800;
 
 const OUTCOME_BADGE: Record<Outcome, { icon: string; label: string; tone: string }> = {
@@ -58,11 +63,13 @@ const OUTCOME_BADGE: Record<Outcome, { icon: string; label: string; tone: string
   maybe_later:  { icon: '🕐', label: 'Try again later',    tone: 'bg-slate-50 text-slate-700 border-slate-200' },
   no:           { icon: '❌', label: 'No',                 tone: 'bg-rose-50 text-rose-800 border-rose-200' },
   bad_luck:     { icon: '🎲', label: 'Better luck later',  tone: 'bg-purple-50 text-purple-800 border-purple-200' },
+  greedy:       { icon: '👀', label: 'Nice try',           tone: 'bg-orange-50 text-orange-800 border-orange-200' },
 };
 
 export function AskDadPanel({
   context,
   shortfallCents,
+  cartTotalCents,
   onResult,
   resetSignal,
   submitLabel,
@@ -148,6 +155,7 @@ export function AskDadPanel({
           reason: trimmed,
           context,
           shortfallCents: context === 'checkout' ? shortfallCents : undefined,
+          cartTotalCents: context === 'checkout' ? cartTotalCents : undefined,
         }),
       });
       const data = (await res.json().catch(() => ({}))) as Partial<DadResponse> & { error?: string };

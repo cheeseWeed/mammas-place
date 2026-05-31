@@ -93,21 +93,70 @@ export function LearnerProvider({ children }: { children: ReactNode }) {
     };
     window.addEventListener('storage', onStorage);
 
-    // Session-only login: clear localStorage on window close so the next
-    // tab/window load matches the (already-session-only) cookie. Keeps
-    // the shared family laptop honest — closing the browser = logged out.
+    // (A) Tab close → clear localStorage + cookie. The server cookie has a
+    // 2h TTL anyway, but wiping it on close means the next tab open shows
+    // the login form immediately.
     const onBeforeUnload = () => {
       try {
         localStorage.removeItem(STORAGE_KEY);
       } catch {
         // ignore
       }
+      try {
+        document.cookie = `${STORAGE_KEY}=; Path=/; Max-Age=0; SameSite=Lax`;
+      } catch {
+        // ignore
+      }
     };
     window.addEventListener('beforeunload', onBeforeUnload);
+
+    // (B) Visibility change → if the tab goes hidden for >= IDLE_LOGOUT_MS,
+    // log the kid out. Covers "Mom switched to another tab and came back
+    // hours later." Active session timer resets every time the tab is
+    // visible again.
+    const IDLE_LOGOUT_MS = 15 * 60 * 1000; // 15 minutes
+    let hiddenAt: number | null = null;
+    let idleLogoutTimer: ReturnType<typeof setTimeout> | null = null;
+    const performIdleLogout = () => {
+      try {
+        localStorage.removeItem(STORAGE_KEY);
+      } catch {
+        // ignore
+      }
+      try {
+        document.cookie = `${STORAGE_KEY}=; Path=/; Max-Age=0; SameSite=Lax`;
+      } catch {
+        // ignore
+      }
+      // Force a refresh so the UI flips to anonymous immediately.
+      setLearnerState(null);
+      setBalanceCents(null);
+    };
+    const onVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        hiddenAt = Date.now();
+        idleLogoutTimer = setTimeout(performIdleLogout, IDLE_LOGOUT_MS);
+      } else {
+        // Tab is visible again — cancel the pending logout if any.
+        if (idleLogoutTimer !== null) {
+          clearTimeout(idleLogoutTimer);
+          idleLogoutTimer = null;
+        }
+        // If the tab was hidden longer than the threshold, the timeout
+        // already fired and logged us out. Just re-check state.
+        if (hiddenAt !== null && Date.now() - hiddenAt >= IDLE_LOGOUT_MS) {
+          void refresh();
+        }
+        hiddenAt = null;
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibilityChange);
 
     return () => {
       window.removeEventListener('storage', onStorage);
       window.removeEventListener('beforeunload', onBeforeUnload);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+      if (idleLogoutTimer !== null) clearTimeout(idleLogoutTimer);
     };
   }, [refresh]);
 

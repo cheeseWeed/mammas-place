@@ -281,6 +281,7 @@ export default function CheckoutPage() {
                 <AskDadPanel
                   context="checkout"
                   shortfallCents={shortfallCents}
+                  cartTotalCents={totalCents}
                   defaultAmountCents={shortfallCents}
                   submitLabel="Ask Dad"
                   onResult={async (r) => {

@@ -1,6 +1,11 @@
 // POST /api/money/dad/ask
 // Kid-authed (dl_user cookie required). Body:
-// { centsAsked: 100..5000, reason: 1..200 chars, context?: 'portal'|'checkout', shortfallCents?: number }
+// { centsAsked: 100..100000, reason: 1..200 chars, context?: 'portal'|'checkout',
+//   shortfallCents?: number, cartTotalCents?: number }
+//
+// No kid-side cap — user wants kids to be able to ask whatever they want. Dad's
+// decision engine handles greed via the `greedy` outcome (asks > cart * 1.5
+// at checkout, or > 100 MP at portal) and a graduated amountDelta penalty.
 //
 // Server computes the outcome via lib/money/dad.ts (no parent involvement —
 // Dad is automated). If the outcome credits MP, we do it atomically alongside
@@ -16,8 +21,8 @@ import { computeDecision, DadContext, DadOutcome } from '@/lib/money/dad';
 import { prisma } from '@/lib/prisma';
 
 const COOKIE_NAME = 'dl_user';
-const MIN_CENTS = 100;   // 1 MP
-const MAX_CENTS = 5000;  // 50 MP
+const MIN_CENTS = 100;     // 1 MP — must be at least 1 to count as an ask
+const MAX_CENTS = 100_000; // 1000 MP — sanity cap so we can't accidentally credit a million
 
 export async function POST(req: NextRequest) {
   // Cookie-based kid auth — matches the gift-card redeem pattern.
@@ -36,6 +41,7 @@ export async function POST(req: NextRequest) {
     reason?: unknown;
     context?: unknown;
     shortfallCents?: unknown;
+    cartTotalCents?: unknown;
   };
   try {
     body = await req.json();
@@ -59,10 +65,15 @@ export async function POST(req: NextRequest) {
   const context: DadContext = body.context === 'checkout' ? 'checkout' : 'portal';
 
   let shortfallCents = 0;
+  let cartTotalCents = 0;
   if (context === 'checkout') {
-    const raw = Number(body.shortfallCents);
-    if (Number.isInteger(raw) && raw > 0) {
-      shortfallCents = Math.min(raw, 50_000); // 500 MP sanity cap on input
+    const rawShort = Number(body.shortfallCents);
+    if (Number.isInteger(rawShort) && rawShort > 0) {
+      shortfallCents = Math.min(rawShort, 500_000); // sanity cap
+    }
+    const rawCart = Number(body.cartTotalCents);
+    if (Number.isInteger(rawCart) && rawCart > 0) {
+      cartTotalCents = Math.min(rawCart, 500_000);
     }
   }
 
@@ -80,6 +91,7 @@ export async function POST(req: NextRequest) {
     reason,
     context,
     shortfallCents: shortfallCents || undefined,
+    cartTotalCents: cartTotalCents || undefined,
   });
 
   // Credit if warranted, then write the DadAsk row. We credit first so the

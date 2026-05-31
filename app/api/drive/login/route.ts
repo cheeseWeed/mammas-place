@@ -12,9 +12,15 @@ import {
 } from '@/lib/drive-progress';
 
 const COOKIE_NAME = 'dl_user';
-// Session cookie (no maxAge) — browser drops it on window close so a shared
-// family laptop returns to the login page next visit. Multi-kid setup
-// requested by user 2026-05-30.
+// 2-hour absolute TTL. Server-issued maxAge means powered-off laptops /
+// browser crashes still log the kid out after 2 hours. An active session
+// stays alive because every authed API call refreshes this cookie (see
+// lib/cookie-refresh.ts middleware-style helper).
+//
+// User picked 2h on 2026-05-30 as the right balance: short enough that
+// a shared family laptop forgets a kid after a couple hours, long enough
+// that a quick browser-close-and-reopen doesn't punish the active user.
+const COOKIE_MAX_AGE_SEC = 2 * 60 * 60; // 7200
 
 export async function POST(req: NextRequest) {
   let body: { user?: unknown; pin?: unknown };
@@ -41,7 +47,7 @@ export async function POST(req: NextRequest) {
     httpOnly: false,
     sameSite: 'lax',
     path: '/',
-    // No maxAge → session cookie, dropped on browser close.
+    maxAge: COOKIE_MAX_AGE_SEC,
   });
 
   return NextResponse.json({ ok: true, user: userKey });
