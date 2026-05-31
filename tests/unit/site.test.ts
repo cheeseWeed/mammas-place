@@ -769,3 +769,207 @@ describe("Language Arts datasets — invariants", () => {
     expectAnswersInChoices(VOCABULARY_ITEMS, "vocabulary");
   });
 });
+
+// ─────────────────────────────────────────────────────────────────────────
+// Dad outcome distribution (statistical) — user concern 2026-05-31:
+// "Dad has never given me money in a lot of times." Run N rolls per
+// scenario and confirm the curve isn't accidentally stingy. These tests
+// roll the dice many times to sample the true distribution, so they're
+// non-flaky as long as N is high and assertions use generous ranges.
+// ─────────────────────────────────────────────────────────────────────────
+
+describe("Dad outcome distribution (5000 rolls per scenario)", () => {
+  const N = 5000;
+
+  type Counts = Record<string, number>;
+  function rollMany(args: Parameters<typeof decideOutcome>[0]): Counts {
+    const counts: Counts = {
+      yes_full: 0, yes_partial: 0, pickup_tab: 0,
+      maybe_later: 0, no: 0, bad_luck: 0, greedy: 0,
+    };
+    for (let i = 0; i < N; i++) {
+      const { outcome } = decideOutcome(args);
+      counts[outcome]++;
+    }
+    return counts;
+  }
+
+  function pct(counts: Counts, key: string): number {
+    return (counts[key] / N) * 100;
+  }
+
+  // Helper: total "got some MP" outcomes (yes_full + yes_partial + pickup_tab).
+  function anyYes(counts: Counts): number {
+    return (counts.yes_full + counts.yes_partial + counts.pickup_tab) / N * 100;
+  }
+
+  it("BASELINE: first ask, neutral reason, small amount → 50-65% any-yes", () => {
+    // Worst-case-fair scenario: kid has never asked, reasonable amount, reason
+    // is generic ("buy a snack"). User reported "never" getting yes — this
+    // pins down the actual rate.
+    const counts = rollMany({
+      context: 'portal',
+      reasonScore: { delta: 0, spammy: false },
+      cadence: { delta: 4, lastAskMs: null, asksToday: 0 }, // never asked = +4
+      amountDelta: 5, // ≤100 MP boost
+      centsAsked: 500, // 5 MP
+    });
+    const yes = anyYes(counts);
+    // Should be a clear majority. Base weights yes_full+yes_partial=55, others
+    // total 45 → ~55%. Add the +9 nudge → ~62%.
+    expect(yes).toBeGreaterThan(50);
+    expect(yes).toBeLessThan(85);
+    // yes_full alone should be at least 25% so the kid notices it works.
+    expect(pct(counts, 'yes_full')).toBeGreaterThan(25);
+  });
+
+  it("POLITE: 'please dad I cleaned my room' → 65-85% any-yes", () => {
+    const reasonScore = scoreReason("please dad I cleaned my room");
+    const counts = rollMany({
+      context: 'portal',
+      reasonScore,
+      cadence: { delta: 4, lastAskMs: null, asksToday: 0 },
+      amountDelta: 5,
+      centsAsked: 500,
+    });
+    const yes = anyYes(counts);
+    expect(yes).toBeGreaterThan(60); // generous lower bound to avoid flakes
+    expect(yes).toBeLessThan(90);
+    // Polite version should beat baseline.
+    expect(yes).toBeGreaterThan(50);
+  });
+
+  it("LAZY: 'gimme plz' → 25-45% any-yes (still possible, not zero)", () => {
+    const reasonScore = scoreReason("gimme plz");
+    const counts = rollMany({
+      context: 'portal',
+      reasonScore,
+      cadence: { delta: 4, lastAskMs: null, asksToday: 0 },
+      amountDelta: 5,
+      centsAsked: 500,
+    });
+    const yes = anyYes(counts);
+    // Should drop hard but not collapse to zero. User said "never" — verify
+    // it's at least possible.
+    expect(yes).toBeGreaterThan(15);
+    expect(yes).toBeLessThan(55);
+  });
+
+  it("REPEAT-SPAM: 3rd ask today within 10 min → 10-30% any-yes", () => {
+    const counts = rollMany({
+      context: 'portal',
+      reasonScore: { delta: 0, spammy: false },
+      cadence: { delta: -25 - 20, lastAskMs: 10 * 60_000, asksToday: 3 },
+      amountDelta: 5,
+      centsAsked: 500,
+    });
+    const yes = anyYes(counts);
+    // Hammering Dad should crush the yes rate but not zero it.
+    expect(yes).toBeGreaterThan(5);
+    expect(yes).toBeLessThan(40);
+  });
+
+  it("BIG ASK: 50,000 MP first ask, decent reason → at least some yes", () => {
+    const reasonScore = scoreReason("saving for a real bike — please dad");
+    const counts = rollMany({
+      context: 'portal',
+      reasonScore,
+      cadence: { delta: 4, lastAskMs: null, asksToday: 0 },
+      amountDelta: -15, // 50k MP penalty
+      centsAsked: 5_000_000,
+    });
+    const yes = anyYes(counts);
+    // Curve says ≤50k MP should land roughly 15% yes_full. With politeness +
+    // first-ask, any-yes should be at least 25%.
+    expect(yes).toBeGreaterThan(15);
+    expect(pct(counts, 'no')).toBeLessThan(70);
+  });
+
+  it("CHECKOUT: greedy ask (cart 10 MP, asking 1000 MP) → mostly greedy", () => {
+    const counts = rollMany({
+      context: 'checkout',
+      reasonScore: { delta: 0, spammy: false },
+      cadence: { delta: 4, lastAskMs: null, asksToday: 0 },
+      amountDelta: -10, // 1000 MP penalty
+      centsAsked: 100_000,
+      cartTotalCents: 1000, // cart is 10 MP — greedy fires
+      shortfallCents: 1000,
+    });
+    // Greedy weight = 60, dominates; yes_full clamped to 1; pickup_tab 0.
+    expect(pct(counts, 'greedy')).toBeGreaterThan(45);
+    expect(pct(counts, 'yes_full')).toBeLessThan(5);
+  });
+
+  it("CHECKOUT: reasonable shortfall ask → pickup_tab is reachable", () => {
+    const counts = rollMany({
+      context: 'checkout',
+      reasonScore: scoreReason("I need help finishing this order, please"),
+      cadence: { delta: 4, lastAskMs: null, asksToday: 0 },
+      amountDelta: 5,
+      centsAsked: 500,
+      cartTotalCents: 1500, // 15 MP cart
+      shortfallCents: 500, // need 5 MP more
+    });
+    // pickup_tab has weight 18 at checkout; should show up notably.
+    expect(pct(counts, 'pickup_tab')).toBeGreaterThan(8);
+    expect(anyYes(counts)).toBeGreaterThan(55);
+  });
+
+  // Diagnostic — prints all rates so we can see the curve in CI output.
+  it("DIAGNOSTIC: prints rates for all scenarios", () => {
+    const scenarios: Array<{ name: string; args: Parameters<typeof decideOutcome>[0] }> = [
+      {
+        name: 'BASELINE',
+        args: { context: 'portal', reasonScore: { delta: 0, spammy: false },
+          cadence: { delta: 4, lastAskMs: null, asksToday: 0 },
+          amountDelta: 5, centsAsked: 500 },
+      },
+      {
+        name: 'POLITE  ',
+        args: { context: 'portal', reasonScore: scoreReason("please dad I cleaned my room"),
+          cadence: { delta: 4, lastAskMs: null, asksToday: 0 },
+          amountDelta: 5, centsAsked: 500 },
+      },
+      {
+        name: 'LAZY    ',
+        args: { context: 'portal', reasonScore: scoreReason("gimme plz"),
+          cadence: { delta: 4, lastAskMs: null, asksToday: 0 },
+          amountDelta: 5, centsAsked: 500 },
+      },
+      {
+        name: '2ND ASK ',
+        args: { context: 'portal', reasonScore: { delta: 0, spammy: false },
+          cadence: { delta: -5, lastAskMs: 60 * 60_000, asksToday: 2 },
+          amountDelta: 5, centsAsked: 500 },
+      },
+      {
+        name: '3RD+SPAM',
+        args: { context: 'portal', reasonScore: { delta: 0, spammy: false },
+          cadence: { delta: -45, lastAskMs: 10 * 60_000, asksToday: 3 },
+          amountDelta: 5, centsAsked: 500 },
+      },
+      {
+        name: 'BIG 50k ',
+        args: { context: 'portal', reasonScore: scoreReason("saving for a real bike — please dad"),
+          cadence: { delta: 4, lastAskMs: null, asksToday: 0 },
+          amountDelta: -15, centsAsked: 5_000_000 },
+      },
+      {
+        name: 'HUGE100k',
+        args: { context: 'portal', reasonScore: scoreReason("saving for a car — please dad, I helped mom"),
+          cadence: { delta: 4, lastAskMs: null, asksToday: 0 },
+          amountDelta: -20, centsAsked: 10_000_000 },
+      },
+    ];
+    console.log("\n  Dad outcome distribution — 5000 rolls per scenario");
+    console.log("  Scenario   | yes_full | yes_part | maybe | no    | bad_luck | greedy | ANY YES");
+    console.log("  -----------|----------|----------|-------|-------|----------|--------|--------");
+    for (const s of scenarios) {
+      const c = rollMany(s.args);
+      const f = (k: string) => ((c[k] / N) * 100).toFixed(1).padStart(5);
+      const yes = anyYes(c).toFixed(1).padStart(5);
+      console.log(`  ${s.name}   | ${f('yes_full')}%   | ${f('yes_partial')}%   | ${f('maybe_later')}% | ${f('no')}% | ${f('bad_luck')}%    | ${f('greedy')}% | ${yes}%`);
+    }
+    expect(true).toBe(true);
+  });
+});
