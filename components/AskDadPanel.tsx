@@ -17,7 +17,7 @@ import {
   DAD_PROMPT_LABELS,
   DAD_SUBMIT_LABELS,
   pickPrompt,
-} from '@/lib/money/dad';
+} from '@/lib/money/dad-prompts';
 
 type Outcome = 'yes_full' | 'yes_partial' | 'pickup_tab' | 'maybe_later' | 'no' | 'bad_luck' | 'greedy';
 type Context = 'portal' | 'checkout';
