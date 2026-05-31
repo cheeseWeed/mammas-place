@@ -380,6 +380,41 @@ function ActionGrid() {
           Open →
         </div>
       </Link>
+
+      {/* Commonly Confused — drill mode */}
+      <Link
+        href="/spelling/confused"
+        className="group bg-white border-2 border-amber-200 hover:border-amber-400 hover:shadow-md rounded-2xl p-5 transition-all flex flex-col"
+      >
+        <div className="text-3xl mb-2">🪤</div>
+        <div className="text-lg font-black text-amber-900 mb-1">
+          Confused Words
+        </div>
+        <p className="text-amber-800 text-sm flex-1">
+          The traps — separate vs seperate, their vs there, and more.
+        </p>
+        <div className="mt-3 text-sm font-bold text-amber-700 group-hover:text-amber-900">
+          Drill →
+        </div>
+      </Link>
+
+      {/* Weekly Word List — printable */}
+      <Link
+        href="/spelling/wordlist"
+        className="md:col-span-2 group bg-white border-2 border-amber-200 hover:border-amber-400 hover:shadow-md rounded-2xl p-5 transition-all flex flex-col"
+      >
+        <div className="text-3xl mb-2">🖨️</div>
+        <div className="text-lg font-black text-amber-900 mb-1">
+          Printable Word List
+        </div>
+        <p className="text-amber-800 text-sm flex-1">
+          Generate a take-home weekly list at any level — 10, 15, or 20 words
+          with sentences and signature line.
+        </p>
+        <div className="mt-3 text-sm font-bold text-amber-700 group-hover:text-amber-900">
+          Build & print →
+        </div>
+      </Link>
     </div>
   );
 }
