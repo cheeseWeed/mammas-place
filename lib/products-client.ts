@@ -9,6 +9,41 @@
 import { useEffect, useState } from 'react';
 import type { Product } from '@/types';
 
+// ---- Category visibility (client-side localStorage; UI concern) --------
+// Lived in lib/products.ts originally but that file now imports prisma,
+// so any 'use client' code that needs this had to be moved here.
+export function getHiddenCategories(): string[] {
+  if (typeof window === 'undefined') return [];
+  try {
+    const stored = localStorage.getItem('hiddenCategories');
+    return stored ? JSON.parse(stored) : [];
+  } catch {
+    return [];
+  }
+}
+
+export function setHiddenCategories(categories: string[]): void {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem('hiddenCategories', JSON.stringify(categories));
+  } catch (err) {
+    console.error('Failed to save hidden categories:', err);
+  }
+}
+
+export function toggleCategoryVisibility(category: string): void {
+  const hidden = getHiddenCategories();
+  if (hidden.includes(category)) {
+    setHiddenCategories(hidden.filter((c) => c !== category));
+  } else {
+    setHiddenCategories([...hidden, category]);
+  }
+}
+
+export function isCategoryHidden(category: string): boolean {
+  return getHiddenCategories().includes(category);
+}
+
 // ---- Pure filters (sync, no React, no fetch) ----------------------------
 export function filterAvailable(products: Product[]): Product[] {
   return products.filter((p) => p.availableOnWebsite === true);

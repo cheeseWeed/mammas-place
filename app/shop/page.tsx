@@ -9,8 +9,8 @@ import {
   searchClient,
   categoriesFromProducts,
   subcategoriesFromProducts,
+  getHiddenCategories,
 } from '@/lib/products-client';
-import { getHiddenCategories } from '@/lib/products';
 import ProductCard from '@/components/ProductCard';
 import SkeletonCard from '@/components/SkeletonCard';
 import ServiceAds from '@/components/ServiceAds';

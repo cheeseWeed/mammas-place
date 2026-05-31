@@ -104,38 +104,22 @@ export function rowToProduct(row: ProductRow): Product {
   };
 }
 
-// ---- Category visibility (client-side localStorage; UI concern) --------
-export function getHiddenCategories(): string[] {
-  if (typeof window === 'undefined') return [];
-  try {
-    const stored = localStorage.getItem('hiddenCategories');
-    return stored ? JSON.parse(stored) : [];
-  } catch {
-    return [];
-  }
-}
-
-export function setHiddenCategories(categories: string[]): void {
-  if (typeof window === 'undefined') return;
-  try {
-    localStorage.setItem('hiddenCategories', JSON.stringify(categories));
-  } catch (err) {
-    console.error('Failed to save hidden categories:', err);
-  }
-}
-
-export function toggleCategoryVisibility(category: string): void {
-  const hidden = getHiddenCategories();
-  if (hidden.includes(category)) {
-    setHiddenCategories(hidden.filter((c) => c !== category));
-  } else {
-    setHiddenCategories([...hidden, category]);
-  }
-}
-
-export function isCategoryHidden(category: string): boolean {
-  return getHiddenCategories().includes(category);
-}
+// Category-visibility helpers (localStorage-backed) now live in
+// lib/products-client.ts since they're pure client-side. Re-exported here
+// for any server code that may still import them; client components should
+// import from products-client directly to avoid pulling prisma.
+import {
+  getHiddenCategories,
+  setHiddenCategories,
+  toggleCategoryVisibility,
+  isCategoryHidden,
+} from './products-client';
+export {
+  getHiddenCategories,
+  setHiddenCategories,
+  toggleCategoryVisibility,
+  isCategoryHidden,
+};
 
 // ---- DB reads (server-only; client uses /api/products) -----------------
 export async function getAllProductsIncludingUnavailable(): Promise<Product[]> {
