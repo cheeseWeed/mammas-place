@@ -57,6 +57,11 @@ model DriveUser {
   // ----- MP Money (closed-loop family economy) -----
   // Balance kept in cents to avoid float drift. See app/money/PLAN.md.
   balanceCents     Int      @default(0)
+  // Phase 6a: MP account card. Short 4-digit suffix unique per kid, used as a
+  // receive-only identifier (grandparents can credit it, but spending still
+  // requires the kid's PIN). Null until first issued. See PLAN-Phase6-Cards.md.
+  mpCardNumber     String?  @unique
+  mpCardCreatedAt  DateTime?
   transactions     MpTransaction[]
   orders           MpOrder[]
   earnings         MpEarning[]

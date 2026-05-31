@@ -154,6 +154,12 @@ export default function PortalMoneyPage() {
           >
             🚗 Drive
           </Link>
+          <Link
+            href="/portal/money/card"
+            className="bg-purple-700 hover:bg-purple-600 text-white font-bold text-sm px-4 py-2 rounded-xl transition-colors"
+          >
+            💳 My MP card
+          </Link>
         </div>
       </div>
 

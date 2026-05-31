@@ -90,15 +90,24 @@ export type LoginGateProps = {
   children: React.ReactNode;
   // Optional: render something custom while the cookie check resolves.
   loadingFallback?: React.ReactNode;
+  // When true, render a "Play without logging in" button under the
+  // login form so anon kids can reach the drill (and hit the
+  // PendingEarnPrompt anon-earn claim flow on the results screen).
+  // Default true for all learning sections — only Drive's HTML
+  // dashboard pages should set false.
+  allowAnonymous?: boolean;
 };
 
 export default function LoginGate({
   section,
   children,
   loadingFallback,
+  allowAnonymous = true,
 }: LoginGateProps) {
-  // `null` = checking; string = logged in; '' = not logged in.
+  // `null` = checking; string = logged in; '' = not logged in;
+  // 'anon' = explicitly chose to browse anonymously this visit.
   const [authedAs, setAuthedAs] = useState<string | null>(null);
+  const [anonOverride, setAnonOverride] = useState(false);
 
   // Cookie check runs only on the client (avoids SSR/hydration drift).
   useEffect(() => {
@@ -112,7 +121,7 @@ export default function LoginGate({
     return <>{loadingFallback ?? null}</>;
   }
 
-  if (authedAs) {
+  if (authedAs || anonOverride) {
     return <>{children}</>;
   }
 
@@ -120,6 +129,7 @@ export default function LoginGate({
     <SectionLoginCard
       section={section}
       onAuthed={(name) => setAuthedAs(name)}
+      onPlayAnon={allowAnonymous ? () => setAnonOverride(true) : undefined}
     />
   );
 }
@@ -129,9 +139,11 @@ export default function LoginGate({
 function SectionLoginCard({
   section,
   onAuthed,
+  onPlayAnon,
 }: {
   section: LoginGateSection;
   onAuthed: (name: string) => void;
+  onPlayAnon?: () => void;
 }) {
   const copy = SECTION_COPY[section];
   const [user, setUser] = useState<string>(readSavedUser);
@@ -425,6 +437,19 @@ function SectionLoginCard({
         <p className={`text-center text-xs pt-2 ${accentClasses.mute}`}>
           One login works across every learning section (Drive, Geography, Spelling, Math, Language Arts).
         </p>
+
+        {onPlayAnon && (
+          <div className="text-center pt-1">
+            <button
+              type="button"
+              onClick={onPlayAnon}
+              disabled={busy}
+              className={`text-xs underline ${accentClasses.link}`}
+            >
+              Or play without logging in — earn MP, then log in at the end to keep it
+            </button>
+          </div>
+        )}
       </form>
     </div>
   );

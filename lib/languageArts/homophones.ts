@@ -95,6 +95,30 @@ export const HOMOPHONE_SETS: HomophoneSet[] = [
     tier: 'hard',
     rule: '`accept` = receive / agree to. `except` = not including (everyone except me).',
   },
+  {
+    id: 'weather-whether',
+    words: ['weather', 'whether'],
+    tier: 'medium',
+    rule: '`weather` = sun, rain, snow — what\'s happening outside. `whether` = if / which one (whether you stay or go).',
+  },
+  {
+    id: 'principal-principle',
+    words: ['principal', 'principle'],
+    tier: 'hard',
+    rule: '`principal` = the head of a school (your PAL the principal). `principle` = a rule or belief you live by.',
+  },
+  {
+    id: 'stationary-stationery',
+    words: ['stationary', 'stationery'],
+    tier: 'hard',
+    rule: '`stationAry` (with an A) = standing still. `stationEry` (with an E) = pens, paper, envelopes (E for envelope).',
+  },
+  {
+    id: 'past-passed',
+    words: ['past', 'passed'],
+    tier: 'medium',
+    rule: '`passed` = the past tense of the verb PASS (she passed the ball). `past` = a time before now OR going by (in the past, walked past the house).',
+  },
 ];
 
 // ----- Items (the sentences the kid sees) -----
@@ -172,6 +196,76 @@ export const HOMOPHONE_ITEMS: HomophoneItem[] = [
   { setId: 'accept-except', answer: 'except', sentence: 'Everyone came ____ Sam.' },
   { setId: 'accept-except', answer: 'accept', sentence: 'Please ____ my apology.' },
   { setId: 'accept-except', answer: 'except', sentence: 'I like all veggies ____ peas.' },
+
+  // ----- Additional items (medium/hard focus) -----
+
+  // its / it's (medium-context extensions)
+  { setId: 'its-its', answer: "it's", sentence: "I think ____ going to snow tonight.",
+    hint: 'Read it as "I think it IS going to snow" — that\'s the contraction.' },
+  { setId: 'its-its', answer: 'its', sentence: 'The bird built ____ nest in our tree.' },
+
+  // your / you're
+  { setId: 'your-youre', answer: "you're", sentence: "If ____ tired, take a nap.",
+    hint: 'Read it as "if YOU ARE tired" — the contraction fits.' },
+  { setId: 'your-youre', answer: 'your', sentence: 'I borrowed ____ pencil — sorry!' },
+
+  // their / there / they're — more medium drills
+  { setId: 'their-there-theyre', answer: "they're", sentence: "____ the kids who built the fort." },
+  { setId: 'their-there-theyre', answer: 'their', sentence: 'The twins lost ____ matching mittens.' },
+  { setId: 'their-there-theyre', answer: 'there', sentence: 'Look — over ____ by the slide!' },
+
+  // to / too / two
+  { setId: 'to-too-two', answer: 'too', sentence: 'My soup is way ____ salty.' },
+  { setId: 'to-too-two', answer: 'to', sentence: 'I want ____ learn to whistle.' },
+
+  // affect / effect — hard
+  { setId: 'affect-effect', answer: 'effect', sentence: 'The special ____ in the movie looked so real!',
+    hint: 'It\'s a noun — a special ___ is a THING, not an action.' },
+  { setId: 'affect-effect', answer: 'affect', sentence: 'Not getting enough sleep can ____ your mood.' },
+
+  // then / than
+  { setId: 'then-than', answer: 'than', sentence: 'My puppy is smaller ____ my cat.' },
+  { setId: 'then-than', answer: 'then', sentence: 'I washed my hands, ____ sat down to eat.' },
+
+  // whose / who's — medium
+  { setId: 'whose-whos', answer: "who's", sentence: "I wonder ____ knocking at the door.",
+    hint: 'Read it as "WHO IS knocking" — that\'s the contraction.' },
+  { setId: 'whose-whos', answer: 'whose', sentence: 'Tell me ____ shoes are in the hallway.' },
+
+  // were / where / wear — hard
+  { setId: 'were-where-wear', answer: 'where', sentence: 'Do you remember ____ we parked the car?' },
+  { setId: 'were-where-wear', answer: 'were', sentence: 'My cousins ____ visiting last weekend.' },
+  { setId: 'were-where-wear', answer: 'wear', sentence: 'What costume will you ____ this Halloween?' },
+
+  // accept / except — hard
+  { setId: 'accept-except', answer: 'accept', sentence: 'The team will ____ the trophy on Friday.' },
+  { setId: 'accept-except', answer: 'except', sentence: 'The whole library is open ____ for the back room.' },
+
+  // weather / whether — medium
+  { setId: 'weather-whether', answer: 'weather', sentence: 'The ____ today is sunny and warm.' },
+  { setId: 'weather-whether', answer: 'whether', sentence: 'I can\'t decide ____ to pick apples or oranges.',
+    hint: 'You\'re choosing between two options — "whether" is the if/which one.' },
+  { setId: 'weather-whether', answer: 'weather', sentence: 'Cold ____ makes my fingers numb.' },
+  { setId: 'weather-whether', answer: 'whether', sentence: 'Ask Mom ____ we can go swimming.' },
+
+  // principal / principle — hard
+  { setId: 'principal-principle', answer: 'principal', sentence: 'Our ____ gave a speech at assembly.',
+    hint: 'The head of the school — your PAL the princiPAL.' },
+  { setId: 'principal-principle', answer: 'principle', sentence: 'Telling the truth is an important ____.' },
+  { setId: 'principal-principle', answer: 'principal', sentence: 'Mrs. Brown is the new ____ at our school.' },
+
+  // stationary / stationery — hard
+  { setId: 'stationary-stationery', answer: 'stationary', sentence: 'I rode a ____ bike at the gym.',
+    hint: 'StationAry = standing still (with an A like sAme spot).' },
+  { setId: 'stationary-stationery', answer: 'stationery', sentence: 'Grandma writes letters on pretty floral ____.' },
+  { setId: 'stationary-stationery', answer: 'stationary', sentence: 'The clouds looked almost ____ in the sky.' },
+
+  // past / passed — medium
+  { setId: 'past-passed', answer: 'passed', sentence: 'I ____ the ball to my teammate.',
+    hint: 'Past tense of the action PASS — what she DID.' },
+  { setId: 'past-passed', answer: 'past', sentence: 'We drove ____ the old red barn.' },
+  { setId: 'past-passed', answer: 'passed', sentence: 'Three buses ____ before ours arrived.' },
+  { setId: 'past-passed', answer: 'past', sentence: 'Long ago in the ____, people used candles.' },
 ];
 
 // Convenience: index items by setId.

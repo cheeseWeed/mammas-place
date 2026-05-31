@@ -13,11 +13,19 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { centsToMP, dollarsInputToCents } from '@/lib/money/format';
 
+// Inline display formatter — lib/money/card.ts is server-only (uses node:crypto)
+// so we can't import it into this client component.
+function formatCardLocal(n: string): string {
+  return `MP·${n}`;
+}
+
 interface Learner {
   name: string;
   displayName: string | null;
   balanceCents: number;
   updatedAt: string;
+  // Phase 6a — kid's MP account card number ("7821"). Null until first issued.
+  mpCardNumber?: string | null;
 }
 
 interface OrderRow {
@@ -99,6 +107,12 @@ export default function MpBankDashboard() {
   const [formReason, setFormReason] = useState('');
   const [formBusy, setFormBusy] = useState(false);
   const [formError, setFormError] = useState<string | null>(null);
+
+  // Card reroll — track which learner is currently being rerolled so we can
+  // disable just that row's button while the request is in flight. Errors
+  // surface in the same pinToast (renamed conceptually to "admin toast" but
+  // kept under the existing state to avoid more boilerplate).
+  const [rerollBusy, setRerollBusy] = useState<string | null>(null);
 
   // Settings panel (collapsible) — change parent PIN.
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -272,6 +286,52 @@ export default function MpBankDashboard() {
     }
   };
 
+  const rerollCard = async (userName: string, label: string) => {
+    // Two-step confirm so a stray click can't silently nuke a kid's printed
+    // card. window.confirm is fine here — the dashboard is parent-only and
+    // the action's reversible (just print a new card).
+    if (!window.confirm(
+      `Reroll ${label}'s MP card number? Any printed cards with the old number stop working as identifiers.`,
+    )) {
+      return;
+    }
+    setRerollBusy(userName);
+    try {
+      const res = await fetch('/api/money/card/reroll', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ userName }),
+      });
+      if (res.status === 401) {
+        handleUnauth();
+        return;
+      }
+      const data = (await res.json().catch(() => ({}))) as {
+        error?: unknown;
+        formatted?: unknown;
+      };
+      if (!res.ok) {
+        const msg = typeof data.error === 'string' ? data.error : `HTTP ${res.status}`;
+        setPinToast({ kind: 'error', message: `Reroll failed: ${msg}` });
+        return;
+      }
+      const formatted = typeof data.formatted === 'string' ? data.formatted : '';
+      setPinToast({
+        kind: 'success',
+        message: `${label}'s new card: ${formatted}`,
+      });
+      // Refresh so the row shows the new number.
+      await loadLearners();
+    } catch (err) {
+      setPinToast({
+        kind: 'error',
+        message: err instanceof Error ? err.message : 'Network error',
+      });
+    } finally {
+      setRerollBusy(null);
+    }
+  };
+
   const submitPinChange = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!/^\d{4}$/.test(pinCurrent)) {
@@ -396,6 +456,10 @@ export default function MpBankDashboard() {
             <ul className="divide-y divide-purple-100">
               {learners.map((l) => {
                 const isOpen = openForm?.user === l.name;
+                const isRerolling = rerollBusy === l.name;
+                const cardLabel = l.mpCardNumber
+                  ? formatCardLocal(l.mpCardNumber)
+                  : 'No card yet';
                 return (
                   <li key={l.name} className="py-4">
                     <div className="flex flex-wrap items-center justify-between gap-3">
@@ -405,6 +469,26 @@ export default function MpBankDashboard() {
                         </div>
                         <div className="text-xs text-purple-600">
                           @{l.name} · updated {formatShortDateTime(l.updatedAt)}
+                        </div>
+                        <div className="mt-1 flex items-center gap-2">
+                          <span
+                            className={`inline-block text-xs font-mono px-2 py-0.5 rounded-full ${
+                              l.mpCardNumber
+                                ? 'bg-purple-100 text-purple-900'
+                                : 'bg-gray-100 text-gray-600 italic'
+                            }`}
+                          >
+                            {cardLabel}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => rerollCard(l.name, displayLabel(l))}
+                            disabled={isRerolling}
+                            className="text-xs text-purple-700 hover:text-purple-900 underline disabled:opacity-50"
+                            title="Generate a new card number — use if the old one leaked"
+                          >
+                            {isRerolling ? 'Rerolling…' : '🎲 Reroll card'}
+                          </button>
                         </div>
                       </div>
                       <div className="flex items-center gap-3">

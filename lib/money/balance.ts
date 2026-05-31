@@ -149,6 +149,9 @@ export async function listAllLearners() {
       displayName: true,
       balanceCents: true,
       updatedAt: true,
+      // Phase 6a — surface the MP card number to the admin so the parent can
+      // see/reroll it from the dashboard.
+      mpCardNumber: true,
     },
     orderBy: { name: 'asc' },
   });

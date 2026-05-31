@@ -216,15 +216,26 @@ function grade(){
   v.classList.toggle("pass",passed); v.classList.toggle("fail",!passed);
   document.getElementById("scorecard").classList.add("show");
   if (typeof confetti === 'function' && pct >= 80) {
+    // Simulator (final-exam class) celebration - 15 bursts (vs 6 on regular quizzes) since the achievement is bigger
     var fireworks = function(x) {
       confetti({ particleCount: 60, angle: 90, spread: 100, origin: { x: x, y: 0.7 }, colors: ['#facc15', '#581c87', '#16a34a', '#dc2626', '#3b82f6'] });
     };
     setTimeout(function() { fireworks(0.2); }, 100);
-    setTimeout(function() { fireworks(0.5); }, 400);
-    setTimeout(function() { fireworks(0.8); }, 700);
-    setTimeout(function() { fireworks(0.3); }, 1100);
-    setTimeout(function() { fireworks(0.7); }, 1400);
-    setTimeout(function() { fireworks(0.5); }, 1700);
+    setTimeout(function() { fireworks(0.5); }, 350);
+    setTimeout(function() { fireworks(0.8); }, 600);
+    setTimeout(function() { fireworks(0.3); }, 900);
+    setTimeout(function() { fireworks(0.7); }, 1150);
+    setTimeout(function() { fireworks(0.4); }, 1400);
+    setTimeout(function() { fireworks(0.6); }, 1650);
+    setTimeout(function() { fireworks(0.25); }, 1900);
+    setTimeout(function() { fireworks(0.75); }, 2150);
+    setTimeout(function() { fireworks(0.5); }, 2400);
+    setTimeout(function() { fireworks(0.35); }, 2700);
+    setTimeout(function() { fireworks(0.65); }, 2950);
+    // Grand finale: 3 bursts in quick succession
+    setTimeout(function() { fireworks(0.2); }, 3300);
+    setTimeout(function() { fireworks(0.5); }, 3450);
+    setTimeout(function() { fireworks(0.8); }, 3600);
   }
   window.scrollTo({top:document.getElementById("scorecard").offsetTop-30,behavior:"smooth"});
 

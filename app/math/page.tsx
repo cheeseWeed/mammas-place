@@ -61,6 +61,14 @@ export default function MathHubPage() {
                 cta="Start word problems"
                 shipped
               />
+              <PhaseCard
+                phaseLabel="Phase 4"
+                title="Fractions & Decimals"
+                subtitle="Halves, quarters, tenths. Type a decimal or a fraction — either works."
+                href="/math/fractions"
+                cta="Start fractions"
+                shipped
+              />
             </div>
           </section>
 

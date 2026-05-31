@@ -916,6 +916,349 @@ export const PUNCTUATION_ITEMS: PunctuationItem[] = [
     answer: 'There are twenty-five chairs in the room.',
     rule: 'Numbers between 21 and 99 written as words use a HYPHEN: twenty-five, thirty-seven, ninety-nine.',
   },
+
+  // ========================================================================
+  // ADDITIONAL HARD — SEMICOLONS (focus area: had only 5)
+  // ========================================================================
+  {
+    id: 'semi-5',
+    skill: 'semicolon',
+    tier: 'hard',
+    mode: 'fix',
+    prompt: 'Pick the correctly-punctuated sentence.',
+    choices: [
+      'I packed an umbrella, the sky looked stormy.',
+      'I packed an umbrella; the sky looked stormy.',
+      'I packed an umbrella the sky looked stormy.',
+    ],
+    answer: 'I packed an umbrella; the sky looked stormy.',
+    rule: 'Two complete sentences that are closely related can be joined with a semicolon. A comma alone would be wrong (comma splice).',
+  },
+  {
+    id: 'semi-6',
+    skill: 'semicolon',
+    tier: 'hard',
+    mode: 'fix',
+    prompt: 'Pick the correctly-punctuated sentence.',
+    choices: [
+      'The lights went out, however we still found our way.',
+      'The lights went out; however, we still found our way.',
+      'The lights went out however we still found our way.',
+    ],
+    answer: 'The lights went out; however, we still found our way.',
+    rule: 'When linking two complete sentences with a word like "however", "therefore", or "meanwhile", use a SEMICOLON before it and a COMMA after.',
+  },
+  {
+    id: 'semi-7',
+    skill: 'semicolon',
+    tier: 'hard',
+    mode: 'fill',
+    prompt: 'My boots were soaked___ I changed into dry socks.',
+    choices: [',', ';', ':'],
+    answer: ';',
+    rule: 'Both sides are complete sentences. A semicolon joins them; a comma alone would be a comma splice.',
+  },
+  {
+    id: 'semi-8',
+    skill: 'semicolon',
+    tier: 'hard',
+    mode: 'fill',
+    prompt: 'The garden was bright with color___ daisies, roses, and tulips were everywhere.',
+    choices: [',', ';', ':'],
+    answer: ';',
+    rule: 'A semicolon links two complete thoughts. (A colon could work too, but we\'re practicing the semicolon\'s "two related sentences" job.)',
+    hint: 'Both halves stand alone as full sentences — that\'s the semicolon\'s signature use.',
+  },
+  {
+    id: 'semi-9',
+    skill: 'semicolon',
+    tier: 'hard',
+    mode: 'fix',
+    prompt: 'Pick the correctly-punctuated sentence.',
+    choices: [
+      'We finished early, therefore we went out for ice cream.',
+      'We finished early; therefore, we went out for ice cream.',
+      'We finished early therefore we went out for ice cream.',
+    ],
+    answer: 'We finished early; therefore, we went out for ice cream.',
+    rule: '"Therefore" connects two full sentences — semicolon before, comma after.',
+  },
+
+  // ========================================================================
+  // ADDITIONAL HARD — COLONS (focus area: had only 4)
+  // ========================================================================
+  {
+    id: 'colon-5',
+    skill: 'colon',
+    tier: 'hard',
+    mode: 'fix',
+    prompt: 'Pick the correctly-punctuated sentence.',
+    choices: [
+      'My favorite snacks are these popcorn, grapes, and crackers.',
+      'My favorite snacks are these: popcorn, grapes, and crackers.',
+      'My favorite snacks are these; popcorn, grapes, and crackers.',
+    ],
+    answer: 'My favorite snacks are these: popcorn, grapes, and crackers.',
+    rule: 'A colon introduces a list AFTER a complete sentence. Think "here it is →".',
+  },
+  {
+    id: 'colon-6',
+    skill: 'colon',
+    tier: 'hard',
+    mode: 'fix',
+    prompt: 'Pick the correctly-punctuated sentence.',
+    choices: [
+      'Remember one thing, kindness counts.',
+      'Remember one thing: kindness counts.',
+      'Remember one thing; kindness counts.',
+    ],
+    answer: 'Remember one thing: kindness counts.',
+    rule: 'A colon can introduce an explanation or important point after a complete sentence.',
+  },
+  {
+    id: 'colon-7',
+    skill: 'colon',
+    tier: 'hard',
+    mode: 'fill',
+    prompt: 'Pack the following___ a tent, a sleeping bag, and a flashlight.',
+    choices: [',', ';', ':'],
+    answer: ':',
+    rule: 'A colon introduces a list when what comes before is a complete sentence.',
+  },
+  {
+    id: 'colon-8',
+    skill: 'colon',
+    tier: 'hard',
+    mode: 'fill',
+    prompt: 'Practice starts at 4___15 every Tuesday.',
+    choices: [',', ';', ':'],
+    answer: ':',
+    rule: 'A colon separates the hour from the minutes when writing the time (4:15).',
+  },
+  {
+    id: 'colon-9',
+    skill: 'colon',
+    tier: 'hard',
+    mode: 'fix',
+    prompt: 'Pick the correctly-punctuated sentence.',
+    choices: [
+      'The score was clear, our team won by ten.',
+      'The score was clear: our team won by ten.',
+      'The score was clear; our team won by ten.',
+    ],
+    answer: 'The score was clear: our team won by ten.',
+    rule: 'A colon can introduce an explanation that fills in the first sentence. ("The score was clear → here\'s how.")',
+  },
+
+  // ========================================================================
+  // ADDITIONAL HARD — DASH vs HYPHEN (focus area: had only 5)
+  // ========================================================================
+  {
+    id: 'dash-6',
+    skill: 'dash-hyphen',
+    tier: 'hard',
+    mode: 'fix',
+    prompt: 'Pick the correctly-punctuated sentence.',
+    choices: [
+      'My homemade cookies the chewy kind are everyone\'s favorite.',
+      'My homemade cookies—the chewy kind—are everyone\'s favorite.',
+      'My homemade cookies-the chewy kind-are everyone\'s favorite.',
+    ],
+    answer: 'My homemade cookies—the chewy kind—are everyone\'s favorite.',
+    rule: 'A pair of DASHES (—) wraps an extra-info phrase in the middle of a sentence.',
+  },
+  {
+    id: 'dash-7',
+    skill: 'dash-hyphen',
+    tier: 'hard',
+    mode: 'fix',
+    prompt: 'Which one needs a HYPHEN (-)?',
+    choices: [
+      'a long term plan',
+      'a long-term plan',
+      'a long—term plan',
+    ],
+    answer: 'a long-term plan',
+    rule: 'When two words work together to describe a noun (long-term plan, full-time job), join them with a HYPHEN.',
+  },
+  {
+    id: 'dash-8',
+    skill: 'dash-hyphen',
+    tier: 'hard',
+    mode: 'fix',
+    prompt: 'Pick the correctly-punctuated sentence.',
+    choices: [
+      'I packed everything socks, shirts, and snacks.',
+      'I packed everything—socks, shirts, and snacks.',
+      'I packed everything-socks, shirts, and snacks.',
+    ],
+    answer: 'I packed everything—socks, shirts, and snacks.',
+    rule: 'A single DASH (—) can introduce extra info or a list at the end of a sentence (like a colon, but with a stronger pause).',
+  },
+  {
+    id: 'dash-9',
+    skill: 'dash-hyphen',
+    tier: 'hard',
+    mode: 'fix',
+    prompt: 'Which one is correct?',
+    choices: [
+      'I just turned eight—years—old today.',
+      'I just turned eight-years-old today.',
+      'I just turned eight years old today.',
+    ],
+    answer: 'I just turned eight years old today.',
+    rule: 'Only hyphenate "eight-year-old" when it\'s used as a DESCRIPTION before a noun (an eight-year-old girl). After "turned", no hyphens.',
+    hint: 'It\'s "an eight-year-old girl" (hyphens — used to describe), but "she turned eight years old" (no hyphens — just stating age).',
+  },
+  {
+    id: 'dash-10',
+    skill: 'dash-hyphen',
+    tier: 'hard',
+    mode: 'fix',
+    prompt: 'Pick the correctly-punctuated sentence.',
+    choices: [
+      'She has thirty two stickers in her album.',
+      'She has thirty-two stickers in her album.',
+      'She has thirty—two stickers in her album.',
+    ],
+    answer: 'She has thirty-two stickers in her album.',
+    rule: 'Numbers between 21 and 99 written as words use a HYPHEN: thirty-two, forty-five, ninety-nine.',
+  },
+
+  // ========================================================================
+  // ADDITIONAL MEDIUM — POSSESSIVE APOSTROPHES (more practice)
+  // ========================================================================
+  {
+    id: 'apos-poss-8',
+    skill: 'apostrophes',
+    tier: 'medium',
+    mode: 'fix',
+    prompt: 'Which sentence shows that the laughter belongs to the children?',
+    choices: [
+      "The childrens laughter filled the room.",
+      "The children's laughter filled the room.",
+      "The childrens' laughter filled the room.",
+    ],
+    answer: "The children's laughter filled the room.",
+    rule: '"Children" is a plural that does NOT end in s — so it takes `\'s` to show ownership (the same as a singular).',
+    hint: 'Plurals that already end in s → just an apostrophe (boys\'). Plurals that don\'t end in s (children, people, mice) → `\'s` like a singular.',
+  },
+  {
+    id: 'apos-poss-9',
+    skill: 'apostrophes',
+    tier: 'medium',
+    mode: 'fix',
+    prompt: 'Which sentence shows that the costumes belong to several women?',
+    choices: [
+      "The womens costumes were sparkly.",
+      "The women's costumes were sparkly.",
+      "The womens' costumes were sparkly.",
+    ],
+    answer: "The women's costumes were sparkly.",
+    rule: '"Women" is plural but does not end in s — so add `\'s` for ownership: women\'s costumes.',
+  },
+
+  // ========================================================================
+  // ADDITIONAL MEDIUM — COMMAS (intro, address, conjunction)
+  // ========================================================================
+  {
+    id: 'comma-intro-6',
+    skill: 'commas',
+    tier: 'medium',
+    mode: 'fix',
+    prompt: 'Pick the correctly-punctuated sentence.',
+    choices: [
+      'After we finished cleaning we ordered pizza.',
+      'After we finished cleaning, we ordered pizza.',
+      'After, we finished cleaning we ordered pizza.',
+    ],
+    answer: 'After we finished cleaning, we ordered pizza.',
+    rule: 'A comma comes after an introductory clause like "After we finished cleaning,".',
+  },
+  {
+    id: 'comma-intro-7',
+    skill: 'commas',
+    tier: 'medium',
+    mode: 'fix',
+    prompt: 'Pick the correctly-punctuated sentence.',
+    choices: [
+      'Wow that was an amazing trick!',
+      'Wow, that was an amazing trick!',
+      'Wow that was, an amazing trick!',
+    ],
+    answer: 'Wow, that was an amazing trick!',
+    rule: 'Use a comma after an opener like Wow, Oh, Well, Yes, or No.',
+  },
+  {
+    id: 'comma-address-3',
+    skill: 'commas',
+    tier: 'medium',
+    mode: 'fix',
+    prompt: 'Pick the correctly-punctuated sentence.',
+    choices: [
+      'I think Daniel that you forgot your lunch.',
+      'I think, Daniel, that you forgot your lunch.',
+      'I think Daniel, that you forgot your lunch.',
+    ],
+    answer: 'I think, Daniel, that you forgot your lunch.',
+    rule: 'When you address someone by name in the MIDDLE of a sentence, put commas on BOTH sides of the name.',
+  },
+
+  // ========================================================================
+  // ADDITIONAL MEDIUM — QUOTATION MARKS
+  // ========================================================================
+  {
+    id: 'quotes-7',
+    skill: 'quotes',
+    tier: 'medium',
+    mode: 'fix',
+    prompt: 'Pick the correctly-punctuated sentence.',
+    choices: [
+      '"That painting," said the guide, "is over 200 years old."',
+      '"That painting, said the guide, is over 200 years old."',
+      'That painting, said the guide, is over 200 years old.',
+    ],
+    answer: '"That painting," said the guide, "is over 200 years old."',
+    rule: 'When a sentence is broken by "said the guide", close the first quote BEFORE the tag and open a new quote AFTER it. Commas hug the tag.',
+  },
+  {
+    id: 'quotes-8',
+    skill: 'quotes',
+    tier: 'medium',
+    mode: 'fix',
+    prompt: 'Pick the correctly-punctuated sentence.',
+    choices: [
+      '"Where is the library?" asked the new student.',
+      'Where is the library? asked the new student.',
+      '"Where is the library"? asked the new student.',
+    ],
+    answer: '"Where is the library?" asked the new student.',
+    rule: 'Spoken words sit inside quotation marks; the question mark belongs to the words spoken, so it goes INSIDE the closing quote.',
+  },
+
+  // ========================================================================
+  // ADDITIONAL EASY — END PUNCT / CONTRACTIONS (light touch)
+  // ========================================================================
+  {
+    id: 'end-easy-11',
+    skill: 'end-punct',
+    tier: 'easy',
+    mode: 'fill',
+    prompt: 'Are we there yet___',
+    choices: ['.', '?', '!'],
+    answer: '?',
+    rule: 'A question (asking something) ends with a question mark.',
+  },
+  {
+    id: 'apos-easy-9',
+    skill: 'apostrophes',
+    tier: 'easy',
+    mode: 'fix',
+    prompt: 'Which one is the right contraction for "should not"?',
+    choices: ['shouldnt', "shouldn't", "should'nt", 'shouldnt\''],
+    answer: "shouldn't",
+    rule: '`shouldn\'t` = `should not`. The apostrophe replaces the missing `o`.',
+  },
 ];
 
 // ----- Helpers -----
