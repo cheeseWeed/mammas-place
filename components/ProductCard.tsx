@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Product } from '@/types';
 import { useCart } from '@/context/CartContext';
 import { useToast } from '@/context/ToastContext';
-import { isAvailableNow, isInStock } from '@/lib/inventory';
+import { isAvailableNow, isInStock } from '@/lib/inventory-rules';
 
 interface ProductCardProps {
   product: Product;
