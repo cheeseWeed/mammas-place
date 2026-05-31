@@ -188,11 +188,10 @@ function CardView() {
               </div>
             </div>
 
-            <p className="mt-6 text-center text-xs text-purple-700 max-w-sm mx-auto">
-              Receive-only card. Send MP to this card at{' '}
-              <span className="font-mono">mammas-place.vercel.app/give</span>{' '}
-              <span className="opacity-70">(coming soon)</span>. Spending
-              requires the cardholder&apos;s PIN.
+            <p className="mt-6 text-center text-xs sm:text-sm text-purple-800 max-w-sm mx-auto font-medium">
+              Family + friends can deposit MP at{' '}
+              <span className="font-mono font-bold">mammas-place.vercel.app/give</span>{' '}
+              using my number ({formatted}). Receive-only — spending requires my PIN.
             </p>
           </div>
 

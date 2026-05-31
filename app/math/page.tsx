@@ -69,6 +69,14 @@ export default function MathHubPage() {
                 cta="Start fractions"
                 shipped
               />
+              <PhaseCard
+                phaseLabel="Phase 5"
+                title="Order of Operations"
+                subtitle="PEMDAS! When +, −, ×, ÷ get tangled, who goes first?"
+                href="/math/pemdas"
+                cta="Start PEMDAS"
+                shipped
+              />
             </div>
           </section>
 

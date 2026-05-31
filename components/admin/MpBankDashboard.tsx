@@ -48,6 +48,17 @@ interface TransactionRow {
   createdAt: string;
 }
 
+// Phase 6c — single-use printable gift card. Status is derived server-side.
+interface GiftCardRow {
+  code: string;
+  cents: number;
+  status: 'unredeemed' | 'redeemed' | 'revoked';
+  note: string | null;
+  createdAt: string;
+  redeemedByName: string | null;
+  redeemedAt: string | null;
+}
+
 type FormMode = 'topup' | 'deduct';
 
 function formatShortDateTime(iso: string): string {
@@ -113,6 +124,26 @@ export default function MpBankDashboard() {
   // surface in the same pinToast (renamed conceptually to "admin toast" but
   // kept under the existing state to avoid more boilerplate).
   const [rerollBusy, setRerollBusy] = useState<string | null>(null);
+
+  // Gift Cards panel (Phase 6c) — create + list + revoke + print.
+  const [giftCards, setGiftCards] = useState<GiftCardRow[]>([]);
+  const [giftCardsLoading, setGiftCardsLoading] = useState(true);
+  const [giftCardsError, setGiftCardsError] = useState<string | null>(null);
+  const [giftAmount, setGiftAmount] = useState('');
+  const [giftNote, setGiftNote] = useState('');
+  const [giftBusy, setGiftBusy] = useState(false);
+  const [giftFormError, setGiftFormError] = useState<string | null>(null);
+  // The just-minted card the parent should print right now. Renders an inline
+  // print-friendly modal; the parent hits Print, then closes — list refreshes
+  // in the background. Null = no modal open.
+  const [printCard, setPrintCard] = useState<{
+    code: string;
+    cents: number;
+    note: string | null;
+  } | null>(null);
+  // Track which code is currently being revoked so we can disable just that
+  // row's button instead of all of them.
+  const [revokeBusy, setRevokeBusy] = useState<string | null>(null);
 
   // Settings panel (collapsible) — change parent PIN.
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -204,10 +235,30 @@ export default function MpBankDashboard() {
     [handleUnauth],
   );
 
+  const loadGiftCards = useCallback(async () => {
+    setGiftCardsLoading(true);
+    setGiftCardsError(null);
+    try {
+      const res = await fetch('/api/money/gift-card/list', { cache: 'no-store' });
+      if (res.status === 401) {
+        handleUnauth();
+        return;
+      }
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = (await res.json()) as { cards?: GiftCardRow[] };
+      setGiftCards(Array.isArray(data.cards) ? data.cards : []);
+    } catch (err) {
+      setGiftCardsError(err instanceof Error ? err.message : 'Failed to load gift cards');
+    } finally {
+      setGiftCardsLoading(false);
+    }
+  }, [handleUnauth]);
+
   useEffect(() => {
     loadLearners();
     loadOrders();
-  }, [loadLearners, loadOrders]);
+    loadGiftCards();
+  }, [loadLearners, loadOrders, loadGiftCards]);
 
   useEffect(() => {
     loadTransactions(selectedUser);
@@ -329,6 +380,89 @@ export default function MpBankDashboard() {
       });
     } finally {
       setRerollBusy(null);
+    }
+  };
+
+  const submitGiftCard = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setGiftFormError(null);
+    const cents = dollarsInputToCents(giftAmount);
+    if (cents === null || cents <= 0) {
+      setGiftFormError('Enter a valid amount (e.g. 5 or 2.50).');
+      return;
+    }
+    setGiftBusy(true);
+    try {
+      const res = await fetch('/api/money/gift-card/create', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ cents, note: giftNote.trim() || undefined }),
+      });
+      if (res.status === 401) {
+        handleUnauth();
+        return;
+      }
+      const data = (await res.json().catch(() => ({}))) as {
+        code?: string;
+        cents?: number;
+        note?: string | null;
+        error?: string;
+      };
+      if (!res.ok || typeof data.code !== 'string' || typeof data.cents !== 'number') {
+        setGiftFormError(data.error || `HTTP ${res.status}`);
+        return;
+      }
+      // Pop up the print modal immediately — the parent's about to hand this
+      // card to a kid, so they want to print right now.
+      setPrintCard({
+        code: data.code,
+        cents: data.cents,
+        note: typeof data.note === 'string' ? data.note : null,
+      });
+      setGiftAmount('');
+      setGiftNote('');
+      await loadGiftCards();
+    } catch (err) {
+      setGiftFormError(err instanceof Error ? err.message : 'Network error');
+    } finally {
+      setGiftBusy(false);
+    }
+  };
+
+  const revokeGiftCard = async (code: string) => {
+    if (!window.confirm(
+      `Revoke gift card ${code}? Anyone holding the printed copy won't be able to redeem it.`,
+    )) {
+      return;
+    }
+    setRevokeBusy(code);
+    try {
+      const res = await fetch('/api/money/gift-card/revoke', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ code }),
+      });
+      if (res.status === 401) {
+        handleUnauth();
+        return;
+      }
+      const data = (await res.json().catch(() => ({}))) as { error?: string };
+      if (!res.ok) {
+        setPinToast({
+          kind: 'error',
+          message: `Revoke failed: ${data.error || `HTTP ${res.status}`}`,
+        });
+        return;
+      }
+      setPinToast({ kind: 'success', message: `Revoked ${code}.` });
+      await loadGiftCards();
+    } catch (err) {
+      setPinToast({
+        kind: 'error',
+        message: err instanceof Error ? err.message : 'Network error',
+      });
+    } finally {
+      setRevokeBusy(null);
     }
   };
 
@@ -756,7 +890,185 @@ export default function MpBankDashboard() {
           )}
         </section>
 
-        {/* Section 4: Settings — change parent PIN (collapsible) */}
+        {/* Section 4: Gift Cards (Phase 6c) — mint, list, print, revoke */}
+        <section className="bg-white rounded-2xl shadow-lg border-2 border-purple-100 p-6">
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h2 className="text-2xl font-bold text-purple-900">Gift cards</h2>
+              <p className="text-xs text-purple-600 mt-1">
+                Single-use printable codes. Generate, print, hand to a kid;
+                they redeem at <span className="font-mono">/portal/money/redeem</span>.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={loadGiftCards}
+              disabled={giftCardsLoading}
+              className="text-sm text-purple-700 hover:text-purple-900 underline disabled:opacity-50"
+            >
+              Refresh
+            </button>
+          </div>
+
+          <form
+            onSubmit={submitGiftCard}
+            className="bg-purple-50 rounded-xl p-4 border border-purple-200 mb-6"
+          >
+            <div className="font-semibold text-purple-900 mb-3 text-sm">
+              Create a new gift card
+            </div>
+            <div className="grid sm:grid-cols-[140px_1fr_auto] gap-3 items-start">
+              <div>
+                <label
+                  htmlFor="gift-amount"
+                  className="block text-xs font-medium text-purple-900 mb-1"
+                >
+                  Amount ($)
+                </label>
+                <input
+                  id="gift-amount"
+                  type="text"
+                  inputMode="decimal"
+                  value={giftAmount}
+                  onChange={(e) => setGiftAmount(e.target.value)}
+                  placeholder="5"
+                  disabled={giftBusy}
+                  className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-3 py-2 bg-white text-purple-900"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="gift-note"
+                  className="block text-xs font-medium text-purple-900 mb-1"
+                >
+                  Note (optional)
+                </label>
+                <input
+                  id="gift-note"
+                  type="text"
+                  value={giftNote}
+                  onChange={(e) => setGiftNote(e.target.value)}
+                  placeholder="Happy birthday Lilly!"
+                  maxLength={200}
+                  disabled={giftBusy}
+                  className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-3 py-2 bg-white text-purple-900"
+                />
+              </div>
+              <div className="flex gap-2 sm:pt-5">
+                <button
+                  type="submit"
+                  disabled={giftBusy}
+                  className="bg-purple-900 hover:bg-purple-800 disabled:bg-purple-300 text-white font-bold px-4 py-2 rounded-xl text-sm transition-colors"
+                >
+                  {giftBusy ? 'Generating…' : 'Generate'}
+                </button>
+              </div>
+            </div>
+            {giftFormError && (
+              <div className="mt-3 text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
+                {giftFormError}
+              </div>
+            )}
+          </form>
+
+          {giftCardsError && (
+            <div className="rounded-xl bg-yellow-100 border border-yellow-300 text-purple-900 text-sm px-4 py-3 mb-4">
+              {giftCardsError}
+            </div>
+          )}
+
+          {giftCardsLoading ? (
+            <p className="text-purple-700 text-sm">Loading gift cards…</p>
+          ) : giftCards.length === 0 ? (
+            <p className="text-purple-700 text-sm">
+              No gift cards yet. Generate one above.
+            </p>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="min-w-full text-sm">
+                <thead className="text-left text-purple-700 border-b border-purple-100">
+                  <tr>
+                    <th className="py-2 pr-4 font-semibold">Code</th>
+                    <th className="py-2 pr-4 font-semibold">Amount</th>
+                    <th className="py-2 pr-4 font-semibold">Status</th>
+                    <th className="py-2 pr-4 font-semibold">Note</th>
+                    <th className="py-2 pr-4 font-semibold">Created</th>
+                    <th className="py-2 pr-4 font-semibold">Actions</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-purple-50">
+                  {giftCards.map((c) => {
+                    const statusClass =
+                      c.status === 'redeemed'
+                        ? 'bg-green-100 text-green-800'
+                        : c.status === 'revoked'
+                          ? 'bg-red-100 text-red-800'
+                          : 'bg-yellow-100 text-yellow-900';
+                    const statusLabel =
+                      c.status === 'redeemed' && c.redeemedByName && c.redeemedAt
+                        ? `redeemed by ${c.redeemedByName} · ${formatShortDateTime(c.redeemedAt)}`
+                        : c.status;
+                    const isRevoking = revokeBusy === c.code;
+                    return (
+                      <tr key={c.code} className="text-purple-900 align-top">
+                        <td className="py-2 pr-4 font-mono font-bold whitespace-nowrap">
+                          {c.code}
+                        </td>
+                        <td className="py-2 pr-4 tabular-nums font-semibold">
+                          {centsToMP(c.cents)}
+                        </td>
+                        <td className="py-2 pr-4">
+                          <span
+                            className={`inline-block px-2 py-0.5 rounded-full text-xs ${statusClass}`}
+                          >
+                            {statusLabel}
+                          </span>
+                        </td>
+                        <td className="py-2 pr-4 text-purple-800 max-w-xs">
+                          {c.note || <span className="text-purple-400">—</span>}
+                        </td>
+                        <td className="py-2 pr-4 text-purple-700 whitespace-nowrap">
+                          {formatShortDateTime(c.createdAt)}
+                        </td>
+                        <td className="py-2 pr-4 whitespace-nowrap">
+                          {c.status === 'unredeemed' ? (
+                            <div className="flex items-center gap-3">
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  setPrintCard({
+                                    code: c.code,
+                                    cents: c.cents,
+                                    note: c.note,
+                                  })
+                                }
+                                className="text-purple-700 hover:text-purple-900 underline text-xs"
+                              >
+                                🖨️ Print
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => revokeGiftCard(c.code)}
+                                disabled={isRevoking}
+                                className="text-red-700 hover:text-red-900 underline text-xs disabled:opacity-50"
+                              >
+                                {isRevoking ? 'Revoking…' : 'Revoke'}
+                              </button>
+                            </div>
+                          ) : (
+                            <span className="text-purple-400 text-xs">—</span>
+                          )}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          )}
+        </section>
+
+        {/* Section 5: Settings — change parent PIN (collapsible) */}
         <section className="bg-white rounded-2xl shadow-lg border-2 border-purple-100 p-6">
           <button
             type="button"
@@ -882,6 +1194,109 @@ export default function MpBankDashboard() {
           )}
         </section>
       </main>
+
+      {/* Print modal — pops after a card is minted so the parent can print
+          immediately. The @media print block hides every other element so the
+          printout is just the card. Click outside or hit Close to dismiss. */}
+      {printCard && (
+        <div
+          className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center p-4 print:bg-transparent print:p-0 print:items-start"
+          onClick={() => setPrintCard(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
+                @media print {
+                  body * { visibility: hidden; }
+                  .gift-card-printable, .gift-card-printable * { visibility: visible; }
+                  .gift-card-printable {
+                    position: absolute;
+                    inset: 0;
+                    margin: 0;
+                    padding: 2rem;
+                  }
+                  .no-print { display: none !important; }
+                }
+              `,
+            }}
+          />
+          <div
+            className="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 sm:p-8"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="no-print mb-4">
+              <div className="font-bold text-purple-900 text-lg">
+                Gift card ready to print
+              </div>
+              <p className="text-xs text-purple-700 mt-1">
+                Hit Print, fold/cut, and hand it to the kid. The code will be
+                redeemable until someone uses it or you revoke it.
+              </p>
+            </div>
+
+            <div className="gift-card-printable">
+              <div
+                className="mx-auto max-w-sm rounded-3xl shadow-xl border-4 border-yellow-300
+                           bg-gradient-to-br from-purple-800 to-purple-950 text-white p-6 flex flex-col gap-4
+                           relative overflow-hidden"
+              >
+                <div className="absolute -top-6 -right-6 w-24 h-24 rounded-full bg-yellow-300/20 border-2 border-yellow-300/40" />
+                <div className="absolute top-3 right-3 w-12 h-12 rounded-full bg-yellow-300 flex items-center justify-center border-2 border-yellow-200 shadow-md">
+                  <span className="text-purple-900 font-black text-sm">MP</span>
+                </div>
+
+                <div>
+                  <div className="text-yellow-300 text-xs font-bold uppercase tracking-widest">
+                    Mamma&apos;s Place
+                  </div>
+                  <div className="text-yellow-100 text-[10px] font-semibold uppercase tracking-wider mt-0.5">
+                    Gift Card · {centsToMP(printCard.cents)}
+                  </div>
+                </div>
+
+                <div className="py-2 text-center">
+                  <div className="text-yellow-100 text-[10px] font-semibold uppercase tracking-wider">
+                    Redeem this code
+                  </div>
+                  <div className="text-3xl sm:text-4xl font-black tracking-[0.2em] text-yellow-300 tabular-nums mt-1">
+                    {printCard.code}
+                  </div>
+                </div>
+
+                {printCard.note && (
+                  <div className="bg-purple-950/40 rounded-xl px-3 py-2 text-sm text-yellow-50 italic text-center">
+                    &ldquo;{printCard.note}&rdquo;
+                  </div>
+                )}
+
+                <div className="text-[10px] text-yellow-100/80 text-center pt-1">
+                  Log in at <span className="font-mono">/portal/money/redeem</span>{' '}
+                  and enter the code above.
+                </div>
+              </div>
+            </div>
+
+            <div className="no-print mt-6 flex flex-wrap gap-3 justify-end">
+              <button
+                type="button"
+                onClick={() => window.print()}
+                className="bg-purple-900 hover:bg-purple-800 text-white font-bold px-5 py-2.5 rounded-xl text-sm transition-colors"
+              >
+                🖨️ Print
+              </button>
+              <button
+                type="button"
+                onClick={() => setPrintCard(null)}
+                className="bg-yellow-100 hover:bg-yellow-200 text-purple-900 font-bold px-5 py-2.5 rounded-xl text-sm border-2 border-yellow-300 transition-colors"
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Toast — fixed bottom-right, ephemeral feedback for PIN rotation */}
       {pinToast && (

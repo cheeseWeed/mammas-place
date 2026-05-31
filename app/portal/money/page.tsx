@@ -160,6 +160,12 @@ export default function PortalMoneyPage() {
           >
             💳 My MP card
           </Link>
+          <Link
+            href="/portal/money/redeem"
+            className="bg-purple-700 hover:bg-purple-600 text-white font-bold text-sm px-4 py-2 rounded-xl transition-colors"
+          >
+            🎁 Redeem a gift card
+          </Link>
         </div>
       </div>
 

@@ -128,3 +128,24 @@ model ParentConfig {
 
   @@map("mp_parent_config")
 }
+
+// Phase 6c — Printable single-use gift cards. Parents mint codes like
+// `MP-7K2H9N`, print them, and hand them to a kid for birthdays / surprises.
+// One redemption flips the card from unredeemed → redeemed and credits the
+// kid via the existing balance.ts `credit()` helper (no second economy).
+//
+// `code` is the public string shown to humans (including the `MP-` prefix);
+// kept as a separate column (not the PK) so we can hold a synthetic cuid id
+// for joins later if we ever add per-card audit detail.
+model MpGiftCard {
+  id             String    @id @default(cuid())
+  code           String    @unique // "MP-XXXXXX", 6-char base32 alphabet (no 0/O/1/I/L)
+  cents          Int
+  createdAt      DateTime  @default(now())
+  redeemedByName String?
+  redeemedAt     DateTime?
+  revoked        Boolean   @default(false)
+  note           String?   // parent's optional note ("Happy birthday!")
+
+  @@map("mp_gift_cards")
+}
