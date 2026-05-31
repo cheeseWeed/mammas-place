@@ -11,6 +11,13 @@
 
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { centsToMP } from '@/lib/money/format';
+import {
+  DAD_AMOUNT_LABELS,
+  DAD_GREETINGS,
+  DAD_PROMPT_LABELS,
+  DAD_SUBMIT_LABELS,
+  pickPrompt,
+} from '@/lib/money/dad';
 
 type Outcome = 'yes_full' | 'yes_partial' | 'pickup_tab' | 'maybe_later' | 'no' | 'bad_luck';
 type Context = 'portal' | 'checkout';
@@ -76,7 +83,24 @@ export function AskDadPanel({
   const [result, setResult] = useState<DadResponse | null>(null);
   const reasonRef = useRef<HTMLTextAreaElement | null>(null);
 
+  // Rotating prompts — picked once per mount so the kid sees a different
+  // form each time they open the panel. Defaults to first item on the
+  // server (so SSR is deterministic), then re-rolls after hydration.
+  const [greeting, setGreeting] = useState<string>(DAD_GREETINGS[0]);
+  const [promptLabel, setPromptLabel] = useState<string>(DAD_PROMPT_LABELS[0]);
+  const [amountLabel, setAmountLabel] = useState<string>(DAD_AMOUNT_LABELS[0]);
+  const [rotatedSubmit, setRotatedSubmit] = useState<string>(DAD_SUBMIT_LABELS[0]);
+  useEffect(() => {
+    setGreeting(pickPrompt(DAD_GREETINGS));
+    setPromptLabel(pickPrompt(DAD_PROMPT_LABELS));
+    setAmountLabel(pickPrompt(DAD_AMOUNT_LABELS));
+    setRotatedSubmit(pickPrompt(DAD_SUBMIT_LABELS));
+    // Re-roll only on mount (and resetSignal below).
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // Reset when the parent bumps resetSignal (e.g. after a retried order).
+  // Also re-roll the rotating prompts so the kid sees a fresh form.
   useEffect(() => {
     if (resetSignal === undefined) return;
     setReason('');
@@ -84,6 +108,10 @@ export function AskDadPanel({
     setResult(null);
     setThinking(false);
     setBusy(false);
+    setGreeting(pickPrompt(DAD_GREETINGS));
+    setPromptLabel(pickPrompt(DAD_PROMPT_LABELS));
+    setAmountLabel(pickPrompt(DAD_AMOUNT_LABELS));
+    setRotatedSubmit(pickPrompt(DAD_SUBMIT_LABELS));
   }, [resetSignal]);
 
   const onSubmit = async (e: FormEvent) => {
@@ -231,7 +259,8 @@ export function AskDadPanel({
             {context === 'checkout' ? 'Ask Dad to pick up the tab' : 'Ask Dad for MP'}
           </div>
           <p className="text-sm text-gray-700">
-            Tell him what you need it for and how much. Be specific — he likes a good reason.
+            <span className="font-bold italic text-purple-900">&ldquo;{greeting}&rdquo;</span>{' '}
+            <span className="text-gray-500">— Dad</span>
           </p>
         </div>
       </div>
@@ -239,7 +268,7 @@ export function AskDadPanel({
       <div className="space-y-3">
         <div>
           <label htmlFor="dad-reason" className="block text-xs font-bold uppercase tracking-wide text-purple-900 mb-1">
-            What do you need it for?
+            {promptLabel}
           </label>
           <textarea
             id="dad-reason"
@@ -259,7 +288,7 @@ export function AskDadPanel({
 
         <div>
           <label htmlFor="dad-amount" className="block text-xs font-bold uppercase tracking-wide text-purple-900 mb-1">
-            How much? ({AMOUNT_MIN_MP}–{AMOUNT_MAX_MP} MP)
+            {amountLabel} ({AMOUNT_MIN_MP}–{AMOUNT_MAX_MP} MP)
           </label>
           <div className="flex items-center gap-2">
             <input
@@ -291,7 +320,7 @@ export function AskDadPanel({
           disabled={busy || thinking}
           className="bg-purple-900 hover:bg-purple-800 disabled:bg-purple-300 text-white font-black px-5 py-2.5 rounded-xl transition-colors"
         >
-          {thinking ? 'Asking Dad…' : busy ? 'Sending…' : (submitLabel || 'Ask Dad')}
+          {thinking ? 'Asking Dad…' : busy ? 'Sending…' : (submitLabel || rotatedSubmit)}
         </button>
         {thinking && (
           <div className="flex items-center gap-1.5 text-sm text-purple-700" aria-live="polite">
