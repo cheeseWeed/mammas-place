@@ -78,9 +78,10 @@ export function AskDadPanel({
   const [reason, setReason] = useState('');
   const [amountMp, setAmountMp] = useState<string>(() => {
     if (defaultAmountCents && defaultAmountCents > 0) {
-      // Round up to the next whole MP so the kid asks for at least the shortfall.
-      const mp = Math.min(AMOUNT_MAX_MP, Math.max(AMOUNT_MIN_MP, Math.ceil(defaultAmountCents / 100)));
-      return String(mp);
+      // Use the exact shortfall in MP (2 decimals). No round-up needed —
+      // input supports decimals so a 7.50 shortfall prefills as "7.50".
+      const mp = Math.min(AMOUNT_MAX_MP, Math.max(AMOUNT_MIN_MP, defaultAmountCents / 100));
+      return mp.toFixed(2);
     }
     return '5';
   });
@@ -137,6 +138,9 @@ export function AskDadPanel({
       setError(`Pick an amount between ${AMOUNT_MIN_MP} and ${AMOUNT_MAX_MP} MP.`);
       return;
     }
+    // Round to 2 decimal places (cents precision) so an input like 24.327
+    // becomes 24.33, and 24.3 becomes 24.30. Math.round on cents handles
+    // floating-point drift.
     const centsAsked = Math.round(mp * 100);
 
     setBusy(true);
@@ -305,11 +309,11 @@ export function AskDadPanel({
               inputMode="numeric"
               min={AMOUNT_MIN_MP}
               max={AMOUNT_MAX_MP}
-              step="1"
+              step="0.01"
               value={amountMp}
               onChange={(e) => setAmountMp(e.target.value)}
               disabled={busy || thinking}
-              className="w-24 rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-3 py-2 bg-purple-50/50 text-purple-950 text-base font-black text-center"
+              className="w-28 rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-3 py-2 bg-purple-50/50 text-purple-950 text-base font-black text-center"
             />
             <span className="text-sm text-gray-600 font-bold">MP</span>
           </div>

@@ -325,9 +325,12 @@ export function scoreReason(rawReason: string): ReasonScore {
   for (const re of POSITIVE_RE) if (re.test(reason)) delta += 5;
   for (const re of NEGATIVE_RE) if (re.test(reason)) delta -= 5;
 
-  // Spammy: 4+ of the same character in a row → "aaaa", "!!!!", "9999".
-  const spammy = /(.)\1{3,}/.test(reason);
-  if (spammy) delta -= 15;
+  // Spammy: 5+ of the same character in a row → "aaaaa", "!!!!!", "99999".
+  // Bumped from 4+ to 5+ so legit kid emphasis like "yessss" or "schoooool"
+  // doesn't get flagged. Real spam (long runs of a single char) still trips
+  // it. No delta penalty here — the spammy flag already clamps the yes
+  // weights to 1 in decideOutcome, so a second -15 was double-dipping.
+  const spammy = /(.)\1{4,}/.test(reason);
 
   // ALL CAPS only counts if the message has enough letters and is mostly upper.
   const letters = reason.replace(/[^A-Za-z]/g, '');
