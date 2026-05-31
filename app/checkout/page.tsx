@@ -11,6 +11,7 @@ import { centsToMP } from '@/lib/money/format';
 import * as gtag from '@/lib/gtag';
 import Link from 'next/link';
 import Confetti from 'react-confetti';
+import { AskDadPanel } from '@/components/AskDadPanel';
 
 // Server response shapes for /api/money/order.
 interface OrderSuccess {
@@ -37,6 +38,10 @@ export default function CheckoutPage() {
   const [orderResult, setOrderResult] = useState<OrderSuccess | null>(null);
   const [showConfetti, setShowConfetti] = useState(false);
   const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
+  const [askingDad, setAskingDad] = useState(false);
+  // Surfaces the most recent Dad reply on the checkout page so the kid sees
+  // a nudge to retry payment after a tab-pickup or full-yes.
+  const [dadOutcomeMsg, setDadOutcomeMsg] = useState<string | null>(null);
 
   // Cart subtotal is dollars (float); convert to authoritative cents for display + server hint.
   const subtotalCents = Math.round(cart.subtotal * 100);
@@ -250,19 +255,18 @@ export default function CheckoutPage() {
               )}
             </section>
           ) : (
-            <section className="bg-white rounded-2xl shadow-sm border border-purple-100 p-8 text-center">
-              <div className="text-6xl mb-4">🐷</div>
-              <h2 className="font-black text-purple-900 text-2xl mb-2">Almost there!</h2>
-              <p className="text-gray-700 text-base mb-4">
-                You need{' '}
-                <span className="font-black text-purple-900 text-xl">{centsToMP(shortfallCents)}</span>{' '}
-                more.
-              </p>
-              <p className="text-gray-700 text-base mb-6">
-                Ask Dad to top you up. 💖
-              </p>
+            <section className="bg-white rounded-2xl shadow-sm border border-purple-100 p-6 sm:p-8">
+              <div className="text-center mb-5">
+                <div className="text-6xl mb-3">🐷</div>
+                <h2 className="font-black text-purple-900 text-2xl mb-1">Almost there!</h2>
+                <p className="text-gray-700 text-base">
+                  You need{' '}
+                  <span className="font-black text-purple-900 text-xl">{centsToMP(shortfallCents)}</span>{' '}
+                  more.
+                </p>
+              </div>
 
-              <div className="bg-purple-50 border border-purple-200 rounded-xl p-4 mb-2 text-left">
+              <div className="bg-purple-50 border border-purple-200 rounded-xl p-4 mb-5 text-left">
                 <div className="flex justify-between text-sm text-gray-700 mb-1">
                   <span>Your balance</span>
                   <span className="font-bold">{centsToMP(balanceCents ?? 0)}</span>
@@ -273,22 +277,62 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
+              {askingDad ? (
+                <AskDadPanel
+                  context="checkout"
+                  shortfallCents={shortfallCents}
+                  defaultAmountCents={shortfallCents}
+                  submitLabel="Ask Dad"
+                  onResult={async (r) => {
+                    // Refresh the cached balance so haveEnough flips when Dad
+                    // covered (or partially covered) the shortfall.
+                    if (r.centsGranted > 0) {
+                      await refresh();
+                    }
+                    if (r.outcome === 'pickup_tab' || r.outcome === 'yes_full') {
+                      setDadOutcomeMsg('Order ready — tap Pay with MP again!');
+                    } else if (r.outcome === 'yes_partial') {
+                      setDadOutcomeMsg('Dad gave you some — check if it covers the order.');
+                    } else {
+                      setDadOutcomeMsg(null);
+                    }
+                  }}
+                />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setAskingDad(true);
+                    setDadOutcomeMsg(null);
+                  }}
+                  className="w-full bg-yellow-400 hover:bg-yellow-300 active:bg-yellow-500 text-purple-900 font-black py-4 rounded-2xl text-lg shadow-md transition-all hover:scale-105"
+                >
+                  🙋 Ask Dad to pick up the tab
+                </button>
+              )}
+
+              {dadOutcomeMsg && (
+                <p className="mt-3 text-center text-sm font-bold text-green-700">
+                  {dadOutcomeMsg}
+                </p>
+              )}
+
               <div className="mt-5 grid sm:grid-cols-2 gap-3">
                 <Link
                   href="/portal/money"
-                  className="bg-yellow-400 hover:bg-yellow-300 text-purple-900 font-black py-3 rounded-2xl text-base text-center transition-colors"
+                  className="bg-purple-50 hover:bg-purple-100 text-purple-900 font-bold py-2.5 rounded-xl text-sm text-center transition-colors border border-purple-200"
                 >
                   💰 See my MP
                 </Link>
                 <Link
                   href="/shop"
-                  className="bg-purple-700 hover:bg-purple-600 text-white font-black py-3 rounded-2xl text-base text-center transition-colors"
+                  className="bg-purple-50 hover:bg-purple-100 text-purple-900 font-bold py-2.5 rounded-xl text-sm text-center transition-colors border border-purple-200"
                 >
                   Keep Browsing
                 </Link>
               </div>
-              <p className="text-xs text-gray-500 mt-3">
-                Earn more MP by finishing learning rounds in Math, Spelling, and Geography.
+              <p className="text-xs text-gray-500 mt-3 text-center">
+                Or earn more MP by finishing learning rounds in Math, Spelling, and Geography.
               </p>
             </section>
           )}

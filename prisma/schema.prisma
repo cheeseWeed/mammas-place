@@ -65,6 +65,7 @@ model DriveUser {
   transactions     MpTransaction[]
   orders           MpOrder[]
   earnings         MpEarning[]
+  dadAsks          DadAsk[]
 
   @@map("drive_users")
 }
@@ -127,6 +128,26 @@ model ParentConfig {
   updatedAt     DateTime @updatedAt
 
   @@map("mp_parent_config")
+}
+
+// "Ask Dad" — automated server-side Dad persona. Kid asks for MP with a reason;
+// server scores reason quality + ask cadence + amount and rolls a weighted die
+// to pick an outcome bucket. Reply text is picked from a per-bucket bank in
+// lib/money/dad.ts. Not a real human — no admin queue, no parent approval.
+model DadAsk {
+  id            String   @id @default(cuid())
+  userName      String
+  user          DriveUser @relation(fields: [userName], references: [name], onDelete: Cascade)
+  centsAsked    Int
+  reason        String
+  outcome       String   // 'yes_full' | 'yes_partial' | 'pickup_tab' | 'maybe_later' | 'no' | 'bad_luck'
+  centsGranted  Int      @default(0)
+  dadReply      String
+  context       String   @default("portal") // 'portal' | 'checkout'
+  createdAt     DateTime @default(now())
+
+  @@index([userName, createdAt])
+  @@map("mp_dad_asks")
 }
 
 // Phase 6c — Printable single-use gift cards. Parents mint codes like

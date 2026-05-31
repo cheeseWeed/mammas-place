@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useLearner } from '@/context/LearnerContext';
 import { centsToMP } from '@/lib/money/format';
+import { AskDadPanel } from '@/components/AskDadPanel';
+import { DadAsksHistory } from '@/components/DadAsksHistory';
 
 // Server-authoritative shapes — keep loose; API returns Prisma rows as JSON.
 interface OrderItem {
@@ -86,11 +88,14 @@ const FILTER_CHIPS: ReadonlyArray<{ key: TxFilter; label: string }> = [
 ];
 
 export default function PortalMoneyPage() {
-  const { learner, balanceCents, loading, logout } = useLearner();
+  const { learner, balanceCents, loading, logout, refresh: refreshBalance } = useLearner();
   const router = useRouter();
   const [summary, setSummary] = useState<WalletSummary | null>(null);
   const [fetchError, setFetchError] = useState<string | null>(null);
   const [txFilter, setTxFilter] = useState<TxFilter>('all');
+  const [askOpen, setAskOpen] = useState(false);
+  // Bumped after every Dad reply so the history panel refetches.
+  const [asksRefreshSignal, setAsksRefreshSignal] = useState(0);
 
   useEffect(() => {
     if (!learner) {
@@ -199,6 +204,14 @@ export default function PortalMoneyPage() {
           >
             🛍️ Shop
           </Link>
+          <button
+            type="button"
+            onClick={() => setAskOpen((o) => !o)}
+            className="bg-yellow-300 hover:bg-yellow-200 text-purple-950 font-black text-sm px-4 py-2 rounded-xl transition-colors"
+            aria-expanded={askOpen}
+          >
+            🙋 Top me off
+          </button>
           <Link
             href="/drive"
             className="bg-purple-700 hover:bg-purple-600 text-white font-bold text-sm px-4 py-2 rounded-xl transition-colors"
@@ -219,6 +232,24 @@ export default function PortalMoneyPage() {
           </Link>
         </div>
       </div>
+
+      {askOpen && (
+        <div className="mb-8">
+          <AskDadPanel
+            context="portal"
+            onResult={(r) => {
+              // Refresh balance + history list whenever Dad has spoken — even
+              // if outcome was a no, so the history row appears immediately.
+              if (r.centsGranted > 0) void refreshBalance();
+              setAsksRefreshSignal((n) => n + 1);
+            }}
+          />
+        </div>
+      )}
+
+      {learner && (
+        <DadAsksHistory user={learner} refreshSignal={asksRefreshSignal} limit={10} />
+      )}
 
       {fetchError && (
         <div className="mb-6 bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm">
