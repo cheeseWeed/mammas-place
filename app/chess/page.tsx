@@ -50,7 +50,7 @@ function ChessHubAuthed() {
           </p>
         </div>
 
-        {/* Primary CTA + Resume slot */}
+        {/* Primary CTA + Puzzles + Resume slot */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
           <Link
             href="/chess/play"
@@ -71,20 +71,42 @@ function ChessHubAuthed() {
             </div>
           </Link>
 
-          {/* Resume slot — links to play page which auto-detects saved games */}
+          {/* Puzzles card — drill mode for tactical practice */}
+          <Link
+            href="/chess/puzzles"
+            className="group bg-gradient-to-br from-yellow-400 to-amber-500 hover:from-yellow-300 hover:to-amber-400 text-purple-900 rounded-3xl p-6 shadow-xl transition-all hover:scale-[1.01] flex flex-col justify-between relative"
+          >
+            <div className="absolute top-3 right-3 bg-purple-900 text-yellow-300 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wide">
+              Shipped
+            </div>
+            <div>
+              <div className="text-4xl mb-2">🧩</div>
+              <h3 className="text-xl md:text-2xl font-black mb-1">Chess Puzzles</h3>
+              <p className="text-sm text-purple-900/90">
+                Mate in 1, 2, 3. Endgames. Brain food.
+              </p>
+            </div>
+            <div className="text-purple-900 font-black mt-3 group-hover:translate-x-1 transition-transform">
+              Solve →
+            </div>
+          </Link>
+        </div>
+
+        {/* Resume + sub-tiles */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
           <Link
             href="/chess/play"
-            className="bg-white rounded-3xl p-6 border-2 border-purple-200 hover:border-purple-400 shadow-md hover:shadow-lg transition-all relative group"
+            className="md:col-span-3 bg-white rounded-3xl p-5 border-2 border-purple-200 hover:border-purple-400 shadow-md hover:shadow-lg transition-all relative group"
           >
             <div className="absolute top-3 right-3 bg-emerald-100 text-emerald-700 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wide">
               Shipped
             </div>
-            <div className="text-xs font-black uppercase tracking-wide text-purple-600 mb-2">
-              Phase 4
+            <div className="text-xs font-black uppercase tracking-wide text-purple-600 mb-1">
+              Resume
             </div>
-            <h3 className="text-lg font-black text-purple-900 mb-2">Resume game</h3>
+            <h3 className="text-lg font-black text-purple-900 mb-1">Pick up a game in progress</h3>
             <p className="text-sm text-purple-700">
-              If you have a game in progress, you&apos;ll see a Resume button on the Play page.
+              If you have a saved game, you&apos;ll see a Resume button on the Play page.
             </p>
           </Link>
         </div>
