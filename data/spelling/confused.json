@@ -1,0 +1,380 @@
+[
+  {
+    "id": "separate",
+    "wrong": "seperate",
+    "right": "separate",
+    "category": "vowel-swap",
+    "level": 6,
+    "tip": "There's A RAT in sepARATe. The middle vowel is A, not E.",
+    "sentence": "Please keep the forks and spoons in ___ piles."
+  },
+  {
+    "id": "definitely",
+    "wrong": "definately",
+    "right": "definitely",
+    "category": "vowel-swap",
+    "level": 6,
+    "tip": "It comes from 'finite' — so it's defin-IT-ely, not defin-AT-ely.",
+    "sentence": "I will ___ be at your birthday party."
+  },
+  {
+    "id": "necessary",
+    "wrong": "neccessary",
+    "right": "necessary",
+    "category": "double-letter",
+    "level": 7,
+    "tip": "One Collar, two Socks: 1 C, 2 S's in necessary.",
+    "sentence": "It is ___ to wear a helmet on your bike."
+  },
+  {
+    "id": "embarrass",
+    "wrong": "embarass",
+    "right": "embarrass",
+    "category": "double-letter",
+    "level": 7,
+    "tip": "You'd be REALLY RED if you forgot the second R or second S — double both!",
+    "sentence": "I don't want to ___ my little brother at school."
+  },
+  {
+    "id": "occurred",
+    "wrong": "occured",
+    "right": "occurred",
+    "category": "double-letter",
+    "level": 7,
+    "tip": "Two C's AND two R's. When you add -ED, the R doubles like in 'preferred'.",
+    "sentence": "The funny moment ___ during dinner."
+  },
+  {
+    "id": "tomorrow",
+    "wrong": "tommorrow",
+    "right": "tomorrow",
+    "category": "double-letter",
+    "level": 5,
+    "tip": "Only ONE M, but TWO R's. The R is the part that rolls forward into the new day.",
+    "sentence": "We are going to the park ___."
+  },
+  {
+    "id": "beginning",
+    "wrong": "begining",
+    "right": "beginning",
+    "category": "double-letter",
+    "level": 5,
+    "tip": "Short vowel + one consonant → double the consonant before -ING. So begin → beginNing.",
+    "sentence": "This is the ___ of a great story."
+  },
+  {
+    "id": "running",
+    "wrong": "runing",
+    "right": "running",
+    "category": "double-letter",
+    "level": 4,
+    "tip": "Short vowel + one consonant → double before -ING. Run → runNing.",
+    "sentence": "The dog is ___ across the yard."
+  },
+  {
+    "id": "believe",
+    "wrong": "beleive",
+    "right": "believe",
+    "category": "i-before-e",
+    "level": 6,
+    "tip": "I before E except after C — beLIEve follows the rule.",
+    "sentence": "I ___ you can do hard things."
+  },
+  {
+    "id": "friend",
+    "wrong": "freind",
+    "right": "friend",
+    "category": "i-before-e",
+    "level": 3,
+    "tip": "FRI-end. Remember: I is your FRIEND — it comes first.",
+    "sentence": "My best ___ is coming over to play."
+  },
+  {
+    "id": "receive",
+    "wrong": "recieve",
+    "right": "receive",
+    "category": "i-before-e",
+    "level": 6,
+    "tip": "After C, swap to E-I: reCEIve.",
+    "sentence": "I will ___ a present on my birthday."
+  },
+  {
+    "id": "their",
+    "wrong": "thier",
+    "right": "their",
+    "category": "i-before-e",
+    "level": 5,
+    "tip": "THEIR is one of the EI exceptions. Think 'heir' — same EI ending.",
+    "sentence": "The kids put on ___ shoes."
+  },
+  {
+    "id": "weird",
+    "wrong": "wierd",
+    "right": "weird",
+    "category": "i-before-e",
+    "level": 7,
+    "tip": "Weird is WEIRD — it breaks the rule and uses E before I.",
+    "sentence": "I had a ___ dream last night."
+  },
+  {
+    "id": "because",
+    "wrong": "becuase",
+    "right": "because",
+    "category": "letter-order",
+    "level": 4,
+    "tip": "Big Elephants Can Always Understand Small Elephants spells B-E-C-A-U-S-E.",
+    "sentence": "I am happy ___ the sun is shining."
+  },
+  {
+    "id": "beautiful",
+    "wrong": "beatiful",
+    "right": "beautiful",
+    "category": "letter-order",
+    "level": 6,
+    "tip": "Big Elephants Are Ugly — B-E-A-U-tiful. Don't forget the U!",
+    "sentence": "What a ___ rainbow!"
+  },
+  {
+    "id": "favorite",
+    "wrong": "favirite",
+    "right": "favorite",
+    "category": "vowel-swap",
+    "level": 5,
+    "tip": "Fa-VOR-ite has an O in the middle, like in 'favor'.",
+    "sentence": "My ___ color is blue."
+  },
+  {
+    "id": "different",
+    "wrong": "diffrent",
+    "right": "different",
+    "category": "silent-vowel",
+    "level": 5,
+    "tip": "Dif-FER-ent has THREE syllables. Say it slowly to hear the middle E.",
+    "sentence": "Every snowflake is ___."
+  },
+  {
+    "id": "interesting",
+    "wrong": "intresting",
+    "right": "interesting",
+    "category": "silent-vowel",
+    "level": 6,
+    "tip": "IN-ter-est-ing — four syllables. Don't skip the middle E.",
+    "sentence": "That bug is very ___."
+  },
+  {
+    "id": "vegetable",
+    "wrong": "vegtable",
+    "right": "vegetable",
+    "category": "silent-vowel",
+    "level": 5,
+    "tip": "Veg-E-table — the second E is quiet but still there.",
+    "sentence": "A carrot is a healthy ___."
+  },
+  {
+    "id": "chocolate",
+    "wrong": "choclate",
+    "right": "chocolate",
+    "category": "silent-vowel",
+    "level": 5,
+    "tip": "Choc-O-late — there's a sneaky O in the middle.",
+    "sentence": "I had a piece of ___ for dessert."
+  },
+  {
+    "id": "library",
+    "wrong": "libary",
+    "right": "library",
+    "category": "silent-vowel",
+    "level": 5,
+    "tip": "Li-B-RAR-y. Don't forget the first R — there are TWO.",
+    "sentence": "I borrow books from the ___."
+  },
+  {
+    "id": "february",
+    "wrong": "febuary",
+    "right": "february",
+    "category": "silent-vowel",
+    "level": 6,
+    "tip": "Feb-RU-ary. The R hides when you say it fast, but it's there.",
+    "sentence": "My birthday is in ___."
+  },
+  {
+    "id": "wednesday",
+    "wrong": "wensday",
+    "right": "wednesday",
+    "category": "silent-letter",
+    "level": 4,
+    "tip": "Say it slowly: WED-NES-day. The D is silent but written.",
+    "sentence": "Today is ___, the middle of the week."
+  },
+  {
+    "id": "knife",
+    "wrong": "nife",
+    "right": "knife",
+    "category": "silent-letter",
+    "level": 4,
+    "tip": "K is silent before N — like in 'knee' and 'know'.",
+    "sentence": "Cut the apple with a ___."
+  },
+  {
+    "id": "knew",
+    "wrong": "new",
+    "right": "knew",
+    "category": "homophone",
+    "level": 4,
+    "tip": "KNEW = past tense of know. NEW = not old. Different words!",
+    "sentence": "I ___ the answer to the question."
+  },
+  {
+    "id": "their-vs-there",
+    "wrong": "there",
+    "right": "their",
+    "category": "homophone",
+    "level": 5,
+    "tip": "THEIR = belongs to them (their toys). THERE = a place (over there).",
+    "sentence": "The children took ___ jackets to school."
+  },
+  {
+    "id": "youre-vs-your",
+    "wrong": "your",
+    "right": "you're",
+    "category": "homophone",
+    "level": 5,
+    "tip": "YOU'RE = you are (with apostrophe). YOUR = belongs to you.",
+    "sentence": "I think ___ going to love this book."
+  },
+  {
+    "id": "its-vs-it-is",
+    "wrong": "it's",
+    "right": "its",
+    "category": "homophone",
+    "level": 5,
+    "tip": "ITS = belongs to it (the dog wagged its tail). IT'S = it is.",
+    "sentence": "The cat licked ___ paws."
+  },
+  {
+    "id": "alot",
+    "wrong": "alot",
+    "right": "a lot",
+    "category": "two-words",
+    "level": 4,
+    "tip": "A LOT is two words. You wouldn't write 'abunch' or 'apile'.",
+    "sentence": "I have ___ of homework tonight."
+  },
+  {
+    "id": "alright",
+    "wrong": "alright",
+    "right": "all right",
+    "category": "two-words",
+    "level": 5,
+    "tip": "ALL RIGHT is two words. Like 'all done' or 'all gone'.",
+    "sentence": "Are you ___ after your fall?"
+  },
+  {
+    "id": "until",
+    "wrong": "untill",
+    "right": "until",
+    "category": "ending-swap",
+    "level": 5,
+    "tip": "Until has only ONE L at the end, even though 'till' has two.",
+    "sentence": "Wait here ___ I come back."
+  },
+  {
+    "id": "really",
+    "wrong": "realy",
+    "right": "really",
+    "category": "ending-swap",
+    "level": 4,
+    "tip": "Real + ly = really. Keep BOTH Ls — one from REAL, one from LY.",
+    "sentence": "That was a ___ fun day."
+  },
+  {
+    "id": "happily",
+    "wrong": "happyly",
+    "right": "happily",
+    "category": "ending-swap",
+    "level": 6,
+    "tip": "Change Y to I before adding -LY. Happy → happi → happily.",
+    "sentence": "The puppy wagged its tail ___."
+  },
+  {
+    "id": "tried",
+    "wrong": "tryed",
+    "right": "tried",
+    "category": "ending-swap",
+    "level": 5,
+    "tip": "Change Y to I before -ED. Try → tri → tried.",
+    "sentence": "She ___ her best on the test."
+  },
+  {
+    "id": "going",
+    "wrong": "goeing",
+    "right": "going",
+    "category": "ending-swap",
+    "level": 3,
+    "tip": "Just add -ING to GO. Don't add an E in the middle.",
+    "sentence": "We are ___ to grandma's house."
+  },
+  {
+    "id": "writing",
+    "wrong": "writting",
+    "right": "writing",
+    "category": "ending-swap",
+    "level": 5,
+    "tip": "Drop the silent E from WRITE before adding -ING. One T, not two.",
+    "sentence": "I am ___ a letter to my pen pal."
+  },
+  {
+    "id": "coming",
+    "wrong": "comming",
+    "right": "coming",
+    "category": "ending-swap",
+    "level": 4,
+    "tip": "Drop the silent E from COME, then add -ING. One M only.",
+    "sentence": "Mom is ___ to pick me up soon."
+  },
+  {
+    "id": "surprise",
+    "wrong": "suprise",
+    "right": "surprise",
+    "category": "silent-letter",
+    "level": 5,
+    "tip": "Sur-PRISE has TWO Rs. Don't drop the first one.",
+    "sentence": "I have a birthday ___ for you!"
+  },
+  {
+    "id": "probably",
+    "wrong": "probly",
+    "right": "probably",
+    "category": "silent-vowel",
+    "level": 6,
+    "tip": "Prob-A-bly. The A is quiet but it lives there.",
+    "sentence": "It will ___ rain this afternoon."
+  },
+  {
+    "id": "remember",
+    "wrong": "rember",
+    "right": "remember",
+    "category": "silent-vowel",
+    "level": 4,
+    "tip": "Re-MEM-ber. Three syllables — RE comes first.",
+    "sentence": "I always ___ to brush my teeth."
+  },
+  {
+    "id": "people",
+    "wrong": "peple",
+    "right": "people",
+    "category": "letter-order",
+    "level": 3,
+    "tip": "PEO-ple. The O is silent, but it's there between E and P.",
+    "sentence": "Many ___ live in our town."
+  },
+  {
+    "id": "every",
+    "wrong": "evry",
+    "right": "every",
+    "category": "silent-vowel",
+    "level": 3,
+    "tip": "EV-E-RY. Three little parts — don't skip the middle E.",
+    "sentence": "I read a story ___ night."
+  }
+]

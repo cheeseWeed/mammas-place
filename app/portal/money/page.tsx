@@ -1,8 +1,8 @@
-// Kid's MP Money page — balance hero + recent orders + recent transactions.
-// Phase 5 of MP Money (see app/money/PLAN.md).
+// Kid's MP Money page — balance hero, per-section earnings, recent orders,
+// and a filterable transactions list. Phase 5 of MP Money (see app/money/PLAN.md).
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useLearner } from '@/context/LearnerContext';
@@ -31,6 +31,22 @@ interface TransactionRow {
   createdAt: string;
 }
 
+interface PerSection {
+  math: number;
+  spelling: number;
+  languageArts: number;
+  geography: number;
+  drive: number;
+  chess: number;
+}
+
+interface WalletSummary {
+  balanceCents: number;
+  perSection: PerSection;
+  recent: { transactions: TransactionRow[]; orders: OrderRow[] };
+  streakDays: number;
+}
+
 // Coerce the Json items column into a typed array — drop anything malformed
 // rather than crashing the page on a single bad row.
 function parseItems(raw: unknown): OrderItem[] {
@@ -49,38 +65,56 @@ function formatDate(iso: string): string {
   return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
+// Per-section grid metadata — order, label, emoji. Lives here (not in the
+// API) because it's purely UI presentation.
+const SECTION_TILES: ReadonlyArray<{ key: keyof PerSection; label: string; emoji: string }> = [
+  { key: 'math', label: 'Math', emoji: '🧮' },
+  { key: 'spelling', label: 'Spelling', emoji: '🔤' },
+  { key: 'languageArts', label: 'Language Arts', emoji: '📖' },
+  { key: 'geography', label: 'Geography', emoji: '🌍' },
+  { key: 'drive', label: 'Drive', emoji: '🚗' },
+  { key: 'chess', label: 'Chess', emoji: '♟️' },
+];
+
+type TxFilter = 'all' | 'earn' | 'spend' | 'gift';
+
+const FILTER_CHIPS: ReadonlyArray<{ key: TxFilter; label: string }> = [
+  { key: 'all', label: 'All' },
+  { key: 'earn', label: 'Earnings' },
+  { key: 'spend', label: 'Purchases' },
+  { key: 'gift', label: 'Gifts' },
+];
+
 export default function PortalMoneyPage() {
   const { learner, balanceCents, loading, logout } = useLearner();
   const router = useRouter();
-  const [orders, setOrders] = useState<OrderRow[] | null>(null);
-  const [txns, setTxns] = useState<TransactionRow[] | null>(null);
+  const [summary, setSummary] = useState<WalletSummary | null>(null);
   const [fetchError, setFetchError] = useState<string | null>(null);
+  const [txFilter, setTxFilter] = useState<TxFilter>('all');
 
   useEffect(() => {
     if (!learner) {
-      setOrders(null);
-      setTxns(null);
+      setSummary(null);
       return;
     }
     let cancelled = false;
     (async () => {
       try {
-        const [oRes, tRes] = await Promise.all([
-          fetch(`/api/money/orders?user=${encodeURIComponent(learner)}`),
-          fetch(`/api/money/transactions?user=${encodeURIComponent(learner)}`),
-        ]);
+        const res = await fetch(`/api/money/wallet-summary?user=${encodeURIComponent(learner)}`);
         if (cancelled) return;
-        if (oRes.ok) {
-          const data = (await oRes.json()) as { orders?: OrderRow[] };
-          setOrders(Array.isArray(data.orders) ? data.orders : []);
+        if (res.ok) {
+          const data = (await res.json()) as WalletSummary;
+          setSummary(data);
         } else {
-          setOrders([]);
-        }
-        if (tRes.ok) {
-          const data = (await tRes.json()) as { transactions?: TransactionRow[] };
-          setTxns(Array.isArray(data.transactions) ? data.transactions : []);
-        } else {
-          setTxns([]);
+          // Treat missing record as empty wallet, not an error.
+          setSummary({
+            balanceCents: 0,
+            perSection: {
+              math: 0, spelling: 0, languageArts: 0, geography: 0, drive: 0, chess: 0,
+            },
+            recent: { transactions: [], orders: [] },
+            streakDays: 0,
+          });
         }
       } catch {
         if (!cancelled) setFetchError('Could not load your history. Try again in a moment.');
@@ -90,6 +124,14 @@ export default function PortalMoneyPage() {
       cancelled = true;
     };
   }, [learner]);
+
+  // Filter the transactions client-side — list is capped at 50, so no need
+  // to re-hit the server for each chip.
+  const filteredTxns = useMemo(() => {
+    if (!summary) return null;
+    if (txFilter === 'all') return summary.recent.transactions;
+    return summary.recent.transactions.filter((t) => t.type === txFilter);
+  }, [summary, txFilter]);
 
   // Not-logged-in state — friendly card with login link.
   if (!loading && learner === null) {
@@ -117,6 +159,9 @@ export default function PortalMoneyPage() {
     router.push('/');
   };
 
+  const orders = summary?.recent.orders ?? null;
+  const streakDays = summary?.streakDays ?? 0;
+
   return (
     <div className="min-h-[calc(100vh-260px)] px-4 py-8 max-w-3xl mx-auto">
       {/* Hero balance card */}
@@ -133,6 +178,12 @@ export default function PortalMoneyPage() {
             <div className="text-4xl sm:text-5xl font-black text-yellow-300 mt-1">
               {balanceCents === null ? '—' : centsToMP(balanceCents)}
             </div>
+            {streakDays >= 2 && (
+              <div className="mt-3 inline-flex items-center gap-1.5 bg-yellow-300/20 text-yellow-200 text-xs font-bold px-3 py-1 rounded-full border border-yellow-300/40">
+                <span>🔥</span>
+                <span>Earning streak: {streakDays} days in a row</span>
+              </div>
+            )}
           </div>
           <button
             onClick={handleSignOut}
@@ -174,6 +225,33 @@ export default function PortalMoneyPage() {
           {fetchError}
         </div>
       )}
+
+      {/* Per-section earnings grid */}
+      <section className="mb-8">
+        <h2 className="text-xl font-black text-purple-900 mb-3">Earned by section</h2>
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+          {SECTION_TILES.map((tile) => {
+            const cents = summary?.perSection[tile.key] ?? 0;
+            const isLoading = summary === null;
+            return (
+              <div
+                key={tile.key}
+                className="bg-white rounded-xl border border-purple-100 px-3 py-3 shadow-sm flex items-center gap-3"
+              >
+                <div className="text-2xl shrink-0" aria-hidden>{tile.emoji}</div>
+                <div className="min-w-0">
+                  <div className="text-[11px] uppercase font-bold tracking-wide text-purple-700/70 truncate">
+                    {tile.label}
+                  </div>
+                  <div className={`font-black text-base ${cents > 0 ? 'text-purple-900' : 'text-gray-400'}`}>
+                    {isLoading ? '—' : centsToMP(cents)}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
 
       {/* Recent orders */}
       <section className="mb-8">
@@ -223,20 +301,43 @@ export default function PortalMoneyPage() {
         )}
       </section>
 
-      {/* Recent transactions */}
+      {/* Recent transactions — with type filter chips */}
       <section>
-        <h2 className="text-xl font-black text-purple-900 mb-3">Recent transactions</h2>
-        {txns === null ? (
+        <div className="flex items-center justify-between gap-3 mb-3 flex-wrap">
+          <h2 className="text-xl font-black text-purple-900">Recent transactions</h2>
+          <div className="flex flex-wrap gap-1.5">
+            {FILTER_CHIPS.map((chip) => {
+              const active = txFilter === chip.key;
+              return (
+                <button
+                  key={chip.key}
+                  onClick={() => setTxFilter(chip.key)}
+                  className={
+                    `text-xs font-bold px-3 py-1 rounded-full border transition-colors ` +
+                    (active
+                      ? 'bg-purple-700 text-white border-purple-700'
+                      : 'bg-white text-purple-700 border-purple-200 hover:bg-purple-50')
+                  }
+                >
+                  {chip.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+        {filteredTxns === null ? (
           <div className="bg-white rounded-2xl border border-purple-100 p-6 text-sm text-gray-500">
             Loading...
           </div>
-        ) : txns.length === 0 ? (
+        ) : filteredTxns.length === 0 ? (
           <div className="bg-white rounded-2xl border-2 border-dashed border-purple-200 p-6 text-center text-sm text-gray-700">
-            No transactions yet
+            {txFilter === 'all'
+              ? 'No transactions yet'
+              : `No ${FILTER_CHIPS.find((c) => c.key === txFilter)?.label.toLowerCase()} yet`}
           </div>
         ) : (
           <ul className="space-y-2">
-            {txns.map((t) => {
+            {filteredTxns.map((t) => {
               const positive = t.cents >= 0;
               const amount = `${positive ? '+' : '-'}${centsToMP(Math.abs(t.cents))}`;
               return (

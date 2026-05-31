@@ -140,6 +140,90 @@ export async function listOrders(rawUser: string, limit = 50) {
   });
 }
 
+// Sum lifetime MpEarning cents per section. Sections without any earnings
+// come back as 0 so the UI can render the full grid without extra checks.
+// We include `chess` even though the earn API doesn't credit it yet — it's
+// listed in the wallet grid for completeness so kids see it as a section.
+export type PerSectionEarnings = {
+  math: number;
+  spelling: number;
+  languageArts: number;
+  geography: number;
+  drive: number;
+  chess: number;
+};
+
+export async function sumEarningsPerSection(rawUser: string): Promise<PerSectionEarnings> {
+  const userKey = normalizeUser(rawUser);
+  const rows = await prisma.mpEarning.groupBy({
+    by: ['section'],
+    where: { userName: userKey },
+    _sum: { cents: true },
+  });
+  const out: PerSectionEarnings = {
+    math: 0,
+    spelling: 0,
+    languageArts: 0,
+    geography: 0,
+    drive: 0,
+    chess: 0,
+  };
+  for (const r of rows) {
+    const key = r.section as keyof PerSectionEarnings;
+    if (key in out) {
+      out[key] = r._sum.cents ?? 0;
+    }
+  }
+  return out;
+}
+
+// Consecutive-days streak ending today (or yesterday — we allow a one-day
+// grace so a kid who hasn't earned yet today still sees their streak in the
+// morning). Counts only distinct calendar dates with at least one MpEarning.
+//
+// Uses each row's local-date string (YYYY-MM-DD in the server's TZ) to bucket
+// — server runs in UTC on Vercel, which means streaks reset at UTC midnight.
+// Good enough for v1; tweak if it ever becomes user-visible misalignment.
+export async function computeEarningStreak(rawUser: string): Promise<number> {
+  const userKey = normalizeUser(rawUser);
+  // Look back ~120 days max — way more than any realistic streak, keeps the
+  // query bounded.
+  const cutoff = new Date(Date.now() - 120 * 24 * 60 * 60 * 1000);
+  const rows = await prisma.mpEarning.findMany({
+    where: { userName: userKey, createdAt: { gte: cutoff } },
+    select: { createdAt: true },
+    orderBy: { createdAt: 'desc' },
+  });
+  if (!rows.length) return 0;
+
+  const dayKey = (d: Date) => {
+    const y = d.getUTCFullYear();
+    const m = String(d.getUTCMonth() + 1).padStart(2, '0');
+    const day = String(d.getUTCDate()).padStart(2, '0');
+    return `${y}-${m}-${day}`;
+  };
+
+  const days = new Set<string>();
+  for (const r of rows) days.add(dayKey(r.createdAt));
+
+  // Start counting from today; if today has no earn, allow yesterday as the
+  // anchor so the streak doesn't visually reset until a full day is skipped.
+  const today = new Date();
+  let anchor = new Date(today);
+  if (!days.has(dayKey(anchor))) {
+    anchor = new Date(anchor.getTime() - 24 * 60 * 60 * 1000);
+    if (!days.has(dayKey(anchor))) return 0;
+  }
+
+  let streak = 0;
+  const cursor = new Date(anchor);
+  while (days.has(dayKey(cursor))) {
+    streak++;
+    cursor.setUTCDate(cursor.getUTCDate() - 1);
+  }
+  return streak;
+}
+
 // Parent-facing helpers.
 
 export async function listAllLearners() {
