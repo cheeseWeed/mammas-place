@@ -77,6 +77,14 @@ export default function MathHubPage() {
                 cta="Start PEMDAS"
                 shipped
               />
+              <PhaseCard
+                phaseLabel="Phase 6"
+                title="Time & Money"
+                subtitle="Read the clock, count the change. Real-world math."
+                href="/math/time-money"
+                cta="Start time & money"
+                shipped
+              />
             </div>
           </section>
 

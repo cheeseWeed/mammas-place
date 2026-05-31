@@ -63,7 +63,7 @@ export const WORLD_PHASES: WorldPhase[] = [
     id: 'world-continent-quiz',
     number: 'W5',
     title: 'Continent Quiz',
-    subtitle: 'Which continent is this country in? Six big choices.',
+    subtitle: 'Two ways: pick the continent for a country, or pick a country for a continent.',
     route: '/geography/world/continent-quiz',
     shipped: true,
   },

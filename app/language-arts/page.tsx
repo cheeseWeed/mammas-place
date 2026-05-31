@@ -83,6 +83,14 @@ export default function LanguageArtsHubPage() {
                 cta="Start drilling"
                 shipped
               />
+              <Card
+                phaseLabel="Phase L7"
+                title="Vocabulary Builder"
+                subtitle="Big words, kid-friendly. Match words to meanings or fill in the blank."
+                href="/language-arts/vocabulary"
+                cta="Start drilling"
+                shipped
+              />
             </div>
           </section>
 
