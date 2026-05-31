@@ -43,6 +43,17 @@ export default async function HomePage() {
     'sports': { label: 'Sports', emoji: '🏀', color: 'from-orange-500 to-amber-600' },
   };
 
+  // Learn section cards — links to the dedicated learning hubs (separate from
+  // the shop). Placed above Shop by Category so kids see learning first.
+  const learnSections: { href: string; label: string; emoji: string; color: string }[] = [
+    { href: '/math', label: 'Math Arena', emoji: '🧮', color: 'from-sky-500 to-cyan-600' },
+    { href: '/language-arts', label: 'Language Arts', emoji: '📚', color: 'from-rose-500 to-pink-600' },
+    { href: '/spelling', label: 'Spelling', emoji: '🐝', color: 'from-amber-500 to-yellow-600' },
+    { href: '/geography', label: 'Geography', emoji: '🗺️', color: 'from-emerald-500 to-teal-600' },
+    { href: '/drive', label: 'Drive', emoji: '🚗', color: 'from-purple-600 to-purple-900' },
+    { href: '/chess', label: 'Chess', emoji: '♟️', color: 'from-stone-600 to-stone-900' },
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Hero Banner */}
@@ -73,6 +84,24 @@ export default async function HomePage() {
         <div className="flex gap-6">
           {/* Main Content */}
           <div className="flex-1 min-w-0">
+            {/* Learn — direct links to the learning hubs (not part of the shop) */}
+            <section className="mb-10">
+              <h2 className="text-2xl font-black text-purple-900 mb-6 text-center">Learn</h2>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                {learnSections.map((section) => (
+                  <Link
+                    key={section.href}
+                    href={section.href}
+                    className={`bg-gradient-to-br ${section.color} rounded-2xl p-6 text-white text-center shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300`}
+                  >
+                    <div className="text-8xl mb-2">{section.emoji}</div>
+                    <div className="text-lg font-black">{section.label}</div>
+                    <div className="text-sm opacity-80 mt-1">Open →</div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+
             {/* Category Banners */}
             <section className="mb-10">
               <h2 className="text-2xl font-black text-purple-900 mb-6 text-center">Shop by Category</h2>

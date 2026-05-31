@@ -171,19 +171,11 @@ const REPLIES: Record<DadOutcome, readonly string[]> = {
     "Not in this mood. Try later.",
   ],
   no: [
-    "What, do you think money grows on trees?",
-    "Does it look like I'm made of money?",
-    "Do you want a tile to the house, too?",
-    "Do you want my dog, too?",
-    "Do you want the shirt off my back, too?",
-    "Do you want my truck, too?",
-    "Do you want my left arm, too?",
-    "Do you want my last cup of coffee, too?",
-    "Do you want my Sunday paper, too?",
-    "Do you want the remote, too?",
-    "Do you want my recliner, too?",
-    "Do you want the lawnmower, too?",
-    "I'm a dad, not an ATM.",
+    // Generic dad denials — NO size-shaming, NO "do you want X too?" lines,
+    // NO "you're trying to pad the ask" callouts. Those all live in `greedy`.
+    // This bank is "the answer's no" without accusing the kid of trying to
+    // pull a fast one. If a line references AMOUNT or SNEAKINESS, it does
+    // NOT belong here.
     "Back in MY day, we walked uphill BOTH ways.",
     "When I was your age, MP didn't even exist.",
     "No, but nice try.",
@@ -202,32 +194,53 @@ const REPLIES: Record<DadOutcome, readonly string[]> = {
     "Denied. Go outside.",
     "Not today. Maybe never. Probably never.",
     "Nope. Read a book instead.",
-    "Money doesn't fall out of the sky, you know.",
     "Talk to my lawyer. (I don't have a lawyer.)",
     "Ask me again and the answer gets worse.",
     "Computer says no.",
-    "Have you considered eating cheaper snacks?",
-    "Have you tried being independently wealthy?",
     "What part of NO is confusing?",
     "Not happening, sport.",
-    "Big swing, big miss. No.",
+    "Hahahaha. No.",
+    "Sorry kiddo. Not this one.",
+    "Not on my watch.",
+    "The answer is no. Plain and simple.",
+    "Nope. Try again another day.",
+    "Bold strategy. Did not work.",
+    "I'm gonna have to say no, chief.",
+    "Not in the cards today.",
+    "No. Go ride your bike.",
   ],
   greedy: [
+    // "I see your hustle" callouts — Dad caught the kid trying to pad the ask,
+    // pocket the change, or shoot for the moon. EVERY line here either:
+    //   (a) names a wild item the kid might also want ("do you want X too?"),
+    //   (b) references the size of the ask explicitly,
+    //   (c) accuses the kid of skimming / padding / hustling, or
+    //   (d) references "money doesn't grow on trees / made of money" idiom.
+    // If it's just a generic no, it belongs in `no`, not here.
     "Whoa whoa whoa. Do you want my truck, too?",
     "Do you want a tile to the house, too?",
+    "Do you want my dog, too?",
+    "Do you want the shirt off my back, too?",
+    "Do you want my left arm, too?",
+    "Do you want my last cup of coffee, too?",
+    "Do you want my Sunday paper, too?",
+    "Do you want the remote, too?",
+    "Do you want my recliner, too?",
+    "Do you want the keys to the car, too?",
     "What's next, the lawnmower?",
-    "Did you also want my left arm, kiddo?",
+    "What's next — the mortgage?",
+    "I'm a dad, not an ATM.",
+    "What, do you think money grows on trees?",
+    "Does it look like I'm made of money?",
+    "Money doesn't fall out of the sky, you know.",
     "I see what you did there. Try a smaller number.",
     "Nice try. Cut that ask in half. Then in half again.",
     "Buddy. Read the room.",
     "That's a lot of MP for one ask. Try again with a smaller number.",
-    "Hahahaha. No.",
     "I am NOT made of money. Lower the ask.",
-    "Bold strategy. Did not work.",
-    "Do you also want my Sunday paper?",
     "Were you planning on buying a small island?",
     "{ask} MP?! For real?",
-    "I admire the confidence. The answer is still no.",
+    "I admire the confidence on a {ask} MP ask. The answer is still no.",
     "What do you think this is, the lottery?",
     "Asking for {ask} MP is a bold move, Cotton.",
     "If I had {ask} MP I'd retire.",
@@ -244,6 +257,18 @@ const REPLIES: Record<DadOutcome, readonly string[]> = {
     "Sure, and a pony. And a yacht. The answer is no.",
     "I see your hustle. Respectfully — no.",
     "Trying to fund a side project, kiddo?",
+    "Have you considered eating cheaper snacks?",
+    "Have you tried being independently wealthy?",
+    "Big swing, big miss. No.",
+    "That ask has a TIP baked in. I see you.",
+    "You want the ask AND the change in your pocket. Not today.",
+    "{ask} MP? Did the calculator slip?",
+    "I count the cart. That ask is fat. Try again.",
+    "Nice padding job. Now ask for the real number.",
+    "{ask} MP for that cart? Dad sees the skim.",
+    "You want the cart AND a kickback? Bold.",
+    "Asking high so I'll meet you halfway, huh? Not today.",
+    "I built the cart math. I see the extra.",
   ],
   bad_luck: [
     "Tough crowd today. Better luck next time.",
@@ -303,6 +328,26 @@ const NEGATIVE_WORDS = [
   'want', 'gimme', 'plz', 'idk', 'whatever', 'just',
 ] as const;
 
+// Politeness phrases — user spec 2026-05-31: polite asks get a ~20% yes
+// boost (~+6 per matched phrase, capped +12). Substring match (lower).
+// Includes kid-bribery openers ("I got you a drink", "I brought you...")
+// which signal politeness even if grammatically not "please/thanks".
+const POLITE_PHRASES = [
+  'please', 'pls', 'thank you', 'thanks', 'thx',
+  'would you', 'could you', 'may i', 'mind if',
+  "i'd appreciate", 'appreciate it', 'kindly',
+  'sorry to ask', 'if you can',
+  // Kid-bribery / sweet talk — "I got your drink", "I brought you snacks"
+  'i got you', 'i brought you', 'i made you', 'i got your',
+  'for you', 'love you', 'love ya', 'best dad', 'best daddy',
+  "you're the best",
+  // Responsibility / chores invoked — "I did what you asked",
+  // "I cleaned my room", "I finished homework"
+  'i did what', 'did my chores', 'did the dishes', 'cleaned my room',
+  'finished homework', 'did homework', 'helped mom', 'helped you',
+  'took out the trash', 'fed the dog', 'walked the dog',
+] as const;
+
 // Word-boundary regex per term, case-insensitive. Built once at module load
 // so we don't recompile on every ask.
 const POSITIVE_RE = POSITIVE_WORDS.map((w) => new RegExp(`\\b${w}\\b`, 'i'));
@@ -311,10 +356,12 @@ const NEGATIVE_RE = NEGATIVE_WORDS.map((w) => new RegExp(`\\b${w}\\b`, 'i'));
 interface ReasonScore {
   delta: number;     // total weight delta (+ favors yes, − favors no)
   spammy: boolean;   // hard signal — flips toward bad_luck
+  polite?: boolean;  // optional debug — true when reason contains courtesy
 }
 
 export function scoreReason(rawReason: string): ReasonScore {
   const reason = rawReason.trim();
+  const lower = reason.toLowerCase();
   let delta = 0;
 
   // Length signal.
@@ -325,11 +372,18 @@ export function scoreReason(rawReason: string): ReasonScore {
   for (const re of POSITIVE_RE) if (re.test(reason)) delta += 5;
   for (const re of NEGATIVE_RE) if (re.test(reason)) delta -= 5;
 
+  // Politeness bonus — capped at +12 (≈40% boost) so multiple polite words
+  // don't compound infinitely. Two distinct phrases = full bonus.
+  let politeHits = 0;
+  for (const phrase of POLITE_PHRASES) {
+    if (lower.includes(phrase)) politeHits++;
+  }
+  const polite = politeHits > 0;
+  if (politeHits > 0) {
+    delta += Math.min(12, politeHits * 6);
+  }
+
   // Spammy: 5+ of the same character in a row → "aaaaa", "!!!!!", "99999".
-  // Bumped from 4+ to 5+ so legit kid emphasis like "yessss" or "schoooool"
-  // doesn't get flagged. Real spam (long runs of a single char) still trips
-  // it. No delta penalty here — the spammy flag already clamps the yes
-  // weights to 1 in decideOutcome, so a second -15 was double-dipping.
   const spammy = /(.)\1{4,}/.test(reason);
 
   // ALL CAPS only counts if the message has enough letters and is mostly upper.
@@ -338,7 +392,7 @@ export function scoreReason(rawReason: string): ReasonScore {
     delta -= 4; // mild — kid yelling
   }
 
-  return { delta, spammy };
+  return { delta, spammy, polite };
 }
 
 interface CadenceScore {
