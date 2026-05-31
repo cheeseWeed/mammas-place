@@ -1,8 +1,9 @@
 'use client';
 
-// Parent gate for /admin/mp-bank. 4-digit PIN, posts to /api/money/parent/login.
-// First-time use: PIN 0000 seeds the ParentConfig row (see the login route).
-// Separate from the staff /admin portal — different cookie, different concern.
+// Parent gate for /admin/mp-bank. Alphanumeric PIN (4-12 chars), posts to
+// /api/money/parent/login. First-time use: PIN `mp2186` seeds the ParentConfig
+// row (see lib/money/parent.SEED_PARENT_PIN). Separate from the staff /admin
+// portal — different cookie, different concern.
 
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -12,6 +13,9 @@ type Status =
   | { kind: 'busy' }
   | { kind: 'error'; message: string };
 
+// Mirrors lib/money/parent.isValidParentPin — keep in sync if loosening server-side.
+const PIN_RE = /^[A-Za-z0-9]{4,12}$/;
+
 export default function MpBankLoginPage() {
   const router = useRouter();
   const [pin, setPin] = useState('');
@@ -20,8 +24,8 @@ export default function MpBankLoginPage() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!/^\d{4}$/.test(pin)) {
-      setStatus({ kind: 'error', message: 'PIN must be exactly 4 digits.' });
+    if (!PIN_RE.test(pin)) {
+      setStatus({ kind: 'error', message: 'PIN must be 4-12 letters or digits.' });
       return;
     }
     setStatus({ kind: 'busy' });
@@ -68,7 +72,7 @@ export default function MpBankLoginPage() {
             Enter parent PIN
           </h2>
           <p className="text-center text-gray-600 text-xs mb-5">
-            First time? Use PIN <span className="font-mono font-bold">0000</span> to
+            First time? Use PIN <span className="font-mono font-bold">mp2186</span> to
             set up the parent gate.
           </p>
 
@@ -76,22 +80,23 @@ export default function MpBankLoginPage() {
             htmlFor="mp-parent-pin"
             className="block text-sm font-medium text-purple-900 mb-1"
           >
-            4-digit PIN
+            Parent PIN (4-12 chars)
           </label>
           <input
             id="mp-parent-pin"
             ref={pinRef}
             type="password"
-            inputMode="numeric"
-            pattern="\d{4}"
+            pattern="[A-Za-z0-9]{4,12}"
             value={pin}
-            onChange={(e) => setPin(e.target.value.replace(/\D/g, '').slice(0, 4))}
-            placeholder="• • • •"
-            maxLength={4}
+            onChange={(e) =>
+              setPin(e.target.value.replace(/[^A-Za-z0-9]/g, '').slice(0, 12))
+            }
+            placeholder="••••••"
+            maxLength={12}
             autoComplete="current-password"
             autoFocus
             disabled={busy}
-            className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-4 py-3 bg-purple-50 text-purple-900 tracking-[0.4em] text-center text-xl"
+            className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-4 py-3 bg-purple-50 text-purple-900 tracking-[0.3em] text-center text-xl"
           />
 
           {status.kind === 'error' && (

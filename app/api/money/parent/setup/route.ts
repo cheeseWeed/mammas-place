@@ -1,10 +1,13 @@
 // POST /api/money/parent/setup
 // Body: { newPin, currentPin? }
-// First time: any 4-digit newPin (no currentPin required).
-// After: must include currentPin matching the stored hash.
+// First time (no row yet): seeds the parent PIN to the well-known SEED_PARENT_PIN
+//   (`mp2186`) regardless of what the caller sent. Stops a kid from secretly
+//   picking a custom PIN and locking mom out.
+// After: must be authenticated AND include matching currentPin to rotate.
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import {
+  SEED_PARENT_PIN,
   getParentConfig,
   hashParentPin,
   isParentAuthenticated,
@@ -19,7 +22,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
   }
   if (!isValidParentPin(body.newPin)) {
-    return NextResponse.json({ error: 'New PIN must be 4 digits' }, { status: 400 });
+    return NextResponse.json({ error: 'New PIN must be 4-12 alphanumeric chars' }, { status: 400 });
   }
 
   const cfg = await getParentConfig();
@@ -38,13 +41,12 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true });
   }
 
-  // First-time setup — anyone can seed, but only to the well-known 0000.
+  // First-time setup — anyone can seed, but only to the well-known SEED PIN.
   // This stops a kid from quietly setting a custom PIN before mom logs in
-  // and locking her out. Worst case = same as /parent/login's first-time
-  // path: kid clicks a button, row seeds to 0000, mom logs in with 0000
-  // and rotates from here using currentPin: '0000'.
+  // and locking her out. Mom logs in with SEED_PARENT_PIN and rotates from
+  // here using currentPin = SEED_PARENT_PIN.
   await prisma.parentConfig.create({
-    data: { id: 1, parentPinHash: hashParentPin('0000') },
+    data: { id: 1, parentPinHash: hashParentPin(SEED_PARENT_PIN) },
   });
   return NextResponse.json({ ok: true, firstTime: true });
 }

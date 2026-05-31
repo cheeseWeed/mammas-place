@@ -21,8 +21,10 @@ import { computeDecision, DadContext, DadOutcome } from '@/lib/money/dad';
 import { prisma } from '@/lib/prisma';
 
 const COOKIE_NAME = 'dl_user';
-const MIN_CENTS = 100;     // 1 MP — must be at least 1 to count as an ask
-const MAX_CENTS = 100_000; // 1000 MP — sanity cap so we can't accidentally credit a million
+const MIN_CENTS = 100;        // 1 MP — must be at least 1 to count as an ask
+const MAX_CENTS = 10_000_000; // 100,000 MP — true sanity cap, not a UX gate.
+                              // Kid can ask for a car. Dad rolls a smaller
+                              // chance of yes. User-locked 2026-05-31.
 
 export async function POST(req: NextRequest) {
   // Cookie-based kid auth — matches the gift-card redeem pattern.

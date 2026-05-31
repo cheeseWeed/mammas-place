@@ -1,8 +1,11 @@
 // Parent admin gate — separate from learner (kid) PINs.
 // Singleton ParentConfig row holds the hash. Cookie `mp_parent=1` once verified.
 //
-// Initial PIN: see app/money/PLAN.md (defaults to 0000 on first setup if you
-// hit /api/money/parent/setup with no current PIN).
+// PIN format: 4-12 alphanumeric chars (loosened from 4-digit so the parent
+// can use a real password like `mp2186`). First-time seed PIN is `mp2186`
+// (see app/api/money/parent/login/route.ts). If a stale `0000` seed already
+// exists in the ParentConfig row, the parent must log in with `0000` once
+// and rotate to `mp2186` via the Settings panel.
 
 import { createHash } from 'crypto';
 import { cookies } from 'next/headers';
@@ -12,12 +15,20 @@ const PARENT_SALT = 'mp-parent-salt';
 const PARENT_COOKIE = 'mp_parent';
 const PARENT_COOKIE_MAX_AGE = 60 * 60 * 12; // 12 hours
 
+// The well-known seed PIN used for first-time setup. Anyone can seed the row
+// to this value (so a kid can't lock mom out by picking something custom).
+// After first login mom rotates from here via the Settings panel.
+export const SEED_PARENT_PIN = 'mp2186';
+
 export function hashParentPin(pin: string): string {
   return createHash('sha256').update(pin + PARENT_SALT).digest('hex');
 }
 
+// 4-12 alphanumeric chars (loosened from `\d{4}`). Lets the parent use a real
+// short password like `mp2186` instead of a numeric PIN.
+const PARENT_PIN_RE = /^[A-Za-z0-9]{4,12}$/;
 export function isValidParentPin(pin: unknown): pin is string {
-  return typeof pin === 'string' && /^\d{4}$/.test(pin);
+  return typeof pin === 'string' && PARENT_PIN_RE.test(pin);
 }
 
 // Read the ParentConfig row; returns null if never set.

@@ -2,10 +2,10 @@
 'use client';
 
 import { useParams, useRouter } from 'next/navigation';
-import { getProductById, getRelatedProducts } from '@/lib/products';
+import { useProducts, findById, relatedClient } from '@/lib/products-client';
 import { useCart } from '@/context/CartContext';
 import { useToast } from '@/context/ToastContext';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import * as gtag from '@/lib/gtag';
 import Link from 'next/link';
 import ProductCard from '@/components/ProductCard';
@@ -19,10 +19,21 @@ export default function ProductDetailPage() {
   const { addToCart } = useCart();
   const { showToast } = useToast();
   const [quantity, setQuantity] = useState(1);
-  const [loading, setLoading] = useState(true);
-  const product = getProductById(params.id as string);
-
-  useEffect(() => { const t = setTimeout(() => setLoading(false), 50); return () => clearTimeout(t); }, []);
+  // Catalog now comes from /api/products (DB-backed). useProducts caches it
+  // across page navigations so we don't re-fetch on every product hop.
+  const { products: catalog, loading: catalogLoading } = useProducts();
+  const product = useMemo(
+    () => findById(catalog, params.id as string),
+    [catalog, params.id],
+  );
+  // 50ms grace tick — keeps the skeleton fade visually consistent with the
+  // pre-DB version where loading was a fixed setTimeout.
+  const [graceDone, setGraceDone] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setGraceDone(true), 50);
+    return () => clearTimeout(t);
+  }, []);
+  const loading = catalogLoading || !graceDone;
 
   useEffect(() => {
     if (product && !loading) {
@@ -42,7 +53,7 @@ export default function ProductDetailPage() {
     );
   }
 
-  const related = getRelatedProducts(product, 5);
+  const related = relatedClient(catalog, product, 5);
 
   // Mock customer reviews for demo purposes
   const mockReviews: Review[] = [
@@ -187,10 +198,29 @@ export default function ProductDetailPage() {
                 <span className="text-gray-600 text-sm font-medium">{product.rating} ({product.reviewCount} reviews)</span>
               </div>
 
-              {/* Audio Preview Player */}
+              {/* Audio Preview Player — also wires listen-tracking for the
+                  logged-in kid (no-op for anonymous: API returns 401 quietly).
+                  Fire-and-forget; UI never blocks on the call. */}
               {product.isAudiobook && product.audioPreviewUrl && (
                 <div className="mt-4">
-                  <AudioPlayer src={product.audioPreviewUrl} title={product.name} />
+                  <AudioPlayer
+                    src={product.audioPreviewUrl}
+                    title={product.name}
+                    onListenStart={() => {
+                      fetch('/api/audiobooks/listen-start', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ productId: product.id }),
+                      }).catch(() => {});
+                    }}
+                    onListenComplete={() => {
+                      fetch('/api/audiobooks/listen-complete', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ productId: product.id }),
+                      }).catch(() => {});
+                    }}
+                  />
                 </div>
               )}
 

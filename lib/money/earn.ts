@@ -14,6 +14,12 @@
 import { Prisma } from '@prisma/client';
 import { prisma } from '../prisma';
 import { normalizeUser } from '../drive-progress';
+import {
+  computePuzzleReward,
+  type PuzzleRewardInput,
+  type PuzzleTheme as ChessPuzzleTheme,
+  type ChessPuzzleResult,
+} from '../chess/reward';
 
 // Cents per MP unit (1 MP = 100 cents internally). Kept here so reward
 // math reads in "MP" units even though we store cents.
@@ -80,12 +86,24 @@ export type DriveQuizPayload = {
   isFinalOrSim?: boolean;
 };
 
+// Chess puzzle finish: small flat reward per theme + tiny efficiency bonus
+// if solved in the minimum number of moves. Full chess games go through
+// /api/chess/game/finish (different formula); puzzles ride the generic earn
+// route so anon kids get the same "log in to keep it" preview flow.
+export type ChessPuzzlePayload = {
+  result: ChessPuzzleResult;
+  theme: ChessPuzzleTheme;
+  movesTaken: number;
+  puzzleId?: string; // logged only — useful for replay analysis
+};
+
 export type EarnSection =
   | 'math'
   | 'languageArts'
   | 'spelling'
   | 'geography'
-  | 'drive';
+  | 'drive'
+  | 'chess';
 
 export type EarnRequest =
   | { section: 'math'; kind: 'round'; payload: MathRoundPayload; idempotencyKey: string }
@@ -93,7 +111,8 @@ export type EarnRequest =
   | { section: 'languageArts'; kind: 'drill'; payload: LangArtsDrillPayload; idempotencyKey: string }
   | { section: 'geography'; kind: 'quiz'; payload: GeographyQuizPayload; idempotencyKey: string }
   | { section: 'drive'; kind: 'deck'; payload: DriveDeckPayload; idempotencyKey: string }
-  | { section: 'drive'; kind: 'quiz'; payload: DriveQuizPayload; idempotencyKey: string };
+  | { section: 'drive'; kind: 'quiz'; payload: DriveQuizPayload; idempotencyKey: string }
+  | { section: 'chess'; kind: 'puzzle'; payload: ChessPuzzlePayload; idempotencyKey: string };
 
 export type EarnResult =
   | { ok: true; centsEarned: number; balanceCents: number; reason: string; capped?: false }
@@ -261,7 +280,22 @@ function computeReward(req: EarnRequest): { cents: number; reason: string } {
     case 'drive':
       if (req.kind === 'deck') return computeDriveDeckReward(req.payload);
       return computeDriveQuizReward(req.payload);
+    case 'chess':
+      // Only 'puzzle' kind goes through the generic earn route. Full chess
+      // games use /api/chess/game/finish and call computeChessReward directly.
+      return computeChessPuzzleReward(req.payload);
   }
+}
+
+// Chess puzzle: delegate to the dedicated formula in lib/chess/reward.ts.
+// Kept here so the dispatcher reads in one shape ("compute<Section><Kind>Reward").
+export function computeChessPuzzleReward(p: ChessPuzzlePayload): { cents: number; reason: string } {
+  const input: PuzzleRewardInput = {
+    result: p.result,
+    theme: p.theme,
+    movesTaken: p.movesTaken,
+  };
+  return computePuzzleReward(input);
 }
 
 // Main entry. Server-authoritative reward, idempotency, ledger.

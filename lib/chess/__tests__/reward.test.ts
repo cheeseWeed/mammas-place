@@ -1,7 +1,7 @@
 // Reward formula tests. Pure math, no DB.
 
 import { describe, it, expect } from 'vitest';
-import { computeChessReward } from '../reward';
+import { computeChessReward, computePuzzleReward } from '../reward';
 
 describe('computeChessReward', () => {
   it('Win vs Wizard in 30 moves earns ~350¢', () => {
@@ -167,5 +167,65 @@ describe('computeChessReward', () => {
     });
     // 150 × 1.0 × 1.8 × 1.0 = 270 → 250.
     expect(cents).toBe(250);
+  });
+});
+
+describe('computePuzzleReward', () => {
+  it('gave-up earns 0¢ for every theme', () => {
+    for (const theme of ['mate-in-1', 'mate-in-2', 'mate-in-3', 'endgame'] as const) {
+      const out = computePuzzleReward({ result: 'gave-up', theme, movesTaken: 0 });
+      expect(out.cents).toBe(0);
+      expect(out.reason).toMatch(/skip/i);
+    }
+  });
+
+  it('mate-in-1 solved in 1 move earns 75¢ (50 base + 25 bonus)', () => {
+    const out = computePuzzleReward({ result: 'solved', theme: 'mate-in-1', movesTaken: 1 });
+    expect(out.cents).toBe(75);
+    expect(out.reason).toMatch(/no wrong moves/);
+  });
+
+  it('mate-in-1 solved in 2 moves (one wrong try) earns base 50¢ only', () => {
+    const out = computePuzzleReward({ result: 'solved', theme: 'mate-in-1', movesTaken: 2 });
+    expect(out.cents).toBe(50);
+    expect(out.reason).not.toMatch(/no wrong moves/);
+  });
+
+  it('mate-in-2 solved in 2 moves earns 125¢ (100 base + 25 bonus)', () => {
+    const out = computePuzzleReward({ result: 'solved', theme: 'mate-in-2', movesTaken: 2 });
+    expect(out.cents).toBe(125);
+    expect(out.reason).toMatch(/mate-in-2/);
+    expect(out.reason).toMatch(/no wrong moves/);
+  });
+
+  it('mate-in-2 solved in 3 moves (one wrong try) earns base 100¢', () => {
+    const out = computePuzzleReward({ result: 'solved', theme: 'mate-in-2', movesTaken: 3 });
+    expect(out.cents).toBe(100);
+  });
+
+  it('mate-in-3 solved in 3 moves earns 175¢ (150 base + 25 bonus)', () => {
+    const out = computePuzzleReward({ result: 'solved', theme: 'mate-in-3', movesTaken: 3 });
+    expect(out.cents).toBe(175);
+  });
+
+  it('mate-in-3 solved in 4 moves earns base 150¢', () => {
+    const out = computePuzzleReward({ result: 'solved', theme: 'mate-in-3', movesTaken: 4 });
+    expect(out.cents).toBe(150);
+  });
+
+  it('endgame solved always earns base 100¢ (no efficiency bonus in v2)', () => {
+    // Endgame puzzles vary in length, so we don't bake an expected count in.
+    for (const moves of [1, 2, 3, 4, 5, 6]) {
+      const out = computePuzzleReward({ result: 'solved', theme: 'endgame', movesTaken: moves });
+      expect(out.cents).toBe(100);
+      expect(out.reason).toMatch(/endgame/);
+    }
+  });
+
+  it('reason contains theme label when solved', () => {
+    const m1 = computePuzzleReward({ result: 'solved', theme: 'mate-in-1', movesTaken: 1 });
+    expect(m1.reason).toMatch(/mate-in-1/);
+    const eg = computePuzzleReward({ result: 'solved', theme: 'endgame', movesTaken: 2 });
+    expect(eg.reason).toMatch(/endgame/);
   });
 });

@@ -12,7 +12,8 @@ export type EarnSection =
   | 'spelling'
   | 'languageArts'
   | 'geography'
-  | 'drive';
+  | 'drive'
+  | 'chess';
 
 export type EarnResponse =
   | { ok: true; centsEarned: number; balanceCents: number; reason: string; capped?: boolean; capCents?: number }

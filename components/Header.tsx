@@ -3,12 +3,13 @@
 
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import { getCategorySubcategoryMap } from '@/lib/products';
+import { useProducts, categorySubcategoryMapFromProducts } from '@/lib/products-client';
 import BalanceChip from '@/components/BalanceChip';
 import { useLearner } from '@/context/LearnerContext';
 import { centsToMP } from '@/lib/money/format';
+import FeedbackWidget from '@/components/FeedbackWidget';
 
 export default function Header() {
   const { itemCount } = useCart();
@@ -42,7 +43,13 @@ export default function Header() {
     };
   }, []);
 
-  const categorySubcategoryMap = getCategorySubcategoryMap();
+  // Catalog comes from /api/products via the DB now; useProducts caches it
+  // across mounts so flipping between pages doesn't re-fetch every nav.
+  const { products: allProducts } = useProducts();
+  const categorySubcategoryMap = useMemo(
+    () => categorySubcategoryMapFromProducts(allProducts),
+    [allProducts],
+  );
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -324,6 +331,10 @@ export default function Header() {
 
           {/* MP Money balance chip — anchors right-side cluster before Cart */}
           <BalanceChip />
+
+          {/* Feedback button — small, yellow pop, sits between balance + cart.
+              Mobile collapses to icon-only inside the FeedbackWidget itself. */}
+          <FeedbackWidget />
 
           {/* Cart */}
           <Link href="/cart" className="relative flex items-center gap-1 bg-yellow-400 hover:bg-yellow-300 text-purple-900 font-bold px-3 py-2 rounded-full transition-colors text-sm">

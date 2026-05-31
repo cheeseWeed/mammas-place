@@ -24,7 +24,12 @@
 //               offer "Try again" (reset puzzle) and "Skip" (count as miss)
 //   - When the kid completes all kid-plies, mark puzzle solved and advance.
 //
-// MP earn: deferred to v2. v1 puzzles are purely for fun + practice.
+// MP earn (v2): each puzzle posts to /api/money/earn after the kid solves
+// (or gives up). Server-decided cents via computePuzzleReward(). The earn
+// fires from DrillView when each puzzle resolves; results are accumulated
+// on the per-puzzle state and shown on ResultsCard. Anonymous kids get a
+// PendingEarnPrompt per pending earn — pick one to claim and the rest are
+// lost (same trade-off as Math/LA: claim before closing the tab).
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
@@ -53,6 +58,14 @@ import {
   type ChessThemeId,
 } from '@/data/chess-themes';
 import ThemePicker from '@/components/chess/ThemePicker';
+import {
+  isPending,
+  submitEarn,
+  type EarnResponse,
+} from '@/lib/money/earn-client';
+import { centsToMP } from '@/lib/money/format';
+import { useLearner } from '@/context/LearnerContext';
+import PendingEarnPrompt from '@/components/PendingEarnPrompt';
 
 // =========================================================================
 // Top-level page (auth wrapper)
@@ -87,10 +100,22 @@ type DrillConfig = {
   themeId: ChessThemeId;
 };
 
+// Per-puzzle outcome captured at solve/give-up time. earn is null while the
+// submit is in-flight or if the network call failed; the ResultsCard treats
+// nulls as "no MP recorded" without blocking the round summary.
+export type PuzzleOutcome = {
+  puzzleId: string;
+  theme: PuzzleTheme;
+  result: 'solved' | 'gave-up';
+  movesTaken: number;
+  earn: EarnResponse | null;
+};
+
 type DrillResult = {
   solvedIds: string[];
   failedIds: string[];
   total: number;
+  outcomes: PuzzleOutcome[];
 };
 
 type View =
@@ -332,7 +357,8 @@ function ConfigCard({ onStart }: { onStart: (config: DrillConfig) => void }) {
         Start solving →
       </button>
       <div className="text-center text-[11px] text-purple-600 mt-3">
-        MP rewards for puzzles coming soon — for now, puzzles are just for fun.
+        Earn MP for each puzzle: 0.50–1.50MP per solve + 0.25MP bonus when you
+        get it in the fewest moves.
       </div>
     </div>
   );
@@ -380,6 +406,16 @@ function DrillView({
   const [idx, setIdx] = useState(0);
   const [solvedIds, setSolvedIds] = useState<string[]>([]);
   const [failedIds, setFailedIds] = useState<string[]>([]);
+  // Count of move attempts the kid made on the current puzzle (incl. wrong).
+  // Used as the `movesTaken` payload for the earn — only equals the puzzle's
+  // expected kid-ply count when they solve cleanly.
+  const [movesTaken, setMovesTaken] = useState(0);
+  // Session id makes idempotency keys per-(puzzle, this-round) so playing the
+  // same puzzle in a later round still earns. Re-claimed via the same key
+  // when an anon kid logs in after the round (matches Math/LA semantics).
+  const sessionIdRef = useRef<string>(
+    crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+  );
   const puzzle = puzzles[idx];
   const [solve, setSolve] = useState<SolveState>(() => freshSolveState(puzzle));
   const aiReplyTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -395,6 +431,7 @@ function DrillView({
   useEffect(() => {
     if (aiReplyTimerRef.current) clearTimeout(aiReplyTimerRef.current);
     setSolve(freshSolveState(puzzle));
+    setMovesTaken(0);
   }, [puzzle]);
 
   // Cleanup pending AI-reply timer on unmount.
@@ -429,6 +466,11 @@ function DrillView({
 
   // Apply the kid's move and (if more plies remain) schedule the AI's reply.
   const applyKidMove = (move: Move) => {
+    // Count every attempt (right OR wrong). The efficiency bonus in the
+    // server formula is awarded only when movesTaken === expected, so a
+    // single wrong attempt forfeits the bonus.
+    setMovesTaken((n) => n + 1);
+
     const expectedUci = puzzle.movesToSolve[solve.pliesSolved];
     const kidUci = moveToUci(move);
     if (kidUci !== expectedUci) {
@@ -547,14 +589,53 @@ function DrillView({
     applyKidMove(move);
   };
 
+  // Track in-flight earn promises so we can await them all on round finish.
+  // We push the resolved outcome into a ref so the round-finish handler can
+  // pass the complete list to onFinish regardless of which puzzle resolves
+  // last (the DrillView unmounts when we transition to the results view).
+  const outcomesRef = useRef<PuzzleOutcome[]>([]);
+  const pendingEarnsRef = useRef<Promise<void>[]>([]);
+
   const recordResult = (solved: boolean) => {
     const id = puzzle.id;
+    const theme = puzzle.theme;
+    // Capture movesTaken at call time so the closure doesn't read a stale 0
+    // after the puzzle-change useEffect runs.
+    const movesAtCall = movesTaken;
     if (solved) {
       setSolvedIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
     } else {
       setFailedIds((prev) => (prev.includes(id) ? prev : [...prev, id]));
     }
-    // Advance to next puzzle, or finish.
+
+    // Per-puzzle idempotency: stable across logout->login (same key gets
+    // claimed) but unique per (puzzle, this session) so playing the same
+    // puzzle in a later round still earns.
+    const idempotencyKey = `puzzle-${id}-${sessionIdRef.current}`;
+
+    // Fire the earn. Resolves into outcomesRef + state when done.
+    const earnPromise = submitEarn(
+      'chess',
+      'puzzle',
+      {
+        result: solved ? 'solved' : 'gave-up',
+        theme,
+        movesTaken: movesAtCall,
+        puzzleId: id,
+      },
+      idempotencyKey,
+    ).then((res) => {
+      outcomesRef.current.push({
+        puzzleId: id,
+        theme,
+        result: solved ? 'solved' : 'gave-up',
+        movesTaken: movesAtCall,
+        earn: res,
+      });
+    });
+    pendingEarnsRef.current.push(earnPromise);
+
+    // Advance to next puzzle, or finish (after all in-flight earns settle).
     const nextIdx = idx + 1;
     if (nextIdx >= puzzles.length) {
       const finalSolved = solved
@@ -563,10 +644,13 @@ function DrillView({
       const finalFailed = solved
         ? failedIds
         : Array.from(new Set([...failedIds, id]));
-      onFinish({
-        solvedIds: finalSolved,
-        failedIds: finalFailed,
-        total: puzzles.length,
+      void Promise.allSettled(pendingEarnsRef.current).then(() => {
+        onFinish({
+          solvedIds: finalSolved,
+          failedIds: finalFailed,
+          total: puzzles.length,
+          outcomes: [...outcomesRef.current],
+        });
       });
       return;
     }
@@ -784,6 +868,7 @@ function ResultsCard({
   result: DrillResult;
   onPlayAgain: () => void;
 }) {
+  const { refresh } = useLearner();
   const solved = result.solvedIds.length;
   const total = result.total;
   const pct = total > 0 ? Math.round((solved / total) * 100) : 0;
@@ -797,6 +882,58 @@ function ResultsCard({
         ? 'Solid round!'
         : 'Keep at it!';
 
+  // Tally what we earned in this round. Three states per outcome:
+  //   - logged-in success → centsEarned counted into bankedCents
+  //   - anonymous preview → centsEarned counted into pendingCents (claim UI)
+  //   - error → counted in errorCount, skipped from totals
+  const tally = useMemo(() => {
+    let bankedCents = 0;
+    let pendingCents = 0;
+    let errorCount = 0;
+    const pendings: Extract<EarnResponse, { pending: true }>[] = [];
+    for (const o of result.outcomes) {
+      if (!o.earn) {
+        errorCount += 1;
+        continue;
+      }
+      if ('error' in o.earn) {
+        errorCount += 1;
+        continue;
+      }
+      if (isPending(o.earn)) {
+        pendingCents += o.earn.centsEarned;
+        if (o.earn.centsEarned > 0) pendings.push(o.earn);
+        continue;
+      }
+      bankedCents += o.earn.centsEarned;
+    }
+    return { bankedCents, pendingCents, errorCount, pendings };
+  }, [result.outcomes]);
+
+  // After claim succeeds we want the header chip refreshed. The
+  // PendingEarnPrompt does this itself, but the parent also wants to update
+  // its local banked total so subsequent claims (and the final summary) read
+  // correctly. Track "claimed" amounts here.
+  const [extraBankedCents, setExtraBankedCents] = useState(0);
+  const [claimedKeys, setClaimedKeys] = useState<Set<string>>(new Set());
+
+  const handleClaimed = useCallback(
+    (idempotencyKey: string, cents: number) => {
+      setExtraBankedCents((n) => n + cents);
+      setClaimedKeys((prev) => {
+        const next = new Set(prev);
+        next.add(idempotencyKey);
+        return next;
+      });
+      void refresh();
+    },
+    [refresh],
+  );
+
+  const totalBankedCents = tally.bankedCents + extraBankedCents;
+  const stillPending = tally.pendings.filter((p) => !claimedKeys.has(p.idempotencyKey));
+  const totalCentsThisRound = tally.bankedCents + tally.pendingCents;
+
   return (
     <div className="bg-white rounded-3xl shadow-xl border-2 border-purple-200 p-6 md:p-8 max-w-xl mx-auto text-center">
       <div className="text-6xl mb-2">{emoji}</div>
@@ -809,6 +946,56 @@ function ResultsCard({
         {' · '}
         {config.theme === 'any' ? 'all themes' : config.theme.replace(/-/g, ' ')}
       </div>
+
+      {/* MP earned summary — banked for logged-in kids; pending for anon. */}
+      {totalCentsThisRound > 0 && stillPending.length === 0 && (
+        <div className="rounded-2xl border-2 border-yellow-300 bg-yellow-50 p-4 mb-5 text-center">
+          <div className="text-xs uppercase tracking-wide text-yellow-800 font-bold">
+            MP earned this round
+          </div>
+          <div className="text-4xl font-black text-yellow-900 my-1">
+            +{centsToMP(totalBankedCents)}
+          </div>
+          <div className="text-xs text-yellow-800">
+            {solved} puzzle{solved === 1 ? '' : 's'} solved
+          </div>
+        </div>
+      )}
+      {totalCentsThisRound === 0 && result.outcomes.length > 0 && tally.errorCount === 0 && (
+        <div className="rounded-2xl border-2 border-purple-200 bg-purple-50 p-3 mb-5 text-center text-sm text-purple-800">
+          No MP this round — solve a puzzle to earn next time!
+        </div>
+      )}
+      {tally.errorCount > 0 && (
+        <div className="rounded-2xl border-2 border-rose-200 bg-rose-50 p-3 mb-5 text-center text-xs text-rose-800">
+          Couldn&apos;t record MP for {tally.errorCount} puzzle{tally.errorCount === 1 ? '' : 's'} (network hiccup).
+        </div>
+      )}
+
+      {/* Pending claim cards — one per pending earn. Anon kid can log in
+          once and reuse the same name+PIN to claim them all (each form
+          handles its own re-submit with the held idempotency key). */}
+      {stillPending.length > 0 && (
+        <div className="mb-5 text-left">
+          <div className="text-center text-sm font-bold text-yellow-900 mb-2">
+            You earned +{centsToMP(tally.pendingCents)} — log in to keep it!
+          </div>
+          {stillPending.map((p) => (
+            <PendingEarnPrompt
+              key={p.idempotencyKey}
+              pending={{
+                section: p.section,
+                kind: p.kind,
+                payload: p.payload,
+                idempotencyKey: p.idempotencyKey,
+                centsEarned: p.centsEarned,
+                reason: p.reason,
+              }}
+              onClaimed={(cents) => handleClaimed(p.idempotencyKey, cents)}
+            />
+          ))}
+        </div>
+      )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <button
@@ -827,7 +1014,8 @@ function ResultsCard({
       </div>
 
       <div className="text-[11px] text-purple-600 mt-5">
-        MP rewards for puzzles coming soon — keep training!
+        Mate-in-1 = 0.50MP · mate-in-2 = 1.00MP · mate-in-3 = 1.50MP · endgame = 1.00MP.
+        Solve in the minimum moves for a +0.25MP bonus.
       </div>
     </div>
   );

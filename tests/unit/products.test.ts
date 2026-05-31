@@ -1,16 +1,51 @@
 import { describe, it, expect } from "vitest";
+import productsJson from "@/data/products.json";
+import type { Product } from "@/types";
 import {
-  getAvailableProducts,
-  getProductById,
-  getProductsByCategory,
-  getSaleProducts,
-  getFeaturedProducts,
-  searchProducts,
-  getRelatedProducts,
-  getSubcategoriesByCategory,
-  getAudiobooks,
-  getAllProductsIncludingUnavailable,
-} from "@/lib/products";
+  filterAvailable,
+  filterSale,
+  filterFeatured,
+  findById,
+  searchClient,
+  relatedClient,
+  subcategoriesFromProducts,
+} from "@/lib/products-client";
+
+// The DB-backed lib/products.ts is async + needs a real Prisma connection.
+// For unit tests we exercise the same logic against the in-repo static catalog
+// (data/products.json) using the pure helpers in lib/products-client.ts.
+const ALL: Product[] = productsJson as Product[];
+
+function getAvailableProducts() {
+  return filterAvailable(ALL);
+}
+function getAllProductsIncludingUnavailable() {
+  return ALL;
+}
+function getProductById(id: string) {
+  return findById(ALL, id);
+}
+function getProductsByCategory(category: string) {
+  return filterAvailable(ALL).filter((p) => p.category === category);
+}
+function getSaleProducts() {
+  return filterSale(ALL);
+}
+function getFeaturedProducts() {
+  return filterFeatured(ALL);
+}
+function searchProducts(q: string) {
+  return searchClient(ALL, q);
+}
+function getRelatedProducts(p: Product, limit?: number) {
+  return relatedClient(ALL, p, limit);
+}
+function getSubcategoriesByCategory(category: string) {
+  return subcategoriesFromProducts(ALL, category);
+}
+function getAudiobooks() {
+  return filterAvailable(ALL).filter((p) => p.isAudiobook === true);
+}
 
 describe("Products - Data Integrity", () => {
   it("loads products from JSON data", () => {

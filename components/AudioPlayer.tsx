@@ -6,23 +6,54 @@ import { useState, useRef, useEffect } from 'react';
 interface AudioPlayerProps {
   src: string;
   title: string;
+  // Optional listen-tracking hooks. AudioPlayer is also used for tiny preview
+  // clips elsewhere, so we keep these optional — the product page wires them
+  // for audiobooks, other callers leave them off.
+  onListenStart?: () => void;
+  onListenComplete?: () => void;
 }
 
-export default function AudioPlayer({ src, title }: AudioPlayerProps) {
+export default function AudioPlayer({ src, title, onListenStart, onListenComplete }: AudioPlayerProps) {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
+  // Fire start/complete exactly once per mount so a noisy user mashing play/
+  // pause/seek doesn't spam the API. Re-mounting (e.g. navigating to a
+  // different audiobook) resets these.
+  const startedRef = useRef(false);
+  const completedRef = useRef(false);
 
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
 
     const onLoadedMetadata = () => { setDuration(audio.duration); setLoading(false); };
-    const onTimeUpdate = () => setCurrentTime(audio.currentTime);
-    const onEnded = () => setPlaying(false);
+    const onTimeUpdate = () => {
+      setCurrentTime(audio.currentTime);
+      // 90% threshold fires complete even if the user skips the last few
+      // seconds of an audiobook. Guard with completedRef so it only fires
+      // once per mount.
+      if (
+        !completedRef.current &&
+        onListenComplete &&
+        audio.duration > 0 &&
+        isFinite(audio.duration) &&
+        audio.currentTime / audio.duration >= 0.9
+      ) {
+        completedRef.current = true;
+        try { onListenComplete(); } catch { /* swallow — UI side-effect only */ }
+      }
+    };
+    const onEnded = () => {
+      setPlaying(false);
+      if (!completedRef.current && onListenComplete) {
+        completedRef.current = true;
+        try { onListenComplete(); } catch { /* swallow */ }
+      }
+    };
     const onError = () => { setError(true); setLoading(false); };
 
     audio.addEventListener('loadedmetadata', onLoadedMetadata);
@@ -36,13 +67,21 @@ export default function AudioPlayer({ src, title }: AudioPlayerProps) {
       audio.removeEventListener('ended', onEnded);
       audio.removeEventListener('error', onError);
     };
-  }, []);
+  }, [onListenComplete]);
 
   const togglePlay = () => {
     const audio = audioRef.current;
     if (!audio || error) return;
     if (playing) { audio.pause(); setPlaying(false); }
-    else { audio.play().then(() => setPlaying(true)).catch(() => setError(true)); }
+    else {
+      audio.play().then(() => {
+        setPlaying(true);
+        if (!startedRef.current && onListenStart) {
+          startedRef.current = true;
+          try { onListenStart(); } catch { /* swallow */ }
+        }
+      }).catch(() => setError(true));
+    }
   };
 
   const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {

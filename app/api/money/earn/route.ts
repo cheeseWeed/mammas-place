@@ -16,11 +16,15 @@
 //
 // Body:
 //   {
-//     section: 'math'|'spelling'|'languageArts'|'geography'|'drive',
-//     kind: 'round'|'quiz'|'drill'|'deck',
+//     section: 'math'|'spelling'|'languageArts'|'geography'|'drive'|'chess',
+//     kind: 'round'|'quiz'|'drill'|'deck'|'puzzle',
 //     payload: <section-specific>,
 //     idempotencyKey: string  (client supplies — UUID is fine)
 //   }
+//
+// Note: full chess games go through /api/chess/game/finish (different
+// reward formula). Only chess puzzles ride this route, as
+// section='chess' kind='puzzle'.
 //
 // Response (logged in):
 //   { ok: true, centsEarned, balanceCents, reason, capped?, capCents? }
@@ -157,6 +161,35 @@ function buildEarnRequest(body: Record<string, unknown>): EarnRequest | { error:
         };
       }
       return { error: 'drive only supports kind=deck|quiz' };
+    }
+    case 'chess': {
+      // Full chess games use /api/chess/game/finish — only puzzle earns
+      // ride this generic route.
+      if (kind !== 'puzzle') return { error: 'chess only supports kind=puzzle on this route' };
+      const result = asString(payload.result);
+      const theme = asString(payload.theme);
+      const movesTaken = asNumber(payload.movesTaken);
+      const puzzleId = asString(payload.puzzleId) ?? undefined;
+      if (!result || !['solved', 'gave-up'].includes(result)) {
+        return { error: 'chess puzzle result must be solved|gave-up' };
+      }
+      if (!theme || !['mate-in-1', 'mate-in-2', 'mate-in-3', 'endgame'].includes(theme)) {
+        return { error: 'chess puzzle theme invalid' };
+      }
+      if (movesTaken === null || movesTaken < 0 || movesTaken > 200) {
+        return { error: 'chess puzzle movesTaken invalid' };
+      }
+      return {
+        section: 'chess',
+        kind: 'puzzle',
+        idempotencyKey,
+        payload: {
+          result: result as 'solved' | 'gave-up',
+          theme: theme as 'mate-in-1' | 'mate-in-2' | 'mate-in-3' | 'endgame',
+          movesTaken,
+          puzzleId,
+        },
+      };
     }
     default:
       return { error: `unknown section: ${section}` };

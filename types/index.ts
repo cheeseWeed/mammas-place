@@ -36,7 +36,30 @@ export interface Product {
   isStudyGuide?: boolean;
   studyGuideUrl?: string;
   downloadUrl?: string;
+  // Series grouping for audiobooks (e.g. "Bedtime Explorers", "Rock Hunters").
+  // Null/undefined for non-audiobook items. Each standalone audiobook gets its
+  // own single-item series so the "up next" lookup always has a key.
+  series?: string;
+  // Episode number within the series (1-indexed). Used for ordering when picking
+  // the next un-completed item in a series.
+  episode?: number;
   reviews?: Review[];
+
+  // ----- Inventory rotation (lib/inventory.ts) -----
+  // null/undefined stockQuantity = unlimited (legacy default).
+  stockQuantity?: number | null;
+  // See lib/inventory.ts AvailabilityRule for the shape.
+  availabilityRule?: {
+    type: 'always' | 'weekly' | 'monthly' | 'dated';
+    daysOfWeek?: number[];
+    weekOfMonth?: number[];
+    featuredDates?: string[];
+  } | null;
+  // See lib/inventory.ts RestockSchedule for the shape.
+  restockSchedule?: {
+    cadence: 'mon-thu' | 'weekly' | 'never';
+    amount: number;
+  } | null;
 }
 
 export interface CartItem {

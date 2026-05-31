@@ -5,13 +5,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import {
+  SEED_PARENT_PIN,
   getParentConfig,
   hashParentPin,
   isValidParentPin,
   setParentCookie,
 } from '@/lib/money/parent';
-
-const SEED_PIN = '0000';
 
 export async function POST(req: NextRequest) {
   let body: { pin?: unknown };
@@ -21,16 +20,19 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
   }
   if (!isValidParentPin(body.pin)) {
-    return NextResponse.json({ error: 'PIN must be 4 digits' }, { status: 400 });
+    return NextResponse.json({ error: 'PIN must be 4-12 alphanumeric chars' }, { status: 400 });
   }
 
   const cfg = await getParentConfig();
   if (!cfg) {
-    if (body.pin !== SEED_PIN) {
-      return NextResponse.json({ error: 'Parent PIN not set yet. Use 0000 for first-time setup.' }, { status: 401 });
+    if (body.pin !== SEED_PARENT_PIN) {
+      return NextResponse.json(
+        { error: `Parent PIN not set yet. Use ${SEED_PARENT_PIN} for first-time setup.` },
+        { status: 401 },
+      );
     }
     await prisma.parentConfig.create({
-      data: { id: 1, parentPinHash: hashParentPin(SEED_PIN) },
+      data: { id: 1, parentPinHash: hashParentPin(SEED_PARENT_PIN) },
     });
     await setParentCookie();
     return NextResponse.json({ ok: true, firstTime: true });

@@ -1,40 +1,61 @@
 // Shop page — product grid with search, category/subcategory filters, sorting, and sale toggle
 'use client';
 
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect, useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { getAllProducts, searchProducts, getCategories, getSubcategoriesByCategory } from '@/lib/products';
-import { Product } from '@/types';
+import {
+  useProducts,
+  filterAvailable,
+  searchClient,
+  categoriesFromProducts,
+  subcategoriesFromProducts,
+} from '@/lib/products-client';
+import { getHiddenCategories } from '@/lib/products';
 import ProductCard from '@/components/ProductCard';
 import SkeletonCard from '@/components/SkeletonCard';
 import ServiceAds from '@/components/ServiceAds';
 
 function ShopContent() {
   const searchParams = useSearchParams();
-  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { products: allCatalog, loading: catalogLoading } = useProducts();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedSubcategory, setSelectedSubcategory] = useState('all');
   const [sortBy, setSortBy] = useState('featured');
   const [showSaleOnly, setShowSaleOnly] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-  const [categories, setCategories] = useState<string[]>([]);
+  // Categories the parent has hidden via the admin panel — stored in
+  // localStorage; resyncs on the legacy 'categoryVisibilityChanged' event.
+  const [hidden, setHidden] = useState<string[]>([]);
 
-  const allProducts = getAllProducts();
-  const subcategories = selectedCategory !== 'all' ? getSubcategoriesByCategory(selectedCategory) : [];
+  // Available products (re-filtered when catalog or hide-list changes).
+  const allProducts = useMemo(
+    () => filterAvailable(allCatalog).filter((p) => !hidden.includes(p.category)),
+    [allCatalog, hidden],
+  );
 
-  // Load categories and listen for changes
+  const categories = useMemo(
+    () => categoriesFromProducts(allCatalog).filter((c) => !hidden.includes(c)),
+    [allCatalog, hidden],
+  );
+
+  const subcategories = useMemo(
+    () =>
+      selectedCategory !== 'all'
+        ? subcategoriesFromProducts(allCatalog, selectedCategory)
+        : [],
+    [allCatalog, selectedCategory],
+  );
+
+  // Sync hidden-categories state from localStorage + listen for parent toggles.
   useEffect(() => {
-    setCategories(getCategories());
-
-    const handleVisibilityChange = () => {
-      setCategories(getCategories());
-    };
-
+    setHidden(getHiddenCategories());
+    const handleVisibilityChange = () => setHidden(getHiddenCategories());
     window.addEventListener('categoryVisibilityChanged', handleVisibilityChange);
-    return () => window.removeEventListener('categoryVisibilityChanged', handleVisibilityChange);
+    return () =>
+      window.removeEventListener('categoryVisibilityChanged', handleVisibilityChange);
   }, []);
 
+  // Read query params on mount + when they change; apply search/filters.
   useEffect(() => {
     const search = searchParams.get('search') ?? '';
     const cat = searchParams.get('category') ?? '';
@@ -45,11 +66,13 @@ function ShopContent() {
     if (cat) setSelectedCategory(cat);
     if (subcat) setSelectedSubcategory(subcat);
     if (sale) setShowSaleOnly(true);
+  }, [searchParams]);
 
-    let results = search ? searchProducts(search) : allProducts;
-    setProducts(results);
-    setLoading(false);
-  }, [searchParams]); // eslint-disable-line react-hooks/exhaustive-deps
+  const products = useMemo(
+    () => (searchQuery ? searchClient(allCatalog, searchQuery) : allProducts),
+    [searchQuery, allCatalog, allProducts],
+  );
+  const loading = catalogLoading;
 
   // Reset subcategory when category changes
   useEffect(() => {

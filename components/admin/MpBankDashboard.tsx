@@ -10,8 +10,16 @@
 // surfaces as a 401 (we redirect to /admin/mp-bank/login on that).
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { centsToMP, dollarsInputToCents } from '@/lib/money/format';
+import AdminProductsTab from '@/components/admin/AdminProductsTab';
+import AdminFeedbackTab from '@/components/admin/AdminFeedbackTab';
+
+type DashboardTab = 'money' | 'products' | 'feedback' | 'settings';
+const VALID_TABS: DashboardTab[] = ['money', 'products', 'feedback', 'settings'];
+function parseTab(raw: string | null): DashboardTab {
+  return raw && (VALID_TABS as string[]).includes(raw) ? (raw as DashboardTab) : 'money';
+}
 
 // Inline display formatter — lib/money/card.ts is server-only (uses node:crypto)
 // so we can't import it into this client component.
@@ -96,6 +104,31 @@ function itemsSummary(items: unknown): string {
 
 export default function MpBankDashboard() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // Tab state — persisted via ?tab= so a refresh stays put. We read once from
+  // the URL on mount and push history updates when the user clicks a tab.
+  const [activeTab, setActiveTab] = useState<DashboardTab>(() =>
+    parseTab(searchParams?.get('tab') ?? null),
+  );
+  // Re-sync when the URL changes (e.g. browser back/forward).
+  useEffect(() => {
+    setActiveTab(parseTab(searchParams?.get('tab') ?? null));
+  }, [searchParams]);
+
+  const switchTab = useCallback(
+    (tab: DashboardTab) => {
+      setActiveTab(tab);
+      // Replace (don't push) so the back button doesn't get filled with tab hops.
+      const url = tab === 'money' ? '/admin/mp-bank' : `/admin/mp-bank?tab=${tab}`;
+      router.replace(url, { scroll: false });
+    },
+    [router],
+  );
+
+  // Unread feedback count — populated by the Feedback tab when it loads,
+  // surfaces in the tab bar as a badge so we know there's mail.
+  const [feedbackNewCount, setFeedbackNewCount] = useState<number>(0);
 
   const [learners, setLearners] = useState<Learner[]>([]);
   const [learnersLoading, setLearnersLoading] = useState(true);
@@ -145,8 +178,8 @@ export default function MpBankDashboard() {
   // row's button instead of all of them.
   const [revokeBusy, setRevokeBusy] = useState<string | null>(null);
 
-  // Settings panel (collapsible) — change parent PIN.
-  const [settingsOpen, setSettingsOpen] = useState(false);
+  // Settings panel — change parent PIN. Used to be collapsible but the Settings
+  // tab now owns the whole panel, so we just track the form state directly.
   const [pinCurrent, setPinCurrent] = useState('');
   const [pinNew, setPinNew] = useState('');
   const [pinConfirm, setPinConfirm] = useState('');
@@ -259,6 +292,24 @@ export default function MpBankDashboard() {
     loadOrders();
     loadGiftCards();
   }, [loadLearners, loadOrders, loadGiftCards]);
+
+  // Pull the unread-feedback count on mount so the tab badge is accurate
+  // immediately, even if the user never opens the Feedback tab. Refreshes
+  // when the tab is switched in case new mail arrived since the last poll.
+  const refreshFeedbackCount = useCallback(async () => {
+    try {
+      const res = await fetch('/api/feedback?status=new&limit=1', { cache: 'no-store' });
+      if (res.status === 401) return; // handled by other loaders
+      if (!res.ok) return;
+      const data = (await res.json()) as { newCount?: number };
+      if (typeof data.newCount === 'number') setFeedbackNewCount(data.newCount);
+    } catch {
+      // Silent — the dashboard works fine without the badge.
+    }
+  }, []);
+  useEffect(() => {
+    void refreshFeedbackCount();
+  }, [refreshFeedbackCount, activeTab]);
 
   useEffect(() => {
     loadTransactions(selectedUser);
@@ -468,12 +519,15 @@ export default function MpBankDashboard() {
 
   const submitPinChange = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!/^\d{4}$/.test(pinCurrent)) {
-      setPinToast({ kind: 'error', message: 'Current PIN must be exactly 4 digits.' });
+    // Alphanumeric, 4-12 chars. Matches lib/money/parent.isValidParentPin —
+    // keep in sync if either side is loosened/tightened.
+    const PIN_RE = /^[A-Za-z0-9]{4,12}$/;
+    if (!PIN_RE.test(pinCurrent)) {
+      setPinToast({ kind: 'error', message: 'Current PIN must be 4-12 letters or digits.' });
       return;
     }
-    if (!/^\d{4}$/.test(pinNew)) {
-      setPinToast({ kind: 'error', message: 'New PIN must be exactly 4 digits.' });
+    if (!PIN_RE.test(pinNew)) {
+      setPinToast({ kind: 'error', message: 'New PIN must be 4-12 letters or digits.' });
       return;
     }
     if (pinNew !== pinConfirm) {
@@ -559,7 +613,60 @@ export default function MpBankDashboard() {
         </div>
       </header>
 
+      {/* Tab nav — sticky-feeling band right under the header. Persists to ?tab=
+          so a refresh keeps the parent on whatever tab they were poking. */}
+      <nav className="bg-white border-b-2 border-purple-100 sticky top-0 z-10">
+        <div className="max-w-6xl mx-auto px-4 flex gap-1 overflow-x-auto">
+          {VALID_TABS.map((tab) => {
+            const isActive = activeTab === tab;
+            const label =
+              tab === 'money'
+                ? '💰 Money'
+                : tab === 'products'
+                  ? '🛍️ Products'
+                  : tab === 'feedback'
+                    ? '💬 Feedback'
+                    : '⚙️ Settings';
+            return (
+              <button
+                key={tab}
+                type="button"
+                onClick={() => switchTab(tab)}
+                className={`px-4 py-3 text-sm font-bold border-b-4 transition-colors whitespace-nowrap ${
+                  isActive
+                    ? 'text-purple-900 border-purple-900'
+                    : 'text-purple-500 border-transparent hover:text-purple-800 hover:border-purple-300'
+                }`}
+                aria-current={isActive ? 'page' : undefined}
+              >
+                {label}
+                {tab === 'feedback' && feedbackNewCount > 0 && (
+                  <span
+                    className={`ml-1.5 inline-flex items-center justify-center text-[10px] font-black px-1.5 min-w-[1.25rem] h-5 rounded-full ${
+                      isActive ? 'bg-purple-900 text-white' : 'bg-red-500 text-white'
+                    }`}
+                  >
+                    {feedbackNewCount}
+                  </span>
+                )}
+              </button>
+            );
+          })}
+        </div>
+      </nav>
+
       <main className="max-w-6xl mx-auto px-4 py-8 space-y-10">
+        {/* ---- PRODUCTS TAB ---- */}
+        {activeTab === 'products' && <AdminProductsTab />}
+
+        {/* ---- FEEDBACK TAB ---- */}
+        {activeTab === 'feedback' && (
+          <AdminFeedbackTab onCountChange={setFeedbackNewCount} />
+        )}
+
+        {/* ---- MONEY TAB (default) ---- */}
+        {activeTab === 'money' && (
+          <>
         {/* Section 1: Learner balances */}
         <section className="bg-white rounded-2xl shadow-lg border-2 border-purple-100 p-6">
           <div className="flex items-center justify-between mb-4">
@@ -1068,33 +1175,26 @@ export default function MpBankDashboard() {
           )}
         </section>
 
-        {/* Section 5: Settings — change parent PIN (collapsible) */}
-        <section className="bg-white rounded-2xl shadow-lg border-2 border-purple-100 p-6">
-          <button
-            type="button"
-            onClick={() => setSettingsOpen((v) => !v)}
-            className="w-full flex items-center justify-between gap-3 text-left"
-            aria-expanded={settingsOpen}
-          >
-            <div>
-              <h2 className="text-2xl font-bold text-purple-900">Settings</h2>
-              <p className="text-xs text-purple-600 mt-1">
-                Change the parent PIN that unlocks this dashboard.
-              </p>
-            </div>
-            <span
-              className={`text-purple-700 text-2xl leading-none transition-transform ${settingsOpen ? 'rotate-180' : ''}`}
-              aria-hidden="true"
-            >
-              ⌃
-            </span>
-          </button>
+          </>
+        )}
 
-          {settingsOpen && (
-            <form
-              onSubmit={submitPinChange}
-              className="mt-5 bg-purple-50 rounded-xl p-4 border border-purple-200 max-w-xl"
-            >
+        {/* ---- SETTINGS TAB ---- */}
+        {activeTab === 'settings' && (
+        <section className="bg-white rounded-2xl shadow-lg border-2 border-purple-100 p-6">
+          <div className="mb-3">
+            <h2 className="text-2xl font-bold text-purple-900">Settings</h2>
+            <p className="text-xs text-purple-600 mt-1">
+              Change the parent PIN that unlocks this dashboard. Accepts 4-12
+              letters or digits.
+            </p>
+          </div>
+
+          {/* PIN rotation form — used to be collapsed behind a toggle; now that
+              Settings has its own tab the form just stays open. */}
+          <form
+            onSubmit={submitPinChange}
+            className="mt-5 bg-purple-50 rounded-xl p-4 border border-purple-200 max-w-xl"
+          >
               <div className="font-semibold text-purple-900 mb-3 text-sm">
                 Change parent PIN
               </div>
@@ -1109,17 +1209,16 @@ export default function MpBankDashboard() {
                   <input
                     id="pin-current"
                     type="password"
-                    inputMode="numeric"
-                    pattern="\d{4}"
+                    pattern="[A-Za-z0-9]{4,12}"
                     autoComplete="current-password"
                     value={pinCurrent}
                     onChange={(e) =>
-                      setPinCurrent(e.target.value.replace(/\D/g, '').slice(0, 4))
+                      setPinCurrent(e.target.value.replace(/[^A-Za-z0-9]/g, '').slice(0, 12))
                     }
-                    maxLength={4}
-                    placeholder="• • • •"
+                    maxLength={12}
+                    placeholder="••••••"
                     disabled={pinBusy}
-                    className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-3 py-2 bg-white text-purple-900 tracking-[0.4em] text-center"
+                    className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-3 py-2 bg-white text-purple-900 tracking-[0.3em] text-center"
                   />
                 </div>
                 <div>
@@ -1132,17 +1231,16 @@ export default function MpBankDashboard() {
                   <input
                     id="pin-new"
                     type="password"
-                    inputMode="numeric"
-                    pattern="\d{4}"
+                    pattern="[A-Za-z0-9]{4,12}"
                     autoComplete="new-password"
                     value={pinNew}
                     onChange={(e) =>
-                      setPinNew(e.target.value.replace(/\D/g, '').slice(0, 4))
+                      setPinNew(e.target.value.replace(/[^A-Za-z0-9]/g, '').slice(0, 12))
                     }
-                    maxLength={4}
-                    placeholder="• • • •"
+                    maxLength={12}
+                    placeholder="••••••"
                     disabled={pinBusy}
-                    className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-3 py-2 bg-white text-purple-900 tracking-[0.4em] text-center"
+                    className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-3 py-2 bg-white text-purple-900 tracking-[0.3em] text-center"
                   />
                 </div>
                 <div>
@@ -1155,17 +1253,16 @@ export default function MpBankDashboard() {
                   <input
                     id="pin-confirm"
                     type="password"
-                    inputMode="numeric"
-                    pattern="\d{4}"
+                    pattern="[A-Za-z0-9]{4,12}"
                     autoComplete="new-password"
                     value={pinConfirm}
                     onChange={(e) =>
-                      setPinConfirm(e.target.value.replace(/\D/g, '').slice(0, 4))
+                      setPinConfirm(e.target.value.replace(/[^A-Za-z0-9]/g, '').slice(0, 12))
                     }
-                    maxLength={4}
-                    placeholder="• • • •"
+                    maxLength={12}
+                    placeholder="••••••"
                     disabled={pinBusy}
-                    className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-3 py-2 bg-white text-purple-900 tracking-[0.4em] text-center"
+                    className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-3 py-2 bg-white text-purple-900 tracking-[0.3em] text-center"
                   />
                 </div>
               </div>
@@ -1189,10 +1286,10 @@ export default function MpBankDashboard() {
                 >
                   Clear
                 </button>
-              </div>
-            </form>
-          )}
+            </div>
+          </form>
         </section>
+        )}
       </main>
 
       {/* Print modal — pops after a card is minted so the parent can print

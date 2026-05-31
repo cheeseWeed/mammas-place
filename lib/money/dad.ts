@@ -385,22 +385,32 @@ async function loadCadence(userName: string): Promise<CadenceScore> {
   return { delta, lastAskMs, asksToday };
 }
 
-// Amount-asked signal — graduated penalty for big asks (not a hard cap).
-// User explicitly removed the kid-side cap; kids can ask whatever they want.
-// The decision engine takes care of saying no to absurd asks via this delta
-// AND the dedicated `greedy` outcome.
+// Amount-asked signal — graduated curve. User locked these target yes_full
+// chances on 2026-05-31 (base yes_full=30 in baseWeights, deltas tuned to
+// land at the target after applyDelta):
+//
+//   <= 100 MP   → 35% yes_full
+//   <= 500 MP   → 30%
+//   <= 1,000 MP → 25%
+//   <= 10,000 MP → 20%
+//   <= 50,000 MP → 15%
+//   >  50,000 MP → 10%
+//
+// Kid CAN ask for a 100k MP car. Dad just rolls a smaller chance of yes.
 function scoreAmount(centsAsked: number): number {
   const mp = centsAsked / 100;
-  if (mp <= 10) return 0;
-  if (mp <= 25) return -5;
-  if (mp <= 50) return -12;
-  if (mp <= 100) return -25; // way over — but might still get yes_partial
-  return -40;                // 100+ MP — dad math says lol no
+  if (mp <= 100) return 5;       // boost: small asks get a +5 nudge
+  if (mp <= 500) return 0;       // baseline
+  if (mp <= 1_000) return -5;
+  if (mp <= 10_000) return -10;
+  if (mp <= 50_000) return -15;
+  return -20;                    // big-ticket, still possible
 }
 
-// "Greedy" detector — kid asked for more than the cart can possibly cost.
-// At checkout: anything > cart * 1.5 is suspicious (they're trying to pocket
-// the extra). At portal: anything > 100 MP is just yikes.
+// "Greedy" detector — only fires at checkout when ask > cart × 1.5 (kid is
+// trying to pocket the extra). Portal asks are NOT greedy by size — a kid
+// saving up for a car should be allowed to ask for car money without Dad
+// auto-mocking them.
 function isGreedyAsk(args: {
   centsAsked: number;
   context: DadContext;
@@ -409,8 +419,7 @@ function isGreedyAsk(args: {
   if (args.context === 'checkout' && (args.cartTotalCents ?? 0) > 0) {
     return args.centsAsked > Math.max(args.cartTotalCents! * 1.5, 1000);
   }
-  // Portal: no cart context. 100+ MP is the threshold.
-  return args.centsAsked > 10_000;
+  return false;
 }
 
 // ---------- Outcome roll ----------

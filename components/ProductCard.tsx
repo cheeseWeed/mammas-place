@@ -5,15 +5,45 @@ import Link from 'next/link';
 import { Product } from '@/types';
 import { useCart } from '@/context/CartContext';
 import { useToast } from '@/context/ToastContext';
+import { isAvailableNow, isInStock } from '@/lib/inventory';
 
 interface ProductCardProps {
   product: Product;
   compact?: boolean;
 }
 
+// "Coming Tuesday" / "Coming Sunday" — friendly label for a product whose
+// weekly availability window includes a future day this week. Returns null if
+// we can't compute a useful next-available day (e.g. monthly/dated/always rules).
+function nextAvailableLabel(product: Product): string | null {
+  const rule = product.availabilityRule;
+  if (!rule) return null;
+  if (rule.type !== 'weekly' || !rule.daysOfWeek || rule.daysOfWeek.length === 0) {
+    return null;
+  }
+  const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const today = new Date().getDay();
+  // Find the next future day in the rule (wrap-around).
+  for (let i = 1; i <= 7; i++) {
+    const candidate = (today + i) % 7;
+    if (rule.daysOfWeek.includes(candidate)) {
+      return `Coming ${dayNames[candidate]}`;
+    }
+  }
+  return null;
+}
+
 export default function ProductCard({ product, compact = false }: ProductCardProps) {
   const { addToCart } = useCart();
   const { showToast } = useToast();
+
+  // Inventory gates — server is authoritative (order route also checks), but
+  // the UI surfaces the state so the buy button can be disabled and a friendly
+  // badge can replace the price block instead of just hiding the card.
+  const available = isAvailableNow(product);
+  const stocked = isInStock(product);
+  const soldOut = !stocked;
+  const comingLabel = !available ? nextAvailableLabel(product) : null;
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -49,6 +79,16 @@ export default function ProductCard({ product, compact = false }: ProductCardPro
         {product.isFeatured && !product.isSale && (
           <div className="absolute top-2 left-2 bg-purple-600 text-white text-xs font-bold px-2 py-1 rounded-full">
             FEATURED
+          </div>
+        )}
+        {soldOut && (
+          <div className="absolute top-2 right-2 bg-gray-800 text-white text-xs font-bold px-2 py-1 rounded-full">
+            SOLD OUT
+          </div>
+        )}
+        {!soldOut && comingLabel && (
+          <div className="absolute top-2 right-2 bg-amber-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+            {comingLabel.toUpperCase()}
           </div>
         )}
       </div>
@@ -101,6 +141,14 @@ export default function ProductCard({ product, compact = false }: ProductCardPro
               </svg>
               Download
             </button>
+          ) : soldOut ? (
+            <div className="mt-3 w-full bg-gray-200 text-gray-700 font-bold py-2 rounded-xl text-sm text-center border border-gray-300">
+              Sold Out
+            </div>
+          ) : !available ? (
+            <div className="mt-3 w-full bg-amber-50 text-amber-800 font-bold py-2 rounded-xl text-sm text-center border border-amber-200">
+              {comingLabel ?? 'Not available today'}
+            </div>
           ) : product.inStock ? (
             <button
               onClick={handleAddToCart}

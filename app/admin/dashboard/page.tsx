@@ -853,8 +853,11 @@ function CategoryVisibilityManager() {
   useEffect(() => {
     setMounted(true);
     // Import the functions dynamically to avoid SSR issues
-    import('@/lib/products').then(({ getAllCategories, getHiddenCategories }) => {
-      setAllCategories(getAllCategories());
+    // getAllCategories is async (DB-backed) now — await it before stuffing
+    // the result into setState. getHiddenCategories stays sync (localStorage).
+    import('@/lib/products').then(async ({ getAllCategories, getHiddenCategories }) => {
+      const cats = await getAllCategories();
+      setAllCategories(cats);
       setHiddenCategoriesState(getHiddenCategories());
     });
   }, []);

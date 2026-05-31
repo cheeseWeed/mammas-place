@@ -686,7 +686,7 @@
   {
     "id": "audio-001",
     "name": "The Magical Pony Kingdom â€” Audiobook",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": 14.99,
     "discount": 14.99,
     "description": "Journey into the enchanted Pony Kingdom where Rainbow Sparkle and her friends embark on a quest to save the Crystal Meadows! This beautifully narrated audiobook runs 2 hours and 15 minutes, featuring original music and sound effects. Perfect for bedtime listening ages 4-10. Includes a digital activity booklet.",
@@ -717,7 +717,9 @@
     "sku": "AUD-001",
     "createdAt": "2026-02-01T00:00:00Z",
     "downloadUrl": "/audio/audiobook-001.mp3",
-    "subcategory": "standalone"
+    "subcategory": "standalone",
+    "series": "The Magical Pony Kingdom",
+    "episode": 1
   },
   {
     "id": "audio-002",
@@ -753,7 +755,9 @@
     "sku": "AUD-002",
     "createdAt": "2026-02-01T00:00:00Z",
     "downloadUrl": "/audio/audiobook-002.mp3",
-    "subcategory": "standalone"
+    "subcategory": "standalone",
+    "series": "Princess and the Unicorn Star",
+    "episode": 1
   },
   {
     "id": "audio-003",
@@ -789,7 +793,9 @@
     "sku": "AUD-003",
     "createdAt": "2026-02-01T00:00:00Z",
     "downloadUrl": "/audio/audiobook-003.mp3",
-    "subcategory": "standalone"
+    "subcategory": "standalone",
+    "series": "Rock Hunters: Gem Quest",
+    "episode": 1
   },
   {
     "id": "audio-004",
@@ -825,7 +831,9 @@
     "sku": "AUD-004",
     "createdAt": "2026-02-01T00:00:00Z",
     "downloadUrl": "/audio/audiobook-004.mp3",
-    "subcategory": "standalone"
+    "subcategory": "standalone",
+    "series": "Bedtime Stories: Unicorns & Dreams",
+    "episode": 1
   },
   {
     "id": "audio-005",
@@ -861,12 +869,14 @@
     "sku": "AUD-005",
     "createdAt": "2026-02-01T00:00:00Z",
     "downloadUrl": "/audio/audiobook-005.mp3",
-    "subcategory": "standalone"
+    "subcategory": "standalone",
+    "series": "The Archery Champion",
+    "episode": 1
   },
   {
     "id": "be-ep-001",
     "name": "Bedtime Explorers EP 1: The World Beneath Our Feet - Rocks",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Dig into the amazing world beneath our feet! In this first episode of Bedtime Explorers, young listeners discover how rocks are formed, what they're made of, and why geologists find them so fascinating. A perfect bedtime listen for curious kids who love science and nature.",
@@ -905,7 +915,7 @@
   {
     "id": "be-ep-002",
     "name": "Bedtime Explorers EP 2: The Stars Above",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Gaze up at the night sky and wonder no more! Episode 2 of Bedtime Explorers takes young listeners on a journey through the stars — from constellations to galaxies, from twinkling light to how stars are born. Dreamy, calming narration perfect for winding down at bedtime.",
@@ -945,7 +955,7 @@
   {
     "id": "be-ep-003",
     "name": "Bedtime Explorers EP 3: Our Solar System",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Travel through space without leaving your bed! Episode 3 visits all eight planets, the asteroid belt, and beyond. Learn fascinating facts about Mercury, the rings of Saturn, and what makes Earth so special. Narrated gently to ease little explorers into a peaceful sleep.",
@@ -986,7 +996,7 @@
   {
     "id": "be-ep-004",
     "name": "Bedtime Explorers EP 4: Pioneer Trail",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Walk the dusty pioneer trails of the American West! Episode 4 tells the story of brave families who packed everything they owned into covered wagons and journeyed across unknown lands in search of a new home. History brought to life with calming bedtime narration.",
@@ -1026,7 +1036,7 @@
   {
     "id": "be-ep-005",
     "name": "Bedtime Explorers EP 5: Iron Road",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "All aboard! Episode 5 follows the incredible story of the transcontinental railroad — the workers, the engineers, and the mountains they conquered. Discover how iron rails connected a nation and changed history forever. A fascinating bedtime story for young history lovers.",
@@ -1066,7 +1076,7 @@
   {
     "id": "be-ep-006",
     "name": "Bedtime Explorers EP 6: Native Americans of Utah",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Discover the rich and ancient cultures of the Native American peoples of Utah. Episode 6 explores their traditions, artwork, and connection to the land — from the Ancestral Puebloans who carved cliff dwellings into canyon walls to the Ute, Navajo, and Paiute peoples. A respectful and wonder-filled bedtime listen.",
@@ -1107,7 +1117,7 @@
   {
     "id": "be-ep-007",
     "name": "Bedtime Explorers EP 7: Noah's Ark",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Two by two, the animals came! Episode 7 tells the timeless story of Noah's Ark — the great flood, the faithful builder, and the rainbow promise. A beautifully narrated retelling of this beloved story, perfect for a peaceful and thoughtful bedtime.",
@@ -1129,7 +1139,7 @@
     ],
     "inStock": true,
     "stockCount": 999,
-    "rating": 5.0,
+    "rating": 5,
     "reviewCount": 31,
     "isSale": false,
     "isFeatured": true,
@@ -1147,7 +1157,7 @@
   {
     "id": "be-ep-008",
     "name": "Bedtime Explorers EP 8: Sand and Water",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Dive into the wonders of sand and water! Episode 8 explores beaches, rivers, deserts, and the amazing science behind how water shapes our world. From sand dunes to ocean waves, this calming episode will carry curious young listeners gently off to sleep.",
@@ -1188,7 +1198,7 @@
   {
     "id": "be-ep-009",
     "name": "Bedtime Explorers EP 9: Dinosaurs",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Travel back 65 million years! Episode 9 brings dinosaurs to life — from the mighty T-Rex to the gentle Brachiosaurus. Young listeners will learn how dinosaurs lived, what they ate, and why they disappeared, all with calm, soothing narration perfect for drifting off to sleep.",
@@ -1228,7 +1238,7 @@
   {
     "id": "be-ep-010",
     "name": "Bedtime Explorers EP 10: Gems and Crystals",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Discover the dazzling world of gems and crystals! Episode 10 explores how crystals grow, where precious gems are found, and what makes each one unique. From sparkling amethyst to deep blue sapphire, this episode is a treasure for any young rock lover at bedtime.",
@@ -1269,7 +1279,7 @@
   {
     "id": "be-ep-011",
     "name": "Bedtime Explorers EP 11: David and Goliath",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Face your giants with courage! Episode 11 retells the beloved Bible story of young David, a shepherd boy who faced the mighty giant Goliath with faith and bravery. A timeless story of courage and trust, gently narrated to settle little hearts before sleep.",
@@ -1310,7 +1320,7 @@
   {
     "id": "be-ep-012",
     "name": "Bedtime Explorers EP 12: Jonah and the Whale",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "A big fish, a bigger lesson! Episode 12 tells the unforgettable Bible story of Jonah — swallowed by a great whale and given a second chance. A beautifully narrated tale of obedience, forgiveness, and second chances, perfect for a peaceful bedtime.",
@@ -1350,7 +1360,7 @@
   {
     "id": "be-ep-013",
     "name": "Bedtime Explorers EP 13: Daniel in the Lions' Den",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Stay faithful, even in the den! Episode 13 retells the powerful Bible story of Daniel — a man of unwavering faith who trusted God even when surrounded by lions. A gentle, inspiring bedtime listen that teaches courage and trust.",
@@ -1390,7 +1400,7 @@
   {
     "id": "be-ep-014",
     "name": "Bedtime Explorers EP 14: The Arctic Tundra",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Bundle up and explore the frozen north! Episode 14 takes young listeners to the Arctic tundra — home to polar bears, arctic foxes, caribou, and the Northern Lights. A beautifully calm exploration of one of Earth's most remote and magical places.",
@@ -1431,7 +1441,7 @@
   {
     "id": "be-ep-015",
     "name": "Bedtime Explorers EP 15: The Boreal Forest",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Step into the world's largest forest! Episode 15 explores the boreal forest — a vast, ancient woodland stretching across the northern hemisphere, filled with moose, wolves, owls, and towering spruce trees. A peaceful journey into the wild for bedtime.",
@@ -1472,7 +1482,7 @@
   {
     "id": "be-ep-016",
     "name": "Bedtime Explorers EP 16: The African Safari",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Go on safari without leaving your bed! Episode 16 roams the African savanna — lions, elephants, giraffes, zebras, and more come alive in this vivid, calming bedtime adventure. Young listeners will drift off dreaming of the wide open plains.",
@@ -1513,7 +1523,7 @@
   {
     "id": "be-ep-017",
     "name": "Bedtime Explorers EP 17: The Amazon Rainforest",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Venture into the world's largest tropical rainforest! Episode 17 takes sleepy explorers deep into the Amazon — towering trees, colorful parrots, playful monkeys, and the gentle sounds of rain on giant leaves. A lush, peaceful bedtime journey through Earth's most incredible jungle.",
@@ -1555,7 +1565,7 @@
   {
     "id": "be-ep-018",
     "name": "Bedtime Explorers EP 18: Yellowstone",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Explore America's first national park! Episode 18 visits the wonders of Yellowstone — erupting geysers, hot springs, bison herds, and bubbling mud pots. A magnificent bedtime journey through one of the most geologically active places on Earth.",
@@ -1596,7 +1606,7 @@
   {
     "id": "be-ep-019",
     "name": "Bedtime Explorers EP 19: The Golden Spike",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Drive the spike that connected a nation! Episode 19 tells the story of the transcontinental railroad's completion at Promontory Summit, Utah — where two great railroads met and a golden spike united America. A fascinating piece of history gently told for bedtime.",
@@ -1637,7 +1647,7 @@
   {
     "id": "be-ep-020",
     "name": "Bedtime Explorers EP 20: Cliff Dwellers",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Climb into the ancient cliff dwellings! Episode 20 explores the mysterious world of the Ancestral Puebloans — the ancient people who carved homes into canyon walls across the American Southwest. A wonder-filled bedtime journey through one of history's greatest architectural achievements.",
@@ -1678,7 +1688,7 @@
   {
     "id": "rh-ep-000",
     "name": "Rock Hunters EP 0: Meet the Rock Hunters",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Meet the crew! Episode 0 introduces the Rock Hunters — a team of kid adventurers who travel the world searching for incredible rocks, gems, and geological wonders. This intro episode sets up the exciting series ahead and is perfect for new listeners of all ages.",
@@ -1718,7 +1728,7 @@
   {
     "id": "rh-ep-001",
     "name": "Rock Hunters EP 1: Cave of the Crystal Door",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "The Rock Hunters discover a hidden cave with a door made entirely of crystal! Episode 1 takes the crew deep underground where giant crystals grow in darkness and ancient geological secrets await. Action, adventure, and real crystal science all in one.",
@@ -1758,7 +1768,7 @@
   {
     "id": "rh-ep-002",
     "name": "Rock Hunters EP 2: River of the Pink Dolphin",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Down the Amazon and into the unknown! Episode 2 sends the Rock Hunters down a mysterious river where pink dolphins lead them to a geological discovery unlike anything they've seen before. Adventure, wildlife, and river geology combine in this thrilling episode.",
@@ -1799,7 +1809,7 @@
   {
     "id": "rh-ep-003",
     "name": "Rock Hunters EP 3: The Pioneer Trek",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Trek the trails of the pioneers! Episode 3 follows the Rock Hunters as they retrace historic pioneer routes and discover the incredible geology along the way — volcanic rock, ancient seabeds, and fossils hidden in the trail dust.",
@@ -1840,7 +1850,7 @@
   {
     "id": "rh-ep-004",
     "name": "Rock Hunters EP 4: Goblin Valley and the Stars",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Enter a world that looks like another planet! Episode 4 takes the Rock Hunters to Goblin Valley, Utah — a landscape of bizarre sandstone formations called hoodoos, where the night sky blazes with stars. Geology, astronomy, and adventure collide.",
@@ -1882,7 +1892,7 @@
   {
     "id": "rh-ep-005",
     "name": "Rock Hunters EP 5: The Backcountry Camp",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Camp deep in the wild! Episode 5 finds the Rock Hunters setting up base camp far from civilization, where they study the rocks beneath their feet and the wilderness all around them. A great episode about outdoor adventure, teamwork, and geology in the field.",
@@ -1923,7 +1933,7 @@
   {
     "id": "rh-ep-006",
     "name": "Rock Hunters EP 6: The Golden Spike",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "History meets geology! Episode 6 takes the Rock Hunters to Promontory Summit, where the transcontinental railroad was completed. They discover the fascinating rocks and minerals found along the historic route and learn how geology shaped the path of the iron road.",
@@ -1965,7 +1975,7 @@
   {
     "id": "rh-ep-007",
     "name": "Rock Hunters EP 7: The Cliff Dwellers",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Who built homes in the cliffs? Episode 7 follows the Rock Hunters as they investigate the ancient cliff dwellings of the American Southwest, learning about the sandstone and geology that made these incredible structures possible — and the mystery of those who built them.",
@@ -2006,7 +2016,7 @@
   {
     "id": "rh-ep-008",
     "name": "Rock Hunters EP 8: Yellowstone Underground",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "What's rumbling beneath Yellowstone? Episode 8 takes the Rock Hunters underground into Yellowstone's supervolcano — exploring the geothermal forces that power Old Faithful, the hot springs, and the mud pots. A thrilling look at the geological giant sleeping beneath the park.",
@@ -2047,7 +2057,7 @@
   {
     "id": "rh-ep-009",
     "name": "Rock Hunters EP 9: Tide Pools",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Where the ocean meets the rocks! Episode 9 brings the Rock Hunters to the coast, where tide pools reveal a hidden world of sea stars, anemones, crabs, and unique coastal rock formations. A fascinating exploration of geology and marine life at the water's edge.",
@@ -2089,7 +2099,7 @@
   {
     "id": "rh-ep-010",
     "name": "Rock Hunters EP 10: The Jumping Spider",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Small but mighty! Episode 10 follows the Rock Hunters as they discover the fascinating world of the jumping spider — one of nature's most curious and intelligent little creatures. Along the way they uncover the rocky habitats these spiders call home and the geology that shapes their world.",
@@ -2130,7 +2140,7 @@
   {
     "id": "rh-ep-011",
     "name": "Rock Hunters EP 11: Little Sahara",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Sand dunes in Utah? Episode 11 takes the Rock Hunters to Little Sahara — a stunning expanse of white sand dunes rising out of the desert. They explore how wind and geology created this surprising landscape and what secrets are hidden beneath the sand.",
@@ -2172,7 +2182,7 @@
   {
     "id": "rh-ep-012",
     "name": "Rock Hunters EP 12: The Living Trees",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "What do trees and rocks have in common? Episode 12 finds the Rock Hunters exploring ancient forests where the oldest living trees on Earth grow from rocky soil. A beautiful episode about the connection between geology and life, and the stories written in both stone and wood.",
@@ -2214,7 +2224,7 @@
   {
     "id": "rh-ep-013",
     "name": "Rock Hunters EP 13: The Day Sky",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "The Rock Hunters look up! Episode 13 explores the daytime sky — from the blazing sun and its role in shaping rocks, to clouds, rainbows, and the atmosphere that protects our planet. A bright, wonder-filled adventure that connects what's above us to the ground beneath our feet.",
@@ -2256,7 +2266,7 @@
   {
     "id": "rh-ep-014",
     "name": "Rock Hunters EP 14: The Backyard Campout",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "The Rock Hunters set up camp right in the backyard! Episode 14 is a cozy nighttime adventure where the kids discover that geology doesn't stop when the sun goes down — from glowing minerals and meteor showers to the ancient stories written in stone beneath their sleeping bags.",
@@ -2298,7 +2308,7 @@
   {
     "id": "rh-ep-015",
     "name": "Rock Hunters EP 15: The Backyard Campout Morning",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "The sun is up and the Rock Hunters are still exploring! Episode 15 picks up the morning after the backyard campout, where dew-covered rocks, sunrise shadows, and fresh discoveries await. The kids learn how weathering, erosion, and daily temperature changes shape the stones right under their feet.",
@@ -2340,7 +2350,7 @@
   {
     "id": "rh-ep-016",
     "name": "Rock Hunters EP 16: Rockets",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Blast off! Episode 16 takes the Rock Hunters beyond Earth as they explore the connection between rocks and rockets — from the minerals used to build spacecraft to the geology of the moon and Mars. A high-energy adventure that launches geology into outer space!",
@@ -2383,7 +2393,7 @@
   {
     "id": "er-ep-001",
     "name": "Explorer Radio EP 1: Artemis 2",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Welcome to Explorer Radio! In the very first episode, we tune in to the Artemis 2 mission — humanity's next giant leap back to the Moon. Learn about the crew, the spacecraft, and why this mission matters for the future of space exploration. A thrilling listen for young explorers everywhere!",
@@ -2424,7 +2434,7 @@
   {
     "id": "er-ep-002",
     "name": "Explorer Radio EP 2: Artemis 2 - The Moon",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "The Artemis 2 crew has arrived! Episode 2 takes you into lunar orbit as the astronauts see the Moon up close for the first time. Learn about the lunar surface, the far side of the Moon, and what it feels like to be farther from Earth than any human in over 50 years.",
@@ -2466,7 +2476,7 @@
   {
     "id": "er-ep-003",
     "name": "Explorer Radio EP 3: Artemis 2 - Coming Home",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "It's time to come home! Episode 3 follows the Artemis 2 crew as they leave lunar orbit and begin the journey back to Earth. Experience the fiery reentry, the splashdown, and the celebration of a mission that proved humanity is ready to return to the Moon.",
@@ -2509,7 +2519,7 @@
   {
     "id": "bt-ep-001",
     "name": "Bedtime Travelers EP 1: George Washington",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Welcome to Bedtime Travelers! In our first episode, travel back in time to meet George Washington — the farmer, the general, and the first President of the United States. Discover the real man behind the legends in this cozy bedtime journey through history.",
@@ -2549,7 +2559,7 @@
   {
     "id": "bt-ep-002",
     "name": "Bedtime Travelers EP 2: 250 Years - Part 1",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Happy birthday, America! In Part 1 of this special two-part episode, the Bedtime Travelers journey through the first 125 years of the United States — from the Declaration of Independence through the Civil War and into the age of invention. A sweeping adventure through the birth of a nation.",
@@ -2591,7 +2601,7 @@
   {
     "id": "bt-ep-003",
     "name": "Bedtime Travelers EP 3: 250 Years - Part 2",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "The journey continues! In Part 2, the Bedtime Travelers explore the last 125 years of American history — from World Wars and the space race to the digital age and beyond. See how a young nation grew into the world we know today.",
@@ -2633,7 +2643,7 @@
   {
     "id": "ssc-ep-001",
     "name": "Scripture Study Companion EP 1: 1 Nephi 1",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Begin your scripture journey with Nephi! Episode 1 explores 1 Nephi Chapter 1 — Lehi's vision, the pillar of fire, and the courage it takes to follow God's call. A thoughtful companion for young readers studying the Book of Mormon.",
@@ -2673,7 +2683,7 @@
   {
     "id": "ssc-ep-002",
     "name": "Scripture Study Companion EP 2: 1 Nephi 2",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "The journey into the wilderness begins! Episode 2 covers 1 Nephi Chapter 2 — Lehi's family leaves Jerusalem, camps in the valley of Lemuel, and Nephi prays for understanding. A guide for young learners exploring obedience and faith.",
@@ -2713,7 +2723,7 @@
   {
     "id": "ssc-ep-003",
     "name": "Scripture Study Companion EP 3: 1 Nephi 3",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Back to Jerusalem! Episode 3 covers 1 Nephi Chapter 3 — Nephi and his brothers return to get the brass plates from Laban. A story of perseverance and trust in the Lord, perfect for young scripture students.",
@@ -2754,7 +2764,7 @@
   {
     "id": "ssc-ep-004",
     "name": "Scripture Study Companion EP 4: Exodus 7",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Moses stands before Pharaoh! Episode 4 covers Exodus Chapter 7 — Aaron's rod becomes a serpent, the Nile turns to blood, and God's power is revealed. An exciting study companion for the Old Testament plagues of Egypt.",
@@ -2796,7 +2806,7 @@
   {
     "id": "ssc-ep-005",
     "name": "Scripture Study Companion EP 5: Exodus 8",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "The plagues continue! Episode 5 covers Exodus Chapter 8 — frogs, lice, and flies descend on Egypt as Pharaoh's heart remains hard. Learn how God's patience and power work together in this dramatic chapter.",
@@ -2838,7 +2848,7 @@
   {
     "id": "ssc-ep-006",
     "name": "Scripture Study Companion EP 6: Exodus 9",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "The plagues intensify! Episode 6 covers Exodus Chapter 9 — livestock disease, boils, and a devastating hailstorm strike Egypt. Discover how these signs point to God's power and His plan to free Israel.",
@@ -2880,7 +2890,7 @@
   {
     "id": "ssc-ep-007",
     "name": "Scripture Study Companion EP 7: Exodus 10",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Darkness covers the land! Episode 7 covers Exodus Chapter 10 — locusts devour every green thing and three days of thick darkness fall over Egypt. Pharaoh begins to waver but still won't let Israel go.",
@@ -2922,7 +2932,7 @@
   {
     "id": "ssc-ep-008",
     "name": "Scripture Study Companion EP 8: Exodus 11",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "The final warning! Episode 8 covers Exodus Chapter 11 — Moses delivers God's last message to Pharaoh: the firstborn of Egypt will be taken. A solemn and powerful chapter that sets the stage for the Passover.",
@@ -2964,7 +2974,7 @@
   {
     "id": "ssc-ep-009",
     "name": "Scripture Study Companion EP 9: Exodus 12",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "The Passover! Episode 9 covers Exodus Chapter 12 — the Israelites mark their doors with lamb's blood, the angel of death passes over, and Pharaoh finally lets God's people go. One of the most important chapters in all of scripture.",
@@ -3006,7 +3016,7 @@
   {
     "id": "ssc-ep-010",
     "name": "Scripture Study Companion EP 10: Exodus 13",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Freedom at last! Episode 10 covers Exodus Chapter 13 — the Israelites leave Egypt, consecrate their firstborn to God, and follow the pillar of cloud by day and fire by night. A triumphant chapter about trusting God's guidance.",
@@ -3048,7 +3058,7 @@
   {
     "id": "sg-atnmt-01",
     "name": "The Atonement: What Is the Atonement?",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3086,7 +3096,7 @@
   {
     "id": "sg-atnmt-02",
     "name": "The Atonement: Gethsemane",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3124,7 +3134,7 @@
   {
     "id": "sg-atnmt-03",
     "name": "The Atonement: The Crucifixion",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3162,7 +3172,7 @@
   {
     "id": "sg-atnmt-04",
     "name": "The Atonement: The Resurrection",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3200,7 +3210,7 @@
   {
     "id": "sg-atnmt-05",
     "name": "The Atonement: Grace and Mercy",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3238,7 +3248,7 @@
   {
     "id": "sg-atnmt-06",
     "name": "The Atonement: Repentance and Forgiveness",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3276,7 +3286,7 @@
   {
     "id": "sg-atnmt-07",
     "name": "The Atonement: The Infinite Nature of the Atonement",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3314,7 +3324,7 @@
   {
     "id": "sg-atnmt-08",
     "name": "The Atonement: How We Access the Atonement Daily",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3352,7 +3362,7 @@
   {
     "id": "sg-atnmt-09",
     "name": "The Atonement: The Sacrament as Weekly Re-Access to the Atonement",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3390,7 +3400,7 @@
   {
     "id": "sg-atnmt-10",
     "name": "The Atonement: Suffering with Purpose: The Atonement Sanctifies, Not Just Removes",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3428,7 +3438,7 @@
   {
     "id": "sg-atnmt-11",
     "name": "The Atonement: Forgiving Others",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3466,7 +3476,7 @@
   {
     "id": "sg-atnmt-12",
     "name": "The Atonement: The Atonement and Identity",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Cross-references: ATNMT-01 (what the Atonement is), ATNMT-06 (repentance), ATNMT-10 (suffering), RPNT-01 (what...",
@@ -3504,7 +3514,7 @@
   {
     "id": "sg-atnmt-13",
     "name": "The Atonement: Salvation and Eternal Life",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3542,7 +3552,7 @@
   {
     "id": "sg-chrt-01",
     "name": "Charity: What Charity Is",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Most people hear the word \"charity\" and think of dropping change in a bucket or being patient when someone annoys you....",
@@ -3580,7 +3590,7 @@
   {
     "id": "sg-chrt-02",
     "name": "Charity: Charity in the Gospels",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "When Jesus moved through a crowd, he did not see a crowd. He saw the leper standing at the edge of it. He saw the short...",
@@ -3618,7 +3628,7 @@
   {
     "id": "sg-chrt-03",
     "name": "Charity: Bearing One Another",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "There is a difference between watching someone carry a heavy box and actually taking one end of",
@@ -3656,7 +3666,7 @@
   {
     "id": "sg-chrt-04",
     "name": "Charity: Charity Begins at Home",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "It is often easier to be charitable to strangers than to the people who live with",
@@ -3694,7 +3704,7 @@
   {
     "id": "sg-estr-01",
     "name": "Easter: The Triumphal Entry",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3732,7 +3742,7 @@
   {
     "id": "sg-estr-02",
     "name": "Easter: The Last Supper",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3770,7 +3780,7 @@
   {
     "id": "sg-estr-03",
     "name": "Easter: Gethsemane to the Cross",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3808,7 +3818,7 @@
   {
     "id": "sg-estr-04",
     "name": "Easter: The Resurrection Morning",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3846,7 +3856,7 @@
   {
     "id": "sg-estr-05",
     "name": "Easter: What Easter Means Today",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3884,7 +3894,7 @@
   {
     "id": "sg-fath-01",
     "name": "Faith: What Faith Is",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3922,7 +3932,7 @@
   {
     "id": "sg-fath-02",
     "name": "Faith: Faith as Action",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3960,7 +3970,7 @@
   {
     "id": "sg-fath-03",
     "name": "Faith: The Seed of Faith",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -3998,7 +4008,7 @@
   {
     "id": "sg-fath-04",
     "name": "Faith: Faith in the Dark",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -4036,7 +4046,7 @@
   {
     "id": "sg-ptbl-01",
     "name": "Patriarchal Blessings: What Is a Patriarchal Blessing?",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -4074,7 +4084,7 @@
   {
     "id": "sg-ptbl-02",
     "name": "Patriarchal Blessings: Your Lineage and the House of Israel",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -4112,7 +4122,7 @@
   {
     "id": "sg-ptbl-03",
     "name": "Patriarchal Blessings: Preparing to Receive Your Blessing",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -4150,7 +4160,7 @@
   {
     "id": "sg-ptbl-04",
     "name": "Patriarchal Blessings: How to Study Your Blessing",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -4188,7 +4198,7 @@
   {
     "id": "sg-ptbl-05",
     "name": "Patriarchal Blessings: Living by Your Blessing",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -4226,7 +4236,7 @@
   {
     "id": "sg-rpnt-01",
     "name": "Repentance: What Repentance Actually Is",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -4264,7 +4274,7 @@
   {
     "id": "sg-rpnt-02",
     "name": "Repentance: Godly Sorrow vs. Worldly Sorrow",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -4302,7 +4312,7 @@
   {
     "id": "sg-rpnt-03",
     "name": "Repentance: Confession and Making Right",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -4340,7 +4350,7 @@
   {
     "id": "sg-rpnt-04",
     "name": "Repentance: The Change That Lasts",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -4378,7 +4388,7 @@
   {
     "id": "sg-srvs-01",
     "name": "Service: Why We Serve",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -4416,7 +4426,7 @@
   {
     "id": "sg-srvs-02",
     "name": "Service: Losing Yourself to Find Yourself",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -4454,7 +4464,7 @@
   {
     "id": "sg-srvs-03",
     "name": "Service: Small and Simple Things",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -4492,7 +4502,7 @@
   {
     "id": "sg-srvs-04",
     "name": "Service: Service and Covenant",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "(Move this line to mark your current",
@@ -7501,7 +7511,7 @@
   {
     "id": "be-ep-021",
     "name": "Bedtime Explorers EP 21: Butterflies",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Flutter into the magical world of butterflies! Episode 21 explores the incredible transformation from caterpillar to butterfly — the miracle of metamorphosis, the beauty of their wings, and the amazing migrations that carry them across continents. A gentle, wonder-filled bedtime journey.",
@@ -7542,7 +7552,7 @@
   {
     "id": "be-ep-022",
     "name": "Bedtime Explorers EP 22: Weather and Storms",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Thunder rumbles in the distance! Episode 22 explores the science of weather — from gentle rain showers to powerful thunderstorms, lightning, tornadoes, and hurricanes. Learn what makes clouds form, why it rains, and how storms shape our world. A cozy bedtime listen while the weather rolls in.",
@@ -7584,7 +7594,7 @@
   {
     "id": "be-ep-023",
     "name": "Bedtime Explorers EP 23: In the Beginning",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Journey back to the very beginning! Episode 23 explores the creation story — the forming of the earth, the seas, the plants, the animals, and finally, mankind. A reverent and wonder-filled bedtime exploration of how it all began.",
@@ -7625,7 +7635,7 @@
   {
     "id": "be-ep-024",
     "name": "Bedtime Explorers EP 24: Life of a Seed",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Watch a tiny seed grow! Episode 24 follows the incredible journey of a seed — from falling to the ground, to sprouting roots, to reaching for the sun as a mighty plant. Learn about germination, photosynthesis, and the miracle of growth in this gentle bedtime adventure.",
@@ -7667,7 +7677,7 @@
   {
     "id": "bt-ep-004",
     "name": "Bedtime Travelers EP 4: Nephi Builds a Ship",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Set sail with Nephi! Episode 4 travels back to ancient times as Nephi follows the Lord's command to build a ship — despite his brothers' doubts. Experience the faith, the struggle, and the miracle of crossing the ocean to a promised land.",
@@ -7709,7 +7719,7 @@
   {
     "id": "bt-ep-005",
     "name": "Bedtime Travelers EP 5: Joseph in Egypt",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Travel to ancient Egypt! Episode 5 follows the story of Joseph — sold by his brothers, imprisoned in a foreign land, yet rising to become one of the most powerful men in Egypt. A story of faith, forgiveness, and God's plan unfolding in unexpected ways.",
@@ -7752,7 +7762,7 @@
   {
     "id": "bt-ep-006",
     "name": "Bedtime Travelers EP 6: The Boston Tea Party",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Dump the tea! Episode 6 takes you to Boston Harbor on a cold December night in 1773. Join the Sons of Liberty as they disguise themselves and board three ships to protest unfair taxation. A thrilling bedtime journey to one of America's most daring moments.",
@@ -7793,7 +7803,7 @@
   {
     "id": "bt-ep-007",
     "name": "Bedtime Travelers EP 7: Paul's Shipwreck",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Brave the storm with Paul! Episode 7 follows the Apostle Paul on a harrowing sea voyage — a terrible storm, a shipwreck on the island of Malta, and the faith that carried him through. An adventurous bedtime journey through one of the Bible's most dramatic stories.",
@@ -7836,7 +7846,7 @@
   {
     "id": "bt-ep-008",
     "name": "Bedtime Travelers EP 8: Pocahontas and Jamestown",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Travel to the New World! Episode 8 visits Jamestown, the first permanent English settlement in America, and meets Pocahontas — the Powhatan girl who bridged two worlds. Learn about the struggles of early colonists and the Native peoples who shaped American history.",
@@ -7878,7 +7888,7 @@
   {
     "id": "bt-ep-009",
     "name": "Bedtime Travelers EP 9: Lincoln at Gettysburg",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Stand with Lincoln! Episode 9 travels to Gettysburg, Pennsylvania in 1863 — the turning point of the Civil War. Walk the battlefield, hear the famous Gettysburg Address, and learn why Abraham Lincoln's words still echo through history today.",
@@ -7920,7 +7930,7 @@
   {
     "id": "bt-ep-010",
     "name": "Bedtime Travelers EP 10: The Christmas Story",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Travel to Bethlehem! Episode 10 journeys to the night that changed the world — the star in the sky, the shepherds in the field, the manger, and the birth of Jesus Christ. A peaceful and reverent bedtime journey through the greatest story ever told.",
@@ -7963,7 +7973,7 @@
   {
     "id": "bt-ep-011",
     "name": "Bedtime Travelers EP 11: The Pilgrims' Journey",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Sail on the Mayflower! Episode 11 follows the Pilgrims across the Atlantic Ocean — the dangerous voyage, the harsh first winter, and the friendship with the Wampanoag people that led to the first Thanksgiving. A story of courage, faith, and gratitude.",
@@ -8005,7 +8015,7 @@
   {
     "id": "bt-ep-012",
     "name": "Bedtime Travelers EP 12: The Prodigal Son",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Come home! Episode 12 tells the parable of the Prodigal Son — a young man who leaves home, loses everything, and discovers that his father's love was waiting for him all along. One of Jesus's most beloved stories, retold as a gentle bedtime journey.",
@@ -8048,7 +8058,7 @@
   {
     "id": "bt-ep-013",
     "name": "Bedtime Travelers EP 13: Pyramids of Egypt",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Explore the pyramids! Episode 13 takes you to ancient Egypt to marvel at the Great Pyramids of Giza — one of the Seven Wonders of the Ancient World. Discover how thousands of workers built these massive monuments, the mysteries of the pharaohs, and the secrets hidden inside.",
@@ -8091,7 +8101,7 @@
   {
     "id": "bt-ep-014",
     "name": "Bedtime Travelers EP 14: The Statue of Liberty",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Lift your lamp! Episode 14 visits the Statue of Liberty — from its creation in France to its journey across the Atlantic and its home on Liberty Island. Discover the story behind Lady Liberty, what she symbolizes, and why she has welcomed millions to America's shores.",
@@ -8134,7 +8144,7 @@
   {
     "id": "er-ep-004",
     "name": "Explorer Radio EP 4: The Deep Ocean",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Dive deep! Episode 4 of Explorer Radio plunges into the mysterious world of the deep ocean — the darkest, most unexplored place on Earth. Discover bioluminescent creatures, hydrothermal vents, and the incredible pressure that shapes life miles beneath the waves.",
@@ -8176,7 +8186,7 @@
   {
     "id": "er-ep-005",
     "name": "Explorer Radio EP 5: The Human Body",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Tune in to YOU! Episode 5 of Explorer Radio takes a fascinating tour through the human body — your beating heart, your breathing lungs, your thinking brain, and the incredible systems that keep you alive every second of every day. The most amazing machine ever built is you!",
@@ -8218,7 +8228,7 @@
   {
     "id": "er-ep-006",
     "name": "Explorer Radio EP 6: Volcanoes",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Feel the heat! Episode 6 of Explorer Radio erupts into the world of volcanoes — rivers of lava, explosive eruptions, and the powerful forces deep inside the Earth that build mountains and reshape continents. From Mount Vesuvius to the Ring of Fire!",
@@ -8261,7 +8271,7 @@
   {
     "id": "er-ep-007",
     "name": "Explorer Radio EP 7: Migration",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Follow the journey! Episode 7 of Explorer Radio tracks the incredible migrations of animals around the world — from monarch butterflies crossing continents to whales traversing entire oceans. Learn how animals navigate thousands of miles and why they make these epic journeys.",
@@ -8304,7 +8314,7 @@
   {
     "id": "rh-ep-017",
     "name": "Rock Hunters EP 17: The Grand Canyon",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Look over the edge! Episode 17 takes the Rock Hunters to the Grand Canyon — one of the most spectacular geological formations on Earth. Explore billions of years of rock layers, the mighty Colorado River that carved it all, and the fossils hidden in the canyon walls.",
@@ -8346,7 +8356,7 @@
   {
     "id": "rh-ep-018",
     "name": "Rock Hunters EP 18: Zion and Bryce",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Two parks, one adventure! Episode 18 explores Zion National Park's towering sandstone cliffs and Bryce Canyon's magical hoodoos — the fairy-tale rock spires carved by wind and water over millions of years. A breathtaking journey through Utah's red rock wonderland.",
@@ -8389,7 +8399,7 @@
   {
     "id": "rh-ep-019",
     "name": "Rock Hunters EP 19: Topaz Mountain",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Find the gems! Episode 19 heads to Topaz Mountain in Utah's west desert — one of the few places where you can dig for your own topaz crystals. The Rock Hunters search volcanic rock for sparkling treasures and learn how gems form deep inside the Earth.",
@@ -8432,7 +8442,7 @@
   {
     "id": "rh-ep-020",
     "name": "Rock Hunters EP 20: Kennecott Copper Mine",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Go big! Episode 20 visits the Kennecott Copper Mine — the largest open-pit mine in the world, visible from space! The Rock Hunters descend into the massive pit to learn how copper is extracted, what it's used for, and the incredible scale of modern mining.",
@@ -8475,7 +8485,7 @@
   {
     "id": "rh-ep-021",
     "name": "Rock Hunters EP 21: Bonneville Salt Flats",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Race across the salt! Episode 21 takes the Rock Hunters to the Bonneville Salt Flats — a vast, otherworldly landscape of pure white salt stretching to the horizon. Learn how an ancient lake left behind this incredible natural wonder and why speed racers flock here from around the world.",
@@ -8518,7 +8528,7 @@
   {
     "id": "rh-ep-022",
     "name": "Rock Hunters EP 22: Mount Rushmore",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Face the presidents! Episode 22 visits Mount Rushmore — the iconic granite sculpture carved into the Black Hills of South Dakota. Learn about the 14-year effort to carve four presidential faces into solid rock, the geology of the mountain, and the history behind each president chosen.",
@@ -8561,7 +8571,7 @@
   {
     "id": "rh-ep-023",
     "name": "Rock Hunters EP 23: Arches and Canyonlands",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Walk through stone arches! Episode 23 explores Arches and Canyonlands National Parks — over 2,000 natural stone arches, deep canyons, and towering mesas. The Rock Hunters discover how wind and water sculpted these incredible formations over millions of years.",
@@ -8604,7 +8614,7 @@
   {
     "id": "rh-ep-024",
     "name": "Rock Hunters EP 24: Caves and Caverns",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Go underground! Episode 24 takes the Rock Hunters deep into caves and caverns — stalactites dripping from the ceiling, stalagmites rising from the floor, and underground rivers carving through solid rock. Discover how caves form and the amazing creatures that live in total darkness.",
@@ -8647,7 +8657,7 @@
   {
     "id": "rh-ep-025",
     "name": "Rock Hunters EP 25: Tide Pools - Part 2",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Splash back in! Episode 25 returns to the tide pools for a deeper dive — discovering new creatures, exploring how tides work, and learning how rocky shorelines create tiny ecosystems teeming with life. The Rock Hunters get up close with sea stars, anemones, and hermit crabs.",
@@ -8689,7 +8699,7 @@
   {
     "id": "rh-ep-026",
     "name": "Rock Hunters EP 26: Capitol Reef",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Discover the hidden gem! Episode 26 explores Capitol Reef National Park — Utah's least-visited but most geologically stunning national park. The Waterpocket Fold, ancient petroglyphs, and colorful rock layers tell a story spanning hundreds of millions of years.",
@@ -8732,7 +8742,7 @@
   {
     "id": "rh-ep-027",
     "name": "Rock Hunters EP 27: Fossils",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Dig up the past! Episode 27 takes the Rock Hunters fossil hunting — discovering ancient bones, imprints, and petrified remains locked in stone for millions of years. Learn how fossils form, how scientists find them, and what they reveal about life on Earth long ago.",
@@ -8775,7 +8785,7 @@
   {
     "id": "rh-ep-028",
     "name": "Rock Hunters EP 28: Little Sahara - Part 2",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Return to the dunes! Episode 28 brings the Rock Hunters back to Little Sahara for more sand dune adventures — this time exploring how wind builds and reshapes the dunes, the tiny creatures that survive in the desert, and the geological forces that created this sandy wonderland.",
@@ -8818,7 +8828,7 @@
   {
     "id": "bm-ep-001",
     "name": "Bedtime Memories EP 1: Family Dinner",
-    "price": 0.0,
+    "price": 0,
     "originalPrice": null,
     "discount": 0,
     "description": "Gather around the table! The first episode of Bedtime Memories invites you to a warm family dinner — the sounds of laughter, the clink of dishes, and the stories shared between bites. A cozy, comforting bedtime experience that celebrates the simple joy of being together.",

@@ -1,15 +1,34 @@
 // Homepage — hero banner, category cards, sale items, featured products, coming soon
 import Link from 'next/link';
-import { getFeaturedProducts, getSaleProducts, getComingSoonProducts, getCategories } from '@/lib/products';
+import { getAllProducts, getFeaturedProducts, getSaleProducts, getComingSoonProducts, getCategories, getAudiobooks } from '@/lib/products';
+import { getFeaturedSelection } from '@/lib/inventory';
 import ProductCard from '@/components/ProductCard';
 import ServiceAds from '@/components/ServiceAds';
 import LearnerPills from '@/components/LearnerPills';
+import ContinueListening from '@/components/ContinueListening';
 
-export default function HomePage() {
-  const featured = getFeaturedProducts();
-  const saleItems = getSaleProducts().slice(0, 4);
-  const comingSoon = getComingSoonProducts();
-  const categories = getCategories();
+export default async function HomePage() {
+  // Inventory rotation — pick 7 featured products via seeded daily shuffle.
+  // Date-pinned items (availabilityRule.type === 'dated' with today's MM-DD)
+  // are prioritized. Falls back to the legacy isFeatured set if the rotation
+  // returns nothing (e.g. no products tagged with inventory rules yet).
+  const [allProducts, fallbackFeatured, saleItemsAll, comingSoon, categories, allAudiobooks] = await Promise.all([
+    getAllProducts(),
+    getFeaturedProducts(),
+    getSaleProducts(),
+    getComingSoonProducts(),
+    getCategories(),
+    getAudiobooks(),
+  ]);
+  const rotation = getFeaturedSelection(allProducts, 7);
+  const featured = rotation.length > 0 ? rotation : fallbackFeatured;
+  const saleItems = saleItemsAll.slice(0, 4);
+  // Anonymous / no-history fallback for the "Continue Listening" section:
+  // prefer featured audiobooks, fall back to any if too few are flagged.
+  const featuredAudiobooks = (() => {
+    const flagged = allAudiobooks.filter((p) => p.isFeatured);
+    return (flagged.length >= 4 ? flagged : allAudiobooks).slice(0, 4);
+  })();
 
   // Category display metadata
   const categoryDisplayData: Record<string, { label: string; emoji: string; color: string }> = {
@@ -95,6 +114,12 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Continue Listening — kid-personalized audiobook section. Falls back
+          to featured audiobooks for anonymous kids / no listen history.
+          Replaces the previous full-audiobooks listing on home (browse goes
+          to /shop?category=audiobooks via the link inside the component). */}
+      <ContinueListening featuredAudiobooks={featuredAudiobooks} />
 
       {/* Featured Products */}
       <section className="py-10">

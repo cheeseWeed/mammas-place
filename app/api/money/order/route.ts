@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { isValidUser, normalizeUser } from '@/lib/drive-progress';
 import { getProductById } from '@/lib/products';
 import { placeOrder, InsufficientFundsError, OrderItem } from '@/lib/money/balance';
+import { decrementStock, OutOfStockError } from '@/lib/inventory';
 
 interface BodyItem { productId?: unknown; qty?: unknown }
 
@@ -35,13 +36,48 @@ export async function POST(req: NextRequest) {
     if (!Number.isInteger(qty) || qty < 1 || qty > 99) {
       return NextResponse.json({ error: 'Bad qty' }, { status: 400 });
     }
-    const product = getProductById(raw.productId);
+    const product = await getProductById(raw.productId);
     if (!product) {
       return NextResponse.json({ error: `Unknown product ${raw.productId}` }, { status: 400 });
     }
     const priceCents = Math.round(product.price * 100);
     items.push({ productId: product.id, name: product.name, qty, priceCents });
     totalCents += priceCents * qty;
+  }
+
+  // Stock check / decrement runs BEFORE the balance debit so we reject
+  // out-of-stock orders without touching the kid's wallet. If any item runs
+  // out we attempt to refund earlier successful decrements (best-effort —
+  // see comment below). decrementStock no-ops on unlimited-stock items.
+  const decremented: { productId: string; qty: number }[] = [];
+  for (const it of items) {
+    try {
+      await decrementStock(it.productId, it.qty);
+      decremented.push({ productId: it.productId, qty: it.qty });
+    } catch (err) {
+      // Roll back any prior decrements in this order. Not a transaction —
+      // each restore is a separate update — but the window is tiny and
+      // restoring slightly stale counts is harmless (we add back the same
+      // qty we removed).
+      const { prisma } = await import('@/lib/prisma');
+      for (const d of decremented) {
+        try {
+          await prisma.product.updateMany({
+            where: { id: d.productId, stockQuantity: { not: null } },
+            data: { stockQuantity: { increment: d.qty } },
+          });
+        } catch {
+          /* swallow — best-effort restore, column may be missing */
+        }
+      }
+      if (err instanceof OutOfStockError) {
+        return NextResponse.json(
+          { error: `Sold out: ${it.productId}`, productId: it.productId },
+          { status: 409 },
+        );
+      }
+      throw err;
+    }
   }
 
   try {
@@ -53,6 +89,19 @@ export async function POST(req: NextRequest) {
       totalCents,
     });
   } catch (err) {
+    // Balance debit failed — restore the stock we decremented above so the
+    // shelf doesn't drift.
+    const { prisma } = await import('@/lib/prisma');
+    for (const d of decremented) {
+      try {
+        await prisma.product.updateMany({
+          where: { id: d.productId, stockQuantity: { not: null } },
+          data: { stockQuantity: { increment: d.qty } },
+        });
+      } catch {
+        /* swallow — best-effort restore */
+      }
+    }
     if (err instanceof InsufficientFundsError) {
       return NextResponse.json(
         {

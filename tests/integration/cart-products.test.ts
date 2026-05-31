@@ -1,6 +1,21 @@
 import { describe, it, expect, beforeEach } from "vitest";
 import { addToCart, getCart, clearCart, applyPromoCode } from "@/lib/cart";
-import { getProductById, getSaleProducts, getAvailableProducts } from "@/lib/products";
+import productsJson from "@/data/products.json";
+import type { Product } from "@/types";
+import {
+  filterAvailable,
+  filterSale,
+  findById,
+} from "@/lib/products-client";
+
+// lib/products.ts is now async + DB-backed (Prisma against Neon). For unit
+// tests we operate on the static `data/products.json` snapshot using the
+// pure sync helpers in lib/products-client.ts. Behaviour mirrors the old
+// in-memory catalog so the cart math tests still exercise the same flow.
+const CATALOG: Product[] = productsJson as Product[];
+const getProductById = (id: string) => findById(CATALOG, id);
+const getSaleProducts = () => filterSale(CATALOG);
+const getAvailableProducts = () => filterAvailable(CATALOG);
 
 describe("Integration: Cart + Products", () => {
   beforeEach(() => {

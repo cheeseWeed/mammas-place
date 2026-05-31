@@ -51,9 +51,10 @@ interface AskDadPanelProps {
 
 const REASON_MAX = 200;
 const AMOUNT_MIN_MP = 1;
-// No upper cap on the kid side — they can ask whatever they want. The server
-// has a sanity cap (1000 MP) and Dad's `greedy` outcome handles absurd asks.
-const AMOUNT_MAX_MP = 1000;
+// No real upper cap on the kid side — they can ask whatever they want.
+// Server has a sanity cap (100,000 MP) and Dad's reward curve naturally
+// rolls fewer yes_full as the ask gets bigger.
+const AMOUNT_MAX_MP = 100_000;
 const THINKING_MS = 800;
 
 const OUTCOME_BADGE: Record<Outcome, { icon: string; label: string; tone: string }> = {

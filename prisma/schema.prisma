@@ -53,6 +53,15 @@ model DriveUser {
   // Chess: { current?: SavedChessGame, recentGames: SavedChessGame[], totals: {...}, ... }
   // Shape defined in lib/chess/game-state.ts (ChessProgress).
   chess            Json     @default("{}")
+  // Audiobook listen history keyed by product id.
+  // Shape: Record<productId, { lastListenedAt: number, completed: boolean }>
+  // See lib/audiobooks.ts for read/write helpers.
+  audioHistory     Json     @default("{}")
+  // "Up next" pointer per series — Record<series, productId> of the next
+  // un-completed item in that series. Updated by markListenComplete when an
+  // episode finishes; lets the homepage build "Continue listening" without
+  // scanning every audiobook.
+  seriesProgress   Json     @default("{}")
 
   // ----- MP Money (closed-loop family economy) -----
   // Balance kept in cents to avoid float drift. See app/money/PLAN.md.
@@ -148,6 +157,96 @@ model DadAsk {
 
   @@index([userName, createdAt])
   @@map("mp_dad_asks")
+}
+
+// Admin-editable product catalog. Originally lived as a static JSON file
+// (data/products.json) shipped at build time; promoted to the DB so the
+// MP Bank admin dashboard can edit products without a redeploy.
+//
+// Field shape mirrors lib/types.Product. `priceCents` and `originalPriceCents`
+// are stored as integers to avoid float drift (same pattern as MP balances).
+// JSON columns hold the loosely-typed arrays (tags, images, reviews).
+model Product {
+  id                  String   @id // matches the legacy string ids ("pony-001", etc.)
+  name                String
+  priceCents          Int
+  originalPriceCents  Int?     // null = no strikethrough
+  discount            Int      @default(0) // percentage, 0..100
+  description         String
+  shortDescription    String
+  category            String
+  subcategory         String?
+  tags                Json     @default("[]")   // string[]
+  imageUrl            String
+  images              Json     @default("[]")   // string[]
+  inStock             Boolean  @default(true)
+  stockCount          Int      @default(0)
+  rating              Float    @default(0)
+  reviewCount         Int      @default(0)
+  isSale              Boolean  @default(false)
+  isFeatured          Boolean  @default(false)
+  isComingSoon        Boolean  @default(false)
+  availableOnWebsite  Boolean  @default(true)
+  sku                 String   @unique
+  audioPreviewUrl     String?
+  isAudiobook         Boolean  @default(false)
+  isStudyGuide        Boolean  @default(false)
+  studyGuideUrl       String?
+  downloadUrl         String?
+  reviews             Json?    // Review[] | null
+  // Audiobook series grouping (lib/audiobooks.ts). Null for non-audiobook
+  // items. Each standalone audiobook gets its own single-item series so the
+  // "up next" lookup always has a key. Episode number lives in the JSON
+  // catalog only (data/products.json) for now — it's only used as a tie-break
+  // when ordering items within a series, derivable from SKU if absent.
+  series              String?
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  // ----- Inventory rotation (lib/inventory.ts) -----
+  // Owned by the inventory subsystem. Additive — products-tab agent should
+  // leave these alone. All optional/nullable so existing seed/POST flows
+  // don't need to set them; null = "behave like the old static catalog".
+  //
+  // null = unlimited stock (the default for legacy items). Otherwise current
+  // on-hand count. decrementStock() enforces non-negative.
+  stockQuantity       Int?
+  // Availability window. Shape:
+  //   { type: 'always' | 'weekly' | 'monthly' | 'dated',
+  //     daysOfWeek?: number[],       // 0=Sun..6=Sat, for 'weekly'
+  //     weekOfMonth?: number[],      // 1..5, for 'monthly'
+  //     featuredDates?: string[] }   // ["MM-DD", ...] — pins to that calendar day
+  // Audiobooks and study guides ignore this and are always available
+  // (server-enforced in lib/inventory.ts).
+  availabilityRule    Json?
+  // Auto-restock cadence. Shape:
+  //   { cadence: 'mon-thu' | 'weekly' | 'never', amount: number }
+  // null = no auto-restock. Hit POST /api/inventory/restock to apply.
+  restockSchedule     Json?
+  // Stamp from the last successful restock; prevents double-restock on a
+  // single calendar day even if the cron runs twice.
+  lastRestockAt       DateTime?
+
+  @@index([category])
+  @@index([isFeatured])
+  @@index([isSale])
+  @@map("products")
+}
+
+// Kid-submitted feedback. Public POST (rate-limited), parent-gated GET/PUT.
+// `page` records the URL the kid was on when they sent it; helpful context
+// when triaging ("they hit submit from /shop/checkout").
+model Feedback {
+  id          String   @id @default(cuid())
+  authorName  String?
+  body        String
+  page        String?
+  userAgent   String?
+  status      String   @default("new") // 'new' | 'read' | 'archived'
+  createdAt   DateTime @default(now())
+
+  @@index([status, createdAt])
+  @@map("feedback")
 }
 
 // Phase 6c — Printable single-use gift cards. Parents mint codes like
