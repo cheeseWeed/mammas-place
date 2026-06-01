@@ -5,7 +5,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { isValidUser, normalizeUser } from '@/lib/drive-progress';
-import { getProductById } from '@/lib/products';
+import { prisma } from '@/lib/prisma';
 import { placeOrder, InsufficientFundsError, OrderItem } from '@/lib/money/balance';
 import { decrementStock, OutOfStockError } from '@/lib/inventory';
 
@@ -36,13 +36,21 @@ export async function POST(req: NextRequest) {
     if (!Number.isInteger(qty) || qty < 1 || qty > 99) {
       return NextResponse.json({ error: 'Bad qty' }, { status: 400 });
     }
-    const product = await getProductById(raw.productId);
-    if (!product) {
+    // Read priceCents directly from the DB. Going through getProductById +
+    // Math.round(product.price * 100) introduced float drift on cents-not-
+    // divisible-by-100 prices, which caused checkout to demand 104.94 MP for
+    // a cart the UI showed as 104.93 MP. Source of truth is the integer column.
+    // Apply the sale price (originalPriceCents was the strikethrough; priceCents
+    // is what the kid actually pays).
+    const row = await prisma.product.findUnique({
+      where: { id: raw.productId },
+      select: { id: true, name: true, priceCents: true },
+    });
+    if (!row) {
       return NextResponse.json({ error: `Unknown product ${raw.productId}` }, { status: 400 });
     }
-    const priceCents = Math.round(product.price * 100);
-    items.push({ productId: product.id, name: product.name, qty, priceCents });
-    totalCents += priceCents * qty;
+    items.push({ productId: row.id, name: row.name, qty, priceCents: row.priceCents });
+    totalCents += row.priceCents * qty;
   }
 
   // Stock check / decrement runs BEFORE the balance debit so we reject
