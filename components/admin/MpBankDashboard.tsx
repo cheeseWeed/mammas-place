@@ -158,6 +158,9 @@ export default function MpBankDashboard() {
   // kept under the existing state to avoid more boilerplate).
   const [rerollBusy, setRerollBusy] = useState<string | null>(null);
 
+  // Track which learner is mid-delete so we disable just that row's button.
+  const [deleteBusy, setDeleteBusy] = useState<string | null>(null);
+
   // Gift Cards panel (Phase 6c) — create + list + revoke + print.
   const [giftCards, setGiftCards] = useState<GiftCardRow[]>([]);
   const [giftCardsLoading, setGiftCardsLoading] = useState(true);
@@ -434,6 +437,49 @@ export default function MpBankDashboard() {
     }
   };
 
+  const deleteLearner = async (userName: string, label: string) => {
+    // Hard delete — cascades to all of this user's transactions, orders,
+    // earnings, dad-asks and gift cards (schema onDelete: Cascade). No undo,
+    // so make the confirm spell out exactly what disappears.
+    if (!window.confirm(
+      `Permanently delete ${label} (@${userName})?\n\nThis erases their balance, full transaction history, orders, earnings and any gift cards. This cannot be undone.`,
+    )) {
+      return;
+    }
+    setDeleteBusy(userName);
+    try {
+      const res = await fetch(
+        `/api/money/admin/learners?name=${encodeURIComponent(userName)}`,
+        { method: 'DELETE' },
+      );
+      if (res.status === 401) {
+        handleUnauth();
+        return;
+      }
+      const data = (await res.json().catch(() => ({}))) as { error?: unknown };
+      if (!res.ok) {
+        const msg = typeof data.error === 'string' ? data.error : `HTTP ${res.status}`;
+        setPinToast({ kind: 'error', message: `Delete failed: ${msg}` });
+        return;
+      }
+      // If the deleted learner was the one selected in the transaction log,
+      // clear that selection so the panel doesn't query a ghost user.
+      if (selectedUser === userName) {
+        setSelectedUser('');
+        setTransactions([]);
+      }
+      setPinToast({ kind: 'success', message: `Deleted ${label}.` });
+      await loadLearners();
+    } catch (err) {
+      setPinToast({
+        kind: 'error',
+        message: err instanceof Error ? err.message : 'Network error',
+      });
+    } finally {
+      setDeleteBusy(null);
+    }
+  };
+
   const submitGiftCard = async (e: React.FormEvent) => {
     e.preventDefault();
     setGiftFormError(null);
@@ -706,6 +752,7 @@ export default function MpBankDashboard() {
               {learners.map((l) => {
                 const isOpen = openForm?.user === l.name;
                 const isRerolling = rerollBusy === l.name;
+                const isDeleting = deleteBusy === l.name;
                 const cardLabel = l.mpCardNumber
                   ? formatCardLocal(l.mpCardNumber)
                   : 'No card yet';
@@ -757,6 +804,15 @@ export default function MpBankDashboard() {
                           className="bg-yellow-100 hover:bg-yellow-200 text-purple-900 font-bold px-3 py-2 rounded-xl text-sm border-2 border-yellow-300 transition-colors"
                         >
                           Deduct
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => deleteLearner(l.name, displayLabel(l))}
+                          disabled={isDeleting}
+                          className="bg-red-50 hover:bg-red-100 text-red-700 font-bold px-3 py-2 rounded-xl text-sm border-2 border-red-200 transition-colors disabled:opacity-50"
+                          title="Permanently delete this learner and all their data"
+                        >
+                          {isDeleting ? 'Deleting…' : 'Delete'}
                         </button>
                       </div>
                     </div>

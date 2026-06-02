@@ -1,6 +1,9 @@
-// PUT /api/feedback/[id]
-// Parent-gated. Updates the row's status — used by the Feedback admin tab to
-// move a row between New → Read → Archived. Body: { status: 'new'|'read'|'archived' }.
+// /api/feedback/[id]
+//   PUT    → Parent-gated. Updates the row's status — used by the Feedback admin
+//            tab to move a row between New → Read → Archived.
+//            Body: { status: 'new'|'read'|'archived' }.
+//   DELETE → Parent-gated. Hard-deletes the feedback row. Irreversible
+//            (distinct from 'archived', which only hides it).
 
 import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
@@ -41,6 +44,25 @@ export async function PUT(req: NextRequest, { params }: Ctx) {
       data: { status },
     });
     return NextResponse.json({ feedback: row });
+  } catch (err) {
+    const message = err instanceof Error ? err.message : 'Unknown error';
+    if (message.includes('P2025') || message.toLowerCase().includes('not found')) {
+      return NextResponse.json({ error: 'Feedback not found' }, { status: 404 });
+    }
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}
+
+export async function DELETE(_req: NextRequest, { params }: Ctx) {
+  if (!(await isParentAuthenticated())) {
+    return NextResponse.json({ error: 'Parent login required' }, { status: 401 });
+  }
+  const { id } = await params;
+
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    await (prisma as any).feedback.delete({ where: { id } });
+    return NextResponse.json({ ok: true, deleted: id });
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Unknown error';
     if (message.includes('P2025') || message.toLowerCase().includes('not found')) {

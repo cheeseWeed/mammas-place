@@ -109,6 +109,33 @@ export default function AdminFeedbackTab({ onCountChange }: Props) {
     }
   };
 
+  const deleteFeedback = async (id: string) => {
+    // Hard delete — distinct from Archive (which just hides). No undo.
+    if (!window.confirm('Permanently delete this feedback? This cannot be undone.')) {
+      return;
+    }
+    setBusyId(id);
+    try {
+      const res = await fetch(`/api/feedback/${encodeURIComponent(id)}`, {
+        method: 'DELETE',
+      });
+      if (res.status === 401) {
+        handleUnauth();
+        return;
+      }
+      if (!res.ok) {
+        const data = (await res.json().catch(() => ({}))) as { error?: string };
+        setError(data.error || `HTTP ${res.status}`);
+        return;
+      }
+      await load();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Network error');
+    } finally {
+      setBusyId(null);
+    }
+  };
+
   const FILTERS: { key: StatusFilter; label: string; pill: string }[] = [
     { key: 'new', label: 'New', pill: 'bg-purple-100 text-purple-900' },
     { key: 'read', label: 'Read', pill: 'bg-blue-100 text-blue-900' },
@@ -233,6 +260,14 @@ export default function AdminFeedbackTab({ onCountChange }: Props) {
                       Archive
                     </button>
                   )}
+                  <button
+                    type="button"
+                    onClick={() => deleteFeedback(r.id)}
+                    disabled={isBusy}
+                    className="text-red-600 hover:text-red-800 underline disabled:opacity-50 ml-auto"
+                  >
+                    Delete
+                  </button>
                 </div>
               </li>
             );
