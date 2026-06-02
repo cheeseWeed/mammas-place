@@ -5,7 +5,6 @@ import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { ToastProvider } from "@/context/ToastContext";
 import { AuthProvider } from "@/context/AuthContext";
-import { AdminAuthProvider } from "@/context/AdminAuthContext";
 import { LearnerProvider } from "@/context/LearnerContext";
 import { PasscodeProvider } from "@/context/PasscodeContext";
 import PasscodeGate from "@/components/PasscodeGate";
@@ -60,10 +59,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-purple-50 min-h-screen`}
       >
-        {/* Provider stack: passcode gate → admin auth → staff auth → cart → toasts */}
+        {/* Provider stack: passcode gate → staff auth → cart → toasts.
+            (Admin auth removed — the merged admin is parent-PIN-gated server-side.) */}
         <PasscodeProvider>
         <PasscodeGate>
-        <AdminAuthProvider>
         <AuthProvider>
         <LearnerProvider>
         <CartProvider>
@@ -77,7 +76,6 @@ export default function RootLayout({
         </CartProvider>
         </LearnerProvider>
         </AuthProvider>
-        </AdminAuthProvider>
         </PasscodeGate>
         </PasscodeProvider>
         {/* Analytics — placed outside providers so they load even if passcode is locked */}

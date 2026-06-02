@@ -14,11 +14,17 @@ import { cookies } from 'next/headers';
 import { isValidUser, normalizeUser } from '@/lib/drive-progress';
 import { isParentAuthenticated } from '@/lib/money/parent';
 import { addPiece, updatePiece, deletePiece, type AddPieceInput } from '@/lib/music/profile';
-import { INSTRUMENTS, type Instrument } from '@/lib/music/types';
 
 const COOKIE_NAME = 'dl_user';
-const VALID_INSTRUMENTS = new Set(INSTRUMENTS.map((i) => i.value));
 const VALID_DIFFICULTY = new Set(['easy', 'medium', 'hard']);
+
+// Instruments are free-form (families can add any). Accept any non-empty string
+// up to 30 chars, normalized to lowercase so 'Ukulele' and 'ukulele' match.
+function normInstrument(raw: unknown): string | null {
+  if (typeof raw !== 'string') return null;
+  const v = raw.trim().toLowerCase().slice(0, 30);
+  return v.length > 0 ? v : null;
+}
 
 // Resolve the target user + whether the caller is a parent. Self-only unless
 // the parent cookie is present (then any `user` is allowed).
@@ -61,13 +67,13 @@ export async function POST(req: NextRequest) {
   if ('error' in target) return NextResponse.json({ error: target.error }, { status: target.status });
 
   const title = typeof body.title === 'string' ? body.title.trim() : '';
-  const instrument = body.instrument as Instrument;
+  const instrument = normInstrument(body.instrument);
   const estLines = Number(body.estLines);
   const difficulty = body.difficulty as string;
 
   if (!title) return NextResponse.json({ error: 'Title required' }, { status: 400 });
-  if (!VALID_INSTRUMENTS.has(instrument)) {
-    return NextResponse.json({ error: 'Bad instrument' }, { status: 400 });
+  if (!instrument) {
+    return NextResponse.json({ error: 'Instrument required' }, { status: 400 });
   }
   if (!Number.isFinite(estLines) || estLines < 1) {
     return NextResponse.json({ error: 'estLines must be ≥ 1' }, { status: 400 });
@@ -112,8 +118,9 @@ export async function PATCH(req: NextRequest) {
 
   const patch: Partial<AddPieceInput> = {};
   if (typeof body.title === 'string') patch.title = body.title;
-  if (typeof body.instrument === 'string' && VALID_INSTRUMENTS.has(body.instrument as Instrument)) {
-    patch.instrument = body.instrument as Instrument;
+  if (body.instrument !== undefined) {
+    const inst = normInstrument(body.instrument);
+    if (inst) patch.instrument = inst;
   }
   if (body.estLines !== undefined && Number.isFinite(Number(body.estLines))) patch.estLines = Number(body.estLines);
   if (typeof body.difficulty === 'string' && VALID_DIFFICULTY.has(body.difficulty)) {

@@ -102,6 +102,25 @@ export async function updatePiece(
   return piece;
 }
 
+// Archive / unarchive a piece. Archived pieces drop out of the active plan but
+// stay in history + the calendar. No reward (unlike pass-off). Kid-allowed.
+export async function setPieceArchived(
+  rawUser: string,
+  pieceId: string,
+  archived: boolean,
+): Promise<MusicPiece | null> {
+  const userKey = normalizeUser(rawUser);
+  if (!userKey) throw new Error('Bad user');
+  const profile = await readMusicProfile(userKey);
+  if (!profile) return null;
+  const piece = profile.pieces.find((p) => p.id === pieceId);
+  if (!piece) return null;
+  piece.archived = archived;
+  piece.archivedAt = archived ? new Date().toISOString() : undefined;
+  await writeMusicProfile(userKey, profile);
+  return piece;
+}
+
 export async function deletePiece(rawUser: string, pieceId: string): Promise<boolean> {
   const userKey = normalizeUser(rawUser);
   if (!userKey) throw new Error('Bad user');

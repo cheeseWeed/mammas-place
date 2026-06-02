@@ -16,7 +16,7 @@ import Link from 'next/link';
 import LoginGate from '@/components/LoginGate';
 import { useLearner } from '@/context/LearnerContext';
 import { centsToMP } from '@/lib/money/format';
-import { INSTRUMENTS, type Instrument, type MusicPiece, type MusicChallenge } from '@/lib/music/types';
+import { INSTRUMENTS, instrumentDisplay, type Instrument, type MusicPiece, type MusicChallenge } from '@/lib/music/types';
 import type { DayPlan, PiecePlan } from '@/lib/music/plan';
 
 // A piece is "certificate-worthy" once the kid has hit a great-sounding
@@ -52,6 +52,8 @@ function MusicInner() {
   const [state, setState] = useState<MusicState | null>(null);
   const [loading, setLoading] = useState(true);
   const [toast, setToast] = useState<string | null>(null);
+  const [instFilter, setInstFilter] = useState<string>('all'); // 'all' | instrument value
+  const [statusFilter, setStatusFilter] = useState<'all' | 'ready' | 'in-progress'>('all');
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -85,6 +87,32 @@ function MusicInner() {
   const plan = state?.plan;
   const challenge = state?.profile.challenge;
   const today = state?.today ?? '';
+
+  // Distinct instruments across all pieces, for the filter chips.
+  const instruments = Array.from(new Set(pieces.map((p) => p.instrument)));
+
+  // A piece is "ready to perform" once it's passed off OR has hit a high-
+  // quality run (best score ≥ CERT_THRESHOLD).
+  const isPerformanceReady = (p: MusicPiece) =>
+    !!p.passedOffAt || p.log.reduce((m, e) => Math.max(m, e.qualityScore), 0) >= CERT_THRESHOLD;
+
+  const matchesStatus = (p: MusicPiece) =>
+    statusFilter === 'all' ||
+    (statusFilter === 'ready' ? isPerformanceReady(p) : !isPerformanceReady(p));
+
+  // The plan only contains LIVE (non-archived) pieces. Apply instrument +
+  // status filters on top for what the kid sees in the active list.
+  const visiblePlanPieces = (plan?.pieces ?? []).filter((pp) => {
+    const piece = pieces.find((p) => p.id === pp.pieceId);
+    if (!piece) return false;
+    if (instFilter !== 'all' && piece.instrument !== instFilter) return false;
+    return matchesStatus(piece);
+  });
+
+  // Archived pieces (not in the plan), filtered the same way.
+  const archivedVisible = pieces.filter(
+    (p) => p.archived && (instFilter === 'all' || p.instrument === instFilter) && matchesStatus(p),
+  );
 
   return (
     <Shell>
@@ -142,23 +170,49 @@ function MusicInner() {
           <p className="text-gray-600 text-sm mb-4">Add the first song you’re learning to get started.</p>
         </div>
       ) : (
-        <div className="max-w-3xl mx-auto space-y-5">
-          {plan?.pieces.map((pp) => {
-            const piece = pieces.find((p) => p.id === pp.pieceId)!;
-            return (
-              <PieceCard
-                key={pp.pieceId}
-                piece={piece}
-                plan={pp}
-                rewardCurve={state!.rewardCurve}
-                onLogged={async (msg) => {
-                  flash(msg);
-                  await Promise.all([load(), refreshBalance()]);
-                }}
-              />
-            );
-          })}
-        </div>
+        <>
+          {instruments.length > 1 && (
+            <InstrumentFilter
+              instruments={instruments}
+              value={instFilter}
+              onChange={setInstFilter}
+            />
+          )}
+
+          <StatusFilter value={statusFilter} onChange={setStatusFilter} />
+
+          <div className="max-w-3xl mx-auto space-y-5">
+            {visiblePlanPieces.length === 0 ? (
+              <div className="bg-white rounded-2xl border-2 border-indigo-100 p-6 text-center text-gray-500">
+                No active {instFilter !== 'all' ? instrumentDisplay(instFilter).label + ' ' : ''}songs right now.
+              </div>
+            ) : (
+              visiblePlanPieces.map((pp) => {
+                const piece = pieces.find((p) => p.id === pp.pieceId)!;
+                return (
+                  <PieceCard
+                    key={pp.pieceId}
+                    piece={piece}
+                    plan={pp}
+                    isCompetition={!!challenge?.pieceIds.includes(piece.id)}
+                    rewardCurve={state!.rewardCurve}
+                    onChanged={async (msg) => {
+                      flash(msg);
+                      await Promise.all([load(), refreshBalance()]);
+                    }}
+                  />
+                );
+              })
+            )}
+          </div>
+
+          {archivedVisible.length > 0 && (
+            <ArchivedSection
+              pieces={archivedVisible}
+              onChanged={async (msg) => { flash(msg); await load(); }}
+            />
+          )}
+        </>
       )}
 
       <div className="max-w-3xl mx-auto mt-8">
@@ -379,19 +433,21 @@ function PieceCard({
   piece,
   plan,
   rewardCurve,
-  onLogged,
+  isCompetition,
+  onChanged,
 }: {
   piece: MusicPiece;
   plan: PiecePlan;
   rewardCurve: { score: number; mp: number }[];
-  onLogged: (msg: string) => void | Promise<void>;
+  isCompetition: boolean;
+  onChanged: (msg: string) => void | Promise<void>;
 }) {
   const [score, setScore] = useState(7);
   const [lines, setLines] = useState(plan.learned + Math.max(1, plan.linesPerDayTarget));
   const [reviewedBy, setReviewedBy] = useState('dad');
   const [busy, setBusy] = useState(false);
 
-  const instrument = INSTRUMENTS.find((i) => i.value === piece.instrument);
+  const instrument = instrumentDisplay(piece.instrument);
   const progressPct = piece.estLines > 0 ? Math.round((plan.learned / piece.estLines) * 100) : 0;
   const wouldEarn = rewardCurve.find((r) => r.score === score)?.mp ?? 0;
   const certReady = plan.bestScore >= CERT_THRESHOLD;
@@ -411,11 +467,11 @@ function PieceCard({
       });
       const data = await res.json();
       if (!res.ok) {
-        await onLogged(data.error ?? 'Could not log practice');
+        await onChanged(data.error ?? 'Could not log practice');
         return;
       }
       if (data.reason === 'duplicate') {
-        await onLogged('Already logged today — come back tomorrow! 🎵');
+        await onChanged('Already logged today — come back tomorrow! 🎵');
         return;
       }
       let msg = `+${centsToMP(data.centsEarned)} for ${piece.title}! ⭐`;
@@ -423,7 +479,35 @@ function PieceCard({
         const bonus = data.challengeBonuses[0];
         msg += `  Plus ${centsToMP(bonus.cents)} bonus — ${bonus.name}! 🏆`;
       }
-      await onLogged(msg);
+      await onChanged(msg);
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const archive = async () => {
+    if (!confirm(`Archive "${piece.title}"? It moves to your Done list and leaves your daily plan (you keep the history).`)) return;
+    setBusy(true);
+    try {
+      const res = await fetch('/api/music/archive', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ pieceId: piece.id, archived: true }),
+      });
+      const data = await res.json();
+      await onChanged(res.ok ? `Archived "${piece.title}". 📥` : (data.error ?? 'Could not archive'));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const remove = async () => {
+    if (!confirm(`Delete "${piece.title}" completely? This removes it and its practice history. Use Archive instead if you just finished it.`)) return;
+    setBusy(true);
+    try {
+      const res = await fetch(`/api/music/pieces?pieceId=${encodeURIComponent(piece.id)}`, { method: 'DELETE' });
+      const data = await res.json().catch(() => ({}));
+      await onChanged(res.ok ? `Deleted "${piece.title}".` : (data.error ?? 'Could not delete'));
     } finally {
       setBusy(false);
     }
@@ -433,11 +517,23 @@ function PieceCard({
     <div className="bg-white rounded-2xl border-2 border-indigo-100 shadow p-5">
       <div className="flex items-start justify-between gap-3 mb-3">
         <div>
-          <h3 className="text-xl font-black text-indigo-900 leading-tight">
-            {instrument?.emoji} {piece.title}
-          </h3>
+          <div className="flex items-center gap-2 flex-wrap">
+            <h3 className="text-xl font-black text-indigo-900 leading-tight">
+              {instrument.emoji} {piece.title}
+            </h3>
+            {isCompetition && (
+              <span className="bg-violet-100 text-violet-700 text-[11px] font-bold px-2 py-0.5 rounded-full" title="Part of the competition">
+                🏆 Competition
+              </span>
+            )}
+            {(piece.passedOffAt || plan.bestScore >= CERT_THRESHOLD) && (
+              <span className="bg-green-100 text-green-700 text-[11px] font-bold px-2 py-0.5 rounded-full" title="Sounds performance-ready">
+                🎤 Ready to perform
+              </span>
+            )}
+          </div>
           <p className="text-sm text-gray-500">
-            {instrument?.label} · {piece.difficulty} · {piece.estLines} lines
+            {instrument.label} · {piece.difficulty} · {piece.estLines} lines
             {piece.targetDate && ` · target ${piece.targetDate}`}
           </p>
         </div>
@@ -541,16 +637,142 @@ function PieceCard({
           🏅 Print your certificate for “{piece.title}”
         </Link>
       )}
+
+      {/* manage: archive (done) / delete */}
+      <div className="mt-3 pt-3 border-t border-indigo-50 flex items-center justify-end gap-3 text-xs">
+        <button onClick={archive} disabled={busy} className="text-indigo-600 hover:text-indigo-800 font-semibold">
+          📥 Archive (done)
+        </button>
+        <button onClick={remove} disabled={busy} className="text-rose-500 hover:text-rose-700 font-semibold">
+          🗑 Delete
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ----- Instrument filter -----
+
+function InstrumentFilter({
+  instruments,
+  value,
+  onChange,
+}: {
+  instruments: string[];
+  value: string;
+  onChange: (v: string) => void;
+}) {
+  return (
+    <div className="max-w-3xl mx-auto mb-5 flex items-center gap-2 flex-wrap justify-center">
+      <span className="text-xs font-bold text-indigo-500 uppercase tracking-wide">Instrument:</span>
+      <Chip label="All" active={value === 'all'} onClick={() => onChange('all')} />
+      {instruments.map((inst) => {
+        const d = instrumentDisplay(inst);
+        return <Chip key={inst} label={`${d.emoji} ${d.label}`} active={value === inst} onClick={() => onChange(inst)} />;
+      })}
+    </div>
+  );
+}
+
+function StatusFilter({
+  value,
+  onChange,
+}: {
+  value: 'all' | 'ready' | 'in-progress';
+  onChange: (v: 'all' | 'ready' | 'in-progress') => void;
+}) {
+  return (
+    <div className="max-w-3xl mx-auto mb-5 flex items-center gap-2 flex-wrap justify-center">
+      <span className="text-xs font-bold text-indigo-500 uppercase tracking-wide">Show:</span>
+      <Chip label="All" active={value === 'all'} onClick={() => onChange('all')} />
+      <Chip label="🎤 Ready to perform" active={value === 'ready'} onClick={() => onChange('ready')} />
+      <Chip label="🎯 Still learning" active={value === 'in-progress'} onClick={() => onChange('in-progress')} />
+    </div>
+  );
+}
+
+function Chip({ label, active, onClick }: { label: string; active: boolean; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className={`px-3 py-1.5 rounded-full text-sm font-semibold transition-colors ${
+        active ? 'bg-indigo-700 text-white' : 'bg-white text-indigo-700 border border-indigo-200 hover:bg-indigo-50'
+      }`}
+    >
+      {label}
+    </button>
+  );
+}
+
+// ----- Archived / Done list -----
+
+function ArchivedSection({
+  pieces,
+  onChanged,
+}: {
+  pieces: MusicPiece[];
+  onChanged: (msg: string) => void | Promise<void>;
+}) {
+  const [open, setOpen] = useState(false);
+
+  const unarchive = async (p: MusicPiece) => {
+    const res = await fetch('/api/music/archive', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ pieceId: p.id, archived: false }),
+    });
+    const data = await res.json().catch(() => ({}));
+    await onChanged(res.ok ? `Brought "${p.title}" back. 🎵` : (data.error ?? 'Could not unarchive'));
+  };
+
+  return (
+    <div className="max-w-3xl mx-auto mt-8">
+      <button
+        onClick={() => setOpen((o) => !o)}
+        className="w-full text-left bg-white border border-gray-200 rounded-xl px-4 py-3 font-bold text-gray-600 flex items-center justify-between"
+      >
+        <span>📥 Done / Archived ({pieces.length})</span>
+        <span>{open ? '▲' : '▼'}</span>
+      </button>
+      {open && (
+        <div className="mt-2 space-y-2">
+          {pieces.map((p) => {
+            const d = instrumentDisplay(p.instrument);
+            const best = p.log.reduce((m, e) => Math.max(m, e.qualityScore), 0);
+            return (
+              <div key={p.id} className="bg-gray-50 rounded-xl p-3 flex items-center justify-between gap-3">
+                <div>
+                  <div className="font-bold text-gray-700 text-sm">
+                    {d.emoji} {p.title} {p.passedOffAt && '✅'}
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    {d.label} · best {best || '—'}/10 · {p.log.length} practice day{p.log.length === 1 ? '' : 's'}
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 shrink-0 text-xs">
+                  {best >= CERT_THRESHOLD || p.passedOffAt ? (
+                    <Link href={`/music/certificate?piece=${encodeURIComponent(p.id)}`} className="text-amber-700 font-semibold">🏅 Cert</Link>
+                  ) : null}
+                  <button onClick={() => unarchive(p)} className="text-indigo-600 font-semibold">↩ Restore</button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
 
 // ----- Add piece -----
 
+const CUSTOM_INSTRUMENT = '__custom__';
+
 function AddPieceForm({ onAdded }: { onAdded: () => void | Promise<void> }) {
   const [open, setOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [instrument, setInstrument] = useState<Instrument>('cello');
+  const [customInstrument, setCustomInstrument] = useState('');
   const [estLines, setEstLines] = useState(16);
   const [difficulty, setDifficulty] = useState<'easy' | 'medium' | 'hard'>('medium');
   const [targetDate, setTargetDate] = useState('');
@@ -560,16 +782,18 @@ function AddPieceForm({ onAdded }: { onAdded: () => void | Promise<void> }) {
   const submit = async () => {
     setErr(null);
     if (!title.trim()) { setErr('Give it a title.'); return; }
+    const resolvedInstrument = instrument === CUSTOM_INSTRUMENT ? customInstrument.trim() : instrument;
+    if (!resolvedInstrument) { setErr('Name the instrument.'); return; }
     setBusy(true);
     try {
       const res = await fetch('/api/music/pieces', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ title, instrument, estLines, difficulty, targetDate: targetDate || undefined }),
+        body: JSON.stringify({ title, instrument: resolvedInstrument, estLines, difficulty, targetDate: targetDate || undefined }),
       });
       const data = await res.json();
       if (!res.ok) { setErr(data.error ?? 'Could not add'); return; }
-      setTitle(''); setTargetDate(''); setOpen(false);
+      setTitle(''); setTargetDate(''); setCustomInstrument(''); setOpen(false);
       await onAdded();
     } finally {
       setBusy(false);
@@ -599,12 +823,21 @@ function AddPieceForm({ onAdded }: { onAdded: () => void | Promise<void> }) {
         <div className="grid grid-cols-2 gap-3">
           <select value={instrument} onChange={(e) => setInstrument(e.target.value as Instrument)} className="border border-indigo-200 rounded-lg px-2 py-2 text-indigo-900">
             {INSTRUMENTS.map((i) => <option key={i.value} value={i.value}>{i.emoji} {i.label}</option>)}
+            <option value={CUSTOM_INSTRUMENT}>➕ Add new instrument…</option>
           </select>
           <select value={difficulty} onChange={(e) => setDifficulty(e.target.value as 'easy' | 'medium' | 'hard')} className="border border-indigo-200 rounded-lg px-2 py-2 text-indigo-900">
             <option value="easy">Easy</option>
             <option value="medium">Medium</option>
             <option value="hard">Hard</option>
           </select>
+          {instrument === CUSTOM_INSTRUMENT && (
+            <input
+              value={customInstrument}
+              onChange={(e) => setCustomInstrument(e.target.value)}
+              placeholder="e.g. Ukulele, Harp…"
+              className="col-span-2 border border-indigo-200 rounded-lg px-3 py-2 text-indigo-900"
+            />
+          )}
           <label className="text-xs font-bold text-indigo-700">
             Total lines
             <input type="number" min={1} value={estLines} onChange={(e) => setEstLines(Number(e.target.value))} className="mt-1 w-full border border-indigo-200 rounded-lg px-2 py-2 text-indigo-900" />

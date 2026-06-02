@@ -18,16 +18,35 @@
 
 // ----- Pieces -----
 
-export type Instrument = 'cello' | 'piano' | 'violin' | 'guitar' | 'voice' | 'other';
+// Instrument is a free string so families can add any instrument (ukulele,
+// harp, drums…). The presets below drive the dropdown + emoji/label lookup;
+// anything not in the list still works and falls back to the 🎵 icon.
+export type Instrument = string;
 
-export const INSTRUMENTS: { value: Instrument; label: string; emoji: string }[] = [
+export const INSTRUMENTS: { value: string; label: string; emoji: string }[] = [
   { value: 'cello', label: 'Cello', emoji: '🎻' },
   { value: 'piano', label: 'Piano', emoji: '🎹' },
   { value: 'violin', label: 'Violin', emoji: '🎻' },
   { value: 'guitar', label: 'Guitar', emoji: '🎸' },
   { value: 'voice', label: 'Voice', emoji: '🎤' },
+  { value: 'viola', label: 'Viola', emoji: '🎻' },
+  { value: 'flute', label: 'Flute', emoji: '🎶' },
+  { value: 'trumpet', label: 'Trumpet', emoji: '🎺' },
+  { value: 'drums', label: 'Drums', emoji: '🥁' },
+  { value: 'ukulele', label: 'Ukulele', emoji: '🎸' },
+  { value: 'harp', label: 'Harp', emoji: '🎵' },
+  { value: 'saxophone', label: 'Saxophone', emoji: '🎷' },
   { value: 'other', label: 'Other', emoji: '🎵' },
 ];
+
+// Resolve an instrument string to its display label + emoji. Unknown (custom)
+// instruments get title-cased and a generic 🎵.
+export function instrumentDisplay(value: string): { label: string; emoji: string } {
+  const preset = INSTRUMENTS.find((i) => i.value === value);
+  if (preset) return { label: preset.label, emoji: preset.emoji };
+  const label = value.charAt(0).toUpperCase() + value.slice(1);
+  return { label, emoji: '🎵' };
+}
 
 // One practice session on one calendar day.
 export interface MusicLogEntry {
@@ -54,6 +73,12 @@ export interface MusicPiece {
   // pass-off reward (gift card). Null while still in progress.
   passedOffAt?: string;   // ISO
   passOffGiftCode?: string; // the MP-XXXXXX code minted on pass-off (audit)
+  // Archived = retired from the active list/plan but kept for history and the
+  // calendar. Distinct from passed-off (which pays a reward) and delete (which
+  // removes entirely). A kid archives a song they're done with but didn't
+  // formally pass off.
+  archived?: boolean;
+  archivedAt?: string;    // ISO
 }
 
 // ----- Challenge (reusable competition wrapper) -----

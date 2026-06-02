@@ -210,7 +210,9 @@ export function planForToday(
 ): DayPlan {
   const dow = new Date(todayStr + 'T00:00:00Z').getUTCDay();
   const isPerformDay = config.performDays.includes(dow);
-  const piecePlans = pieces.map((p) => planForPiece(p, todayStr, config));
+  // Archived pieces are retired — they don't appear in today's plan at all.
+  const livePieces = pieces.filter((p) => !p.archived);
+  const piecePlans = livePieces.map((p) => planForPiece(p, todayStr, config));
   const active = piecePlans.filter((p) => !p.passedOff && p.remaining > 0);
 
   const hasGoal = typeof dailyLineGoal === 'number' && dailyLineGoal > 0 && active.length > 0;

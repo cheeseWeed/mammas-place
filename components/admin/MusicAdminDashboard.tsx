@@ -7,7 +7,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { centsToMP } from '@/lib/money/format';
-import { INSTRUMENTS, type MusicPiece, type MusicChallenge } from '@/lib/music/types';
+import { instrumentDisplay, type MusicPiece, type MusicChallenge } from '@/lib/music/types';
 import { linesLearned, bestScore } from '@/lib/music/plan';
 
 interface Learner {
@@ -137,7 +137,7 @@ export default function MusicAdminDashboard() {
                 🗓️ View {kid.user}&apos;s practice calendar
               </a>
             </div>
-            <PieceTable pieces={kid.profile.pieces} onPassOff={passOff} />
+            <PieceTable pieces={kid.profile.pieces} challenge={kid.profile.challenge} onPassOff={passOff} />
             <ChallengeEditor
               user={kid.user}
               pieces={kid.profile.pieces}
@@ -151,14 +151,24 @@ export default function MusicAdminDashboard() {
   );
 }
 
-function PieceTable({ pieces, onPassOff }: { pieces: MusicPiece[]; onPassOff: (p: MusicPiece) => void }) {
+function PieceTable({
+  pieces,
+  challenge,
+  onPassOff,
+}: {
+  pieces: MusicPiece[];
+  challenge?: MusicChallenge;
+  onPassOff: (p: MusicPiece) => void;
+}) {
   if (!pieces.length) return <p className="text-gray-500 mb-6">This kid has no pieces yet.</p>;
+  const compIds = new Set(challenge?.pieceIds ?? []);
   return (
     <div className="bg-white rounded-2xl border border-indigo-100 overflow-hidden mb-8">
       <table className="w-full text-sm">
         <thead className="bg-indigo-50 text-indigo-800">
           <tr>
             <th className="text-left px-4 py-2">Piece</th>
+            <th className="text-left px-4 py-2">Type</th>
             <th className="text-left px-4 py-2">Progress</th>
             <th className="text-left px-4 py-2">Best</th>
             <th className="text-left px-4 py-2">Target</th>
@@ -169,10 +179,20 @@ function PieceTable({ pieces, onPassOff }: { pieces: MusicPiece[]; onPassOff: (p
           {pieces.map((p) => {
             const learned = linesLearned(p);
             const best = bestScore(p);
-            const instrument = INSTRUMENTS.find((i) => i.value === p.instrument);
+            const d = instrumentDisplay(p.instrument);
+            const isComp = compIds.has(p.id);
             return (
-              <tr key={p.id} className="border-t border-indigo-50">
-                <td className="px-4 py-3 font-semibold text-indigo-900">{instrument?.emoji} {p.title}</td>
+              <tr key={p.id} className={`border-t border-indigo-50 ${p.archived ? 'opacity-50' : ''}`}>
+                <td className="px-4 py-3 font-semibold text-indigo-900">
+                  {d.emoji} {p.title} {p.archived && <span className="text-[10px] text-gray-400">(archived)</span>}
+                </td>
+                <td className="px-4 py-3">
+                  {isComp ? (
+                    <span className="bg-violet-100 text-violet-700 text-[11px] font-bold px-2 py-0.5 rounded-full">🏆 Competition</span>
+                  ) : (
+                    <span className="text-gray-400 text-xs">Regular</span>
+                  )}
+                </td>
                 <td className="px-4 py-3 text-gray-600">{learned}/{p.estLines} lines</td>
                 <td className="px-4 py-3 text-gray-600">{best || '—'}/10</td>
                 <td className="px-4 py-3 text-gray-600">{p.targetDate ?? '—'}</td>
