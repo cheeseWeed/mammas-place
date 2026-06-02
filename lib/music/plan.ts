@@ -20,14 +20,17 @@
 import type { MusicPiece } from './types';
 
 export interface PlanConfig {
-  practiceDaysPerWeek: number; // default 5 (Mon-Fri); weekends = perform
-  // Days of week reserved for performing (0=Sun..6=Sat). Default Sat+Sun.
+  practiceDaysPerWeek: number; // default 6 (Mon-Sat); Sunday = perform/rest
+  // Days of week reserved for performing (0=Sun..6=Sat). Default Sunday only —
+  // Saturday is a practice day. The idea: learn Mon-Sat, and once a song is
+  // finished, take a day to polish it and put it all together before
+  // performing on Sunday.
   performDays: number[];
 }
 
 export const DEFAULT_PLAN_CONFIG: PlanConfig = {
-  practiceDaysPerWeek: 5,
-  performDays: [0, 6],
+  practiceDaysPerWeek: 6,
+  performDays: [0], // Sunday only
 };
 
 // How far along a piece is, in lines, based on the best single-day
@@ -82,6 +85,10 @@ export interface PiecePlan {
   bestScore: number;
   passedOff: boolean;
   onTrack: boolean;
+  // Polish/perform mode: earn shifts to 50 MP per play-through (+ quality
+  // bonus). True when all lines are learned, OR it's a Sunday perform day, OR
+  // the kid flipped the manual polishMode on the piece.
+  inPolishMode: boolean;
 }
 
 // Count practice days (non-perform days) strictly between today and target
@@ -109,6 +116,12 @@ export function planForPiece(
   const passedOff = !!piece.passedOffAt;
   const practicedToday = practicedOn(piece, todayStr);
   const best = bestScore(piece);
+
+  // Polish mode: all lines learned, OR it's a Sunday perform day, OR the kid
+  // manually flipped it. In polish mode the kid earns 50 MP per play-through
+  // (+ quality bonus) instead of learning new lines.
+  const isPerformDayToday = config.performDays.includes(new Date(todayStr + 'T00:00:00Z').getUTCDay());
+  const inPolishMode = remaining === 0 || passedOff || isPerformDayToday || !!piece.polishMode;
 
   let daysUntilTarget: number | undefined;
   let practiceDaysLeft: number | undefined;
@@ -153,8 +166,12 @@ export function planForPiece(
   let todaysFocus: string;
   if (passedOff) {
     todaysFocus = `Passed off! Keep it polished for performances. 🎉`;
-  } else if (remaining === 0) {
-    todaysFocus = `All ${piece.estLines} lines learned — polish for a great-sounding run-through (aim 9-10/10).`;
+  } else if (inPolishMode && remaining === 0) {
+    todaysFocus = `All lines learned — play it through 3–4 times and make it shine (50 MP each + bonus if it sounds great).`;
+  } else if (inPolishMode && isPerformDayToday) {
+    todaysFocus = `Performance day — play your songs through (50 MP each + quality bonus).`;
+  } else if (inPolishMode) {
+    todaysFocus = `Polish mode — play it through 3–4 times (50 MP each + quality bonus).`;
   } else {
     todaysFocus = `Learn ${linesPerDayTarget} new line${linesPerDayTarget === 1 ? '' : 's'} (line ${learned + 1}–${Math.min(piece.estLines, learned + linesPerDayTarget)}), then play it through.`;
   }
@@ -174,6 +191,7 @@ export function planForPiece(
     bestScore: best,
     passedOff,
     onTrack,
+    inPolishMode,
   };
 }
 

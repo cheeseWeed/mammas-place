@@ -70,9 +70,14 @@ export interface MusicLogEntry {
   date: string;          // YYYY-MM-DD (local) — one entry per piece per day (idempotent)
   qualityScore: number;  // 1..10 — how good it sounded today (parent/ChatGPT reviewed)
   linesPracticed: number; // how many lines/systems were worked this session
+  minutesPracticed?: number; // minutes practiced (learning days) — drives the time multiplier
   centsEarned: number;   // MP credited for this session (server-computed)
   note?: string;         // optional kid/parent note
   reviewedBy?: string;   // 'dad' | 'chatgpt' | 'mom' | etc. (logged only)
+  // Polish/perform-day sessions: how many complete play-throughs (50 MP each).
+  // Undefined/0 on normal learning-day sessions.
+  playThroughs?: number;
+  mode?: 'learn' | 'polish'; // which earn mode this entry used (default 'learn')
 }
 
 export interface MusicPiece {
@@ -96,6 +101,10 @@ export interface MusicPiece {
   // formally pass off.
   archived?: boolean;
   archivedAt?: string;    // ISO
+  // Manual "polish mode" override. Normally polish mode auto-engages once all
+  // lines are learned (or on Sunday), but a kid can flip a song into polish
+  // mode early (e.g. they've got the notes and want to focus on play-throughs).
+  polishMode?: boolean;
   // Weekly pass-offs. Each entry = someone (teacher / mom / dad) passed the kid
   // off on this piece (recurring; a piece can be passed off in multiple weeks
   // if it stays in lesson rotation). Earns the weekly reward (150 MP) per

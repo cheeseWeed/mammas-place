@@ -132,6 +132,7 @@ export async function PATCH(req: NextRequest) {
     else return NextResponse.json({ error: 'targetDate must be YYYY-MM-DD' }, { status: 400 });
   }
   if (typeof body.pdfHref === 'string') patch.pdfHref = body.pdfHref;
+  if (typeof body.polishMode === 'boolean') patch.polishMode = body.polishMode;
 
   const piece = await updatePiece(target.userKey, pieceId, patch);
   if (!piece) return NextResponse.json({ error: 'Piece not found' }, { status: 404 });

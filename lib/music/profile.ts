@@ -22,7 +22,7 @@ import {
   type MusicLogEntry,
   type PassOffBy,
 } from './types';
-import { computePracticeReward, clampScore } from './reward';
+import { computePracticeReward, computePerformReward, clampScore } from './reward';
 import { bestScore } from './plan';
 
 // ----- low-level blob I/O -----
@@ -59,6 +59,7 @@ export interface AddPieceInput {
   targetDate?: string;
   pdfHref?: string;
   addedBy: 'kid' | 'parent';
+  polishMode?: boolean;
 }
 
 export async function addPiece(rawUser: string, input: AddPieceInput): Promise<MusicPiece> {
@@ -99,6 +100,7 @@ export async function updatePiece(
   if (patch.difficulty !== undefined) piece.difficulty = patch.difficulty;
   if (patch.targetDate !== undefined) piece.targetDate = patch.targetDate || undefined;
   if (patch.pdfHref !== undefined) piece.pdfHref = patch.pdfHref?.trim() || undefined;
+  if (patch.polishMode !== undefined) piece.polishMode = patch.polishMode;
   await writeMusicProfile(userKey, profile);
   return piece;
 }
@@ -168,15 +170,22 @@ export async function setDailyLineGoal(
 export type PracticeResult =
   | { ok: true; centsEarned: number; balanceCents: number; reason: string; piece: MusicPiece }
   | { ok: true; centsEarned: 0; balanceCents: number; reason: 'duplicate'; piece: MusicPiece }
-  | { ok: false; error: string };
+  // Under the 10-min floor → nothing logged, day NOT consumed, so they can
+  // practice more and resubmit. ok:false with a friendly reason.
+  | { ok: false; error: string; belowMinimum?: boolean };
 
 export interface SubmitPracticeInput {
   pieceId: string;
   qualityScore: number;   // 1..10
   linesPracticed: number;
+  minutesPracticed?: number; // learning-day time gate (0%/25%/50%/100%/+25%…)
   date: string;           // YYYY-MM-DD (caller passes server-local date)
   note?: string;
   reviewedBy?: string;
+  // Polish/perform mode: number of complete play-throughs (50 MP each + quality
+  // bonus). When provided (> 0), the reward uses the perform formula instead of
+  // the learning-day formula.
+  playThroughs?: number;
 }
 
 // Record one day's practice score and credit MP. Atomic + idempotent per
@@ -192,7 +201,21 @@ export async function submitPractice(
 
   const score = clampScore(input.qualityScore);
   const lines = Math.max(0, Math.min(500, Math.round(input.linesPracticed)));
-  const { cents, reason } = computePracticeReward({ qualityScore: score, linesPracticed: lines });
+  // Polish/perform mode when play-throughs are supplied: 50 MP each + quality
+  // bonus (no cap). Otherwise the normal learning-day reward.
+  const plays = Math.max(0, Math.min(50, Math.floor(input.playThroughs ?? 0)));
+  const minutes = Math.max(0, Math.min(600, Math.round(input.minutesPracticed ?? 0)));
+  const isPolish = plays > 0;
+  const { cents, reason } = isPolish
+    ? computePerformReward({ playThroughs: plays, qualityScore: score })
+    : computePracticeReward({ qualityScore: score, linesPracticed: lines, minutesPracticed: minutes });
+
+  // Learning-day under the 10-min floor earns nothing — don't write the earn
+  // or consume the day so the kid can practice more and resubmit.
+  if (!isPolish && cents === 0) {
+    return { ok: false, error: reason, belowMinimum: true };
+  }
+
   const idempotencyKey = `music:${userKey}:${input.pieceId}:${input.date}`;
 
   try {
@@ -209,9 +232,12 @@ export async function submitPractice(
         date: input.date,
         qualityScore: score,
         linesPracticed: lines,
+        minutesPracticed: isPolish ? undefined : minutes,
         centsEarned: cents,
         note: input.note?.trim().slice(0, 280) || undefined,
         reviewedBy: input.reviewedBy?.trim().slice(0, 40) || undefined,
+        playThroughs: isPolish ? plays : undefined,
+        mode: isPolish ? 'polish' : 'learn',
       };
       piece.log.push(entry);
 
@@ -221,10 +247,10 @@ export async function submitPractice(
         data: {
           userName: userKey,
           section: 'music',
-          kind: 'music.practice',
+          kind: isPolish ? 'music.polish' : 'music.practice',
           cents,
           idempotencyKey,
-          meta: { pieceId: input.pieceId, title: piece.title, score, lines } as object,
+          meta: { pieceId: input.pieceId, title: piece.title, score, lines, plays } as object,
         },
       });
 

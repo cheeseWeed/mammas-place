@@ -39,11 +39,33 @@ const QUALITY_BONUS_MP: Record<number, number> = {
 export interface PracticeRewardInput {
   qualityScore: number;   // 1..10
   linesPracticed: number; // logged; not part of the formula (effort = show-up)
+  minutesPracticed?: number; // learning-day time → graduated multiplier (see minutesMultiplier)
 }
 
 export interface PracticeReward {
   cents: number;
   reason: string;
+  minutesMultiplier?: number; // the time multiplier applied (0, .25, .5, 1, 1.25, …)
+}
+
+// Full-credit threshold: 30 minutes of practice earns 100% of the day's MP.
+export const FULL_PRACTICE_MINUTES = 30;
+
+// Graduated time multiplier on a learning-day's MP, by minutes practiced:
+//   < 10 min  → 0%   (nothing)
+//   10–19     → 25%
+//   20–29     → 50%
+//   30–39     → 100% (full)
+//   40–49     → 125% (extra 25% for each additional 10 min past 30)
+//   50–59     → 150% … and so on, uncapped.
+export function minutesMultiplier(minutes: number): number {
+  const m = Number.isFinite(minutes) ? Math.max(0, minutes) : 0;
+  if (m < 10) return 0;
+  if (m < 20) return 0.25;
+  if (m < 30) return 0.5;
+  // 30+ : full, plus 25% per complete extra 10 minutes beyond 30.
+  const extraBlocks = Math.floor((m - 30) / 10);
+  return 1 + 0.25 * extraBlocks;
 }
 
 /** Clamp a raw score to an integer 1..10. */
@@ -52,14 +74,28 @@ export function clampScore(raw: number): number {
   return Math.max(1, Math.min(10, Math.round(raw)));
 }
 
-// Pure reward computation for one daily session on one piece.
+// Pure reward computation for one daily learning session on one piece.
+// The quality-based MP is scaled by how long the kid practiced (see
+// minutesMultiplier). Under 10 min earns nothing; 30 min is full; extra
+// 10-min blocks add 25% each.
 export function computePracticeReward(input: PracticeRewardInput): PracticeReward {
   const score = clampScore(input.qualityScore);
+  const minutes = Math.max(0, Math.round(input.minutesPracticed ?? 0));
+  const mult = minutesMultiplier(minutes);
   const bonusMp = QUALITY_BONUS_MP[score] ?? 0;
-  const cents = Math.min(DAILY_PIECE_CAP_CENTS, SHOW_UP_CENTS + bonusMp * MP);
+  const base = Math.min(DAILY_PIECE_CAP_CENTS, SHOW_UP_CENTS + bonusMp * MP);
+  const cents = Math.round(base * mult);
+  if (mult === 0) {
+    return {
+      cents: 0,
+      minutesMultiplier: 0,
+      reason: `Only ${minutes} min — practice at least 10 min to earn MP. Keep going!`,
+    };
+  }
   return {
     cents,
-    reason: `Practice — quality ${score}/10 (${input.linesPracticed} line${input.linesPracticed === 1 ? '' : 's'})`,
+    minutesMultiplier: mult,
+    reason: `Practice ${minutes} min (${Math.round(mult * 100)}%) — quality ${score}/10`,
   };
 }
 
@@ -68,8 +104,43 @@ export function computePracticeReward(input: PracticeRewardInput): PracticeRewar
 export function rewardCurve(): { score: number; mp: number }[] {
   const out: { score: number; mp: number }[] = [];
   for (let s = 1; s <= 10; s++) {
-    const { cents } = computePracticeReward({ qualityScore: s, linesPracticed: 0 });
+    // Curve shows FULL-credit values (30 min). The UI scales by the live
+    // minutes multiplier on top.
+    const { cents } = computePracticeReward({ qualityScore: s, linesPracticed: 0, minutesPracticed: FULL_PRACTICE_MINUTES });
     out.push({ score: s, mp: cents / MP });
   }
   return out;
+}
+
+// ---------- Polish / perform-day reward ----------
+//
+// Once a song is finished (all lines learned) or on Sunday perform days, the
+// goal shifts from "learn lines" to "play it through, well." Earning:
+//   50 MP per complete play-through (NO cap — play it as many times as you
+//   like), PLUS up to 100 MP quality bonus if it sounded good (same Fibonacci
+//   curve as practice days). Recommended target: 3–4 play-throughs.
+
+export const PLAY_THROUGH_CENTS = 50 * MP; // 50 MP per run-through
+export const RECOMMENDED_PLAYS = 4;        // shown as a 3–4 suggestion
+
+export interface PerformRewardInput {
+  playThroughs: number;  // how many times played start-to-finish today (>=1)
+  qualityScore: number;  // 1..10 — quality bonus rides on top
+}
+
+// Quality bonus alone (no show-up base — the play-throughs ARE the base here).
+function qualityBonusCents(score: number): number {
+  return (QUALITY_BONUS_MP[clampScore(score)] ?? 0) * MP;
+}
+
+export function computePerformReward(input: PerformRewardInput): PracticeReward {
+  const plays = Math.max(0, Math.floor(input.playThroughs));
+  const playCents = plays * PLAY_THROUGH_CENTS;
+  const bonus = plays > 0 ? qualityBonusCents(input.qualityScore) : 0; // no play = no bonus
+  const cents = playCents + bonus;
+  const score = clampScore(input.qualityScore);
+  return {
+    cents,
+    reason: `Polish — ${plays} play-through${plays === 1 ? '' : 's'} (×50 MP) + quality ${score}/10`,
+  };
 }

@@ -39,12 +39,17 @@ export async function POST(req: NextRequest) {
   const pieceId = typeof body.pieceId === 'string' ? body.pieceId : '';
   const qualityScore = Number(body.qualityScore);
   const linesPracticed = Number(body.linesPracticed);
+  const minutesPracticed = body.minutesPracticed === undefined ? 0 : Number(body.minutesPracticed);
+  const playThroughs = body.playThroughs === undefined ? 0 : Number(body.playThroughs);
   if (!pieceId) return NextResponse.json({ error: 'pieceId required' }, { status: 400 });
   if (!Number.isFinite(qualityScore) || qualityScore < 1 || qualityScore > 10) {
     return NextResponse.json({ error: 'qualityScore must be 1-10' }, { status: 400 });
   }
   if (!Number.isFinite(linesPracticed) || linesPracticed < 0) {
     return NextResponse.json({ error: 'linesPracticed must be ≥ 0' }, { status: 400 });
+  }
+  if (!Number.isFinite(playThroughs) || playThroughs < 0) {
+    return NextResponse.json({ error: 'playThroughs must be ≥ 0' }, { status: 400 });
   }
 
   const today = musicToday();
@@ -53,12 +58,19 @@ export async function POST(req: NextRequest) {
     pieceId,
     qualityScore,
     linesPracticed,
+    minutesPracticed,
+    playThroughs,
     date: today,
     note: typeof body.note === 'string' ? body.note : undefined,
     reviewedBy: typeof body.reviewedBy === 'string' ? body.reviewedBy : undefined,
   });
 
   if (!result.ok) {
+    // Below-minimum is a friendly 200-with-flag, not an error — the kid just
+    // needs more minutes; the day isn't consumed.
+    if (result.belowMinimum) {
+      return NextResponse.json({ ok: false, belowMinimum: true, error: result.error });
+    }
     return NextResponse.json({ error: result.error }, { status: 400 });
   }
 
