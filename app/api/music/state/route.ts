@@ -46,7 +46,7 @@ export async function GET(req: NextRequest) {
   if (!profile) return NextResponse.json({ error: 'User not found' }, { status: 404 });
 
   const today = musicToday();
-  const plan = planForToday(profile.pieces, today);
+  const plan = planForToday(profile.pieces, today, undefined, profile.dailyLineGoal, profile.goalMode ?? 'spread');
 
   return NextResponse.json({
     ok: true,

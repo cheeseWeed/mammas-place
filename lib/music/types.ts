@@ -93,6 +93,17 @@ export interface MusicChallenge {
 export interface MusicProfile {
   pieces: MusicPiece[];
   challenge?: MusicChallenge;
+  // Explicit daily learning goal — NEW lines to learn each practice day.
+  // Settable by the kid or a parent. Fractional allowed (e.g. 3.5). Undefined
+  // = use the auto-computed pace (spread remaining lines over days-to-target).
+  //
+  // How the goal applies depends on goalMode:
+  //   'spread'        → split the goal across ALL active pieces each day
+  //                     (work a bit of everything every day).
+  //   'one-at-a-time' → focus ONE piece until it's done/passed off, applying
+  //                     the whole goal to it; the rest wait their turn.
+  dailyLineGoal?: number;
+  goalMode?: 'spread' | 'one-at-a-time'; // default 'spread'
 }
 
 export function emptyMusicProfile(): MusicProfile {
@@ -107,5 +118,8 @@ export function coerceMusicProfile(raw: unknown): MusicProfile {
   const challenge = obj.challenge && typeof obj.challenge === 'object'
     ? (obj.challenge as MusicChallenge)
     : undefined;
-  return { pieces, challenge };
+  const dailyLineGoal =
+    typeof obj.dailyLineGoal === 'number' && obj.dailyLineGoal > 0 ? obj.dailyLineGoal : undefined;
+  const goalMode = obj.goalMode === 'one-at-a-time' ? 'one-at-a-time' : 'spread';
+  return { pieces, challenge, dailyLineGoal, goalMode };
 }

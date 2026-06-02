@@ -112,6 +112,16 @@ function MusicInner() {
         </Link>
       </div>
 
+      {plan && pieces.length > 0 && (
+        <DailyGoalBanner
+          goal={plan.dailyLineGoal}
+          source={plan.goalSource}
+          mode={plan.goalMode}
+          totalToday={plan.totalNewLinesToday}
+          onSaved={async (msg) => { flash(msg); await load(); }}
+        />
+      )}
+
       {plan?.isPerformDay && (
         <div className="max-w-3xl mx-auto mb-6 bg-amber-50 border-2 border-amber-200 rounded-2xl p-4 text-center">
           <span className="text-2xl">🎼</span>{' '}
@@ -173,6 +183,117 @@ function Shell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-gradient-to-b from-indigo-50 via-violet-50 to-white py-12 px-4">
       <div className="max-w-5xl mx-auto">{children}</div>
+    </div>
+  );
+}
+
+// ----- Daily line goal -----
+
+function DailyGoalBanner({
+  goal,
+  source,
+  mode,
+  totalToday,
+  onSaved,
+}: {
+  goal?: number;
+  source: 'set' | 'auto';
+  mode: 'spread' | 'one-at-a-time';
+  totalToday: number;
+  onSaved: (msg: string) => void | Promise<void>;
+}) {
+  const [editing, setEditing] = useState(false);
+  const [value, setValue] = useState(String(goal ?? totalToday ?? 4));
+  const [pickMode, setPickMode] = useState<'spread' | 'one-at-a-time'>(mode);
+  const [busy, setBusy] = useState(false);
+
+  const save = async (g: number | null, m: 'spread' | 'one-at-a-time') => {
+    setBusy(true);
+    try {
+      const res = await fetch('/api/music/goal', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ goal: g, mode: m }),
+      });
+      const data = await res.json();
+      if (!res.ok) { await onSaved(data.error ?? 'Could not save goal'); return; }
+      setEditing(false);
+      const modeWord = m === 'one-at-a-time' ? 'one song at a time' : 'all songs each day';
+      await onSaved(g === null ? 'Goal cleared — back to auto pace.' : `Goal: ${data.dailyLineGoal} lines/day, ${modeWord}. 🎯`);
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <div className="max-w-3xl mx-auto mb-6 bg-white border-2 border-indigo-200 rounded-2xl p-4">
+      <div className="flex items-center justify-between gap-3 flex-wrap">
+        <div className="flex items-center gap-3">
+          <span className="text-3xl">🎯</span>
+          <div>
+            <div className="text-xs font-bold text-indigo-500 uppercase tracking-wide">Daily goal</div>
+            <div className="text-lg font-black text-indigo-900">
+              {goal ? `${goal} lines a day` : `${totalToday} lines today`}
+              <span className="ml-2 text-xs font-semibold text-gray-400">
+                {source === 'set'
+                  ? mode === 'one-at-a-time' ? '· one song at a time' : '· all songs each day'
+                  : '(auto pace)'}
+              </span>
+            </div>
+          </div>
+        </div>
+        {!editing ? (
+          <button
+            onClick={() => { setValue(String(goal ?? totalToday ?? 4)); setPickMode(mode); setEditing(true); }}
+            className="bg-indigo-100 hover:bg-indigo-200 text-indigo-800 font-bold px-4 py-2 rounded-full text-sm"
+          >
+            {goal ? 'Change goal' : 'Set a goal'}
+          </button>
+        ) : null}
+      </div>
+
+      {editing && (
+        <div className="mt-4 border-t border-indigo-100 pt-4 space-y-3">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-sm font-bold text-indigo-700">Lines per day:</span>
+            <input
+              type="number" step="0.5" min="0.5" value={value}
+              onChange={(e) => setValue(e.target.value)}
+              className="w-20 border border-indigo-200 rounded-lg px-2 py-1.5 text-indigo-900 text-sm"
+            />
+          </div>
+          <div>
+            <span className="text-sm font-bold text-indigo-700 block mb-1.5">How to spread it:</span>
+            <div className="flex gap-2 flex-wrap">
+              <button
+                onClick={() => setPickMode('one-at-a-time')}
+                className={`px-3 py-2 rounded-xl text-sm font-bold text-left ${pickMode === 'one-at-a-time' ? 'bg-indigo-700 text-white' : 'bg-gray-100 text-gray-700'}`}
+              >
+                🎯 One song at a time
+                <span className="block text-[11px] font-normal opacity-80">Focus one piece until it&apos;s passed off</span>
+              </button>
+              <button
+                onClick={() => setPickMode('spread')}
+                className={`px-3 py-2 rounded-xl text-sm font-bold text-left ${pickMode === 'spread' ? 'bg-indigo-700 text-white' : 'bg-gray-100 text-gray-700'}`}
+              >
+                🎼 All songs each day
+                <span className="block text-[11px] font-normal opacity-80">A little of every piece daily</span>
+              </button>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <button onClick={() => save(Number(value), pickMode)} disabled={busy} className="bg-indigo-700 hover:bg-indigo-800 disabled:bg-indigo-300 text-white font-bold px-4 py-2 rounded-xl text-sm">
+              {busy ? 'Saving…' : 'Save goal'}
+            </button>
+            {goal && (
+              <button onClick={() => save(null, pickMode)} disabled={busy} className="text-gray-500 underline text-xs">
+                Clear goal
+              </button>
+            )}
+            <button onClick={() => setEditing(false)} className="text-gray-400 underline text-xs">Cancel</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -177,34 +177,132 @@ export function planForPiece(
   };
 }
 
+export type GoalMode = 'spread' | 'one-at-a-time';
+
 export interface DayPlan {
   date: string;
   isPerformDay: boolean;
   pieces: PiecePlan[];
   totalNewLinesToday: number;
   allPracticedToday: boolean;
+  dailyLineGoal?: number;     // the explicit goal in effect (if set)
+  goalSource: 'set' | 'auto'; // did the kid/parent set it, or is it computed?
+  goalMode: GoalMode;         // spread across all, or focus one at a time
+  focusPieceId?: string;      // in one-at-a-time mode, the piece to work today
 }
 
 // Build the whole plan for today across all of a kid's pieces.
+//
+// `dailyLineGoal` (optional): NEW lines to learn today. How it's applied
+// depends on `goalMode`:
+//   'spread'        → split the goal across all active pieces (proportional to
+//                     each piece's remaining lines) — work a bit of everything.
+//   'one-at-a-time' → apply the WHOLE goal to a single focus piece (the first
+//                     active one, in list order); the rest wait their turn.
+// When no goal is set, each piece keeps its own auto-computed spread-to-target
+// pace (goalMode is ignored).
 export function planForToday(
   pieces: MusicPiece[],
   todayStr: string,
   config: PlanConfig = DEFAULT_PLAN_CONFIG,
+  dailyLineGoal?: number,
+  goalMode: GoalMode = 'spread',
 ): DayPlan {
   const dow = new Date(todayStr + 'T00:00:00Z').getUTCDay();
   const isPerformDay = config.performDays.includes(dow);
   const piecePlans = pieces.map((p) => planForPiece(p, todayStr, config));
-  const totalNewLinesToday = piecePlans
-    .filter((p) => !p.passedOff)
-    .reduce((sum, p) => sum + p.linesPerDayTarget, 0);
-  const active = piecePlans.filter((p) => !p.passedOff);
+  const active = piecePlans.filter((p) => !p.passedOff && p.remaining > 0);
+
+  const hasGoal = typeof dailyLineGoal === 'number' && dailyLineGoal > 0 && active.length > 0;
+  let focusPieceId: string | undefined;
+
+  if (hasGoal && goalMode === 'one-at-a-time') {
+    // Focus the first active piece; the whole goal goes to it. Everything else
+    // is parked as "up next."
+    const focus = active[0];
+    focusPieceId = focus.pieceId;
+    const target = Math.min(focus.remaining, Math.round(dailyLineGoal!));
+    focus.linesPerDayTarget = target;
+    focus.todaysFocus = target > 0
+      ? `This week's piece. Learn ${target} new line${target === 1 ? '' : 's'} (line ${focus.learned + 1}–${Math.min(focus.estLines, focus.learned + target)}), then play it through.`
+      : `This week's piece — polish it (aim 9-10/10).`;
+    // Park the rest.
+    for (const p of active.slice(1)) {
+      p.linesPerDayTarget = 0;
+      p.todaysFocus = `Up next — start this once the current piece is passed off.`;
+    }
+  } else if (hasGoal) {
+    distributeGoal(active, dailyLineGoal!);
+  }
+
+  // In one-at-a-time mode, "total new lines today" is just the focus piece's.
+  const totalNewLinesToday =
+    hasGoal && goalMode === 'one-at-a-time'
+      ? (active[0]?.linesPerDayTarget ?? 0)
+      : piecePlans.filter((p) => !p.passedOff).reduce((sum, p) => sum + p.linesPerDayTarget, 0);
+
+  // "Practiced today" only requires the FOCUS piece in one-at-a-time mode.
+  const allPracticedToday =
+    hasGoal && goalMode === 'one-at-a-time'
+      ? !!active[0]?.practicedToday
+      : (() => {
+          const a = piecePlans.filter((p) => !p.passedOff);
+          return a.length > 0 && a.every((p) => p.practicedToday);
+        })();
+
   return {
     date: todayStr,
     isPerformDay,
     pieces: piecePlans,
     totalNewLinesToday,
-    allPracticedToday: active.length > 0 && active.every((p) => p.practicedToday),
+    allPracticedToday,
+    dailyLineGoal: hasGoal ? dailyLineGoal : undefined,
+    goalSource: hasGoal ? 'set' : 'auto',
+    goalMode,
+    focusPieceId,
   };
+}
+
+// Split a total daily line goal across the active pieces, weighted by each
+// piece's remaining lines, and rewrite each piece's linesPerDayTarget + focus
+// sentence. Uses a largest-remainder pass so the integer per-piece targets sum
+// to (the rounded) goal without drift. A piece never gets assigned more than
+// its remaining lines.
+function distributeGoal(active: PiecePlan[], goal: number): void {
+  const totalRemaining = active.reduce((s, p) => s + p.remaining, 0);
+  if (totalRemaining <= 0) return;
+
+  // Effective goal can't exceed what's actually left to learn.
+  const effGoal = Math.min(Math.round(goal), totalRemaining);
+
+  // Proportional raw shares.
+  const raw = active.map((p) => (effGoal * p.remaining) / totalRemaining);
+  const floors = raw.map((r) => Math.floor(r));
+  let assigned = floors.reduce((s, f) => s + f, 0);
+  let leftover = effGoal - assigned;
+
+  // Hand out the leftover to the largest fractional remainders first.
+  const order = raw
+    .map((r, i) => ({ i, frac: r - Math.floor(r) }))
+    .sort((a, b) => b.frac - a.frac);
+  const add = new Array(active.length).fill(0);
+  for (const { i } of order) {
+    if (leftover <= 0) break;
+    if (floors[i] + add[i] < active[i].remaining) {
+      add[i] += 1;
+      leftover -= 1;
+    }
+  }
+
+  active.forEach((p, i) => {
+    const target = Math.min(p.remaining, floors[i] + add[i]);
+    p.linesPerDayTarget = target;
+    if (target > 0) {
+      p.todaysFocus = `Learn ${target} new line${target === 1 ? '' : 's'} (line ${p.learned + 1}–${Math.min(p.estLines, p.learned + target)}), then play it through.`;
+    } else {
+      p.todaysFocus = `Polish today — keep it sounding great (aim 9-10/10).`;
+    }
+  });
 }
 
 export { ymd };

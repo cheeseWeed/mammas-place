@@ -102,4 +102,36 @@ describe('music plan', () => {
     );
     expect(day.totalNewLinesToday).toBeGreaterThan(0);
   });
+
+  it('spread mode splits the goal across all active pieces', () => {
+    const pieces = [piece({ id: 'a' }), piece({ id: 'b' }), piece({ id: 'c' }), piece({ id: 'd' })];
+    const day = planForToday(pieces, '2026-06-01', undefined, 4, 'spread');
+    expect(day.goalMode).toBe('spread');
+    // 4 lines over 4 equal pieces → ~1 each, all active.
+    const targets = day.pieces.map((p) => p.linesPerDayTarget);
+    expect(targets.reduce((s, t) => s + t, 0)).toBe(4);
+    expect(targets.every((t) => t >= 1)).toBe(true);
+  });
+
+  it('one-at-a-time mode focuses a single piece and parks the rest', () => {
+    const pieces = [piece({ id: 'a', title: 'First' }), piece({ id: 'b', title: 'Second' }), piece({ id: 'c', title: 'Third' })];
+    const day = planForToday(pieces, '2026-06-01', undefined, 3.5, 'one-at-a-time');
+    expect(day.goalMode).toBe('one-at-a-time');
+    expect(day.focusPieceId).toBe('a');
+    // Only the focus piece gets a target (rounded 3.5 → 4); the rest are 0.
+    expect(day.pieces.find((p) => p.pieceId === 'a')!.linesPerDayTarget).toBe(4);
+    expect(day.pieces.find((p) => p.pieceId === 'b')!.linesPerDayTarget).toBe(0);
+    expect(day.pieces.find((p) => p.pieceId === 'c')!.linesPerDayTarget).toBe(0);
+    expect(day.totalNewLinesToday).toBe(4);
+  });
+
+  it('one-at-a-time advances to the next piece once the first is passed off', () => {
+    const pieces = [
+      piece({ id: 'a', passedOffAt: '2026-06-10T00:00:00Z' }),
+      piece({ id: 'b' }),
+      piece({ id: 'c' }),
+    ];
+    const day = planForToday(pieces, '2026-06-12', undefined, 3, 'one-at-a-time');
+    expect(day.focusPieceId).toBe('b'); // 'a' done → focus moves on
+  });
 });

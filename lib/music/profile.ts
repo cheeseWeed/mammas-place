@@ -118,6 +118,31 @@ export async function deletePiece(rawUser: string, pieceId: string): Promise<boo
   return true;
 }
 
+// ----- daily line goal -----
+
+// Set (or clear, with null) the kid's daily line goal + how it applies.
+// Settable by the kid or a parent. Fractional goal allowed (e.g. 3.5),
+// clamped to [0.5, 100]. `mode` controls spread-across-all vs one-at-a-time.
+export async function setDailyLineGoal(
+  rawUser: string,
+  goal: number | null,
+  mode?: 'spread' | 'one-at-a-time',
+): Promise<{ dailyLineGoal?: number; goalMode: 'spread' | 'one-at-a-time' }> {
+  const userKey = normalizeUser(rawUser);
+  if (!userKey) throw new Error('Bad user');
+  const profile = (await readMusicProfile(userKey)) ?? { pieces: [] };
+  if (goal === null || !Number.isFinite(goal) || goal <= 0) {
+    profile.dailyLineGoal = undefined;
+  } else {
+    profile.dailyLineGoal = Math.min(100, Math.max(0.5, Math.round(goal * 2) / 2)); // 0.5 steps
+  }
+  if (mode === 'spread' || mode === 'one-at-a-time') {
+    profile.goalMode = mode;
+  }
+  await writeMusicProfile(userKey, profile);
+  return { dailyLineGoal: profile.dailyLineGoal, goalMode: profile.goalMode ?? 'spread' };
+}
+
 // ----- daily practice (the earn) -----
 
 export type PracticeResult =

@@ -21,12 +21,18 @@ const prisma = new PrismaClient();
 const USER = 'shepherd';
 
 // The 4 cello pieces. estLines sum = 68 (his stated total).
+// pdfHref points at /public/sheet-music (served by the app, deploys to prod).
 const PIECES = [
-  { title: 'Dragon Dances',     instrument: 'cello', estLines: 18, difficulty: 'medium', targetDate: '2026-06-19', pdfHref: '1 Dragon Dances - Cello.pdf' },
-  { title: 'Golden',            instrument: 'cello', estLines: 20, difficulty: 'hard',   targetDate: '2026-06-26', pdfHref: '2 Golden - Cello.pdf' },
-  { title: 'One Bow Concerto',  instrument: 'cello', estLines: 18, difficulty: 'medium', targetDate: '2026-06-26', pdfHref: '3 One Bow Concerto- Cello.pdf' },
-  { title: 'Carnival Lion',     instrument: 'cello', estLines: 12, difficulty: 'easy',   targetDate: '2026-06-19', pdfHref: '4 Carnival Lion - Cello.pdf' },
+  { title: 'Dragon Dances',     instrument: 'cello', estLines: 18, difficulty: 'medium', targetDate: '2026-06-19', pdfHref: '/sheet-music/dragon-dances-cello.pdf' },
+  { title: 'Golden',            instrument: 'cello', estLines: 20, difficulty: 'hard',   targetDate: '2026-06-26', pdfHref: '/sheet-music/golden-cello.pdf' },
+  { title: 'One Bow Concerto',  instrument: 'cello', estLines: 18, difficulty: 'medium', targetDate: '2026-06-26', pdfHref: '/sheet-music/one-bow-concerto-cello.pdf' },
+  { title: 'Carnival Lion',     instrument: 'cello', estLines: 12, difficulty: 'easy',   targetDate: '2026-06-19', pdfHref: '/sheet-music/carnival-lion-cello.pdf' },
 ];
+
+// Shepherd's stated daily goal: 3.5 lines/day, ONE song at a time (~1/week).
+// Settable later in the app.
+const DAILY_LINE_GOAL = 3.5;
+const GOAL_MODE = 'one-at-a-time';
 
 function newId() {
   return randomUUID().replace(/-/g, '').slice(0, 12);
@@ -86,12 +92,23 @@ async function main() {
     playAllInOneDayAwardedAt: existing.playAllInOneDayAwardedAt,
   };
 
+  // Fix any stale pdfHrefs on already-present pieces (e.g. old bare filenames)
+  // so the "Open sheet music" link works in the app.
+  for (const seed of PIECES) {
+    const pc = byTitle.get(seed.title.toLowerCase());
+    if (pc && pc.pdfHref !== seed.pdfHref) {
+      pc.pdfHref = seed.pdfHref;
+      console.log(`· Fixed sheet-music link for "${seed.title}".`);
+    }
+  }
+
   await prisma.driveUser.update({
     where: { name: USER },
-    data: { music: { pieces, challenge } },
+    data: { music: { pieces, challenge, dailyLineGoal: DAILY_LINE_GOAL, goalMode: GOAL_MODE } },
   });
 
   console.log(`\n✓ Seeded ${PIECES.length} pieces + "${challenge.name}" for ${USER}.`);
+  console.log(`  Goal: ${DAILY_LINE_GOAL} lines/day, ${GOAL_MODE}.`);
   console.log(`  Per pass-off: 200 MP · All by Jul 1: 500 MP · All-in-one-day by Jul 7: 250 MP · up to 100 MP/day.`);
 }
 
