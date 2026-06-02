@@ -42,9 +42,12 @@ export async function POST(req: NextRequest) {
       ? Math.round(Number(body.defaultRewardCents))
       : DEFAULT_PASS_OFF_CENTS;
 
+  const by = body.by === 'teacher' || body.by === 'mom' || body.by === 'dad' ? body.by : undefined;
+
   const result = await passOffPiece(user, pieceId, {
     defaultRewardCents,
     todayStr: musicToday(),
+    by,
   });
 
   if (!result.ok) {

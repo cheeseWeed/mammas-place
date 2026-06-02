@@ -7,7 +7,7 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { centsToMP } from '@/lib/money/format';
-import { instrumentDisplay, type MusicPiece, type MusicChallenge } from '@/lib/music/types';
+import { instrumentDisplay, PASS_OFF_BY, type MusicPiece, type MusicChallenge, type PassOffBy } from '@/lib/music/types';
 import { linesLearned, bestScore } from '@/lib/music/plan';
 
 interface Learner {
@@ -60,13 +60,14 @@ export default function MusicAdminDashboard() {
     window.setTimeout(() => setFlash(null), 5000);
   };
 
-  const passOff = async (piece: MusicPiece) => {
+  // Competition pass-off — one-time, mints a gift card. `by` = teacher/mom/dad.
+  const passOff = async (piece: MusicPiece, by: PassOffBy) => {
     if (!selected) return;
-    if (!confirm(`Pass off "${piece.title}"? This mints the gift card reward.`)) return;
+    if (!confirm(`Pass off "${piece.title}" (confirmed by ${by})? This mints the gift card reward.`)) return;
     const res = await fetch('/api/music/pass-off', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ user: selected, pieceId: piece.id }),
+      body: JSON.stringify({ user: selected, pieceId: piece.id, by }),
     });
     const data = await res.json();
     if (!res.ok) { note(data.error ?? 'Failed'); return; }
@@ -76,6 +77,21 @@ export default function MusicAdminDashboard() {
       msg += ` Bonus(es): ${data.challengeBonuses.map((b: { name: string; cents: number }) => `${b.name} ${centsToMP(b.cents)}`).join(', ')}.`;
     }
     note(msg);
+    await loadKid(selected);
+  };
+
+  // Weekly pass-off — recurring, credits 150 MP straight (no gift card).
+  const weeklyPassOff = async (piece: MusicPiece, by: PassOffBy) => {
+    if (!selected) return;
+    if (!confirm(`Weekly pass-off for "${piece.title}" (by ${by})? Credits 150 MP.`)) return;
+    const res = await fetch('/api/music/weekly-passoff', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ user: selected, pieceId: piece.id, by }),
+    });
+    const data = await res.json();
+    if (!res.ok) { note(data.error ?? 'Failed'); return; }
+    note(`Weekly pass-off recorded — credited ${centsToMP(data.centsAwarded)} (by ${by}).`);
     await loadKid(selected);
   };
 
@@ -137,7 +153,12 @@ export default function MusicAdminDashboard() {
                 🗓️ View {kid.user}&apos;s practice calendar
               </a>
             </div>
-            <PieceTable pieces={kid.profile.pieces} challenge={kid.profile.challenge} onPassOff={passOff} />
+            <PieceTable
+              pieces={kid.profile.pieces}
+              challenge={kid.profile.challenge}
+              onPassOff={passOff}
+              onWeeklyPassOff={weeklyPassOff}
+            />
             <ChallengeEditor
               user={kid.user}
               pieces={kid.profile.pieces}
@@ -155,24 +176,42 @@ function PieceTable({
   pieces,
   challenge,
   onPassOff,
+  onWeeklyPassOff,
 }: {
   pieces: MusicPiece[];
   challenge?: MusicChallenge;
-  onPassOff: (p: MusicPiece) => void;
+  onPassOff: (p: MusicPiece, by: PassOffBy) => void;
+  onWeeklyPassOff: (p: MusicPiece, by: PassOffBy) => void;
 }) {
+  // Who's confirming the pass-off (teacher / mom / dad) — applies to either
+  // pass-off type. Defaults to teacher.
+  const [by, setBy] = useState<PassOffBy>('teacher');
+
   if (!pieces.length) return <p className="text-gray-500 mb-6">This kid has no pieces yet.</p>;
   const compIds = new Set(challenge?.pieceIds ?? []);
   return (
-    <div className="bg-white rounded-2xl border border-indigo-100 overflow-hidden mb-8">
+    <div className="mb-8">
+      <div className="flex items-center gap-2 mb-2 text-sm">
+        <span className="font-bold text-indigo-700">Pass-off confirmed by:</span>
+        {PASS_OFF_BY.map((o) => (
+          <button
+            key={o.value}
+            onClick={() => setBy(o.value)}
+            className={`px-3 py-1 rounded-full font-semibold text-xs ${by === o.value ? 'bg-indigo-700 text-white' : 'bg-white text-indigo-700 border border-indigo-200'}`}
+          >
+            {o.label}
+          </button>
+        ))}
+      </div>
+      <div className="bg-white rounded-2xl border border-indigo-100 overflow-hidden">
       <table className="w-full text-sm">
         <thead className="bg-indigo-50 text-indigo-800">
           <tr>
             <th className="text-left px-4 py-2">Piece</th>
             <th className="text-left px-4 py-2">Type</th>
             <th className="text-left px-4 py-2">Progress</th>
-            <th className="text-left px-4 py-2">Best</th>
-            <th className="text-left px-4 py-2">Target</th>
-            <th className="text-right px-4 py-2">Action</th>
+            <th className="text-left px-4 py-2">Weekly</th>
+            <th className="text-right px-4 py-2">Pass off</th>
           </tr>
         </thead>
         <tbody>
@@ -181,6 +220,7 @@ function PieceTable({
             const best = bestScore(p);
             const d = instrumentDisplay(p.instrument);
             const isComp = compIds.has(p.id);
+            const weeklyCount = p.teacherPassOffs?.length ?? 0;
             return (
               <tr key={p.id} className={`border-t border-indigo-50 ${p.archived ? 'opacity-50' : ''}`}>
                 <td className="px-4 py-3 font-semibold text-indigo-900">
@@ -190,18 +230,21 @@ function PieceTable({
                   {isComp ? (
                     <span className="bg-violet-100 text-violet-700 text-[11px] font-bold px-2 py-0.5 rounded-full">🏆 Competition</span>
                   ) : (
-                    <span className="text-gray-400 text-xs">Regular</span>
+                    <span className="bg-sky-100 text-sky-700 text-[11px] font-bold px-2 py-0.5 rounded-full">🎓 Weekly</span>
                   )}
                 </td>
-                <td className="px-4 py-3 text-gray-600">{learned}/{p.estLines} lines</td>
-                <td className="px-4 py-3 text-gray-600">{best || '—'}/10</td>
-                <td className="px-4 py-3 text-gray-600">{p.targetDate ?? '—'}</td>
+                <td className="px-4 py-3 text-gray-600">{learned}/{p.estLines} · best {best || '—'}/10</td>
+                <td className="px-4 py-3">
+                  <button onClick={() => onWeeklyPassOff(p, by)} className="bg-sky-600 hover:bg-sky-700 text-white font-bold px-3 py-1.5 rounded-lg text-xs">
+                    +150 MP {weeklyCount > 0 && <span className="opacity-80">({weeklyCount})</span>}
+                  </button>
+                </td>
                 <td className="px-4 py-3 text-right">
                   {p.passedOffAt ? (
                     <span className="text-green-700 font-bold text-xs">✓ {p.passOffGiftCode}</span>
                   ) : (
-                    <button onClick={() => onPassOff(p)} className="bg-green-600 hover:bg-green-700 text-white font-bold px-3 py-1.5 rounded-lg text-xs">
-                      Pass off
+                    <button onClick={() => onPassOff(p, by)} className="bg-green-600 hover:bg-green-700 text-white font-bold px-3 py-1.5 rounded-lg text-xs">
+                      🏆 Pass off
                     </button>
                   )}
                 </td>
@@ -210,6 +253,7 @@ function PieceTable({
           })}
         </tbody>
       </table>
+      </div>
     </div>
   );
 }

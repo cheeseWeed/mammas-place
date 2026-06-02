@@ -239,7 +239,10 @@ function DayCell({
         <div className="mt-0.5 md:mt-1">
           <div className={`text-sm md:text-lg font-black leading-none ${color.text}`}>{s.avgScore || ''}</div>
           <div className="text-[8px] md:text-[10px] text-gray-600 leading-tight">{centsToMP(s.totalCents)}</div>
-          {s.passOffs.length > 0 && <div className="text-[9px] md:text-xs">✅</div>}
+          <div className="text-[9px] md:text-xs leading-none">
+            {s.passOffs.length > 0 && '🏆'}
+            {s.weeklyPassOffs.length > 0 && '🎓'}
+          </div>
         </div>
       )}
       {milestones && milestones.length > 0 && (
@@ -314,8 +317,14 @@ function DayDetail({ summary, onClose }: { summary: DaySummary; onClose: () => v
               {e.note && <div className="text-xs text-gray-500 italic mt-1">“{e.note}”</div>}
             </div>
           ))}
-          {summary.entries.length === 0 && summary.passOffs.length > 0 && (
-            <div className="text-sm text-green-700 font-semibold">✅ Passed off: {summary.passOffs.join(', ')}</div>
+          {summary.passOffs.length > 0 && (
+            <div className="text-sm text-green-700 font-semibold">🏆 Competition pass-off: {summary.passOffs.join(', ')}</div>
+          )}
+          {summary.weeklyPassOffs.length > 0 && (
+            <div className="text-sm text-sky-700 font-semibold">🎓 Weekly pass-off: {summary.weeklyPassOffs.join(', ')}</div>
+          )}
+          {summary.entries.length === 0 && summary.passOffs.length === 0 && summary.weeklyPassOffs.length === 0 && (
+            <div className="text-sm text-gray-500">No activity logged.</div>
           )}
         </div>
       </div>

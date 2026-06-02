@@ -53,7 +53,10 @@ function MusicInner() {
   const [loading, setLoading] = useState(true);
   const [toast, setToast] = useState<string | null>(null);
   const [instFilter, setInstFilter] = useState<string>('all'); // 'all' | instrument value
-  const [statusFilter, setStatusFilter] = useState<'all' | 'ready' | 'in-progress'>('all');
+  // Track filter: which performance path a song is on.
+  //   'competition' = in the challenge (big pass-off, gift card)
+  //   'weekly'      = regular song, passed off to the teacher each week (150 MP)
+  const [trackFilter, setTrackFilter] = useState<'all' | 'competition' | 'weekly'>('all');
 
   const load = useCallback(async () => {
     setLoading(true);
@@ -91,28 +94,30 @@ function MusicInner() {
   // Distinct instruments across all pieces, for the filter chips.
   const instruments = Array.from(new Set(pieces.map((p) => p.instrument)));
 
-  // A piece is "ready to perform" once it's passed off OR has hit a high-
-  // quality run (best score ≥ CERT_THRESHOLD).
-  const isPerformanceReady = (p: MusicPiece) =>
-    !!p.passedOffAt || p.log.reduce((m, e) => Math.max(m, e.qualityScore), 0) >= CERT_THRESHOLD;
+  // Which track a song is on. Competition = in the challenge's piece list.
+  const compIds = new Set(challenge?.pieceIds ?? []);
+  const isCompetitionPiece = (p: MusicPiece) => compIds.has(p.id);
 
-  const matchesStatus = (p: MusicPiece) =>
-    statusFilter === 'all' ||
-    (statusFilter === 'ready' ? isPerformanceReady(p) : !isPerformanceReady(p));
+  const matchesTrack = (p: MusicPiece) =>
+    trackFilter === 'all' ||
+    (trackFilter === 'competition' ? isCompetitionPiece(p) : !isCompetitionPiece(p));
 
   // The plan only contains LIVE (non-archived) pieces. Apply instrument +
-  // status filters on top for what the kid sees in the active list.
+  // track filters on top for what the kid sees in the active list.
   const visiblePlanPieces = (plan?.pieces ?? []).filter((pp) => {
     const piece = pieces.find((p) => p.id === pp.pieceId);
     if (!piece) return false;
     if (instFilter !== 'all' && piece.instrument !== instFilter) return false;
-    return matchesStatus(piece);
+    return matchesTrack(piece);
   });
 
   // Archived pieces (not in the plan), filtered the same way.
   const archivedVisible = pieces.filter(
-    (p) => p.archived && (instFilter === 'all' || p.instrument === instFilter) && matchesStatus(p),
+    (p) => p.archived && (instFilter === 'all' || p.instrument === instFilter) && matchesTrack(p),
   );
+
+  // Only show the track filter when there's actually a competition in play.
+  const hasCompetition = compIds.size > 0;
 
   return (
     <Shell>
@@ -179,7 +184,7 @@ function MusicInner() {
             />
           )}
 
-          <StatusFilter value={statusFilter} onChange={setStatusFilter} />
+          {hasCompetition && <TrackFilter value={trackFilter} onChange={setTrackFilter} />}
 
           <div className="max-w-3xl mx-auto space-y-5">
             {visiblePlanPieces.length === 0 ? (
@@ -674,19 +679,19 @@ function InstrumentFilter({
   );
 }
 
-function StatusFilter({
+function TrackFilter({
   value,
   onChange,
 }: {
-  value: 'all' | 'ready' | 'in-progress';
-  onChange: (v: 'all' | 'ready' | 'in-progress') => void;
+  value: 'all' | 'competition' | 'weekly';
+  onChange: (v: 'all' | 'competition' | 'weekly') => void;
 }) {
   return (
     <div className="max-w-3xl mx-auto mb-5 flex items-center gap-2 flex-wrap justify-center">
-      <span className="text-xs font-bold text-indigo-500 uppercase tracking-wide">Show:</span>
+      <span className="text-xs font-bold text-indigo-500 uppercase tracking-wide">Performance:</span>
       <Chip label="All" active={value === 'all'} onClick={() => onChange('all')} />
-      <Chip label="🎤 Ready to perform" active={value === 'ready'} onClick={() => onChange('ready')} />
-      <Chip label="🎯 Still learning" active={value === 'in-progress'} onClick={() => onChange('in-progress')} />
+      <Chip label="🏆 Competition" active={value === 'competition'} onClick={() => onChange('competition')} />
+      <Chip label="🎓 Weekly teacher pass-off" active={value === 'weekly'} onClick={() => onChange('weekly')} />
     </div>
   );
 }

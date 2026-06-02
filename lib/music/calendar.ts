@@ -30,7 +30,8 @@ export interface DaySummary {
   avgScore: number;        // mean quality score (0 if no entries)
   bestScore: number;       // best quality score that day
   practicedCount: number;  // how many pieces were practiced
-  passOffs: string[];      // titles passed off this day
+  passOffs: string[];      // competition pass-offs this day (titles)
+  weeklyPassOffs: string[]; // weekly teacher pass-offs this day ("Title (by)")
 }
 
 // Build a date → DaySummary map from all of a kid's pieces.
@@ -47,6 +48,7 @@ export function summarizeByDay(pieces: MusicPiece[]): Record<string, DaySummary>
         bestScore: 0,
         practicedCount: 0,
         passOffs: [],
+        weeklyPassOffs: [],
       };
     }
     return map[date];
@@ -70,7 +72,7 @@ export function summarizeByDay(pieces: MusicPiece[]): Record<string, DaySummary>
       day.practicedCount += 1;
       if (e.qualityScore > day.bestScore) day.bestScore = e.qualityScore;
     }
-    // Pass-off day marker (passedOffAt is an ISO timestamp — take its date).
+    // Competition pass-off marker (passedOffAt is an ISO timestamp).
     if (piece.passedOffAt) {
       const date = piece.passedOffAt.slice(0, 10);
       const day = ensure(date);
@@ -78,6 +80,12 @@ export function summarizeByDay(pieces: MusicPiece[]): Record<string, DaySummary>
       // If this piece also has a log entry that day, flag it as passed off.
       const match = day.entries.find((x) => x.pieceId === piece.id);
       if (match) match.passedOff = true;
+    }
+    // Weekly (teacher/mom/dad) pass-offs — recurring; each has its own date.
+    for (const w of piece.teacherPassOffs ?? []) {
+      const day = ensure(w.date);
+      day.weeklyPassOffs.push(`${piece.title} (${w.by})`);
+      day.totalCents += w.centsAwarded;
     }
   }
 

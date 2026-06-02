@@ -35,6 +35,19 @@ describe('summarizeByDay', () => {
     expect(day.avgScore).toBe(7); // (6+8)/2
   });
 
+  it('rolls weekly (teacher) pass-offs into the day + adds their MP', () => {
+    const pieces = [
+      piece({ id: 'a', title: 'Golden', teacherPassOffs: [
+        { date: '2026-06-12', by: 'teacher', centsAwarded: 15000 },
+        { date: '2026-06-19', by: 'mom', centsAwarded: 15000 },
+      ] }),
+    ];
+    const byDay = summarizeByDay(pieces);
+    expect(byDay['2026-06-12'].weeklyPassOffs).toEqual(['Golden (teacher)']);
+    expect(byDay['2026-06-12'].totalCents).toBe(15000);
+    expect(byDay['2026-06-19'].weeklyPassOffs).toEqual(['Golden (mom)']);
+  });
+
   it('marks pass-off days and flags the matching entry', () => {
     const pieces = [
       piece({ id: 'a', title: 'Dragon', passedOffAt: '2026-06-19T15:00:00Z', log: [

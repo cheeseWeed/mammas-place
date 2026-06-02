@@ -48,6 +48,23 @@ export function instrumentDisplay(value: string): { label: string; emoji: string
   return { label, emoji: '🎵' };
 }
 
+// Who can confirm a pass-off (any of these, for any song).
+export type PassOffBy = 'teacher' | 'mom' | 'dad';
+
+export const PASS_OFF_BY: { value: PassOffBy; label: string }[] = [
+  { value: 'teacher', label: 'Teacher' },
+  { value: 'mom', label: 'Mom' },
+  { value: 'dad', label: 'Dad' },
+];
+
+// One weekly pass-off event (recurring) on a piece.
+export interface TeacherPassOff {
+  date: string;       // YYYY-MM-DD it was passed off
+  by: PassOffBy;      // who confirmed it
+  centsAwarded: number; // MP paid for this pass-off (server-set, e.g. 150 MP)
+  note?: string;
+}
+
 // One practice session on one calendar day.
 export interface MusicLogEntry {
   date: string;          // YYYY-MM-DD (local) — one entry per piece per day (idempotent)
@@ -79,6 +96,13 @@ export interface MusicPiece {
   // formally pass off.
   archived?: boolean;
   archivedAt?: string;    // ISO
+  // Weekly pass-offs. Each entry = someone (teacher / mom / dad) passed the kid
+  // off on this piece (recurring; a piece can be passed off in multiple weeks
+  // if it stays in lesson rotation). Earns the weekly reward (150 MP) per
+  // entry. Distinct from `passedOffAt`, the one-time COMPETITION pass-off.
+  teacherPassOffs?: TeacherPassOff[];
+  // Who confirmed the one-time competition pass-off (teacher / mom / dad).
+  passOffBy?: PassOffBy;
 }
 
 // ----- Challenge (reusable competition wrapper) -----

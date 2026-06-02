@@ -20,6 +20,7 @@ import {
   type MusicChallenge,
   type Instrument,
   type MusicLogEntry,
+  type PassOffBy,
 } from './types';
 import { computePracticeReward, clampScore } from './reward';
 import { bestScore } from './plan';
@@ -281,7 +282,7 @@ export interface PassOffResult {
 export async function passOffPiece(
   rawUser: string,
   pieceId: string,
-  opts: { defaultRewardCents: number; todayStr: string },
+  opts: { defaultRewardCents: number; todayStr: string; by?: PassOffBy },
 ): Promise<PassOffResult> {
   const userKey = normalizeUser(rawUser);
   if (!userKey) return { ok: false, error: 'Bad user' };
@@ -306,6 +307,7 @@ export async function passOffPiece(
 
   piece.passedOffAt = new Date().toISOString();
   piece.passOffGiftCode = card.code;
+  if (opts.by) piece.passOffBy = opts.by;
   await writeMusicProfile(userKey, profile);
 
   // Re-evaluate challenge deadline bonuses now that one more piece is done.
@@ -318,6 +320,91 @@ export async function passOffPiece(
     piece,
     challengeBonuses,
   };
+}
+
+// ----- weekly (teacher) pass-off -----
+
+export interface WeeklyPassOffResult {
+  ok: boolean;
+  error?: string;
+  centsAwarded?: number;
+  balanceCents?: number;
+  piece?: MusicPiece;
+}
+
+// Record a weekly pass-off — teacher / mom / dad confirms the kid played a
+// piece for them this week. Recurring (a piece can be passed off many weeks),
+// so this is NOT the one-time competition pass-off. Credits the weekly reward
+// (default 150 MP) straight to the balance (no gift card — it's a recurring
+// reward, not a printable prize). Atomic + idempotent per (user, piece, date):
+// you can't pay the same piece twice on the same day.
+export async function weeklyPassOff(
+  rawUser: string,
+  pieceId: string,
+  opts: { by: PassOffBy; rewardCents: number; todayStr: string; note?: string },
+): Promise<WeeklyPassOffResult> {
+  const userKey = normalizeUser(rawUser);
+  if (!userKey) return { ok: false, error: 'Bad user' };
+
+  const idempotencyKey = `music-weekly:${userKey}:${pieceId}:${opts.todayStr}`;
+  const cents = Math.max(1, Math.round(opts.rewardCents));
+
+  try {
+    const result = await prisma.$transaction(async (tx) => {
+      const user = await tx.driveUser.findUnique({ where: { name: userKey } });
+      if (!user) throw new Error('User not found');
+      const profile = coerceMusicProfile(user.music);
+      const piece = profile.pieces.find((p) => p.id === pieceId);
+      if (!piece) throw new PieceNotFound();
+
+      piece.teacherPassOffs = piece.teacherPassOffs ?? [];
+      piece.teacherPassOffs.push({
+        date: opts.todayStr,
+        by: opts.by,
+        centsAwarded: cents,
+        note: opts.note?.trim().slice(0, 200) || undefined,
+      });
+
+      // MpEarning row LAST so a duplicate (piece, date) aborts before any money
+      // moves. Section 'music', kind 'music.weeklyPassOff' so it shows in the
+      // wallet music total too.
+      await tx.mpEarning.create({
+        data: {
+          userName: userKey,
+          section: 'music',
+          kind: 'music.weeklyPassOff',
+          cents,
+          idempotencyKey,
+          meta: { pieceId, title: piece.title, by: opts.by } as object,
+        },
+      });
+
+      const updated = await tx.driveUser.update({
+        where: { name: userKey },
+        data: { balanceCents: { increment: cents }, music: profile as unknown as object },
+        select: { balanceCents: true },
+      });
+
+      await tx.mpTransaction.create({
+        data: {
+          userName: userKey,
+          cents,
+          type: 'earn',
+          reason: `${piece.title}: weekly pass-off (${opts.by})`,
+        },
+      });
+
+      return { balanceCents: updated.balanceCents, piece };
+    });
+
+    return { ok: true, centsAwarded: cents, balanceCents: result.balanceCents, piece: result.piece };
+  } catch (err) {
+    if (err instanceof PieceNotFound) return { ok: false, error: 'Piece not found' };
+    if (err instanceof Prisma.PrismaClientKnownRequestError && err.code === 'P2002') {
+      return { ok: false, error: 'Already passed off today' };
+    }
+    throw err;
+  }
 }
 
 // ----- challenge config + evaluation -----
