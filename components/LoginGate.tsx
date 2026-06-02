@@ -18,7 +18,8 @@ export type LoginGateSection =
   | 'spelling'
   | 'math'
   | 'languageArts'
-  | 'chess';
+  | 'chess'
+  | 'music';
 
 const COOKIE_NAME = 'dl_user';
 
@@ -60,6 +61,11 @@ const SECTION_COPY: Record<
     headline: 'Who’s playing?',
     subhead: 'Log in so the Chess board can save your game and pay you in MP.',
     accent: 'purple',
+  },
+  music: {
+    headline: 'Who’s practicing?',
+    subhead: 'Log in to track your pieces, follow your practice plan, and earn MP.',
+    accent: 'indigo',
   },
 };
 
@@ -317,6 +323,16 @@ function SectionLoginCard({
       secondary: 'bg-yellow-100 hover:bg-yellow-200 disabled:bg-yellow-50 text-purple-900 border-yellow-300',
       link: 'text-purple-700 hover:text-purple-900',
       mute: 'text-purple-600',
+    },
+    indigo: {
+      card: 'border-indigo-100',
+      heading: 'text-indigo-900',
+      label: 'text-indigo-900',
+      inputWrap: 'border-indigo-200 focus:border-indigo-500 bg-indigo-50 text-indigo-900',
+      primary: 'bg-indigo-900 hover:bg-indigo-800 disabled:bg-indigo-300',
+      secondary: 'bg-yellow-100 hover:bg-yellow-200 disabled:bg-yellow-50 text-indigo-900 border-yellow-300',
+      link: 'text-indigo-700 hover:text-indigo-900',
+      mute: 'text-indigo-600',
     },
   };
   const accentClasses = ACCENT_MAP[copy.accent] ?? ACCENT_MAP.purple;

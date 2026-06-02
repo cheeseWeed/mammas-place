@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/math',
     '/language-arts',
     '/chess',
+    '/music',
   ].map((path) => ({
     url: `${BASE_URL}${path}`,
     lastModified: now,

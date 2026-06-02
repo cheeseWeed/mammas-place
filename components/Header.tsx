@@ -324,6 +324,17 @@ export default function Header() {
                       <div className="text-xs text-gray-600">Full rules · 4 piece sets</div>
                     </div>
                   </Link>
+                  <Link
+                    href="/music"
+                    onClick={() => setActiveDropdown(null)}
+                    className="flex items-start gap-3 p-2 rounded-lg hover:bg-emerald-50 transition-colors group"
+                  >
+                    <span className="text-2xl">🎻</span>
+                    <div>
+                      <div className="font-bold text-purple-900 group-hover:text-emerald-700">Practice Studio</div>
+                      <div className="text-xs text-gray-600">Daily plan · score your playing · earn MP</div>
+                    </div>
+                  </Link>
                 </div>
               )}
             </div>

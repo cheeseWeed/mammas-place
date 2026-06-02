@@ -603,13 +603,21 @@ export default function MpBankDashboard() {
               </p>
             </div>
           </div>
-          <button
-            type="button"
-            onClick={logout}
-            className="bg-yellow-400 hover:bg-yellow-300 text-purple-900 font-bold px-4 py-2 rounded-xl text-sm transition-colors"
-          >
-            Log out
-          </button>
+          <div className="flex items-center gap-2">
+            <a
+              href="/admin/music"
+              className="bg-indigo-500 hover:bg-indigo-400 text-white font-bold px-4 py-2 rounded-xl text-sm transition-colors"
+            >
+              🎻 Music
+            </a>
+            <button
+              type="button"
+              onClick={logout}
+              className="bg-yellow-400 hover:bg-yellow-300 text-purple-900 font-bold px-4 py-2 rounded-xl text-sm transition-colors"
+            >
+              Log out
+            </button>
+          </div>
         </div>
       </header>
 

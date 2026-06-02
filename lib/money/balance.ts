@@ -151,6 +151,7 @@ export type PerSectionEarnings = {
   geography: number;
   drive: number;
   chess: number;
+  music: number;
 };
 
 export async function sumEarningsPerSection(rawUser: string): Promise<PerSectionEarnings> {
@@ -167,6 +168,7 @@ export async function sumEarningsPerSection(rawUser: string): Promise<PerSection
     geography: 0,
     drive: 0,
     chess: 0,
+    music: 0,
   };
   for (const r of rows) {
     const key = r.section as keyof PerSectionEarnings;

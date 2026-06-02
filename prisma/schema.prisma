@@ -53,6 +53,14 @@ model DriveUser {
   // Chess: { current?: SavedChessGame, recentGames: SavedChessGame[], totals: {...}, ... }
   // Shape defined in lib/chess/game-state.ts (ChessProgress).
   chess            Json     @default("{}")
+  // Music: practice tracker for any instrument. Shape (MusicProfile) defined
+  // in lib/music/types.ts: { pieces: MusicPiece[], challenge?: MusicChallenge }.
+  // Each piece carries its title/instrument/estLines/targetDate, a per-day
+  // log of quality scores (1-10), and a passedOffAt stamp once mastered.
+  // Daily practice earns MP through /api/music/practice (own earn path, like
+  // chess games) but still writes section='music' MpEarning rows so the
+  // wallet grid totals it. See app/music/PLAN.md.
+  music            Json     @default("{}")
   // Audiobook listen history keyed by product id.
   // Shape: Record<productId, { lastListenedAt: number, completed: boolean }>
   // See lib/audiobooks.ts for read/write helpers.
@@ -117,8 +125,8 @@ model MpEarning {
   id           String   @id @default(cuid())
   userName     String
   user         DriveUser @relation(fields: [userName], references: [name], onDelete: Cascade)
-  section      String   // 'math' | 'languageArts' | 'spelling' | 'geography' | 'drive'
-  kind         String   // section-defined: e.g. 'math.round', 'spelling.quiz', 'drive.deck'
+  section      String   // 'math' | 'languageArts' | 'spelling' | 'geography' | 'drive' | 'chess' | 'music'
+  kind         String   // section-defined: e.g. 'math.round', 'spelling.quiz', 'drive.deck', 'music.practice'
   cents        Int      // always positive
   idempotencyKey String @unique
   meta         Json?    // {score, total, streak, ...} for debugging

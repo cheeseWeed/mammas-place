@@ -52,6 +52,7 @@ export default async function HomePage() {
     { href: '/geography', label: 'Geography', emoji: '🗺️', color: 'from-emerald-500 to-teal-600' },
     { href: '/drive', label: 'Drive', emoji: '🚗', color: 'from-purple-600 to-purple-900' },
     { href: '/chess', label: 'Chess', emoji: '♟️', color: 'from-stone-600 to-stone-900' },
+    { href: '/music', label: 'Practice Studio', emoji: '🎻', color: 'from-indigo-500 to-violet-700' },
   ];
 
   return (

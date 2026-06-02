@@ -40,6 +40,7 @@ interface PerSection {
   geography: number;
   drive: number;
   chess: number;
+  music: number;
 }
 
 interface WalletSummary {
@@ -76,6 +77,7 @@ const SECTION_TILES: ReadonlyArray<{ key: keyof PerSection; label: string; emoji
   { key: 'geography', label: 'Geography', emoji: '🌍' },
   { key: 'drive', label: 'Drive', emoji: '🚗' },
   { key: 'chess', label: 'Chess', emoji: '♟️' },
+  { key: 'music', label: 'Music', emoji: '🎻' },
 ];
 
 type TxFilter = 'all' | 'earn' | 'spend' | 'gift';
@@ -115,7 +117,7 @@ export default function PortalMoneyPage() {
           setSummary({
             balanceCents: 0,
             perSection: {
-              math: 0, spelling: 0, languageArts: 0, geography: 0, drive: 0, chess: 0,
+              math: 0, spelling: 0, languageArts: 0, geography: 0, drive: 0, chess: 0, music: 0,
             },
             recent: { transactions: [], orders: [] },
             streakDays: 0,
