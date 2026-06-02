@@ -40,6 +40,16 @@ model DriveUser {
   gradeLevel       String?  // "preschool" | "K" | "1".."12"
   displayName      String?  // pretty-cased name for UI; falls back to `name`
 
+  // ----- Family / chores (Family Chores section) -----
+  // `isParent` is granted by the app Admin. A parent can create/edit their
+  // family's chore chart, invite members, take points, and see the redeem log.
+  // `familyId` is the family this user belongs to (parent or member). Null = not
+  // in a family yet. A family can have multiple parents (mom AND dad). See
+  // app/chores/PLAN.md + lib/family/.
+  isParent         Boolean  @default(false)
+  familyId         String?
+  family           Family?  @relation(fields: [familyId], references: [id])
+
   // ----- Per-section progress blobs -----
   // Spelling: { level: number, attempts: SpellingAttempt[], misses: string[], lastSession?: number, ... }
   spelling         Json     @default("{}")
@@ -276,4 +286,47 @@ model MpGiftCard {
   note           String?   // parent's optional note ("Happy birthday!")
 
   @@map("mp_gift_cards")
+}
+
+// A family unit — owned by one or more parents (mom AND dad), with invited
+// members. Owns its own chore chart. Multi-tenant: different families build
+// and edit their own charts, fully isolated. See app/chores/PLAN.md.
+//
+// `jobs` is the chore catalog for THIS family as a JSON array (FamilyJob[],
+// shape in lib/family/types.ts) — same blob pattern as music pieces. Each job
+// carries room / frequency / MP / optional assignee / completion history.
+//
+// `redemptions` is the append-only log of external MP redemptions kids made
+// ("movie night – 200MP"), each already debited. Parents read it; no approval.
+model Family {
+  id          String   @id @default(cuid())
+  name        String   // "The Glazier Family"
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  // Usernames of the parents who manage this family (normalized lowercase).
+  // Mirrors DriveUser.isParent — a user must be flagged isParent by Admin AND
+  // listed here to manage. Stored as JSON string[] for simple multi-parent.
+  parents     Json     @default("[]")
+  // The chore catalog (FamilyJob[]). See lib/family/types.ts.
+  jobs        Json     @default("[]")
+  members     DriveUser[]
+
+  @@map("families")
+}
+
+// Append-only redemption log. A kid redeems MP for an external reward; we debit
+// immediately (via balance.ts debit) and write one row here so parents can SEE
+// what was spent. No approval gate — the real-world OK happens in person.
+model Redemption {
+  id          String   @id @default(cuid())
+  familyId    String
+  userName    String   // who redeemed (normalized)
+  cents       Int      // amount debited (positive)
+  reward      String   // free-form: "Movie night", "$5 cash", ...
+  funMessage  String   // the "Have fun!" / "Break a leg!" line shown
+  createdAt   DateTime @default(now())
+
+  @@index([familyId, createdAt])
+  @@index([userName, createdAt])
+  @@map("redemptions")
 }

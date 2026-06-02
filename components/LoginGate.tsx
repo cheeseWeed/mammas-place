@@ -19,7 +19,8 @@ export type LoginGateSection =
   | 'math'
   | 'languageArts'
   | 'chess'
-  | 'music';
+  | 'music'
+  | 'chores';
 
 const COOKIE_NAME = 'dl_user';
 
@@ -66,6 +67,11 @@ const SECTION_COPY: Record<
     headline: 'Who’s practicing?',
     subhead: 'Log in to track your pieces, follow your practice plan, and earn MP.',
     accent: 'indigo',
+  },
+  chores: {
+    headline: 'Who’s here?',
+    subhead: 'Log in to see your family chore chart and earn MP for jobs you finish.',
+    accent: 'emerald',
   },
 };
 

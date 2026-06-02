@@ -14,9 +14,10 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { centsToMP, dollarsInputToCents } from '@/lib/money/format';
 import AdminProductsTab from '@/components/admin/AdminProductsTab';
 import AdminFeedbackTab from '@/components/admin/AdminFeedbackTab';
+import FamiliesAdminTab from '@/components/admin/FamiliesAdminTab';
 
-type DashboardTab = 'money' | 'products' | 'feedback' | 'settings';
-const VALID_TABS: DashboardTab[] = ['money', 'products', 'feedback', 'settings'];
+type DashboardTab = 'money' | 'products' | 'feedback' | 'families' | 'settings';
+const VALID_TABS: DashboardTab[] = ['money', 'products', 'feedback', 'families', 'settings'];
 function parseTab(raw: string | null): DashboardTab {
   return raw && (VALID_TABS as string[]).includes(raw) ? (raw as DashboardTab) : 'money';
 }
@@ -643,7 +644,7 @@ export default function MpBankDashboard() {
               <span className="text-purple-900 font-black text-sm">MP</span>
             </div>
             <div>
-              <h1 className="font-black text-xl leading-tight">Parent / MP Bank</h1>
+              <h1 className="font-black text-xl leading-tight">Admin · MP Bank</h1>
               <p className="text-yellow-200 text-xs">
                 Family store-credit admin (separate from staff portal)
               </p>
@@ -680,7 +681,9 @@ export default function MpBankDashboard() {
                   ? '🛍️ Products'
                   : tab === 'feedback'
                     ? '💬 Feedback'
-                    : '⚙️ Settings';
+                    : tab === 'families'
+                      ? '👨‍👩‍👧 Families'
+                      : '⚙️ Settings';
             return (
               <button
                 key={tab}
@@ -712,6 +715,9 @@ export default function MpBankDashboard() {
       <main className="max-w-6xl mx-auto px-4 py-8 space-y-10">
         {/* ---- PRODUCTS TAB ---- */}
         {activeTab === 'products' && <AdminProductsTab />}
+
+        {/* ---- FAMILIES TAB (Admin grants Parent + creates families) ---- */}
+        {activeTab === 'families' && <FamiliesAdminTab />}
 
         {/* ---- FEEDBACK TAB ---- */}
         {activeTab === 'feedback' && (
