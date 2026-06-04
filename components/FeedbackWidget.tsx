@@ -8,6 +8,14 @@
 
 import { useEffect, useState } from 'react';
 
+interface MyFeedback {
+  id: string;
+  body: string;
+  reply: string | null;
+  repliedAt: string | null;
+  createdAt: string;
+}
+
 export default function FeedbackWidget() {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState('');
@@ -15,6 +23,26 @@ export default function FeedbackWidget() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [toast, setToast] = useState<string | null>(null);
+  // The logged-in user's own messages + admin replies (only populated if they
+  // sent feedback with a name while logged in).
+  const [mine, setMine] = useState<MyFeedback[]>([]);
+  const replyCount = mine.filter((m) => m.reply).length;
+
+  const loadMine = async () => {
+    try {
+      const res = await fetch('/api/feedback?mine=1', { cache: 'no-store' });
+      if (!res.ok) return;
+      const data = (await res.json()) as { feedback?: MyFeedback[] };
+      setMine(Array.isArray(data.feedback) ? data.feedback : []);
+    } catch {
+      // silent — widget still works for sending
+    }
+  };
+
+  // Poll once on mount so the "you have a reply" dot can show without opening.
+  useEffect(() => {
+    void loadMine();
+  }, []);
 
   // Lock background scroll while the modal is open — looks nicer on mobile
   // where the iOS rubber-band can otherwise drag the page underneath.
@@ -68,8 +96,8 @@ export default function FeedbackWidget() {
       }
       setBody('');
       setName('');
-      setOpen(false);
       setToast('Thanks! Sent.');
+      void loadMine(); // pick up the new message in the thread
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Network error');
     } finally {
@@ -83,23 +111,33 @@ export default function FeedbackWidget() {
           Yellow accent so it pops without expanding the header height. */}
       <button
         type="button"
-        onClick={() => setOpen(true)}
-        title="Send feedback"
+        onClick={() => { setOpen(true); void loadMine(); }}
+        title={replyCount > 0 ? 'You have a reply!' : 'Send feedback'}
         aria-label="Send feedback"
-        className="hidden sm:inline-flex items-center gap-1 bg-yellow-300 hover:bg-yellow-200 active:bg-yellow-400 text-purple-900 font-bold px-3 py-2 rounded-full text-sm transition-colors shadow-sm"
+        className="relative hidden sm:inline-flex items-center gap-1 bg-yellow-300 hover:bg-yellow-200 active:bg-yellow-400 text-purple-900 font-bold px-3 py-2 rounded-full text-sm transition-colors shadow-sm"
       >
         <span aria-hidden="true">💬</span>
         <span className="hidden md:inline">Feedback</span>
+        {replyCount > 0 && (
+          <span className="absolute -top-1.5 -right-1.5 bg-emerald-500 text-white text-[10px] font-black rounded-full min-w-[1.1rem] h-[1.1rem] px-1 flex items-center justify-center">
+            {replyCount}
+          </span>
+        )}
       </button>
       {/* Mobile version — icon only so it doesn't crowd the cart. */}
       <button
         type="button"
-        onClick={() => setOpen(true)}
-        title="Send feedback"
+        onClick={() => { setOpen(true); void loadMine(); }}
+        title={replyCount > 0 ? 'You have a reply!' : 'Send feedback'}
         aria-label="Send feedback"
-        className="sm:hidden flex items-center justify-center bg-yellow-300 hover:bg-yellow-200 active:bg-yellow-400 text-purple-900 font-bold w-9 h-9 rounded-full text-sm transition-colors shadow-sm"
+        className="relative sm:hidden flex items-center justify-center bg-yellow-300 hover:bg-yellow-200 active:bg-yellow-400 text-purple-900 font-bold w-9 h-9 rounded-full text-sm transition-colors shadow-sm"
       >
         💬
+        {replyCount > 0 && (
+          <span className="absolute -top-1 -right-1 bg-emerald-500 text-white text-[10px] font-black rounded-full min-w-[1.1rem] h-[1.1rem] px-1 flex items-center justify-center">
+            {replyCount}
+          </span>
+        )}
       </button>
 
       {open && (
@@ -130,6 +168,26 @@ export default function FeedbackWidget() {
             <p className="text-xs text-gray-600 mb-4">
               Tell us what&apos;s working, what&apos;s broken, or what you wish was here.
             </p>
+
+            {/* Your past messages + replies (only if logged in and sent with a name) */}
+            {mine.length > 0 && (
+              <div className="mb-4 max-h-52 overflow-y-auto space-y-2 pr-1">
+                {mine.map((m) => (
+                  <div key={m.id} className="rounded-xl border border-purple-100 p-2.5">
+                    <div className="text-[11px] font-bold text-purple-500 uppercase tracking-wide">You said</div>
+                    <p className="text-sm text-purple-900 whitespace-pre-wrap break-words">{m.body}</p>
+                    {m.reply ? (
+                      <div className="mt-2 bg-emerald-50 rounded-lg p-2">
+                        <div className="text-[11px] font-bold text-emerald-700 uppercase tracking-wide">Reply</div>
+                        <p className="text-sm text-emerald-900 whitespace-pre-wrap break-words">{m.reply}</p>
+                      </div>
+                    ) : (
+                      <div className="mt-1 text-[11px] text-gray-400 italic">No reply yet</div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
 
             <form onSubmit={submit} className="space-y-3">
               <div>

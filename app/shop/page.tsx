@@ -14,9 +14,16 @@ import {
 import ProductCard from '@/components/ProductCard';
 import SkeletonCard from '@/components/SkeletonCard';
 import ServiceAds from '@/components/ServiceAds';
+import Link from 'next/link';
+import { isSabbath } from '@/lib/sabbath';
 
 function ShopContent() {
   const searchParams = useSearchParams();
+  // Sabbath: the shop is closed on Sundays. Guard on mount so SSR and client
+  // agree (the day is read client-side via the family timezone + admin override).
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+  const sabbathClosed = mounted && isSabbath();
   const { products: allCatalog, loading: catalogLoading } = useProducts();
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedSubcategory, setSelectedSubcategory] = useState('all');
@@ -92,6 +99,27 @@ function ShopContent() {
       if (sortBy === 'sale') return (b.isSale ? 1 : 0) - (a.isSale ? 1 : 0);
       return (b.isFeatured ? 1 : 0) - (a.isFeatured ? 1 : 0);
     });
+
+  if (sabbathClosed) {
+    return (
+      <div className="max-w-2xl mx-auto px-4 py-20 text-center">
+        <div className="text-5xl mb-3">🕊️</div>
+        <h1 className="text-3xl font-black text-purple-900 mb-2">
+          The shop is closed for the Sabbath
+        </h1>
+        <p className="text-gray-700 mb-6">
+          We keep the Sabbath day holy — the shop is closed on Sundays. Come back
+          tomorrow! Today is a good day to rest and study the scriptures.
+        </p>
+        <Link
+          href="/scripture-study"
+          className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-500 text-white font-bold px-6 py-3 rounded-full transition-colors"
+        >
+          📖 Study the Scriptures
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-[1600px] mx-auto px-4 py-6">

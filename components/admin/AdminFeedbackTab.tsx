@@ -10,10 +10,13 @@ import { useRouter } from 'next/navigation';
 export interface FeedbackRow {
   id: string;
   authorName: string | null;
+  authorUser?: string | null;
   body: string;
   page: string | null;
   userAgent: string | null;
   status: string;
+  reply?: string | null;
+  repliedAt?: string | null;
   createdAt: string;
 }
 
@@ -46,6 +49,8 @@ export default function AdminFeedbackTab({ onCountChange }: Props) {
   const [error, setError] = useState<string | null>(null);
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('new');
   const [busyId, setBusyId] = useState<string | null>(null);
+  // Per-row reply draft text, keyed by feedback id.
+  const [replyDraft, setReplyDraft] = useState<Record<string, string>>({});
 
   const handleUnauth = useCallback(() => {
     router.push('/admin/mp-bank/login');
@@ -101,6 +106,38 @@ export default function AdminFeedbackTab({ onCountChange }: Props) {
         setError(data.error || `HTTP ${res.status}`);
         return;
       }
+      await load();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Network error');
+    } finally {
+      setBusyId(null);
+    }
+  };
+
+  const sendReply = async (id: string) => {
+    const reply = (replyDraft[id] ?? '').trim();
+    if (!reply) return;
+    setBusyId(id);
+    try {
+      const res = await fetch(`/api/feedback/${encodeURIComponent(id)}`, {
+        method: 'PUT',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ reply }),
+      });
+      if (res.status === 401) {
+        handleUnauth();
+        return;
+      }
+      if (!res.ok) {
+        const data = (await res.json().catch(() => ({}))) as { error?: string };
+        setError(data.error || `HTTP ${res.status}`);
+        return;
+      }
+      setReplyDraft((prev) => {
+        const next = { ...prev };
+        delete next[id];
+        return next;
+      });
       await load();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Network error');
@@ -229,6 +266,43 @@ export default function AdminFeedbackTab({ onCountChange }: Props) {
                 <p className="text-sm text-purple-900 whitespace-pre-wrap break-words">
                   {r.body}
                 </p>
+
+                {/* Reply area */}
+                <div className="mt-3 bg-purple-50 rounded-xl p-3 border border-purple-100">
+                  {r.reply ? (
+                    <div className="mb-2">
+                      <div className="text-[11px] font-bold text-emerald-700 uppercase tracking-wide mb-0.5">
+                        Your reply{r.repliedAt ? ` · ${relativeTime(r.repliedAt)}` : ''}
+                      </div>
+                      <p className="text-sm text-emerald-900 whitespace-pre-wrap break-words">{r.reply}</p>
+                    </div>
+                  ) : null}
+                  <textarea
+                    value={replyDraft[r.id] ?? r.reply ?? ''}
+                    onChange={(e) => setReplyDraft((p) => ({ ...p, [r.id]: e.target.value }))}
+                    placeholder={r.reply ? 'Edit your reply…' : 'Write a reply…'}
+                    maxLength={2000}
+                    rows={2}
+                    disabled={isBusy}
+                    className="w-full rounded-lg border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-3 py-2 bg-white text-purple-900 text-sm resize-y"
+                  />
+                  <div className="flex items-center justify-between gap-2 mt-1.5">
+                    <span className="text-[11px] text-purple-500">
+                      {r.authorUser
+                        ? `Goes to @${r.authorUser} in their feedback bubble.`
+                        : 'Anonymous — they won’t see a reply (no signed-in name attached).'}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => sendReply(r.id)}
+                      disabled={isBusy || !(replyDraft[r.id] ?? '').trim()}
+                      className="bg-emerald-600 hover:bg-emerald-500 disabled:opacity-40 text-white font-bold px-3 py-1.5 rounded-lg text-xs"
+                    >
+                      {isBusy ? 'Sending…' : r.reply ? 'Update reply' : 'Send reply'}
+                    </button>
+                  </div>
+                </div>
+
                 <div className="mt-2 flex flex-wrap gap-3 text-xs">
                   {r.status !== 'read' && (
                     <button

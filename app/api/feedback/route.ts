@@ -8,8 +8,10 @@
 // Body shape limits: body 1..2000 chars, authorName <=60, page <=200.
 
 import { NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import { prisma } from '@/lib/prisma';
 import { isParentAuthenticated } from '@/lib/money/parent';
+import { normalizeUser } from '@/lib/drive-progress';
 
 export const dynamic = 'force-dynamic';
 
@@ -83,10 +85,19 @@ export async function POST(req: NextRequest) {
       : null;
   const userAgent = req.headers.get('user-agent')?.slice(0, 500) ?? null;
 
+  // Stamp the logged-in user ONLY when they provided a name. Blank name =
+  // fully anonymous — no identity attached, no reply thread. (User's rule.)
+  let authorUser: string | null = null;
+  if (authorName) {
+    const jar = await cookies();
+    const dl = jar.get('dl_user')?.value;
+    if (dl && dl !== '__anon__') authorUser = normalizeUser(dl);
+  }
+
   try {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const created = (await (prisma as any).feedback.create({
-      data: { body: text, authorName, page, userAgent },
+      data: { body: text, authorName, authorUser, page, userAgent },
     })) as { id: string; createdAt: Date };
     return NextResponse.json({ ok: true, id: created.id, createdAt: created.createdAt });
   } catch (err) {
@@ -100,10 +111,33 @@ export async function POST(req: NextRequest) {
 //   status=new|read|archived|all  (default: all)
 //   limit=N (default 100, max 500)
 export async function GET(req: NextRequest) {
+  const url = new URL(req.url);
+
+  // Kid path: ?mine=1 returns the logged-in user's OWN feedback + any admin
+  // replies. No parent gate — you can only ever see your own (matched on the
+  // dl_user that was stamped when you sent it with a name).
+  if (url.searchParams.get('mine') === '1') {
+    const jar = await cookies();
+    const dl = jar.get('dl_user')?.value;
+    if (!dl || dl === '__anon__') {
+      return NextResponse.json({ feedback: [], replyCount: 0 });
+    }
+    const me = normalizeUser(dl);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const mine = await (prisma as any).feedback.findMany({
+      where: { authorUser: me },
+      orderBy: { createdAt: 'desc' },
+      take: 50,
+      select: { id: true, body: true, reply: true, repliedAt: true, createdAt: true },
+    });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const replyCount = mine.filter((r: any) => r.reply).length;
+    return NextResponse.json({ feedback: mine, replyCount });
+  }
+
   if (!(await isParentAuthenticated())) {
     return NextResponse.json({ error: 'Parent login required' }, { status: 401 });
   }
-  const url = new URL(req.url);
   const status = url.searchParams.get('status') ?? 'all';
   const limit = Math.min(500, Math.max(1, Number(url.searchParams.get('limit')) || 100));
 

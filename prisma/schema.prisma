@@ -257,13 +257,20 @@ model Product {
 model Feedback {
   id          String   @id @default(cuid())
   authorName  String?
+  // The logged-in user (dl_user) who sent it — stamped ONLY when they provided
+  // a name. Blank name = fully anonymous, no identity attached, no reply thread.
+  authorUser  String?
   body        String
   page        String?
   userAgent   String?
   status      String   @default("new") // 'new' | 'read' | 'archived'
+  // Admin's reply + when it was sent. Null until the admin answers.
+  reply       String?
+  repliedAt   DateTime?
   createdAt   DateTime @default(now())
 
   @@index([status, createdAt])
+  @@index([authorUser, createdAt])
   @@map("feedback")
 }
 

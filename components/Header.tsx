@@ -11,6 +11,7 @@ import IdentityBadge from '@/components/IdentityBadge';
 import { useLearner } from '@/context/LearnerContext';
 import { centsToMP } from '@/lib/money/format';
 import FeedbackWidget from '@/components/FeedbackWidget';
+import { isSabbath } from '@/lib/sabbath';
 
 export default function Header() {
   const { itemCount } = useCart();
@@ -24,6 +25,11 @@ export default function Header() {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  // Sabbath gating: on Sundays the shop + most learning sections are hidden;
+  // only Scripture Study, Music, and Audiobooks stay. Guard on `mounted` so SSR
+  // (server's day) and the client (family-tz day) don't mismatch on hydration.
+  const sabbath = mounted && isSabbath();
 
   // Dropdown close-delay: when cursor leaves the trigger, wait 200ms before
   // closing so a quick cursor wobble between button and panel doesn't kill
@@ -106,21 +112,23 @@ export default function Header() {
         🎓 DEMO SITE - For Learning & Portfolio Purposes Only - No Real Transactions
       </div>
 
-      {/* Top promo bar - now visible on mobile too. Greeting pinned top-left,
-          promo text centered, spacer keeps it visually centered. */}
-      <div className="flex items-center justify-between gap-3 text-white text-xs sm:text-sm py-1 px-4" style={{background: 'rgba(0,0,0,0.4)'}}>
-        <div className="shrink-0 min-w-0">
-          <IdentityBadge compact />
-        </div>
-        <div className="flex-1 text-center truncate">
-          Free shipping on orders over $50! Use code <span className="font-bold text-yellow-300">MAMMA10</span> for 10% off
-        </div>
-        {/* Spacer mirrors the greeting column so the promo stays centered. */}
-        <div className="shrink-0 w-0 sm:w-24" aria-hidden="true" />
+      {/* Top promo bar - now visible on mobile too */}
+      <div className="text-white text-xs sm:text-sm text-center py-1 px-4" style={{background: 'rgba(0,0,0,0.4)'}}>
+        Free shipping on orders over $50! Use code <span className="font-bold text-yellow-300">MAMMA10</span> for 10% off
+      </div>
+
+      {/* Who you're logged in as — pinned to the FAR-LEFT edge of the whole
+          header bar (anchored to <header>, which is fixed). Stacked greeting +
+          actions. Hidden on small screens to avoid overlapping the logo; the
+          mobile menu carries the identity instead. */}
+      <div className="hidden lg:block absolute left-3 bottom-3 z-[110]">
+        <IdentityBadge />
       </div>
 
       {/* Main header row */}
       <div className="flex items-center justify-between px-4 py-3 max-w-7xl mx-auto">
+        {/* Left cluster: logo */}
+        <div className="flex items-center gap-4 sm:gap-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 group" onClick={() => setMenuOpen(false)}>
           <div className="relative">
@@ -167,6 +175,7 @@ export default function Header() {
             </div>
           </div>
         </Link>
+        </div>
 
         {/* Desktop search */}
         <form onSubmit={handleSearch} className="flex-1 max-w-xl mx-6 hidden md:flex">
@@ -189,6 +198,9 @@ export default function Header() {
         <div className="flex items-center gap-3">
           {/* Desktop nav links with dropdowns */}
           <nav className="hidden lg:flex items-center gap-1 relative">
+            {/* Shop is closed on the Sabbath — hide all shop entry points. */}
+            {!sabbath && (
+            <>
             <Link href="/shop" className="text-white hover:text-yellow-300 text-sm font-medium transition-colors px-3 py-2 rounded">Shop All</Link>
 
             {/* Categories dropdown menu */}
@@ -250,6 +262,8 @@ export default function Header() {
             </div>
 
             <Link href="/shop?sale=true" className="text-yellow-300 hover:text-yellow-200 text-sm font-bold transition-colors px-3 py-2 rounded">Sale 🏷️</Link>
+            </>
+            )}
 
             {/* Learn dropdown — side projects for homeschool kids */}
             <div
@@ -267,6 +281,20 @@ export default function Header() {
                 <div className="absolute top-full right-0 bg-white rounded-lg shadow-2xl border border-purple-100 p-3 min-w-[220px] z-50" style={{ marginTop: 0 }}
                   onMouseEnter={() => openDropdown('learn')}
                   onMouseLeave={scheduleDropdownClose}>
+                  <Link
+                    href="/scripture-study"
+                    onClick={() => setActiveDropdown(null)}
+                    className="flex items-start gap-3 p-2 rounded-lg hover:bg-emerald-50 transition-colors group"
+                  >
+                    <span className="text-2xl">📖</span>
+                    <div>
+                      <div className="font-bold text-purple-900 group-hover:text-emerald-700">Scripture Study Guide</div>
+                      <div className="text-xs text-gray-600">Faith &amp; gospel study by topic</div>
+                    </div>
+                  </Link>
+                  {/* Sabbath-closed learning sections — hidden on Sundays. */}
+                  {!sabbath && (
+                  <>
                   <Link
                     href="/geography"
                     onClick={() => setActiveDropdown(null)}
@@ -333,6 +361,9 @@ export default function Header() {
                       <div className="text-xs text-gray-600">Full rules · 4 piece sets</div>
                     </div>
                   </Link>
+                  </>
+                  )}
+                  {/* Music stays open on the Sabbath. */}
                   <Link
                     href="/music"
                     onClick={() => setActiveDropdown(null)}
@@ -344,6 +375,7 @@ export default function Header() {
                       <div className="text-xs text-gray-600">Daily plan · score your playing · earn MP</div>
                     </div>
                   </Link>
+                  {!sabbath && (
                   <Link
                     href="/chores"
                     onClick={() => setActiveDropdown(null)}
@@ -355,6 +387,7 @@ export default function Header() {
                       <div className="text-xs text-gray-600">Check off jobs · earn MP · redeem</div>
                     </div>
                   </Link>
+                  )}
                 </div>
               )}
             </div>
@@ -413,6 +446,9 @@ export default function Header() {
       {/* Mobile dropdown menu */}
       <div className={`lg:hidden overflow-hidden transition-all duration-300 ${menuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'}`}>
         <nav className="px-4 pt-2 pb-4 flex flex-col gap-1 border-t border-purple-900/50 max-h-[70vh] overflow-y-auto" style={{background: 'linear-gradient(135deg, #2d0550 0%, #4a0d7a 100%)'}}>
+          {/* Shop is closed on the Sabbath. */}
+          {!sabbath && (
+          <>
           <Link
             href="/shop"
             onClick={() => setMenuOpen(false)}
@@ -465,12 +501,24 @@ export default function Header() {
           >
             🏷️ Sale Items
           </Link>
+          </>
+          )}
 
           {/* Learn section — side projects */}
           <div className="border-b border-purple-800/50 pb-2 pt-1">
             <div className="text-emerald-300 px-4 py-2 font-bold text-xs uppercase tracking-wide">
               🎓 L&apos;Earn
             </div>
+            <Link
+              href="/scripture-study"
+              onClick={() => setMenuOpen(false)}
+              className="text-white hover:bg-purple-700 hover:text-yellow-300 px-6 py-2.5 rounded-xl text-sm transition-colors flex items-center gap-2"
+            >
+              📖 Scripture Study Guide
+            </Link>
+            {/* Sabbath-closed learning sections — hidden on Sundays. */}
+            {!sabbath && (
+            <>
             <Link
               href="/geography"
               onClick={() => setMenuOpen(false)}
@@ -512,6 +560,16 @@ export default function Header() {
               className="text-white hover:bg-purple-700 hover:text-yellow-300 px-6 py-2.5 rounded-xl text-sm transition-colors flex items-center gap-2"
             >
               ♟️ Chess
+            </Link>
+            </>
+            )}
+            {/* Music stays open on the Sabbath. */}
+            <Link
+              href="/music"
+              onClick={() => setMenuOpen(false)}
+              className="text-white hover:bg-purple-700 hover:text-yellow-300 px-6 py-2.5 rounded-xl text-sm transition-colors flex items-center gap-2"
+            >
+              🎻 Practice Studio
             </Link>
           </div>
 

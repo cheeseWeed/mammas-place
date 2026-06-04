@@ -270,6 +270,14 @@ export async function getAudiobooks(): Promise<Product[]> {
   return rows.map(rowToProduct);
 }
 
+export async function getStudyGuides(): Promise<Product[]> {
+  const rows = (await prisma.product.findMany({
+    where: { availableOnWebsite: true, isStudyGuide: true },
+    orderBy: { createdAt: 'asc' },
+  })) as unknown as ProductRow[];
+  return rows.map(rowToProduct);
+}
+
 export async function getComingSoonProducts(): Promise<Product[]> {
   // Hidden-category filter is client-side only (localStorage); server
   // returns all coming-soon items and the client re-filters where needed.

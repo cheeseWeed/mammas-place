@@ -6,6 +6,7 @@ import ProductCard from '@/components/ProductCard';
 import ServiceAds from '@/components/ServiceAds';
 import LearnerPills from '@/components/LearnerPills';
 import ContinueListening from '@/components/ContinueListening';
+import SabbathNote from '@/components/SabbathNote';
 
 export default async function HomePage() {
   // Inventory rotation — pick 7 featured products via seeded daily shuffle.
@@ -80,6 +81,9 @@ export default async function HomePage() {
           <LearnerPills />
         </div>
       </section>
+
+      {/* Sabbath note — only renders on Sundays */}
+      <SabbathNote />
 
       {/* Main Content with Sidebar */}
       <div className="max-w-[1600px] mx-auto px-4 py-10">

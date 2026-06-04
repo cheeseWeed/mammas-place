@@ -786,6 +786,21 @@ export default function MpBankDashboard() {
     router.refresh();
   };
 
+  // Sabbath day-override (admin preview). Writes the mp_sabbath_override cookie
+  // and reloads so the whole site re-evaluates the Sunday gating.
+  const setSabbathOverride = (val: '' | 'sun' | 'wkdy') => {
+    if (val) {
+      document.cookie = `mp_sabbath_override=${val}; path=/; max-age=86400`;
+    } else {
+      document.cookie = 'mp_sabbath_override=; path=/; max-age=0';
+    }
+    window.location.reload();
+  };
+  const currentOverride =
+    typeof document !== 'undefined'
+      ? (document.cookie.match(/mp_sabbath_override=([^;]*)/)?.[1] ?? '')
+      : '';
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-yellow-50">
       <header className="bg-purple-900 text-white shadow-lg">
@@ -802,6 +817,20 @@ export default function MpBankDashboard() {
             </div>
           </div>
           <div className="flex items-center gap-2">
+            {/* Sabbath preview — view the site as Sunday / weekday for testing */}
+            <label className="flex items-center gap-1 bg-purple-800 px-2 py-1.5 rounded-xl text-xs">
+              <span className="text-yellow-200 hidden sm:inline">View as:</span>
+              <select
+                value={currentOverride}
+                onChange={(e) => setSabbathOverride(e.target.value as '' | 'sun' | 'wkdy')}
+                className="bg-purple-700 text-white rounded px-1 py-0.5 text-xs"
+                title="Preview Sabbath gating as a specific day"
+              >
+                <option value="">Today (real)</option>
+                <option value="sun">Sunday (Sabbath)</option>
+                <option value="wkdy">Weekday</option>
+              </select>
+            </label>
             <a
               href="/admin/music"
               className="bg-indigo-500 hover:bg-indigo-400 text-white font-bold px-4 py-2 rounded-xl text-sm transition-colors"
