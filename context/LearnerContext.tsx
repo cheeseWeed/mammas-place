@@ -105,19 +105,12 @@ export function LearnerProvider({ children }: { children: ReactNode }) {
     };
     window.addEventListener('storage', onStorage);
 
-    // (A) Tab close → clear localStorage + cookie. The server cookie has a
-    // 2h TTL anyway, but wiping it on close means the next tab open shows
-    // the login form immediately.
-    const onBeforeUnload = () => {
-      try {
-        localStorage.removeItem(STORAGE_KEY);
-      } catch {
-        // ignore
-      }
-      expireCookie(STORAGE_KEY);
-      expireCookie(RETURN_COOKIE);
-    };
-    window.addEventListener('beforeunload', onBeforeUnload);
+    // NOTE: we deliberately do NOT clear the session on `beforeunload`.
+    // beforeunload fires on ordinary same-site navigation (clicking any link),
+    // not just real tab close — so wiping dl_user there logged the user out on
+    // every page change (broke /parent access, the assign-chores UI, the
+    // greeting, etc.). The 2h cookie TTL + the idle-logout below already cover
+    // "forget the kid when they walk away" without punishing navigation.
 
     // (B) Visibility change → if the tab goes hidden for >= IDLE_LOGOUT_MS,
     // log the kid out. Covers "Mom switched to another tab and came back
@@ -160,7 +153,6 @@ export function LearnerProvider({ children }: { children: ReactNode }) {
 
     return () => {
       window.removeEventListener('storage', onStorage);
-      window.removeEventListener('beforeunload', onBeforeUnload);
       document.removeEventListener('visibilitychange', onVisibilityChange);
       if (idleLogoutTimer !== null) clearTimeout(idleLogoutTimer);
     };
