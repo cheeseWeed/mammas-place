@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Chess',
   description:
-    'Chess for homeschool kids — play against the computer and learn the rules of the game.',
+    'Chess for kids — play against the computer and learn the rules of the game.',
 };
 
 export default function ChessLayout({ children }: { children: React.ReactNode }) {

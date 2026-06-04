@@ -58,10 +58,18 @@ export default async function ScriptureStudyPage() {
           <h1 className="text-3xl md:text-4xl font-black text-purple-900 mb-2">
             Scripture Study Guide
           </h1>
-          <p className="text-purple-600 text-sm max-w-2xl mx-auto">
+          <p className="text-purple-600 text-sm max-w-2xl mx-auto mb-4">
             Study the gospel by topic. Pick a guide and read — a good way to keep
             the Sabbath day holy.
           </p>
+          <a
+            href="https://www.churchofjesuschrist.org/?lang=eng"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-purple-700 hover:bg-purple-600 text-white font-bold px-5 py-2.5 rounded-full text-sm transition-colors"
+          >
+            ⛪ Visit ChurchofJesusChrist.org
+          </a>
         </div>
 
         {guides.length === 0 ? (

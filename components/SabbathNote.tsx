@@ -39,12 +39,22 @@ export default function SabbathNote() {
         <p className="text-amber-800 text-sm max-w-2xl mx-auto mb-5">
           {SABBATH_ENCOURAGEMENT}
         </p>
-        <Link
-          href="/scripture-study"
-          className="inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-500 text-white font-bold px-6 py-3 rounded-full transition-colors"
-        >
-          📖 Study the Scriptures
-        </Link>
+        <div className="flex flex-col sm:flex-row gap-3 justify-center">
+          <Link
+            href="/scripture-study"
+            className="inline-flex items-center justify-center gap-2 bg-amber-600 hover:bg-amber-500 text-white font-bold px-6 py-3 rounded-full transition-colors"
+          >
+            📖 Study the Scriptures
+          </Link>
+          <a
+            href="https://www.churchofjesuschrist.org/?lang=eng"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 bg-white border-2 border-amber-300 hover:border-amber-500 text-amber-900 font-bold px-6 py-3 rounded-full transition-colors"
+          >
+            ⛪ ChurchofJesusChrist.org
+          </a>
+        </div>
       </div>
     </section>
   );

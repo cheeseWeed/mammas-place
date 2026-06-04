@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Language Arts',
   description:
-    'Language Arts for homeschool kids — phonics, grammar, punctuation, homophones, thesaurus, and dictionary work.',
+    'Language Arts for kids — phonics, grammar, punctuation, homophones, thesaurus, and dictionary work.',
 };
 
 export default function LanguageArtsLayout({ children }: { children: React.ReactNode }) {

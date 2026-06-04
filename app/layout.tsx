@@ -28,15 +28,15 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://mammas-place.vercel.app'),
   title: {
-    default: "Mamma's Place - Homeschool Learning & Family Shop",
+    default: "Mamma's Place - Learning & Family Shop",
     template: "%s | Mamma's Place",
   },
   description:
-    "Homeschool learning hub and family shop — geography, spelling, math, language arts, chess, driver study, and more, all in one place.",
+    "Learning hub and family shop — geography, spelling, math, language arts, chess, driver study, and more, all in one place.",
   openGraph: {
-    title: "Mamma's Place - Homeschool Learning & Family Shop",
+    title: "Mamma's Place - Learning & Family Shop",
     description:
-      "Homeschool learning hub and family shop — geography, spelling, math, language arts, chess, driver study, and more, all in one place.",
+      "Learning hub and family shop — geography, spelling, math, language arts, chess, driver study, and more, all in one place.",
     type: 'website',
     locale: 'en_US',
     siteName: "Mamma's Place",
@@ -44,9 +44,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: "Mamma's Place - Homeschool Learning & Family Shop",
+    title: "Mamma's Place - Learning & Family Shop",
     description:
-      "Homeschool learning hub and family shop — geography, spelling, math, language arts, chess, driver study, and more, all in one place.",
+      "Learning hub and family shop — geography, spelling, math, language arts, chess, driver study, and more, all in one place.",
   },
 };
 

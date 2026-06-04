@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Spelling Bee',
   description:
-    'Spelling practice for homeschool kids — leveled placement, weekly word lists, and rule drills.',
+    'Spelling practice for kids — leveled placement, weekly word lists, and rule drills.',
 };
 
 export default function SpellingLayout({ children }: { children: React.ReactNode }) {
