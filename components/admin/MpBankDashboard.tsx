@@ -782,8 +782,8 @@ export default function MpBankDashboard() {
       // Cookie clear is best-effort; redirect regardless so they can't keep
       // poking the dashboard from a stale tab.
     }
-    router.push('/admin/mp-bank/login');
-    router.refresh();
+    // Land on the home page after logging out (not the admin login screen).
+    window.location.href = '/';
   };
 
   // Sabbath day-override (admin preview). Writes the mp_sabbath_override cookie
