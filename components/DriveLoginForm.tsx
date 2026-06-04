@@ -153,12 +153,11 @@ export default function DriveLoginForm() {
     window.location.href = DASHBOARD_URL;
   };
 
+  // Forgot PIN → file a request for a grown-up (admin) to reset it. This does
+  // NOT touch the account or its progress. The admin sets a new PIN and tells
+  // the kid, who then changes it from the "Change PIN" spot below.
   const handleReset = async () => {
     if (!user.trim()) return;
-    const confirmText = prompt(
-      `This will WIPE all saved progress for "${user.trim()}" and let you re-register with a new PIN. Type "reset" to confirm:`,
-    );
-    if (confirmText?.toLowerCase() !== 'reset') return;
     setStatus({ kind: 'busy' });
     try {
       const res = await fetch('/api/drive/reset', {
@@ -166,23 +165,78 @@ export default function DriveLoginForm() {
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ user: user.trim() }),
       });
-      if (res.ok || res.status === 404) {
-        setPin('');
+      if (res.ok) {
+        const data = (await res.json().catch(() => ({}))) as { alreadyPending?: boolean };
         setStatus({
           kind: 'error',
-          message: 'Progress wiped. Pick a new PIN and click "I\'m new (register)".',
+          message: data.alreadyPending
+            ? 'A grown-up was already asked to reset your PIN. Ask them for your new PIN, then log in.'
+            : 'Asked a grown-up to reset your PIN. They\'ll give you a new one — then log in and you can change it.',
         });
       } else {
         const data = (await res.json().catch(() => ({}))) as { error?: string };
         setStatus({
           kind: 'error',
-          message: data.error || 'Reset failed. Try again.',
+          message: data.error || 'Could not send the request. Try again.',
         });
       }
     } catch (err) {
       setStatus({
         kind: 'error',
         message: err instanceof Error ? err.message : 'Network error',
+      });
+    }
+  };
+
+  // Change PIN: kid sets a new PIN using their current one. Available from the
+  // login screen (collapsed by default). Uses /api/drive/change-pin which
+  // requires the current PIN, so a logged-out browser can't hijack an account.
+  const [showChangePin, setShowChangePin] = useState(false);
+  const [cpCurrent, setCpCurrent] = useState('');
+  const [cpNew, setCpNew] = useState('');
+  const [cpNew2, setCpNew2] = useState('');
+  const [cpStatus, setCpStatus] = useState<
+    { kind: 'idle' | 'busy' } | { kind: 'msg'; ok: boolean; text: string }
+  >({ kind: 'idle' });
+
+  const handleChangePin = async () => {
+    if (!user.trim()) {
+      setCpStatus({ kind: 'msg', ok: false, text: 'Enter your name first.' });
+      return;
+    }
+    if (!/^\d{4}$/.test(cpCurrent) || !/^\d{4}$/.test(cpNew)) {
+      setCpStatus({ kind: 'msg', ok: false, text: 'PINs must be 4 digits.' });
+      return;
+    }
+    if (cpNew !== cpNew2) {
+      setCpStatus({ kind: 'msg', ok: false, text: 'New PINs don\'t match.' });
+      return;
+    }
+    setCpStatus({ kind: 'busy' });
+    try {
+      const res = await fetch('/api/drive/change-pin', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          user: user.trim(),
+          currentPin: cpCurrent,
+          newPin: cpNew,
+        }),
+      });
+      if (res.ok) {
+        setCpCurrent('');
+        setCpNew('');
+        setCpNew2('');
+        setCpStatus({ kind: 'msg', ok: true, text: 'PIN changed! Log in with your new PIN.' });
+      } else {
+        const data = (await res.json().catch(() => ({}))) as { error?: string };
+        setCpStatus({ kind: 'msg', ok: false, text: data.error || 'Could not change PIN.' });
+      }
+    } catch (err) {
+      setCpStatus({
+        kind: 'msg',
+        ok: false,
+        text: err instanceof Error ? err.message : 'Network error',
       });
     }
   };
@@ -338,7 +392,7 @@ export default function DriveLoginForm() {
                 onClick={handleReset}
                 className="ml-2 underline text-purple-700 hover:text-purple-900"
               >
-                Forgot PIN? Wipe and start over.
+                Forgot PIN? Ask a grown-up to reset it.
               </button>
             )}
           </div>
@@ -372,6 +426,98 @@ export default function DriveLoginForm() {
           </button>
         </div>
       </form>
+
+      {/* Change PIN — for kids who know their current PIN (or the temporary one
+          a grown-up just gave them after a reset). Collapsed by default. */}
+      <div className="max-w-md mx-auto mt-6 pt-4 border-t border-purple-100">
+        {!showChangePin ? (
+          <div className="text-center">
+            <button
+              type="button"
+              onClick={() => {
+                setShowChangePin(true);
+                setCpStatus({ kind: 'idle' });
+              }}
+              className="text-xs text-purple-600 hover:text-purple-900 underline"
+            >
+              Change my PIN
+            </button>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            <p className="text-sm font-bold text-purple-900 text-center">
+              Change your PIN
+            </p>
+            <p className="text-center text-gray-500 text-xs">
+              Type your name above, then your current PIN and the new one.
+            </p>
+            <input
+              type="password"
+              inputMode="numeric"
+              value={cpCurrent}
+              onChange={(e) => setCpCurrent(e.target.value.replace(/\D/g, '').slice(0, 4))}
+              placeholder="Current PIN"
+              maxLength={4}
+              autoComplete="off"
+              className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-4 py-2 bg-purple-50 text-purple-900 tracking-[0.4em] text-center"
+            />
+            <input
+              type="password"
+              inputMode="numeric"
+              value={cpNew}
+              onChange={(e) => setCpNew(e.target.value.replace(/\D/g, '').slice(0, 4))}
+              placeholder="New PIN"
+              maxLength={4}
+              autoComplete="off"
+              className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-4 py-2 bg-purple-50 text-purple-900 tracking-[0.4em] text-center"
+            />
+            <input
+              type="password"
+              inputMode="numeric"
+              value={cpNew2}
+              onChange={(e) => setCpNew2(e.target.value.replace(/\D/g, '').slice(0, 4))}
+              placeholder="New PIN again"
+              maxLength={4}
+              autoComplete="off"
+              className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-4 py-2 bg-purple-50 text-purple-900 tracking-[0.4em] text-center"
+            />
+            {cpStatus.kind === 'msg' && (
+              <div
+                className={`rounded-xl text-sm px-4 py-2 ${
+                  cpStatus.ok
+                    ? 'bg-emerald-50 border border-emerald-200 text-emerald-800'
+                    : 'bg-yellow-100 border border-yellow-300 text-purple-900'
+                }`}
+              >
+                {cpStatus.text}
+              </div>
+            )}
+            <div className="grid grid-cols-2 gap-3">
+              <button
+                type="button"
+                onClick={handleChangePin}
+                disabled={cpStatus.kind === 'busy'}
+                className="bg-purple-900 hover:bg-purple-800 disabled:bg-purple-300 text-white font-bold py-2 rounded-xl transition-colors text-sm"
+              >
+                {cpStatus.kind === 'busy' ? 'Saving…' : 'Save new PIN'}
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowChangePin(false);
+                  setCpCurrent('');
+                  setCpNew('');
+                  setCpNew2('');
+                  setCpStatus({ kind: 'idle' });
+                }}
+                className="bg-yellow-100 hover:bg-yellow-200 text-purple-900 font-bold py-2 rounded-xl border-2 border-yellow-300 transition-colors text-sm"
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

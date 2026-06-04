@@ -82,19 +82,127 @@ export default function FamiliesAdminTab() {
         {parents.length === 0 && <p className="text-xs text-amber-700 mt-2">No parents yet — flag a user below first.</p>}
       </div>
 
-      {/* Families map */}
+      {/* Families map — per-family parents + members with assign/remove controls */}
       {families.length > 0 && (
-        <div className="bg-white rounded-2xl border-2 border-purple-100 p-5">
-          <h3 className="font-black text-purple-900 mb-3">Families</h3>
-          <div className="space-y-2">
-            {families.map((f) => (
-              <div key={f.id} className="bg-purple-50 rounded-xl p-3 text-sm">
-                <span className="font-bold text-purple-900">{f.name}</span>
-                <span className="text-gray-500"> · parents: {f.parents.join(', ') || '(none)'}</span>
-                <span className="text-gray-400"> · members: {users.filter((u) => u.familyId === f.id).length}</span>
+        <div className="space-y-4">
+          {families.map((f) => {
+            const members = users.filter((u) => u.familyId === f.id);
+            // Candidates to add as a parent: flagged isParent, not already a
+            // parent of this family. (Includes parents currently in NO family —
+            // exactly the orphaned-Dad case.)
+            const parentCandidates = users.filter(
+              (u) => u.isParent && !f.parents.includes(u.name),
+            );
+            // Candidates to add as a plain member: anyone not already in a family.
+            const memberCandidates = users.filter((u) => !u.familyId);
+            // Candidates to MOVE here: anyone in a DIFFERENT family. Lets the
+            // admin relocate Dad (or anyone) from the wrong family to this one
+            // in a single click — relocates rather than refusing.
+            const moveCandidates = users.filter((u) => u.familyId && u.familyId !== f.id);
+            return (
+              <div key={f.id} className="bg-white rounded-2xl border-2 border-purple-100 p-5">
+                <h3 className="font-black text-purple-900 mb-3">{f.name}</h3>
+
+                {/* Members list */}
+                <div className="space-y-1 mb-4">
+                  {members.length === 0 && <p className="text-sm text-gray-500">No members yet.</p>}
+                  {members.map((m) => {
+                    const isParentHere = f.parents.includes(m.name);
+                    return (
+                      <div key={m.name} className="flex items-center justify-between gap-2 text-sm border-b border-gray-100 py-1.5">
+                        <span className="text-gray-900">
+                          <span className="font-bold">{m.displayName || m.name}</span>
+                          {isParentHere && <span className="ml-2 text-[11px] bg-purple-200 text-purple-800 font-bold px-2 py-0.5 rounded-full">parent</span>}
+                        </span>
+                        <div className="flex items-center gap-2">
+                          {isParentHere ? (
+                            <button
+                              onClick={() => post({ action: 'removeParent', familyId: f.id, username: m.name })}
+                              className="text-xs font-bold px-3 py-1 rounded-lg bg-gray-100 text-gray-700"
+                            >
+                              remove parent
+                            </button>
+                          ) : (
+                            m.isParent && (
+                              <button
+                                onClick={() => post({ action: 'addParentToFamily', familyId: f.id, username: m.name })}
+                                className="text-xs font-bold px-3 py-1 rounded-lg bg-purple-200 text-purple-800"
+                              >
+                                make parent here
+                              </button>
+                            )
+                          )}
+                          <button
+                            onClick={() => {
+                              if (window.confirm(`Remove ${m.displayName || m.name} from ${f.name}?`)) {
+                                void post({ action: 'removeMember', familyId: f.id, username: m.name });
+                              }
+                            }}
+                            className="text-xs font-bold px-3 py-1 rounded-lg bg-red-50 text-red-700 border border-red-200"
+                          >
+                            remove
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Add a parent to this family (the missing flow) */}
+                <div className="flex flex-wrap gap-2 items-center">
+                  <span className="text-xs font-bold text-purple-700">Add parent:</span>
+                  <select
+                    defaultValue=""
+                    onChange={async (e) => {
+                      const username = e.target.value;
+                      e.currentTarget.value = '';
+                      if (username) await post({ action: 'addParentToFamily', familyId: f.id, username });
+                    }}
+                    className="border border-purple-200 rounded-lg px-2 py-1 text-sm text-purple-900"
+                  >
+                    <option value="">— pick a parent —</option>
+                    {parentCandidates.map((p) => <option key={p.name} value={p.name}>{p.displayName || p.name}</option>)}
+                  </select>
+
+                  <span className="text-xs font-bold text-purple-700 ml-2">Add member:</span>
+                  <select
+                    defaultValue=""
+                    onChange={async (e) => {
+                      const username = e.target.value;
+                      e.currentTarget.value = '';
+                      if (username) await post({ action: 'addMember', familyId: f.id, username });
+                    }}
+                    className="border border-purple-200 rounded-lg px-2 py-1 text-sm text-purple-900"
+                  >
+                    <option value="">— pick a user —</option>
+                    {memberCandidates.map((u) => <option key={u.name} value={u.name}>{u.displayName || u.name}</option>)}
+                  </select>
+
+                  <span className="text-xs font-bold text-purple-700 ml-2">Move here:</span>
+                  <select
+                    defaultValue=""
+                    onChange={async (e) => {
+                      const username = e.target.value;
+                      e.currentTarget.value = '';
+                      if (username) await post({ action: 'moveToFamily', familyId: f.id, username });
+                    }}
+                    className="border border-purple-200 rounded-lg px-2 py-1 text-sm text-purple-900"
+                    title="Relocate someone from another family into this one"
+                  >
+                    <option value="">— from another family —</option>
+                    {moveCandidates.map((u) => (
+                      <option key={u.name} value={u.name}>
+                        {u.displayName || u.name} (from {familyName(u.familyId)})
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                {parentCandidates.length === 0 && (
+                  <p className="text-[11px] text-gray-400 mt-2">No unassigned parents — flag a user as parent below first.</p>
+                )}
               </div>
-            ))}
-          </div>
+            );
+          })}
         </div>
       )}
 

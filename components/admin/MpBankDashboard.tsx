@@ -68,6 +68,13 @@ interface GiftCardRow {
   redeemedAt: string | null;
 }
 
+// A kid-filed "I forgot my PIN" request awaiting the admin.
+interface PinResetRow {
+  id: string;
+  user: string;
+  createdAt: number;
+}
+
 type FormMode = 'topup' | 'deduct';
 
 function formatShortDateTime(iso: string): string {
@@ -161,6 +168,19 @@ export default function MpBankDashboard() {
 
   // Track which learner is mid-delete so we disable just that row's button.
   const [deleteBusy, setDeleteBusy] = useState<string | null>(null);
+
+  // Track which learner is being impersonated so we disable just that row's
+  // "Log in as" button while the cookie swap is in flight.
+  const [impersonateBusy, setImpersonateBusy] = useState<string | null>(null);
+
+  // PIN reset requests — kids who clicked "Forgot PIN?". Admin sets a new
+  // 4-digit PIN, tells the kid, and the kid changes it from the login screen.
+  const [pinResets, setPinResets] = useState<PinResetRow[]>([]);
+  const [pinResetsLoading, setPinResetsLoading] = useState(true);
+  // Per-request inline "new PIN" input value, keyed by username.
+  const [resetPinDraft, setResetPinDraft] = useState<Record<string, string>>({});
+  // Which username's reset action is in flight (set or dismiss).
+  const [resetBusy, setResetBusy] = useState<string | null>(null);
 
   // Gift Cards panel (Phase 6c) — create + list + revoke + print.
   const [giftCards, setGiftCards] = useState<GiftCardRow[]>([]);
@@ -291,11 +311,103 @@ export default function MpBankDashboard() {
     }
   }, [handleUnauth]);
 
+  const loadPinResets = useCallback(async () => {
+    setPinResetsLoading(true);
+    try {
+      const res = await fetch('/api/admin/pin-resets', { cache: 'no-store' });
+      if (res.status === 401) {
+        handleUnauth();
+        return;
+      }
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = (await res.json()) as { requests?: PinResetRow[] };
+      setPinResets(Array.isArray(data.requests) ? data.requests : []);
+    } catch {
+      // Non-fatal — the dashboard works without the reset panel.
+    } finally {
+      setPinResetsLoading(false);
+    }
+  }, [handleUnauth]);
+
+  const resolvePinReset = async (userName: string) => {
+    const newPin = (resetPinDraft[userName] || '').trim();
+    if (!/^\d{4}$/.test(newPin)) {
+      setPinToast({ kind: 'error', message: 'New PIN must be exactly 4 digits.' });
+      return;
+    }
+    setResetBusy(userName);
+    try {
+      const res = await fetch('/api/admin/pin-resets', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ user: userName, newPin }),
+      });
+      if (res.status === 401) {
+        handleUnauth();
+        return;
+      }
+      const data = (await res.json().catch(() => ({}))) as { error?: unknown };
+      if (!res.ok) {
+        const msg = typeof data.error === 'string' ? data.error : `HTTP ${res.status}`;
+        setPinToast({ kind: 'error', message: `Reset failed: ${msg}` });
+        return;
+      }
+      setResetPinDraft((prev) => {
+        const next = { ...prev };
+        delete next[userName];
+        return next;
+      });
+      setPinToast({
+        kind: 'success',
+        message: `New PIN set for @${userName}. Tell them — they can change it after logging in.`,
+      });
+      await loadPinResets();
+    } catch (err) {
+      setPinToast({
+        kind: 'error',
+        message: err instanceof Error ? err.message : 'Network error',
+      });
+    } finally {
+      setResetBusy(null);
+    }
+  };
+
+  const dismissPinReset = async (userName: string) => {
+    setResetBusy(userName);
+    try {
+      const res = await fetch('/api/admin/pin-resets', {
+        method: 'DELETE',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ user: userName }),
+      });
+      if (res.status === 401) {
+        handleUnauth();
+        return;
+      }
+      if (!res.ok) {
+        const data = (await res.json().catch(() => ({}))) as { error?: unknown };
+        const msg = typeof data.error === 'string' ? data.error : `HTTP ${res.status}`;
+        setPinToast({ kind: 'error', message: `Dismiss failed: ${msg}` });
+        return;
+      }
+      setPinToast({ kind: 'success', message: `Dismissed @${userName}'s request.` });
+      await loadPinResets();
+    } catch (err) {
+      setPinToast({
+        kind: 'error',
+        message: err instanceof Error ? err.message : 'Network error',
+      });
+    } finally {
+      setResetBusy(null);
+    }
+  };
+
   useEffect(() => {
     loadLearners();
     loadOrders();
     loadGiftCards();
-  }, [loadLearners, loadOrders, loadGiftCards]);
+    loadPinResets();
+  }, [loadLearners, loadOrders, loadGiftCards, loadPinResets]);
 
   // Pull the unread-feedback count on mount so the tab badge is accurate
   // immediately, even if the user never opens the Feedback tab. Refreshes
@@ -478,6 +590,45 @@ export default function MpBankDashboard() {
       });
     } finally {
       setDeleteBusy(null);
+    }
+  };
+
+  const impersonate = async (userName: string, label: string) => {
+    // Admin "become this user" — no password. Swaps the dl_user cookie to the
+    // chosen learner and drops the sitewide return banner. We land them on the
+    // hub so they see the kid's-eye view immediately.
+    if (!window.confirm(
+      `Log in as ${label} (@${userName})? You'll browse the site as them. A banner lets you return to admin anytime.`,
+    )) {
+      return;
+    }
+    setImpersonateBusy(userName);
+    try {
+      const res = await fetch('/api/admin/impersonate', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ user: userName }),
+      });
+      if (res.status === 401) {
+        handleUnauth();
+        return;
+      }
+      const data = (await res.json().catch(() => ({}))) as { error?: unknown };
+      if (!res.ok) {
+        const msg = typeof data.error === 'string' ? data.error : `HTTP ${res.status}`;
+        setPinToast({ kind: 'error', message: `Couldn't log in as ${label}: ${msg}` });
+        return;
+      }
+      // Hard navigate so every provider (LearnerContext, cart) re-reads the new
+      // dl_user cookie from scratch.
+      window.location.href = '/';
+    } catch (err) {
+      setPinToast({
+        kind: 'error',
+        message: err instanceof Error ? err.message : 'Network error',
+      });
+    } finally {
+      setImpersonateBusy(null);
     }
   };
 
@@ -727,6 +878,80 @@ export default function MpBankDashboard() {
         {/* ---- MONEY TAB (default) ---- */}
         {activeTab === 'money' && (
           <>
+        {/* PIN reset requests — only shows when a kid has asked. Set a new
+            4-digit PIN, tell the kid, they change it after logging in. */}
+        {(pinResetsLoading ? false : pinResets.length > 0) && (
+          <section className="bg-amber-50 rounded-2xl shadow-lg border-2 border-amber-300 p-6">
+            <div className="flex items-center justify-between mb-4">
+              <div>
+                <h2 className="text-2xl font-bold text-amber-900">
+                  🔑 PIN reset requests
+                </h2>
+                <p className="text-xs text-amber-700 mt-1">
+                  A kid forgot their PIN. Set a new 4-digit one and tell them —
+                  they can change it themselves after logging in.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={loadPinResets}
+                className="text-sm text-amber-800 hover:text-amber-950 underline"
+              >
+                Refresh
+              </button>
+            </div>
+            <ul className="divide-y divide-amber-200">
+              {pinResets.map((r) => {
+                const kid = learnerLookup.get(r.user);
+                const label = kid ? displayLabel(kid) : r.user;
+                const busy = resetBusy === r.user;
+                return (
+                  <li key={r.id} className="py-3 flex flex-wrap items-center gap-3">
+                    <div className="flex-1 min-w-[10rem]">
+                      <div className="font-bold text-amber-900">{label}</div>
+                      <div className="text-xs text-amber-700">
+                        @{r.user} · asked {formatShortDateTime(new Date(r.createdAt).toISOString())}
+                      </div>
+                    </div>
+                    <input
+                      type="text"
+                      inputMode="numeric"
+                      value={resetPinDraft[r.user] ?? ''}
+                      onChange={(e) =>
+                        setResetPinDraft((prev) => ({
+                          ...prev,
+                          [r.user]: e.target.value.replace(/\D/g, '').slice(0, 4),
+                        }))
+                      }
+                      placeholder="New PIN"
+                      maxLength={4}
+                      disabled={busy}
+                      className="w-28 rounded-xl border-2 border-amber-300 focus:border-amber-500 focus:outline-none px-3 py-2 bg-white text-amber-900 tracking-[0.3em] text-center"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => resolvePinReset(r.user)}
+                      disabled={busy}
+                      className="bg-amber-600 hover:bg-amber-500 disabled:opacity-50 text-white font-bold px-4 py-2 rounded-xl text-sm transition-colors"
+                    >
+                      {busy ? 'Saving…' : 'Set PIN'}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => dismissPinReset(r.user)}
+                      disabled={busy}
+                      className="text-amber-800 hover:text-amber-950 underline text-sm disabled:opacity-50"
+                      title="They remembered it — clear the request without changing anything"
+                    >
+                      Dismiss
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          </section>
+        )}
+
         {/* Section 1: Learner balances */}
         <section className="bg-white rounded-2xl shadow-lg border-2 border-purple-100 p-6">
           <div className="flex items-center justify-between mb-4">
@@ -759,6 +984,7 @@ export default function MpBankDashboard() {
                 const isOpen = openForm?.user === l.name;
                 const isRerolling = rerollBusy === l.name;
                 const isDeleting = deleteBusy === l.name;
+                const isImpersonating = impersonateBusy === l.name;
                 const cardLabel = l.mpCardNumber
                   ? formatCardLocal(l.mpCardNumber)
                   : 'No card yet';
@@ -810,6 +1036,15 @@ export default function MpBankDashboard() {
                           className="bg-yellow-100 hover:bg-yellow-200 text-purple-900 font-bold px-3 py-2 rounded-xl text-sm border-2 border-yellow-300 transition-colors"
                         >
                           Deduct
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => impersonate(l.name, displayLabel(l))}
+                          disabled={isImpersonating}
+                          className="bg-amber-100 hover:bg-amber-200 text-amber-900 font-bold px-3 py-2 rounded-xl text-sm border-2 border-amber-300 transition-colors disabled:opacity-50"
+                          title="Log in as this user (no password) — a banner lets you return"
+                        >
+                          {isImpersonating ? 'Logging in…' : 'Log in as'}
                         </button>
                         <button
                           type="button"

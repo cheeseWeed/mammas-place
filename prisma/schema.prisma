@@ -314,6 +314,24 @@ model Family {
   @@map("families")
 }
 
+// A kid-filed "I forgot my PIN" request. Non-destructive: filing one NEVER
+// touches the account or its progress. The admin sees pending requests on the
+// MP Bank dashboard and sets a new PIN; that flips status to 'resolved'. The
+// kid then logs in with the PIN the admin gave them and can change it from the
+// "Change PIN" spot on the login screen. Replaces the old destructive
+// "type reset to wipe" flow.
+model PinResetRequest {
+  id          String    @id @default(cuid())
+  userName    String    // who asked (normalized lowercase) — NOT a FK so a
+                        // request survives even if the user row is absent
+  status      String    @default("pending") // 'pending' | 'resolved' | 'dismissed'
+  createdAt   DateTime  @default(now())
+  resolvedAt  DateTime?
+
+  @@index([status, createdAt])
+  @@map("pin_reset_requests")
+}
+
 // Append-only redemption log. A kid redeems MP for an external reward; we debit
 // immediately (via balance.ts debit) and write one row here so parents can SEE
 // what was spent. No approval gate — the real-world OK happens in person.

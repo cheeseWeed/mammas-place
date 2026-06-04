@@ -249,7 +249,7 @@ export default function Header() {
               onMouseLeave={scheduleDropdownClose}
             >
               <button className="text-emerald-300 hover:text-emerald-200 text-sm font-bold transition-colors px-3 py-2 rounded flex items-center gap-1">
-                🎓 Learn
+                🎓 L&apos;Earn
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -460,7 +460,7 @@ export default function Header() {
           {/* Learn section — side projects */}
           <div className="border-b border-purple-800/50 pb-2 pt-1">
             <div className="text-emerald-300 px-4 py-2 font-bold text-xs uppercase tracking-wide">
-              🎓 Learn
+              🎓 L&apos;Earn
             </div>
             <Link
               href="/geography"

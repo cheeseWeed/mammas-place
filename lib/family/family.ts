@@ -86,6 +86,31 @@ export async function removeMember(familyId: string, rawUser: string): Promise<v
   }
 }
 
+// Admin: MOVE a user into `familyId` no matter what family they're in now.
+// Unlike addMember (which refuses anyone already in another family), this
+// detaches them from their current family first — including dropping them
+// from that family's parents list — then attaches them here. This is the fix
+// for "Dad is in the wrong family": one action relocates him cleanly.
+export async function reassignMember(familyId: string, rawUser: string): Promise<{ ok: boolean; error?: string }> {
+  const name = normalizeUser(rawUser);
+  const user = await prisma.driveUser.findUnique({ where: { name }, select: { name: true, familyId: true } });
+  if (!user) return { ok: false, error: `No user named "${name}". They need to register first.` };
+  const targetFamily = await prisma.family.findUnique({ where: { id: familyId }, select: { id: true } });
+  if (!targetFamily) return { ok: false, error: 'Target family not found.' };
+
+  // Drop them from the OLD family's parents list (if they were a parent there).
+  if (user.familyId && user.familyId !== familyId) {
+    const old = await prisma.family.findUnique({ where: { id: user.familyId }, select: { parents: true } });
+    if (old) {
+      const parents = coerceParents(old.parents).filter((p) => p !== name);
+      await prisma.family.update({ where: { id: user.familyId }, data: { parents } });
+    }
+  }
+  // Attach to the new family.
+  await prisma.driveUser.update({ where: { name }, data: { familyId } });
+  return { ok: true };
+}
+
 // Grant/revoke parent-of-this-family (adds to the family's parents list AND
 // flips the user's isParent flag so they can actually manage). Used so a
 // family can have mom AND dad.

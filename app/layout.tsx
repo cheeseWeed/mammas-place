@@ -10,6 +10,7 @@ import { PasscodeProvider } from "@/context/PasscodeContext";
 import PasscodeGate from "@/components/PasscodeGate";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ImpersonationBanner from "@/components/ImpersonationBanner";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -67,6 +68,7 @@ export default function RootLayout({
         <LearnerProvider>
         <CartProvider>
           <ToastProvider>
+            <ImpersonationBanner />
             <Header />
             <main className="pt-[218px] sm:pt-[142px]">
               {children}
