@@ -37,6 +37,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { awardEarn, previewReward, type EarnRequest } from '@/lib/money/earn';
 import { isValidUser, normalizeUser } from '@/lib/drive-progress';
+import { isSabbath } from '@/lib/sabbath';
 
 const COOKIE_NAME = 'dl_user';
 
@@ -197,6 +198,17 @@ function buildEarnRequest(body: Record<string, unknown>): EarnRequest | { error:
 }
 
 export async function POST(req: NextRequest) {
+  // These learning sections (math/spelling/languageArts/geography/drive/chess)
+  // are closed on the Sabbath — no MP earning on Sunday. Scripture, Music and
+  // Audiobooks use other paths and stay open. Server-enforced so a direct API
+  // hit can't earn while the UI is hidden.
+  if (isSabbath(new Date(), req.headers.get('cookie') ?? '')) {
+    return NextResponse.json(
+      { error: 'This activity is closed on the Sabbath.' },
+      { status: 403 },
+    );
+  }
+
   // Parse the body first — both authed and anonymous paths need the same
   // shape validation.
   let body: Record<string, unknown>;

@@ -13,11 +13,13 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import LoginGate from '@/components/LoginGate';
+import SabbathGuard from '@/components/SabbathGuard';
 import ThemePicker from '@/components/chess/ThemePicker';
 import { DEFAULT_THEME_ID, type ChessThemeId } from '@/data/chess-themes';
 
 export default function ChessHubPage() {
   return (
+    <SabbathGuard label="Chess">
     <LoginGate
       section="chess"
       loadingFallback={
@@ -28,6 +30,7 @@ export default function ChessHubPage() {
     >
       <ChessHubAuthed />
     </LoginGate>
+    </SabbathGuard>
   );
 }
 

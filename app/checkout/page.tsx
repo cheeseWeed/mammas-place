@@ -12,6 +12,7 @@ import * as gtag from '@/lib/gtag';
 import Link from 'next/link';
 import Confetti from 'react-confetti';
 import { AskDadPanel } from '@/components/AskDadPanel';
+import SabbathGuard from '@/components/SabbathGuard';
 
 // Server response shapes for /api/money/order.
 interface OrderSuccess {
@@ -80,6 +81,7 @@ export default function CheckoutPage() {
   // Empty-cart guard (skip while showing success so clearCart() doesn't bounce the user).
   if (cart.items.length === 0 && !orderResult) {
     return (
+      <SabbathGuard label="Checkout">
       <div className="max-w-2xl mx-auto px-4 py-20 text-center">
         <div className="text-7xl mb-4">🛒</div>
         <h1 className="text-3xl font-black text-purple-900 mb-4">Your cart is empty!</h1>
@@ -87,12 +89,14 @@ export default function CheckoutPage() {
           Go Shopping ✨
         </Link>
       </div>
+      </SabbathGuard>
     );
   }
 
   // Success screen.
   if (orderResult) {
     return (
+      <SabbathGuard label="Checkout">
       <div className="max-w-2xl mx-auto px-4 py-20 text-center">
         {showConfetti && (
           <Confetti
@@ -130,12 +134,14 @@ export default function CheckoutPage() {
           </Link>
         </div>
       </div>
+      </SabbathGuard>
     );
   }
 
   // Anonymous: no balance, no form — just a login nudge.
   if (!learnerLoading && learner === null) {
     return (
+      <SabbathGuard label="Checkout">
       <div className="max-w-2xl mx-auto px-4 py-20">
         <div className="bg-white rounded-2xl shadow-sm border border-purple-100 p-8 text-center">
           <div className="text-6xl mb-4">🔐</div>
@@ -156,6 +162,7 @@ export default function CheckoutPage() {
           </div>
         </div>
       </div>
+      </SabbathGuard>
     );
   }
 
@@ -206,6 +213,7 @@ export default function CheckoutPage() {
   };
 
   return (
+    <SabbathGuard label="Checkout">
     <div className="max-w-6xl mx-auto px-4 py-6">
       <h1 className="text-3xl font-black text-purple-900 mb-6">Checkout 🛍️</h1>
 
@@ -389,5 +397,6 @@ export default function CheckoutPage() {
         </div>
       </div>
     </div>
+    </SabbathGuard>
   );
 }

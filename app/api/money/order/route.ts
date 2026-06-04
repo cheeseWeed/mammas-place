@@ -8,10 +8,20 @@ import { isValidUser, normalizeUser } from '@/lib/drive-progress';
 import { prisma } from '@/lib/prisma';
 import { placeOrder, InsufficientFundsError, OrderItem } from '@/lib/money/balance';
 import { decrementStock, OutOfStockError } from '@/lib/inventory';
+import { isSabbath } from '@/lib/sabbath';
 
 interface BodyItem { productId?: unknown; qty?: unknown }
 
 export async function POST(req: NextRequest) {
+  // The shop is closed on the Sabbath — enforce server-side so a direct API
+  // call can't place an order on Sunday even with the UI hidden.
+  if (isSabbath(new Date(), req.headers.get('cookie') ?? '')) {
+    return NextResponse.json(
+      { error: 'The shop is closed on the Sabbath. Come back tomorrow!' },
+      { status: 403 },
+    );
+  }
+
   let body: { user?: unknown; items?: unknown };
   try {
     body = await req.json();

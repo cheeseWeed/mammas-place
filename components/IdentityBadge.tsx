@@ -160,6 +160,10 @@ export default function IdentityBadge({ compact = false }: { compact?: boolean }
             {busy ? 'Returning…' : '↩ Stop impersonating'}
           </button>
         )}
+        {/* Always: quick jump back to the admin dashboard from anywhere. */}
+        <a href="/admin/mp-bank" className={linkBtn}>
+          ⚙ Admin dashboard
+        </a>
         {/* Always: fully log out of admin (clears godmode). */}
         <button type="button" onClick={adminLogout} disabled={busy} className={linkBtn}>
           {busy ? 'Logging out…' : 'Log out of admin'}

@@ -4,6 +4,7 @@
 import Link from 'next/link';
 import { useCart } from '@/context/CartContext';
 import { useRouter } from 'next/navigation';
+import SabbathGuard from '@/components/SabbathGuard';
 
 export default function CartPage() {
   const { cart, updateQuantity, removeFromCart, clearCart } = useCart();
@@ -11,6 +12,7 @@ export default function CartPage() {
 
   if (cart.items.length === 0) {
     return (
+      <SabbathGuard label="The cart">
       <div className="max-w-2xl mx-auto px-4 py-20 text-center">
         <div className="text-7xl mb-4">🛒</div>
         <h1 className="text-3xl font-black text-purple-900 mb-4">Your cart is empty!</h1>
@@ -19,10 +21,12 @@ export default function CartPage() {
           Start Shopping ✨
         </Link>
       </div>
+      </SabbathGuard>
     );
   }
 
   return (
+    <SabbathGuard label="The cart">
     <div className="max-w-6xl mx-auto px-4 py-6">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-black text-purple-900">My Cart 🛒</h1>
@@ -167,5 +171,6 @@ export default function CartPage() {
         </div>
       </div>
     </div>
+    </SabbathGuard>
   );
 }
