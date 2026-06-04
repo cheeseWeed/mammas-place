@@ -84,7 +84,8 @@ export default function IdentityBadge({ compact = false }: { compact?: boolean }
 
   if (!who) return null;
 
-  // Admin logout: clear the godmode cookie (and any impersonation), go home.
+  // Admin logout: clear the godmode cookie (and any impersonation), drop the
+  // "view as day" preview override, go home.
   const adminLogout = async () => {
     setBusy(true);
     try {
@@ -92,6 +93,11 @@ export default function IdentityBadge({ compact = false }: { compact?: boolean }
       await fetch('/api/money/parent/login', { method: 'DELETE' }); // clear mp_parent
     } catch {
       // best-effort; navigate regardless
+    }
+    try {
+      document.cookie = 'mp_sabbath_override=; Path=/; Max-Age=0; SameSite=Lax';
+    } catch {
+      // ignore
     }
     window.location.href = '/';
   };

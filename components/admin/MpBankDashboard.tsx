@@ -782,6 +782,9 @@ export default function MpBankDashboard() {
       // Cookie clear is best-effort; redirect regardless so they can't keep
       // poking the dashboard from a stale tab.
     }
+    // Drop the "view as day" preview override so a logged-out kid isn't stuck
+    // in the admin's previewed day.
+    document.cookie = 'mp_sabbath_override=; Path=/; Max-Age=0; SameSite=Lax';
     // Land on the home page after logging out (not the admin login screen).
     window.location.href = '/';
   };
