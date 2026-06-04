@@ -2,7 +2,6 @@
 // Server component: renders login/register card (client) + jump-in links + footer.
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import DriveLoginForm from '@/components/DriveLoginForm';
 
 export const metadata: Metadata = {
   title: 'Driver Study',
@@ -24,8 +23,17 @@ export default function DrivePage() {
           </p>
         </div>
 
-        {/* Login / register card — client component */}
-        <DriveLoginForm />
+        {/* No login here — the user is already signed in site-wide (one
+            name+PIN covers the whole site). Progress saves to whoever's logged
+            in; anonymous still works. Straight into the dashboard. */}
+        <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 border-2 border-purple-100 mb-8 text-center">
+          <a
+            href="/drive-assets/dashboard/index.html"
+            className="inline-block bg-purple-900 hover:bg-purple-800 text-white font-bold px-8 py-3 rounded-xl transition-colors"
+          >
+            Continue to dashboard →
+          </a>
+        </div>
 
         {/* Official Utah handbook + study resources */}
         <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl shadow-lg p-6 border-2 border-yellow-200 mb-10">

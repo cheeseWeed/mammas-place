@@ -23,16 +23,30 @@ function pretty(name: string): string {
   return name.charAt(0).toUpperCase() + name.slice(1);
 }
 
+// Read the dl_user cookie client-side for an INSTANT greeting (no wait on the
+// whoami fetch). whoami then upgrades this to admin/impersonation status.
+function readDlUser(): string | null {
+  if (typeof document === 'undefined') return null;
+  const m = document.cookie.match(/(?:^|; )dl_user=([^;]*)/);
+  if (!m) return null;
+  const v = decodeURIComponent(m[1]);
+  return v && v !== '__anon__' ? v : null;
+}
+
 export default function IdentityBadge({ compact = false }: { compact?: boolean }) {
   const [who, setWho] = useState<Who | null>(null);
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
     let live = true;
+    // Instant: seed from the cookie so the name shows on first paint.
+    const dl = readDlUser();
+    if (dl) setWho({ isAdmin: false, impersonating: null, user: dl });
+    // Authoritative: whoami knows admin (httpOnly) + impersonation state.
     fetch('/api/admin/whoami', { cache: 'no-store' })
       .then((r) => r.json())
       .then((d) => { if (live) setWho(d as Who); })
-      .catch(() => { /* badge just stays hidden */ });
+      .catch(() => { /* keep the cookie-seeded value */ });
     return () => { live = false; };
   }, []);
 
