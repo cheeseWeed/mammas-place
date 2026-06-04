@@ -4,7 +4,7 @@
 // Mirrors DriveLoginForm — same name+PIN, same /api/drive/login + /register
 // endpoints (one auth backend for both worlds, per app/money/PLAN.md).
 //
-// On success: tell LearnerContext who's logged in and send them to /shop.
+// On success: tell LearnerContext who's logged in and send them to home (/).
 // "Skip" still works for anonymous browsing (no MP Money access).
 
 import { useEffect, useRef, useState } from 'react';
@@ -17,6 +17,9 @@ type Status =
   | { kind: 'error'; message: string; offerReset?: boolean };
 
 const SHOP_URL = '/shop';
+// Where a successful sign-in lands. Home (not /shop) so the user sees the
+// full hub after logging in.
+const HOME_URL = '/';
 const ANON_SENTINEL = '__anon__';
 
 function readSavedUser(): string {
@@ -53,7 +56,7 @@ export default function ShopLoginForm() {
     // setLearner writes localStorage AND refreshes balance — covers both /drive
     // and /shop sessions in one shot.
     setLearner(userKey);
-    router.push(SHOP_URL);
+    router.push(HOME_URL);
   };
 
   const submit = async (action: 'login' | 'register') => {
@@ -121,12 +124,11 @@ export default function ShopLoginForm() {
     router.push(SHOP_URL);
   };
 
+  // Forgot PIN → file a request for a grown-up (admin) to reset it. Does NOT
+  // wipe the account or its progress. The admin sets a new PIN and tells the
+  // kid; the kid logs in and can change it themselves.
   const handleReset = async () => {
     if (!user.trim()) return;
-    const confirmText = prompt(
-      `This will WIPE all saved progress for "${user.trim()}" and let you re-register with a new PIN. Type "reset" to confirm:`,
-    );
-    if (confirmText?.toLowerCase() !== 'reset') return;
     setStatus({ kind: 'busy' });
     try {
       const res = await fetch('/api/drive/reset', {
@@ -134,18 +136,20 @@ export default function ShopLoginForm() {
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({ user: user.trim() }),
       });
-      if (res.ok || res.status === 404) {
-        setPin('');
+      if (res.ok) {
+        const data = (await res.json().catch(() => ({}))) as { alreadyPending?: boolean };
         setStatus({
           kind: 'error',
-          message: 'Progress wiped. Pick a new PIN and click "I\'m new (register)".',
+          message: data.alreadyPending
+            ? 'A grown-up was already asked to reset your PIN. Ask them for your new PIN, then log in.'
+            : 'Asked a grown-up to reset your PIN. They\'ll give you a new one — then log in.',
         });
       } else {
         const data = (await res.json().catch(() => ({}))) as { error?: unknown };
         const errMsg = typeof data.error === 'string' ? data.error : undefined;
         setStatus({
           kind: 'error',
-          message: errMsg || 'Reset failed. Try again.',
+          message: errMsg || 'Could not send the request. Try again.',
         });
       }
     } catch (err) {
@@ -247,7 +251,7 @@ export default function ShopLoginForm() {
                 onClick={handleReset}
                 className="ml-2 underline text-purple-700 hover:text-purple-900"
               >
-                Forgot PIN? Wipe and start over.
+                Forgot PIN? Ask a grown-up to reset it.
               </button>
             )}
           </div>

@@ -26,8 +26,9 @@ export async function POST(req: NextRequest) {
   const cfg = await getParentConfig();
   if (!cfg) {
     if (body.pin !== SEED_PARENT_PIN) {
+      // Don't disclose the seed PIN in the response — generic message only.
       return NextResponse.json(
-        { error: `Parent PIN not set yet. Use ${SEED_PARENT_PIN} for first-time setup.` },
+        { error: 'Admin PIN not set up yet.' },
         { status: 401 },
       );
     }

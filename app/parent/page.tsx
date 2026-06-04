@@ -25,6 +25,12 @@ export default function ParentPage() {
   const [view, setView] = useState<FamilyView | null>(null);
   const [redemptions, setRedemptions] = useState<Redemption[]>([]);
   const [toast, setToast] = useState<string | null>(null);
+  // The family being managed + whether the caller is the app Admin (godmode).
+  // Admin manages whatever family the chart resolved (their own, or the first
+  // family). familyId is threaded into the management calls so the server knows
+  // which family an admin is acting on.
+  const [familyId, setFamilyId] = useState<string | null>(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const flash = (m: string) => { setToast(m); window.setTimeout(() => setToast(null), 4500); };
 
@@ -32,9 +38,12 @@ export default function ParentPage() {
     const chart = await fetch('/api/family/chart', { cache: 'no-store' }).then((r) => r.json());
     if (!chart.ok || !chart.isParent) { setAllowed(false); return; }
     setAllowed(true);
+    setIsAdmin(!!chart.isAdmin);
     setFamilyName(chart.family?.name ?? 'Family');
+    setFamilyId(chart.family?.id ?? null);
     setJobs((chart.jobs as { job: FamilyJob }[]).map((x) => x.job));
-    const manage = await fetch('/api/family/manage', { cache: 'no-store' }).then((r) => r.json());
+    const qs = chart.family?.id ? `?familyId=${encodeURIComponent(chart.family.id)}` : '';
+    const manage = await fetch(`/api/family/manage${qs}`, { cache: 'no-store' }).then((r) => r.json());
     if (manage.ok) { setView(manage.family); setRedemptions(manage.redemptions ?? []); }
   }, []);
 
@@ -60,12 +69,14 @@ export default function ParentPage() {
         <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-emerald-900 text-white px-5 py-3 rounded-full shadow-lg text-sm font-semibold">{toast}</div>
       )}
       <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl md:text-3xl font-black text-emerald-900">🛠 {familyName} — Parent</h1>
+        <h1 className="text-2xl md:text-3xl font-black text-emerald-900">
+          🛠 {familyName} — {isAdmin ? 'Admin' : 'Parent'}
+        </h1>
         <Link href="/chores" className="bg-emerald-100 text-emerald-800 font-bold px-4 py-2 rounded-full text-sm">← Chart</Link>
       </div>
 
-      <MembersPanel view={view} onChanged={async (m) => { flash(m); await loadAll(); }} />
-      <JobsPanel jobs={jobs} members={view?.members ?? []} onChanged={async (m) => { flash(m); await loadAll(); }} />
+      <MembersPanel view={view} familyId={familyId} onChanged={async (m) => { flash(m); await loadAll(); }} />
+      <JobsPanel jobs={jobs} members={view?.members ?? []} familyId={familyId} onChanged={async (m) => { flash(m); await loadAll(); }} />
       <RedemptionLog redemptions={redemptions} />
     </Shell>
   );
@@ -81,12 +92,12 @@ function Shell({ children }: { children: React.ReactNode }) {
 
 // ----- Members + take points -----
 
-function MembersPanel({ view, onChanged }: { view: FamilyView | null; onChanged: (m: string) => void | Promise<void> }) {
+function MembersPanel({ view, familyId, onChanged }: { view: FamilyView | null; familyId: string | null; onChanged: (m: string) => void | Promise<void> }) {
   const [addName, setAddName] = useState('');
   const post = async (action: string, payload: Record<string, unknown>) => {
     const res = await fetch('/api/family/manage', {
       method: 'POST', headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ action, ...payload }),
+      body: JSON.stringify({ action, ...(familyId ? { familyId } : {}), ...payload }),
     });
     const data = await res.json();
     await onChanged(res.ok ? '✓ Done' : (data.error ?? 'Failed'));
@@ -104,7 +115,7 @@ function MembersPanel({ view, onChanged }: { view: FamilyView | null; onChanged:
               <span className="ml-2 text-xs text-gray-500">{centsToMP(m.balanceCents)}</span>
             </div>
             <div className="flex items-center gap-2">
-              <TakePoints username={m.name} onChanged={onChanged} />
+              <TakePoints username={m.name} familyId={familyId} onChanged={onChanged} />
               <button onClick={() => post('setParent', { username: m.name, makeParent: !m.isParent })} className="text-xs text-emerald-700 underline">
                 {m.isParent ? 'remove parent' : 'make parent'}
               </button>
@@ -129,7 +140,7 @@ function MembersPanel({ view, onChanged }: { view: FamilyView | null; onChanged:
   );
 }
 
-function TakePoints({ username, onChanged }: { username: string; onChanged: (m: string) => void | Promise<void> }) {
+function TakePoints({ username, familyId, onChanged }: { username: string; familyId: string | null; onChanged: (m: string) => void | Promise<void> }) {
   const [open, setOpen] = useState(false);
   const [mp, setMp] = useState(10);
   const [reason, setReason] = useState('Job done poorly');
@@ -141,7 +152,7 @@ function TakePoints({ username, onChanged }: { username: string; onChanged: (m: 
         onClick={async () => {
           const res = await fetch('/api/family/manage', {
             method: 'POST', headers: { 'content-type': 'application/json' },
-            body: JSON.stringify({ action: 'takePoints', username, mp, reason }),
+            body: JSON.stringify({ action: 'takePoints', username, mp, reason, ...(familyId ? { familyId } : {}) }),
           });
           const data = await res.json();
           await onChanged(res.ok ? `Took ${centsToMP(data.tookCents ?? 0)} from ${username}` : (data.error ?? 'Failed'));
@@ -158,13 +169,13 @@ function TakePoints({ username, onChanged }: { username: string; onChanged: (m: 
 
 // ----- Jobs (build/edit the chart) -----
 
-function JobsPanel({ jobs, members, onChanged }: { jobs: FamilyJob[]; members: Member[]; onChanged: (m: string) => void | Promise<void> }) {
+function JobsPanel({ jobs, members, familyId, onChanged }: { jobs: FamilyJob[]; members: Member[]; familyId: string | null; onChanged: (m: string) => void | Promise<void> }) {
   const active = jobs.filter((j) => !j.archived);
 
   const loadCatalog = async () => {
     const res = await fetch('/api/family/jobs', {
       method: 'POST', headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ action: 'loadCatalog' }),
+      body: JSON.stringify({ action: 'loadCatalog', ...(familyId ? { familyId } : {}) }),
     });
     const data = await res.json();
     await onChanged(res.ok ? `Loaded ${data.added} jobs (skipped ${data.skipped} dupes).` : (data.error ?? 'Failed'));
@@ -181,17 +192,19 @@ function JobsPanel({ jobs, members, onChanged }: { jobs: FamilyJob[]; members: M
         )}
       </div>
 
-      <AddJobForm members={members} onChanged={onChanged} />
+      <AddJobForm members={members} familyId={familyId} onChanged={onChanged} />
 
       {active.length > 0 && (
         <div className="mt-4 max-h-96 overflow-y-auto space-y-1">
           {active.map((j) => (
             <div key={j.id} className="flex items-center justify-between gap-2 text-sm border-b border-gray-100 py-1.5">
-              <span className="text-gray-900">{j.emoji ? `${j.emoji} ` : ''}{j.name}</span>
-              <span className="text-gray-400 text-xs shrink-0">{j.room} · {frequencyLabel(j.frequency)} · {j.mp}MP</span>
+              <span className="text-gray-900 flex-1 min-w-0 truncate">{j.emoji ? `${j.emoji} ` : ''}{j.name}</span>
+              <span className="text-gray-400 text-xs shrink-0 hidden sm:inline">{j.room} · {frequencyLabel(j.frequency)} · {j.mp}MP</span>
+              <AssignJob job={j} members={members} familyId={familyId} onChanged={onChanged} />
               <button
                 onClick={async () => {
-                  const res = await fetch(`/api/family/jobs?jobId=${encodeURIComponent(j.id)}`, { method: 'DELETE' });
+                  const qs = familyId ? `&familyId=${encodeURIComponent(familyId)}` : '';
+                  const res = await fetch(`/api/family/jobs?jobId=${encodeURIComponent(j.id)}${qs}`, { method: 'DELETE' });
                   await onChanged(res.ok ? `Deleted ${j.name}` : 'Failed');
                 }}
                 className="text-rose-400 text-xs shrink-0"
@@ -207,7 +220,44 @@ function JobsPanel({ jobs, members, onChanged }: { jobs: FamilyJob[]; members: M
   );
 }
 
-function AddJobForm({ members, onChanged }: { members: Member[]; onChanged: (m: string) => void | Promise<void> }) {
+// Inline assignee picker on an existing job row. PATCHes assignedTo — empty
+// string means "Anyone" (server clears it). Reassign or unassign in one click.
+function AssignJob({ job, members, familyId, onChanged }: { job: FamilyJob; members: Member[]; familyId: string | null; onChanged: (m: string) => void | Promise<void> }) {
+  const [busy, setBusy] = useState(false);
+  const current = job.assignedTo ?? '';
+  const setAssignee = async (username: string) => {
+    setBusy(true);
+    try {
+      const res = await fetch('/api/family/jobs', {
+        method: 'PATCH', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ jobId: job.id, assignedTo: username, ...(familyId ? { familyId } : {}) }),
+      });
+      const data = await res.json();
+      const who = members.find((m) => m.name === username);
+      await onChanged(
+        res.ok
+          ? (username ? `Assigned "${job.name}" to ${who?.displayName || username}` : `"${job.name}" is now anyone’s`)
+          : (data.error ?? 'Failed'),
+      );
+    } finally { setBusy(false); }
+  };
+  return (
+    <select
+      value={current}
+      disabled={busy}
+      onChange={(e) => setAssignee(e.target.value)}
+      title="Assign this chore to someone (or Anyone)"
+      className={`shrink-0 border rounded-lg px-1.5 py-1 text-xs max-w-[7.5rem] ${
+        current ? 'border-emerald-300 bg-emerald-50 text-emerald-900 font-semibold' : 'border-gray-200 text-gray-500'
+      }`}
+    >
+      <option value="">Anyone</option>
+      {members.map((m) => <option key={m.name} value={m.name}>{m.displayName || m.name}</option>)}
+    </select>
+  );
+}
+
+function AddJobForm({ members, familyId, onChanged }: { members: Member[]; familyId: string | null; onChanged: (m: string) => void | Promise<void> }) {
   const [name, setName] = useState('');
   const [room, setRoom] = useState('Kitchen');
   const [frequency, setFrequency] = useState<Frequency>('weekly');
@@ -221,7 +271,7 @@ function AddJobForm({ members, onChanged }: { members: Member[]; onChanged: (m: 
     try {
       const res = await fetch('/api/family/jobs', {
         method: 'POST', headers: { 'content-type': 'application/json' },
-        body: JSON.stringify({ name, room, frequency, mp, assignedTo: assignedTo || undefined }),
+        body: JSON.stringify({ name, room, frequency, mp, assignedTo: assignedTo || undefined, ...(familyId ? { familyId } : {}) }),
       });
       const data = await res.json();
       if (!res.ok) { await onChanged(data.error ?? 'Failed'); return; }

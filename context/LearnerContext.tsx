@@ -23,6 +23,18 @@ interface LearnerContextValue {
 const LearnerContext = createContext<LearnerContextValue | null>(null);
 const STORAGE_KEY = 'dl_user';
 const ANON_SENTINEL = '__anon__';
+// Impersonation marker (set by /api/admin/impersonate). Cleared alongside
+// dl_user on every logout path so the header badge never shows a stale
+// "Admin view" after the borrowed session ends.
+const RETURN_COOKIE = 'mp_admin_return';
+
+function expireCookie(name: string) {
+  try {
+    document.cookie = `${name}=; Path=/; Max-Age=0; SameSite=Lax`;
+  } catch {
+    // ignore
+  }
+}
 
 // The COOKIE is the source of truth — the server sets it on login/register
 // and clears it on logout. localStorage is a convenience cache that some
@@ -102,11 +114,8 @@ export function LearnerProvider({ children }: { children: ReactNode }) {
       } catch {
         // ignore
       }
-      try {
-        document.cookie = `${STORAGE_KEY}=; Path=/; Max-Age=0; SameSite=Lax`;
-      } catch {
-        // ignore
-      }
+      expireCookie(STORAGE_KEY);
+      expireCookie(RETURN_COOKIE);
     };
     window.addEventListener('beforeunload', onBeforeUnload);
 
@@ -123,11 +132,8 @@ export function LearnerProvider({ children }: { children: ReactNode }) {
       } catch {
         // ignore
       }
-      try {
-        document.cookie = `${STORAGE_KEY}=; Path=/; Max-Age=0; SameSite=Lax`;
-      } catch {
-        // ignore
-      }
+      expireCookie(STORAGE_KEY);
+      expireCookie(RETURN_COOKIE);
       // Force a refresh so the UI flips to anonymous immediately.
       setLearnerState(null);
       setBalanceCents(null);
@@ -178,13 +184,10 @@ export function LearnerProvider({ children }: { children: ReactNode }) {
     } catch {
       // ignore
     }
-    try {
-      // Expire the session cookie immediately. Path must match the
-      // original set (login/register routes use path: '/').
-      document.cookie = `${STORAGE_KEY}=; Path=/; Max-Age=0; SameSite=Lax`;
-    } catch {
-      // ignore
-    }
+    // Expire the session cookie + any impersonation marker. Path must match the
+    // original set (login/register/impersonate routes all use path: '/').
+    expireCookie(STORAGE_KEY);
+    expireCookie(RETURN_COOKIE);
     setLearnerState(null);
     setBalanceCents(null);
   }, []);

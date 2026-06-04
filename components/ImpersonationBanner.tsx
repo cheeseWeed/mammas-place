@@ -9,7 +9,6 @@
 // (the normal case for kids and logged-out visitors) it renders nothing.
 
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
 
 const RETURN_COOKIE = 'mp_admin_return';
 
@@ -20,7 +19,6 @@ function readCookie(name: string): string | null {
 }
 
 export default function ImpersonationBanner() {
-  const router = useRouter();
   const [asUser, setAsUser] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
@@ -38,8 +36,10 @@ export default function ImpersonationBanner() {
       // Best-effort; navigate regardless so they aren't stuck.
     }
     setAsUser(null);
-    router.push('/admin/mp-bank');
-    router.refresh();
+    // Hard navigate (not router.push) so the just-restored mp_parent cookie is
+    // sent on the request and the server gate re-reads it cleanly — mirrors how
+    // impersonation ENTERS via window.location.href.
+    window.location.href = '/admin/mp-bank';
   };
 
   return (

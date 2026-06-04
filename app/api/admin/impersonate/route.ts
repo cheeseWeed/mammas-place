@@ -2,23 +2,33 @@
 //
 // POST   { user }  → admin becomes that DriveUser: sets the `dl_user` cookie to
 //                    them + an `mp_admin_return` marker cookie so the sitewide
-//                    banner knows to offer "Return to admin". The admin keeps
-//                    their `mp_parent` cookie throughout, so exiting just clears
-//                    the impersonation and drops them back in the dashboard.
-// DELETE           → stop impersonating: clear `dl_user` + the marker. The
-//                    `mp_parent` cookie is untouched.
+//                    banner knows to offer "Return to admin". The admin's
+//                    godmode `mp_parent` cookie is SUSPENDED (cleared) and a
+//                    `mp_admin_suspended` marker is dropped, so while
+//                    impersonating they see EXACTLY what the kid sees —
+//                    admin/parent pages bounce them just like they'd bounce
+//                    the kid. Clicking through links browses as the kid end
+//                    to end.
+// DELETE           → stop impersonating: clear `dl_user` + the marker, and if
+//                    `mp_admin_suspended` was set, RESTORE the `mp_parent`
+//                    godmode cookie so the admin gets their powers back.
 //
 // Gate: must hold the parent/admin cookie. A kid can never reach this because
 // isParentAuthenticated() checks `mp_parent`, which kid logins never set.
 
 import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
-import { isParentAuthenticated } from '@/lib/money/parent';
+import { isParentAuthenticated, setParentCookie } from '@/lib/money/parent';
 import { isValidUser, normalizeUser } from '@/lib/drive-progress';
 import { prisma } from '@/lib/prisma';
 
 const DL_COOKIE = 'dl_user';
 const RETURN_COOKIE = 'mp_admin_return';
+const PARENT_COOKIE = 'mp_parent';
+// Marker dropped while impersonating to remember the admin had godmode, so
+// DELETE knows to restore it. httpOnly — pure server bookkeeping.
+const SUSPENDED_COOKIE = 'mp_admin_suspended';
+const SUSPENDED_MAX_AGE_SEC = 12 * 60 * 60;
 // Mirror the drive login TTL so an impersonated session expires on the same
 // clock as a real kid session.
 const DL_MAX_AGE_SEC = 2 * 60 * 60;
@@ -53,15 +63,26 @@ export async function POST(req: NextRequest) {
   // Marker the banner reads. httpOnly:false on purpose — the client banner
   // needs to see it. Holds the impersonated name for the banner label.
   jar.set(RETURN_COOKIE, userKey, { httpOnly: false, sameSite: 'lax', path: '/', maxAge: RETURN_MAX_AGE_SEC });
+  // Suspend godmode: clear mp_parent and remember we did so. Without this the
+  // admin would still pass parent/admin gates while "being" the kid — not a
+  // true kid's-eye view. We always hold mp_parent here (the gate above
+  // guarantees it), so always drop the suspended marker.
+  jar.delete(PARENT_COOKIE);
+  jar.set(SUSPENDED_COOKIE, '1', { httpOnly: true, sameSite: 'lax', path: '/', maxAge: SUSPENDED_MAX_AGE_SEC });
 
   return NextResponse.json({ ok: true, user: userKey });
 }
 
 export async function DELETE() {
   // No admin-gate needed to STOP impersonating — anyone can exit a borrowed
-  // session, and we only clear the borrowed identity, not the admin cookie.
+  // session, and we only clear the borrowed identity then restore the admin's
+  // own godmode if we'd suspended it on the way in.
   const jar = await cookies();
   jar.delete(DL_COOKIE);
   jar.delete(RETURN_COOKIE);
+  if (jar.get(SUSPENDED_COOKIE)?.value === '1') {
+    await setParentCookie(); // restore mp_parent (fresh 30-min session) — back to admin
+    jar.delete(SUSPENDED_COOKIE);
+  }
   return NextResponse.json({ ok: true });
 }

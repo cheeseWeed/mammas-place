@@ -1,9 +1,9 @@
 'use client';
 
-// Parent gate for /admin/mp-bank. Alphanumeric PIN (4-12 chars), posts to
-// /api/money/parent/login. First-time use: PIN `mp2186` seeds the ParentConfig
-// row (see lib/money/parent.SEED_PARENT_PIN). Separate from the staff /admin
-// portal — different cookie, different concern.
+// Admin gate for /admin/mp-bank. Alphanumeric PIN (4-12 chars), posts to
+// /api/money/parent/login. The seed/first-time PIN lives server-side in
+// lib/money/parent.SEED_PARENT_PIN and is intentionally NOT shown on this page.
+// Separate from the staff /admin portal — different cookie, different concern.
 
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -60,7 +60,7 @@ export default function MpBankLoginPage() {
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-yellow-400 border-4 border-yellow-300 mb-3">
             <span className="text-purple-900 font-black text-xl">MP</span>
           </div>
-          <h1 className="text-white font-black text-2xl">Parent / MP Bank</h1>
+          <h1 className="text-white font-black text-2xl">Admin · MP Bank</h1>
           <p className="text-yellow-200 text-sm mt-1">Family store-credit admin</p>
         </div>
 
@@ -68,19 +68,15 @@ export default function MpBankLoginPage() {
           onSubmit={submit}
           className="bg-white rounded-2xl p-6 shadow-2xl border-2 border-purple-100"
         >
-          <h2 className="text-purple-900 font-bold text-lg mb-1 text-center">
-            Enter parent PIN
+          <h2 className="text-purple-900 font-bold text-lg mb-5 text-center">
+            Enter admin PIN
           </h2>
-          <p className="text-center text-gray-600 text-xs mb-5">
-            First time? Use PIN <span className="font-mono font-bold">mp2186</span> to
-            set up the parent gate.
-          </p>
 
           <label
             htmlFor="mp-parent-pin"
             className="block text-sm font-medium text-purple-900 mb-1"
           >
-            Parent PIN (4-12 chars)
+            Admin PIN (4-12 chars)
           </label>
           <input
             id="mp-parent-pin"
@@ -115,7 +111,7 @@ export default function MpBankLoginPage() {
         </form>
 
         <p className="text-center text-purple-200 text-xs mt-6">
-          Mamma&apos;s Place · Parent gate (separate from staff admin)
+          Mamma&apos;s Place · Admin gate (separate from staff admin)
         </p>
       </div>
     </div>

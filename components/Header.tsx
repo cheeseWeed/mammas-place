@@ -7,6 +7,7 @@ import { useState, useEffect, useMemo, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { useProducts, categorySubcategoryMapFromProducts } from '@/lib/products-client';
 import BalanceChip from '@/components/BalanceChip';
+import IdentityBadge from '@/components/IdentityBadge';
 import { useLearner } from '@/context/LearnerContext';
 import { centsToMP } from '@/lib/money/format';
 import FeedbackWidget from '@/components/FeedbackWidget';
@@ -105,9 +106,17 @@ export default function Header() {
         🎓 DEMO SITE - For Learning & Portfolio Purposes Only - No Real Transactions
       </div>
 
-      {/* Top promo bar - now visible on mobile too */}
-      <div className="text-white text-xs sm:text-sm text-center py-1 px-4" style={{background: 'rgba(0,0,0,0.4)'}}>
-        Free shipping on orders over $50! Use code <span className="font-bold text-yellow-300">MAMMA10</span> for 10% off
+      {/* Top promo bar - now visible on mobile too. Greeting pinned top-left,
+          promo text centered, spacer keeps it visually centered. */}
+      <div className="flex items-center justify-between gap-3 text-white text-xs sm:text-sm py-1 px-4" style={{background: 'rgba(0,0,0,0.4)'}}>
+        <div className="shrink-0 min-w-0">
+          <IdentityBadge compact />
+        </div>
+        <div className="flex-1 text-center truncate">
+          Free shipping on orders over $50! Use code <span className="font-bold text-yellow-300">MAMMA10</span> for 10% off
+        </div>
+        {/* Spacer mirrors the greeting column so the promo stays centered. */}
+        <div className="shrink-0 w-0 sm:w-24" aria-hidden="true" />
       </div>
 
       {/* Main header row */}
