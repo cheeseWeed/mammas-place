@@ -190,6 +190,8 @@ export default function MpBankDashboard() {
   const [giftNote, setGiftNote] = useState('');
   const [giftBusy, setGiftBusy] = useState(false);
   const [giftFormError, setGiftFormError] = useState<string | null>(null);
+  // "Give directly to a kid" — picks a learner; mints + credits them in one step.
+  const [giftRecipient, setGiftRecipient] = useState('');
   // The just-minted card the parent should print right now. Renders an inline
   // print-friendly modal; the parent hits Print, then closes — list refreshes
   // in the background. Null = no modal open.
@@ -629,6 +631,46 @@ export default function MpBankDashboard() {
       });
     } finally {
       setImpersonateBusy(null);
+    }
+  };
+
+  // Give a gift card straight to a kid's balance (no printing). Mints + credits
+  // in one step via /api/money/gift-card/give.
+  const giveGiftCard = async () => {
+    setGiftFormError(null);
+    const cents = dollarsInputToCents(giftAmount);
+    if (cents === null || cents <= 0) {
+      setGiftFormError('Enter a valid amount (e.g. 5 or 2.50).');
+      return;
+    }
+    if (!giftRecipient) {
+      setGiftFormError('Pick a kid to give it to.');
+      return;
+    }
+    setGiftBusy(true);
+    try {
+      const res = await fetch('/api/money/gift-card/give', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ cents, user: giftRecipient, note: giftNote.trim() || undefined }),
+      });
+      if (res.status === 401) { handleUnauth(); return; }
+      const data = (await res.json().catch(() => ({}))) as { error?: string; cents?: number; user?: string };
+      if (!res.ok) {
+        setGiftFormError(data.error || `HTTP ${res.status}`);
+        return;
+      }
+      const kid = learnerLookup.get(giftRecipient);
+      const label = kid ? displayLabel(kid) : giftRecipient;
+      setPinToast({ kind: 'success', message: `Gave ${centsToMP((data.cents ?? cents))} to ${label}! 🎁` });
+      setGiftAmount('');
+      setGiftNote('');
+      setGiftRecipient('');
+      await Promise.all([loadGiftCards(), loadLearners()]);
+    } catch (err) {
+      setGiftFormError(err instanceof Error ? err.message : 'Network error');
+    } finally {
+      setGiftBusy(false);
     }
   };
 
@@ -1404,9 +1446,37 @@ export default function MpBankDashboard() {
                   disabled={giftBusy}
                   className="bg-purple-900 hover:bg-purple-800 disabled:bg-purple-300 text-white font-bold px-4 py-2 rounded-xl text-sm transition-colors"
                 >
-                  {giftBusy ? 'Generating…' : 'Generate'}
+                  {giftBusy ? 'Generating…' : '🖨️ Print a code'}
                 </button>
               </div>
+            </div>
+
+            {/* OR give it straight to a kid's balance (no printing). */}
+            <div className="mt-3 pt-3 border-t border-purple-200 flex flex-wrap items-end gap-3">
+              <div>
+                <label className="block text-xs font-medium text-purple-900 mb-1">
+                  Or give directly to a kid
+                </label>
+                <select
+                  value={giftRecipient}
+                  onChange={(e) => setGiftRecipient(e.target.value)}
+                  disabled={giftBusy}
+                  className="rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-3 py-2 bg-white text-purple-900 min-w-[12rem]"
+                >
+                  <option value="">— pick a kid —</option>
+                  {learners.map((l) => (
+                    <option key={l.name} value={l.name}>{displayLabel(l)}</option>
+                  ))}
+                </select>
+              </div>
+              <button
+                type="button"
+                onClick={giveGiftCard}
+                disabled={giftBusy || !giftRecipient}
+                className="bg-emerald-600 hover:bg-emerald-500 disabled:opacity-40 text-white font-bold px-4 py-2 rounded-xl text-sm transition-colors"
+              >
+                {giftBusy ? 'Giving…' : '🎁 Give now'}
+              </button>
             </div>
             {giftFormError && (
               <div className="mt-3 text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg px-3 py-2">

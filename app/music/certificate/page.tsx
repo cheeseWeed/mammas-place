@@ -115,8 +115,8 @@ function CertificateInner() {
       </div>
 
       {/* the certificate */}
-      <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-xl print:shadow-none print:rounded-none">
-        <div className="m-3 print:m-0 border-[6px] border-double border-amber-500 rounded-xl print:rounded-none p-10 text-center relative overflow-hidden">
+      <div className="cert-sheet max-w-3xl mx-auto bg-white rounded-2xl shadow-xl print:shadow-none print:rounded-none print:max-w-none print:w-full">
+        <div className="cert-inner m-3 print:m-0 border-[6px] border-double border-amber-500 rounded-xl print:rounded-none p-10 print:p-6 text-center relative overflow-hidden">
           {/* corner flourishes */}
           <div className="absolute top-3 left-3 text-3xl opacity-40">🎼</div>
           <div className="absolute top-3 right-3 text-3xl opacity-40">🎵</div>
@@ -162,8 +162,13 @@ function CertificateInner() {
 
       <style jsx global>{`
         @media print {
-          @page { size: landscape; margin: 0.5in; }
-          body { background: white; }
+          @page { size: landscape; margin: 0.4in; }
+          html, body { background: white !important; margin: 0 !important; padding: 0 !important; }
+          /* Make the certificate fill the printable page so nothing is clipped. */
+          .cert-sheet { max-width: 100% !important; width: 100% !important; margin: 0 !important; }
+          .cert-inner { margin: 0 !important; padding: 1.5rem !important; }
+          /* Force exact colors so the amber border/flourishes print. */
+          * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
         }
       `}</style>
     </div>
