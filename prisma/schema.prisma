@@ -295,6 +295,33 @@ model MpGiftCard {
   @@map("mp_gift_cards")
 }
 
+// Kid-to-kid (and admin) MP gifts — a NEW flow distinct from the printable
+// single-use MpGiftCard codes. A sender picks a recipient and an amount; the
+// MP leaves the sender's balance immediately (admin sends are a free top-up —
+// no one is debited). Delivery is either IMMEDIATE (recipient credited now) or
+// SCHEDULED for a future `deliverAt` (held until that date, then credited).
+//
+// No cron on this stack, so delivery is LAZY: deliverDueGifts() in
+// lib/money/gift.ts runs on the recipient's balance/portal read path and
+// credits any due-but-undelivered gifts. The `delivered` flag is flipped with
+// an updateMany guarded on `delivered: false` so a gift can never double-credit
+// even under concurrent reads.
+model MpGift {
+  id            String    @id @default(cuid())
+  senderUser    String?   // normalized sender; null = admin (free top-up source)
+  recipientUser String    // normalized recipient
+  cents         Int       // always positive
+  note          String?   // optional sender note ("Happy birthday!")
+  deliverAt     DateTime  // when it should arrive (now for immediate)
+  delivered     Boolean   @default(false)
+  deliveredAt   DateTime?
+  createdAt     DateTime  @default(now())
+
+  @@index([recipientUser, deliverAt])
+  @@index([delivered])
+  @@map("mp_gifts")
+}
+
 // A family unit — owned by one or more parents (mom AND dad), with invited
 // members. Owns its own chore chart. Multi-tenant: different families build
 // and edit their own charts, fully isolated. See app/chores/PLAN.md.

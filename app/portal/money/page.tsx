@@ -9,6 +9,7 @@ import { useLearner } from '@/context/LearnerContext';
 import { centsToMP } from '@/lib/money/format';
 import { AskDadPanel } from '@/components/AskDadPanel';
 import { DadAsksHistory } from '@/components/DadAsksHistory';
+import { SendGiftPanel } from '@/components/SendGiftPanel';
 
 // Server-authoritative shapes — keep loose; API returns Prisma rows as JSON.
 interface OrderItem {
@@ -251,6 +252,10 @@ export default function PortalMoneyPage() {
 
       {learner && (
         <DadAsksHistory user={learner} refreshSignal={asksRefreshSignal} limit={10} />
+      )}
+
+      {learner && (
+        <SendGiftPanel balanceCents={balanceCents} onSent={() => void refreshBalance()} />
       )}
 
       {fetchError && (
