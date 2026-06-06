@@ -37,14 +37,24 @@ function readOverride(cookieStr: string | undefined | null): 'sun' | 'wkdy' | nu
   return v === 'sun' || v === 'wkdy' ? v : null;
 }
 
-// Is it the Sabbath (Sunday) right now? Honors the admin override if present.
-// On the client we auto-read document.cookie; on the server pass the cookie
-// header explicitly via `cookieStr`.
+// Is an admin present in this cookie string? Server sees the httpOnly
+// `mp_parent`; client sees the non-httpOnly `mp_admin_present` marker. The
+// "view as day" override is ONLY honored for admins, so a stray override cookie
+// can never strand a logged-out kid on the wrong day.
+function adminPresent(cookieStr: string): boolean {
+  return /(?:^|; )mp_parent=/.test(cookieStr) || /(?:^|; )mp_admin_present=1/.test(cookieStr);
+}
+
+// Is it the Sabbath (Sunday) right now? Honors the admin "view as day" override
+// ONLY when an admin is present. On the client we auto-read document.cookie; on
+// the server pass the cookie header explicitly via `cookieStr`.
 export function isSabbath(now: Date = new Date(), cookieStr?: string): boolean {
   const cookies = cookieStr ?? (typeof document !== 'undefined' ? document.cookie : '');
-  const override = readOverride(cookies);
-  if (override === 'sun') return true;
-  if (override === 'wkdy') return false;
+  if (adminPresent(cookies)) {
+    const override = readOverride(cookies);
+    if (override === 'sun') return true;
+    if (override === 'wkdy') return false;
+  }
   return familyDayOfWeek(now) === 0;
 }
 

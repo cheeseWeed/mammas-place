@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="text-white mt-12 py-12 px-4" style={{background: 'linear-gradient(135deg, #1a0533 0%, #3b0764 50%, #2d0550 100%)'}}>
+    <footer className="text-white mt-12 py-12 px-4 print:hidden" style={{background: 'linear-gradient(135deg, #1a0533 0%, #3b0764 50%, #2d0550 100%)'}}>
       <div className="max-w-7xl mx-auto">
         {/* Main footer content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">

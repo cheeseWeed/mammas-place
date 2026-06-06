@@ -68,6 +68,13 @@ export async function isParentAuthenticated(): Promise<boolean> {
   return verifyStamp(jar.get(PARENT_COOKIE)?.value);
 }
 
+// Non-httpOnly marker so CLIENT code can tell "an admin is logged in" (the real
+// mp_parent cookie is httpOnly and unreadable by JS). Used to gate the Sabbath
+// "view as day" override to admins only — see lib/sabbath. Not a security
+// boundary (server always re-checks mp_parent); just lets the client ignore a
+// stray override cookie when no admin is present.
+const PARENT_PRESENT_COOKIE = 'mp_admin_present';
+
 export async function setParentCookie(): Promise<void> {
   const jar = await cookies();
   // No maxAge → SESSION cookie (cleared on browser close). The signed timestamp
@@ -77,9 +84,11 @@ export async function setParentCookie(): Promise<void> {
     sameSite: 'lax',
     path: '/',
   });
+  jar.set(PARENT_PRESENT_COOKIE, '1', { httpOnly: false, sameSite: 'lax', path: '/' });
 }
 
 export async function clearParentCookie(): Promise<void> {
   const jar = await cookies();
   jar.delete(PARENT_COOKIE);
+  jar.delete(PARENT_PRESENT_COOKIE);
 }

@@ -70,7 +70,7 @@ export default function RootLayout({
           <ToastProvider>
             <ImpersonationBanner />
             <Header />
-            <main className="pt-[218px] sm:pt-[142px]">
+            <main className="pt-[218px] sm:pt-[142px] print:pt-0">
               {children}
             </main>
             <Footer />

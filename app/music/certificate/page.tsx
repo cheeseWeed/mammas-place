@@ -52,7 +52,22 @@ function CertificateInner() {
 
   if (loading) return <div className="p-10 text-center text-indigo-700">Loading…</div>;
 
-  const piece = state?.profile.pieces.find((p) => p.id === pieceId);
+  // Not logged in (state never loaded / 401) — say so instead of the misleading
+  // "couldn't find that piece."
+  if (!state) {
+    return (
+      <div className="min-h-screen flex items-center justify-center p-8 text-center">
+        <div>
+          <p className="text-gray-700 mb-4">Log in to see your certificate.</p>
+          <Link href="/shop/login" className="text-indigo-700 underline">Log in</Link>
+          <span className="mx-2 text-gray-400">·</span>
+          <Link href="/music" className="text-indigo-700 underline">← Back to Practice Studio</Link>
+        </div>
+      </div>
+    );
+  }
+
+  const piece = state.profile.pieces.find((p) => p.id === pieceId);
   if (!piece) {
     return (
       <div className="min-h-screen flex items-center justify-center p-8 text-center">

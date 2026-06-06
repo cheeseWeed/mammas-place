@@ -146,6 +146,9 @@ export default function IdentityBadge({ compact = false }: { compact?: boolean }
         <span className={`font-black text-yellow-300 ${textSize}`}>
           Hello {pretty(who.impersonating)}
         </span>
+        <span className={`font-bold text-amber-200/90 ${compact ? 'text-[10px]' : 'text-xs'}`}>
+          (Admin view)
+        </span>
         <button type="button" onClick={returnToAdmin} disabled={busy} className={linkBtn}>
           {busy ? 'Returning…' : '↩ Stop impersonating'}
         </button>

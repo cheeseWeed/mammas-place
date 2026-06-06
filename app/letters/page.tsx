@@ -73,56 +73,87 @@ function Menu({ onPick }: { onPick: (m: Mode) => void }) {
   );
 }
 
-// ---- A single big letter "dressed" as its animal ----
-function AnimalLetter({ entry, size = 'big', onTap }: { entry: LetterEntry; size?: 'big' | 'small'; onTap?: () => void }) {
+// ---- A single big letter that can "put on" its animal costume ----
+// When `dressed` is false the letter is plain grey (undisguised). When true,
+// the costume animates ON: color fills in, ears pop up, the animal emoji
+// appears. CSS transitions do all the motion. Small variant is always dressed.
+function AnimalLetter({
+  entry, size = 'big', dressed = true, onTap,
+}: { entry: LetterEntry; size?: 'big' | 'small'; dressed?: boolean; onTap?: () => void }) {
   const dim = size === 'big' ? 'w-40 h-40 text-7xl' : 'w-20 h-20 text-3xl';
   const earDim = size === 'big' ? 'w-12 h-12 -top-5' : 'w-6 h-6 -top-2.5';
+  const on = dressed; // costume on?
   return (
     <button
       onClick={() => { speak(entry.spoken); onTap?.(); }}
       className="relative inline-flex flex-col items-center group focus:outline-none"
       aria-label={entry.spoken}
     >
-      {/* Animal "ears" peeking over the letter card */}
-      <span className={`absolute ${earDim} left-2 rounded-full animate-wiggle`} style={{ background: entry.color }} />
-      <span className={`absolute ${earDim} right-2 rounded-full animate-wiggle`} style={{ background: entry.color }} />
+      {/* Animal "ears" — pop up and wiggle only when dressed */}
       <span
-        className={`relative ${dim} rounded-3xl flex items-center justify-center font-black text-white shadow-lg group-active:scale-90 group-hover:-rotate-3 transition-transform animate-float`}
+        className={`absolute ${earDim} left-2 rounded-full transition-all duration-500 ${on ? 'opacity-100 scale-100 animate-wiggle' : 'opacity-0 scale-0'}`}
         style={{ background: entry.color }}
+      />
+      <span
+        className={`absolute ${earDim} right-2 rounded-full transition-all duration-500 ${on ? 'opacity-100 scale-100 animate-wiggle' : 'opacity-0 scale-0'}`}
+        style={{ background: entry.color }}
+      />
+      <span
+        className={`relative ${dim} rounded-3xl flex items-center justify-center font-black text-white shadow-lg group-active:scale-90 group-hover:-rotate-3 transition-all duration-500 ${on ? 'animate-float' : ''}`}
+        style={{ background: on ? entry.color : '#cbd5e1' }}
       >
         {entry.letter}
-        {/* the animal face sits in the corner, like a costume badge */}
-        <span className={`absolute -bottom-3 -right-3 ${size === 'big' ? 'text-4xl' : 'text-xl'} animate-bounce-slow`}>
+        {/* the animal face appears as the costume goes on */}
+        <span
+          className={`absolute -bottom-3 -right-3 ${size === 'big' ? 'text-4xl' : 'text-xl'} transition-all duration-500 ${on ? 'opacity-100 scale-100 animate-bounce-slow' : 'opacity-0 scale-0'}`}
+        >
           {entry.emoji}
         </span>
       </span>
       {size === 'big' && (
-        <span className="mt-4 font-black text-2xl" style={{ color: entry.color }}>
-          {entry.word}
+        <span
+          className="mt-4 font-black text-2xl transition-colors duration-500"
+          style={{ color: on ? entry.color : '#94a3b8' }}
+        >
+          {on ? entry.word : entry.letter}
         </span>
       )}
     </button>
   );
 }
 
-// ---- Explore: pick a letter, see/hear it big ----
+// ---- Explore: letter starts plain, then "puts on" its animal costume ----
 function Explore() {
   const [idx, setIdx] = useState(0);
+  const [dressed, setDressed] = useState(false);
   const entry = LETTERS[idx];
+  const go = (next: number) => { setIdx(next); setDressed(false); };
+  const dressUp = () => {
+    setDressed(true);
+    speak(entry.spoken);
+  };
   return (
     <div className="bg-white rounded-3xl shadow-lg border-2 border-purple-100 p-6">
-      <div className="flex flex-col items-center mb-6 min-h-[18rem] justify-center">
-        <AnimalLetter entry={entry} />
-        <p className="text-purple-500 text-sm mt-3">Tap the big letter to hear it again!</p>
+      <div className="flex flex-col items-center mb-4 min-h-[18rem] justify-center">
+        <AnimalLetter entry={entry} dressed={dressed} onTap={() => setDressed(true)} />
+        <button
+          onClick={dressUp}
+          className={`mt-5 font-black px-6 py-3 rounded-full text-white shadow transition-transform hover:scale-105 ${dressed ? 'bg-purple-400' : 'bg-gradient-to-br from-pink-500 to-orange-500 animate-bounce-slow'}`}
+        >
+          {dressed ? '🔊 Say it again' : '🎭 Dress up the letter!'}
+        </button>
+        <p className="text-purple-500 text-sm mt-3">
+          {dressed ? `${entry.letter} is dressed as a ${entry.animal}!` : 'Tap the button to give this letter a costume!'}
+        </p>
       </div>
       <div className="flex items-center justify-between gap-3 mb-4">
         <button
-          onClick={() => setIdx((i) => (i - 1 + LETTERS.length) % LETTERS.length)}
+          onClick={() => go((idx - 1 + LETTERS.length) % LETTERS.length)}
           className="bg-purple-100 hover:bg-purple-200 text-purple-900 font-black w-14 h-14 rounded-full text-2xl"
         >←</button>
         <span className="text-purple-400 font-bold">{idx + 1} / {LETTERS.length}</span>
         <button
-          onClick={() => setIdx((i) => (i + 1) % LETTERS.length)}
+          onClick={() => go((idx + 1) % LETTERS.length)}
           className="bg-purple-100 hover:bg-purple-200 text-purple-900 font-black w-14 h-14 rounded-full text-2xl"
         >→</button>
       </div>
@@ -131,7 +162,7 @@ function Explore() {
         {LETTERS.map((l, i) => (
           <button
             key={l.letter}
-            onClick={() => { setIdx(i); speak(l.spoken); }}
+            onClick={() => { go(i); }}
             className={`w-9 h-9 rounded-lg font-black text-white text-sm transition-transform hover:scale-110 ${i === idx ? 'ring-4 ring-purple-300' : ''}`}
             style={{ background: l.color }}
           >
