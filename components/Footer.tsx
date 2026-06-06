@@ -99,9 +99,6 @@ export default function Footer() {
               <span className="bg-purple-700/50 px-3 py-1 rounded-full">Free Shipping Over $50</span>
               <span className="bg-yellow-400/20 text-yellow-300 px-3 py-1 rounded-full font-bold">Use Code: MAMMA10</span>
             </div>
-            <Link href="/admin/upload" className="text-purple-500 hover:text-purple-400 text-sm transition-colors">
-              Admin
-            </Link>
           </div>
         </div>
       </div>

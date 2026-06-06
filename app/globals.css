@@ -44,3 +44,22 @@ body {
 .animate-fadeIn {
   animation: fadeIn 0.3s ease-out forwards;
 }
+
+/* Letters & Sounds (preschool/K) — gentle "alive" motion for the big letters */
+@keyframes floaty {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  50% { transform: translateY(-6px) rotate(2deg); }
+}
+.animate-float { animation: floaty 2.4s ease-in-out infinite; }
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
+}
+.animate-wiggle { animation: wiggle 1.6s ease-in-out infinite; }
+
+@keyframes bounceSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-bounce-slow { animation: bounceSlow 1.8s ease-in-out infinite; }
