@@ -339,6 +339,37 @@ model PinResetRequest {
   @@map("pin_reset_requests")
 }
 
+// Two-device chess match — a shared game row two kids play across separate
+// devices/browsers (no websockets/Bluetooth). One creator (white) makes a
+// match and gets a short join `code`; the second kid joins as black. The row
+// is the single source of truth: each device polls GET to pick up the other's
+// moves and POSTs its own via the engine-validated /move endpoint. The server
+// re-validates EVERY move with lib/chess/engine — clients are never trusted for
+// legality. `version` bumps on each accepted move so a poller can cheaply tell
+// "something changed" and skip re-deriving when it hasn't.
+//
+// MP rewards are intentionally NOT wired for 2-device games yet (would need
+// careful per-side attribution to avoid double-credit). See app/chess/play
+// PlayMatch + /api/chess/match/[code]/move TODOs.
+model ChessMatch {
+  id          String   @id @default(cuid())
+  code        String   @unique // short readable join code, e.g. "RACE" (no 0/O/1/I/L)
+  whiteUser   String?  // creator (normalized dl_user)
+  blackUser   String?  // joiner (normalized dl_user)
+  moveHistory Json     @default("[]") // string[] of UCI ("e2e4", "e7e8q")
+  fen         String   @default("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1")
+  theme       String   @default("classic")
+  status      String   @default("waiting") // 'waiting' | 'active' | 'finished'
+  turn        String   @default("w")       // 'w' | 'b' — whose move it is
+  version     Int      @default(0)         // bumps each accepted move
+  result      Json?    // { winner: 'w'|'b'|'draw', reason, finalFen } when finished
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([code])
+  @@map("chess_matches")
+}
+
 // Append-only redemption log. A kid redeems MP for an external reward; we debit
 // immediately (via balance.ts debit) and write one row here so parents can SEE
 // what was spent. No approval gate — the real-world OK happens in person.

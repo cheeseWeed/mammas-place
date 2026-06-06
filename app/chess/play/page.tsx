@@ -43,6 +43,7 @@ import GameOverCard, {
   type GameOverResult,
 } from '@/components/chess/GameOverCard';
 import ThemePicker from '@/components/chess/ThemePicker';
+import MatchPlay from './MatchPlay';
 import {
   CHESS_THEMES,
   DEFAULT_THEME_ID,
@@ -111,7 +112,8 @@ type GameSetup = {
 
 type View =
   | { kind: 'config' }
-  | { kind: 'playing'; setup: GameSetup };
+  | { kind: 'playing'; setup: GameSetup }
+  | { kind: 'match' }; // two-device mode (lobby + polled game), see MatchPlay
 
 function ChessPlayAuthed() {
   const [view, setView] = useState<View>({ kind: 'config' });
@@ -164,6 +166,11 @@ function ChessPlayAuthed() {
     setView({ kind: 'playing', setup });
   }, []);
 
+  const handleTwoDevices = useCallback(() => {
+    setResumeOffer(null);
+    setView({ kind: 'match' });
+  }, []);
+
   const handleResume = useCallback(() => {
     if (!resumeOffer) return;
     const setup: GameSetup = {
@@ -213,11 +220,14 @@ function ChessPlayAuthed() {
                 onDiscard={handleDiscardResume}
               />
             )}
-            <ConfigCard onStart={handleStart} />
+            <ConfigCard onStart={handleStart} onTwoDevices={handleTwoDevices} />
           </>
         )}
         {view.kind === 'playing' && (
           <PlayView setup={view.setup} onExit={backToConfig} />
+        )}
+        {view.kind === 'match' && (
+          <MatchPlay onExit={backToConfig} />
         )}
       </div>
     </div>
@@ -288,7 +298,13 @@ const AI_LEVELS: { key: AiLevel; label: string; emoji: string; blurb: string }[]
   { key: 'wizard', label: 'Wizard', emoji: '🧙', blurb: 'Will challenge you' },
 ];
 
-function ConfigCard({ onStart }: { onStart: (setup: GameSetup) => void }) {
+function ConfigCard({
+  onStart,
+  onTwoDevices,
+}: {
+  onStart: (setup: GameSetup) => void;
+  onTwoDevices: () => void;
+}) {
   const [whiteName, setWhiteName] = useState('White');
   const [blackName, setBlackName] = useState('Black');
   const [mode, setMode] = useState<GameMode>('local');
@@ -360,7 +376,7 @@ function ConfigCard({ onStart }: { onStart: (setup: GameSetup) => void }) {
         <legend className="block text-sm font-bold text-purple-900 mb-2">
           Mode
         </legend>
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-3 gap-2">
           <button
             type="button"
             onClick={() => setMode('local')}
@@ -382,6 +398,15 @@ function ConfigCard({ onStart }: { onStart: (setup: GameSetup) => void }) {
             }`}
           >
             🧙 vs AI
+          </button>
+          {/* Two-device mode jumps straight to the match lobby (own flow) —
+              it doesn't share the name/side/theme config below. */}
+          <button
+            type="button"
+            onClick={onTwoDevices}
+            className="rounded-xl border-2 px-3 py-3 font-bold text-sm transition-all border-purple-200 bg-purple-50 text-purple-900 hover:border-purple-400"
+          >
+            📱 Two devices
           </button>
         </div>
       </fieldset>
