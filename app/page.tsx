@@ -47,6 +47,7 @@ export default async function HomePage() {
   // Learn section cards — links to the dedicated learning hubs (separate from
   // the shop). Placed above Shop by Category so kids see learning first.
   const learnSections: { href: string; label: string; emoji: string; color: string }[] = [
+    { href: '/letters', label: 'Letters & Sounds', emoji: '🔤', color: 'from-pink-500 to-orange-500' },
     { href: '/math', label: 'Math Arena', emoji: '🧮', color: 'from-sky-500 to-cyan-600' },
     { href: '/language-arts', label: 'Language Arts', emoji: '📚', color: 'from-rose-500 to-pink-600' },
     { href: '/spelling', label: 'Spelling', emoji: '🐝', color: 'from-amber-500 to-yellow-600' },

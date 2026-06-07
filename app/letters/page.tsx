@@ -1,18 +1,19 @@
 'use client';
 
 // Letters & Sounds — preschool / kindergarten section for early readers.
-// Big colorful letters "dressed" as animals (CSS character), tap to hear the
-// sound (browser speech). Three modes: Explore (free play), Find the Sound
-// (tap the letter that says X), and Blend (sound out CVC words). Designed to
-// work WITHOUT reading — big tap targets, audio-first, lots of encouragement.
+// Four modes: Meet the Letters (capital + lowercase, hear the sound, dress it),
+// Find the Sound, Build a Word (easy/mid/hard), and the Dress-Up Studio.
+// Audio-first, big tap targets, works without reading.
 
 import { useState } from 'react';
 import Link from 'next/link';
 import SabbathGuard from '@/components/SabbathGuard';
-import { LETTERS, BLENDS, type LetterEntry } from '@/lib/letters/data';
+import { LETTERS, type LetterEntry } from '@/lib/letters/data';
 import { speak } from '@/lib/letters/speak';
+import WordBuilder from '@/components/letters/WordBuilder';
+import DressUpStudio from '@/components/letters/DressUpStudio';
 
-type Mode = 'menu' | 'explore' | 'find' | 'blend';
+type Mode = 'menu' | 'explore' | 'find' | 'build' | 'dressup';
 
 export default function LettersPage() {
   const [mode, setMode] = useState<Mode>('menu');
@@ -38,7 +39,8 @@ export default function LettersPage() {
           )}
           {mode === 'explore' && <Explore />}
           {mode === 'find' && <FindTheSound />}
-          {mode === 'blend' && <BlendWords />}
+          {mode === 'build' && <WordBuilder />}
+          {mode === 'dressup' && <DressUpStudio />}
 
           <div className="text-center mt-10">
             <Link href="/" className="text-purple-700 underline text-sm">← Home</Link>
@@ -52,12 +54,13 @@ export default function LettersPage() {
 // ---- Menu ----
 function Menu({ onPick }: { onPick: (m: Mode) => void }) {
   const cards: { mode: Mode; emoji: string; title: string; sub: string; color: string }[] = [
-    { mode: 'explore', emoji: '🐻', title: 'Meet the Letters', sub: 'Tap each letter & animal', color: 'from-orange-400 to-pink-500' },
+    { mode: 'explore', emoji: '🅰️', title: 'Meet the Letters', sub: 'Hear each letter & sound', color: 'from-orange-400 to-pink-500' },
     { mode: 'find', emoji: '👂', title: 'Find the Sound', sub: 'Tap the letter you hear', color: 'from-sky-400 to-indigo-500' },
-    { mode: 'blend', emoji: '🐱', title: 'Build a Word', sub: 'Sound it out: c-a-t!', color: 'from-emerald-400 to-teal-500' },
+    { mode: 'build', emoji: '🐱', title: 'Build a Word', sub: 'Easy · Medium · Hard', color: 'from-emerald-400 to-teal-500' },
+    { mode: 'dressup', emoji: '🎨', title: 'Dress a Letter', sub: 'Make A into an Alligator!', color: 'from-fuchsia-500 to-purple-600' },
   ];
   return (
-    <div className="grid sm:grid-cols-3 gap-4">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
       {cards.map((c) => (
         <button
           key={c.mode}
@@ -73,96 +76,73 @@ function Menu({ onPick }: { onPick: (m: Mode) => void }) {
   );
 }
 
-// ---- A single big letter that can "put on" its animal costume ----
-// When `dressed` is false the letter is plain grey (undisguised). When true,
-// the costume animates ON: color fills in, ears pop up, the animal emoji
-// appears. CSS transitions do all the motion. Small variant is always dressed.
-function AnimalLetter({
-  entry, size = 'big', dressed = true, onTap,
-}: { entry: LetterEntry; size?: 'big' | 'small'; dressed?: boolean; onTap?: () => void }) {
-  const dim = size === 'big' ? 'w-40 h-40 text-7xl' : 'w-20 h-20 text-3xl';
-  const earDim = size === 'big' ? 'w-12 h-12 -top-5' : 'w-6 h-6 -top-2.5';
-  const on = dressed; // costume on?
+// ---- A letter card showing BOTH cases; the "active" one is bigger + colored. ----
+function CaseLetter({ entry, active, onTap }: { entry: LetterEntry; active: 'upper' | 'lower'; onTap?: () => void }) {
+  const Big = ({ ch }: { ch: string }) => (
+    <span
+      className="w-36 h-36 rounded-3xl flex items-center justify-center font-black text-white text-7xl shadow-lg animate-float"
+      style={{ background: entry.color }}
+    >
+      {ch}
+    </span>
+  );
+  const Small = ({ ch }: { ch: string }) => (
+    <span
+      className="w-20 h-20 rounded-2xl flex items-center justify-center font-black text-4xl shadow border-2"
+      style={{ color: entry.color, borderColor: entry.color, background: '#fff' }}
+    >
+      {ch}
+    </span>
+  );
   return (
     <button
       onClick={() => { speak(entry.spoken); onTap?.(); }}
-      className="relative inline-flex flex-col items-center group focus:outline-none"
+      className="inline-flex items-end gap-4 group focus:outline-none"
       aria-label={entry.spoken}
     >
-      {/* Animal "ears" — pop up and wiggle only when dressed */}
-      <span
-        className={`absolute ${earDim} left-2 rounded-full transition-all duration-500 ${on ? 'opacity-100 scale-100 animate-wiggle' : 'opacity-0 scale-0'}`}
-        style={{ background: entry.color }}
-      />
-      <span
-        className={`absolute ${earDim} right-2 rounded-full transition-all duration-500 ${on ? 'opacity-100 scale-100 animate-wiggle' : 'opacity-0 scale-0'}`}
-        style={{ background: entry.color }}
-      />
-      <span
-        className={`relative ${dim} rounded-3xl flex items-center justify-center font-black text-white shadow-lg group-active:scale-90 group-hover:-rotate-3 transition-all duration-500 ${on ? 'animate-float' : ''}`}
-        style={{ background: on ? entry.color : '#cbd5e1' }}
-      >
-        {entry.letter}
-        {/* the animal face appears as the costume goes on */}
-        <span
-          className={`absolute -bottom-3 -right-3 ${size === 'big' ? 'text-4xl' : 'text-xl'} transition-all duration-500 ${on ? 'opacity-100 scale-100 animate-bounce-slow' : 'opacity-0 scale-0'}`}
-        >
-          {entry.emoji}
-        </span>
-      </span>
-      {size === 'big' && (
-        <span
-          className="mt-4 font-black text-2xl transition-colors duration-500"
-          style={{ color: on ? entry.color : '#94a3b8' }}
-        >
-          {on ? entry.word : entry.letter}
-        </span>
-      )}
+      {active === 'upper' ? <Big ch={entry.letter} /> : <Small ch={entry.letter} />}
+      {active === 'lower' ? <Big ch={entry.lower} /> : <Small ch={entry.lower} />}
     </button>
   );
 }
 
-// ---- Explore: letter starts plain, then "puts on" its animal costume ----
+// ---- Meet the Letters: capital + lowercase, hear the sound ----
 function Explore() {
   const [idx, setIdx] = useState(0);
-  const [dressed, setDressed] = useState(false);
+  const [active, setActive] = useState<'upper' | 'lower'>('upper');
   const entry = LETTERS[idx];
-  const go = (next: number) => { setIdx(next); setDressed(false); };
-  const dressUp = () => {
-    setDressed(true);
-    speak(entry.spoken);
-  };
+  const go = (n: number) => { setIdx(n); };
   return (
     <div className="bg-white rounded-3xl shadow-lg border-2 border-purple-100 p-6">
-      <div className="flex flex-col items-center mb-4 min-h-[18rem] justify-center">
-        <AnimalLetter entry={entry} dressed={dressed} onTap={() => setDressed(true)} />
+      <div className="flex flex-col items-center mb-4 min-h-[16rem] justify-center">
+        <CaseLetter entry={entry} active={active} onTap={() => undefined} />
+        <div className="mt-4 flex items-center gap-2">
+          <button
+            onClick={() => setActive('upper')}
+            className={`px-3 py-1.5 rounded-full text-sm font-bold ${active === 'upper' ? 'bg-purple-700 text-white' : 'bg-purple-100 text-purple-800'}`}
+          >Big {entry.letter}</button>
+          <button
+            onClick={() => setActive('lower')}
+            className={`px-3 py-1.5 rounded-full text-sm font-bold ${active === 'lower' ? 'bg-purple-700 text-white' : 'bg-purple-100 text-purple-800'}`}
+          >little {entry.lower}</button>
+        </div>
         <button
-          onClick={dressUp}
-          className={`mt-5 font-black px-6 py-3 rounded-full text-white shadow transition-transform hover:scale-105 ${dressed ? 'bg-purple-400' : 'bg-gradient-to-br from-pink-500 to-orange-500 animate-bounce-slow'}`}
+          onClick={() => speak(entry.spoken)}
+          className="mt-4 bg-gradient-to-br from-pink-500 to-orange-500 text-white font-black px-6 py-3 rounded-full shadow hover:scale-105 transition-transform"
         >
-          {dressed ? '🔊 Say it again' : '🎭 Dress up the letter!'}
+          🔊 {entry.letter} is for {entry.animal} {entry.emoji}
         </button>
-        <p className="text-purple-500 text-sm mt-3">
-          {dressed ? `${entry.letter} is dressed as a ${entry.animal}!` : 'Tap the button to give this letter a costume!'}
-        </p>
       </div>
       <div className="flex items-center justify-between gap-3 mb-4">
-        <button
-          onClick={() => go((idx - 1 + LETTERS.length) % LETTERS.length)}
-          className="bg-purple-100 hover:bg-purple-200 text-purple-900 font-black w-14 h-14 rounded-full text-2xl"
-        >←</button>
+        <button onClick={() => go((idx - 1 + LETTERS.length) % LETTERS.length)} className="bg-purple-100 hover:bg-purple-200 text-purple-900 font-black w-14 h-14 rounded-full text-2xl">←</button>
         <span className="text-purple-400 font-bold">{idx + 1} / {LETTERS.length}</span>
-        <button
-          onClick={() => go((idx + 1) % LETTERS.length)}
-          className="bg-purple-100 hover:bg-purple-200 text-purple-900 font-black w-14 h-14 rounded-full text-2xl"
-        >→</button>
+        <button onClick={() => go((idx + 1) % LETTERS.length)} className="bg-purple-100 hover:bg-purple-200 text-purple-900 font-black w-14 h-14 rounded-full text-2xl">→</button>
       </div>
-      {/* Whole-alphabet strip to jump around */}
       <div className="flex flex-wrap gap-1.5 justify-center">
         {LETTERS.map((l, i) => (
           <button
             key={l.letter}
-            onClick={() => { go(i); }}
+            onClick={() => { go(i); speak(l.spoken); }}
             className={`w-9 h-9 rounded-lg font-black text-white text-sm transition-transform hover:scale-110 ${i === idx ? 'ring-4 ring-purple-300' : ''}`}
             style={{ background: l.color }}
           >
@@ -182,15 +162,13 @@ function FindTheSound() {
   const [score, setScore] = useState(0);
 
   function pickChoices(answer: LetterEntry): LetterEntry[] {
-    const others: LetterEntry[] = [];
-    // deterministic-ish spread of distractors based on the answer index
     const ai = LETTERS.indexOf(answer);
+    const others: LetterEntry[] = [];
     for (const off of [3, 7, 13]) {
       const c = LETTERS[(ai + off) % LETTERS.length];
       if (c.letter !== answer.letter && !others.includes(c)) others.push(c);
     }
     const all = [answer, ...others];
-    // rotate by the answer index so the correct one isn't always first
     const rot = ai % all.length;
     return [...all.slice(rot), ...all.slice(0, rot)];
   }
@@ -200,7 +178,7 @@ function FindTheSound() {
     setTarget(next);
     setChoices(pickChoices(next));
     setFeedback('none');
-    setTimeout(() => speak(`Find the letter that says ${next.sound}`), 150);
+    setTimeout(() => speak(next.spoken), 150);
   };
 
   const choose = (c: LetterEntry) => {
@@ -208,82 +186,39 @@ function FindTheSound() {
       setFeedback('yes');
       setScore((s) => s + 1);
       speak(`Yes! ${target.spoken}`);
-      setTimeout(newRound, 1400);
+      setTimeout(newRound, 1500);
     } else {
       setFeedback('no');
-      speak(`Try again. Find ${target.sound}`);
+      speak(`Try again. ${target.letter} is for ${target.animal}.`);
     }
   };
 
   return (
     <div className="bg-white rounded-3xl shadow-lg border-2 border-purple-100 p-6 text-center">
       <button
-        onClick={() => speak(`Find the letter that says ${target.sound}`)}
+        onClick={() => speak(target.spoken)}
         className="bg-gradient-to-br from-sky-400 to-indigo-500 text-white font-black text-xl px-6 py-4 rounded-2xl shadow mb-2 hover:scale-105 transition-transform"
       >
-        👂 Hear the sound
+        👂 Hear the letter
       </button>
       <p className="text-purple-500 text-sm mb-5">Tap the button, then pick the letter you hear.</p>
 
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 justify-items-center mb-4">
         {choices.map((c) => (
-          <AnimalLetter key={c.letter} entry={c} size="small" onTap={() => choose(c)} />
+          <button
+            key={c.letter}
+            onClick={() => choose(c)}
+            className="w-24 h-24 rounded-3xl flex items-center justify-center font-black text-white text-5xl shadow-lg hover:scale-105 active:scale-95 transition-transform"
+            style={{ background: c.color }}
+          >
+            {c.letter}
+          </button>
         ))}
       </div>
 
       {feedback === 'yes' && <div className="text-2xl font-black text-emerald-600 animate-bounce-slow">🎉 Great job!</div>}
       {feedback === 'no' && <div className="text-xl font-bold text-amber-600">Almost! Try again 💪</div>}
       <div className="mt-4 text-purple-400 font-bold text-sm">⭐ {score} correct</div>
-    </div>
-  );
-}
-
-// ---- Build a Word: sound out a CVC word part by part, then blend ----
-function BlendWords() {
-  const [idx, setIdx] = useState(0);
-  const [revealed, setRevealed] = useState(0); // how many parts sounded out
-  const w = BLENDS[idx];
-
-  const sayPart = (i: number) => {
-    speak(w.parts[i]);
-    setRevealed((r) => Math.max(r, i + 1));
-  };
-  const blend = () => { setRevealed(w.parts.length); speak(`${w.word.split('').join(' ')} ... ${w.word}!`); };
-  const next = () => { setIdx((i) => (i + 1) % BLENDS.length); setRevealed(0); };
-
-  return (
-    <div className="bg-white rounded-3xl shadow-lg border-2 border-purple-100 p-6 text-center">
-      <div className="text-7xl mb-3 animate-bounce-slow">{w.emoji}</div>
-
-      <div className="flex justify-center gap-2 mb-5">
-        {w.parts.map((p, i) => (
-          <button
-            key={i}
-            onClick={() => sayPart(i)}
-            className={`w-16 h-16 rounded-2xl font-black text-3xl text-white shadow transition-transform hover:scale-110 active:scale-90 ${
-              i < revealed ? 'bg-emerald-500' : 'bg-purple-400'
-            }`}
-          >
-            {p}
-          </button>
-        ))}
-      </div>
-
-      <div className="flex flex-col sm:flex-row gap-3 justify-center">
-        <button
-          onClick={blend}
-          className="bg-gradient-to-br from-emerald-400 to-teal-500 text-white font-black px-6 py-3 rounded-2xl shadow hover:scale-105 transition-transform"
-        >
-          🔊 Blend it: {w.word}!
-        </button>
-        <button
-          onClick={next}
-          className="bg-purple-100 hover:bg-purple-200 text-purple-900 font-bold px-6 py-3 rounded-2xl"
-        >
-          Next word →
-        </button>
-      </div>
-      <p className="text-purple-500 text-sm mt-4">Tap each letter to sound it out, then blend!</p>
     </div>
   );
 }
