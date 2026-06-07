@@ -25,6 +25,23 @@ export function speak(text: string, opts?: { rate?: number; pitch?: number }) {
   }
 }
 
+// Play a letter's sound. Prefers a recorded clip at /letters-audio/<letter>.mp3
+// (clean human phonics voice) and falls back to TTS (entry.spoken) if the file
+// is missing or fails. This lets us drop in real audio without touching callers.
+export function playLetter(entry: { letter: string; spoken: string }) {
+  if (typeof window === 'undefined') return;
+  const src = `/letters-audio/${entry.letter.toLowerCase()}.mp3`;
+  try {
+    const audio = new Audio(src);
+    let fellBack = false;
+    const fallback = () => { if (!fellBack) { fellBack = true; speak(entry.spoken); } };
+    audio.addEventListener('error', fallback, { once: true });
+    audio.play().catch(fallback);
+  } catch {
+    speak(entry.spoken);
+  }
+}
+
 // Say a word slowly, then again at normal speed — good for "sound it out then
 // blend" in the word builders. Pass the whole word, e.g. "cat".
 export function speakWord(word: string) {

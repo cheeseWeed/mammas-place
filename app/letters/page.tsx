@@ -9,11 +9,13 @@ import { useState } from 'react';
 import Link from 'next/link';
 import SabbathGuard from '@/components/SabbathGuard';
 import { LETTERS, type LetterEntry } from '@/lib/letters/data';
-import { speak } from '@/lib/letters/speak';
+import { speak, playLetter } from '@/lib/letters/speak';
 import WordBuilder from '@/components/letters/WordBuilder';
 import DressUpStudio from '@/components/letters/DressUpStudio';
+import StartsWithGame from '@/components/letters/StartsWithGame';
+import MemoryMatch from '@/components/letters/MemoryMatch';
 
-type Mode = 'menu' | 'explore' | 'find' | 'build' | 'dressup';
+type Mode = 'menu' | 'explore' | 'find' | 'build' | 'dressup' | 'startswith' | 'memory';
 
 export default function LettersPage() {
   const [mode, setMode] = useState<Mode>('menu');
@@ -39,6 +41,8 @@ export default function LettersPage() {
           )}
           {mode === 'explore' && <Explore />}
           {mode === 'find' && <FindTheSound />}
+          {mode === 'startswith' && <StartsWithGame />}
+          {mode === 'memory' && <MemoryMatch />}
           {mode === 'build' && <WordBuilder />}
           {mode === 'dressup' && <DressUpStudio />}
 
@@ -56,6 +60,8 @@ function Menu({ onPick }: { onPick: (m: Mode) => void }) {
   const cards: { mode: Mode; emoji: string; title: string; sub: string; color: string }[] = [
     { mode: 'explore', emoji: '🅰️', title: 'Meet the Letters', sub: 'Hear each letter & sound', color: 'from-orange-400 to-pink-500' },
     { mode: 'find', emoji: '👂', title: 'Find the Sound', sub: 'Tap the letter you hear', color: 'from-sky-400 to-indigo-500' },
+    { mode: 'startswith', emoji: '🍎', title: 'Starts With…', sub: 'Pick what starts with the letter', color: 'from-lime-500 to-green-600' },
+    { mode: 'memory', emoji: '🃏', title: 'Memory Match', sub: 'Match big & little letters', color: 'from-rose-400 to-red-500' },
     { mode: 'build', emoji: '🐱', title: 'Build a Word', sub: 'Easy · Medium · Hard', color: 'from-emerald-400 to-teal-500' },
     { mode: 'dressup', emoji: '🎨', title: 'Dress a Letter', sub: 'Make A into an Alligator!', color: 'from-fuchsia-500 to-purple-600' },
   ];
@@ -76,62 +82,34 @@ function Menu({ onPick }: { onPick: (m: Mode) => void }) {
   );
 }
 
-// ---- A letter card showing BOTH cases; the "active" one is bigger + colored. ----
-function CaseLetter({ entry, active, onTap }: { entry: LetterEntry; active: 'upper' | 'lower'; onTap?: () => void }) {
-  const Big = ({ ch }: { ch: string }) => (
-    <span
-      className="w-36 h-36 rounded-3xl flex items-center justify-center font-black text-white text-7xl shadow-lg animate-float"
-      style={{ background: entry.color }}
-    >
-      {ch}
-    </span>
-  );
-  const Small = ({ ch }: { ch: string }) => (
-    <span
-      className="w-20 h-20 rounded-2xl flex items-center justify-center font-black text-4xl shadow border-2"
-      style={{ color: entry.color, borderColor: entry.color, background: '#fff' }}
-    >
-      {ch}
-    </span>
-  );
-  return (
-    <button
-      onClick={() => { speak(entry.spoken); onTap?.(); }}
-      className="inline-flex items-end gap-4 group focus:outline-none"
-      aria-label={entry.spoken}
-    >
-      {active === 'upper' ? <Big ch={entry.letter} /> : <Small ch={entry.letter} />}
-      {active === 'lower' ? <Big ch={entry.lower} /> : <Small ch={entry.lower} />}
-    </button>
-  );
-}
-
-// ---- Meet the Letters: capital + lowercase, hear the sound ----
+// ---- Meet the Letters: big A + a together with the animal, tap to hear ----
 function Explore() {
   const [idx, setIdx] = useState(0);
-  const [active, setActive] = useState<'upper' | 'lower'>('upper');
   const entry = LETTERS[idx];
   const go = (n: number) => { setIdx(n); };
+  const say = () => playLetter(entry);
   return (
     <div className="bg-white rounded-3xl shadow-lg border-2 border-purple-100 p-6">
-      <div className="flex flex-col items-center mb-4 min-h-[16rem] justify-center">
-        <CaseLetter entry={entry} active={active} onTap={() => undefined} />
-        <div className="mt-4 flex items-center gap-2">
-          <button
-            onClick={() => setActive('upper')}
-            className={`px-3 py-1.5 rounded-full text-sm font-bold ${active === 'upper' ? 'bg-purple-700 text-white' : 'bg-purple-100 text-purple-800'}`}
-          >Big {entry.letter}</button>
-          <button
-            onClick={() => setActive('lower')}
-            className={`px-3 py-1.5 rounded-full text-sm font-bold ${active === 'lower' ? 'bg-purple-700 text-white' : 'bg-purple-100 text-purple-800'}`}
-          >little {entry.lower}</button>
-        </div>
-        <button
-          onClick={() => speak(entry.spoken)}
-          className="mt-4 bg-gradient-to-br from-pink-500 to-orange-500 text-white font-black px-6 py-3 rounded-full shadow hover:scale-105 transition-transform"
-        >
-          🔊 {entry.letter} is for {entry.animal} {entry.emoji}
+      <div className="flex flex-col items-center mb-4 min-h-[18rem] justify-center">
+        {/* Big letter with the animal riding on it; tap to hear */}
+        <button onClick={say} className="relative focus:outline-none group" aria-label={`${entry.letter} is for ${entry.animal}`}>
+          <span
+            className="inline-flex items-end gap-3 px-6 py-4 rounded-3xl font-black text-white shadow-lg animate-float"
+            style={{ background: entry.color }}
+          >
+            <span className="text-8xl leading-none">{entry.letter}</span>
+            <span className="text-6xl leading-none opacity-90">{entry.lower}</span>
+          </span>
+          {/* animal sits on the corner of the letter */}
+          <span className="absolute -top-4 -right-4 text-5xl animate-bounce-slow">{entry.emoji}</span>
         </button>
+        <button
+          onClick={say}
+          className="mt-6 bg-gradient-to-br from-pink-500 to-orange-500 text-white font-black px-6 py-3 rounded-full shadow hover:scale-105 transition-transform"
+        >
+          🔊 {entry.letter} is for {entry.animal}
+        </button>
+        <p className="text-purple-400 text-sm mt-2">Big {entry.letter} and little {entry.lower}</p>
       </div>
       <div className="flex items-center justify-between gap-3 mb-4">
         <button onClick={() => go((idx - 1 + LETTERS.length) % LETTERS.length)} className="bg-purple-100 hover:bg-purple-200 text-purple-900 font-black w-14 h-14 rounded-full text-2xl">←</button>
@@ -142,7 +120,7 @@ function Explore() {
         {LETTERS.map((l, i) => (
           <button
             key={l.letter}
-            onClick={() => { go(i); speak(l.spoken); }}
+            onClick={() => { go(i); playLetter(l); }}
             className={`w-9 h-9 rounded-lg font-black text-white text-sm transition-transform hover:scale-110 ${i === idx ? 'ring-4 ring-purple-300' : ''}`}
             style={{ background: l.color }}
           >
