@@ -1,0 +1,87 @@
+Loading XTTS v2 model...
+XTTS ready.
+
+[a] A. A is for apple. Aaa, Aaa, apple.
+    -> 143276 bytes, 8.87s
+[b] B. B is for ball. Buh, Buh, ball.
+    -> 88364 bytes, 5.44s
+[c] C. C is for cat. Cuh, Cuh, cat.
+    -> 94124 bytes, 5.80s
+[d] D. D is for dog. Duh, Duh, dog.
+    -> 97964 bytes, 6.03s
+[e] E. E is for egg. Eh, Eh, egg.
+    -> 83372 bytes, 5.12s
+[f] F. F is for fish. Fff, Fff, fish.
+    -> 121004 bytes, 7.48s
+[g] G. G is for goat. Guh, Guh, goat.
+    -> 85292 bytes, 5.25s
+[h] H. H is for hat. Huh, Huh, hat.
+    -> 93356 bytes, 5.76s
+[i] I. I is for igloo. Ih, Ih, igloo.
+    -> 113324 bytes, 7.00s
+[j] J. J is for jam. Juh, Juh, jam.
+    -> 128300 bytes, 7.94s
+[k] K. K is for kite. Kuh, Kuh, kite.
+    -> 164780 bytes, 10.21s
+[l] L. L is for lion. Lll, Lll, lion.
+    -> 123692 bytes, 7.66s
+[m] M. M is for moon. Mmm, Mmm, moon.
+    -> 112940 bytes, 6.96s
+[n] N. N is for nest. Nnn, Nnn, nest.
+    -> 124076 bytes, 7.67s
+[o] O. O is for octopus. Ah, Ah, octopus.
+    -> 125996 bytes, 7.79s
+[p] P. P is for pig. Puh, Puh, pig.
+    -> 101036 bytes, 6.22s
+[q] Q. Q is for queen. Kwuh, Kwuh, queen.
+    -> 102572 bytes, 6.32s
+[r] R. R is for rabbit. Rrr, Rrr, rabbit.
+    -> 109100 bytes, 6.73s
+[s] S. S is for sun. Sss, Sss, sun.
+    -> 89900 bytes, 5.52s
+[t] T. T is for top. Tuh, Tuh, top.
+    -> 120236 bytes, 7.43s
+[u] U. U is for umbrella. Uh, Uh, umbrella.
+    -> 126764 bytes, 7.85s
+[v] V. V is for van. Vvv, Vvv, van.
+    -> 149804 bytes, 9.29s
+[w] W. W is for web. Wuh, Wuh, web.
+    -> 93740 bytes, 5.77s
+[x] X. X is for fox. Cks, Cks, fox.
+    -> 112172 bytes, 6.92s
+[y] Y. Y is for yo-yo. Yuh, Yuh, yo-yo.
+    -> 144044 bytes, 8.91s
+[z] Z. Z is for zebra. Zzz, Zzz, zebra.
+    -> 174380 bytes, 10.82s
+
+=== VERIFICATION ===
+letter    bytes   dur(s)  status
+a        143276     8.87  OK
+b         88364     5.44  OK
+c         94124     5.80  OK
+d         97964     6.03  OK
+e         83372     5.12  OK
+f        121004     7.48  OK
+g         85292     5.25  OK
+h         93356     5.76  OK
+i        113324     7.00  OK
+j        128300     7.94  OK
+k        164780    10.21  OK
+l        123692     7.66  OK
+m        112940     6.96  OK
+n        124076     7.67  OK
+o        125996     7.79  OK
+p        101036     6.22  OK
+q        102572     6.32  OK
+r        109100     6.73  OK
+s         89900     5.52  OK
+t        120236     7.43  OK
+u        126764     7.85  OK
+v        149804     9.29  OK
+w         93740     5.77  OK
+x        112172     6.92  OK
+y        144044     8.91  OK
+z        174380    10.82  OK
+
+Total bytes: 3023608
+Bad/needs-retry: none

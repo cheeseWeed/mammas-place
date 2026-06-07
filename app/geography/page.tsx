@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { GEOGRAPHY_PHASES, type GeographyPhase } from '@/data/geography-phases';
 import { WORLD_PHASES, type WorldPhase } from '@/data/world-phases';
 import SabbathGuard from '@/components/SabbathGuard';
+import SectionGuard from '@/components/SectionGuard';
 
 export const metadata: Metadata = {
   title: 'Geography Explorer',
@@ -109,6 +110,7 @@ function PhaseCard({
 export default function GeographyHubPage() {
   return (
     <SabbathGuard label="Geography">
+    <SectionGuard sectionKey="geography" label="Geography">
     <div className="min-h-screen bg-gradient-to-b from-emerald-50 via-sky-50 to-white py-12 px-4">
       <div className="max-w-6xl mx-auto">
         {/* Page header */}
@@ -172,6 +174,7 @@ export default function GeographyHubPage() {
         </div>
       </div>
     </div>
+    </SectionGuard>
     </SabbathGuard>
   );
 }

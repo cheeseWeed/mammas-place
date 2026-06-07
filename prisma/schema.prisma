@@ -157,6 +157,19 @@ model ParentConfig {
   @@map("mp_parent_config")
 }
 
+// Singleton site-wide config. One row (id=1), same pattern as ParentConfig.
+// `disabledSections` is a JSON string[] of learning-section keys (see
+// lib/sections.ts) that an admin has turned OFF site-wide. A disabled section
+// shows kids a friendly "being updated" message instead of the content; an
+// admin can still preview it. Empty array = everything on (the default).
+model SiteConfig {
+  id               Int      @id @default(1)
+  disabledSections Json     @default("[]") // string[] of section keys that are OFF
+  updatedAt        DateTime @updatedAt
+
+  @@map("site_config")
+}
+
 // "Ask Dad" — automated server-side Dad persona. Kid asks for MP with a reason;
 // server scores reason quality + ask cadence + amount and rolls a weighted die
 // to pick an outcome bucket. Reply text is picked from a per-bucket bank in

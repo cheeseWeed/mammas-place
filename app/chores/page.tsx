@@ -14,6 +14,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import LoginGate from '@/components/LoginGate';
 import SabbathGuard from '@/components/SabbathGuard';
+import SectionGuard from '@/components/SectionGuard';
 import { useLearner } from '@/context/LearnerContext';
 import { centsToMP } from '@/lib/money/format';
 import {
@@ -47,9 +48,11 @@ const FREQ_BUCKETS: { key: FreqBucket; label: string }[] = [
 export default function ChoresPage() {
   return (
     <SabbathGuard label="Family Chores">
+    <SectionGuard sectionKey="chores" label="Family Chores">
     <LoginGate section="chores" loadingFallback={<Shell><Loading /></Shell>}>
       <ChoresInner />
     </LoginGate>
+    </SectionGuard>
     </SabbathGuard>
   );
 }

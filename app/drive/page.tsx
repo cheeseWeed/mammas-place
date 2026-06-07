@@ -3,6 +3,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import SabbathGuard from '@/components/SabbathGuard';
+import SectionGuard from '@/components/SectionGuard';
 
 export const metadata: Metadata = {
   title: 'Driver Study',
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
 export default function DrivePage() {
   return (
     <SabbathGuard label="Driver Study">
+    <SectionGuard sectionKey="drive" label="Driver Study">
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white py-12 px-4">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
@@ -138,6 +140,7 @@ export default function DrivePage() {
         </div>
       </div>
     </div>
+    </SectionGuard>
     </SabbathGuard>
   );
 }

@@ -4,6 +4,7 @@
 // the few sections that stays OPEN on the Sabbath.
 
 import Link from 'next/link';
+import SectionGuard from '@/components/SectionGuard';
 import { getStudyGuides } from '@/lib/products';
 
 export const dynamic = 'force-dynamic';
@@ -51,6 +52,7 @@ export default async function ScriptureStudyPage() {
   }
 
   return (
+    <SectionGuard sectionKey="scripture-study" label="Scripture Study Guide">
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white py-10 px-4">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-8">
@@ -124,5 +126,6 @@ export default async function ScriptureStudyPage() {
         </div>
       </div>
     </div>
+    </SectionGuard>
   );
 }

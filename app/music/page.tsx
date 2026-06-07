@@ -14,6 +14,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import LoginGate from '@/components/LoginGate';
+import SectionGuard from '@/components/SectionGuard';
 import { useLearner } from '@/context/LearnerContext';
 import { centsToMP } from '@/lib/money/format';
 import { INSTRUMENTS, instrumentDisplay, type Instrument, type MusicPiece, type MusicChallenge } from '@/lib/music/types';
@@ -34,6 +35,7 @@ interface MusicState {
 
 export default function MusicPage() {
   return (
+    <SectionGuard sectionKey="music" label="Practice Studio">
     <LoginGate
       section="music"
       loadingFallback={
@@ -44,6 +46,7 @@ export default function MusicPage() {
     >
       <MusicInner />
     </LoginGate>
+    </SectionGuard>
   );
 }
 

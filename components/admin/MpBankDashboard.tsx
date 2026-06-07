@@ -15,9 +15,10 @@ import { centsToMP, dollarsInputToCents } from '@/lib/money/format';
 import AdminProductsTab from '@/components/admin/AdminProductsTab';
 import AdminFeedbackTab from '@/components/admin/AdminFeedbackTab';
 import FamiliesAdminTab from '@/components/admin/FamiliesAdminTab';
+import { LEARNING_SECTIONS, isSectionEnabled, type LearningSection } from '@/lib/sections';
 
-type DashboardTab = 'money' | 'products' | 'feedback' | 'families' | 'settings';
-const VALID_TABS: DashboardTab[] = ['money', 'products', 'feedback', 'families', 'settings'];
+type DashboardTab = 'money' | 'products' | 'feedback' | 'families' | 'sections' | 'settings';
+const VALID_TABS: DashboardTab[] = ['money', 'products', 'feedback', 'families', 'sections', 'settings'];
 function parseTab(raw: string | null): DashboardTab {
   return raw && (VALID_TABS as string[]).includes(raw) ? (raw as DashboardTab) : 'money';
 }
@@ -221,6 +222,12 @@ export default function MpBankDashboard() {
     return () => window.clearTimeout(t);
   }, [pinToast]);
 
+  // Sections kill switch — list of section keys currently turned OFF site-wide.
+  // null = not loaded yet. `sectionBusy` is the key whose toggle is in flight.
+  const [disabledSections, setDisabledSections] = useState<string[] | null>(null);
+  const [sectionsLoading, setSectionsLoading] = useState(false);
+  const [sectionBusy, setSectionBusy] = useState<string | null>(null);
+
   // Centralised 401 handling: any parent-gated endpoint that comes back 401
   // means the cookie expired or was cleared — bounce to login.
   const handleUnauth = useCallback(() => {
@@ -331,6 +338,74 @@ export default function MpBankDashboard() {
     }
   }, [handleUnauth]);
 
+  // Load the kill-switch state. The GET is public, but we still route 401s
+  // through the same handler for consistency (it shouldn't 401 in practice).
+  const loadSections = useCallback(async () => {
+    setSectionsLoading(true);
+    try {
+      const res = await fetch('/api/admin/sections', { cache: 'no-store' });
+      if (res.status === 401) {
+        handleUnauth();
+        return;
+      }
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = (await res.json()) as { disabled?: unknown };
+      setDisabledSections(
+        Array.isArray(data.disabled)
+          ? data.disabled.filter((k): k is string => typeof k === 'string')
+          : [],
+      );
+    } catch {
+      // Non-fatal — show empty (everything on) rather than break the tab.
+      setDisabledSections((prev) => prev ?? []);
+    } finally {
+      setSectionsLoading(false);
+    }
+  }, [handleUnauth]);
+
+  // Toggle one section ON/OFF. `enabled` is the DESIRED new state.
+  const toggleSection = async (section: LearningSection, enabled: boolean) => {
+    setSectionBusy(section.key);
+    try {
+      const res = await fetch('/api/admin/sections', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ key: section.key, enabled }),
+      });
+      if (res.status === 401) {
+        handleUnauth();
+        return;
+      }
+      const data = (await res.json().catch(() => ({}))) as {
+        error?: unknown;
+        disabled?: unknown;
+      };
+      if (!res.ok) {
+        const msg = typeof data.error === 'string' ? data.error : `HTTP ${res.status}`;
+        setPinToast({ kind: 'error', message: `Could not update: ${msg}` });
+        return;
+      }
+      setDisabledSections(
+        Array.isArray(data.disabled)
+          ? data.disabled.filter((k): k is string => typeof k === 'string')
+          : [],
+      );
+      setPinToast({
+        kind: 'success',
+        message: enabled
+          ? `${section.label} is ON for everyone.`
+          : `${section.label} turned OFF — kids see a "being updated" message.`,
+      });
+    } catch (err) {
+      setPinToast({
+        kind: 'error',
+        message: err instanceof Error ? err.message : 'Network error',
+      });
+    } finally {
+      setSectionBusy(null);
+    }
+  };
+
   const resolvePinReset = async (userName: string) => {
     const newPin = (resetPinDraft[userName] || '').trim();
     if (!/^\d{4}$/.test(newPin)) {
@@ -432,6 +507,13 @@ export default function MpBankDashboard() {
   useEffect(() => {
     loadTransactions(selectedUser);
   }, [selectedUser, loadTransactions]);
+
+  // Lazy-load the kill-switch state the first time the Sections tab is opened.
+  useEffect(() => {
+    if (activeTab === 'sections' && disabledSections === null) {
+      void loadSections();
+    }
+  }, [activeTab, disabledSections, loadSections]);
 
   const learnerLookup = useMemo(() => {
     const m = new Map<string, Learner>();
@@ -908,7 +990,9 @@ export default function MpBankDashboard() {
                     ? '💬 Feedback'
                     : tab === 'families'
                       ? '👨‍👩‍👧 Families'
-                      : '⚙️ Settings';
+                      : tab === 'sections'
+                        ? '🛠️ Sections'
+                        : '⚙️ Settings';
             return (
               <button
                 key={tab}
@@ -1583,6 +1667,88 @@ export default function MpBankDashboard() {
         </section>
 
           </>
+        )}
+
+        {/* ---- SECTIONS TAB (kill switch) ---- */}
+        {activeTab === 'sections' && (
+        <section className="bg-white rounded-2xl shadow-lg border-2 border-purple-100 p-6">
+          <div className="flex items-start justify-between gap-4 mb-4">
+            <div>
+              <h2 className="text-2xl font-bold text-purple-900">
+                Learning sections
+              </h2>
+              <p className="text-xs text-purple-600 mt-1 max-w-xl">
+                Turn a section OFF if it&apos;s broken or teaching something wrong.
+                Kids see a friendly &ldquo;being updated&rdquo; message instead —
+                instantly, for everyone. You (admin) can still open a disabled
+                section to verify your fix. Turn it back ON when it&apos;s good.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={loadSections}
+              disabled={sectionsLoading}
+              className="text-sm text-purple-700 hover:text-purple-900 underline disabled:opacity-50 whitespace-nowrap"
+            >
+              Refresh
+            </button>
+          </div>
+
+          {disabledSections === null && sectionsLoading ? (
+            <p className="text-purple-700 text-sm">Loading sections…</p>
+          ) : (
+            <ul className="divide-y divide-purple-100">
+              {LEARNING_SECTIONS.map((section) => {
+                const enabled = isSectionEnabled(section.key, disabledSections ?? []);
+                const busy = sectionBusy === section.key;
+                return (
+                  <li
+                    key={section.key}
+                    className="py-4 flex flex-wrap items-center justify-between gap-3"
+                  >
+                    <div>
+                      <div className="font-bold text-purple-900">
+                        {section.label}
+                      </div>
+                      <div className="text-xs text-purple-600">
+                        <span className="font-mono">{section.href}</span>
+                        {' · '}
+                        <span
+                          className={
+                            enabled ? 'text-green-700 font-semibold' : 'text-red-700 font-semibold'
+                          }
+                        >
+                          {enabled ? 'ON (live)' : 'OFF (hidden from kids)'}
+                        </span>
+                      </div>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => toggleSection(section, !enabled)}
+                      disabled={busy}
+                      aria-pressed={enabled}
+                      title={enabled ? 'Turn this section OFF' : 'Turn this section back ON'}
+                      className={`relative inline-flex h-8 w-16 shrink-0 items-center rounded-full border-2 transition-colors disabled:opacity-50 ${
+                        enabled
+                          ? 'bg-green-500 border-green-600'
+                          : 'bg-gray-300 border-gray-400'
+                      }`}
+                    >
+                      <span
+                        className={`inline-block h-6 w-6 transform rounded-full bg-white shadow transition-transform ${
+                          enabled ? 'translate-x-8' : 'translate-x-1'
+                        }`}
+                      />
+                      <span className="sr-only">
+                        {enabled ? 'On' : 'Off'} — {section.label}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </section>
         )}
 
         {/* ---- SETTINGS TAB ---- */}

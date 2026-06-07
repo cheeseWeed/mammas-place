@@ -19,6 +19,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import LoginGate from '@/components/LoginGate';
 import SabbathGuard from '@/components/SabbathGuard';
+import SectionGuard from '@/components/SectionGuard';
 import {
   fetchProfile,
   readSpellingProgress,
@@ -110,6 +111,7 @@ function placementDone(
 export default function SpellingHub() {
   return (
     <SabbathGuard label="Spelling">
+    <SectionGuard sectionKey="spelling" label="Spelling">
     <LoginGate
       section="spelling"
       loadingFallback={
@@ -122,6 +124,7 @@ export default function SpellingHub() {
     >
       <SpellingHubAuthed />
     </LoginGate>
+    </SectionGuard>
     </SabbathGuard>
   );
 }

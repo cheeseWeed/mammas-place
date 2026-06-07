@@ -8,10 +8,12 @@
 import Link from 'next/link';
 import LoginGate from '@/components/LoginGate';
 import SabbathGuard from '@/components/SabbathGuard';
+import SectionGuard from '@/components/SectionGuard';
 
 export default function LanguageArtsHubPage() {
   return (
     <SabbathGuard label="Language Arts">
+    <SectionGuard sectionKey="language-arts" label="Language Arts">
     <LoginGate
       section="languageArts"
       loadingFallback={
@@ -110,6 +112,7 @@ export default function LanguageArtsHubPage() {
         </div>
       </div>
     </LoginGate>
+    </SectionGuard>
     </SabbathGuard>
   );
 }

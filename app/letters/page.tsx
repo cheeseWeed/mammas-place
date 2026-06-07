@@ -8,6 +8,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import SabbathGuard from '@/components/SabbathGuard';
+import SectionGuard from '@/components/SectionGuard';
 import { LETTERS, type LetterEntry } from '@/lib/letters/data';
 import { speak, playLetter } from '@/lib/letters/speak';
 import WordBuilder from '@/components/letters/WordBuilder';
@@ -21,6 +22,7 @@ export default function LettersPage() {
   const [mode, setMode] = useState<Mode>('menu');
   return (
     <SabbathGuard label="Letters & Sounds">
+      <SectionGuard sectionKey="letters" label="Letters & Sounds">
       <div className="min-h-screen bg-gradient-to-b from-sky-100 via-purple-50 to-white py-8 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-6">
@@ -51,6 +53,7 @@ export default function LettersPage() {
           </div>
         </div>
       </div>
+      </SectionGuard>
     </SabbathGuard>
   );
 }

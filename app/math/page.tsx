@@ -7,10 +7,12 @@
 import Link from 'next/link';
 import LoginGate from '@/components/LoginGate';
 import SabbathGuard from '@/components/SabbathGuard';
+import SectionGuard from '@/components/SectionGuard';
 
 export default function MathHubPage() {
   return (
     <SabbathGuard label="Math Arena">
+    <SectionGuard sectionKey="math" label="Math Arena">
     <LoginGate
       section="math"
       loadingFallback={
@@ -104,6 +106,7 @@ export default function MathHubPage() {
         </div>
       </div>
     </LoginGate>
+    </SectionGuard>
     </SabbathGuard>
   );
 }
