@@ -1,17 +1,23 @@
 'use client';
 
-// Build a Word — a three-level phonics activity for preschool / kindergarten
+// Build a Word — a four-level phonics activity for preschool / kindergarten
 // early readers. Standalone, self-contained client component.
 //
-//   EASY   — Word families: a fixed ending ("at"), tap a first letter to make a
-//            real word (cat, hat, bat...). Only real-word onsets are offered.
-//   MEDIUM — CVC sound-it-out: tap each tile to hear the part, then "Blend it!".
-//   HARD   — Pick the matching ending blend for the picture, then build the
-//            starting letters (onset) to finish the word.
+//   EASY       — Word families: a fixed ending ("at"), tap a first letter to make
+//                a real word (cat, hat, bat...). Only real-word onsets are offered.
+//   MEDIUM     — CVC sound-it-out: tap each tile to hear the part, then "Blend it!".
+//   HARD       — Match the picture: see the emoji + one empty box per letter, then
+//                tap letter tiles to fill every slot left-to-right. Wrong letter for
+//                a slot = gentle "try again" (doesn't lock). All slots correct →
+//                speakWord + celebration.
+//   FREE BUILD — No picture. Pick a BEGINNING (letter or blend) + an ENDING (rime);
+//                the app shows the combined "word" and says it. Free play — the
+//                result doesn't have to be a real word.
 //
 // Audio is ALWAYS routed through speak() (a full line) and speakWord() (a real
 // word, slow then fast). We never hand the voice a lone raw phoneme expecting a
 // phoneme — whole words go through speakWord so TTS pronounces them correctly.
+// speak / speakWord / playLetter each auto-stop any prior sound (shared channel).
 
 import { useMemo, useState } from 'react';
 import {
@@ -24,7 +30,7 @@ import {
 } from '@/lib/letters/data';
 import { speak, speakWord } from '@/lib/letters/speak';
 
-type Level = 'easy' | 'medium' | 'hard';
+type Level = 'easy' | 'medium' | 'hard' | 'free';
 
 export default function WordBuilder() {
   const [level, setLevel] = useState<Level>('easy');
@@ -34,7 +40,8 @@ export default function WordBuilder() {
       <LevelSwitcher level={level} onPick={setLevel} />
       {level === 'easy' && <EasyFamilies />}
       {level === 'medium' && <MediumBlends />}
-      {level === 'hard' && <HardBlends />}
+      {level === 'hard' && <HardPictureMatch />}
+      {level === 'free' && <FreeBuild />}
     </div>
   );
 }
@@ -46,9 +53,10 @@ function LevelSwitcher({ level, onPick }: { level: Level; onPick: (l: Level) => 
     { id: 'easy', label: 'Easy', emoji: '🐱', color: 'from-emerald-400 to-teal-500' },
     { id: 'medium', label: 'Medium', emoji: '🔤', color: 'from-sky-400 to-indigo-500' },
     { id: 'hard', label: 'Hard', emoji: '🐸', color: 'from-fuchsia-500 to-purple-600' },
+    { id: 'free', label: 'Free Build', emoji: '🧩', color: 'from-amber-400 to-orange-500' },
   ];
   return (
-    <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-6">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 mb-6">
       {tabs.map((t) => {
         const active = t.id === level;
         return (
@@ -237,160 +245,183 @@ function MediumBlends() {
   );
 }
 
-// ---- HARD: pick the ending, then build the start -----------------------------
+// ---- HARD: match the picture, fill every letter slot -------------------------
+//
+// Show the picture + one empty box per letter. The kid taps a slot (or just uses
+// the next empty one, left-to-right) then taps a letter tile. A correct letter
+// for the active slot LOCKS in; a wrong one gives a gentle "try again" and does
+// not lock. All slots filled correctly → speakWord(word) + celebration.
 
-const HARD_LETTER_POOL = 'bcdfghjklmnpqrstvw'.split('');
+// Distractor letters mixed into the tile tray (kid-friendly consonants/vowels).
+const HARD_LETTER_POOL = 'aeioubcdfghklmnprstw'.split('');
 
-function HardBlends() {
+// Deterministic shuffle from a seed so tiles don't re-order on every render but
+// still vary per word. Simple LCG over indices.
+function seededShuffle<T>(arr: T[], seed: number): T[] {
+  const a = [...arr];
+  let s = seed * 2654435761 + 1;
+  for (let i = a.length - 1; i > 0; i--) {
+    s = (s * 1103515245 + 12345) & 0x7fffffff;
+    const j = s % (i + 1);
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function HardPictureMatch() {
   const [idx, setIdx] = useState(0);
   const w: HardWord = HARD_WORDS[idx];
+  const target = w.word.split(''); // e.g. ['f','r','o','g']
 
-  const [endingChosen, setEndingChosen] = useState(false);
-  const [built, setBuilt] = useState(''); // assembled onset so far
+  // filled[i] = the letter locked into slot i, or null if still empty.
+  const [filled, setFilled] = useState<(string | null)[]>(() => target.map(() => null));
+  const [active, setActive] = useState(0);          // which slot we're filling
+  const [wrongTile, setWrongTile] = useState<string | null>(null); // flash a tile
   const [solved, setSolved] = useState(false);
-  const [wrongEnding, setWrongEnding] = useState<string | null>(null);
 
-  // Ending options: the correct one + a couple distractors from other words.
-  const endingChoices = useMemo(() => {
-    const options = [w.ending];
-    for (let off = 1; off < HARD_WORDS.length && options.length < 4; off++) {
-      const cand = HARD_WORDS[(idx + off) % HARD_WORDS.length].ending;
-      if (!options.includes(cand)) options.push(cand);
-    }
-    // Deterministic rotate so the answer isn't always first.
-    const rot = idx % options.length;
-    return [...options.slice(rot), ...options.slice(0, rot)];
-  }, [idx, w.ending]);
-
-  // Starting-letter tiles: the real onset letters + a few extras, deduped.
-  const letterChoices = useMemo(() => {
-    const set: string[] = [...w.onset.split('')];
+  // Letter tiles: every real letter of the word + distractors, deduped, shuffled.
+  const tiles = useMemo(() => {
+    const set: string[] = [];
+    for (const l of target) if (!set.includes(l)) set.push(l);
     for (const l of HARD_LETTER_POOL) {
-      if (set.length >= 8) break;
+      if (set.length >= Math.max(8, target.length + 4)) break;
       if (!set.includes(l)) set.push(l);
     }
-    // Rotate for variety, deterministic.
-    const rot = idx % set.length;
-    return [...set.slice(rot), ...set.slice(0, rot)];
-  }, [idx, w.onset]);
+    return seededShuffle(set, idx + 1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [idx]);
 
-  const chooseEnding = (e: string) => {
-    if (e === w.ending) {
-      setEndingChosen(true);
-      setWrongEnding(null);
-      speak(`Yes! ${w.ending}.`);
+  // First slot that's still empty (where the next correct tile lands).
+  const firstEmpty = filled.findIndex((f) => f === null);
+  // The slot we're aiming to fill: the user's chosen active slot if empty, else
+  // the first empty slot.
+  const targetSlot = filled[active] === null ? active : firstEmpty;
+
+  const tapTile = (l: string) => {
+    if (solved) return;
+    const slot = targetSlot;
+    if (slot < 0) return; // nothing left to fill
+    if (l === target[slot]) {
+      const nextFilled = filled.slice();
+      nextFilled[slot] = l;
+      setFilled(nextFilled);
+      setWrongTile(null);
+      // Move active to the next still-empty slot.
+      const nextEmpty = nextFilled.findIndex((f) => f === null);
+      setActive(nextEmpty < 0 ? slot : nextEmpty);
+      if (nextEmpty < 0) {
+        // All slots correct!
+        setSolved(true);
+        setTimeout(() => speakWord(w.word), 350);
+      } else {
+        speak(l, { rate: 0.7, pitch: 1.1 });
+      }
     } else {
-      setWrongEnding(e);
-      speak('Try again! Which ending matches the picture?');
+      // Wrong letter for this slot — gentle nudge, don't lock.
+      setWrongTile(l);
+      speak('Try again!');
+      setTimeout(() => setWrongTile((t) => (t === l ? null : t)), 600);
     }
   };
 
-  const addLetter = (l: string) => {
-    if (built.length >= 4 || solved) return;
-    const nextBuilt = built + l;
-    speak(l, { rate: 0.7, pitch: 1.1 });
-    if (nextBuilt === w.onset) {
-      setBuilt(nextBuilt);
-      setSolved(true);
-      setTimeout(() => speakWord(w.word), 500);
-    } else if (w.onset.startsWith(nextBuilt)) {
-      // On the right track — keep building.
-      setBuilt(nextBuilt);
-    } else {
-      // Wrong letter — gently reset the start, keep it forgiving.
-      setBuilt('');
-      speak('Oops, try a different letter!');
+  const tapSlot = (i: number) => {
+    if (solved) return;
+    if (filled[i] !== null) {
+      // Tapping a filled slot clears it so the kid can redo it.
+      const nextFilled = filled.slice();
+      nextFilled[i] = null;
+      setFilled(nextFilled);
     }
+    setActive(i);
   };
 
-  const clearStart = () => setBuilt('');
+  const clearAll = () => {
+    setFilled(target.map(() => null));
+    setActive(0);
+    setWrongTile(null);
+    setSolved(false);
+  };
 
   const next = () => {
-    setIdx((i) => (i + 1) % HARD_WORDS.length);
-    setEndingChosen(false);
-    setBuilt('');
+    const ni = (idx + 1) % HARD_WORDS.length;
+    setIdx(ni);
+    setFilled(HARD_WORDS[ni].word.split('').map(() => null));
+    setActive(0);
+    setWrongTile(null);
     setSolved(false);
-    setWrongEnding(null);
   };
 
   return (
     <div className="text-center">
-      <div className="text-7xl mb-3 animate-bounce-slow">{w.emoji}</div>
+      <p className="text-purple-600 font-bold mb-1">Match the picture!</p>
+      <p className="text-purple-400 text-sm mb-3">Tap letters to spell what you see.</p>
 
-      {/* The word so far: [built onset] + [ending once chosen] */}
-      <div className="flex items-center justify-center gap-2 mb-4">
-        <span
-          className={
-            built
-              ? 'min-w-[5rem] h-20 px-3 rounded-2xl flex items-center justify-center font-black text-4xl sm:text-5xl text-white bg-emerald-500 shadow-lg'
-              : 'min-w-[5rem] h-20 px-3 rounded-2xl flex items-center justify-center font-black text-4xl sm:text-5xl text-purple-300 border-4 border-dashed border-purple-300'
+      <div className="text-7xl mb-4 animate-bounce-slow">{w.emoji}</div>
+
+      {/* One box per letter — all spots visible. */}
+      <div className="flex justify-center gap-1.5 sm:gap-2 mb-5">
+        {target.map((_, i) => {
+          const letter = filled[i];
+          const isActive = !solved && i === targetSlot;
+          const base =
+            'w-14 h-16 sm:w-16 sm:h-20 rounded-2xl flex items-center justify-center font-black text-3xl sm:text-4xl transition-transform';
+          if (letter) {
+            return (
+              <button
+                key={i}
+                onClick={() => tapSlot(i)}
+                className={`${base} text-white bg-emerald-500 shadow-lg ${solved ? 'animate-bounce-slow' : 'hover:scale-105 active:scale-90'}`}
+              >
+                {letter}
+              </button>
+            );
           }
-        >
-          {built || '?'}
-        </span>
-        <span
-          className={
-            endingChosen
-              ? 'min-w-[5rem] h-20 px-3 rounded-2xl flex items-center justify-center font-black text-4xl sm:text-5xl text-white bg-purple-500 shadow-lg'
-              : 'min-w-[5rem] h-20 px-3 rounded-2xl flex items-center justify-center font-black text-4xl sm:text-5xl text-purple-300 border-4 border-dashed border-purple-300'
-          }
-        >
-          {endingChosen ? w.ending : '__'}
-        </span>
+          return (
+            <button
+              key={i}
+              onClick={() => tapSlot(i)}
+              className={`${base} ${
+                isActive
+                  ? 'text-purple-400 border-4 border-fuchsia-400 ring-4 ring-fuchsia-200 bg-fuchsia-50'
+                  : 'text-purple-300 border-4 border-dashed border-purple-300'
+              }`}
+            >
+              {isActive ? '_' : ''}
+            </button>
+          );
+        })}
       </div>
 
-      {!endingChosen && (
-        <>
-          <p className="text-purple-600 font-bold mb-1">Step 1: Pick the ending!</p>
-          <p className="text-purple-400 text-sm mb-4">Which ending matches the picture?</p>
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-2">
-            {endingChoices.map((e) => (
-              <button
-                key={e}
-                onClick={() => chooseEnding(e)}
-                className={
-                  wrongEnding === e
-                    ? 'w-20 h-16 sm:w-24 sm:h-20 rounded-2xl font-black text-3xl sm:text-4xl text-white bg-amber-400 shadow transition-transform'
-                    : 'w-20 h-16 sm:w-24 sm:h-20 rounded-2xl font-black text-3xl sm:text-4xl text-white bg-gradient-to-br from-fuchsia-500 to-purple-600 shadow hover:scale-110 active:scale-90 transition-transform'
-                }
-              >
-                {e}
-              </button>
-            ))}
-          </div>
-          {wrongEnding && (
-            <div className="text-lg font-bold text-amber-600">Almost! Try again 💪</div>
-          )}
-        </>
-      )}
-
-      {endingChosen && !solved && (
-        <>
-          <p className="text-purple-600 font-bold mb-1">Step 2: Build the start!</p>
-          <p className="text-purple-400 text-sm mb-4">Add the starting letters to spell the word.</p>
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-3">
-            {letterChoices.map((l, i) => (
-              <button
-                key={`${l}-${i}`}
-                onClick={() => addLetter(l)}
-                className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl font-black text-2xl sm:text-3xl text-white bg-gradient-to-br from-sky-400 to-indigo-500 shadow hover:scale-110 active:scale-90 transition-transform"
-              >
-                {l}
-              </button>
-            ))}
-          </div>
-          {built && (
+      {/* Letter tile tray */}
+      {!solved && (
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-3">
+          {tiles.map((l, i) => (
             <button
-              onClick={clearStart}
-              className="text-purple-500 underline text-sm"
+              key={`${l}-${i}`}
+              onClick={() => tapTile(l)}
+              className={
+                wrongTile === l
+                  ? 'w-14 h-14 sm:w-16 sm:h-16 rounded-2xl font-black text-2xl sm:text-3xl text-white bg-amber-400 shadow animate-pulse transition-transform'
+                  : 'w-14 h-14 sm:w-16 sm:h-16 rounded-2xl font-black text-2xl sm:text-3xl text-white bg-gradient-to-br from-fuchsia-500 to-purple-600 shadow hover:scale-110 active:scale-90 transition-transform'
+              }
             >
-              ↺ Clear and try again
+              {l}
             </button>
-          )}
-        </>
+          ))}
+        </div>
       )}
 
-      {solved && <Cheer text={`🎉 You made ${w.word.toUpperCase()}!`} />}
+      {wrongTile && (
+        <div className="text-lg font-bold text-amber-600 mb-1">Almost! Try again 💪</div>
+      )}
+
+      {!solved && filled.some((f) => f !== null) && (
+        <button onClick={clearAll} className="text-purple-500 underline text-sm">
+          ↺ Clear and start over
+        </button>
+      )}
+
+      {solved && <Cheer text={`🎉 You spelled ${w.word.toUpperCase()}!`} />}
 
       <div className="flex flex-col sm:flex-row gap-3 justify-center mt-5">
         {solved && (
@@ -402,6 +433,148 @@ function HardBlends() {
           </button>
         )}
         <NextButton label="Next word" onClick={next} />
+      </div>
+    </div>
+  );
+}
+
+// ---- FREE BUILD: mix a beginning + an ending, hear the sound ------------------
+//
+// No picture, no "right answer". The kid taps a BEGINNING (letter or blend) and
+// an ENDING (rime); the app shows the combined letters big and says them. Pure
+// sound-mixing play — silly non-words are encouraged.
+
+const FREE_BEGINNINGS = [
+  'b', 'c', 'd', 'f', 'm', 'p', 's', 't',
+  'st', 'tr', 'fr', 'cl', 'sh', 'ch', 'br', 'gr', 'pl', 'sn',
+];
+const FREE_ENDINGS = [
+  'at', 'an', 'ig', 'op', 'un', 'ed', 'ug', 'en',
+  'og', 'ap', 'it', 'ot', 'am', 'ad', 'in',
+];
+
+function FreeBuild() {
+  const [beginning, setBeginning] = useState<string | null>(null);
+  const [ending, setEnding] = useState<string | null>(null);
+
+  const word = (beginning ?? '') + (ending ?? '');
+  const ready = beginning !== null && ending !== null;
+
+  const pickBeginning = (b: string) => {
+    setBeginning(b);
+    if (ending !== null) speakWord(b + ending);
+    else speak(b, { rate: 0.7, pitch: 1.1 });
+  };
+
+  const pickEnding = (e: string) => {
+    setEnding(e);
+    if (beginning !== null) speakWord(beginning + e);
+    else speak(e, { rate: 0.7, pitch: 1.1 });
+  };
+
+  const clear = () => {
+    setBeginning(null);
+    setEnding(null);
+  };
+
+  return (
+    <div className="text-center">
+      <p className="text-purple-600 font-bold mb-1">Free Build — mix sounds!</p>
+      <p className="text-purple-400 text-sm mb-4">
+        Pick a beginning and an ending. Make real words or silly ones!
+      </p>
+
+      {/* The assembled "word" — big. */}
+      <div className="flex items-center justify-center gap-2 mb-6">
+        <span
+          className={
+            beginning
+              ? 'min-w-[4.5rem] h-20 px-3 rounded-2xl flex items-center justify-center font-black text-4xl sm:text-5xl text-white bg-amber-500 shadow-lg'
+              : 'min-w-[4.5rem] h-20 px-3 rounded-2xl flex items-center justify-center font-black text-4xl sm:text-5xl text-purple-300 border-4 border-dashed border-purple-300'
+          }
+        >
+          {beginning ?? '?'}
+        </span>
+        <span className="text-3xl text-purple-300">+</span>
+        <span
+          className={
+            ending
+              ? 'min-w-[4.5rem] h-20 px-3 rounded-2xl flex items-center justify-center font-black text-4xl sm:text-5xl text-white bg-orange-500 shadow-lg'
+              : 'min-w-[4.5rem] h-20 px-3 rounded-2xl flex items-center justify-center font-black text-4xl sm:text-5xl text-purple-300 border-4 border-dashed border-purple-300'
+          }
+        >
+          {ending ?? '?'}
+        </span>
+        {ready && (
+          <>
+            <span className="text-3xl text-purple-300">=</span>
+            <span className="min-w-[6rem] h-20 px-3 rounded-2xl flex items-center justify-center font-black text-4xl sm:text-5xl text-white bg-gradient-to-br from-emerald-400 to-teal-500 shadow-lg animate-bounce-slow">
+              {word}
+            </span>
+          </>
+        )}
+      </div>
+
+      <div className="grid grid-cols-2 gap-4">
+        {/* BEGINNINGS */}
+        <div>
+          <p className="font-black text-amber-600 mb-2">Beginnings</p>
+          <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2">
+            {FREE_BEGINNINGS.map((b) => (
+              <button
+                key={b}
+                onClick={() => pickBeginning(b)}
+                className={
+                  b === beginning
+                    ? 'min-w-[2.75rem] h-11 sm:h-12 px-2 rounded-xl font-black text-lg sm:text-xl text-white bg-amber-600 shadow ring-4 ring-amber-200 transition-transform'
+                    : 'min-w-[2.75rem] h-11 sm:h-12 px-2 rounded-xl font-black text-lg sm:text-xl text-white bg-gradient-to-br from-amber-400 to-orange-500 shadow hover:scale-110 active:scale-90 transition-transform'
+                }
+              >
+                {b}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* ENDINGS */}
+        <div>
+          <p className="font-black text-orange-600 mb-2">Endings</p>
+          <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2">
+            {FREE_ENDINGS.map((e) => (
+              <button
+                key={e}
+                onClick={() => pickEnding(e)}
+                className={
+                  e === ending
+                    ? 'min-w-[2.75rem] h-11 sm:h-12 px-2 rounded-xl font-black text-lg sm:text-xl text-white bg-orange-600 shadow ring-4 ring-orange-200 transition-transform'
+                    : 'min-w-[2.75rem] h-11 sm:h-12 px-2 rounded-xl font-black text-lg sm:text-xl text-white bg-gradient-to-br from-orange-400 to-pink-500 shadow hover:scale-110 active:scale-90 transition-transform'
+                }
+              >
+                {e}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="flex flex-col sm:flex-row gap-3 justify-center mt-6">
+        <button
+          onClick={() => ready && speakWord(word)}
+          disabled={!ready}
+          className={
+            ready
+              ? 'bg-gradient-to-br from-emerald-400 to-teal-500 text-white font-black px-6 py-3 rounded-2xl shadow hover:scale-105 transition-transform'
+              : 'bg-purple-100 text-purple-300 font-black px-6 py-3 rounded-2xl cursor-not-allowed'
+          }
+        >
+          🔊 Say it!
+        </button>
+        <button
+          onClick={clear}
+          className="bg-purple-100 hover:bg-purple-200 text-purple-900 font-bold px-6 py-3 rounded-2xl transition-colors"
+        >
+          ↺ Clear
+        </button>
       </div>
     </div>
   );

@@ -5,12 +5,16 @@
 // the giant letter GLYPH itself to look like the animal it stands for
 // (A → Alligator) OR makes a silly mashup.
 //
-// KEY DESIGN: the decorations attach to the LETTER ITSELF, not to a card/box.
-// We render ONE giant colored character (e.g. a green "A") as the body. The
-// glyph lives inside a tightly-sized inline-block "stage" so that absolute
-// positioning (top/left/%) is measured against the GLYPH, not a square card.
-// Eyes, jaws, ears, hat, tail, spikes, etc. are absolutely positioned OVER the
-// glyph so the LETTER looks like the creature.
+// KEY DESIGN: decorations anchor to a stable rounded-square "FACE PANEL"
+// (the character's head), colored with the chosen color, with the big bold
+// LETTER shown prominently centered on it (the letter is still the star). We
+// tried anchoring pieces to the bare glyph, but letter shapes vary wildly
+// (C vs I vs A) so a smile would float in a corner. Anchoring to the PANEL
+// instead gives every piece ONE predictable spot that looks right for EVERY
+// letter: eyes upper-third, mouth lower-middle, ears top corners, hat on top,
+// tail off the bottom-right, spikes riding the top edge (never through the
+// middle). Eyes, jaws, ears, hat, tail, spikes, etc. are absolutely positioned
+// against the panel.
 //
 // No image files, no external libs — everything is emoji + CSS shapes.
 //
@@ -792,26 +796,65 @@ function orderedPieces(slot: Slot, highlight: string[]): Piece[] {
   return [...hi, ...rest];
 }
 
-// ----- Slot positioning over the GLYPH -------------------------------------
-// Positions are relative to the glyph stage (tightly sized around the letter),
-// so pieces sit ON the letter — not on a separate card.
+// ----- Slot positioning on the FACE PANEL ----------------------------------
+// Decorations anchor to a consistent rounded-square "face" panel — NOT the
+// irregular letter glyph. The big letter is shown inside the panel as the
+// character's face/body, but every decoration uses ONE reliable anchor on the
+// panel so placement looks right for EVERY letter (C, I, W, A all work):
+//   eyes   — upper third, centered, side by side
+//   mouth  — lower-middle, centered under the eyes
+//   ears   — top edge, near the two corners
+//   hat    — sitting ON TOP of the panel, centered
+//   tail   — off the bottom-right edge
+//   extra  — overlay handled per-piece (spikes ride the TOP edge, not the
+//            middle; stripes/dots cover the panel; scarf sits at the chin)
 
 function slotStyle(slot: Slot): React.CSSProperties {
   switch (slot) {
     case 'eyes':
-      return { top: '20%', left: '50%', transform: 'translate(-50%,-50%)' };
+      // Upper third of the face, centered.
+      return { top: '30%', left: '50%', transform: 'translate(-50%,-50%)' };
     case 'mouth':
-      return { top: '60%', left: '50%', transform: 'translate(-50%,-50%)' };
+      // Lower-middle, centered under the eyes.
+      return { top: '70%', left: '50%', transform: 'translate(-50%,-50%)' };
     case 'ears':
-      return { top: '2%', left: '50%', transform: 'translate(-50%,-100%)' };
+      // Riding the very top edge, spanning toward the corners.
+      return { top: 0, left: '50%', transform: 'translate(-50%,-72%)' };
     case 'hat':
-      return { top: '-2%', left: '50%', transform: 'translate(-50%,-100%)' };
+      // Sitting ON TOP of the panel, centered.
+      return { top: 0, left: '50%', transform: 'translate(-50%,-88%)' };
     case 'tail':
-      return { top: '58%', right: '-4%', transform: 'translate(100%,0)' };
+      // Off the bottom-right edge.
+      return { bottom: '4%', right: 0, transform: 'translate(58%,40%)' };
     case 'extra':
-      return { inset: 0 }; // extras decorate the whole glyph area
+      // Default: full-panel overlay (stripes/dots). Specific extras override.
+      return { inset: 0 };
     default:
       return {};
+  }
+}
+
+// Some EXTRA pieces want a specific anchor instead of the full-panel overlay,
+// so they never sit through the middle of the face / cover the eyes & mouth.
+function extraStyle(id: string | undefined): React.CSSProperties {
+  switch (id) {
+    case 'spikes':
+      // A row of spikes riding ON TOP of the panel's top edge.
+      return { top: 0, left: '50%', transform: 'translate(-50%,-86%)' };
+    case 'scarf':
+      // Around the "chin" — bottom edge of the face.
+      return { bottom: 0, left: '50%', transform: 'translate(-50%,55%)' };
+    case 'star':
+      // A sparkle tucked in the top-right corner.
+      return { top: '4%', right: '4%' };
+    case 'whiskers':
+      // Lower-middle, behind the mouth area.
+      return { top: '68%', left: '50%', transform: 'translate(-50%,-50%)' };
+    case 'stripes':
+    case 'dots':
+    default:
+      // Full-panel decorative overlay.
+      return { inset: 0 };
   }
 }
 
@@ -852,12 +895,15 @@ export default function DressUpStudio() {
     setColor(entry.color);
   };
 
-  // Render one decoration piece, positioned relative to the glyph stage.
+  // Render one decoration piece, anchored to the FACE PANEL (not the glyph).
   const renderSlot = (slot: Slot) => {
     const id = outfit[slot];
     if (!id) return null;
     const piece = CATALOG[slot].find((p) => p.id === id);
     if (!piece) return null;
+    // Extras pick a per-piece anchor so spikes ride the top edge and nothing
+    // sits through the middle covering the eyes/mouth.
+    const pos = slot === 'extra' ? extraStyle(id) : slotStyle(slot);
     return (
       <span
         key={slot}
@@ -866,9 +912,9 @@ export default function DressUpStudio() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          zIndex: slot === 'extra' ? 6 : 5,
+          zIndex: slot === 'extra' ? 3 : 5,
           pointerEvents: 'none',
-          ...slotStyle(slot),
+          ...pos,
         }}
       >
         {piece.render}
@@ -884,48 +930,84 @@ export default function DressUpStudio() {
           Make {entry.letter} look like {anA(entry.animal)} {entry.animal}! {entry.emoji}
         </p>
         <p className="text-purple-400 text-xs sm:text-sm font-bold">
-          Dress the letter, not a box — give {entry.letter} some eyes! 👀
+          Give your letter eyes, a mouth, and more! 👀
         </p>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-6">
-        {/* ---- Stage (the LETTER is the body) ---- */}
+        {/* ---- Stage: a stable FACE PANEL holds the big letter ---- */}
         <div className="flex-1 flex flex-col items-center">
-          {/* A neutral playmat so the glyph + decorations read clearly. The mat
-              is NOT decorated — only the letter is. */}
-          <div className="relative w-full rounded-[2rem] bg-gradient-to-b from-purple-50 to-white border-2 border-purple-100 flex items-center justify-center py-10 px-6 overflow-visible"
-               style={{ minHeight: 380 }}>
-            {/* Tight glyph stage: sized to the letter so decorations attach to
-                the GLYPH, not a square card. */}
+          {/* A neutral playmat. The FACE PANEL inside is the character's head —
+              decorations anchor to the PANEL (reliable spots for every letter),
+              while the big letter stays the star, centered on the panel. */}
+          <div className="relative w-full rounded-[2rem] bg-gradient-to-b from-purple-50 to-white border-2 border-purple-100 flex items-center justify-center py-14 px-6 overflow-visible"
+               style={{ minHeight: 400 }}>
+            {/* The FACE PANEL: a consistent rounded square, colored with the
+                selected color. Every decoration is positioned against THIS box,
+                so a smile always lands under the eyes — never in a corner. */}
             <button
               onClick={() => playLetter(entry)}
               aria-label={`Hear the sound for the letter ${entry.letter}`}
               className="relative focus:outline-none active:scale-95 transition-transform"
-              style={{ lineHeight: 1, background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+              style={{
+                width: 'min(70vw, 300px)',
+                height: 'min(70vw, 300px)',
+                borderRadius: '28%',
+                background: color,
+                border: '6px solid rgba(0,0,0,0.18)',
+                boxShadow: '0 10px 0 rgba(0,0,0,0.12), 0 18px 30px rgba(0,0,0,0.18)',
+                padding: 0,
+                cursor: 'pointer',
+                transition: 'background 0.3s',
+              }}
             >
-              {/* the giant colored LETTER itself = the creature's body */}
+              {/* Full-panel decorative overlays (stripes / dots) sit BEHIND the
+                  letter so the letter stays readable. */}
+              {outfit.extra === 'stripes' || outfit.extra === 'dots' ? (
+                <span
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    borderRadius: '28%',
+                    overflow: 'hidden',
+                    zIndex: 1,
+                    pointerEvents: 'none',
+                  }}
+                >
+                  {CATALOG.extra.find((p) => p.id === outfit.extra)?.render}
+                </span>
+              ) : null}
+
+              {/* The big, bold, centered LETTER — still the star, shown as the
+                  character's face. */}
               <span
                 style={{
-                  position: 'relative',
-                  display: 'inline-block',
+                  position: 'absolute',
+                  inset: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                   fontWeight: 900,
-                  fontSize: 'min(46vw, 340px)',
-                  lineHeight: 0.92,
-                  color,
-                  textShadow: '0 6px 0 rgba(0,0,0,0.14), 0 10px 18px rgba(0,0,0,0.18)',
+                  fontSize: 'min(40vw, 200px)',
+                  lineHeight: 1,
+                  color: '#fff',
+                  textShadow: '0 4px 0 rgba(0,0,0,0.18), 0 8px 14px rgba(0,0,0,0.22)',
                   userSelect: 'none',
-                  WebkitTextStroke: '3px rgba(0,0,0,0.18)',
-                  transition: 'color 0.3s',
-                  padding: '0 0.06em',
+                  zIndex: 2,
+                  pointerEvents: 'none',
                 }}
               >
                 {entry.letter}
-                {/* decorations attach ON the glyph (slots positioned relative
-                    to THIS inline-block span). Render order = z-stacking. */}
-                {(['extra', 'tail', 'hat', 'ears', 'eyes', 'mouth'] as Slot[]).map((s) =>
-                  renderSlot(s),
-                )}
               </span>
+
+              {/* Decorations anchored to the PANEL. Render order ≈ z-stacking;
+                  full-panel extras (stripes/dots) already drawn behind above, so
+                  renderSlot('extra') only emits anchored extras here. */}
+              {(['tail', 'hat', 'ears', 'eyes', 'mouth', 'extra'] as Slot[]).map((s) =>
+                s === 'extra' && (outfit.extra === 'stripes' || outfit.extra === 'dots')
+                  ? null
+                  : renderSlot(s),
+              )}
             </button>
           </div>
           <p className="text-center text-purple-400 text-xs mt-2">👆 Tap the letter to hear its sound</p>

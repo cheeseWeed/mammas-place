@@ -5,7 +5,7 @@
 // Find the Sound, Build a Word (easy/mid/hard), and the Dress-Up Studio.
 // Audio-first, big tap targets, works without reading.
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import SabbathGuard from '@/components/SabbathGuard';
 import SectionGuard from '@/components/SectionGuard';
@@ -65,7 +65,7 @@ function Menu({ onPick }: { onPick: (m: Mode) => void }) {
     { mode: 'find', emoji: '👂', title: 'Find the Sound', sub: 'Tap the letter you hear', color: 'from-sky-400 to-indigo-500' },
     { mode: 'startswith', emoji: '🍎', title: 'Starts With…', sub: 'Pick what starts with the letter', color: 'from-lime-500 to-green-600' },
     { mode: 'memory', emoji: '🃏', title: 'Memory Match', sub: 'Match big & little letters', color: 'from-rose-400 to-red-500' },
-    { mode: 'build', emoji: '🐱', title: 'Build a Word', sub: 'Easy · Medium · Hard', color: 'from-emerald-400 to-teal-500' },
+    { mode: 'build', emoji: '🐱', title: 'Build a Word', sub: 'Easy · Medium · Hard · Free', color: 'from-emerald-400 to-teal-500' },
     { mode: 'dressup', emoji: '🎨', title: 'Dress a Letter', sub: 'Make A into an Alligator!', color: 'from-fuchsia-500 to-purple-600' },
   ];
   return (
@@ -154,33 +154,39 @@ function FindTheSound() {
     return [...all.slice(rot), ...all.slice(0, rot)];
   }
 
+  // Auto-play the target sound once when a new round's target is set (incl. the
+  // very first round on mount), so the kid knows what they're hunting for.
+  useEffect(() => {
+    const t = setTimeout(() => playLetter(target), 250);
+    return () => clearTimeout(t);
+  }, [target]);
+
   const newRound = () => {
     const next = LETTERS[(LETTERS.indexOf(target) + 5) % LETTERS.length];
-    setTarget(next);
     setChoices(pickChoices(next));
     setFeedback('none');
-    setTimeout(() => speak(next.spoken), 150);
+    setTarget(next); // triggers the auto-play effect
   };
 
   const choose = (c: LetterEntry) => {
     if (c.letter === target.letter) {
       setFeedback('yes');
       setScore((s) => s + 1);
-      speak(`Yes! ${target.spoken}`);
+      speak('Yes! Great job!');
       setTimeout(newRound, 1500);
     } else {
       setFeedback('no');
-      speak(`Try again. ${target.letter} is for ${target.animal}.`);
+      playLetter(target); // replay the sound they're looking for
     }
   };
 
   return (
     <div className="bg-white rounded-3xl shadow-lg border-2 border-purple-100 p-6 text-center">
       <button
-        onClick={() => speak(target.spoken)}
+        onClick={() => playLetter(target)}
         className="bg-gradient-to-br from-sky-400 to-indigo-500 text-white font-black text-xl px-6 py-4 rounded-2xl shadow mb-2 hover:scale-105 transition-transform"
       >
-        👂 Hear the letter
+        👂 Hear the letter again
       </button>
       <p className="text-purple-500 text-sm mb-5">Tap the button, then pick the letter you hear.</p>
 
