@@ -114,8 +114,17 @@ export function todayISO(now: Date = new Date()): string {
   return `${y}-${m}-${d}`;
 }
 
+// ---------------------------------------------------------------------------
+// Seeded RNG primitives.
+//
+// Exported (not private) so other calendar-deterministic features reuse the
+// EXACT same stream instead of forking their own RNG — e.g.
+// lib/image-store/rotation.ts (weekly image drops). Same seed string must mean
+// the same shuffle everywhere, forever; don't change these implementations.
+// ---------------------------------------------------------------------------
+
 // 32-bit FNV-1a string hash → uint32 seed for mulberry32.
-function fnv1a(s: string): number {
+export function fnv1a(s: string): number {
   let h = 0x811c9dc5;
   for (let i = 0; i < s.length; i++) {
     h ^= s.charCodeAt(i);
@@ -124,7 +133,7 @@ function fnv1a(s: string): number {
   return h >>> 0;
 }
 
-function mulberry32(seed: number): () => number {
+export function mulberry32(seed: number): () => number {
   let t = seed >>> 0;
   return () => {
     t = (t + 0x6D2B79F5) >>> 0;
@@ -134,7 +143,7 @@ function mulberry32(seed: number): () => number {
   };
 }
 
-function seededShuffle<T>(arr: T[], rand: () => number): T[] {
+export function seededShuffle<T>(arr: T[], rand: () => number): T[] {
   const out = arr.slice();
   for (let i = out.length - 1; i > 0; i--) {
     const j = Math.floor(rand() * (i + 1));

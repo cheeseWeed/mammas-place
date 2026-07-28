@@ -54,6 +54,8 @@ next-env.d.ts
 *.png
 !public/images/*.png
 !screenshots/*.png
+# Image Store watermarked previews are generated but MUST ship (scripts/image-store/build-previews.mjs)
+!public/image-store/previews/*.png
 
 # temp docs (experience transcripts, demo warnings, etc.)
 *-experience.md

@@ -1,0 +1,1702 @@
+[
+  {
+    "id": "arch-ball-001",
+    "title": "Soccer Ball Study No. 1",
+    "setName": "Soccer Ball Studies",
+    "sourceFile": "ball-001.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-ball-001.png",
+    "originalPath": "assets/image-store/originals/ball-001.svg"
+  },
+  {
+    "id": "arch-ball-002",
+    "title": "Soccer Ball Study No. 2",
+    "setName": "Soccer Ball Studies",
+    "sourceFile": "ball-002.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-ball-002.png",
+    "originalPath": "assets/image-store/originals/ball-002.svg"
+  },
+  {
+    "id": "arch-ball-003",
+    "title": "Soccer Ball Study No. 3",
+    "setName": "Soccer Ball Studies",
+    "sourceFile": "ball-003.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-ball-003.png",
+    "originalPath": "assets/image-store/originals/ball-003.svg"
+  },
+  {
+    "id": "arch-ball-004",
+    "title": "Soccer Ball Study No. 4",
+    "setName": "Soccer Ball Studies",
+    "sourceFile": "ball-004.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-ball-004.png",
+    "originalPath": "assets/image-store/originals/ball-004.svg"
+  },
+  {
+    "id": "arch-ball-005",
+    "title": "Soccer Ball Study No. 5",
+    "setName": "Soccer Ball Studies",
+    "sourceFile": "ball-005.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-ball-005.png",
+    "originalPath": "assets/image-store/originals/ball-005.svg"
+  },
+  {
+    "id": "arch-ball-006",
+    "title": "Soccer Ball Study No. 6",
+    "setName": "Soccer Ball Studies",
+    "sourceFile": "ball-006.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-ball-006.png",
+    "originalPath": "assets/image-store/originals/ball-006.svg"
+  },
+  {
+    "id": "arch-grocery-001-olive-oil",
+    "title": "Extra Virgin Olive Oil, 750ml",
+    "setName": "Pantry Staples",
+    "sourceFile": "grocery-001-olive-oil.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-grocery-001-olive-oil.png",
+    "originalPath": "assets/image-store/originals/grocery-001-olive-oil.svg"
+  },
+  {
+    "id": "arch-grocery-002-pasta",
+    "title": "Spaghetti Box, 500g",
+    "setName": "Pantry Staples",
+    "sourceFile": "grocery-002-pasta.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-grocery-002-pasta.png",
+    "originalPath": "assets/image-store/originals/grocery-002-pasta.svg"
+  },
+  {
+    "id": "arch-grocery-003-canned-tomatoes",
+    "title": "Crushed Tomatoes Tin",
+    "setName": "Pantry Staples",
+    "sourceFile": "grocery-003-canned-tomatoes.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-grocery-003-canned-tomatoes.png",
+    "originalPath": "assets/image-store/originals/grocery-003-canned-tomatoes.svg"
+  },
+  {
+    "id": "arch-grocery-004-flour",
+    "title": "All-Purpose Flour Sack",
+    "setName": "Pantry Staples",
+    "sourceFile": "grocery-004-flour.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-grocery-004-flour.png",
+    "originalPath": "assets/image-store/originals/grocery-004-flour.svg"
+  },
+  {
+    "id": "arch-grocery-005-sugar",
+    "title": "Granulated Sugar Bag",
+    "setName": "Pantry Staples",
+    "sourceFile": "grocery-005-sugar.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-grocery-005-sugar.png",
+    "originalPath": "assets/image-store/originals/grocery-005-sugar.svg"
+  },
+  {
+    "id": "arch-grocery-006-peanut-butter",
+    "title": "Creamy Peanut Butter Jar",
+    "setName": "Pantry Staples",
+    "sourceFile": "grocery-006-peanut-butter.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-grocery-006-peanut-butter.png",
+    "originalPath": "assets/image-store/originals/grocery-006-peanut-butter.svg"
+  },
+  {
+    "id": "arch-grocery-007-milk",
+    "title": "Whole Milk Carton",
+    "setName": "Pantry Staples",
+    "sourceFile": "grocery-007-milk.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-grocery-007-milk.png",
+    "originalPath": "assets/image-store/originals/grocery-007-milk.svg"
+  },
+  {
+    "id": "arch-grocery-008-cereal",
+    "title": "Whole Grain Cereal Box",
+    "setName": "Pantry Staples",
+    "sourceFile": "grocery-008-cereal.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-grocery-008-cereal.png",
+    "originalPath": "assets/image-store/originals/grocery-008-cereal.svg"
+  },
+  {
+    "id": "arch-grocery-009-cheese",
+    "title": "Sharp Cheddar Block",
+    "setName": "Pantry Staples",
+    "sourceFile": "grocery-009-cheese.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-grocery-009-cheese.png",
+    "originalPath": "assets/image-store/originals/grocery-009-cheese.svg"
+  },
+  {
+    "id": "arch-grocery-010-rice",
+    "title": "Long Grain White Rice",
+    "setName": "Pantry Staples",
+    "sourceFile": "grocery-010-rice.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-grocery-010-rice.png",
+    "originalPath": "assets/image-store/originals/grocery-010-rice.svg"
+  },
+  {
+    "id": "arch-cereal-001",
+    "title": "Honey Oat Cereal Box",
+    "setName": "Kitchen Cupboard",
+    "sourceFile": "cereal-001.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-cereal-001.png",
+    "originalPath": "assets/image-store/originals/cereal-001.svg"
+  },
+  {
+    "id": "arch-pasta-001",
+    "title": "Italian Spaghetti Box",
+    "setName": "Kitchen Cupboard",
+    "sourceFile": "pasta-001.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-pasta-001.png",
+    "originalPath": "assets/image-store/originals/pasta-001.svg"
+  },
+  {
+    "id": "arch-rice-001",
+    "title": "Jasmine Rice Sack",
+    "setName": "Kitchen Cupboard",
+    "sourceFile": "rice-001.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rice-001.png",
+    "originalPath": "assets/image-store/originals/rice-001.svg"
+  },
+  {
+    "id": "arch-sauce-001",
+    "title": "Nonna's Marinara Jar",
+    "setName": "Kitchen Cupboard",
+    "sourceFile": "sauce-001.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-sauce-001.png",
+    "originalPath": "assets/image-store/originals/sauce-001.svg"
+  },
+  {
+    "id": "arch-honey-001",
+    "title": "Pure Raw Wildflower Honey",
+    "setName": "Kitchen Cupboard",
+    "sourceFile": "honey-001.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-honey-001.png",
+    "originalPath": "assets/image-store/originals/honey-001.svg"
+  },
+  {
+    "id": "arch-olive-oil-001",
+    "title": "Tuscan Gold Olive Oil",
+    "setName": "Kitchen Cupboard",
+    "sourceFile": "olive-oil-001.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-olive-oil-001.png",
+    "originalPath": "assets/image-store/originals/olive-oil-001.svg"
+  },
+  {
+    "id": "arch-coffee-001",
+    "title": "Artisan Roast Coffee Beans",
+    "setName": "Kitchen Cupboard",
+    "sourceFile": "coffee-001.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-coffee-001.png",
+    "originalPath": "assets/image-store/originals/coffee-001.svg"
+  },
+  {
+    "id": "arch-banana",
+    "title": "Single Ripe Banana",
+    "setName": "Kitchen Cupboard",
+    "sourceFile": "banana.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-banana.png",
+    "originalPath": "assets/image-store/originals/banana.svg"
+  },
+  {
+    "id": "arch-chips-001",
+    "title": "Family Size Potato Chips",
+    "setName": "Snack Aisle",
+    "sourceFile": "chips-001.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-chips-001.png",
+    "originalPath": "assets/image-store/originals/chips-001.svg"
+  },
+  {
+    "id": "arch-cookies-001",
+    "title": "Homestyle Chocolate Chip Cookies",
+    "setName": "Snack Aisle",
+    "sourceFile": "cookies-001.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-cookies-001.png",
+    "originalPath": "assets/image-store/originals/cookies-001.svg"
+  },
+  {
+    "id": "arch-fruitsnacks-001",
+    "title": "Fruit Snacks 40-Pack",
+    "setName": "Snack Aisle",
+    "sourceFile": "fruitsnacks-001.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-fruitsnacks-001.png",
+    "originalPath": "assets/image-store/originals/fruitsnacks-001.svg"
+  },
+  {
+    "id": "arch-nuts-001",
+    "title": "Premium Mixed Nuts Tub",
+    "setName": "Snack Aisle",
+    "sourceFile": "nuts-001.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-nuts-001.png",
+    "originalPath": "assets/image-store/originals/nuts-001.svg"
+  },
+  {
+    "id": "arch-popcorn-001",
+    "title": "Premium Popcorn Kernels",
+    "setName": "Snack Aisle",
+    "sourceFile": "popcorn-001.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-popcorn-001.png",
+    "originalPath": "assets/image-store/originals/popcorn-001.svg"
+  },
+  {
+    "id": "arch-snacks-001",
+    "title": "Nature's Best Trail Mix",
+    "setName": "Snack Aisle",
+    "sourceFile": "snacks-001.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-snacks-001.png",
+    "originalPath": "assets/image-store/originals/snacks-001.svg"
+  },
+  {
+    "id": "arch-trailmix-001",
+    "title": "Trail Mix Pouch, 20oz",
+    "setName": "Snack Aisle",
+    "sourceFile": "trailmix-001.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-trailmix-001.png",
+    "originalPath": "assets/image-store/originals/trailmix-001.svg"
+  },
+  {
+    "id": "arch-dessert-001",
+    "title": "Strawberry Cheesecake",
+    "setName": "Dessert Plates",
+    "sourceFile": "dessert-001.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-dessert-001.png",
+    "originalPath": "assets/image-store/originals/dessert-001.svg"
+  },
+  {
+    "id": "arch-dessert-002",
+    "title": "Chocolate Mousse Cake",
+    "setName": "Dessert Plates",
+    "sourceFile": "dessert-002.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-dessert-002.png",
+    "originalPath": "assets/image-store/originals/dessert-002.svg"
+  },
+  {
+    "id": "arch-dessert-003",
+    "title": "Tiramisu",
+    "setName": "Dessert Plates",
+    "sourceFile": "dessert-003.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-dessert-003.png",
+    "originalPath": "assets/image-store/originals/dessert-003.svg"
+  },
+  {
+    "id": "arch-dessert-004",
+    "title": "Lemon Meringue Tart",
+    "setName": "Dessert Plates",
+    "sourceFile": "dessert-004.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-dessert-004.png",
+    "originalPath": "assets/image-store/originals/dessert-004.svg"
+  },
+  {
+    "id": "arch-dessert-005",
+    "title": "Chocolate Lava Cake",
+    "setName": "Dessert Plates",
+    "sourceFile": "dessert-005.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-dessert-005.png",
+    "originalPath": "assets/image-store/originals/dessert-005.svg"
+  },
+  {
+    "id": "arch-dessert-006",
+    "title": "Raspberry Panna Cotta",
+    "setName": "Dessert Plates",
+    "sourceFile": "dessert-006.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-dessert-006.png",
+    "originalPath": "assets/image-store/originals/dessert-006.svg"
+  },
+  {
+    "id": "arch-dinner-001",
+    "title": "Escargot with Garlic Butter",
+    "setName": "Fine Dining Plates",
+    "sourceFile": "dinner-001.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-dinner-001.png",
+    "originalPath": "assets/image-store/originals/dinner-001.svg"
+  },
+  {
+    "id": "arch-dinner-002",
+    "title": "Artisan Cheese Board",
+    "setName": "Fine Dining Plates",
+    "sourceFile": "dinner-002.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-dinner-002.png",
+    "originalPath": "assets/image-store/originals/dinner-002.svg"
+  },
+  {
+    "id": "arch-dinner-003",
+    "title": "Prime Rib with Yorkshire Pudding",
+    "setName": "Fine Dining Plates",
+    "sourceFile": "dinner-003.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-dinner-003.png",
+    "originalPath": "assets/image-store/originals/dinner-003.svg"
+  },
+  {
+    "id": "arch-dinner-004",
+    "title": "Grilled Lobster Tail",
+    "setName": "Fine Dining Plates",
+    "sourceFile": "dinner-004.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-dinner-004.png",
+    "originalPath": "assets/image-store/originals/dinner-004.svg"
+  },
+  {
+    "id": "arch-dinner-005",
+    "title": "Spaghetti Carbonara",
+    "setName": "Fine Dining Plates",
+    "sourceFile": "dinner-005.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-dinner-005.png",
+    "originalPath": "assets/image-store/originals/dinner-005.svg"
+  },
+  {
+    "id": "arch-dinner-006",
+    "title": "Risotto Milanese",
+    "setName": "Fine Dining Plates",
+    "sourceFile": "dinner-006.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-dinner-006.png",
+    "originalPath": "assets/image-store/originals/dinner-006.svg"
+  },
+  {
+    "id": "arch-lunch-001",
+    "title": "Veggie Supreme Pizza",
+    "setName": "Lunch Counter",
+    "sourceFile": "lunch-001.svg",
+    "priceCents": 700,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-lunch-001.png",
+    "originalPath": "assets/image-store/originals/lunch-001.svg"
+  },
+  {
+    "id": "arch-lunch-002",
+    "title": "Street Taco Trio",
+    "setName": "Lunch Counter",
+    "sourceFile": "lunch-002.svg",
+    "priceCents": 700,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-lunch-002.png",
+    "originalPath": "assets/image-store/originals/lunch-002.svg"
+  },
+  {
+    "id": "arch-lunch-003",
+    "title": "Ahi Tuna Poke Bowl",
+    "setName": "Lunch Counter",
+    "sourceFile": "lunch-003.svg",
+    "priceCents": 700,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-lunch-003.png",
+    "originalPath": "assets/image-store/originals/lunch-003.svg"
+  },
+  {
+    "id": "arch-lunch-004",
+    "title": "Cheeseburger and Fries",
+    "setName": "Lunch Counter",
+    "sourceFile": "lunch-004.svg",
+    "priceCents": 700,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-lunch-004.png",
+    "originalPath": "assets/image-store/originals/lunch-004.svg"
+  },
+  {
+    "id": "arch-lunch-005",
+    "title": "Grilled Chicken Caesar",
+    "setName": "Lunch Counter",
+    "sourceFile": "lunch-005.svg",
+    "priceCents": 700,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-lunch-005.png",
+    "originalPath": "assets/image-store/originals/lunch-005.svg"
+  },
+  {
+    "id": "arch-lunch-006",
+    "title": "Hummus Veggie Wrap",
+    "setName": "Lunch Counter",
+    "sourceFile": "lunch-006.svg",
+    "priceCents": 700,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-lunch-006.png",
+    "originalPath": "assets/image-store/originals/lunch-006.svg"
+  },
+  {
+    "id": "arch-lunch-007",
+    "title": "Mediterranean Quinoa Bowl",
+    "setName": "Lunch Counter",
+    "sourceFile": "lunch-007.svg",
+    "priceCents": 700,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-lunch-007.png",
+    "originalPath": "assets/image-store/originals/lunch-007.svg"
+  },
+  {
+    "id": "arch-rest-breakfast-001",
+    "title": "Classic American Breakfast",
+    "setName": "Restaurant Breakfast",
+    "sourceFile": "rest-breakfast-001.svg",
+    "priceCents": 700,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-breakfast-001.png",
+    "originalPath": "assets/image-store/originals/rest-breakfast-001.svg"
+  },
+  {
+    "id": "arch-rest-breakfast-002",
+    "title": "Pancake Stack with Syrup",
+    "setName": "Restaurant Breakfast",
+    "sourceFile": "rest-breakfast-002.svg",
+    "priceCents": 700,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-breakfast-002.png",
+    "originalPath": "assets/image-store/originals/rest-breakfast-002.svg"
+  },
+  {
+    "id": "arch-rest-breakfast-003",
+    "title": "French Omelette",
+    "setName": "Restaurant Breakfast",
+    "sourceFile": "rest-breakfast-003.svg",
+    "priceCents": 700,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-breakfast-003.png",
+    "originalPath": "assets/image-store/originals/rest-breakfast-003.svg"
+  },
+  {
+    "id": "arch-rest-breakfast-004",
+    "title": "Avocado and Salmon Toast",
+    "setName": "Restaurant Breakfast",
+    "sourceFile": "rest-breakfast-004.svg",
+    "priceCents": 700,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-breakfast-004.png",
+    "originalPath": "assets/image-store/originals/rest-breakfast-004.svg"
+  },
+  {
+    "id": "arch-rest-breakfast-005",
+    "title": "Spinach Mushroom Omelet",
+    "setName": "Restaurant Breakfast",
+    "sourceFile": "rest-breakfast-005.svg",
+    "priceCents": 700,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-breakfast-005.png",
+    "originalPath": "assets/image-store/originals/rest-breakfast-005.svg"
+  },
+  {
+    "id": "arch-rest-breakfast-006",
+    "title": "Scrambled Eggs with Peppers",
+    "setName": "Restaurant Breakfast",
+    "sourceFile": "rest-breakfast-006.svg",
+    "priceCents": 700,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-breakfast-006.png",
+    "originalPath": "assets/image-store/originals/rest-breakfast-006.svg"
+  },
+  {
+    "id": "arch-rest-dessert-001",
+    "title": "Triple Chocolate Cake",
+    "setName": "Restaurant Desserts",
+    "sourceFile": "rest-dessert-001.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-dessert-001.png",
+    "originalPath": "assets/image-store/originals/rest-dessert-001.svg"
+  },
+  {
+    "id": "arch-rest-dessert-002",
+    "title": "Creme Brulee",
+    "setName": "Restaurant Desserts",
+    "sourceFile": "rest-dessert-002.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-dessert-002.png",
+    "originalPath": "assets/image-store/originals/rest-dessert-002.svg"
+  },
+  {
+    "id": "arch-rest-dessert-003",
+    "title": "Ice Cream Sundae",
+    "setName": "Restaurant Desserts",
+    "sourceFile": "rest-dessert-003.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-dessert-003.png",
+    "originalPath": "assets/image-store/originals/rest-dessert-003.svg"
+  },
+  {
+    "id": "arch-rest-dessert-004",
+    "title": "Tiramisu Slice",
+    "setName": "Restaurant Desserts",
+    "sourceFile": "rest-dessert-004.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-dessert-004.png",
+    "originalPath": "assets/image-store/originals/rest-dessert-004.svg"
+  },
+  {
+    "id": "arch-rest-dessert-005",
+    "title": "Apple Pie a la Mode",
+    "setName": "Restaurant Desserts",
+    "sourceFile": "rest-dessert-005.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-dessert-005.png",
+    "originalPath": "assets/image-store/originals/rest-dessert-005.svg"
+  },
+  {
+    "id": "arch-rest-dinner-001",
+    "title": "Escargot Appetizer",
+    "setName": "Restaurant Dinners",
+    "sourceFile": "rest-dinner-001.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-dinner-001.png",
+    "originalPath": "assets/image-store/originals/rest-dinner-001.svg"
+  },
+  {
+    "id": "arch-rest-dinner-002",
+    "title": "Artisan Cheese Platter",
+    "setName": "Restaurant Dinners",
+    "sourceFile": "rest-dinner-002.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-dinner-002.png",
+    "originalPath": "assets/image-store/originals/rest-dinner-002.svg"
+  },
+  {
+    "id": "arch-rest-dinner-003",
+    "title": "Prime Rib Roast",
+    "setName": "Restaurant Dinners",
+    "sourceFile": "rest-dinner-003.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-dinner-003.png",
+    "originalPath": "assets/image-store/originals/rest-dinner-003.svg"
+  },
+  {
+    "id": "arch-rest-dinner-004",
+    "title": "Grilled Lobster Tail Dinner",
+    "setName": "Restaurant Dinners",
+    "sourceFile": "rest-dinner-004.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-dinner-004.png",
+    "originalPath": "assets/image-store/originals/rest-dinner-004.svg"
+  },
+  {
+    "id": "arch-rest-dinner-005",
+    "title": "Spaghetti Carbonara Plate",
+    "setName": "Restaurant Dinners",
+    "sourceFile": "rest-dinner-005.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-dinner-005.png",
+    "originalPath": "assets/image-store/originals/rest-dinner-005.svg"
+  },
+  {
+    "id": "arch-rest-dinner-006",
+    "title": "Pan-Seared Salmon",
+    "setName": "Restaurant Dinners",
+    "sourceFile": "rest-dinner-006.svg",
+    "priceCents": 800,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-dinner-006.png",
+    "originalPath": "assets/image-store/originals/rest-dinner-006.svg"
+  },
+  {
+    "id": "arch-rest-healthy-001",
+    "title": "Protein Power Bowl",
+    "setName": "Healthy Plates",
+    "sourceFile": "rest-healthy-001.svg",
+    "priceCents": 600,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-healthy-001.png",
+    "originalPath": "assets/image-store/originals/rest-healthy-001.svg"
+  },
+  {
+    "id": "arch-rest-healthy-002",
+    "title": "Grilled Salmon Plate",
+    "setName": "Healthy Plates",
+    "sourceFile": "rest-healthy-002.svg",
+    "priceCents": 600,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-healthy-002.png",
+    "originalPath": "assets/image-store/originals/rest-healthy-002.svg"
+  },
+  {
+    "id": "arch-rest-healthy-003",
+    "title": "Chicken Parmesan",
+    "setName": "Healthy Plates",
+    "sourceFile": "rest-healthy-003.svg",
+    "priceCents": 600,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-healthy-003.png",
+    "originalPath": "assets/image-store/originals/rest-healthy-003.svg"
+  },
+  {
+    "id": "arch-rest-healthy-004",
+    "title": "Vegan Buddha Bowl",
+    "setName": "Healthy Plates",
+    "sourceFile": "rest-healthy-004.svg",
+    "priceCents": 600,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-healthy-004.png",
+    "originalPath": "assets/image-store/originals/rest-healthy-004.svg"
+  },
+  {
+    "id": "arch-rest-healthy-005",
+    "title": "Surf and Turf",
+    "setName": "Healthy Plates",
+    "sourceFile": "rest-healthy-005.svg",
+    "priceCents": 600,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-healthy-005.png",
+    "originalPath": "assets/image-store/originals/rest-healthy-005.svg"
+  },
+  {
+    "id": "arch-rest-lunch-001",
+    "title": "Wood-Fired Gourmet Pizza",
+    "setName": "Restaurant Lunches",
+    "sourceFile": "rest-lunch-001.svg",
+    "priceCents": 700,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-lunch-001.png",
+    "originalPath": "assets/image-store/originals/rest-lunch-001.svg"
+  },
+  {
+    "id": "arch-rest-lunch-002",
+    "title": "Street Tacos, 3-Pack",
+    "setName": "Restaurant Lunches",
+    "sourceFile": "rest-lunch-002.svg",
+    "priceCents": 700,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-lunch-002.png",
+    "originalPath": "assets/image-store/originals/rest-lunch-002.svg"
+  },
+  {
+    "id": "arch-rest-lunch-003",
+    "title": "Hawaiian Poke Bowl",
+    "setName": "Restaurant Lunches",
+    "sourceFile": "rest-lunch-003.svg",
+    "priceCents": 700,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-lunch-003.png",
+    "originalPath": "assets/image-store/originals/rest-lunch-003.svg"
+  },
+  {
+    "id": "arch-rest-lunch-004",
+    "title": "Classic Burger and Fries",
+    "setName": "Restaurant Lunches",
+    "sourceFile": "rest-lunch-004.svg",
+    "priceCents": 700,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-lunch-004.png",
+    "originalPath": "assets/image-store/originals/rest-lunch-004.svg"
+  },
+  {
+    "id": "arch-rest-lunch-005",
+    "title": "Caesar Salad with Chicken",
+    "setName": "Restaurant Lunches",
+    "sourceFile": "rest-lunch-005.svg",
+    "priceCents": 700,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rest-lunch-005.png",
+    "originalPath": "assets/image-store/originals/rest-lunch-005.svg"
+  },
+  {
+    "id": "arch-home-001",
+    "title": "Modern Metal Planter",
+    "setName": "Garden and Patio",
+    "sourceFile": "home-001.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-home-001.png",
+    "originalPath": "assets/image-store/originals/home-001.svg"
+  },
+  {
+    "id": "arch-home-002",
+    "title": "Wooden Garden Bench",
+    "setName": "Garden and Patio",
+    "sourceFile": "home-002.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-home-002.png",
+    "originalPath": "assets/image-store/originals/home-002.svg"
+  },
+  {
+    "id": "arch-home-003",
+    "title": "Ceramic Birdbath",
+    "setName": "Garden and Patio",
+    "sourceFile": "home-003.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-home-003.png",
+    "originalPath": "assets/image-store/originals/home-003.svg"
+  },
+  {
+    "id": "arch-home-004",
+    "title": "Outdoor Seat Cushion",
+    "setName": "Garden and Patio",
+    "sourceFile": "home-004.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-home-004.png",
+    "originalPath": "assets/image-store/originals/home-004.svg"
+  },
+  {
+    "id": "arch-home-005",
+    "title": "Macrame Hanging Planter",
+    "setName": "Garden and Patio",
+    "sourceFile": "home-005.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-home-005.png",
+    "originalPath": "assets/image-store/originals/home-005.svg"
+  },
+  {
+    "id": "arch-home-006",
+    "title": "Garden Stepping Stones",
+    "setName": "Garden and Patio",
+    "sourceFile": "home-006.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-home-006.png",
+    "originalPath": "assets/image-store/originals/home-006.svg"
+  },
+  {
+    "id": "arch-home-007",
+    "title": "Backyard Fire Pit",
+    "setName": "Garden and Patio",
+    "sourceFile": "home-007.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-home-007.png",
+    "originalPath": "assets/image-store/originals/home-007.svg"
+  },
+  {
+    "id": "arch-home-008",
+    "title": "Metal Watering Can",
+    "setName": "Garden and Patio",
+    "sourceFile": "home-008.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-home-008.png",
+    "originalPath": "assets/image-store/originals/home-008.svg"
+  },
+  {
+    "id": "arch-home-009",
+    "title": "Candle Garden Lantern",
+    "setName": "Garden and Patio",
+    "sourceFile": "home-009.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-home-009.png",
+    "originalPath": "assets/image-store/originals/home-009.svg"
+  },
+  {
+    "id": "arch-home-010",
+    "title": "Raised Vegetable Bed",
+    "setName": "Garden and Patio",
+    "sourceFile": "home-010.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-home-010.png",
+    "originalPath": "assets/image-store/originals/home-010.svg"
+  },
+  {
+    "id": "arch-hd-001",
+    "title": "Ceramic Vase Trio",
+    "setName": "Home Decor",
+    "sourceFile": "hd-001.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-hd-001.png",
+    "originalPath": "assets/image-store/originals/hd-001.svg"
+  },
+  {
+    "id": "arch-hd-002",
+    "title": "Framed Abstract Canvas",
+    "setName": "Home Decor",
+    "sourceFile": "hd-002.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-hd-002.png",
+    "originalPath": "assets/image-store/originals/hd-002.svg"
+  },
+  {
+    "id": "arch-hd-003",
+    "title": "Scented Candle Trio",
+    "setName": "Home Decor",
+    "sourceFile": "hd-003.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-hd-003.png",
+    "originalPath": "assets/image-store/originals/hd-003.svg"
+  },
+  {
+    "id": "arch-hd-004",
+    "title": "Round Gold Mirror",
+    "setName": "Home Decor",
+    "sourceFile": "hd-004.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-hd-004.png",
+    "originalPath": "assets/image-store/originals/hd-004.svg"
+  },
+  {
+    "id": "arch-hd-005",
+    "title": "Throw Pillow Set",
+    "setName": "Home Decor",
+    "sourceFile": "hd-005.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-hd-005.png",
+    "originalPath": "assets/image-store/originals/hd-005.svg"
+  },
+  {
+    "id": "arch-lg-001",
+    "title": "Gas Push Mower, 21 Inch",
+    "setName": "Lawn and Garden Tools",
+    "sourceFile": "lg-001.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-lg-001.png",
+    "originalPath": "assets/image-store/originals/lg-001.svg"
+  },
+  {
+    "id": "arch-lg-002",
+    "title": "Cordless Hedge Trimmer",
+    "setName": "Lawn and Garden Tools",
+    "sourceFile": "lg-002.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-lg-002.png",
+    "originalPath": "assets/image-store/originals/lg-002.svg"
+  },
+  {
+    "id": "arch-lg-003",
+    "title": "Wildflower Seed Packet",
+    "setName": "Lawn and Garden Tools",
+    "sourceFile": "lg-003.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-lg-003.png",
+    "originalPath": "assets/image-store/originals/lg-003.svg"
+  },
+  {
+    "id": "arch-lg-004",
+    "title": "Three-Piece Garden Tool Set",
+    "setName": "Lawn and Garden Tools",
+    "sourceFile": "lg-004.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-lg-004.png",
+    "originalPath": "assets/image-store/originals/lg-004.svg"
+  },
+  {
+    "id": "arch-lg-005",
+    "title": "Coiled Garden Hose, 100ft",
+    "setName": "Lawn and Garden Tools",
+    "sourceFile": "lg-005.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-lg-005.png",
+    "originalPath": "assets/image-store/originals/lg-005.svg"
+  },
+  {
+    "id": "arch-outdoor-001",
+    "title": "Two-Pole Dome Tent",
+    "setName": "Camping Gear",
+    "sourceFile": "outdoor-001.svg",
+    "priceCents": 600,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-outdoor-001.png",
+    "originalPath": "assets/image-store/originals/outdoor-001.svg"
+  },
+  {
+    "id": "arch-outdoor-002",
+    "title": "Trail Daypack",
+    "setName": "Camping Gear",
+    "sourceFile": "outdoor-002.svg",
+    "priceCents": 600,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-outdoor-002.png",
+    "originalPath": "assets/image-store/originals/outdoor-002.svg"
+  },
+  {
+    "id": "arch-outdoor-003",
+    "title": "Rolled Sleeping Bag",
+    "setName": "Camping Gear",
+    "sourceFile": "outdoor-003.svg",
+    "priceCents": 600,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-outdoor-003.png",
+    "originalPath": "assets/image-store/originals/outdoor-003.svg"
+  },
+  {
+    "id": "arch-exercise-001",
+    "title": "Olympic Barbell, 45lb",
+    "setName": "Gym Equipment",
+    "sourceFile": "exercise-001.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-exercise-001.png",
+    "originalPath": "assets/image-store/originals/exercise-001.svg"
+  },
+  {
+    "id": "arch-exercise-002",
+    "title": "Stacked Bumper Plates",
+    "setName": "Gym Equipment",
+    "sourceFile": "exercise-002.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-exercise-002.png",
+    "originalPath": "assets/image-store/originals/exercise-002.svg"
+  },
+  {
+    "id": "arch-exercise-003",
+    "title": "Neoprene Dumbbell Pair, 15lb",
+    "setName": "Gym Equipment",
+    "sourceFile": "exercise-003.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-exercise-003.png",
+    "originalPath": "assets/image-store/originals/exercise-003.svg"
+  },
+  {
+    "id": "arch-exercise-004",
+    "title": "Stationary Exercise Bike",
+    "setName": "Gym Equipment",
+    "sourceFile": "exercise-004.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-exercise-004.png",
+    "originalPath": "assets/image-store/originals/exercise-004.svg"
+  },
+  {
+    "id": "arch-exercise-005",
+    "title": "Cable Crossover Machine",
+    "setName": "Gym Equipment",
+    "sourceFile": "exercise-005.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-exercise-005.png",
+    "originalPath": "assets/image-store/originals/exercise-005.svg"
+  },
+  {
+    "id": "arch-exercise-006",
+    "title": "Medicine Ball, 10lb",
+    "setName": "Gym Equipment",
+    "sourceFile": "exercise-006.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-exercise-006.png",
+    "originalPath": "assets/image-store/originals/exercise-006.svg"
+  },
+  {
+    "id": "arch-sports-ball-001",
+    "title": "Professional Basketball",
+    "setName": "Sports Balls",
+    "sourceFile": "sports-ball-001.svg",
+    "priceCents": 600,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-sports-ball-001.png",
+    "originalPath": "assets/image-store/originals/sports-ball-001.svg"
+  },
+  {
+    "id": "arch-sports-ball-002",
+    "title": "Leather Football",
+    "setName": "Sports Balls",
+    "sourceFile": "sports-ball-002.svg",
+    "priceCents": 600,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-sports-ball-002.png",
+    "originalPath": "assets/image-store/originals/sports-ball-002.svg"
+  },
+  {
+    "id": "arch-sports-ball-003",
+    "title": "Official Size Soccer Ball",
+    "setName": "Sports Balls",
+    "sourceFile": "sports-ball-003.svg",
+    "priceCents": 600,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-sports-ball-003.png",
+    "originalPath": "assets/image-store/originals/sports-ball-003.svg"
+  },
+  {
+    "id": "arch-sports-ball-004",
+    "title": "Indoor Volleyball",
+    "setName": "Sports Balls",
+    "sourceFile": "sports-ball-004.svg",
+    "priceCents": 600,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-sports-ball-004.png",
+    "originalPath": "assets/image-store/originals/sports-ball-004.svg"
+  },
+  {
+    "id": "arch-sports-ball-005",
+    "title": "Official League Baseball",
+    "setName": "Sports Balls",
+    "sourceFile": "sports-ball-005.svg",
+    "priceCents": 600,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-sports-ball-005.png",
+    "originalPath": "assets/image-store/originals/sports-ball-005.svg"
+  },
+  {
+    "id": "arch-sports-equip-001",
+    "title": "Adjustable Dumbbells, 50lb",
+    "setName": "Training Gear",
+    "sourceFile": "sports-equip-001.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-sports-equip-001.png",
+    "originalPath": "assets/image-store/originals/sports-equip-001.svg"
+  },
+  {
+    "id": "arch-sports-equip-002",
+    "title": "Premium Yoga Mat, 6mm",
+    "setName": "Training Gear",
+    "sourceFile": "sports-equip-002.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-sports-equip-002.png",
+    "originalPath": "assets/image-store/originals/sports-equip-002.svg"
+  },
+  {
+    "id": "arch-sports-equip-003",
+    "title": "Resistance Band Set",
+    "setName": "Training Gear",
+    "sourceFile": "sports-equip-003.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-sports-equip-003.png",
+    "originalPath": "assets/image-store/originals/sports-equip-003.svg"
+  },
+  {
+    "id": "arch-sports-equip-004",
+    "title": "Cast Iron Kettlebell, 20lb",
+    "setName": "Training Gear",
+    "sourceFile": "sports-equip-004.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-sports-equip-004.png",
+    "originalPath": "assets/image-store/originals/sports-equip-004.svg"
+  },
+  {
+    "id": "arch-sports-equip-005",
+    "title": "Speed Jump Rope",
+    "setName": "Training Gear",
+    "sourceFile": "sports-equip-005.svg",
+    "priceCents": 500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-sports-equip-005.png",
+    "originalPath": "assets/image-store/originals/sports-equip-005.svg"
+  },
+  {
+    "id": "arch-sports-outdoor-001",
+    "title": "Four-Person Camping Tent",
+    "setName": "Outdoor Adventure",
+    "sourceFile": "sports-outdoor-001.svg",
+    "priceCents": 600,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-sports-outdoor-001.png",
+    "originalPath": "assets/image-store/originals/sports-outdoor-001.svg"
+  },
+  {
+    "id": "arch-sports-outdoor-002",
+    "title": "Mummy Sleeping Bag, 20F",
+    "setName": "Outdoor Adventure",
+    "sourceFile": "sports-outdoor-002.svg",
+    "priceCents": 600,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-sports-outdoor-002.png",
+    "originalPath": "assets/image-store/originals/sports-outdoor-002.svg"
+  },
+  {
+    "id": "arch-sports-outdoor-003",
+    "title": "Two-Person Inflatable Kayak",
+    "setName": "Outdoor Adventure",
+    "sourceFile": "sports-outdoor-003.svg",
+    "priceCents": 600,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-sports-outdoor-003.png",
+    "originalPath": "assets/image-store/originals/sports-outdoor-003.svg"
+  },
+  {
+    "id": "arch-sports-outdoor-004",
+    "title": "Hiking Backpack, 50L",
+    "setName": "Outdoor Adventure",
+    "sourceFile": "sports-outdoor-004.svg",
+    "priceCents": 600,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-sports-outdoor-004.png",
+    "originalPath": "assets/image-store/originals/sports-outdoor-004.svg"
+  },
+  {
+    "id": "arch-sports-outdoor-005",
+    "title": "Hard-Sided Cooler",
+    "setName": "Outdoor Adventure",
+    "sourceFile": "sports-outdoor-005.svg",
+    "priceCents": 600,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-sports-outdoor-005.png",
+    "originalPath": "assets/image-store/originals/sports-outdoor-005.svg"
+  },
+  {
+    "id": "arch-battery-001",
+    "title": "Power Pro 12V Car Battery",
+    "setName": "Auto Parts",
+    "sourceFile": "battery-001.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-battery-001.png",
+    "originalPath": "assets/image-store/originals/battery-001.svg"
+  },
+  {
+    "id": "arch-filter-001",
+    "title": "Spin-On Oil Filter",
+    "setName": "Auto Parts",
+    "sourceFile": "filter-001.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-filter-001.png",
+    "originalPath": "assets/image-store/originals/filter-001.svg"
+  },
+  {
+    "id": "arch-filter-002",
+    "title": "Pleated Engine Air Filter",
+    "setName": "Auto Parts",
+    "sourceFile": "filter-002.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-filter-002.png",
+    "originalPath": "assets/image-store/originals/filter-002.svg"
+  },
+  {
+    "id": "arch-oil-001",
+    "title": "Premium Synthetic Motor Oil 5W-30",
+    "setName": "Auto Parts",
+    "sourceFile": "oil-001.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-oil-001.png",
+    "originalPath": "assets/image-store/originals/oil-001.svg"
+  },
+  {
+    "id": "arch-oil-002",
+    "title": "Conventional Motor Oil 10W-40",
+    "setName": "Auto Parts",
+    "sourceFile": "oil-002.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-oil-002.png",
+    "originalPath": "assets/image-store/originals/oil-002.svg"
+  },
+  {
+    "id": "arch-wiper-001",
+    "title": "Windshield Wiper Pair",
+    "setName": "Auto Parts",
+    "sourceFile": "wiper-001.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-wiper-001.png",
+    "originalPath": "assets/image-store/originals/wiper-001.svg"
+  },
+  {
+    "id": "arch-wipers-001",
+    "title": "Clear View Pro Wiper Blade, 22 Inch",
+    "setName": "Auto Parts",
+    "sourceFile": "wipers-001.svg",
+    "priceCents": 300,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-wipers-001.png",
+    "originalPath": "assets/image-store/originals/wipers-001.svg"
+  },
+  {
+    "id": "arch-tire-001",
+    "title": "All-Season Tire, 16 Inch",
+    "setName": "Tire Shop",
+    "sourceFile": "tire-001.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-tire-001.png",
+    "originalPath": "assets/image-store/originals/tire-001.svg"
+  },
+  {
+    "id": "arch-tire-002",
+    "title": "Performance Sport Tire, 18 Inch",
+    "setName": "Tire Shop",
+    "sourceFile": "tire-002.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-tire-002.png",
+    "originalPath": "assets/image-store/originals/tire-002.svg"
+  },
+  {
+    "id": "arch-tire-003",
+    "title": "Winter Grip Tire, 17 Inch",
+    "setName": "Tire Shop",
+    "sourceFile": "tire-003.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-tire-003.png",
+    "originalPath": "assets/image-store/originals/tire-003.svg"
+  },
+  {
+    "id": "arch-tire-004",
+    "title": "Summer Sport Tire, 20 Inch",
+    "setName": "Tire Shop",
+    "sourceFile": "tire-004.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-tire-004.png",
+    "originalPath": "assets/image-store/originals/tire-004.svg"
+  },
+  {
+    "id": "arch-tire-005",
+    "title": "Heavy Duty Truck Tire, 22 Inch",
+    "setName": "Tire Shop",
+    "sourceFile": "tire-005.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-tire-005.png",
+    "originalPath": "assets/image-store/originals/tire-005.svg"
+  },
+  {
+    "id": "arch-classic-car-003",
+    "title": "1972 Ford Transit Mark I Van",
+    "setName": "Classic Cars",
+    "sourceFile": "classic-car-003.svg",
+    "priceCents": 1400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-classic-car-003.png",
+    "originalPath": "assets/image-store/originals/classic-car-003.svg"
+  },
+  {
+    "id": "arch-classic-car-004",
+    "title": "2008 Lamborghini Gallardo Spyder",
+    "setName": "Classic Cars",
+    "sourceFile": "classic-car-004.svg",
+    "priceCents": 1400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-classic-car-004.png",
+    "originalPath": "assets/image-store/originals/classic-car-004.svg"
+  },
+  {
+    "id": "arch-classic-car-005",
+    "title": "1996 Dodge Viper GTS",
+    "setName": "Classic Cars",
+    "sourceFile": "classic-car-005.svg",
+    "priceCents": 1400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-classic-car-005.png",
+    "originalPath": "assets/image-store/originals/classic-car-005.svg"
+  },
+  {
+    "id": "arch-classic-car-006",
+    "title": "1985 Jeep CJ-7 Laredo",
+    "setName": "Classic Cars",
+    "sourceFile": "classic-car-006.svg",
+    "priceCents": 1400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-classic-car-006.png",
+    "originalPath": "assets/image-store/originals/classic-car-006.svg"
+  },
+  {
+    "id": "arch-bow-003-crossbow",
+    "title": "Junior Foam-Tip Crossbow",
+    "setName": "Archery Range",
+    "sourceFile": "bow-003-crossbow.svg",
+    "priceCents": 900,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-bow-003-crossbow.png",
+    "originalPath": "assets/image-store/originals/bow-003-crossbow.svg"
+  },
+  {
+    "id": "arch-bow-004",
+    "title": "Archery Target Set",
+    "setName": "Archery Range",
+    "sourceFile": "bow-004.svg",
+    "priceCents": 900,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-bow-004.png",
+    "originalPath": "assets/image-store/originals/bow-004.svg"
+  },
+  {
+    "id": "arch-bow-005",
+    "title": "LED Light-Up Bow",
+    "setName": "Archery Range",
+    "sourceFile": "bow-005.svg",
+    "priceCents": 900,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-bow-005.png",
+    "originalPath": "assets/image-store/originals/bow-005.svg"
+  },
+  {
+    "id": "arch-game-005",
+    "title": "Magical Kingdom Builder",
+    "setName": "Board Game Boxes",
+    "sourceFile": "game-005.svg",
+    "priceCents": 1100,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-game-005.png",
+    "originalPath": "assets/image-store/originals/game-005.svg"
+  },
+  {
+    "id": "arch-game-006",
+    "title": "Pony Racing Grand Prix",
+    "setName": "Board Game Boxes",
+    "sourceFile": "game-006.svg",
+    "priceCents": 1100,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-game-006.png",
+    "originalPath": "assets/image-store/originals/game-006.svg"
+  },
+  {
+    "id": "arch-rock-004",
+    "title": "Premium Mineral Set, 20 Specimens",
+    "setName": "Rocks and Gems",
+    "sourceFile": "rock-004.svg",
+    "priceCents": 1000,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rock-004.png",
+    "originalPath": "assets/image-store/originals/rock-004.svg"
+  },
+  {
+    "id": "arch-rock-005",
+    "title": "Gemstone Polishing Kit",
+    "setName": "Rocks and Gems",
+    "sourceFile": "rock-005.svg",
+    "priceCents": 1000,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-rock-005.png",
+    "originalPath": "assets/image-store/originals/rock-005.svg"
+  },
+  {
+    "id": "arch-unicorn-004",
+    "title": "Sunset Meadow Unicorn",
+    "setName": "Unicorn Collection",
+    "sourceFile": "unicorn-004.svg",
+    "priceCents": 1500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-unicorn-004.png",
+    "originalPath": "assets/image-store/originals/unicorn-004.svg"
+  },
+  {
+    "id": "arch-unicorn-005",
+    "title": "Moonbeam Unicorn",
+    "setName": "Unicorn Collection",
+    "sourceFile": "unicorn-005.svg",
+    "priceCents": 1500,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-unicorn-005.png",
+    "originalPath": "assets/image-store/originals/unicorn-005.svg"
+  },
+  {
+    "id": "arch-princess-005",
+    "title": "Royal Ball Gown in Purple",
+    "setName": "Royal Gowns",
+    "sourceFile": "princess-005.svg",
+    "priceCents": 1200,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-princess-005.png",
+    "originalPath": "assets/image-store/originals/princess-005.svg"
+  },
+  {
+    "id": "arch-princess-006",
+    "title": "Royal Ball Gown in Rose",
+    "setName": "Royal Gowns",
+    "sourceFile": "princess-006.svg",
+    "priceCents": 1200,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-princess-006.png",
+    "originalPath": "assets/image-store/originals/princess-006.svg"
+  },
+  {
+    "id": "arch-personal-001",
+    "title": "Hair Styling Service",
+    "setName": "Salon and Spa",
+    "sourceFile": "personal-001.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-personal-001.png",
+    "originalPath": "assets/image-store/originals/personal-001.svg"
+  },
+  {
+    "id": "arch-personal-002",
+    "title": "Manicure and Nail Care",
+    "setName": "Salon and Spa",
+    "sourceFile": "personal-002.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-personal-002.png",
+    "originalPath": "assets/image-store/originals/personal-002.svg"
+  },
+  {
+    "id": "arch-personal-003",
+    "title": "Makeup Application",
+    "setName": "Salon and Spa",
+    "sourceFile": "personal-003.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-personal-003.png",
+    "originalPath": "assets/image-store/originals/personal-003.svg"
+  },
+  {
+    "id": "arch-personal-004",
+    "title": "Facial and Skincare Treatment",
+    "setName": "Salon and Spa",
+    "sourceFile": "personal-004.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-personal-004.png",
+    "originalPath": "assets/image-store/originals/personal-004.svg"
+  },
+  {
+    "id": "arch-personal-005",
+    "title": "Hair Coloring and Highlights",
+    "setName": "Salon and Spa",
+    "sourceFile": "personal-005.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-personal-005.png",
+    "originalPath": "assets/image-store/originals/personal-005.svg"
+  },
+  {
+    "id": "arch-service-001",
+    "title": "Professional Lawn Mowing",
+    "setName": "Service Calls",
+    "sourceFile": "service-001.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-service-001.png",
+    "originalPath": "assets/image-store/originals/service-001.svg"
+  },
+  {
+    "id": "arch-service-002",
+    "title": "Plumbing Repair Call",
+    "setName": "Service Calls",
+    "sourceFile": "service-002.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-service-002.png",
+    "originalPath": "assets/image-store/originals/service-002.svg"
+  },
+  {
+    "id": "arch-service-003",
+    "title": "Electrical Repair Call",
+    "setName": "Service Calls",
+    "sourceFile": "service-003.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-service-003.png",
+    "originalPath": "assets/image-store/originals/service-003.svg"
+  },
+  {
+    "id": "arch-service-004",
+    "title": "Home Renovation Consultation",
+    "setName": "Service Calls",
+    "sourceFile": "service-004.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-service-004.png",
+    "originalPath": "assets/image-store/originals/service-004.svg"
+  },
+  {
+    "id": "arch-service-005",
+    "title": "Interior House Painting",
+    "setName": "Service Calls",
+    "sourceFile": "service-005.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-service-005.png",
+    "originalPath": "assets/image-store/originals/service-005.svg"
+  },
+  {
+    "id": "arch-service-006",
+    "title": "Studio Portrait Session",
+    "setName": "Service Calls",
+    "sourceFile": "service-006.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-service-006.png",
+    "originalPath": "assets/image-store/originals/service-006.svg"
+  },
+  {
+    "id": "arch-service-007",
+    "title": "Event Photography",
+    "setName": "Service Calls",
+    "sourceFile": "service-007.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-service-007.png",
+    "originalPath": "assets/image-store/originals/service-007.svg"
+  },
+  {
+    "id": "arch-service-008",
+    "title": "Dental Cleaning",
+    "setName": "Service Calls",
+    "sourceFile": "service-008.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-service-008.png",
+    "originalPath": "assets/image-store/originals/service-008.svg"
+  },
+  {
+    "id": "arch-service-009",
+    "title": "Haircut and Style",
+    "setName": "Service Calls",
+    "sourceFile": "service-009.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-service-009.png",
+    "originalPath": "assets/image-store/originals/service-009.svg"
+  },
+  {
+    "id": "arch-service-010",
+    "title": "Massage Therapy, 60 Minutes",
+    "setName": "Service Calls",
+    "sourceFile": "service-010.svg",
+    "priceCents": 400,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-service-010.png",
+    "originalPath": "assets/image-store/originals/service-010.svg"
+  },
+  {
+    "id": "arch-Shepherd",
+    "title": "Shepherd's Sheep in the Meadow",
+    "setName": "Barnyard and Meadow",
+    "sourceFile": "Shepherd.svg",
+    "priceCents": 1000,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-Shepherd.png",
+    "originalPath": "assets/image-store/originals/Shepherd.svg"
+  },
+  {
+    "id": "arch-pig",
+    "title": "Pink Pig, Side View",
+    "setName": "Barnyard and Meadow",
+    "sourceFile": "pig.svg",
+    "priceCents": 1000,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-pig.png",
+    "originalPath": "assets/image-store/originals/pig.svg"
+  },
+  {
+    "id": "arch-paint-horse",
+    "title": "Paint Horse Portrait",
+    "setName": "Barnyard and Meadow",
+    "sourceFile": "paint-horse.svg",
+    "priceCents": 1000,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-paint-horse.png",
+    "originalPath": "assets/image-store/originals/paint-horse.svg"
+  },
+  {
+    "id": "arch-squirrel-horse",
+    "title": "Chestnut Horse with Blaze",
+    "setName": "Barnyard and Meadow",
+    "sourceFile": "squirrel-horse.svg",
+    "priceCents": 1000,
+    "tier": "archive",
+    "watermarkedPreview": "/image-store/previews/arch-squirrel-horse.png",
+    "originalPath": "assets/image-store/originals/squirrel-horse.svg"
+  },
+  {
+    "id": "mis-audio-001",
+    "title": "Magical Pony Kingdom Cover (Mismatched Eyes)",
+    "setName": "Misprint Edition",
+    "sourceFile": "audio-001.svg",
+    "priceCents": 3000,
+    "tier": "misprint",
+    "watermarkedPreview": "/image-store/previews/mis-audio-001.png",
+    "originalPath": "assets/image-store/originals/audio-001.svg"
+  },
+  {
+    "id": "mis-bow-002",
+    "title": "Ranger Pro Archery Set (Crooked Eyes)",
+    "setName": "Misprint Edition",
+    "sourceFile": "bow-002.svg",
+    "priceCents": 2500,
+    "tier": "misprint",
+    "watermarkedPreview": "/image-store/previews/mis-bow-002.png",
+    "originalPath": "assets/image-store/originals/bow-002.svg"
+  },
+  {
+    "id": "mis-be-ep-012",
+    "title": "Jonah and the Whale, Episode 12 (Wrong Cover Art)",
+    "setName": "Misprint Edition",
+    "sourceFile": "audio-002.svg",
+    "priceCents": 3500,
+    "tier": "misprint",
+    "watermarkedPreview": "/image-store/previews/mis-be-ep-012.png",
+    "originalPath": "assets/image-store/originals/audio-002.svg"
+  }
+]

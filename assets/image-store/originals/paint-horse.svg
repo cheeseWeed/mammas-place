@@ -1,0 +1,187 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="faceG" cx="42%" cy="30%" r="65%">
+      <stop offset="0%" stop-color="#e8956a"/>
+      <stop offset="28%" stop-color="#c06030"/>
+      <stop offset="62%" stop-color="#7a2e10"/>
+      <stop offset="100%" stop-color="#3c1008"/>
+    </radialGradient>
+    <radialGradient id="blazeG" cx="45%" cy="38%" r="56%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="62%" stop-color="#ede8df"/>
+      <stop offset="100%" stop-color="#ccc4b4"/>
+    </radialGradient>
+    <!-- Mane: deep dark purple-brown like emoji -->
+    <radialGradient id="mDark" cx="18%" cy="10%" r="82%">
+      <stop offset="0%" stop-color="#6b4858"/>
+      <stop offset="40%" stop-color="#2e1828"/>
+      <stop offset="75%" stop-color="#160c14"/>
+      <stop offset="100%" stop-color="#060206"/>
+    </radialGradient>
+    <radialGradient id="mMid" cx="22%" cy="14%" r="76%">
+      <stop offset="0%" stop-color="#7a5265"/>
+      <stop offset="42%" stop-color="#381e2c"/>
+      <stop offset="78%" stop-color="#1a0e18"/>
+      <stop offset="100%" stop-color="#080408"/>
+    </radialGradient>
+    <radialGradient id="mLight" cx="28%" cy="18%" r="70%">
+      <stop offset="0%" stop-color="#8a607a"/>
+      <stop offset="44%" stop-color="#482838"/>
+      <stop offset="100%" stop-color="#100810"/>
+    </radialGradient>
+    <radialGradient id="earG" cx="52%" cy="28%" r="64%">
+      <stop offset="0%" stop-color="#e09068"/>
+      <stop offset="100%" stop-color="#5a2010"/>
+    </radialGradient>
+    <filter id="drop">
+      <feDropShadow dx="2" dy="6" stdDeviation="10" flood-color="#1a0808" flood-opacity="0.35"/>
+    </filter>
+    <filter id="b4"><feGaussianBlur stdDeviation="4"/></filter>
+    <filter id="b8"><feGaussianBlur stdDeviation="8"/></filter>
+  </defs>
+
+  <!-- ══════════════════════════════════════════
+       MANE — drawn FIRST (behind everything)
+       Fat overlapping blobs, purple-brown like emoji
+       Fill right half of canvas top to bottom
+  ══════════════════════════════════════════ -->
+
+  <!-- Backmost mane blob — widest, darkest -->
+  <path d="M 222,18
+    C 258,35 292,72 314,122
+    C 338,178 344,248 332,316
+    C 322,368 306,394 296,400
+    L 360,400
+    C 368,360 372,308 366,252
+    C 360,188 340,130 308,86
+    C 284,52 254,28 232,18 Z"
+    fill="url(#mDark)"/>
+
+  <!-- Middle mane blob -->
+  <path d="M 210,16
+    C 248,33 280,72 300,124
+    C 322,182 326,254 312,322
+    C 302,372 286,396 276,400
+    L 326,400
+    C 338,370 348,326 350,272
+    C 354,206 338,144 310,96
+    C 286,56 254,30 218,16 Z"
+    fill="url(#mMid)"/>
+
+  <!-- Front mane blob — narrower, lightest -->
+  <path d="M 198,18
+    C 236,36 266,76 284,130
+    C 304,190 306,264 290,332
+    C 280,376 264,398 254,400
+    L 294,400
+    C 308,368 320,322 322,268
+    C 326,198 310,130 280,82
+    C 256,44 224,22 202,18 Z"
+    fill="url(#mLight)"/>
+
+  <!-- Mane front highlight strip -->
+  <path d="M 202,22 C 228,46 250,82 262,128 C 248,94 228,52 202,22 Z"
+    fill="#a07888" opacity="0.4"/>
+
+  <!-- ══════════════════════════════════════════
+       HEAD + NECK — one continuous silhouette
+       Looking left. Forehead top-right, muzzle bottom-left.
+       Wide cheek, long tapered nose like the emoji.
+  ══════════════════════════════════════════ -->
+  <path d="
+    M 188,30
+    C 210,28 232,38 246,58
+    C 260,78 264,106 256,132
+    C 248,158 230,176 210,190
+    C 230,200 248,214 256,234
+    C 264,254 258,278 240,296
+    C 220,316 192,326 166,330
+    C 140,334 114,326 96,308
+    C 76,288 66,260 68,230
+    C 70,198 84,168 104,146
+    C 84,138 66,124 56,104
+    C 46,82 50,54 66,38
+    C 82,22 106,18 128,22
+    C 150,26 170,38 188,30 Z"
+    fill="url(#faceG)" filter="url(#drop)"/>
+
+  <!-- Simpler correct head: large rounded forehead top-right tapering to long muzzle bottom-left -->
+  <!-- Actually let's use a clean single path tracing the horse head profile -->
+  <path d="
+    M 218,32
+    C 242,40 258,62 260,90
+    C 262,118 248,144 228,162
+    C 248,172 264,190 268,214
+    C 272,240 258,268 234,286
+    C 208,306 172,312 144,304
+    C 116,296 96,274 88,248
+    C 80,220 86,188 102,164
+    C 80,156 60,138 52,114
+    C 44,88 52,58 70,42
+    C 90,26 118,24 144,32
+    C 162,38 178,48 188,44
+    C 198,40 208,30 218,32 Z"
+    fill="url(#faceG)" filter="url(#drop)"/>
+
+  <!-- Scrap above, use clean horse head profile shape -->
+  <!-- Head: the emoji horse has forehead curving down into long straight nose, wide jaw -->
+
+  <path d="
+    M 60,400
+    C 46,350 46,294 58,248
+    C 70,202 98,164 136,144
+    C 112,132 90,110 80,82
+    C 70,54 80,26 100,18
+    C 120,10 146,20 162,40
+    C 176,58 178,82 170,104
+    C 196,96 220,98 238,114
+    C 258,132 264,160 256,186
+    C 246,214 224,234 198,244
+    C 218,254 234,272 238,296
+    C 242,322 228,350 206,368
+    C 182,388 150,398 118,398
+    C 90,398 66,390 60,400 Z"
+    fill="url(#faceG)" filter="url(#drop)"/>
+
+  <!-- Face highlight -->
+  <ellipse cx="170" cy="120" rx="40" ry="30" fill="white" opacity="0.14" transform="rotate(-25,170,120)" filter="url(#b4)"/>
+
+  <!-- White blaze -->
+  <path d="M 164,42
+    C 172,60 174,84 168,108
+    C 160,136 146,160 132,182
+    C 118,204 104,222 96,240
+    C 106,218 122,196 134,170
+    C 148,140 158,108 158,80
+    C 158,60 160,46 164,42 Z"
+    fill="url(#blazeG)" opacity="0.86"/>
+
+  <!-- Ear -->
+  <path d="M 194,26 C 202,8 216,-4 226,2 C 236,8 234,26 224,42 C 216,54 204,60 196,54 C 188,48 188,36 194,26 Z"
+    fill="url(#earG)"/>
+  <path d="M 198,28 C 204,14 215,4 222,10 C 228,16 226,30 218,42 C 212,52 202,56 198,50 C 194,44 194,36 198,28 Z"
+    fill="#c06840" opacity="0.4"/>
+
+  <!-- Forelock tuft -->
+  <path d="M 210,22 C 200,38 194,58 196,76 C 196,56 204,34 210,22 Z" fill="url(#mLight)"/>
+  <path d="M 203,20 C 191,38 186,60 188,78 C 188,58 196,34 203,20 Z" fill="url(#mMid)"/>
+  <path d="M 196,22 C 182,42 178,64 180,82 C 180,62 188,38 196,22 Z" fill="url(#mDark)"/>
+
+  <!-- Nostril -->
+  <path d="M 68,262 C 70,252 80,249 86,256 C 90,262 88,270 80,272 C 72,273 66,268 68,262 Z"
+    fill="#1e0a04" opacity="0.88"/>
+
+  <!-- Muzzle darkening -->
+  <ellipse cx="78" cy="258" rx="24" ry="18" fill="#3a1008" opacity="0.22" filter="url(#b4)"/>
+
+  <!-- Eye -->
+  <ellipse cx="182" cy="162" rx="12" ry="13" fill="#140606"/>
+  <ellipse cx="177" cy="157" rx="4.5" ry="4" fill="white" opacity="0.92"/>
+  <ellipse cx="187" cy="168" rx="2" ry="1.8" fill="white" opacity="0.4"/>
+  <path d="M 171,157 C 177,148 191,148 195,156"
+    fill="none" stroke="#3a1008" stroke-width="2.5" stroke-linecap="round" opacity="0.45"/>
+
+  <!-- Chin line -->
+  <path d="M 74,310 C 88,300 106,296 120,300"
+    fill="none" stroke="#5a1e08" stroke-width="3" stroke-linecap="round" opacity="0.28"/>
+</svg>

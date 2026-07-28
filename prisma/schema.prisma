@@ -93,6 +93,7 @@ model DriveUser {
   orders           MpOrder[]
   earnings         MpEarning[]
   dadAsks          DadAsk[]
+  imagePurchases   ImagePurchase[]
 
   @@map("drive_users")
 }
@@ -126,6 +127,40 @@ model MpOrder {
 
   @@index([userName, createdAt])
   @@map("mp_orders")
+}
+
+// Digital image store — one row per (kid, image) ENTITLEMENT.
+//
+// The image store sells digital originals: nothing ships, nothing depletes, and
+// a kid can only ever own a piece ONCE. So this is deliberately NOT an MpOrder
+// (no qty, no cart snapshot) — it is a permanent entitlement row that the
+// download route checks before it will stream the original file. Owning it is
+// forever: re-downloads are free and are never re-charged.
+//
+// `@@unique([userName, imageId])` is the DUPLICATE-BUY GATE, and it is the only
+// gate. Same reasoning as MpEarning.idempotencyKey: we do NOT findFirst-then-
+// create, because two concurrent taps on the Buy button can both pass that
+// check and double-charge. The create runs inside the same $transaction as the
+// debit + ledger row, so a unique violation (Prisma P2002) rolls the whole
+// thing back — the kid is never charged twice for one picture. See
+// lib/image-store/purchase.ts.
+//
+// `imageId` references data/image-store.json (the catalog is a static file, not
+// a table), so there is no FK here — but the catalog id is the server's source
+// of truth for price. `pricePaidCents` snapshots what was actually charged so
+// a later price change never rewrites history (same rule as MpOrder.items).
+model ImagePurchase {
+  id             String   @id @default(cuid())
+  userName       String
+  user           DriveUser @relation(fields: [userName], references: [name], onDelete: Cascade)
+  imageId        String   // catalog id from data/image-store.json, e.g. "arch-ball-001"
+  pricePaidCents Int      // what the kid actually paid, snapshotted at purchase
+  createdAt      DateTime @default(now())
+
+  @@unique([userName, imageId])
+  @@index([userName, createdAt])
+  @@index([imageId])
+  @@map("image_purchases")
 }
 
 // Kid-earned MP from learning sections. Idempotency key prevents the same

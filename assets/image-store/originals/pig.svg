@@ -1,0 +1,114 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Body: side-lit from top-right, deep shadows bottom-left -->
+    <radialGradient id="bodyG" cx="68%" cy="20%" r="75%">
+      <stop offset="0%" stop-color="#ffc8d8"/>
+      <stop offset="30%" stop-color="#ff8fab"/>
+      <stop offset="65%" stop-color="#d45070"/>
+      <stop offset="100%" stop-color="#8b1a35"/>
+    </radialGradient>
+
+    <!-- Head: same lighting direction -->
+    <radialGradient id="headG" cx="62%" cy="22%" r="72%">
+      <stop offset="0%" stop-color="#ffc8d8"/>
+      <stop offset="35%" stop-color="#ff8fab"/>
+      <stop offset="70%" stop-color="#d45070"/>
+      <stop offset="100%" stop-color="#8b1a35"/>
+    </radialGradient>
+
+    <!-- Snout -->
+    <radialGradient id="snoutG" cx="55%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#ffdde6"/>
+      <stop offset="50%" stop-color="#ffaac0"/>
+      <stop offset="100%" stop-color="#d06080"/>
+    </radialGradient>
+
+    <!-- Ear outer -->
+    <radialGradient id="earOutG" cx="60%" cy="25%" r="65%">
+      <stop offset="0%" stop-color="#ffb3c6"/>
+      <stop offset="100%" stop-color="#c0435e"/>
+    </radialGradient>
+
+    <!-- Ear inner -->
+    <radialGradient id="earInG" cx="50%" cy="50%" r="55%">
+      <stop offset="0%" stop-color="#ff8fab"/>
+      <stop offset="100%" stop-color="#9b1a3a"/>
+    </radialGradient>
+
+    <!-- Legs: darker, more contrast -->
+    <radialGradient id="legG" cx="30%" cy="15%" r="75%">
+      <stop offset="0%" stop-color="#ffb3c6"/>
+      <stop offset="40%" stop-color="#e0607a"/>
+      <stop offset="100%" stop-color="#7a1530"/>
+    </radialGradient>
+
+    <!-- Tail -->
+    <radialGradient id="tailStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffb3c6"/>
+      <stop offset="100%" stop-color="#c0435e"/>
+    </radialGradient>
+
+    <filter id="dropShadow">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#6b0f25" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="215" cy="372" rx="140" ry="12" fill="#8b1a35" opacity="0.18"/>
+
+  <!-- TAIL - curly, right side -->
+  <path d="M 308,195 C 338,175 355,188 348,208 C 341,226 322,224 322,212 C 322,200 336,198 338,208"
+    fill="none" stroke="#e0607a" stroke-width="11" stroke-linecap="round"/>
+  <path d="M 308,195 C 338,175 355,188 348,208 C 341,226 322,224 322,212 C 322,200 336,198 338,208"
+    fill="none" stroke="#ffb3c6" stroke-width="5" stroke-linecap="round" opacity="0.5"/>
+
+  <!-- BODY - wide oval, side view -->
+  <ellipse cx="215" cy="242" rx="120" ry="86" fill="url(#bodyG)" filter="url(#dropShadow)"/>
+  <!-- Body top-right specular -->
+  <ellipse cx="270" cy="185" rx="55" ry="30" fill="white" opacity="0.2" transform="rotate(-15,270,185)"/>
+  <!-- Body bottom dark fill -->
+  <ellipse cx="200" cy="305" rx="95" ry="38" fill="#8b1a35" opacity="0.25"/>
+
+  <!-- BACK LEG (further, slightly lighter) -->
+  <rect x="268" y="308" width="36" height="62" rx="10" fill="url(#legG)" opacity="0.75"/>
+  <!-- Back leg highlight -->
+  <rect x="272" y="310" width="12" height="56" rx="8" fill="white" opacity="0.1"/>
+
+  <!-- FRONT LEG (further, slightly lighter) -->
+  <rect x="148" y="308" width="36" height="62" rx="10" fill="url(#legG)" opacity="0.75"/>
+  <rect x="152" y="310" width="12" height="56" rx="8" fill="white" opacity="0.1"/>
+
+  <!-- BACK LEG (near side) -->
+  <rect x="294" y="305" width="38" height="65" rx="10" fill="url(#legG)"/>
+  <rect x="298" y="307" width="13" height="60" rx="8" fill="white" opacity="0.15"/>
+
+  <!-- FRONT LEG (near side) -->
+  <rect x="168" y="305" width="38" height="65" rx="10" fill="url(#legG)"/>
+  <rect x="172" y="307" width="13" height="60" rx="8" fill="white" opacity="0.15"/>
+
+  <!-- NECK - connects body to head, side view -->
+  <path d="M 126,210 C 110,185 105,165 112,148 C 118,132 132,122 148,120 C 162,118 172,128 170,148 C 168,165 152,180 140,200 Z"
+    fill="url(#headG)"/>
+
+  <!-- HEAD - side-facing oval -->
+  <ellipse cx="112" cy="200" rx="58" ry="52" fill="url(#headG)" filter="url(#dropShadow)"/>
+  <!-- Head specular top-right -->
+  <ellipse cx="130" cy="175" rx="24" ry="18" fill="white" opacity="0.22" transform="rotate(-20,130,175)"/>
+
+  <!-- EAR - upright, side profile -->
+  <ellipse cx="148" cy="158" rx="16" ry="22" fill="url(#earOutG)" transform="rotate(12,148,158)"/>
+  <ellipse cx="148" cy="160" rx="9" ry="14" fill="url(#earInG)" transform="rotate(12,148,160)"/>
+
+  <!-- SNOUT - protruding forward, side view -->
+  <ellipse cx="66" cy="216" rx="28" ry="22" fill="url(#snoutG)"/>
+  <!-- Snout specular -->
+  <ellipse cx="58" cy="208" rx="10" ry="7" fill="white" opacity="0.4"/>
+  <!-- Nostrils - side view, two dark ovals -->
+  <ellipse cx="58" cy="220" rx="7" ry="5" fill="#9b1a3a" opacity="0.65"/>
+  <ellipse cx="74" cy="222" rx="6" ry="4.5" fill="#9b1a3a" opacity="0.55"/>
+
+  <!-- EYE - single eye, side profile -->
+  <circle cx="118" cy="194" r="10" fill="#1a0810"/>
+  <circle cx="114" cy="189" r="3.5" fill="white" opacity="0.95"/>
+  <circle cx="122" cy="198" r="1.8" fill="white" opacity="0.45"/>
+</svg>
