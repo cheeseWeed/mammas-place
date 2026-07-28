@@ -1,6 +1,7 @@
 // GET /api/money/balance?user=<name> → { cents: number }
 // 404 if user not registered.
-// Side effect: bumps the dl_user cookie's 2h TTL so active kids stay logged in.
+// Side effect: bumps the dl_user cookie's TTL so active kids stay logged in
+//   (see lib/auth-touch.ts for the shared max-age).
 // Side effect: lazily delivers any scheduled MP gifts whose deliver date has
 //   passed (no cron on this stack — gifts "arrive" the first time the recipient
 //   checks their balance on/after the date). See lib/money/gift.ts.

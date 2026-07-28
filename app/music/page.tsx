@@ -15,6 +15,8 @@ import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import LoginGate from '@/components/LoginGate';
 import SectionGuard from '@/components/SectionGuard';
+import PracticeTimer from '@/components/music/PracticeTimer';
+import TunerPanel from '@/components/music/TunerPanel';
 import { useLearner } from '@/context/LearnerContext';
 import { centsToMP } from '@/lib/money/format';
 import { INSTRUMENTS, instrumentDisplay, type Instrument, type MusicPiece, type MusicChallenge } from '@/lib/music/types';
@@ -146,6 +148,14 @@ function MusicInner() {
         >
           🗓️ See your practice calendar
         </Link>
+      </div>
+
+      {/* Practice tools — timer + tuner. Client-side helpers only: the timer
+          NEVER awards MP (earning stays on the piece cards below — wiring the
+          timer to money would open a double-credit path). */}
+      <div className="max-w-3xl mx-auto mb-6 grid grid-cols-1 md:grid-cols-2 gap-5 items-start">
+        <PracticeTimer />
+        <TunerPanel />
       </div>
 
       {plan && pieces.length > 0 && (

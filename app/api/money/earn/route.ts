@@ -38,6 +38,7 @@ import { cookies } from 'next/headers';
 import { awardEarn, previewReward, type EarnRequest } from '@/lib/money/earn';
 import { isValidUser, normalizeUser } from '@/lib/drive-progress';
 import { isSabbath } from '@/lib/sabbath';
+import { touchSession } from '@/lib/auth-touch';
 
 const COOKIE_NAME = 'dl_user';
 
@@ -245,6 +246,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Bad cookie' }, { status: 400 });
   }
   const userKey = normalizeUser(cookieUser);
+
+  // Sliding session refresh: an earn means the kid is actively learning —
+  // push the dl_user expiry window forward so they aren't logged out
+  // mid-study-session (no-op for anonymous requests).
+  await touchSession();
 
   try {
     const result = await awardEarn(userKey, built);

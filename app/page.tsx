@@ -4,6 +4,7 @@ import { getAllProducts, getFeaturedProducts, getSaleProducts, getComingSoonProd
 import { getFeaturedSelection } from '@/lib/inventory';
 import ProductCard from '@/components/ProductCard';
 import ServiceAds from '@/components/ServiceAds';
+import CopyCodeChip from '@/components/CopyCodeChip';
 import LearnerPills from '@/components/LearnerPills';
 import ContinueListening from '@/components/ContinueListening';
 import SabbathNote from '@/components/SabbathNote';
@@ -215,15 +216,13 @@ export default async function HomePage() {
         </div>
       </div>
 
-      {/* Promo Codes Banner */}
+      {/* Promo Codes Banner — chips are click/tap-to-copy */}
       <section className="bg-purple-900 text-white py-10 px-4 text-center">
         <h2 className="text-3xl font-black mb-2">Free Shipping on Orders Over $50!</h2>
-        <p className="text-purple-300 mb-4">Use promo codes at checkout for extra savings on all categories</p>
+        <p className="text-purple-300 mb-4">Tap a code to copy it, then paste it at checkout for extra savings</p>
         <div className="flex flex-wrap justify-center gap-3">
           {['MAMMA10', 'SAVE15', 'WELCOME20', 'SHOP25', 'DEALS30'].map((code) => (
-            <span key={code} className="bg-yellow-400 text-purple-900 font-black px-4 py-2 rounded-full text-sm">
-              {code}
-            </span>
+            <CopyCodeChip key={code} code={code} />
           ))}
         </div>
       </section>

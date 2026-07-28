@@ -55,7 +55,7 @@ Three identities. Don't conflate them.
 
 | Cookie | Who | Properties | Set by |
 |--------|-----|-----------|--------|
-| `dl_user` | the logged-in kid/learner | `httpOnly:false` (client reads it), 2h `maxAge` | `app/api/drive/login/route.ts` |
+| `dl_user` | the logged-in kid/learner | `httpOnly:false` (client reads it), 8h `maxAge` + sliding refresh (`touchSession()` in `lib/auth-touch.ts`, called by earn/progress/balance/audiobooks routes) | `app/api/drive/login/route.ts` |
 | `mp_parent` | admin **godmode** | `httpOnly`, **SESSION cookie** (no maxAge → dies on browser close), signed timestamp with **hard 30-min cap** | `lib/money/parent.ts` `setParentCookie()` |
 | `mp_admin_present` | client-readable marker "an admin is logged in" | `httpOnly:false`, **not a security boundary** | set/cleared alongside `mp_parent` |
 

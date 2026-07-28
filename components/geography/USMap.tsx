@@ -205,7 +205,12 @@ export default function USMap({
     return () => {
       cleanups.forEach((fn) => fn());
     };
-  }, [svgMarkup, highlightedStates, wrongStates, onStateClick, onStateHover, states]);
+    // NOTE: regionTints MUST be in this dep list. The fills are applied
+    // imperatively to the injected SVG paths, so if the tint map changes
+    // (e.g. the Study Map's "Region colors" toggle flips off and the caller
+    // passes undefined) this effect has to re-run to repaint every state
+    // back to its default fill. Omitting it left stale tints on screen.
+  }, [svgMarkup, highlightedStates, wrongStates, onStateClick, onStateHover, states, regionTints]);
 
   return (
     <div className={className ?? 'w-full h-full flex items-center justify-center'}>

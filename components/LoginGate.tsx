@@ -54,7 +54,7 @@ const SECTION_COPY: Record<
     accent: 'sky',
   },
   languageArts: {
-    headline: 'Who’s reading?',
+    headline: 'Who’s learning?',
     subhead: 'Log in to track your Language Arts progress and earn MP.',
     accent: 'rose',
   },

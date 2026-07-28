@@ -31,6 +31,7 @@ h1 { color: var(--primary); margin: 0 0 6px; }
 .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 16px; }
 .q-num { color: var(--gray); font-size: 0.85em; margin-bottom: 4px; }
 .q-text { font-size: 1.1em; font-weight: 600; margin: 0 0 14px; }
+.sign { max-height: 180px; margin: 0 0 14px; display: block; }
 .choices { list-style: none; padding: 0; margin: 0; }
 .choices li { margin: 0 0 8px; }
 .choice-btn {
@@ -275,6 +276,10 @@ function renderQuestion() {
     '<div class="card">' +
       '<div class="q-num">Question ' + (STATE.idx + 1) + ' of ' + STATE.questions.length + '</div>' +
       '<p class="q-text">' + escapeHtml(q.question) + '</p>' +
+      // Sign questions carry a sign_image filename (see data/questions.json).
+      // Same pattern as the unit tests — without this, "What does this sign
+      // mean?" questions rendered with no picture.
+      (q.sign_image ? '<img class="sign" src="../images/signs/' + escapeHtml(q.sign_image) + '" alt="sign">' : '') +
       '<ul class="choices" id="choices">';
   for (var i = 0; i < shuffled.length; i++) {
     html += '<li><button class="choice-btn" data-idx="' + i + '">' + escapeHtml(shuffled[i].text) + '</button></li>';

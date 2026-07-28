@@ -50,12 +50,17 @@ export function levelLabel(level: SpellingLevel): string {
  * (the previous "first two from the level" approach gave us "a" at L3, which
  * is too easy and inflates scores for non-readers).
  *
- * Each word here MUST exist in data/spelling/words.json at the matching level.
- * Verified against the 1587-word bank in May 2026.
+ * Each word here MUST exist in data/spelling/words.json AT THE MATCHING LEVEL —
+ * a word that only exists at some other level silently hits the fallback below.
+ * (That bit us: L2 was pinned to 'ship'/'frog', but the bank only carries those
+ * two at L4, so BOTH L2 slots fell back to the first L2 word and the test asked
+ * "back" twice. Re-pinned to 'shop'/'truck', which really are L2 — July 2026.)
+ * `buildPlacementWords` is covered by lib/spelling/__tests__/engine.test.ts,
+ * which asserts every pin resolves at its own level and the 12 words are distinct.
  */
 const PLACEMENT_WORDS_BY_LEVEL: Record<number, string[]> = {
   1: ['cat', 'dog'],            // CVC, universally recognized
-  2: ['ship', 'frog'],          // digraph + blend
+  2: ['shop', 'truck'],         // digraph (sh) + blend (tr)
   3: ['said', 'were'],          // irregular sight words (NOT "a" — too easy)
   4: ['beach', 'snake'],        // long vowels + silent e
   5: ['rabbit', 'kitchen'],     // double letters / two-syllable
@@ -64,6 +69,7 @@ const PLACEMENT_WORDS_BY_LEVEL: Record<number, string[]> = {
 
 export function buildPlacementWords(allWords: Word[]): Word[] {
   const out: Word[] = [];
+  const used = new Set<string>();
   const byKey = new Map<string, Word>();
   for (const w of allWords) {
     byKey.set(`${w.level}:${w.word.toLowerCase()}`, w);
@@ -72,13 +78,20 @@ export function buildPlacementWords(allWords: Word[]): Word[] {
     const wanted = PLACEMENT_WORDS_BY_LEVEL[lvl] ?? [];
     for (const name of wanted) {
       const w = byKey.get(`${lvl}:${name.toLowerCase()}`);
-      if (w) {
+      if (w && !used.has(w.word.toLowerCase())) {
+        used.add(w.word.toLowerCase());
         out.push(w);
       } else {
-        // Fallback: take the first word at this level (alphabetical) — keeps
-        // placement working even if data drifts. Soft failure, not hard error.
-        const first = allWords.find((x) => x.level === lvl);
-        if (first) out.push(first);
+        // Fallback: first word at this level (alphabetical) that we haven't
+        // already used — keeps placement working even if data drifts, without
+        // ever asking the same word twice. Soft failure, not hard error.
+        const first = allWords.find(
+          (x) => x.level === lvl && !used.has(x.word.toLowerCase()),
+        );
+        if (first) {
+          used.add(first.word.toLowerCase());
+          out.push(first);
+        }
       }
     }
   }
@@ -297,8 +310,8 @@ export function pickNextWord(
  *    const outcomes: AttemptOutcome[] = [
  *      { word: 'cat',   level: 1, correct: true,  ts: 1 },
  *      { word: 'dog',   level: 1, correct: true,  ts: 2 },
- *      { word: 'ship',  level: 2, correct: true,  ts: 3 },
- *      { word: 'flag',  level: 2, correct: true,  ts: 4 },
+ *      { word: 'shop',  level: 2, correct: true,  ts: 3 },
+ *      { word: 'truck', level: 2, correct: true,  ts: 4 },
  *      { word: 'said',  level: 3, correct: true,  ts: 5 },
  *      { word: 'were',  level: 3, correct: false, ts: 6 },
  *      { word: 'cake',  level: 4, correct: false, ts: 7 },

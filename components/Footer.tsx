@@ -2,6 +2,7 @@
 'use client';
 
 import Link from 'next/link';
+import CopyCodeChip from '@/components/CopyCodeChip';
 
 export default function Footer() {
   return (
@@ -97,7 +98,11 @@ export default function Footer() {
             </div>
             <div className="flex flex-wrap justify-center gap-3">
               <span className="bg-purple-700/50 px-3 py-1 rounded-full">Free Shipping Over $50</span>
-              <span className="bg-yellow-400/20 text-yellow-300 px-3 py-1 rounded-full font-bold">Use Code: MAMMA10</span>
+              <CopyCodeChip
+                code="MAMMA10"
+                label="Use Code: MAMMA10"
+                className="bg-yellow-400/20 hover:bg-yellow-400/30 active:scale-95 text-yellow-300 px-3 py-1 rounded-full font-bold transition-all cursor-pointer"
+              />
             </div>
           </div>
         </div>

@@ -19,12 +19,14 @@ import {
   writeStore,
 } from '@/lib/drive-progress';
 import { prisma } from '@/lib/prisma';
+import { DL_COOKIE_MAX_AGE_SEC } from '@/lib/auth-touch';
 
 const COOKIE_NAME = 'dl_user';
-// 2-hour absolute TTL. Server-issued maxAge means powered-off laptops /
-// browser crashes still log the kid out after 2 hours. Multi-kid shared-
-// laptop setup. See /api/drive/login for full rationale.
-const COOKIE_MAX_AGE_SEC = 2 * 60 * 60;
+// 8-hour absolute TTL (shared constant), slid forward by touchSession() on
+// authed API calls. Server-issued maxAge means powered-off laptops / browser
+// crashes still log the kid out. See /api/drive/login + lib/auth-touch.ts
+// for full rationale.
+const COOKIE_MAX_AGE_SEC = DL_COOKIE_MAX_AGE_SEC;
 
 // Best-effort displayName sanitization. Keep it short, strip dangerous junk,
 // fall back to undefined if it's empty/invalid so the column stays NULL.

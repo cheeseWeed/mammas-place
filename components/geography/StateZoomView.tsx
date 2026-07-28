@@ -112,6 +112,18 @@ const TRIANGLE_PATH = 'M 0,-5 L 4.4,3 -4.4,3 Z';
 const STAR_PATH =
   'M 0,-7 L 2.05,-2.16 7,-2.16 3.06,0.83 4.33,5.83 0,2.83 -4.33,5.83 -3.06,0.83 -7,-2.16 -2.05,-2.16 Z';
 
+// Vertical distance (in map units, pre-fontScale) between stacked label rows
+// when multiple pins share the same anchor point (see labelRows below).
+const LABEL_ROW_UNITS = 5.5;
+
+// Estimated half-width of a centered SVG label in map units. 0.31em average
+// glyph advance is a deliberate overestimate for the 600-700-weight system
+// sans these labels use; the extra fontSize of slop covers the white outline
+// stroke. Overestimating just pads the viewBox a touch — never clips.
+function labelHalfWidth(text: string, fontSize: number): number {
+  return text.length * fontSize * 0.31 + fontSize;
+}
+
 function formatNumber(n: number): string {
   return n.toLocaleString('en-US');
 }
@@ -216,14 +228,16 @@ export default function StateZoomView({ postal, onClose }: StateZoomViewProps) {
     };
   }, [isOpen, onClose]);
 
-  // Compute padded viewBox once we know the silhouette. Bail out gracefully
-  // when a state has no silhouette entry (shouldn't happen — JSON has all
-  // 50 + DC — but degrade rather than throw).
-  const viewBox = useMemo(() => {
-    if (!silhouette) return `0 0 ${VIEW_W} ${VIEW_H}`;
-    const [x, y, w, h] = silhouette.bbox;
-    const pad = Math.max(w, h) * BBOX_PAD_RATIO;
-    return `${x - pad} ${y - pad} ${w + pad * 2} ${h + pad * 2}`;
+  // Scale label font sizes inversely with bbox size so labels read at a
+  // consistent on-screen size regardless of how zoomed-in we are. Declared
+  // before the pin/label memos below because they all size off it.
+  const fontScale = useMemo(() => {
+    if (!silhouette) return 1;
+    const [, , w, h] = silhouette.bbox;
+    const span = Math.max(w, h);
+    // 50px-span tiny state → bigger fonts; 250px-span huge state → smaller.
+    // Clamped so we don't generate insane sizes.
+    return Math.min(2.5, Math.max(0.6, span / 120));
   }, [silhouette]);
 
   // Capital pin position in source SVG coords (Albers + nudge).
@@ -266,16 +280,99 @@ export default function StateZoomView({ postal, onClose }: StateZoomViewProps) {
   // Region tint color, falls back to a neutral gray-blue.
   const fillColor = state?.region ? REGION_TINTS[state.region] ?? '#cbd5e1' : '#cbd5e1';
 
-  // Scale label font sizes inversely with bbox size so labels read at a
-  // consistent on-screen size regardless of how zoomed-in we are.
-  const fontScale = useMemo(() => {
-    if (!silhouette) return 1;
-    const [, , w, h] = silhouette.bbox;
-    const span = Math.max(w, h);
-    // 50px-span tiny state → bigger fonts; 250px-span huge state → smaller.
-    // Clamped so we don't generate insane sizes.
-    return Math.min(2.5, Math.max(0.6, span / 120));
-  }, [silhouette]);
+  // Stacking rows for pin labels. Pins that project to (nearly) the same
+  // spot — e.g. Utah, where the capital star, Salt Lake Temple, and This Is
+  // the Place Monument all land on Salt Lake City — used to overprint their
+  // white-outlined labels, visually cutting each other's text off (worst on
+  // a small phone render). Labels that would collide get bumped onto
+  // successive rows below the shared anchor instead. Capital is assigned
+  // first so it always keeps the prime row-0 slot.
+  const labelRows = useMemo(() => {
+    const rows = new Map<string, number>();
+    const lineH = LABEL_ROW_UNITS * fontScale;
+    const placed: Array<{ x: number; y: number; halfW: number; row: number }> = [];
+    const assign = (key: string, x: number, y: number, halfW: number) => {
+      let row = 0;
+      // Bump down a row while this label horizontally overlaps one already
+      // sitting on that row at roughly the same anchor height. (Approximate:
+      // compares anchors, not exact glyph boxes — plenty for de-overlap.)
+      while (
+        placed.some(
+          (p) =>
+            p.row === row && Math.abs(p.x - x) < p.halfW + halfW && Math.abs(p.y - y) < lineH,
+        )
+      ) {
+        row += 1;
+      }
+      rows.set(key, row);
+      placed.push({ x, y, halfW, row });
+    };
+    if (capitalPin && state) {
+      assign(
+        'capital',
+        capitalPin.x,
+        capitalPin.y,
+        labelHalfWidth(`★ ${state.capital}`, 4 * fontScale),
+      );
+    }
+    featurePins.forEach((p) => {
+      assign(p.key, p.x, p.y, labelHalfWidth(p.name, 3.6 * fontScale));
+    });
+    return rows;
+  }, [capitalPin, state, featurePins, fontScale]);
+
+  // Padded viewBox, grown to cover every pin symbol + label (including its
+  // stacking-row offset). The old fixed 8% bbox pad left edge-hugging labels
+  // hanging outside the viewBox; on desktop the letterbox slack around the
+  // SVG usually still displayed them, but on a narrow phone the SVG element
+  // hugs the viewBox width, so that overflow was clipped ("cuts things off
+  // on the phone"). Bails to the full map when a state has no silhouette
+  // entry (shouldn't happen — JSON has all 50 + DC — degrade, don't throw).
+  const viewBox = useMemo(() => {
+    if (!silhouette) return `0 0 ${VIEW_W} ${VIEW_H}`;
+    const [x, y, w, h] = silhouette.bbox;
+    const pad = Math.max(w, h) * BBOX_PAD_RATIO;
+    let minX = x - pad;
+    let minY = y - pad;
+    let maxX = x + w + pad;
+    let maxY = y + h + pad;
+    const include = (
+      px: number,
+      py: number,
+      halfW: number,
+      symbolUp: number,
+      labelBottom: number,
+    ) => {
+      minX = Math.min(minX, px - halfW);
+      maxX = Math.max(maxX, px + halfW);
+      minY = Math.min(minY, py - symbolUp);
+      maxY = Math.max(maxY, py + labelBottom);
+    };
+    if (capitalPin && state) {
+      const fs = 4 * fontScale;
+      const row = labelRows.get('capital') ?? 0;
+      include(
+        capitalPin.x,
+        capitalPin.y,
+        labelHalfWidth(`★ ${state.capital}`, fs),
+        8 * fontScale, // star extends 7*fs up + stroke slop
+        11 * fontScale + 3 + row * LABEL_ROW_UNITS * fontScale + fs * 0.4,
+      );
+    }
+    featurePins.forEach((p) => {
+      const fs = 3.6 * fontScale;
+      const sz = pinStyleFor(p.type).r * fontScale;
+      const row = labelRows.get(p.key) ?? 0;
+      include(
+        p.x,
+        p.y,
+        labelHalfWidth(p.name, fs),
+        6 * fontScale, // triangle/circle extent + stroke slop
+        sz + 4 * fontScale + 3 + row * LABEL_ROW_UNITS * fontScale + fs * 0.4,
+      );
+    });
+    return `${minX} ${minY} ${maxX - minX} ${maxY - minY}`;
+  }, [silhouette, capitalPin, state, featurePins, fontScale, labelRows]);
 
   return (
     <div
@@ -317,7 +414,9 @@ export default function StateZoomView({ postal, onClose }: StateZoomViewProps) {
           // map on the left grows to fill, info panel on the right is fixed-
           // width on desktop and stacks below on mobile.
           onClick={(e) => e.stopPropagation()}
-          className="relative mx-auto flex h-full w-full max-w-[1400px] flex-col p-3 sm:p-6 md:flex-row md:gap-6"
+          // pb-[calc(...)] keeps the info panel's footer clear of the iOS
+          // home-indicator / browser toolbar overlay area on phones.
+          className="relative mx-auto flex h-full w-full max-w-[1400px] flex-col p-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] sm:p-6 md:flex-row md:gap-6"
         >
           {/* Map pane */}
           <div className="relative flex min-h-0 flex-1 items-center justify-center rounded-2xl bg-gradient-to-br from-sky-100 via-white to-emerald-50 p-3 shadow-2xl ring-1 ring-white/40">
@@ -325,7 +424,11 @@ export default function StateZoomView({ postal, onClose }: StateZoomViewProps) {
               viewBox={viewBox}
               xmlns="http://www.w3.org/2000/svg"
               preserveAspectRatio="xMidYMid meet"
-              className="block h-full w-full max-h-full max-w-full"
+              // overflow-visible is a safety net: the viewBox above already
+              // covers estimated label extents, but if a real glyph run is a
+              // hair wider than the estimate it spills into the pane padding
+              // instead of being sheared off.
+              className="block h-full w-full max-h-full max-w-full overflow-visible"
               role="img"
               aria-label={`Close-up map of ${state.name}`}
             >
@@ -361,7 +464,7 @@ export default function StateZoomView({ postal, onClose }: StateZoomViewProps) {
                     )}
                     <text
                       x={0}
-                      y={sz + 4 * fontScale + 3}
+                      y={sz + 4 * fontScale + 3 + (labelRows.get(p.key) ?? 0) * LABEL_ROW_UNITS * fontScale}
                       textAnchor="middle"
                       fontSize={3.6 * fontScale}
                       fontWeight={600}
@@ -393,7 +496,7 @@ export default function StateZoomView({ postal, onClose }: StateZoomViewProps) {
                   />
                   <text
                     x={0}
-                    y={7 * fontScale + 4 * fontScale + 3}
+                    y={7 * fontScale + 4 * fontScale + 3 + (labelRows.get('capital') ?? 0) * LABEL_ROW_UNITS * fontScale}
                     textAnchor="middle"
                     fontSize={4 * fontScale}
                     fontWeight={700}

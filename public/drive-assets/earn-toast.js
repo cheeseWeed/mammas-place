@@ -24,6 +24,8 @@
       '.de-toast{background:#fff;color:#1f1235;border:1px solid #e5dcf2;border-left:6px solid #facc15;border-radius:10px;padding:.85rem 1rem .85rem 1.1rem;box-shadow:0 10px 28px rgba(88,28,135,.22);position:relative;animation:de-pop .25s ease-out}' +
       '.de-toast.de-earned{border-left-color:#16a34a}' +
       '.de-toast.de-anon{border-left-color:#facc15}' +
+      '.de-toast.de-warn{border-left-color:#dc2626;border-color:#f5c2c2;background:#fff5f5}' +
+      '.de-toast.de-warn .de-title{color:#dc2626}' +
       '.de-toast .de-title{font-weight:700;color:#581c87;margin:0 0 .15rem;font-size:.95rem}' +
       '.de-toast .de-body{margin:0;color:#1f1235}' +
       '.de-toast .de-body small{display:block;color:#6b5b85;margin-top:.2rem;font-size:.78rem}' +
@@ -47,7 +49,7 @@
     ensureStyles();
     var container = ensureContainer();
     var el = document.createElement('div');
-    el.className = 'de-toast ' + (opts.variant === 'anon' ? 'de-anon' : 'de-earned');
+    el.className = 'de-toast ' + (opts.variant === 'warn' ? 'de-warn' : opts.variant === 'anon' ? 'de-anon' : 'de-earned');
     var title = document.createElement('p');
     title.className = 'de-title';
     title.textContent = opts.title || '';
@@ -96,10 +98,15 @@
   }
 
   function showAnonBanner() {
+    // NOT a soft "log in to earn" nudge — when nobody is logged in the score
+    // is NOT saved anywhere (no server POST happens). Warn loudly and stickily
+    // so a kid never finishes a whole quiz, sees a score, and silently loses it.
     showToast({
-      variant: 'anon',
-      title: 'Great round!',
-      html: 'Log in or register at <a href="/drive">the Drive home page</a> to start earning MP for your work.'
+      variant: 'warn',
+      title: '⚠️ This score did NOT save',
+      html: 'You are not logged in, so this result was not recorded and earned no MP.' +
+            '<small>Log in at <a href="/drive">the Drive home page</a>, then retake this quiz to save it.</small>',
+      duration: 60000
     });
   }
 

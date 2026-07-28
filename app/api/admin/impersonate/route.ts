@@ -21,6 +21,7 @@ import { cookies } from 'next/headers';
 import { isParentAuthenticated, setParentCookie } from '@/lib/money/parent';
 import { isValidUser, normalizeUser } from '@/lib/drive-progress';
 import { prisma } from '@/lib/prisma';
+import { DL_COOKIE_MAX_AGE_SEC } from '@/lib/auth-touch';
 
 const DL_COOKIE = 'dl_user';
 const RETURN_COOKIE = 'mp_admin_return';
@@ -30,9 +31,11 @@ const PARENT_COOKIE = 'mp_parent';
 const SUSPENDED_COOKIE = 'mp_admin_suspended';
 const SUSPENDED_MAX_AGE_SEC = 12 * 60 * 60;
 // Mirror the drive login TTL so an impersonated session expires on the same
-// clock as a real kid session.
-const DL_MAX_AGE_SEC = 2 * 60 * 60;
-const RETURN_MAX_AGE_SEC = 2 * 60 * 60;
+// clock as a real kid session. The banner marker must live exactly as long
+// as the borrowed dl_user, or the admin could keep browsing as the kid with
+// no "Return to admin" banner showing.
+const DL_MAX_AGE_SEC = DL_COOKIE_MAX_AGE_SEC;
+const RETURN_MAX_AGE_SEC = DL_COOKIE_MAX_AGE_SEC;
 
 export async function POST(req: NextRequest) {
   if (!(await isParentAuthenticated())) {

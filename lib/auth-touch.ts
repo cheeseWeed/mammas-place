@@ -1,5 +1,5 @@
 // Bumps the dl_user cookie's TTL so an active session doesn't get logged out
-// by the 2-hour absolute cap. Any kid-authed endpoint can call this after
+// by the absolute cap. Any kid-authed endpoint can call this after
 // confirming the cookie matches the request — keeps the kid logged in as
 // long as they're actually using the site.
 //
@@ -7,7 +7,13 @@
 import { cookies } from 'next/headers';
 
 const COOKIE_NAME = 'dl_user';
-const COOKIE_MAX_AGE_SEC = 2 * 60 * 60; // 7200 — must match login/register
+// 8-hour TTL, shared by login/register/impersonate and the sliding refresh
+// below. Was 2h, but kids doing a long driver-license study session (decks +
+// quizzes) were getting logged out mid-quiz (lilly, feedback 2026-07). 8h
+// covers a full study day; the server-issued maxAge still logs out powered-
+// off laptops / crashed browsers, and every authed API call slides the
+// window forward so an ACTIVE kid never expires.
+export const DL_COOKIE_MAX_AGE_SEC = 8 * 60 * 60; // 28800
 
 export async function touchSession(): Promise<void> {
   const jar = await cookies();
@@ -19,6 +25,6 @@ export async function touchSession(): Promise<void> {
     httpOnly: false,
     sameSite: 'lax',
     path: '/',
-    maxAge: COOKIE_MAX_AGE_SEC,
+    maxAge: DL_COOKIE_MAX_AGE_SEC,
   });
 }

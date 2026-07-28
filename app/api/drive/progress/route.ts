@@ -13,6 +13,7 @@ import {
   writeStore,
 } from '@/lib/drive-progress';
 import { awardEarn } from '@/lib/money/earn';
+import { touchSession } from '@/lib/auth-touch';
 
 // Quiz IDs containing any of these substrings count as final/simulator for
 // reward purposes (250c base instead of 75c). Matches /drive-assets/exams.
@@ -33,6 +34,10 @@ export async function GET(req: NextRequest) {
   if (!record) {
     return NextResponse.json({ error: 'No record' }, { status: 404 });
   }
+  // Sliding session refresh — the drive dashboard hydrates via this GET, so
+  // opening the study tool keeps the kid's dl_user cookie alive (no-op when
+  // there is no cookie; the static tool works anonymously via localStorage).
+  await touchSession();
   return NextResponse.json({
     attempts: record.attempts,
     misses: record.misses,
@@ -152,6 +157,11 @@ export async function POST(req: NextRequest) {
 
   record.updatedAt = Date.now();
   await writeStore(store);
+
+  // Sliding session refresh: finishing a quiz/deck posts progress here —
+  // push the dl_user cookie's expiry forward so a kid mid-study-session
+  // isn't logged out between quizzes (lilly, feedback 2026-07).
+  await touchSession();
 
   // MP earning — server-decided, idempotency-keyed. Quiz attempts pay per
   // attempt (re-takes earn too, but only if the quiz isn't a duplicate

@@ -10,17 +10,19 @@ import {
   normalizeUser,
   readStore,
 } from '@/lib/drive-progress';
+import { DL_COOKIE_MAX_AGE_SEC } from '@/lib/auth-touch';
 
 const COOKIE_NAME = 'dl_user';
-// 2-hour absolute TTL. Server-issued maxAge means powered-off laptops /
-// browser crashes still log the kid out after 2 hours. An active session
-// stays alive because every authed API call refreshes this cookie (see
-// lib/cookie-refresh.ts middleware-style helper).
+// 8-hour absolute TTL (shared constant — see lib/auth-touch.ts for the full
+// rationale). Server-issued maxAge means powered-off laptops / browser
+// crashes still log the kid out after 8 hours. An active session stays alive
+// because authed API calls (earn / progress / balance / audiobooks) call
+// touchSession() to slide the window forward.
 //
-// User picked 2h on 2026-05-30 as the right balance: short enough that
-// a shared family laptop forgets a kid after a couple hours, long enough
-// that a quick browser-close-and-reopen doesn't punish the active user.
-const COOKIE_MAX_AGE_SEC = 2 * 60 * 60; // 7200
+// History: 2h was picked on 2026-05-30 for the shared family laptop, but a
+// driver-license study session outlasts 2h — kids were logged out mid-quiz
+// (lilly, feedback 2026-07). Bumped to 8h + sliding refresh.
+const COOKIE_MAX_AGE_SEC = DL_COOKIE_MAX_AGE_SEC;
 
 export async function POST(req: NextRequest) {
   let body: { user?: unknown; pin?: unknown };

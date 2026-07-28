@@ -1,10 +1,11 @@
 'use client';
 
 // MP Bank → Feedback tab. Lists submissions from /api/feedback (parent-gated),
-// filterable by status (new / read / archived / all). Each row supports a
-// "Mark read" + "Archive" action that PUTs to /api/feedback/[id].
+// filterable by status (new / read / archived / all) plus a client-side text
+// search over body + author name/user. Each row supports a "Mark read" +
+// "Archive" action that PUTs to /api/feedback/[id].
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 export interface FeedbackRow {
@@ -48,6 +49,8 @@ export default function AdminFeedbackTab({ onCountChange }: Props) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('new');
+  // Client-side text search over body + author name/user of the loaded rows.
+  const [search, setSearch] = useState('');
   const [busyId, setBusyId] = useState<string | null>(null);
   // Per-row reply draft text, keyed by feedback id.
   const [replyDraft, setReplyDraft] = useState<Record<string, string>>({});
@@ -173,6 +176,18 @@ export default function AdminFeedbackTab({ onCountChange }: Props) {
     }
   };
 
+  // Rows surviving the text search (status filtering already happened server-side).
+  const visibleRows = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    if (!q) return rows;
+    return rows.filter((r) => {
+      const haystack = [r.body, r.authorName ?? '', r.authorUser ?? '']
+        .join('\n')
+        .toLowerCase();
+      return haystack.includes(q);
+    });
+  }, [rows, search]);
+
   const FILTERS: { key: StatusFilter; label: string; pill: string }[] = [
     { key: 'new', label: 'New', pill: 'bg-purple-100 text-purple-900' },
     { key: 'read', label: 'Read', pill: 'bg-blue-100 text-blue-900' },
@@ -201,7 +216,7 @@ export default function AdminFeedbackTab({ onCountChange }: Props) {
       </div>
 
       {/* Filter chips */}
-      <div className="flex flex-wrap gap-2 mb-4">
+      <div className="flex flex-wrap gap-2 mb-3">
         {FILTERS.map((f) => (
           <button
             key={f.key}
@@ -218,6 +233,32 @@ export default function AdminFeedbackTab({ onCountChange }: Props) {
         ))}
       </div>
 
+      {/* Text search — filters the loaded rows by message text or author name/user */}
+      <div className="relative mb-4">
+        <input
+          type="search"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="Search feedback text or names…"
+          aria-label="Search feedback by text or author name"
+          className="w-full rounded-xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none px-3 py-2 pr-20 bg-white text-purple-900 text-sm"
+        />
+        {search.trim() && (
+          <button
+            type="button"
+            onClick={() => setSearch('')}
+            className="absolute right-2 top-1/2 -translate-y-1/2 text-xs font-bold text-purple-500 hover:text-purple-800 px-2 py-1"
+          >
+            Clear
+          </button>
+        )}
+        {search.trim() && !loading && (
+          <p className="text-[11px] text-purple-500 mt-1">
+            {visibleRows.length} of {rows.length} match “{search.trim()}”
+          </p>
+        )}
+      </div>
+
       {error && (
         <div className="rounded-xl bg-yellow-100 border border-yellow-300 text-purple-900 text-sm px-4 py-3 mb-4">
           {error}
@@ -226,13 +267,15 @@ export default function AdminFeedbackTab({ onCountChange }: Props) {
 
       {loading ? (
         <p className="text-purple-700 text-sm">Loading feedback…</p>
-      ) : rows.length === 0 ? (
+      ) : visibleRows.length === 0 ? (
         <p className="text-purple-700 text-sm">
-          No feedback in this filter. Try a different status above.
+          {rows.length === 0
+            ? 'No feedback in this filter. Try a different status above.'
+            : 'No feedback matches your search. Try different words, or clear the search.'}
         </p>
       ) : (
         <ul className="divide-y divide-purple-100">
-          {rows.map((r) => {
+          {visibleRows.map((r) => {
             const isBusy = busyId === r.id;
             const statusClass =
               r.status === 'new'

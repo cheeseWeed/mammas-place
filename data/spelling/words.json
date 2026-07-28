@@ -8813,6 +8813,16 @@
     "homophones": []
   },
   {
+    "word": "farther",
+    "level": 5,
+    "patterns": [
+      "intermediate"
+    ],
+    "syllables": 2,
+    "sentence": "We hiked farther up the trail than yesterday.",
+    "homophones": []
+  },
+  {
     "word": "father",
     "level": 5,
     "patterns": [
@@ -11098,6 +11108,16 @@
     "homophones": []
   },
   {
+    "word": "absolutely",
+    "level": 6,
+    "patterns": [
+      "advanced"
+    ],
+    "syllables": 4,
+    "sentence": "You are absolutely right about that answer.",
+    "homophones": []
+  },
+  {
     "word": "accept",
     "level": 6,
     "patterns": [
@@ -11391,6 +11411,16 @@
     "homophones": []
   },
   {
+    "word": "ambitious",
+    "level": 6,
+    "patterns": [
+      "advanced"
+    ],
+    "syllables": 3,
+    "sentence": "She is ambitious and wants to build her own robot someday.",
+    "homophones": []
+  },
+  {
     "word": "amount",
     "level": 6,
     "patterns": [
@@ -11429,6 +11459,16 @@
     ],
     "syllables": 2,
     "sentence": "Please answer the teacher's question.",
+    "homophones": []
+  },
+  {
+    "word": "anxious",
+    "level": 6,
+    "patterns": [
+      "advanced"
+    ],
+    "syllables": 2,
+    "sentence": "I felt anxious before my first piano recital.",
     "homophones": []
   },
   {
@@ -11596,6 +11636,16 @@
     ],
     "syllables": 2,
     "sentence": "Pumpkins ripen in the autumn.",
+    "homophones": []
+  },
+  {
+    "word": "awesome",
+    "level": 6,
+    "patterns": [
+      "advanced"
+    ],
+    "syllables": 2,
+    "sentence": "The fireworks show was awesome.",
     "homophones": []
   },
   {
@@ -12373,6 +12423,16 @@
     "homophones": []
   },
   {
+    "word": "fortunately",
+    "level": 6,
+    "patterns": [
+      "advanced"
+    ],
+    "syllables": 4,
+    "sentence": "Fortunately, we found shelter before the storm.",
+    "homophones": []
+  },
+  {
     "word": "forty",
     "level": 6,
     "patterns": [
@@ -12694,6 +12754,16 @@
     "homophones": []
   },
   {
+    "word": "luxurious",
+    "level": 6,
+    "patterns": [
+      "advanced"
+    ],
+    "syllables": 4,
+    "sentence": "The hotel had a luxurious pool with a waterfall.",
+    "homophones": []
+  },
+  {
     "word": "maintenance",
     "level": 6,
     "patterns": [
@@ -12893,6 +12963,16 @@
     ],
     "syllables": 3,
     "sentence": "That clown's hat was outrageous.",
+    "homophones": []
+  },
+  {
+    "word": "oxygen",
+    "level": 6,
+    "patterns": [
+      "advanced"
+    ],
+    "syllables": 3,
+    "sentence": "Plants make the oxygen we breathe.",
     "homophones": []
   },
   {
@@ -13110,6 +13190,16 @@
     ],
     "syllables": 3,
     "sentence": "She thanked her team publicly.",
+    "homophones": []
+  },
+  {
+    "word": "pyramid",
+    "level": 6,
+    "patterns": [
+      "advanced"
+    ],
+    "syllables": 3,
+    "sentence": "The ancient pyramid rose above the desert sand.",
     "homophones": []
   },
   {
@@ -13421,6 +13511,16 @@
     ],
     "syllables": 3,
     "sentence": "We are going swimming tomorrow.",
+    "homophones": []
+  },
+  {
+    "word": "tragedy",
+    "level": 6,
+    "patterns": [
+      "advanced"
+    ],
+    "syllables": 3,
+    "sentence": "Dropping my ice cream cone in the dirt felt like a tragedy.",
     "homophones": []
   },
   {
@@ -15215,6 +15315,16 @@
     "homophones": []
   },
   {
+    "word": "plentiful",
+    "level": 7,
+    "patterns": [
+      "suffix-ful"
+    ],
+    "syllables": 3,
+    "sentence": "Apples were plentiful in the orchard this fall.",
+    "homophones": []
+  },
+  {
     "word": "ponies",
     "level": 7,
     "patterns": [
@@ -15959,6 +16069,16 @@
     "homophones": []
   },
   {
+    "word": "squeakier",
+    "level": 7,
+    "patterns": [
+      "suffix-er"
+    ],
+    "syllables": 3,
+    "sentence": "The old swing set is squeakier than the new one.",
+    "homophones": []
+  },
+  {
     "word": "station",
     "level": 7,
     "patterns": [
@@ -16158,6 +16278,16 @@
     ],
     "syllables": 2,
     "sentence": "The thickness of the snow made our boots sink deep.",
+    "homophones": []
+  },
+  {
+    "word": "thirstier",
+    "level": 7,
+    "patterns": [
+      "suffix-er"
+    ],
+    "syllables": 3,
+    "sentence": "Running around in the hot sun made me thirstier than ever.",
     "homophones": []
   },
   {

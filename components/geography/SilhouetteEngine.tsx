@@ -96,6 +96,46 @@ function postalAtPoint(x: number, y: number): string | null {
   return null;
 }
 
+// --- Snap forgiveness -------------------------------------------------------
+// Family feedback: "it is hard to drop it in the right spot and I know my
+// states". The old rule was an EXACT hit-test — the release point had to land
+// inside the target path, which is brutal for small states (RI, DE, CT) and
+// for touch, where the finger position ≠ where the shape visually sits.
+//
+// New rule: if the exact test misses, we ring-sample elementFromPoint at two
+// radii around the drop point. If any sample lands on the dragged state's own
+// path, the drop is a near miss and snaps in. Because the samples probe the
+// REAL path geometry, this is distance-to-border matching: it is exactly as
+// forgiving for a huge state's edge as for tiny Rhode Island, and a drop that
+// is farther than the snap radius from the target's border still fails —
+// wrong-state drops don't succeed.
+const SNAP_RADIUS_SVG_UNITS = 40; // ~4% of the 959-unit-wide map
+const SNAP_RADIUS_MIN_PX = 32;    // finger-sized floor on small phone renders
+
+// Probe 8 points on each of two rings (inner ring = half radius; outer ring
+// rotated 22.5° so the 16 samples interleave). Returns which ring first hit
+// the target, or null for no hit within the radius.
+function snapRingHit(
+  x: number,
+  y: number,
+  target: string,
+  radiusPx: number,
+): 'inner' | 'outer' | null {
+  const rings: Array<{ r: number; tier: 'inner' | 'outer' }> = [
+    { r: radiusPx * 0.5, tier: 'inner' },
+    { r: radiusPx, tier: 'outer' },
+  ];
+  for (const { r, tier } of rings) {
+    for (let i = 0; i < 8; i++) {
+      const a = (Math.PI * 2 * i) / 8 + (tier === 'outer' ? Math.PI / 8 : 0);
+      if (postalAtPoint(x + Math.cos(a) * r, y + Math.sin(a) * r) === target) {
+        return tier;
+      }
+    }
+  }
+  return null;
+}
+
 type DragState = {
   postal: string;
   // Pixel offset between cursor and tile origin so the clone doesn't snap
@@ -144,6 +184,9 @@ export default function SilhouetteEngine({
   // Political SVG markup loaded once on mount.
   const [svgMarkup, setSvgMarkup] = useState<string | null>(null);
   const mapGroupRef = useRef<SVGGElement | null>(null);
+  // Map <svg> element — needed to convert the SNAP radius from map units to
+  // screen pixels at the current rendered scale.
+  const mapSvgRef = useRef<SVGSVGElement | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -213,16 +256,57 @@ export default function SilhouetteEngine({
       const cx = e.clientX;
       const cy = e.clientY;
       const draggedPostal = drag.postal;
+      // The VISUAL center of the dragged shape — on touch, the finger is
+      // wherever the kid grabbed the tile (often a corner), but what they
+      // aim with is the shape itself. Hit-test the shape center first, the
+      // raw pointer second.
+      const shapeX = drag.x + drag.width / 2;
+      const shapeY = drag.y + drag.height / 2;
       // Hide our clone from the hit-test so elementFromPoint sees the map.
       const cloneEl = document.getElementById('silhouette-drag-clone');
       const prevPe = cloneEl?.style.pointerEvents;
       if (cloneEl) cloneEl.style.pointerEvents = 'none';
 
-      const hitPostal = postalAtPoint(cx, cy);
+      const hitAtShape = postalAtPoint(shapeX, shapeY);
+      const hitAtPointer = postalAtPoint(cx, cy);
+      let isCorrect = hitAtShape === draggedPostal || hitAtPointer === draggedPostal;
+
+      // Near-miss snap: exact test failed, so probe rings around both drop
+      // points for the target's border (see snapRingHit above). Radius scales
+      // with the rendered map (40 map-units) with a finger-sized px floor.
+      if (!isCorrect) {
+        let snapRadius = SNAP_RADIUS_MIN_PX;
+        const svgEl = mapSvgRef.current;
+        if (svgEl) {
+          const rect = svgEl.getBoundingClientRect();
+          const scale = Math.min(rect.width / VIEW_W, rect.height / VIEW_H);
+          if (scale && Number.isFinite(scale)) {
+            snapRadius = Math.max(SNAP_RADIUS_MIN_PX, SNAP_RADIUS_SVG_UNITS * scale);
+          }
+        }
+        const tier =
+          snapRingHit(shapeX, shapeY, draggedPostal, snapRadius) ??
+          snapRingHit(cx, cy, draggedPostal, snapRadius);
+        if (tier) {
+          // Guard: if the drop point sits INSIDE a different state that is
+          // still waiting in the tray (i.e. someone else's slot this round),
+          // only the tight inner ring may snap. Keeps a decisive drop onto
+          // the wrong tray-state counting as wrong, while staying forgiving
+          // near borders and over already-placed / out-of-round states.
+          const blocker =
+            hitAtShape !== null &&
+            hitAtShape !== draggedPostal &&
+            trayPostals.includes(hitAtShape);
+          isCorrect = tier === 'inner' || !blocker;
+        }
+      }
+
+      // For the "That spot is X" message, prefer what's under the shape.
+      const hitPostal = hitAtShape ?? hitAtPointer;
 
       if (cloneEl && prevPe !== undefined) cloneEl.style.pointerEvents = prevPe;
 
-      if (hitPostal === draggedPostal) {
+      if (isCorrect) {
         // Correct.
         setPlaced((prev) => {
           const next = new Set(prev);
@@ -267,7 +351,8 @@ export default function SilhouetteEngine({
       window.removeEventListener('pointerup', handleUp);
       window.removeEventListener('pointercancel', handleUp);
     };
-  }, [drag]);
+    // trayPostals is read by the snap guard (blocker check) inside handleUp.
+  }, [drag, trayPostals]);
 
   // Round-complete detection — tray empty ⇒ fire onComplete with the score.
   useEffect(() => {
@@ -388,6 +473,7 @@ export default function SilhouetteEngine({
         {/* MAP */}
         <div className="flex-1 min-h-0 min-w-0 flex items-center justify-center bg-sky-50/40 rounded-xl border border-sky-100 overflow-hidden">
           <svg
+            ref={mapSvgRef}
             viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
             xmlns="http://www.w3.org/2000/svg"
             preserveAspectRatio="xMidYMid meet"

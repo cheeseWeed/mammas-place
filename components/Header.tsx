@@ -11,6 +11,7 @@ import IdentityBadge from '@/components/IdentityBadge';
 import { useLearner } from '@/context/LearnerContext';
 import { centsToMP } from '@/lib/money/format';
 import FeedbackWidget from '@/components/FeedbackWidget';
+import CopyCodeChip from '@/components/CopyCodeChip';
 import { isSabbath } from '@/lib/sabbath';
 
 export default function Header() {
@@ -114,7 +115,12 @@ export default function Header() {
 
       {/* Top promo bar - now visible on mobile too */}
       <div className="text-white text-xs sm:text-sm text-center py-1 px-4" style={{background: 'rgba(0,0,0,0.4)'}}>
-        Free shipping on orders over $50! Use code <span className="font-bold text-yellow-300">MAMMA10</span> for 10% off
+        Free shipping on orders over $50! Use code{' '}
+        <CopyCodeChip
+          code="MAMMA10"
+          className="font-bold text-yellow-300 underline decoration-dotted underline-offset-2 hover:text-yellow-200 cursor-pointer px-1 py-0.5"
+        />{' '}
+        for 10% off
       </div>
 
       {/* Who you're logged in as — pinned to the FAR-LEFT edge of the whole
