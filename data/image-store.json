@@ -6,6 +6,8 @@
     "sourceFile": "ball-001.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "soccer-ball-study",
+    "variantLabel": "Study No. 1",
     "watermarkedPreview": "/image-store/previews/arch-ball-001.png",
     "originalPath": "assets/image-store/originals/ball-001.svg"
   },
@@ -16,6 +18,8 @@
     "sourceFile": "ball-002.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "soccer-ball-study",
+    "variantLabel": "Study No. 2",
     "watermarkedPreview": "/image-store/previews/arch-ball-002.png",
     "originalPath": "assets/image-store/originals/ball-002.svg"
   },
@@ -26,6 +30,8 @@
     "sourceFile": "ball-003.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "soccer-ball-study",
+    "variantLabel": "Study No. 3",
     "watermarkedPreview": "/image-store/previews/arch-ball-003.png",
     "originalPath": "assets/image-store/originals/ball-003.svg"
   },
@@ -36,6 +42,8 @@
     "sourceFile": "ball-004.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "soccer-ball-study",
+    "variantLabel": "Study No. 4",
     "watermarkedPreview": "/image-store/previews/arch-ball-004.png",
     "originalPath": "assets/image-store/originals/ball-004.svg"
   },
@@ -46,6 +54,8 @@
     "sourceFile": "ball-005.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "soccer-ball-study",
+    "variantLabel": "Study No. 5",
     "watermarkedPreview": "/image-store/previews/arch-ball-005.png",
     "originalPath": "assets/image-store/originals/ball-005.svg"
   },
@@ -56,6 +66,8 @@
     "sourceFile": "ball-006.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "soccer-ball-study",
+    "variantLabel": "Study No. 6",
     "watermarkedPreview": "/image-store/previews/arch-ball-006.png",
     "originalPath": "assets/image-store/originals/ball-006.svg"
   },
@@ -66,6 +78,8 @@
     "sourceFile": "grocery-001-olive-oil.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "extra-virgin-olive-oil-750ml",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-grocery-001-olive-oil.png",
     "originalPath": "assets/image-store/originals/grocery-001-olive-oil.svg"
   },
@@ -76,6 +90,8 @@
     "sourceFile": "grocery-002-pasta.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "spaghetti-box-500g",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-grocery-002-pasta.png",
     "originalPath": "assets/image-store/originals/grocery-002-pasta.svg"
   },
@@ -86,6 +102,8 @@
     "sourceFile": "grocery-003-canned-tomatoes.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "crushed-tomatoes-tin",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-grocery-003-canned-tomatoes.png",
     "originalPath": "assets/image-store/originals/grocery-003-canned-tomatoes.svg"
   },
@@ -96,6 +114,8 @@
     "sourceFile": "grocery-004-flour.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "all-purpose-flour-sack",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-grocery-004-flour.png",
     "originalPath": "assets/image-store/originals/grocery-004-flour.svg"
   },
@@ -106,6 +126,8 @@
     "sourceFile": "grocery-005-sugar.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "granulated-sugar-bag",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-grocery-005-sugar.png",
     "originalPath": "assets/image-store/originals/grocery-005-sugar.svg"
   },
@@ -116,6 +138,8 @@
     "sourceFile": "grocery-006-peanut-butter.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "creamy-peanut-butter-jar",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-grocery-006-peanut-butter.png",
     "originalPath": "assets/image-store/originals/grocery-006-peanut-butter.svg"
   },
@@ -126,6 +150,8 @@
     "sourceFile": "grocery-007-milk.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "whole-milk-carton",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-grocery-007-milk.png",
     "originalPath": "assets/image-store/originals/grocery-007-milk.svg"
   },
@@ -136,6 +162,8 @@
     "sourceFile": "grocery-008-cereal.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "whole-grain-cereal-box",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-grocery-008-cereal.png",
     "originalPath": "assets/image-store/originals/grocery-008-cereal.svg"
   },
@@ -146,6 +174,8 @@
     "sourceFile": "grocery-009-cheese.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "sharp-cheddar-block",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-grocery-009-cheese.png",
     "originalPath": "assets/image-store/originals/grocery-009-cheese.svg"
   },
@@ -156,6 +186,8 @@
     "sourceFile": "grocery-010-rice.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "long-grain-white-rice",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-grocery-010-rice.png",
     "originalPath": "assets/image-store/originals/grocery-010-rice.svg"
   },
@@ -166,6 +198,8 @@
     "sourceFile": "cereal-001.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "honey-oat-cereal-box",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-cereal-001.png",
     "originalPath": "assets/image-store/originals/cereal-001.svg"
   },
@@ -176,6 +210,8 @@
     "sourceFile": "pasta-001.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "italian-spaghetti-box",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-pasta-001.png",
     "originalPath": "assets/image-store/originals/pasta-001.svg"
   },
@@ -186,6 +222,8 @@
     "sourceFile": "rice-001.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "jasmine-rice-sack",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-rice-001.png",
     "originalPath": "assets/image-store/originals/rice-001.svg"
   },
@@ -196,6 +234,8 @@
     "sourceFile": "sauce-001.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "nonnas-marinara-jar",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-sauce-001.png",
     "originalPath": "assets/image-store/originals/sauce-001.svg"
   },
@@ -206,6 +246,8 @@
     "sourceFile": "honey-001.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "pure-raw-wildflower-honey",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-honey-001.png",
     "originalPath": "assets/image-store/originals/honey-001.svg"
   },
@@ -216,6 +258,8 @@
     "sourceFile": "olive-oil-001.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "tuscan-gold-olive-oil",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-olive-oil-001.png",
     "originalPath": "assets/image-store/originals/olive-oil-001.svg"
   },
@@ -226,6 +270,8 @@
     "sourceFile": "coffee-001.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "artisan-roast-coffee-beans",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-coffee-001.png",
     "originalPath": "assets/image-store/originals/coffee-001.svg"
   },
@@ -236,6 +282,8 @@
     "sourceFile": "banana.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "single-ripe-banana",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-banana.png",
     "originalPath": "assets/image-store/originals/banana.svg"
   },
@@ -246,6 +294,8 @@
     "sourceFile": "chips-001.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "family-size-potato-chips",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-chips-001.png",
     "originalPath": "assets/image-store/originals/chips-001.svg"
   },
@@ -256,6 +306,8 @@
     "sourceFile": "cookies-001.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "homestyle-chocolate-chip-cookies",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-cookies-001.png",
     "originalPath": "assets/image-store/originals/cookies-001.svg"
   },
@@ -266,6 +318,8 @@
     "sourceFile": "fruitsnacks-001.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "fruit-snacks-40-pack",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-fruitsnacks-001.png",
     "originalPath": "assets/image-store/originals/fruitsnacks-001.svg"
   },
@@ -276,6 +330,8 @@
     "sourceFile": "nuts-001.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "premium-mixed-nuts-tub",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-nuts-001.png",
     "originalPath": "assets/image-store/originals/nuts-001.svg"
   },
@@ -286,6 +342,8 @@
     "sourceFile": "popcorn-001.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "premium-popcorn-kernels",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-popcorn-001.png",
     "originalPath": "assets/image-store/originals/popcorn-001.svg"
   },
@@ -296,6 +354,8 @@
     "sourceFile": "snacks-001.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "natures-best-trail-mix",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-snacks-001.png",
     "originalPath": "assets/image-store/originals/snacks-001.svg"
   },
@@ -306,6 +366,8 @@
     "sourceFile": "trailmix-001.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "trail-mix-pouch-20oz",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-trailmix-001.png",
     "originalPath": "assets/image-store/originals/trailmix-001.svg"
   },
@@ -316,6 +378,8 @@
     "sourceFile": "dessert-001.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "strawberry-cheesecake",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-dessert-001.png",
     "originalPath": "assets/image-store/originals/dessert-001.svg"
   },
@@ -326,6 +390,8 @@
     "sourceFile": "dessert-002.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "chocolate-mousse-cake",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-dessert-002.png",
     "originalPath": "assets/image-store/originals/dessert-002.svg"
   },
@@ -336,6 +402,8 @@
     "sourceFile": "dessert-003.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "tiramisu",
+    "variantLabel": "Rustic plate version, chocolate shavings",
     "watermarkedPreview": "/image-store/previews/arch-dessert-003.png",
     "originalPath": "assets/image-store/originals/dessert-003.svg"
   },
@@ -346,6 +414,8 @@
     "sourceFile": "dessert-004.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "lemon-meringue-tart",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-dessert-004.png",
     "originalPath": "assets/image-store/originals/dessert-004.svg"
   },
@@ -356,6 +426,8 @@
     "sourceFile": "dessert-005.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "chocolate-lava-cake",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-dessert-005.png",
     "originalPath": "assets/image-store/originals/dessert-005.svg"
   },
@@ -366,6 +438,8 @@
     "sourceFile": "dessert-006.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "raspberry-panna-cotta",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-dessert-006.png",
     "originalPath": "assets/image-store/originals/dessert-006.svg"
   },
@@ -376,6 +450,8 @@
     "sourceFile": "dinner-001.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "escargot-garlic-butter",
+    "variantLabel": "Studio plate version, gold-dust garnish",
     "watermarkedPreview": "/image-store/previews/arch-dinner-001.png",
     "originalPath": "assets/image-store/originals/dinner-001.svg"
   },
@@ -386,6 +462,8 @@
     "sourceFile": "dinner-002.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "artisan-cheese-board",
+    "variantLabel": "Slate board with soft stinky cheeses",
     "watermarkedPreview": "/image-store/previews/arch-dinner-002.png",
     "originalPath": "assets/image-store/originals/dinner-002.svg"
   },
@@ -396,6 +474,8 @@
     "sourceFile": "dinner-003.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "prime-rib-yorkshire-pudding",
+    "variantLabel": "Studio plate version, with horseradish",
     "watermarkedPreview": "/image-store/previews/arch-dinner-003.png",
     "originalPath": "assets/image-store/originals/dinner-003.svg"
   },
@@ -406,6 +486,8 @@
     "sourceFile": "dinner-004.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "grilled-lobster-tail",
+    "variantLabel": "Platinum-rim plate with asparagus",
     "watermarkedPreview": "/image-store/previews/arch-dinner-004.png",
     "originalPath": "assets/image-store/originals/dinner-004.svg"
   },
@@ -416,6 +498,8 @@
     "sourceFile": "dinner-005.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "spaghetti-carbonara",
+    "variantLabel": "Studio plate version",
     "watermarkedPreview": "/image-store/previews/arch-dinner-005.png",
     "originalPath": "assets/image-store/originals/dinner-005.svg"
   },
@@ -426,6 +510,8 @@
     "sourceFile": "dinner-006.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "risotto-milanese",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-dinner-006.png",
     "originalPath": "assets/image-store/originals/dinner-006.svg"
   },
@@ -436,6 +522,8 @@
     "sourceFile": "lunch-001.svg",
     "priceCents": 700,
     "tier": "archive",
+    "subjectId": "veggie-supreme-pizza",
+    "variantLabel": "Whole pie on a white plate",
     "watermarkedPreview": "/image-store/previews/arch-lunch-001.png",
     "originalPath": "assets/image-store/originals/lunch-001.svg"
   },
@@ -446,6 +534,8 @@
     "sourceFile": "lunch-002.svg",
     "priceCents": 700,
     "tier": "archive",
+    "subjectId": "street-taco-trio",
+    "variantLabel": "Wooden plate version, carnitas",
     "watermarkedPreview": "/image-store/previews/arch-lunch-002.png",
     "originalPath": "assets/image-store/originals/lunch-002.svg"
   },
@@ -456,6 +546,8 @@
     "sourceFile": "lunch-003.svg",
     "priceCents": 700,
     "tier": "archive",
+    "subjectId": "ahi-tuna-poke-bowl",
+    "variantLabel": "White ceramic bowl, raw ahi cubes",
     "watermarkedPreview": "/image-store/previews/arch-lunch-003.png",
     "originalPath": "assets/image-store/originals/lunch-003.svg"
   },
@@ -466,6 +558,8 @@
     "sourceFile": "lunch-004.svg",
     "priceCents": 700,
     "tier": "archive",
+    "subjectId": "cheeseburger-and-fries",
+    "variantLabel": "Studio plate version, ketchup and mustard",
     "watermarkedPreview": "/image-store/previews/arch-lunch-004.png",
     "originalPath": "assets/image-store/originals/lunch-004.svg"
   },
@@ -476,6 +570,8 @@
     "sourceFile": "lunch-005.svg",
     "priceCents": 700,
     "tier": "archive",
+    "subjectId": "chicken-caesar-salad",
+    "variantLabel": "Layered-romaine bowl version",
     "watermarkedPreview": "/image-store/previews/arch-lunch-005.png",
     "originalPath": "assets/image-store/originals/lunch-005.svg"
   },
@@ -486,6 +582,8 @@
     "sourceFile": "lunch-006.svg",
     "priceCents": 700,
     "tier": "archive",
+    "subjectId": "hummus-veggie-wrap",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-lunch-006.png",
     "originalPath": "assets/image-store/originals/lunch-006.svg"
   },
@@ -496,6 +594,8 @@
     "sourceFile": "lunch-007.svg",
     "priceCents": 700,
     "tier": "archive",
+    "subjectId": "mediterranean-quinoa-bowl",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-lunch-007.png",
     "originalPath": "assets/image-store/originals/lunch-007.svg"
   },
@@ -506,6 +606,8 @@
     "sourceFile": "rest-breakfast-001.svg",
     "priceCents": 700,
     "tier": "archive",
+    "subjectId": "classic-american-breakfast",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-rest-breakfast-001.png",
     "originalPath": "assets/image-store/originals/rest-breakfast-001.svg"
   },
@@ -516,6 +618,8 @@
     "sourceFile": "rest-breakfast-002.svg",
     "priceCents": 700,
     "tier": "archive",
+    "subjectId": "pancake-stack-with-syrup",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-rest-breakfast-002.png",
     "originalPath": "assets/image-store/originals/rest-breakfast-002.svg"
   },
@@ -526,6 +630,8 @@
     "sourceFile": "rest-breakfast-003.svg",
     "priceCents": 700,
     "tier": "archive",
+    "subjectId": "french-omelette",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-rest-breakfast-003.png",
     "originalPath": "assets/image-store/originals/rest-breakfast-003.svg"
   },
@@ -536,6 +642,8 @@
     "sourceFile": "rest-breakfast-004.svg",
     "priceCents": 700,
     "tier": "archive",
+    "subjectId": "avocado-and-salmon-toast",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-rest-breakfast-004.png",
     "originalPath": "assets/image-store/originals/rest-breakfast-004.svg"
   },
@@ -546,6 +654,8 @@
     "sourceFile": "rest-breakfast-005.svg",
     "priceCents": 700,
     "tier": "archive",
+    "subjectId": "spinach-mushroom-omelet",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-rest-breakfast-005.png",
     "originalPath": "assets/image-store/originals/rest-breakfast-005.svg"
   },
@@ -556,6 +666,8 @@
     "sourceFile": "rest-breakfast-006.svg",
     "priceCents": 700,
     "tier": "archive",
+    "subjectId": "scrambled-eggs-with-peppers",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-rest-breakfast-006.png",
     "originalPath": "assets/image-store/originals/rest-breakfast-006.svg"
   },
@@ -566,6 +678,8 @@
     "sourceFile": "rest-dessert-001.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "triple-chocolate-cake",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-rest-dessert-001.png",
     "originalPath": "assets/image-store/originals/rest-dessert-001.svg"
   },
@@ -576,6 +690,8 @@
     "sourceFile": "rest-dessert-002.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "creme-brulee",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-rest-dessert-002.png",
     "originalPath": "assets/image-store/originals/rest-dessert-002.svg"
   },
@@ -586,6 +702,8 @@
     "sourceFile": "rest-dessert-003.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "ice-cream-sundae",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-rest-dessert-003.png",
     "originalPath": "assets/image-store/originals/rest-dessert-003.svg"
   },
@@ -596,6 +714,8 @@
     "sourceFile": "rest-dessert-004.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "tiramisu",
+    "variantLabel": "Restaurant version, espresso cup alongside",
     "watermarkedPreview": "/image-store/previews/arch-rest-dessert-004.png",
     "originalPath": "assets/image-store/originals/rest-dessert-004.svg"
   },
@@ -606,6 +726,8 @@
     "sourceFile": "rest-dessert-005.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "apple-pie-a-la-mode",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-rest-dessert-005.png",
     "originalPath": "assets/image-store/originals/rest-dessert-005.svg"
   },
@@ -616,6 +738,8 @@
     "sourceFile": "rest-dinner-001.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "escargot-garlic-butter",
+    "variantLabel": "Restaurant-table version, gold-rim plate",
     "watermarkedPreview": "/image-store/previews/arch-rest-dinner-001.png",
     "originalPath": "assets/image-store/originals/rest-dinner-001.svg"
   },
@@ -626,6 +750,8 @@
     "sourceFile": "rest-dinner-002.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "artisan-cheese-board",
+    "variantLabel": "Wooden board with brie, cheddar and blue",
     "watermarkedPreview": "/image-store/previews/arch-rest-dinner-002.png",
     "originalPath": "assets/image-store/originals/rest-dinner-002.svg"
   },
@@ -636,6 +762,8 @@
     "sourceFile": "rest-dinner-003.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "prime-rib-yorkshire-pudding",
+    "variantLabel": "Restaurant-table version, gold-rim plate",
     "watermarkedPreview": "/image-store/previews/arch-rest-dinner-003.png",
     "originalPath": "assets/image-store/originals/rest-dinner-003.svg"
   },
@@ -646,6 +774,8 @@
     "sourceFile": "rest-dinner-004.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "grilled-lobster-tail",
+    "variantLabel": "Coastal restaurant version, split shell",
     "watermarkedPreview": "/image-store/previews/arch-rest-dinner-004.png",
     "originalPath": "assets/image-store/originals/rest-dinner-004.svg"
   },
@@ -656,6 +786,8 @@
     "sourceFile": "rest-dinner-005.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "spaghetti-carbonara",
+    "variantLabel": "Restaurant-table version, cracked pepper",
     "watermarkedPreview": "/image-store/previews/arch-rest-dinner-005.png",
     "originalPath": "assets/image-store/originals/rest-dinner-005.svg"
   },
@@ -666,6 +798,8 @@
     "sourceFile": "rest-dinner-006.svg",
     "priceCents": 800,
     "tier": "archive",
+    "subjectId": "pan-seared-salmon",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-rest-dinner-006.png",
     "originalPath": "assets/image-store/originals/rest-dinner-006.svg"
   },
@@ -676,6 +810,8 @@
     "sourceFile": "rest-healthy-001.svg",
     "priceCents": 600,
     "tier": "archive",
+    "subjectId": "protein-power-bowl",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-rest-healthy-001.png",
     "originalPath": "assets/image-store/originals/rest-healthy-001.svg"
   },
@@ -686,6 +822,8 @@
     "sourceFile": "rest-healthy-002.svg",
     "priceCents": 600,
     "tier": "archive",
+    "subjectId": "grilled-salmon-plate",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-rest-healthy-002.png",
     "originalPath": "assets/image-store/originals/rest-healthy-002.svg"
   },
@@ -696,6 +834,8 @@
     "sourceFile": "rest-healthy-003.svg",
     "priceCents": 600,
     "tier": "archive",
+    "subjectId": "chicken-parmesan",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-rest-healthy-003.png",
     "originalPath": "assets/image-store/originals/rest-healthy-003.svg"
   },
@@ -706,6 +846,8 @@
     "sourceFile": "rest-healthy-004.svg",
     "priceCents": 600,
     "tier": "archive",
+    "subjectId": "vegan-buddha-bowl",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-rest-healthy-004.png",
     "originalPath": "assets/image-store/originals/rest-healthy-004.svg"
   },
@@ -716,6 +858,8 @@
     "sourceFile": "rest-healthy-005.svg",
     "priceCents": 600,
     "tier": "archive",
+    "subjectId": "surf-and-turf",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-rest-healthy-005.png",
     "originalPath": "assets/image-store/originals/rest-healthy-005.svg"
   },
@@ -726,6 +870,8 @@
     "sourceFile": "rest-lunch-001.svg",
     "priceCents": 700,
     "tier": "archive",
+    "subjectId": "veggie-supreme-pizza",
+    "variantLabel": "Wood-fired version on a pizza stone",
     "watermarkedPreview": "/image-store/previews/arch-rest-lunch-001.png",
     "originalPath": "assets/image-store/originals/rest-lunch-001.svg"
   },
@@ -736,6 +882,8 @@
     "sourceFile": "rest-lunch-002.svg",
     "priceCents": 700,
     "tier": "archive",
+    "subjectId": "street-taco-trio",
+    "variantLabel": "Restaurant version, gold-rim plate",
     "watermarkedPreview": "/image-store/previews/arch-rest-lunch-002.png",
     "originalPath": "assets/image-store/originals/rest-lunch-002.svg"
   },
@@ -746,6 +894,8 @@
     "sourceFile": "rest-lunch-003.svg",
     "priceCents": 700,
     "tier": "archive",
+    "subjectId": "ahi-tuna-poke-bowl",
+    "variantLabel": "Coastal restaurant version, seared ahi",
     "watermarkedPreview": "/image-store/previews/arch-rest-lunch-003.png",
     "originalPath": "assets/image-store/originals/rest-lunch-003.svg"
   },
@@ -756,6 +906,8 @@
     "sourceFile": "rest-lunch-004.svg",
     "priceCents": 700,
     "tier": "archive",
+    "subjectId": "cheeseburger-and-fries",
+    "variantLabel": "Restaurant version, onion rings on the stack",
     "watermarkedPreview": "/image-store/previews/arch-rest-lunch-004.png",
     "originalPath": "assets/image-store/originals/rest-lunch-004.svg"
   },
@@ -766,6 +918,8 @@
     "sourceFile": "rest-lunch-005.svg",
     "priceCents": 700,
     "tier": "archive",
+    "subjectId": "chicken-caesar-salad",
+    "variantLabel": "Restaurant version, croutons and fork",
     "watermarkedPreview": "/image-store/previews/arch-rest-lunch-005.png",
     "originalPath": "assets/image-store/originals/rest-lunch-005.svg"
   },
@@ -776,6 +930,8 @@
     "sourceFile": "home-001.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "modern-metal-planter",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-home-001.png",
     "originalPath": "assets/image-store/originals/home-001.svg"
   },
@@ -786,6 +942,8 @@
     "sourceFile": "home-002.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "wooden-garden-bench",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-home-002.png",
     "originalPath": "assets/image-store/originals/home-002.svg"
   },
@@ -796,6 +954,8 @@
     "sourceFile": "home-003.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "ceramic-birdbath",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-home-003.png",
     "originalPath": "assets/image-store/originals/home-003.svg"
   },
@@ -806,6 +966,8 @@
     "sourceFile": "home-004.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "outdoor-seat-cushion",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-home-004.png",
     "originalPath": "assets/image-store/originals/home-004.svg"
   },
@@ -816,6 +978,8 @@
     "sourceFile": "home-005.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "macrame-hanging-planter",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-home-005.png",
     "originalPath": "assets/image-store/originals/home-005.svg"
   },
@@ -826,6 +990,8 @@
     "sourceFile": "home-006.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "garden-stepping-stones",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-home-006.png",
     "originalPath": "assets/image-store/originals/home-006.svg"
   },
@@ -836,6 +1002,8 @@
     "sourceFile": "home-007.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "backyard-fire-pit",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-home-007.png",
     "originalPath": "assets/image-store/originals/home-007.svg"
   },
@@ -846,6 +1014,8 @@
     "sourceFile": "home-008.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "metal-watering-can",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-home-008.png",
     "originalPath": "assets/image-store/originals/home-008.svg"
   },
@@ -856,6 +1026,8 @@
     "sourceFile": "home-009.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "candle-garden-lantern",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-home-009.png",
     "originalPath": "assets/image-store/originals/home-009.svg"
   },
@@ -866,6 +1038,8 @@
     "sourceFile": "home-010.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "raised-vegetable-bed",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-home-010.png",
     "originalPath": "assets/image-store/originals/home-010.svg"
   },
@@ -876,6 +1050,8 @@
     "sourceFile": "hd-001.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "ceramic-vase-trio",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-hd-001.png",
     "originalPath": "assets/image-store/originals/hd-001.svg"
   },
@@ -886,6 +1062,8 @@
     "sourceFile": "hd-002.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "framed-abstract-canvas",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-hd-002.png",
     "originalPath": "assets/image-store/originals/hd-002.svg"
   },
@@ -896,6 +1074,8 @@
     "sourceFile": "hd-003.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "scented-candle-trio",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-hd-003.png",
     "originalPath": "assets/image-store/originals/hd-003.svg"
   },
@@ -906,6 +1086,8 @@
     "sourceFile": "hd-004.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "round-gold-mirror",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-hd-004.png",
     "originalPath": "assets/image-store/originals/hd-004.svg"
   },
@@ -916,6 +1098,8 @@
     "sourceFile": "hd-005.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "throw-pillow-set",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-hd-005.png",
     "originalPath": "assets/image-store/originals/hd-005.svg"
   },
@@ -926,6 +1110,8 @@
     "sourceFile": "lg-001.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "gas-push-mower-21-inch",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-lg-001.png",
     "originalPath": "assets/image-store/originals/lg-001.svg"
   },
@@ -936,6 +1122,8 @@
     "sourceFile": "lg-002.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "cordless-hedge-trimmer",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-lg-002.png",
     "originalPath": "assets/image-store/originals/lg-002.svg"
   },
@@ -946,6 +1134,8 @@
     "sourceFile": "lg-003.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "wildflower-seed-packet",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-lg-003.png",
     "originalPath": "assets/image-store/originals/lg-003.svg"
   },
@@ -956,6 +1146,8 @@
     "sourceFile": "lg-004.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "three-piece-garden-tool-set",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-lg-004.png",
     "originalPath": "assets/image-store/originals/lg-004.svg"
   },
@@ -966,6 +1158,8 @@
     "sourceFile": "lg-005.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "coiled-garden-hose-100ft",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-lg-005.png",
     "originalPath": "assets/image-store/originals/lg-005.svg"
   },
@@ -976,6 +1170,8 @@
     "sourceFile": "outdoor-001.svg",
     "priceCents": 600,
     "tier": "archive",
+    "subjectId": "two-pole-dome-tent",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-outdoor-001.png",
     "originalPath": "assets/image-store/originals/outdoor-001.svg"
   },
@@ -986,6 +1182,8 @@
     "sourceFile": "outdoor-002.svg",
     "priceCents": 600,
     "tier": "archive",
+    "subjectId": "trail-daypack",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-outdoor-002.png",
     "originalPath": "assets/image-store/originals/outdoor-002.svg"
   },
@@ -996,6 +1194,8 @@
     "sourceFile": "outdoor-003.svg",
     "priceCents": 600,
     "tier": "archive",
+    "subjectId": "rolled-sleeping-bag",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-outdoor-003.png",
     "originalPath": "assets/image-store/originals/outdoor-003.svg"
   },
@@ -1006,6 +1206,8 @@
     "sourceFile": "exercise-001.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "olympic-barbell-45lb",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-exercise-001.png",
     "originalPath": "assets/image-store/originals/exercise-001.svg"
   },
@@ -1016,6 +1218,8 @@
     "sourceFile": "exercise-002.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "stacked-bumper-plates",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-exercise-002.png",
     "originalPath": "assets/image-store/originals/exercise-002.svg"
   },
@@ -1026,6 +1230,8 @@
     "sourceFile": "exercise-003.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "neoprene-dumbbell-pair-15lb",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-exercise-003.png",
     "originalPath": "assets/image-store/originals/exercise-003.svg"
   },
@@ -1036,6 +1242,8 @@
     "sourceFile": "exercise-004.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "stationary-exercise-bike",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-exercise-004.png",
     "originalPath": "assets/image-store/originals/exercise-004.svg"
   },
@@ -1046,6 +1254,8 @@
     "sourceFile": "exercise-005.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "cable-crossover-machine",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-exercise-005.png",
     "originalPath": "assets/image-store/originals/exercise-005.svg"
   },
@@ -1056,6 +1266,8 @@
     "sourceFile": "exercise-006.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "medicine-ball-10lb",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-exercise-006.png",
     "originalPath": "assets/image-store/originals/exercise-006.svg"
   },
@@ -1066,6 +1278,8 @@
     "sourceFile": "sports-ball-001.svg",
     "priceCents": 600,
     "tier": "archive",
+    "subjectId": "professional-basketball",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-sports-ball-001.png",
     "originalPath": "assets/image-store/originals/sports-ball-001.svg"
   },
@@ -1076,6 +1290,8 @@
     "sourceFile": "sports-ball-002.svg",
     "priceCents": 600,
     "tier": "archive",
+    "subjectId": "leather-football",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-sports-ball-002.png",
     "originalPath": "assets/image-store/originals/sports-ball-002.svg"
   },
@@ -1086,6 +1302,8 @@
     "sourceFile": "sports-ball-003.svg",
     "priceCents": 600,
     "tier": "archive",
+    "subjectId": "official-size-soccer-ball",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-sports-ball-003.png",
     "originalPath": "assets/image-store/originals/sports-ball-003.svg"
   },
@@ -1096,6 +1314,8 @@
     "sourceFile": "sports-ball-004.svg",
     "priceCents": 600,
     "tier": "archive",
+    "subjectId": "indoor-volleyball",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-sports-ball-004.png",
     "originalPath": "assets/image-store/originals/sports-ball-004.svg"
   },
@@ -1106,6 +1326,8 @@
     "sourceFile": "sports-ball-005.svg",
     "priceCents": 600,
     "tier": "archive",
+    "subjectId": "official-league-baseball",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-sports-ball-005.png",
     "originalPath": "assets/image-store/originals/sports-ball-005.svg"
   },
@@ -1116,6 +1338,8 @@
     "sourceFile": "sports-equip-001.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "adjustable-dumbbells-50lb",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-sports-equip-001.png",
     "originalPath": "assets/image-store/originals/sports-equip-001.svg"
   },
@@ -1126,6 +1350,8 @@
     "sourceFile": "sports-equip-002.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "premium-yoga-mat-6mm",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-sports-equip-002.png",
     "originalPath": "assets/image-store/originals/sports-equip-002.svg"
   },
@@ -1136,6 +1362,8 @@
     "sourceFile": "sports-equip-003.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "resistance-band-set",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-sports-equip-003.png",
     "originalPath": "assets/image-store/originals/sports-equip-003.svg"
   },
@@ -1146,6 +1374,8 @@
     "sourceFile": "sports-equip-004.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "cast-iron-kettlebell-20lb",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-sports-equip-004.png",
     "originalPath": "assets/image-store/originals/sports-equip-004.svg"
   },
@@ -1156,6 +1386,8 @@
     "sourceFile": "sports-equip-005.svg",
     "priceCents": 500,
     "tier": "archive",
+    "subjectId": "speed-jump-rope",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-sports-equip-005.png",
     "originalPath": "assets/image-store/originals/sports-equip-005.svg"
   },
@@ -1166,6 +1398,8 @@
     "sourceFile": "sports-outdoor-001.svg",
     "priceCents": 600,
     "tier": "archive",
+    "subjectId": "four-person-camping-tent",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-sports-outdoor-001.png",
     "originalPath": "assets/image-store/originals/sports-outdoor-001.svg"
   },
@@ -1176,6 +1410,8 @@
     "sourceFile": "sports-outdoor-002.svg",
     "priceCents": 600,
     "tier": "archive",
+    "subjectId": "mummy-sleeping-bag-20f",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-sports-outdoor-002.png",
     "originalPath": "assets/image-store/originals/sports-outdoor-002.svg"
   },
@@ -1186,6 +1422,8 @@
     "sourceFile": "sports-outdoor-003.svg",
     "priceCents": 600,
     "tier": "archive",
+    "subjectId": "two-person-inflatable-kayak",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-sports-outdoor-003.png",
     "originalPath": "assets/image-store/originals/sports-outdoor-003.svg"
   },
@@ -1196,6 +1434,8 @@
     "sourceFile": "sports-outdoor-004.svg",
     "priceCents": 600,
     "tier": "archive",
+    "subjectId": "hiking-backpack-50l",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-sports-outdoor-004.png",
     "originalPath": "assets/image-store/originals/sports-outdoor-004.svg"
   },
@@ -1206,6 +1446,8 @@
     "sourceFile": "sports-outdoor-005.svg",
     "priceCents": 600,
     "tier": "archive",
+    "subjectId": "hard-sided-cooler",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-sports-outdoor-005.png",
     "originalPath": "assets/image-store/originals/sports-outdoor-005.svg"
   },
@@ -1216,6 +1458,8 @@
     "sourceFile": "battery-001.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "power-pro-12v-car-battery",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-battery-001.png",
     "originalPath": "assets/image-store/originals/battery-001.svg"
   },
@@ -1226,6 +1470,8 @@
     "sourceFile": "filter-001.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "spin-on-oil-filter",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-filter-001.png",
     "originalPath": "assets/image-store/originals/filter-001.svg"
   },
@@ -1236,6 +1482,8 @@
     "sourceFile": "filter-002.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "pleated-engine-air-filter",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-filter-002.png",
     "originalPath": "assets/image-store/originals/filter-002.svg"
   },
@@ -1246,6 +1494,8 @@
     "sourceFile": "oil-001.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "premium-synthetic-motor-oil-5w-30",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-oil-001.png",
     "originalPath": "assets/image-store/originals/oil-001.svg"
   },
@@ -1256,6 +1506,8 @@
     "sourceFile": "oil-002.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "conventional-motor-oil-10w-40",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-oil-002.png",
     "originalPath": "assets/image-store/originals/oil-002.svg"
   },
@@ -1266,6 +1518,8 @@
     "sourceFile": "wiper-001.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "windshield-wiper-pair",
+    "variantLabel": "Mounted on a rainy windshield",
     "watermarkedPreview": "/image-store/previews/arch-wiper-001.png",
     "originalPath": "assets/image-store/originals/wiper-001.svg"
   },
@@ -1276,6 +1530,8 @@
     "sourceFile": "wipers-001.svg",
     "priceCents": 300,
     "tier": "archive",
+    "subjectId": "windshield-wiper-pair",
+    "variantLabel": "Product shot, Clear View Pro branding",
     "watermarkedPreview": "/image-store/previews/arch-wipers-001.png",
     "originalPath": "assets/image-store/originals/wipers-001.svg"
   },
@@ -1286,6 +1542,8 @@
     "sourceFile": "tire-001.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "all-season-tire-16-inch",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-tire-001.png",
     "originalPath": "assets/image-store/originals/tire-001.svg"
   },
@@ -1296,6 +1554,8 @@
     "sourceFile": "tire-002.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "performance-sport-tire-18-inch",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-tire-002.png",
     "originalPath": "assets/image-store/originals/tire-002.svg"
   },
@@ -1306,6 +1566,8 @@
     "sourceFile": "tire-003.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "winter-grip-tire-17-inch",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-tire-003.png",
     "originalPath": "assets/image-store/originals/tire-003.svg"
   },
@@ -1316,6 +1578,8 @@
     "sourceFile": "tire-004.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "summer-sport-tire-20-inch",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-tire-004.png",
     "originalPath": "assets/image-store/originals/tire-004.svg"
   },
@@ -1326,6 +1590,8 @@
     "sourceFile": "tire-005.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "heavy-duty-truck-tire-22-inch",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-tire-005.png",
     "originalPath": "assets/image-store/originals/tire-005.svg"
   },
@@ -1336,6 +1602,8 @@
     "sourceFile": "classic-car-003.svg",
     "priceCents": 1400,
     "tier": "archive",
+    "subjectId": "1972-ford-transit-mark-i-van",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-classic-car-003.png",
     "originalPath": "assets/image-store/originals/classic-car-003.svg"
   },
@@ -1346,6 +1614,8 @@
     "sourceFile": "classic-car-004.svg",
     "priceCents": 1400,
     "tier": "archive",
+    "subjectId": "2008-lamborghini-gallardo-spyder",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-classic-car-004.png",
     "originalPath": "assets/image-store/originals/classic-car-004.svg"
   },
@@ -1356,6 +1626,8 @@
     "sourceFile": "classic-car-005.svg",
     "priceCents": 1400,
     "tier": "archive",
+    "subjectId": "1996-dodge-viper-gts",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-classic-car-005.png",
     "originalPath": "assets/image-store/originals/classic-car-005.svg"
   },
@@ -1366,6 +1638,8 @@
     "sourceFile": "classic-car-006.svg",
     "priceCents": 1400,
     "tier": "archive",
+    "subjectId": "1985-jeep-cj-7-laredo",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-classic-car-006.png",
     "originalPath": "assets/image-store/originals/classic-car-006.svg"
   },
@@ -1376,6 +1650,8 @@
     "sourceFile": "bow-003-crossbow.svg",
     "priceCents": 900,
     "tier": "archive",
+    "subjectId": "junior-foam-tip-crossbow",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-bow-003-crossbow.png",
     "originalPath": "assets/image-store/originals/bow-003-crossbow.svg"
   },
@@ -1386,6 +1662,8 @@
     "sourceFile": "bow-004.svg",
     "priceCents": 900,
     "tier": "archive",
+    "subjectId": "archery-target-set",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-bow-004.png",
     "originalPath": "assets/image-store/originals/bow-004.svg"
   },
@@ -1396,6 +1674,8 @@
     "sourceFile": "bow-005.svg",
     "priceCents": 900,
     "tier": "archive",
+    "subjectId": "led-light-up-bow",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-bow-005.png",
     "originalPath": "assets/image-store/originals/bow-005.svg"
   },
@@ -1406,6 +1686,8 @@
     "sourceFile": "game-005.svg",
     "priceCents": 1100,
     "tier": "archive",
+    "subjectId": "magical-kingdom-builder",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-game-005.png",
     "originalPath": "assets/image-store/originals/game-005.svg"
   },
@@ -1416,6 +1698,8 @@
     "sourceFile": "game-006.svg",
     "priceCents": 1100,
     "tier": "archive",
+    "subjectId": "pony-racing-grand-prix",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-game-006.png",
     "originalPath": "assets/image-store/originals/game-006.svg"
   },
@@ -1426,6 +1710,8 @@
     "sourceFile": "rock-004.svg",
     "priceCents": 1000,
     "tier": "archive",
+    "subjectId": "premium-mineral-set-20-specimens",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-rock-004.png",
     "originalPath": "assets/image-store/originals/rock-004.svg"
   },
@@ -1436,6 +1722,8 @@
     "sourceFile": "rock-005.svg",
     "priceCents": 1000,
     "tier": "archive",
+    "subjectId": "gemstone-polishing-kit",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-rock-005.png",
     "originalPath": "assets/image-store/originals/rock-005.svg"
   },
@@ -1446,6 +1734,8 @@
     "sourceFile": "unicorn-004.svg",
     "priceCents": 1500,
     "tier": "archive",
+    "subjectId": "sunset-meadow-unicorn",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-unicorn-004.png",
     "originalPath": "assets/image-store/originals/unicorn-004.svg"
   },
@@ -1456,6 +1746,8 @@
     "sourceFile": "unicorn-005.svg",
     "priceCents": 1500,
     "tier": "archive",
+    "subjectId": "moonbeam-unicorn",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-unicorn-005.png",
     "originalPath": "assets/image-store/originals/unicorn-005.svg"
   },
@@ -1466,6 +1758,8 @@
     "sourceFile": "princess-005.svg",
     "priceCents": 1200,
     "tier": "archive",
+    "subjectId": "royal-ball-gown",
+    "variantLabel": "Purple velvet colorway",
     "watermarkedPreview": "/image-store/previews/arch-princess-005.png",
     "originalPath": "assets/image-store/originals/princess-005.svg"
   },
@@ -1476,6 +1770,8 @@
     "sourceFile": "princess-006.svg",
     "priceCents": 1200,
     "tier": "archive",
+    "subjectId": "royal-ball-gown",
+    "variantLabel": "Rose tulle colorway with tiara",
     "watermarkedPreview": "/image-store/previews/arch-princess-006.png",
     "originalPath": "assets/image-store/originals/princess-006.svg"
   },
@@ -1486,6 +1782,8 @@
     "sourceFile": "personal-001.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "hair-styling-service",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-personal-001.png",
     "originalPath": "assets/image-store/originals/personal-001.svg"
   },
@@ -1496,6 +1794,8 @@
     "sourceFile": "personal-002.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "manicure-and-nail-care",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-personal-002.png",
     "originalPath": "assets/image-store/originals/personal-002.svg"
   },
@@ -1506,6 +1806,8 @@
     "sourceFile": "personal-003.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "makeup-application",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-personal-003.png",
     "originalPath": "assets/image-store/originals/personal-003.svg"
   },
@@ -1516,6 +1818,8 @@
     "sourceFile": "personal-004.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "facial-and-skincare-treatment",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-personal-004.png",
     "originalPath": "assets/image-store/originals/personal-004.svg"
   },
@@ -1526,6 +1830,8 @@
     "sourceFile": "personal-005.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "hair-coloring-and-highlights",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-personal-005.png",
     "originalPath": "assets/image-store/originals/personal-005.svg"
   },
@@ -1536,6 +1842,8 @@
     "sourceFile": "service-001.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "professional-lawn-mowing",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-service-001.png",
     "originalPath": "assets/image-store/originals/service-001.svg"
   },
@@ -1546,6 +1854,8 @@
     "sourceFile": "service-002.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "plumbing-repair-call",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-service-002.png",
     "originalPath": "assets/image-store/originals/service-002.svg"
   },
@@ -1556,6 +1866,8 @@
     "sourceFile": "service-003.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "electrical-repair-call",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-service-003.png",
     "originalPath": "assets/image-store/originals/service-003.svg"
   },
@@ -1566,6 +1878,8 @@
     "sourceFile": "service-004.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "home-renovation-consultation",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-service-004.png",
     "originalPath": "assets/image-store/originals/service-004.svg"
   },
@@ -1576,6 +1890,8 @@
     "sourceFile": "service-005.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "interior-house-painting",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-service-005.png",
     "originalPath": "assets/image-store/originals/service-005.svg"
   },
@@ -1586,6 +1902,8 @@
     "sourceFile": "service-006.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "studio-portrait-session",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-service-006.png",
     "originalPath": "assets/image-store/originals/service-006.svg"
   },
@@ -1596,6 +1914,8 @@
     "sourceFile": "service-007.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "event-photography",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-service-007.png",
     "originalPath": "assets/image-store/originals/service-007.svg"
   },
@@ -1606,6 +1926,8 @@
     "sourceFile": "service-008.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "dental-cleaning",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-service-008.png",
     "originalPath": "assets/image-store/originals/service-008.svg"
   },
@@ -1616,6 +1938,8 @@
     "sourceFile": "service-009.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "haircut-and-style",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-service-009.png",
     "originalPath": "assets/image-store/originals/service-009.svg"
   },
@@ -1626,17 +1950,21 @@
     "sourceFile": "service-010.svg",
     "priceCents": 400,
     "tier": "archive",
+    "subjectId": "massage-therapy-60-minutes",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-service-010.png",
     "originalPath": "assets/image-store/originals/service-010.svg"
   },
   {
-    "id": "arch-Shepherd",
+    "id": "arch-shepherd",
     "title": "Shepherd's Sheep in the Meadow",
     "setName": "Barnyard and Meadow",
     "sourceFile": "Shepherd.svg",
     "priceCents": 1000,
     "tier": "archive",
-    "watermarkedPreview": "/image-store/previews/arch-Shepherd.png",
+    "subjectId": "shepherds-sheep-in-the-meadow",
+    "variantLabel": "Original archive art",
+    "watermarkedPreview": "/image-store/previews/arch-shepherd.png",
     "originalPath": "assets/image-store/originals/Shepherd.svg"
   },
   {
@@ -1646,6 +1974,8 @@
     "sourceFile": "pig.svg",
     "priceCents": 1000,
     "tier": "archive",
+    "subjectId": "pink-pig-side-view",
+    "variantLabel": "Original archive art",
     "watermarkedPreview": "/image-store/previews/arch-pig.png",
     "originalPath": "assets/image-store/originals/pig.svg"
   },
@@ -1656,6 +1986,8 @@
     "sourceFile": "paint-horse.svg",
     "priceCents": 1000,
     "tier": "archive",
+    "subjectId": "chestnut-horse-portrait",
+    "variantLabel": "Head-profile version with dark mane",
     "watermarkedPreview": "/image-store/previews/arch-paint-horse.png",
     "originalPath": "assets/image-store/originals/paint-horse.svg"
   },
@@ -1666,6 +1998,8 @@
     "sourceFile": "squirrel-horse.svg",
     "priceCents": 1000,
     "tier": "archive",
+    "subjectId": "chestnut-horse-portrait",
+    "variantLabel": "Chestnut head-and-neck version",
     "watermarkedPreview": "/image-store/previews/arch-squirrel-horse.png",
     "originalPath": "assets/image-store/originals/squirrel-horse.svg"
   },
@@ -1676,6 +2010,8 @@
     "sourceFile": "audio-001.svg",
     "priceCents": 3000,
     "tier": "misprint",
+    "subjectId": "magical-pony-kingdom-cover",
+    "variantLabel": "Misprint, mismatched eyes (shop's live PNG cover is not sold here)",
     "watermarkedPreview": "/image-store/previews/mis-audio-001.png",
     "originalPath": "assets/image-store/originals/audio-001.svg"
   },
@@ -1686,6 +2022,8 @@
     "sourceFile": "bow-002.svg",
     "priceCents": 2500,
     "tier": "misprint",
+    "subjectId": "ranger-pro-archery-set",
+    "variantLabel": "Misprint, crooked eyes (shop's live PNG art is not sold here)",
     "watermarkedPreview": "/image-store/previews/mis-bow-002.png",
     "originalPath": "assets/image-store/originals/bow-002.svg"
   },
@@ -1696,6 +2034,8 @@
     "sourceFile": "audio-002.svg",
     "priceCents": 3500,
     "tier": "misprint",
+    "subjectId": "princess-unicorn-star-cover",
+    "variantLabel": "Misprint, shipped as the Jonah EP 12 cover (shop's live PNG is not sold here)",
     "watermarkedPreview": "/image-store/previews/mis-be-ep-012.png",
     "originalPath": "assets/image-store/originals/audio-002.svg"
   }

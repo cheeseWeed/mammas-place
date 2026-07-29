@@ -155,8 +155,11 @@ export default async function CollectionPage() {
                 const item = getImageById(p.imageId);
                 const downloadUrl = `/api/image-store/download/${encodeURIComponent(p.imageId)}`;
                 // Art retired from the catalog after purchase: the kid STILL
-                // owns it (the row is the truth), so keep the download working
-                // and just render what we know.
+                // owns it (the row is the truth), so keep the Download button
+                // and just render what we know. The route agrees — it checks
+                // the ImagePurchase row BEFORE the catalog, so an owner never
+                // gets told "that picture is not in the store"; if the file
+                // itself is unavailable it says exactly that instead.
                 const title = item?.title ?? p.imageId;
                 const misprint = item?.tier === 'misprint';
                 return (

@@ -14,7 +14,12 @@ import SabbathGuard from '@/components/SabbathGuard';
 import BuyButton from '@/components/image-store/BuyButton';
 import MisprintBadge from '@/components/image-store/MisprintBadge';
 import { currentUser } from '@/lib/family/auth';
-import { IMAGE_CATALOG, getImageById, setSize } from '@/lib/image-store/catalog';
+import {
+  IMAGE_CATALOG,
+  getImageById,
+  setSize,
+  subjectProgressFor,
+} from '@/lib/image-store/catalog';
 import { ownedImageIds } from '@/lib/image-store/purchase';
 import { centsToMP } from '@/lib/money/format';
 
@@ -36,6 +41,12 @@ export default async function ImageDetailPage({
   const ownedInSet = IMAGE_CATALOG.filter(
     (e) => e.setName === item.setName && owned.has(e.id),
   ).length;
+
+  // Other pieces that draw the SAME THING (an archive plate and its restaurant
+  // re-plating, a gown in two colourways). Most pieces are the only version of
+  // their subject, and then this whole block is skipped.
+  const subject = subjectProgressFor([...owned], item.subjectId);
+  const siblings = subject.variants.filter((v) => v.id !== item.id);
 
   const body = (
     <div className="min-h-[calc(100vh-260px)] px-4 py-8 max-w-4xl mx-auto">
@@ -104,6 +115,37 @@ export default async function ImageDetailPage({
             priceCents={item.priceCents}
             initiallyOwned={isOwned}
           />
+
+          {siblings.length > 0 && (
+            <div className="mt-6 rounded-xl border border-purple-100 bg-white px-4 py-3">
+              <div className="text-xs font-bold uppercase tracking-wide text-purple-700/70 mb-1">
+                Other versions
+              </div>
+              <div className="text-sm text-gray-800">
+                <strong>{subject.total}</strong> versions of this artwork exist &mdash; you own{' '}
+                <strong>{subject.owned}</strong>.
+              </div>
+              <div className="mt-1 text-xs text-gray-600">
+                This one: {item.variantLabel}
+              </div>
+              <ul className="mt-2 space-y-1">
+                {siblings.map((v) => (
+                  <li key={v.id} className="text-sm">
+                    <Link
+                      href={`/image-store/${encodeURIComponent(v.id)}`}
+                      className="font-bold text-purple-700 hover:text-purple-900"
+                    >
+                      {v.title}
+                    </Link>{' '}
+                    <span className="text-xs text-gray-600">
+                      &mdash; {v.variantLabel}
+                      {owned.has(v.id) ? ' · yours' : ''}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {setTotal > 1 && (
             <div className="mt-6 rounded-xl border border-purple-100 bg-white px-4 py-3">

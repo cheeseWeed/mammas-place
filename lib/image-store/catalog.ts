@@ -30,6 +30,19 @@ export interface ImageStoreEntry extends ImageStoreItem {
   sourceFile: string;
   priceCents: number;
   tier: 'archive' | 'misprint';
+  /**
+   * Which SUBJECT this piece depicts, e.g. "soccer-ball-study". Several entries
+   * can draw the same thing (an archive plate and its restaurant re-plating, a
+   * gown in two colourways, six studies of one ball) — they share a subjectId
+   * so the store can say "6 versions of this exist, you own 2".
+   *
+   * NOT an identity: `id` stays unique per piece and is what a purchase record
+   * points at. A subject with a single member is normal and expected — every
+   * entry gets one so consumers never special-case.
+   */
+  subjectId: string;
+  /** Short human label for THIS version, e.g. "Study No. 3". */
+  variantLabel: string;
   /** Public, watermarked, safe to link: "/image-store/previews/<id>.png". */
   watermarkedPreview: string;
   /** Repo-relative path to the gated original. Server-only use. */
@@ -63,6 +76,15 @@ function coerceEntry(raw: unknown): ImageStoreEntry | null {
     sourceFile,
     priceCents,
     tier,
+    // A row with no subjectId is its OWN subject (a group of one) rather than
+    // an error: grouping is descriptive metadata, not a correctness gate, and
+    // falling back to the id keeps every entry inside exactly one group.
+    subjectId:
+      typeof r.subjectId === 'string' && r.subjectId.trim() ? r.subjectId.trim() : id,
+    variantLabel:
+      typeof r.variantLabel === 'string' && r.variantLabel.trim()
+        ? r.variantLabel.trim()
+        : 'Original archive art',
     watermarkedPreview:
       typeof r.watermarkedPreview === 'string' && r.watermarkedPreview
         ? r.watermarkedPreview
@@ -185,4 +207,79 @@ export function setProgressFor(ownedIds: readonly string[]): SetProgress[] {
       items,
     };
   }).sort((a, b) => a.setName.localeCompare(b.setName));
+}
+
+// ---------------------------------------------------------------------------
+// Variant grouping — "3 versions of this pony exist, you own 1"
+// ---------------------------------------------------------------------------
+//
+// A SET is a shelf ("Dessert Plates"); a SUBJECT is the thing in the picture.
+// The two are independent: the escargot plate and its restaurant re-plating
+// live in different SETS but are the same SUBJECT, while six Soccer Ball
+// Studies share both. Grouping is metadata only — nothing here decides a price
+// or an entitlement, and a subject of one is the common case (136 of 151).
+
+/** Every variant of a subject, catalog order. Empty for an unknown subject. */
+const BY_SUBJECT: ReadonlyMap<string, ImageStoreEntry[]> = (() => {
+  const groups = new Map<string, ImageStoreEntry[]>();
+  for (const entry of IMAGE_CATALOG) {
+    const bucket = groups.get(entry.subjectId);
+    if (bucket) bucket.push(entry);
+    else groups.set(entry.subjectId, [entry]);
+  }
+  return groups;
+})();
+
+/**
+ * The other pieces that draw the same thing, including the one you asked about,
+ * in catalog order. Returns [] for an unknown subject rather than throwing —
+ * this feeds a display line, and a missing group is not worth a 500.
+ */
+export function variantsOf(subjectId: unknown): ImageStoreEntry[] {
+  if (typeof subjectId !== 'string') return [];
+  return BY_SUBJECT.get(subjectId.trim())?.slice() ?? [];
+}
+
+/** How many versions of a subject exist across the whole catalog. */
+export function subjectSize(subjectId: unknown): number {
+  if (typeof subjectId !== 'string') return 0;
+  return BY_SUBJECT.get(subjectId.trim())?.length ?? 0;
+}
+
+export interface SubjectProgress {
+  subjectId: string;
+  /** Variants of this subject the kid owns. */
+  owned: number;
+  /** Variants that exist in the catalog. 0 for an unknown subject. */
+  total: number;
+  complete: boolean;
+  /** EVERY variant, catalog order — the "3 versions exist" half. */
+  variants: ImageStoreEntry[];
+  /** Just the owned ones, catalog order — the "you own 1" half. */
+  items: ImageStoreEntry[];
+}
+
+/**
+ * "You own 1 of the 3 versions of this pony."
+ *
+ * Same contract as `setProgressFor`: duplicate ids count once and ids that are
+ * not in the catalog are skipped for PROGRESS only — the ImagePurchase row is
+ * still the truth about what a kid owns, this just drives the counter.
+ */
+export function subjectProgressFor(
+  ownedIds: readonly string[],
+  subjectId: unknown,
+): SubjectProgress {
+  const key = typeof subjectId === 'string' ? subjectId.trim() : '';
+  const variants = variantsOf(key);
+  const owned = new Set(ownedIds);
+  const items = variants.filter((entry) => owned.has(entry.id));
+  return {
+    subjectId: key,
+    owned: items.length,
+    total: variants.length,
+    complete: variants.length > 0 && items.length >= variants.length,
+    variants,
+    items,
+  };
 }

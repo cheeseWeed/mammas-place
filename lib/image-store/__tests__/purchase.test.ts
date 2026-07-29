@@ -9,7 +9,16 @@
 //     $transaction as the ImagePurchase row,
 //   * a duplicate buy (P2002 on the composite unique) charges NOTHING,
 //   * insufficient funds charges NOTHING and reports the exact shortfall,
-//   * every amount stays an integer number of cents.
+//   * every amount stays an integer number of cents,
+//   * two concurrent buys of DIFFERENT images cannot overdraft the wallet.
+//
+// That last one is why the fake below models the debit as a CONDITIONAL
+// statement (`updateMany` whose WHERE carries `balanceCents >= price`) that is
+// atomic within a JS turn, and offers a hook to park a transaction at the exact
+// instant between its read and its write. Postgres READ COMMITTED gives
+// `findUnique` no row lock, so that interleaving is real — and the
+// @@unique([userName, imageId]) constraint cannot catch it, because two
+// different images are not a duplicate of anything.
 //
 // Also covers the download path-traversal guard, which is the security half of
 // the feature.
@@ -39,6 +48,21 @@ interface FakeState {
   /** writes that survived (i.e. the transaction committed) */
   committed: FakeWrite[];
   transactions: number;
+  /** how many conditional debits have been ATTEMPTED (won or lost) */
+  debitAttempts: number;
+  /**
+   * Force those attempt ordinals to match 0 rows — i.e. Postgres re-evaluated
+   * `balanceCents >= price` after a rival transaction committed and found the
+   * money gone. Lets a test prove the guard without depending on scheduling.
+   */
+  loseDebitRaceOn: Set<number>;
+  /**
+   * Awaited right after a transaction takes its FIRST balance read (and after
+   * the value has been snapshotted, so the caller holds a stale number). This
+   * is the only way to park one buy in the read→write window while another buy
+   * runs — the race the guard exists to lose safely.
+   */
+  afterFirstRead: ((userName: string) => Promise<void>) | null;
 }
 
 const state: FakeState = {
@@ -47,6 +71,9 @@ const state: FakeState = {
   writes: [],
   committed: [],
   transactions: 0,
+  debitAttempts: 0,
+  loseDebitRaceOn: new Set(),
+  afterFirstRead: null,
 };
 
 /** Prisma-shaped unique-constraint error, as the real client would throw it. */
@@ -69,6 +96,8 @@ interface Journal {
   purchaseKeys: string[];
   /** Writes THIS transaction made — `state.writes` is shared, so it cannot be sliced. */
   writes: FakeWrite[];
+  /** Balance reads this transaction has taken; the interleave hook fires on #1. */
+  reads: number;
 }
 
 function record(journal: Journal, write: FakeWrite) {
@@ -81,8 +110,21 @@ function makeTx(journal: Journal) {
     driveUser: {
       findUnique: async ({ where }: { where: { name: string } }) => {
         const bal = state.users.get(where.name);
-        return bal === undefined ? null : { name: where.name, balanceCents: bal };
+        // Snapshot BEFORE the hook: a parked transaction must come back holding
+        // the stale number it read, which is exactly what makes the race real.
+        const row = bal === undefined ? null : { name: where.name, balanceCents: bal };
+        journal.reads += 1;
+        if (journal.reads === 1 && state.afterFirstRead) {
+          await state.afterFirstRead(where.name);
+        }
+        return row;
       },
+      /**
+       * UNGUARDED decrement. Deliberately still here even though purchase.ts
+       * no longer calls it: if the debit ever regresses to this shape the
+       * "guarded updateMany" test must FAIL on the recorded op, not blow up
+       * with "update is not a function" and look like a broken fake.
+       */
       update: async ({
         where,
         data,
@@ -95,10 +137,48 @@ function makeTx(journal: Journal) {
         const inc = data.balanceCents?.increment ?? 0;
         const delta = inc - dec;
         const next = current + delta;
-        record(journal, { model: 'driveUser', op: 'update', data: { ...where, next } });
+        record(journal, {
+          model: 'driveUser',
+          op: 'update',
+          data: { name: where.name, guardGte: null, next },
+        });
         state.users.set(where.name, next);
         journal.balanceDeltas.push({ user: where.name, delta });
         return { balanceCents: next };
+      },
+      /**
+       * The CONDITIONAL debit. The funds check lives in the WHERE clause, so
+       * check-and-decrement is ONE statement — modelled here as a synchronous
+       * body with no await between the compare and the write, which is what
+       * Postgres guarantees for a single UPDATE holding the row lock. A
+       * transaction that lost the race matches 0 rows and writes nothing.
+       */
+      updateMany: async ({
+        where,
+        data,
+      }: {
+        where: { name: string; balanceCents?: { gte?: number } };
+        data: { balanceCents?: { decrement?: number; increment?: number } };
+      }) => {
+        state.debitAttempts += 1;
+        const current = state.users.get(where.name);
+        const guardGte = where.balanceCents?.gte;
+        const lostRace = state.loseDebitRaceOn.has(state.debitAttempts);
+        if (current === undefined || lostRace) return { count: 0 };
+        if (guardGte !== undefined && current < guardGte) return { count: 0 };
+
+        const dec = data.balanceCents?.decrement ?? 0;
+        const inc = data.balanceCents?.increment ?? 0;
+        const delta = inc - dec;
+        const next = current + delta;
+        record(journal, {
+          model: 'driveUser',
+          op: 'updateMany',
+          data: { name: where.name, guardGte: guardGte ?? null, next },
+        });
+        state.users.set(where.name, next);
+        journal.balanceDeltas.push({ user: where.name, delta });
+        return { count: 1 };
       },
     },
     mpTransaction: {
@@ -128,7 +208,7 @@ vi.mock('@/lib/prisma', () => ({
     // Postgres transaction does.
     $transaction: async (fn: (tx: ReturnType<typeof makeTx>) => Promise<number>) => {
       state.transactions += 1;
-      const journal: Journal = { balanceDeltas: [], purchaseKeys: [], writes: [] };
+      const journal: Journal = { balanceDeltas: [], purchaseKeys: [], writes: [], reads: 0 };
       try {
         const out = await fn(makeTx(journal));
         state.committed.push(...journal.writes);
@@ -185,6 +265,9 @@ function reset(balances: Record<string, number> = {}) {
   state.writes = [];
   state.committed = [];
   state.transactions = 0;
+  state.debitAttempts = 0;
+  state.loseDebitRaceOn = new Set();
+  state.afterFirstRead = null;
 }
 
 beforeEach(() => {
@@ -336,6 +419,123 @@ describe('purchaseImage', () => {
     const other = IMAGE_CATALOG.find((e) => e.id !== CHEAP.id)!;
     const second = await purchaseImage('kid', other.id);
     expect(second.status).toBe('purchased');
+  });
+
+  // --- the cross-image overdraft race ---
+  //
+  // The "ten concurrent taps" test above proves the DUPLICATE guard and nothing
+  // more: same image, so @@unique([userName, imageId]) catches it. Two buys of
+  // two DIFFERENT images collide on no constraint at all — the only thing
+  // standing between them and a negative wallet is that the funds check is part
+  // of the debit STATEMENT rather than a read that happened earlier.
+
+  const OTHER = IMAGE_CATALOG.find((e) => e.id !== CHEAP.id)!;
+
+  it('debits with a guarded updateMany, not a blind decrement', async () => {
+    reset({ kid: 10_000 });
+    await purchaseImage('kid', CHEAP.id);
+
+    const debit = state.committed.find((w) => w.model === 'driveUser')!;
+    expect(debit.op).toBe('updateMany');
+    // The funds check IS the write's WHERE clause. That is the whole guarantee:
+    // if this ever regresses to a plain `update`, `guardGte` disappears and the
+    // database stops enforcing sufficiency.
+    expect(debit.data.guardGte).toBe(CHEAP.priceCents);
+    expect(debit.data.name).toBe('kid');
+  });
+
+  it('two concurrent buys of DIFFERENT images cannot overdraft the wallet', async () => {
+    // Enough MP for the dearer ONE of the two — never for both.
+    const balance = Math.max(CHEAP.priceCents, OTHER.priceCents);
+    reset({ kid: balance });
+
+    // Park BOTH transactions at the instant after they read the balance, so
+    // each decides "I can afford this" against the same pre-spend number, then
+    // let them both proceed to write. This is precisely what Prisma +
+    // READ COMMITTED allows: findUnique takes no row lock and never re-checks.
+    let open!: () => void;
+    const gate = new Promise<void>((resolve) => {
+      open = resolve;
+    });
+    let arrived = 0;
+    state.afterFirstRead = async () => {
+      arrived += 1;
+      if (arrived >= 2) open();
+      else await gate;
+    };
+
+    const results = await Promise.all([
+      purchaseImage('kid', CHEAP.id),
+      purchaseImage('kid', OTHER.id),
+    ]);
+
+    // Both read the same balance; only one is allowed to spend it.
+    expect(results.filter((r) => r.status === 'purchased')).toHaveLength(1);
+    expect(results.filter((r) => r.status === 'insufficient-funds')).toHaveLength(1);
+    expect(state.debitAttempts).toBe(2);
+
+    const won = results.find((r) => r.status === 'purchased');
+    if (!won || won.status !== 'purchased') throw new Error('unreachable');
+    const lost = results.find((r) => r.status === 'insufficient-funds');
+    if (!lost || lost.status !== 'insufficient-funds') throw new Error('unreachable');
+
+    // THE assertion: the wallet never goes negative.
+    expect(state.users.get('kid')).toBe(balance - won.pricePaidCents);
+    expect(state.users.get('kid')!).toBeGreaterThanOrEqual(0);
+
+    // The loser left nothing behind — no debit, no ledger row, no entitlement.
+    expect(state.committed.filter((w) => w.model === 'driveUser')).toHaveLength(1);
+    expect(state.committed.filter((w) => w.model === 'mpTransaction')).toHaveLength(1);
+    expect(state.committed.filter((w) => w.model === 'imagePurchase')).toHaveLength(1);
+    expect(await ownsImage('kid', won.imageId)).toBe(true);
+    expect(await ownsImage('kid', lost.imageId)).toBe(false);
+  });
+
+  it('a debit that matches 0 rows at commit time charges nothing and grants nothing', async () => {
+    reset({ kid: 100_000 });
+    // Force the SECOND conditional debit to match 0 rows — what Postgres
+    // returns when it re-evaluates `balanceCents >= price` after the rival
+    // transaction committed and the money is already gone. Plenty of MP in the
+    // wallet, so ONLY the guard can produce this outcome.
+    state.loseDebitRaceOn = new Set([2]);
+
+    const results = await Promise.all([
+      purchaseImage('kid', CHEAP.id),
+      purchaseImage('kid', OTHER.id),
+    ]);
+
+    expect(results.filter((r) => r.status === 'purchased')).toHaveLength(1);
+    expect(results.filter((r) => r.status === 'insufficient-funds')).toHaveLength(1);
+
+    const won = results.find((r) => r.status === 'purchased');
+    if (!won || won.status !== 'purchased') throw new Error('unreachable');
+    const lost = results.find((r) => r.status === 'insufficient-funds');
+    if (!lost || lost.status !== 'insufficient-funds') throw new Error('unreachable');
+
+    // Exactly one piece was paid for; the blocked one is fully rolled back.
+    expect(state.users.get('kid')).toBe(100_000 - won.pricePaidCents);
+    expect(state.users.get('kid')!).toBeGreaterThanOrEqual(0);
+    expect(state.committed.filter((w) => w.model === 'imagePurchase')).toHaveLength(1);
+    expect(state.committed.filter((w) => w.model === 'mpTransaction')).toHaveLength(1);
+    expect(await ownsImage('kid', lost.imageId)).toBe(false);
+  });
+
+  it('a guard failure is reported against the FRESH balance, not the stale read', async () => {
+    reset({ kid: 100_000 });
+    // A rival's spend lands between our read and our write. Nothing is forced
+    // here — the WHERE clause is what refuses the debit.
+    state.afterFirstRead = async () => {
+      state.users.set('kid', 10);
+    };
+
+    const result = await purchaseImage('kid', CHEAP.id);
+    expect(result.status).toBe('insufficient-funds');
+    if (result.status !== 'insufficient-funds') throw new Error('unreachable');
+    // 10, not the 100,000 the transaction originally read.
+    expect(result.balanceCents).toBe(10);
+    expect(result.shortfallCents).toBe(CHEAP.priceCents - 10);
+    expect(state.users.get('kid')).toBe(10);
+    expect(state.committed).toHaveLength(0);
   });
 
   // --- insufficient funds ---
