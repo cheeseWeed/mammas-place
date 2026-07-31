@@ -82,6 +82,12 @@ export default async function CollectionPage() {
             🖼️ This week&apos;s drop
           </Link>
           <Link
+            href="/portal/trades"
+            className="bg-purple-700 hover:bg-purple-600 text-white font-bold text-sm px-4 py-2.5 rounded-xl transition-colors"
+          >
+            🤝 Trade
+          </Link>
+          <Link
             href="/portal/money"
             className="bg-purple-700 hover:bg-purple-600 text-white font-bold text-sm px-4 py-2.5 rounded-xl transition-colors"
           >
