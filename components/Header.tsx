@@ -380,6 +380,20 @@ export default function Header() {
                   </Link>
                   </>
                   )}
+                  {/* Audiobooks stay open on the Sabbath — this links to the
+                      LISTENING page, not the shop category, so Sunday listening
+                      survives the shop being closed. */}
+                  <Link
+                    href="/audiobooks"
+                    onClick={() => setActiveDropdown(null)}
+                    className="flex items-start gap-3 p-2 rounded-lg hover:bg-emerald-50 transition-colors group"
+                  >
+                    <span className="text-2xl">🎧</span>
+                    <div>
+                      <div className="font-bold text-purple-900 group-hover:text-emerald-700">Audiobooks</div>
+                      <div className="text-xs text-gray-600">Listen to stories &amp; scripture companions</div>
+                    </div>
+                  </Link>
                   {/* Music stays open on the Sabbath. */}
                   <Link
                     href="/music"
@@ -587,6 +601,14 @@ export default function Header() {
             </Link>
             </>
             )}
+            {/* Audiobooks stay open on the Sabbath — listening page, not shop. */}
+            <Link
+              href="/audiobooks"
+              onClick={() => setMenuOpen(false)}
+              className="text-white hover:bg-purple-700 hover:text-yellow-300 px-6 py-2.5 rounded-xl text-sm transition-colors flex items-center gap-2"
+            >
+              🎧 Audiobooks
+            </Link>
             {/* Music stays open on the Sabbath. */}
             <Link
               href="/music"

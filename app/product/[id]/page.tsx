@@ -11,6 +11,7 @@ import Link from 'next/link';
 import ProductCard from '@/components/ProductCard';
 import SkeletonProductDetail from '@/components/SkeletonProductDetail';
 import AudioPlayer from '@/components/AudioPlayer';
+import { isSabbath, isPurchaseAllowed } from '@/lib/sabbath';
 import { Review } from '@/types';
 
 export default function ProductDetailPage() {
@@ -34,6 +35,14 @@ export default function ProductDetailPage() {
     return () => clearTimeout(t);
   }, []);
   const loading = catalogLoading || !graceDone;
+
+  // Sabbath: BUYING closes, LISTENING/READING stays open. Resolved on mount so
+  // SSR and client agree (the day is computed in the family timezone with the
+  // admin override, both of which are client-readable).
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+  const sabbathNow = mounted && isSabbath();
+  const canBuy = isPurchaseAllowed(sabbathNow);
 
   useEffect(() => {
     if (product && !loading) {
@@ -253,7 +262,8 @@ export default function ProductDetailPage() {
                 </div>
               )}
 
-              {/* Quantity Selector */}
+              {/* Quantity Selector — hidden on the Sabbath along with buying. */}
+              {canBuy && (
               <div className="mt-4">
                 <label className="block text-sm font-bold text-gray-700 mb-2">Quantity</label>
                 <div className="flex items-center gap-3">
@@ -275,8 +285,12 @@ export default function ProductDetailPage() {
                   <span className="text-sm text-gray-700">Total: <strong className="text-purple-800">${(product.price * quantity).toFixed(2)}</strong></span>
                 </div>
               </div>
+              )}
 
-              {/* Action Buttons - from your sketch */}
+              {/* Action Buttons - from your sketch.
+                  On the Sabbath the READ / DOWNLOAD (listen) paths stay, but the
+                  BUY NOW / ADD TO CART pair is replaced by a gentle closed note.
+                  The audio player above is never gated — listening is open. */}
               <div className="mt-6 flex flex-col sm:flex-row gap-3">
                 {product.isStudyGuide && product.studyGuideUrl ? (
                   <a
@@ -297,6 +311,16 @@ export default function ProductDetailPage() {
                     </svg>
                     DOWNLOAD AUDIOBOOK
                   </button>
+                ) : !canBuy ? (
+                  <div className="w-full bg-purple-50 border-2 border-purple-200 rounded-2xl px-4 py-4 text-center">
+                    <div className="text-2xl mb-1">🕊️</div>
+                    <p className="font-black text-purple-900">
+                      The shop is closed for the Sabbath
+                    </p>
+                    <p className="text-sm text-gray-700 mt-1">
+                      You can still read and listen today — come back tomorrow to buy.
+                    </p>
+                  </div>
                 ) : (
                   <>
                     <button

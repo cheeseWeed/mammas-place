@@ -54,7 +54,9 @@ export default function ContinueListening({ featuredAudiobooks }: Props) {
     <section className="py-8">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-2xl font-black text-purple-900">🎧 Continue Listening</h2>
-        <Link href="/shop?category=audiobooks" className="text-purple-700 hover:text-purple-500 font-semibold text-sm">
+        {/* Points at /audiobooks (the listening surface), NOT the shop —
+            the shop is closed on the Sabbath but listening stays open. */}
+        <Link href="/audiobooks" className="text-purple-700 hover:text-purple-500 font-semibold text-sm">
           Browse all audiobooks →
         </Link>
       </div>
