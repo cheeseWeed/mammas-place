@@ -182,7 +182,10 @@ export default function TradeProposer() {
         >
           <option value="">💰 MP instead of a picture</option>
           {(chosenPartner?.owned ?? []).map((p) => (
-            <option key={p.imageId} value={p.imageId} disabled={p.alreadyMine}>
+            // NOT disabled any more. Holding a copy no longer blocks receiving
+            // another (multiples are allowed — see prisma/schema.prisma), so
+            // this reads as a helpful note rather than a locked option.
+            <option key={p.imageId} value={p.imageId}>
               {p.title} — Edition #{p.editionNumber}
               {p.alreadyMine ? ' (you already have one)' : ''}
             </option>

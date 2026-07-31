@@ -42,9 +42,9 @@ export async function POST(req: NextRequest) {
   // endpoints, so browsing the store all afternoon never logs them out.
   await touchSession();
 
-  let body: { imageId?: unknown };
+  let body: { imageId?: unknown; clickToken?: unknown };
   try {
-    body = (await req.json()) as { imageId?: unknown };
+    body = (await req.json()) as { imageId?: unknown; clickToken?: unknown };
   } catch {
     return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
   }
@@ -53,7 +53,22 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Which picture?' }, { status: 400 });
   }
 
-  const result = await purchaseImage(user, body.imageId);
+  // DOUBLE-SUBMIT TOKEN. Multiples are legal now, so a second copy is a valid
+  // outcome and the old @@unique([userName, imageId]) is gone — meaning two taps
+  // on Buy would otherwise be indistinguishable from "I want two" and would
+  // charge twice. The client sends one token per CLICK; both taps of one click
+  // carry the same token, collide on grantKey, and only one copy lands.
+  //
+  // A missing/oversized token falls back to a per-second server bucket. That is
+  // a coarse net rather than a real identity, but it still swallows the actual
+  // failure mode (a rapid double-tap) instead of leaving the path unguarded, and
+  // it can never merge two genuinely separate buys more than a second apart.
+  const clickToken =
+    typeof body.clickToken === 'string' && body.clickToken.trim()
+      ? body.clickToken.trim().slice(0, 64)
+      : `t${Math.floor(Date.now() / 1000)}`;
+
+  const result = await purchaseImage(user, body.imageId, clickToken);
 
   switch (result.status) {
     case 'purchased':

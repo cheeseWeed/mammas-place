@@ -35,6 +35,7 @@ import { prisma } from '../prisma';
 import { normalizeUser } from '../drive-progress';
 import { InsufficientFundsError } from '../money/balance';
 import { getImageById, type ImageStoreEntry } from './catalog';
+import { grantKeyForStorePurchase } from '../collection/grant-key';
 import {
   currentPriceCents,
   editionStateFor,
@@ -188,7 +189,27 @@ async function currentBalance(userKey: string): Promise<number> {
  * buying is shopping and the shop is closed on Sunday. Viewing and downloading
  * something already owned is not shopping, and stays open.
  */
-export async function purchaseImage(rawUser: string, imageId: unknown): Promise<PurchaseResult> {
+export async function purchaseImage(
+  rawUser: string,
+  imageId: unknown,
+  /**
+   * Optional per-CLICK token making this buy idempotent.
+   *
+   * WHY IT EXISTS NOW. The duplicate-buy gate used to be
+   * @@unique([userName, imageId]) — a kid could hold one copy, full stop, so a
+   * double-tapped Buy button collided and the second charge rolled back. That
+   * constraint is gone (multiples are a feature now: see prisma/schema.prisma),
+   * and with it went the accidental protection. Two taps would otherwise be
+   * indistinguishable from "I deliberately want a second copy" and would
+   * legitimately charge twice.
+   *
+   * So the gate is re-aimed at the EVENT rather than the pair: same token = same
+   * click = one copy. Omitting it preserves the old call shape for existing
+   * callers and tests, at the cost of that protection — which is why the buy
+   * route always supplies one.
+   */
+  idempotencyToken?: string,
+): Promise<PurchaseResult> {
   const userKey = normalizeUser(rawUser);
   const entry: ImageStoreEntry | null = getImageById(imageId);
   const requestedId = typeof imageId === 'string' ? imageId.trim() : '';
@@ -334,6 +355,17 @@ export async function purchaseImage(rawUser: string, imageId: unknown): Promise<
             imageId: entry.id,
             pricePaidCents: priceCents,
             editionNumber: sold + 1,
+            // Bought outright, so the price on this row is a REAL price and the
+            // collection page may say so. A grant would say 'grant' and 0.
+            source: 'store',
+            // One key per BUY EVENT. `idempotencyToken` is supplied by the
+            // caller (the buy route derives it from the request) so a
+            // double-submitted single click collides here and is refused,
+            // while a kid deliberately buying a second copy later passes a new
+            // token and legitimately gets one.
+            grantKey: idempotencyToken
+              ? grantKeyForStorePurchase(userKey, entry.id, idempotencyToken)
+              : null,
           },
         });
 
@@ -368,13 +400,18 @@ export async function purchaseImage(rawUser: string, imageId: unknown): Promise<
           continue;
         }
 
-        // [userName, imageId] — a genuine duplicate buy. Safe to read as
-        // "already owned": the driveUser debit is filtered by primary key and
-        // writes balanceCents only (no unique column), and MpTransaction has no
-        // unique at all, so there is no other constraint this could be.
+        // Not the edition race, so it is the `grantKey` unique — THE SAME CLICK
+        // ARRIVING TWICE. (It cannot be anything else: the driveUser debit is
+        // filtered by primary key and writes balanceCents only, and
+        // MpTransaction carries no unique at all.)
         //
-        // Nothing was charged: the transaction rolled back, so report the
-        // untouched balance.
+        // Reported as 'already-owned' because that is the honest, kid-readable
+        // outcome of a double-tap: the copy from the first tap exists and is
+        // theirs. It no longer means "you may only ever hold one" — a fresh
+        // click with a fresh token buys a genuine second copy.
+        //
+        // Nothing was charged for THIS attempt: the transaction rolled back, so
+        // report the untouched balance.
         return {
           ok: false,
           status: 'already-owned',
@@ -420,15 +457,21 @@ export async function purchaseImage(rawUser: string, imageId: unknown): Promise<
 // ---------------------------------------------------------------------------
 
 /**
- * THE security boundary for downloads. A missing row means "not owned" — there
- * is no admin bypass and no "it's only a picture" shortcut here.
+ * THE security boundary for downloads. NO rows means "not owned" — there is no
+ * admin bypass and no "it's only a picture" shortcut here.
+ *
+ * `findFirst`, not `findUnique`: a kid may now hold SEVERAL copies of one
+ * picture (the @@unique([userName, imageId]) that made it at most one is gone —
+ * see prisma/schema.prisma). The download right is unchanged by that. It asks
+ * "do you hold AT LEAST ONE copy?", so owning three grants exactly the same
+ * access as owning one, and the boundary neither loosens nor tightens.
  */
 export async function ownsImage(rawUser: string, imageId: unknown): Promise<boolean> {
   const userKey = normalizeUser(rawUser);
   const id = typeof imageId === 'string' ? imageId.trim() : '';
   if (!userKey || !id) return false;
-  const row = await prisma.imagePurchase.findUnique({
-    where: { userName_imageId: { userName: userKey, imageId: id } },
+  const row = await prisma.imagePurchase.findFirst({
+    where: { userName: userKey, imageId: id },
     select: { id: true },
   });
   return row !== null;
@@ -440,21 +483,42 @@ export interface OwnedImage {
   createdAt: Date;
   /** The rookie number on this copy. 1 = the first ever sold. */
   editionNumber: number;
+  /**
+   * 'store' | 'grant' | 'trade'. Carried so the collection can tell an honest
+   * provenance story instead of rendering a granted piece as "bought for 0MP".
+   */
+  source: string;
+  grantOrderId: string | null;
 }
 
-/** Everything this kid owns, newest first. */
+/**
+ * Every COPY this kid owns, newest first.
+ *
+ * Returns one element per copy, so a kid holding three tires gets three entries
+ * with three different edition numbers — that is the whole point of the
+ * multiples model. Callers that want "distinct pictures" must group.
+ */
 export async function listPurchases(rawUser: string): Promise<OwnedImage[]> {
   const userKey = normalizeUser(rawUser);
   if (!userKey) return [];
   const rows = await prisma.imagePurchase.findMany({
     where: { userName: userKey },
     orderBy: { createdAt: 'desc' },
-    select: { imageId: true, pricePaidCents: true, createdAt: true, editionNumber: true },
+    select: {
+      imageId: true,
+      pricePaidCents: true,
+      createdAt: true,
+      editionNumber: true,
+      source: true,
+      grantOrderId: true,
+    },
   });
   return rows.map((r) => ({
     imageId: r.imageId,
     pricePaidCents: r.pricePaidCents,
     createdAt: r.createdAt,
+    source: typeof r.source === 'string' && r.source ? r.source : 'store',
+    grantOrderId: r.grantOrderId ?? null,
     // Rows written before editionNumber existed default to 1 in the schema; a
     // null from a driver that has not backfilled still reads as the rookie
     // rather than as 0 (which would render "Edition #0").

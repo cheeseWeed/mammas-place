@@ -86,11 +86,15 @@ export async function GET() {
         displayName: (o.displayName?.trim() || o.name).trim(),
         owned: owned.map((p) => ({
           ...p,
-          // THE EDGE CASE, surfaced to the UI: a kid may hold at most one copy
-          // of a picture (ImagePurchase @@unique([userName, imageId])), so a
-          // piece they already own cannot be asked for. The picker greys these
-          // out instead of letting a kid build an offer that can never work.
-          // proposeTrade refuses it too — this is only the friendly half.
+          // INFORMATIONAL ONLY, and no longer a restriction. A kid may now hold
+          // SEVERAL copies of a picture (the @@unique([userName, imageId]) that
+          // capped it at one is gone — see prisma/schema.prisma), so asking for
+          // a piece you already own is a legitimate trade that ends with you
+          // holding two editions of it. proposeTrade no longer refuses it.
+          //
+          // The flag stays because "you already have one of these" is still
+          // useful for a kid deciding what to ask for; the picker should label
+          // it, not disable it.
           alreadyMine: mineIds.has(p.imageId),
         })),
       };

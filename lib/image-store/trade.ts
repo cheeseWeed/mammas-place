@@ -168,46 +168,39 @@ class TradeAbort extends Error {
 }
 
 // ---------------------------------------------------------------------------
-// THE EDGE CASE: the recipient already owns a different edition of that piece
+// STACKING: the recipient already owns a different edition of that piece
 // ---------------------------------------------------------------------------
 //
-// `ImagePurchase @@unique([userName, imageId])` means a kid may hold AT MOST ONE
-// copy of a given picture. So if Hailey already owns Rainbow Pony (say Edition
-// #4) and Shepherd tries to trade her his Rainbow Pony Edition #1, moving the
-// row would violate that unique and Postgres would raise P2002.
+// THIS IS NOW ALLOWED, and it used to be refused.
 //
-// THE DECISION: the trade is REFUSED, and it is refused at BOTH propose time
-// and accept time.
+// The old rule was "one copy per kid": `@@unique([userName, imageId])` made a
+// second copy physically unstorable, so moving a piece to somebody who already
+// held one would raise P2002 and reach a kid as a 500. Both propose time and
+// accept time therefore refused the trade.
 //
-//   * Refused, not allowed. Letting a kid hold two editions of one piece would
-//     require dropping @@unique([userName, imageId]) — the constraint that is
-//     the entire duplicate-buy gate in purchase.ts. Trading must not weaken the
-//     buying rules. "One copy per kid" also happens to be the honest reading of
-//     a collection: you own the pony, and it has a number.
+// That constraint is GONE (see prisma/schema.prisma): the owner asked to be able
+// to own multiples, so a kid may now hold several copies of a picture, each
+// carrying its own edition number. With nothing left to collide on, the refusal
+// has no reason to exist and the trade simply succeeds — Hailey ends up holding
+// both her Edition #4 and Shepherd's Edition #1.
 //
-//   * Refused, not silently merged. Auto-discarding the loser edition would
-//     destroy a rookie card — the one thing in this system a kid is meant to be
-//     able to keep forever. Nothing here deletes an entitlement.
+// WHAT STILL HOLDS, and what the accept path still guards:
 //
-//   * At PROPOSE time, so the kid gets a plain sentence ("Hailey already has a
-//     Rainbow Pony") instead of building an offer that can never work.
+//   * A TRADE MOVES EXACTLY ONE COPY. `where: { userName, imageId }` would match
+//     a kid's whole stack, so the move is pinned to a single row id (steps 3 and
+//     4 of acceptTrade). Trading one of your three tires must not hand over all
+//     three.
 //
-//   * AND at ACCEPT time, because propose-time is only a read and the world
-//     moves: Hailey can buy her own Rainbow Pony in the minutes between the
-//     offer and the tap. Accept-time is the REAL gate, it runs inside the
-//     transaction, and it turns a would-be P2002 into a friendly refusal
-//     instead of a 500. Both parties are checked — for a swap, the collision
-//     can land on either side.
+//   * THE EDITION NUMBER TRAVELS. Still an UPDATE of userName, never a
+//     delete+create, so a rookie card stays a rookie card in its new hands.
+//
+//   * OWNERSHIP IS STILL A GATE. You cannot offer a piece you do not own, and
+//     the `userName` in the move's WHERE is still the stale-offer gate — the
+//     piece may have been traded away between the offer and the tap.
 //
 // This is the same layering as purchase.ts: a friendly pre-check for the
 // message, and a hard gate at the write for the truth.
 
-/**
- * Can `userKey` receive `imageId` — i.e. do they NOT already own a copy?
- *
- * `tx` is the transaction client at accept time and the plain client at propose
- * time. The read is the same; only its transactional context differs.
- */
 /**
  * The narrow slice of the Prisma client this helper needs. Declared structurally
  * so the SAME function accepts both the top-level client (propose time) and the
@@ -215,16 +208,33 @@ class TradeAbort extends Error {
  */
 type PurchaseReader = Pick<typeof prisma, 'imagePurchase'>;
 
+/**
+ * Can `userKey` receive `imageId`?
+ *
+ * NOW ALWAYS TRUE, and that is a deliberate consequence of allowing multiples.
+ *
+ * This function used to answer "do they NOT already own a copy?", because
+ * @@unique([userName, imageId]) made a second copy physically unstorable — so
+ * moving a piece to someone who already held one would have raised P2002 and
+ * surfaced to a kid as a 500. The refusal was protecting against a CONSTRAINT,
+ * not enforcing a rule anybody wanted.
+ *
+ * That constraint is gone (see prisma/schema.prisma): a kid may hold several
+ * copies of a picture, each with its own edition number. So there is nothing
+ * left to collide with, and "you already have a pony, you can't have another"
+ * is now simply false — a kid CAN hold two ponies, and after a trade they hold
+ * the giver's edition number alongside their own.
+ *
+ * Kept as a named function rather than deleted at every call site so the
+ * reasoning stays attached to the decision and so the callers keep their shape
+ * if a real receive-side rule is ever wanted.
+ */
 async function canReceive(
-  tx: PurchaseReader,
-  userKey: string,
-  imageId: string,
+  _tx: PurchaseReader,
+  _userKey: string,
+  _imageId: string,
 ): Promise<boolean> {
-  const existing = await tx.imagePurchase.findUnique({
-    where: { userName_imageId: { userName: userKey, imageId } },
-    select: { id: true },
-  });
-  return existing === null;
+  return true;
 }
 
 // ---------------------------------------------------------------------------
@@ -341,8 +351,10 @@ export async function proposeTrade(
 
   // OWNERSHIP: you cannot offer what you do not own. Checked here for the
   // message and again inside the accept transaction for the truth.
-  const offeredRow = await prisma.imagePurchase.findUnique({
-    where: { userName_imageId: { userName: proposer, imageId: offeredId } },
+  // findFirst: multiples are allowed now, so "do they own one?" is an
+  // at-least-one question. Still a real gate — no rows means they cannot offer it.
+  const offeredRow = await prisma.imagePurchase.findFirst({
+    where: { userName: proposer, imageId: offeredId },
     select: { id: true },
   });
   if (!offeredRow) {
@@ -355,8 +367,8 @@ export async function proposeTrade(
 
   if (wantedId) {
     // The other kid has to actually have the thing being asked for.
-    const wantedRow = await prisma.imagePurchase.findUnique({
-      where: { userName_imageId: { userName: recipient, imageId: wantedId } },
+    const wantedRow = await prisma.imagePurchase.findFirst({
+      where: { userName: recipient, imageId: wantedId },
       select: { id: true },
     });
     if (!wantedRow) {
@@ -542,18 +554,40 @@ export async function acceptTrade(rawUser: string, rawTradeId: unknown): Promise
       //    Read the edition number FIRST (inside the transaction, so it is the
       //    number we are actually moving) for the success payload and the
       //    ledger reason.
-      const offeredRow = await tx.imagePurchase.findUnique({
-        where: { userName_imageId: { userName: proposerUser, imageId: offeredImageId } },
-        select: { editionNumber: true },
-      });
-      const movedOffered = await tx.imagePurchase.updateMany({
+      //    MULTIPLES: pick ONE COPY AND MOVE EXACTLY THAT ROW.
+      //
+      //    A kid may now hold several copies of one picture, so
+      //    `where: { userName, imageId }` matches ALL of them and a bare
+      //    updateMany would hand over the kid's entire stack of tires when they
+      //    agreed to trade one. Selecting a specific row id first and pinning the
+      //    update to `{ id, userName }` moves exactly one copy and leaves the
+      //    rest where they are.
+      //
+      //    LOWEST edition number goes first — deliberate and kid-fair: a trade
+      //    should not silently hand away the rookie card when a plainer copy of
+      //    the same picture would do. If they want to trade the #1 specifically
+      //    that is a different, explicit feature.
+      //
+      //    `userName: proposerUser` STAYS in the WHERE alongside the id. That is
+      //    the stale-offer gate and it is doing real work: between our select and
+      //    our update the proposer may have traded that very copy away, and the
+      //    id alone would happily move a row that is no longer theirs.
+      const offeredRow = await tx.imagePurchase.findFirst({
         where: { userName: proposerUser, imageId: offeredImageId },
+        orderBy: { editionNumber: 'asc' },
+        select: { id: true, editionNumber: true },
+      });
+      if (!offeredRow) {
+        throw new TradeAbort('stale-offer');
+      }
+      const movedOffered = await tx.imagePurchase.updateMany({
+        where: { id: offeredRow.id, userName: proposerUser },
         data: { userName: userKey },
       });
       if (movedOffered.count !== 1) {
         throw new TradeAbort('stale-offer');
       }
-      const offeredEditionNumber = offeredRow?.editionNumber ?? 1;
+      const offeredEditionNumber = offeredRow.editionNumber ?? 1;
 
       // 4. MOVE THE WANTED ENTITLEMENT the other way — recipient -> proposer.
       //    Same guard, same reasoning: the recipient may have traded it away
@@ -561,18 +595,24 @@ export async function acceptTrade(rawUser: string, rawTradeId: unknown): Promise
       //    than hand the proposer's piece over for free.
       let wantedEditionNumber: number | null = null;
       if (wantedImageId) {
-        const wantedRow = await tx.imagePurchase.findUnique({
-          where: { userName_imageId: { userName: userKey, imageId: wantedImageId } },
-          select: { editionNumber: true },
-        });
-        const movedWanted = await tx.imagePurchase.updateMany({
+        // Same single-copy pinning as step 3 — move ONE row, not the whole
+        // stack, and keep `userName` in the WHERE as the stale gate.
+        const wantedRow = await tx.imagePurchase.findFirst({
           where: { userName: userKey, imageId: wantedImageId },
+          orderBy: { editionNumber: 'asc' },
+          select: { id: true, editionNumber: true },
+        });
+        if (!wantedRow) {
+          throw new TradeAbort('stale-wanted');
+        }
+        const movedWanted = await tx.imagePurchase.updateMany({
+          where: { id: wantedRow.id, userName: userKey },
           data: { userName: proposerUser },
         });
         if (movedWanted.count !== 1) {
           throw new TradeAbort('stale-wanted');
         }
-        wantedEditionNumber = wantedRow?.editionNumber ?? 1;
+        wantedEditionNumber = wantedRow.editionNumber ?? 1;
       }
 
       // 5. MONEY. The recipient (accepter) pays the proposer `askCents`.

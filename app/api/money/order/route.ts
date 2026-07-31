@@ -9,6 +9,7 @@ import { prisma } from '@/lib/prisma';
 import { placeOrder, InsufficientFundsError, OrderItem } from '@/lib/money/balance';
 import { decrementStock, OutOfStockError } from '@/lib/inventory';
 import { isSabbath } from '@/lib/sabbath';
+import { grantArtworkForOrder } from '@/lib/collection/grant';
 
 interface BodyItem { productId?: unknown; qty?: unknown }
 
@@ -99,12 +100,41 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const result = await placeOrder(normalizeUser(body.user as string), items, totalCents);
+    const userKey = normalizeUser(body.user as string);
+    const result = await placeOrder(userKey, items, totalCents);
+
+    // ARTWORK GRANT — "everything I buy is in my collection".
+    //
+    // Deliberately AFTER placeOrder and OUTSIDE its transaction. placeOrder is
+    // the money guard (guarded updateMany + count === 1 + ledger row, all in one
+    // $transaction) and nothing here is allowed to widen or reopen it. A grant
+    // charges nothing, so it has no business inside a money transaction — and if
+    // it were inside, a routine edition-number collision could roll back an
+    // order the kid already paid for.
+    //
+    // Failure is therefore NON-FATAL: the purchase stands, the kid gets their
+    // confirmation, and the missed artwork is recoverable because
+    // scripts/backfill-collection-grants.ts re-derives the identical grant keys.
+    // Swallowing the error is the correct trade here — refusing a paid-for order
+    // because a free bonus failed would be strictly worse for the kid.
+    let grantedCount = 0;
+    try {
+      const granted = await grantArtworkForOrder(
+        userKey,
+        result.orderId,
+        items.map((it) => ({ productId: it.productId, qty: it.qty })),
+      );
+      grantedCount = granted.granted.length;
+    } catch (grantErr) {
+      console.error('[order] artwork grant failed (order stands):', grantErr);
+    }
+
     return NextResponse.json({
       ok: true,
       orderId: result.orderId,
       balanceCents: result.balanceCents,
       totalCents,
+      artworkGranted: grantedCount,
     });
   } catch (err) {
     // Balance debit failed — restore the stock we decremented above so the

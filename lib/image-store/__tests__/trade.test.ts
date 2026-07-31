@@ -12,9 +12,11 @@
 //     deltas IT applied and reverses those on throw — not a whole-state
 //     snapshot, which would let a late failure clobber a sibling transaction's
 //     committed work.
-//   * @@unique([userName, imageId]). The fake refuses a second row for the same
-//     (user, image) pair, so the already-owns edge case is a real constraint
-//     here and not just an `if`.
+//   * MULTIPLES. A kid may hold several copies of one picture (the old
+//     @@unique([userName, imageId]) is gone), so the fake stores one row per
+//     copy and the entitlement move is PINNED TO A SINGLE ROW ID — a fake that
+//     matched on (userName, imageId) would move a whole stack and hide the bug
+//     that pinning exists to prevent.
 //   * An INTERLEAVE HOOK that parks a transaction between its read and its
 //     write, which is what makes "both accept simultaneously" and "the MP was
 //     spent in between" testable without depending on scheduling.
@@ -207,34 +209,45 @@ function makeTx(journal: Journal) {
       },
     },
     imagePurchase: {
-      findUnique: async ({
+      /**
+       * MULTIPLES: a kid may hold several copies of one image, so this returns
+       * the LOWEST edition among them — matching the `orderBy: editionNumber
+       * asc` the real query uses to pick which copy to trade away.
+       */
+      findFirst: async ({
         where,
       }: {
-        where: { userName_imageId: { userName: string; imageId: string } };
+        where: { userName: string; imageId: string };
       }) => {
-        const { userName, imageId } = where.userName_imageId;
-        return findPurchase(userName, imageId) ?? null;
+        const matches = state.purchases
+          .filter((p) => p.userName === where.userName && p.imageId === where.imageId)
+          .sort((a, b) => a.editionNumber - b.editionNumber);
+        return matches[0] ?? null;
       },
       /**
        * THE ENTITLEMENT MOVE. Guarded on the CURRENT owner — that WHERE is the
        * stale-offer gate, so the fake must evaluate it honestly.
        *
-       * It also enforces @@unique([userName, imageId]): moving a row onto a user
-       * who already holds that image raises P2002, exactly as Postgres would.
-       * Without that, the already-owns edge case would be untestable.
+       * PINNED BY ROW ID now that multiples exist. The real query moves ONE
+       * copy by id (plus `userName` as the stale gate); a fake that still
+       * matched on (userName, imageId) would move the kid's whole stack and
+       * would hide exactly the bug the id-pinning exists to prevent.
+       *
+       * The old @@unique([userName, imageId]) P2002 is deliberately GONE from
+       * this fake, because it is gone from the schema: moving a piece to
+       * somebody who already holds a copy is now legal and must not raise.
        */
       updateMany: async ({
         where,
         data,
       }: {
-        where: { userName: string; imageId: string };
+        where: { id: string; userName: string };
         data: { userName: string };
       }) => {
-        const row = findPurchase(where.userName, where.imageId);
+        const row = state.purchases.find(
+          (p) => p.id === where.id && p.userName === where.userName,
+        );
         if (!row) return { count: 0 };
-        if (findPurchase(data.userName, where.imageId)) {
-          throw new FakeP2002(['userName', 'imageId']);
-        }
         journal.ownerMoves.push({ id: row.id, from: row.userName });
         row.userName = data.userName;
         return { count: 1 };
@@ -308,14 +321,10 @@ function buildPrismaMock() {
       Array.from(state.users.keys()).map((name) => ({ name, displayName: null })),
   },
   imagePurchase: {
-    findUnique: async ({
-      where,
-    }: {
-      where: { userName_imageId: { userName: string; imageId: string } };
-    }) => {
-      const { userName, imageId } = where.userName_imageId;
-      return findPurchase(userName, imageId) ?? null;
-    },
+    // Propose-time ownership read. At-least-one semantics, since a kid may
+    // hold several copies of one picture.
+    findFirst: async ({ where }: { where: { userName: string; imageId: string } }) =>
+      findPurchase(where.userName, where.imageId) ?? null,
     findMany: async ({ where }: { where?: { userName?: string } }) =>
       state.purchases.filter((p) => !where?.userName || p.userName === where.userName),
   },
@@ -554,9 +563,15 @@ describe('proposeTrade', () => {
     expect(result.status).toBe('recipient-missing-wanted');
   });
 
-  // --- RACE 7: the already-owns edge case, at propose time ---
+  // --- the former already-owns edge case, at propose time ---
+  //
+  // These two used to assert a REFUSAL. That refusal existed only because
+  // @@unique([userName, imageId]) made a second copy unstorable, so the move
+  // would have raised P2002 and surfaced as a 500 — it was never a rule anyone
+  // wanted. Multiples are supported now, so a kid who already holds a pony can
+  // legitimately receive a second one and end up holding two editions.
 
-  it('REFUSES when the recipient already owns the offered piece', async () => {
+  it('ALLOWS a trade when the recipient already owns a copy of the offered piece', async () => {
     reset({ shepherd: 1000, hailey: 1000 });
     own('shepherd', PONY.id, 1);
     own('hailey', PONY.id, 4); // Hailey already has a pony, edition #4
@@ -564,12 +579,11 @@ describe('proposeTrade', () => {
       offeredImageId: PONY.id,
       askCents: 100,
     });
-    expect(result.ok).toBe(false);
-    expect(result.status).toBe('recipient-already-owns-offered');
-    expect(state.trades.size).toBe(0);
+    expect(result.ok).toBe(true);
+    expect(state.trades.size).toBe(1);
   });
 
-  it('REFUSES when the proposer already owns the piece they are asking for', async () => {
+  it('ALLOWS asking for a piece the proposer already owns a copy of', async () => {
     reset({ shepherd: 1000, hailey: 1000 });
     own('shepherd', PONY.id, 1);
     own('shepherd', UNICORN.id, 3);
@@ -578,7 +592,19 @@ describe('proposeTrade', () => {
       offeredImageId: PONY.id,
       wantedImageId: UNICORN.id,
     });
-    expect(result.status).toBe('proposer-already-owns-wanted');
+    expect(result.ok).toBe(true);
+  });
+
+  it('STILL refuses to offer a piece the proposer does not own at all', async () => {
+    // The real ownership gate must survive the multiples change.
+    reset({ shepherd: 1000, hailey: 1000 });
+    const result = await proposeTrade('shepherd', 'hailey', {
+      offeredImageId: PONY.id,
+      askCents: 100,
+    });
+    expect(result.ok).toBe(false);
+    expect(result.status).toBe('not-owned');
+    expect(state.trades.size).toBe(0);
   });
 
   // --- money validation ---
@@ -1117,11 +1143,21 @@ describe('funds race', () => {
 });
 
 // ---------------------------------------------------------------------------
-// RACE 7 — the recipient already owns a different edition of that piece
+// STACKING — the recipient already owns a different edition of that piece
 // ---------------------------------------------------------------------------
+//
+// This block used to be "RACE 7 — the already-owns edge case" and asserted that
+// such a trade was REFUSED. That refusal was never a product rule: it existed
+// because @@unique([userName, imageId]) made the second row unstorable, so the
+// move would have raised P2002 and reached a kid as a 500. Multiples are
+// supported now, so the correct behaviour is that the trade SUCCEEDS and the kid
+// ends up holding two editions of the same picture.
+//
+// What must still hold — and is asserted here — is that a trade moves EXACTLY
+// ONE COPY and that every edition number is preserved.
 
-describe('already-owns edge case', () => {
-  it('ACCEPT-TIME: the recipient bought their own copy after the offer was made', async () => {
+describe('stacking copies via trade', () => {
+  it('ACCEPT-TIME: a kid who bought their own copy can still receive another', async () => {
     reset({ shepherd: 0, hailey: 5000 });
     own('shepherd', PONY.id, 1);
 
@@ -1135,25 +1171,50 @@ describe('already-owns edge case', () => {
     own('hailey', PONY.id, 4);
 
     const result = await acceptTrade('hailey', proposed.tradeId);
+    expect(result.ok).toBe(true);
 
-    // Refused with a sentence, NOT a 500 from a P2002.
-    expect(result.ok).toBe(false);
-    expect(result.status).toBe('recipient-already-owns-offered');
-
-    // Both editions survive with their original owners. Nothing was deleted,
-    // nothing was merged, and no money moved.
-    expect(state.purchases.filter((p) => p.imageId === PONY.id)).toHaveLength(2);
-    expect(findPurchase('shepherd', PONY.id)!.editionNumber).toBe(1);
-    expect(findPurchase('hailey', PONY.id)!.editionNumber).toBe(4);
-    expect(state.users.get('hailey')).toBe(5000);
-    expect(state.ledger).toHaveLength(0);
-    expect(state.trades.get(proposed.tradeId)!.status).toBe('pending');
+    // Hailey now holds BOTH editions; Shepherd holds none.
+    const ponies = state.purchases.filter((p) => p.imageId === PONY.id);
+    expect(ponies).toHaveLength(2);
+    expect(ponies.every((p) => p.userName === 'hailey')).toBe(true);
+    // THE EDITION NUMBERS SURVIVED THE MOVE — #1 is still #1.
+    expect(ponies.map((p) => p.editionNumber).sort((a, b) => a - b)).toEqual([1, 4]);
+    // And the money moved exactly once.
+    expect(state.users.get('hailey')).toBe(4000);
   });
 
-  it('ACCEPT-TIME: the collision on the PROPOSER side of a swap is also refused', async () => {
+  it('a trade moves exactly ONE copy, not the whole stack', async () => {
+    // THE MULTIPLES REGRESSION GUARD. `updateMany` on (userName, imageId) would
+    // match every copy and hand over all three; the real query pins one row id.
+    reset({ shepherd: 5000, hailey: 5000 });
+    own('shepherd', PONY.id, 1);
+    own('shepherd', PONY.id, 2);
+    own('shepherd', PONY.id, 3);
+
+    const proposed = await proposeTrade('shepherd', 'hailey', {
+      offeredImageId: PONY.id,
+      askCents: 100,
+    });
+    if (!proposed.ok) throw new Error('unreachable');
+
+    const result = await acceptTrade('hailey', proposed.tradeId);
+    expect(result.ok).toBe(true);
+
+    const mine = state.purchases.filter(
+      (p) => p.imageId === PONY.id && p.userName === 'shepherd',
+    );
+    const theirs = state.purchases.filter(
+      (p) => p.imageId === PONY.id && p.userName === 'hailey',
+    );
+    expect(theirs).toHaveLength(1); // exactly one moved
+    expect(mine).toHaveLength(2); // the rest stayed put
+  });
+
+  it('a swap stacks on BOTH sides and preserves every edition number', async () => {
     reset({ shepherd: 1000, hailey: 1000 });
-    own('shepherd', PONY.id);
+    own('shepherd', PONY.id, 1);
     own('hailey', UNICORN.id, 2);
+    own('shepherd', UNICORN.id, 9); // Shepherd already has a unicorn
 
     const proposed = await proposeTrade('shepherd', 'hailey', {
       offeredImageId: PONY.id,
@@ -1161,40 +1222,33 @@ describe('already-owns edge case', () => {
     });
     if (!proposed.ok) throw new Error('unreachable');
 
-    // Shepherd buys his own unicorn before Hailey taps accept.
-    own('shepherd', UNICORN.id, 9);
-
     const result = await acceptTrade('hailey', proposed.tradeId);
-    expect(result.ok).toBe(false);
-    expect(result.status).toBe('proposer-already-owns-wanted');
-    expect(ownerOf(PONY.id)).toBe('shepherd');
-    expect(findPurchase('hailey', UNICORN.id)).toBeDefined();
-    expect(state.purchases.filter((p) => p.imageId === UNICORN.id)).toHaveLength(2);
+    expect(result.ok).toBe(true);
+
+    // Shepherd now holds two unicorns (#2 and #9); Hailey holds the pony.
+    const unicorns = state.purchases.filter(
+      (p) => p.imageId === UNICORN.id && p.userName === 'shepherd',
+    );
+    expect(unicorns.map((p) => p.editionNumber).sort((a, b) => a - b)).toEqual([2, 9]);
+    expect(ownerOf(PONY.id)).toBe('hailey');
   });
 
-  it('never violates the one-copy-per-kid rule, whatever happens', async () => {
-    reset({ shepherd: 0, hailey: 5000 });
+  it('edition numbers stay globally unique across every copy', async () => {
+    // The invariant that REPLACED one-copy-per-kid: a serial identifies exactly
+    // one copy, no matter who holds it or how many they hold.
+    reset({ shepherd: 5000, hailey: 5000 });
     own('shepherd', PONY.id, 1);
-    own('hailey', PONY.id, 2);
-    // Force a trade row into existence that propose-time would have refused,
-    // proving the ACCEPT-time gate stands on its own.
-    const row = await prismaMockInstance().imageTrade.create({
-      data: {
-        proposerUser: 'shepherd',
-        recipientUser: 'hailey',
-        offeredImageId: PONY.id,
-        wantedImageId: null,
-        askCents: 500,
-        status: 'pending',
-      },
+    own('shepherd', PONY.id, 2);
+    own('hailey', PONY.id, 3);
+
+    const proposed = await proposeTrade('shepherd', 'hailey', {
+      offeredImageId: PONY.id,
+      askCents: 100,
     });
+    if (!proposed.ok) throw new Error('unreachable');
+    await acceptTrade('hailey', proposed.tradeId);
 
-    const result = await acceptTrade('hailey', row.id);
-    expect(result.ok).toBe(false);
-    expect(result.status).toBe('recipient-already-owns-offered');
-
-    // The invariant: at most one row per (user, image), always.
-    const keys = state.purchases.map((p) => `${p.userName}|${p.imageId}`);
+    const keys = state.purchases.map((p) => `${p.imageId}#${p.editionNumber}`);
     expect(new Set(keys).size).toBe(keys.length);
   });
 });

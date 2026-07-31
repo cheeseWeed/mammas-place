@@ -7,7 +7,8 @@
 //   * the price comes from the CATALOG, never from the caller,
 //   * the debit and the MpTransaction ledger row happen in the SAME
 //     $transaction as the ImagePurchase row,
-//   * a duplicate buy (P2002 on the composite unique) charges NOTHING,
+//   * a double-SUBMIT of one click (P2002 on `grantKey`) charges NOTHING, while
+//     a deliberate second buy legitimately succeeds (multiples are allowed),
 //   * insufficient funds charges NOTHING and reports the exact shortfall,
 //   * every amount stays an integer number of cents,
 //   * two concurrent buys of DIFFERENT images cannot overdraft the wallet.
@@ -16,9 +17,9 @@
 // statement (`updateMany` whose WHERE carries `balanceCents >= price`) that is
 // atomic within a JS turn, and offers a hook to park a transaction at the exact
 // instant between its read and its write. Postgres READ COMMITTED gives
-// `findUnique` no row lock, so that interleaving is real — and the
-// @@unique([userName, imageId]) constraint cannot catch it, because two
-// different images are not a duplicate of anything.
+// `findUnique` no row lock, so that interleaving is real — and no unique
+// constraint can catch it, because two different images are not a duplicate of
+// anything.
 //
 // Also covers the download path-traversal guard, which is the security half of
 // the feature.
@@ -45,6 +46,8 @@ interface FakeState {
   purchases: Set<string>;
   /** "imageId#editionNumber" keys — models @@unique([imageId, editionNumber]) */
   editionKeys: Set<string>;
+  /** grantKey values — models the `grantKey @unique` double-submit gate. */
+  grantKeys: Set<string>;
   /** "user|imageId" -> the edition number that copy was given */
   editionNumbers: Map<string, number>;
   /** every write the LAST call attempted, in order */
@@ -73,6 +76,7 @@ const state: FakeState = {
   users: new Map(),
   purchases: new Set(),
   editionKeys: new Set(),
+  grantKeys: new Set(),
   editionNumbers: new Map(),
   writes: [],
   committed: [],
@@ -86,7 +90,7 @@ const state: FakeState = {
  * Prisma-shaped unique-constraint error, as the real client would throw it.
  *
  * `meta.target` matters: purchase.ts branches on WHICH unique was violated —
- * [userName, imageId] means "already owned" (do not retry), while
+ * `grantKey` means "that same click already landed" (do not retry), while
  * [imageId, editionNumber] means "lost the rookie-number race" (retry with the
  * next number). A fake that omitted meta would let a bug in that branch pass.
  */
@@ -111,6 +115,8 @@ interface Journal {
   purchaseKeys: string[];
   /** Edition keys THIS transaction claimed — released if it rolls back. */
   editionKeys: string[];
+  /** Grant keys THIS transaction claimed — released if it rolls back. */
+  grantKeys: string[];
   /** Writes THIS transaction made — `state.writes` is shared, so it cannot be sliced. */
   writes: FakeWrite[];
   /** Balance reads this transaction has taken; the interleave hook fires on #1. */
@@ -227,8 +233,16 @@ function makeTx(journal: Journal) {
         const key = `${data.userName}|${data.imageId}`;
         // The DB unique constraints ARE the gates — mirror BOTH here.
         //
-        // 1. @@unique([userName, imageId]) — the duplicate-buy gate.
-        if (state.purchases.has(key)) throw new FakeP2002(['userName', 'imageId']);
+        // 1. `grantKey @unique` — the DOUBLE-SUBMIT gate, and the replacement
+        //    for the old @@unique([userName, imageId]). The rule moved from
+        //    "one copy per kid per picture" (which forbade the multiples the
+        //    owner asked for) to "one copy per PURCHASE EVENT". Two taps of the
+        //    SAME click carry the same key and collide; a deliberate second buy
+        //    carries a fresh key and is allowed through.
+        const grantKey = data.grantKey == null ? null : String(data.grantKey);
+        if (grantKey !== null && state.grantKeys.has(grantKey)) {
+          throw new FakeP2002(['grantKey']);
+        }
         // 2. @@unique([imageId, editionNumber]) — the rookie-number gate. This
         //    is the one that makes two simultaneous buyers unable to both be
         //    #1: the second INSERT of the same (image, number) pair simply
@@ -239,6 +253,10 @@ function makeTx(journal: Journal) {
         }
         state.purchases.add(key);
         state.editionKeys.add(editionKey);
+        if (grantKey !== null) {
+          state.grantKeys.add(grantKey);
+          journal.grantKeys.push(grantKey);
+        }
         state.editionNumbers.set(key, Number(data.editionNumber));
         journal.purchaseKeys.push(key);
         journal.editionKeys.push(editionKey);
@@ -259,6 +277,7 @@ vi.mock('@/lib/prisma', () => ({
         balanceDeltas: [],
         purchaseKeys: [],
         editionKeys: [],
+        grantKeys: [],
         writes: [],
         reads: 0,
       };
@@ -278,6 +297,7 @@ vi.mock('@/lib/prisma', () => ({
         // claim, or the retry would find its own abandoned number occupied and
         // skip a slot.
         for (const key of journal.editionKeys) state.editionKeys.delete(key);
+        for (const key of journal.grantKeys) state.grantKeys.delete(key);
         throw err;
       }
     },
@@ -288,13 +308,17 @@ vi.mock('@/lib/prisma', () => ({
       },
     },
     imagePurchase: {
-      findUnique: async ({
+      /**
+       * The download-right read. AT-LEAST-ONE semantics: multiples are legal
+       * now (the @@unique([userName, imageId]) is gone), so owning three copies
+       * grants exactly the same access as owning one.
+       */
+      findFirst: async ({
         where,
       }: {
-        where: { userName_imageId: { userName: string; imageId: string } };
+        where: { userName: string; imageId: string };
       }) => {
-        const { userName, imageId } = where.userName_imageId;
-        return state.purchases.has(`${userName}|${imageId}`) ? { id: 'ip-1' } : null;
+        return state.purchases.has(`${where.userName}|${where.imageId}`) ? { id: 'ip-1' } : null;
       },
       findMany: async ({ where }: { where: { userName: string } }) => {
         return Array.from(state.purchases)
@@ -366,6 +390,7 @@ function reset(balances: Record<string, number> = {}) {
   state.users = new Map(Object.entries(balances));
   state.purchases = new Set();
   state.editionKeys = new Set();
+  state.grantKeys = new Set();
   state.editionNumbers = new Map();
   state.writes = [];
   state.committed = [];
@@ -486,28 +511,38 @@ describe('purchaseImage', () => {
 
   // --- duplicates ---
 
-  it('second buy of the same piece is "already-owned" and charges nothing', async () => {
-    reset({ kid: 10_000 });
-    await purchaseImage('kid', CHEAP.id);
+  // MULTIPLES ARE A FEATURE NOW. These two tests used to assert the opposite —
+  // that a kid could hold at most one copy — because @@unique([userName,
+  // imageId]) made a second copy unstorable. The owner asked for multiples
+  // ("I want to be able to buy multiple if I want"), that constraint is gone,
+  // and the double-submit protection moved to `grantKey @unique` (one copy per
+  // purchase EVENT). The guard is not weaker, it is aimed at the right thing.
+
+  it('a DELIBERATE second buy of the same piece succeeds and is charged', async () => {
+    reset({ kid: 100_000 });
+    const first = await purchaseImage('kid', CHEAP.id, 'click-1');
     const balanceAfterFirst = state.users.get('kid')!;
 
-    const second = await purchaseImage('kid', CHEAP.id);
-    expect(second.ok).toBe(false);
-    expect(second.status).toBe('already-owned');
-    if (second.status !== 'already-owned') throw new Error('unreachable');
-    expect(second.title).toBe(CHEAP.title);
-    expect(second.balanceCents).toBe(balanceAfterFirst);
+    // A different click => a different token => a genuine second copy.
+    const second = await purchaseImage('kid', CHEAP.id, 'click-2');
+    expect(second.status).toBe('purchased');
+    if (second.status !== 'purchased') throw new Error('unreachable');
+    if (first.status !== 'purchased') throw new Error('unreachable');
 
-    // Nothing extra committed, and the balance did NOT move.
-    expect(state.users.get('kid')).toBe(balanceAfterFirst);
-    expect(state.committed.filter((w) => w.model === 'mpTransaction')).toHaveLength(1);
-    expect(state.committed.filter((w) => w.model === 'imagePurchase')).toHaveLength(1);
+    // Two copies, two DISTINCT edition numbers — the point of one-row-per-copy.
+    expect(second.editionNumber).toBe(first.editionNumber + 1);
+    expect(state.committed.filter((w) => w.model === 'imagePurchase')).toHaveLength(2);
+    // It really was charged; a second copy is not free.
+    expect(state.users.get('kid')).toBeLessThan(balanceAfterFirst);
   });
 
-  it('ten concurrent taps on Buy charge exactly once', async () => {
+  it('ten concurrent taps of ONE click charge exactly once', async () => {
+    // THE DOUBLE-SUBMIT GUARD, re-aimed. Same click => same token => one copy,
+    // nine refusals, one charge. This is the protection the deleted
+    // @@unique([userName, imageId]) used to provide by accident.
     reset({ kid: 100_000 });
     const results = await Promise.all(
-      Array.from({ length: 10 }, () => purchaseImage('kid', CHEAP.id)),
+      Array.from({ length: 10 }, () => purchaseImage('kid', CHEAP.id, 'one-click')),
     );
     const bought = results.filter((r) => r.status === 'purchased');
     const dupes = results.filter((r) => r.status === 'already-owned');
@@ -515,6 +550,21 @@ describe('purchaseImage', () => {
     expect(dupes).toHaveLength(9);
     expect(state.users.get('kid')).toBe(100_000 - firstPrice(CHEAP));
     expect(state.committed.filter((w) => w.model === 'imagePurchase')).toHaveLength(1);
+  });
+
+  it('ten taps of ten DIFFERENT clicks buy ten copies', async () => {
+    // The other half of the contract: distinct events must all land, or
+    // "buy multiple" would not work.
+    reset({ kid: 1_000_000 });
+    const results = await Promise.all(
+      Array.from({ length: 10 }, (_, i) => purchaseImage('kid', CHEAP.id, `click-${i}`)),
+    );
+    const bought = results.filter((r) => r.status === 'purchased');
+    // Bounded only by the edition run size, never by a per-kid cap.
+    expect(bought.length).toBeGreaterThan(1);
+    const editions = bought.map((r) => (r.status === 'purchased' ? r.editionNumber : 0));
+    // Every copy got its OWN serial — no two share a number.
+    expect(new Set(editions).size).toBe(editions.length);
   });
 
   it('two different kids can each own the same piece', async () => {

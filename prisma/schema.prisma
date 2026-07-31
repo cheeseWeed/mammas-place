@@ -129,21 +129,34 @@ model MpOrder {
   @@map("mp_orders")
 }
 
-// Digital image store — one row per (kid, image) ENTITLEMENT.
+// Digital image store — one row per OWNED COPY.
 //
-// The image store sells digital originals: nothing ships, nothing depletes, and
-// a kid can only ever own a piece ONCE. So this is deliberately NOT an MpOrder
-// (no qty, no cart snapshot) — it is a permanent entitlement row that the
-// download route checks before it will stream the original file. Owning it is
-// forever: re-downloads are free and are never re-charged.
+// ONE ROW = ONE COPY. This is the load-bearing decision of the whole model, and
+// it changed in the "everything I buy is in my collection" revision. Previously
+// there was a `@@unique([userName, imageId])` and a kid could hold at most one
+// copy of a picture forever. The owner wants to buy three tires and own three
+// tires, so that unique is GONE and a kid may now hold N rows for one imageId.
 //
-// `@@unique([userName, imageId])` is the DUPLICATE-BUY GATE, and it is the only
-// gate. Same reasoning as MpEarning.idempotencyKey: we do NOT findFirst-then-
-// create, because two concurrent taps on the Buy button can both pass that
-// check and double-charge. The create runs inside the same $transaction as the
-// debit + ledger row, so a unique violation (Prisma P2002) rolls the whole
-// thing back — the kid is never charged twice for one picture. See
-// lib/image-store/purchase.ts.
+// WHY N ROWS AND NOT A `quantity` COLUMN. `editionNumber` is the identity of a
+// SINGLE serial — "you hold copy #1 of 6". A row carrying `quantity: 3` would
+// be claiming three copies that all share one serial, which makes
+// @@unique([imageId, editionNumber]) decorative rather than meaningful and
+// makes "trade away just one of my three" unrepresentable. It would also break
+// lib/image-store/trade.ts, which moves a copy by UPDATING one row's userName
+// precisely so the edition number travels with the copy. One row per copy keeps
+// every one of those properties intact: each row still holds exactly one serial,
+// the edition unique still arbitrates numbering, and a trade still moves exactly
+// one copy.
+//
+// WHAT REPLACES THE DELETED DUPLICATE-BUY GATE. Removing a unique without
+// replacing it would leave a double-tapped Buy button free to create two rows
+// and charge twice — the exact bug the old constraint existed to stop. So the
+// gate is not deleted, it is RE-AIMED: `grantKey @unique` below. The rule is now
+// "one row per PURCHASE EVENT" instead of "one row per kid per picture", which
+// is what we actually meant all along. Buying a second copy deliberately is a
+// different event and gets a different key; double-submitting ONE click is the
+// same event and collides. Same principle as MpEarning.idempotencyKey: the DB
+// constraint is the gate, never a prior read.
 //
 // `imageId` references data/image-store.json (the catalog is a static file, not
 // a table), so there is no FK here — but the catalog id is the server's source
@@ -163,9 +176,8 @@ model MpOrder {
 // number (lib/image-store/purchase.ts). Two rows can never share a number
 // because the database will not physically store them.
 //
-// This is the same principle as MpEarning.idempotencyKey and the
-// @@unique([userName, imageId]) below: the DB constraint is the gate, never a
-// prior read.
+// This is the same principle as MpEarning.idempotencyKey and grantKey below:
+// the DB constraint is the gate, never a prior read.
 model ImagePurchase {
   id             String   @id @default(cuid())
   userName       String
@@ -175,10 +187,52 @@ model ImagePurchase {
   editionNumber  Int      @default(1) // 1 = the rookie, the first ever sold
   createdAt      DateTime @default(now())
 
-  @@unique([userName, imageId])
+  // HOW THIS COPY CAME TO BE OWNED. Display honesty, not a gate.
+  //
+  // 'store'  — bought outright in the image store for `pricePaidCents`.
+  // 'grant'  — came free WITH a shop purchase (you bought the tire, so the
+  //            tire's artwork is yours). pricePaidCents is legitimately 0 here.
+  // 'trade'  — arrived via lib/image-store/trade.ts. Never written at creation;
+  //            reserved so a future trade can restamp provenance if we want it.
+  //
+  // This column exists because the collection page had a real bug: a granted
+  // piece rendered "Bought Jun 16, 2026 for 0MP", which reads to a kid as "this
+  // is worthless". A 0 in pricePaidCents is ambiguous on its own — it could be a
+  // free grant or a broken charge — so the honest answer has to be STORED at
+  // write time rather than guessed from the price at read time.
+  source         String   @default("store")
+
+  // The MpOrder this copy was granted from, for 'grant' rows. Null for a store
+  // buy. Lets the collection say "From your shop purchase" and lets the backfill
+  // script tell an already-granted order from an ungranted one.
+  grantOrderId   String?
+
+  // THE DOUBLE-SUBMIT GATE, and the replacement for the deleted
+  // @@unique([userName, imageId]).
+  //
+  // Identifies the PURCHASE EVENT that produced this copy, not the copy itself:
+  //   store buy  -> "store:<user>:<imageId>:<cuid>"  (unique per click)
+  //   shop grant -> "order:<orderId>:<imageId>:<n>"  (n = 1..qty within the order)
+  //
+  // The grant form is the one that matters. It is DERIVED ENTIRELY FROM THE
+  // ORDER — no random component — so replaying the same order (a retried
+  // checkout, a re-run of the backfill script, two concurrent reads of the same
+  // order) proposes the exact same keys and collides on every one of them
+  // instead of minting a second pile of free artwork. That is what makes both
+  // the checkout hook and scripts/backfill-collection-grants.ts idempotent
+  // WITHOUT either of them doing a findFirst-then-create, which is the
+  // check-then-act race this codebase refuses everywhere else.
+  //
+  // Nullable because the 6 rows already in production predate the column and
+  // Postgres permits many NULLs under a unique index. Those legacy rows are
+  // therefore un-keyed, which is correct: they were one-time hand-backfilled
+  // grants and there is no future event that could duplicate them.
+  grantKey       String?  @unique
+
   @@unique([imageId, editionNumber])
   @@index([userName, createdAt])
   @@index([imageId])
+  @@index([userName, imageId])
   @@map("image_purchases")
 }
 
