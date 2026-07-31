@@ -1,6 +1,16 @@
 // MP Money — balance, ledger, and order helpers.
 // Server-only. Every mutation runs in a Prisma transaction so balance and
 // the transaction row stay consistent. See app/money/PLAN.md.
+//
+// OVERDRAFT IS STOPPED BY THE DATABASE, NOT BY A READ. Every debit path
+// (`debit`, `placeOrder`) writes its funds check into the UPDATE statement
+// itself — `updateMany` with `balanceCents: { gte: amount }` — and treats
+// `count !== 1` as insufficient funds. A read-then-decrement pair is NOT
+// equivalent: Prisma interactive transactions run at Postgres READ COMMITTED
+// and `findUnique` takes no row lock, so two concurrent spends both read the
+// same balance, both pass a check-then-write, and both decrement. Same
+// guarded-updateMany shape as lib/image-store/purchase.ts and the
+// `delivered: false` claim in lib/money/gift.ts.
 
 import { prisma } from '../prisma';
 import { normalizeUser } from '../drive-progress';
@@ -65,16 +75,53 @@ export async function debit(
   return prisma.$transaction(async (tx) => {
     const user = await tx.driveUser.findUnique({ where: { name: userKey } });
     if (!user) throw new Error('User not found');
+
+    // Read-only pre-check. A UX shortcut ONLY — it distinguishes "no such kid"
+    // from "no money" and reports the shortfall without writing. The real gate
+    // is the guarded updateMany below.
     if (user.balanceCents < cents) throw new InsufficientFundsError(user.balanceCents, cents);
-    const updated = await tx.driveUser.update({
-      where: { name: userKey },
+
+    // CONDITIONAL debit — the DATABASE decides affordability at the instant of
+    // the write. Prisma interactive transactions run at Postgres READ COMMITTED
+    // and `findUnique` takes NO row lock, so two concurrent debits both read the
+    // same balance, both pass the check above, and both decrement — the wallet
+    // goes negative. Nothing in this transaction touches a unique constraint, so
+    // even two IDENTICAL debits have nothing to collide on.
+    //
+    // Folding `balanceCents: { gte: cents }` into the WHERE makes the check and
+    // the decrement ONE statement. Postgres takes a row lock for the UPDATE, so
+    // the second writer blocks until the first commits and then RE-EVALUATES the
+    // condition against the newly committed value (EvalPlanQual) instead of its
+    // stale snapshot. The loser matches 0 rows and rolls back untouched. Same
+    // shape as lib/image-store/purchase.ts and the `delivered: false` claim in
+    // lib/money/gift.ts.
+    const debited = await tx.driveUser.updateMany({
+      where: { name: userKey, balanceCents: { gte: cents } },
       data: { balanceCents: { decrement: cents } },
+    });
+    if (debited.count !== 1) {
+      // Lost the race: the MP was spent between our read and our write. Re-read
+      // so the caller is told what they ACTUALLY have, then throw — which rolls
+      // the whole transaction back. Nothing was charged.
+      const fresh = await tx.driveUser.findUnique({
+        where: { name: userKey },
+        select: { balanceCents: true },
+      });
+      throw new InsufficientFundsError(fresh?.balanceCents ?? 0, cents);
+    }
+
+    // updateMany cannot return the row, so read back the balance OUR decrement
+    // produced. Inside the transaction we see our own write, and the row lock we
+    // just held means no one else's debit slipped in first.
+    const updated = await tx.driveUser.findUnique({
+      where: { name: userKey },
       select: { balanceCents: true },
     });
+
     await tx.mpTransaction.create({
       data: { userName: userKey, cents: -cents, type, reason, orderId: orderId ?? null },
     });
-    return updated.balanceCents;
+    return updated?.balanceCents ?? user.balanceCents - cents;
   });
 }
 
@@ -105,10 +152,34 @@ export async function placeOrder(
         status: 'fulfilled',
       },
     });
-    await tx.driveUser.update({
-      where: { name: userKey },
+
+    // CONDITIONAL debit — see the long note in debit(). This is the whole shop
+    // checkout: two carts submitted at once both read the same balance above,
+    // both pass the pre-check, and a blind `{ decrement }` would let both land.
+    // The sufficiency test belongs INSIDE the UPDATE's WHERE clause so check and
+    // decrement are one row-locked statement.
+    const debited = await tx.driveUser.updateMany({
+      where: { name: userKey, balanceCents: { gte: totalCents } },
       data: { balanceCents: { decrement: totalCents } },
     });
+    if (debited.count !== 1) {
+      const fresh = await tx.driveUser.findUnique({
+        where: { name: userKey },
+        select: { balanceCents: true },
+      });
+      // Throwing rolls back the MpOrder row too — no order without payment.
+      throw new InsufficientFundsError(fresh?.balanceCents ?? 0, totalCents);
+    }
+
+    // Read back the balance our OWN decrement produced. The previous code
+    // returned `user.balanceCents - totalCents` computed from the pre-update
+    // read, which reports a wrong number whenever anything else moved the
+    // balance first — even with no race at all.
+    const updated = await tx.driveUser.findUnique({
+      where: { name: userKey },
+      select: { balanceCents: true },
+    });
+
     await tx.mpTransaction.create({
       data: {
         userName: userKey,
@@ -118,7 +189,10 @@ export async function placeOrder(
         orderId: order.id,
       },
     });
-    return { orderId: order.id, balanceCents: user.balanceCents - totalCents };
+    return {
+      orderId: order.id,
+      balanceCents: updated?.balanceCents ?? user.balanceCents - totalCents,
+    };
   });
 }
 

@@ -63,6 +63,59 @@ export function isSabbath(now: Date = new Date(), cookieStr?: string): boolean {
 // closed until Monday.
 export const SABBATH_OPEN_SECTIONS = ['scripture', 'music', 'audiobooks'] as const;
 
+export type SabbathOpenSection = (typeof SABBATH_OPEN_SECTIONS)[number];
+
+// Route slugs / category keys that mean the same thing as a canonical entry in
+// SABBATH_OPEN_SECTIONS. Callers pass whatever key they naturally have (a route
+// slug like 'scripture-study', a shop category like 'audiobooks'), and we
+// normalize it here. Without this, a page passing 'scripture-study' would NOT
+// match the canonical 'scripture' key and would be treated as closed.
+const SECTION_ALIASES: Record<string, SabbathOpenSection> = {
+  scripture: 'scripture',
+  'scripture-study': 'scripture',
+  'study-guides': 'scripture',
+  music: 'music',
+  audiobooks: 'audiobooks',
+  audiobook: 'audiobooks',
+};
+
+// Resolve an arbitrary section/route/category key to its canonical Sabbath
+// section, or null when the key isn't one of the Sabbath-open sections.
+export function resolveSabbathSection(
+  key: string | null | undefined,
+): SabbathOpenSection | null {
+  if (typeof key !== 'string') return null;
+  const normalized = key.trim().toLowerCase().replace(/^\/+/, '');
+  if (normalized.length === 0) return null;
+  return SECTION_ALIASES[normalized] ?? null;
+}
+
+// Is this section allowed to stay open on the Sabbath?
+//
+// NOTE: this answers "is this LEARNING/LISTENING content open" — it is NOT a
+// purchase check. Buying is closed on the Sabbath for EVERY section, including
+// the open ones; see isPurchaseAllowed().
+export function isSectionOpenOnSabbath(key: string | null | undefined): boolean {
+  return resolveSabbathSection(key) !== null;
+}
+
+// Should this section's content be visible right now?
+// Open sections are always visible; everything else is hidden on the Sabbath.
+export function isSectionAccessible(
+  key: string | null | undefined,
+  sabbathNow: boolean,
+): boolean {
+  if (!sabbathNow) return true;
+  return isSectionOpenOnSabbath(key);
+}
+
+// Buying/checkout is closed on the Sabbath — with NO section exemptions. A kid
+// may LISTEN to an audiobook on Sunday, but may not purchase one. Keep this
+// separate from the content check so the two can never drift together.
+export function isPurchaseAllowed(sabbathNow: boolean): boolean {
+  return !sabbathNow;
+}
+
 // The Sabbath note shown on the home page.
 export const SABBATH_COMMANDMENT =
   'Remember the sabbath day, to keep it holy. … But the seventh day is the sabbath of the Lord thy God.';
