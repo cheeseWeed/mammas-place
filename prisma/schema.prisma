@@ -182,6 +182,82 @@ model ImagePurchase {
   @@map("image_purchases")
 }
 
+// Kid-to-kid TRADE of store-bought artwork. ONE mechanism, two shapes:
+//
+//   * SWAP — an image for an image. Both sides name an ImagePurchase they own.
+//   * SALE — an image for MP. `offeredImageId` moves, `askCents` moves back.
+//
+// A sale is just a trade with MP on one side, so there is exactly one accept
+// path, one transaction, and one set of race guards. Nothing here is uploadable:
+// BOTH sides must already be ImagePurchase rows (bought in the store), because
+// the entitlement is what is being moved.
+//
+// WHAT ACCEPT DOES, ATOMICALLY (lib/image-store/trade.ts acceptTrade):
+//   1. flips this row 'pending' -> 'accepted' with an updateMany GUARDED on
+//      `status: 'pending'` — that guarded flip is the double-accept gate and
+//      the simultaneous-accept gate. `count !== 1` means somebody else already
+//      resolved it, and we roll back.
+//   2. MOVES the entitlement by UPDATING ImagePurchase.userName. Updating rather
+//      than delete+create is deliberate: the row keeps its `editionNumber`, so
+//      THE EDITION NUMBER TRAVELS WITH THE IMAGE. If Shepherd trades away
+//      Edition #1, the recipient now holds Edition #1. That is the whole point
+//      of a rookie card — it is a property of the copy, not of the kid.
+//      The move is a guarded updateMany too (`where: { id, userName: giver }`),
+//      so a stale offer (the piece was already traded away) matches 0 rows.
+//   3. moves MP with the house guarded-updateMany sufficiency pattern
+//      (lib/money/balance.ts) and writes an MpTransaction row for EACH side.
+//
+// STATUS is the state machine: 'pending' -> 'accepted' | 'declined' |
+// 'cancelled' | 'blocked'. Only 'pending' is live. 'blocked' means a parent
+// must approve it first (see TRADE_APPROVAL_THRESHOLD_CENTS in trade.ts) —
+// it is NOT acceptable until an admin flips it back to 'pending'.
+//
+// There is deliberately NO unique constraint pairing a trade to an image: two
+// pending offers for the same piece are legal and expected (two siblings can
+// both want it). The one that is accepted FIRST wins, and the loser's accept
+// finds the entitlement gone and fails on the guarded move in step 2 — which is
+// exactly the stale-offer case. A read-then-write would let both "succeed".
+model ImageTrade {
+  id             String   @id @default(cuid())
+  // Who proposed. Normalized dl_user. Never taken from a request body.
+  proposerUser   String
+  // Who must confirm. Normalized dl_user. Must differ from proposerUser —
+  // self-trading is refused at propose time (a kid cannot mint MP by swapping
+  // with themselves, and a self-swap would deadlock on the entitlement move).
+  recipientUser  String
+
+  // The piece the PROPOSER is giving up. Always present — every trade has an
+  // image on the proposer's side. Catalog id from data/image-store.json.
+  offeredImageId String
+  // The piece the proposer wants BACK. Null for a SALE (they want MP instead).
+  wantedImageId  String?
+  // MP the proposer is ASKING FOR, in cents. 0 for a pure swap. Positive means
+  // the recipient pays this much. Never negative — a kid cannot ask to be paid
+  // to take something, and a negative here would invert the debit.
+  askCents       Int      @default(0)
+
+  // 'pending' | 'accepted' | 'declined' | 'cancelled' | 'blocked'
+  status         String   @default("pending")
+  // Kid's note: "I really want your unicorn!"
+  note           String?
+  // Set when the trade resolves, whichever way.
+  resolvedAt     DateTime?
+  // Snapshot of the edition numbers that actually moved, written at accept time
+  // so the history page can say "you got Edition #1" without re-deriving it
+  // from rows that have since moved on again.
+  offeredEditionNumber Int?
+  wantedEditionNumber  Int?
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  // The two inbox/outbox queries a kid makes, and the parent's ledger view.
+  @@index([recipientUser, status, createdAt])
+  @@index([proposerUser, status, createdAt])
+  @@index([status, createdAt])
+  @@map("image_trades")
+}
+
 // Kid-earned MP from learning sections. Idempotency key prevents the same
 // round/quiz from crediting twice on accidental re-submit. `cents` is what
 // the server computed (kid client cannot dictate it).
