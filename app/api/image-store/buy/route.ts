@@ -64,7 +64,12 @@ export async function POST(req: NextRequest) {
         title: result.title,
         pricePaidCents: result.pricePaidCents,
         balanceCents: result.balanceCents,
-        message: `${result.title} is yours! Find it in My Collection.`,
+        editionNumber: result.editionNumber,
+        editionSize: result.editionSize,
+        message:
+          result.editionNumber === 1
+            ? `${result.title} is yours — and you got EDITION #1, the very first one ever sold! 🏆`
+            : `${result.title} is yours! You got Edition #${result.editionNumber} of ${result.editionSize}. Find it in My Collection.`,
         downloadUrl: `/api/image-store/download/${encodeURIComponent(result.imageId)}`,
       });
 
@@ -102,6 +107,27 @@ export async function POST(req: NextRequest) {
           )}. You need ${centsToMP(result.shortfallCents)} more — go earn it!`,
         },
         { status: 402 },
+      );
+
+    case 'sold-out':
+      // 410 Gone: the piece was real and is no longer available. Distinct from
+      // 404 (never existed) so the client can say the right thing.
+      return NextResponse.json(
+        {
+          ok: false,
+          status: result.status,
+          error: 'Sold out',
+          imageId: result.imageId,
+          title: result.title,
+          editionSize: result.editionSize,
+          soldOut: true,
+          oneOfOne: result.oneOfOne,
+          balanceCents: result.balanceCents,
+          message: result.oneOfOne
+            ? `Only one ${result.title} ever existed, and somebody else got it first. That one is gone for good — but there is lots more art in the drop!`
+            : `All ${result.editionSize} copies of ${result.title} have been bought. Sometimes another turns up in the archive, but it takes months. Have a look at the rest of the drop!`,
+        },
+        { status: 410 },
       );
 
     case 'unknown-image':

@@ -19,7 +19,8 @@ import ImageCard from '@/components/image-store/ImageCard';
 import MisprintBadge from '@/components/image-store/MisprintBadge';
 import { currentUser } from '@/lib/family/auth';
 import { IMAGE_CATALOG, groupBySet, setSize } from '@/lib/image-store/catalog';
-import { ownedImageIds } from '@/lib/image-store/purchase';
+import { ownedImageIds, soldCountMap } from '@/lib/image-store/purchase';
+import { editionStateFor } from '@/lib/image-store/editions';
 import { getWeeklyDrop, nextDropStart } from '@/lib/image-store/rotation';
 
 export const metadata = {
@@ -38,8 +39,18 @@ export default async function ImageStorePage() {
   const user = await currentUser();
   const owned = user ? await ownedImageIds(user) : new Set<string>();
 
+  // ONE grouped query for the whole drop's sold counts — never a count per
+  // card. Against the empty image_purchases table this yields 0 for every id,
+  // which is the correct "nothing has sold yet" reading.
+  const now = new Date();
+  const sold = await soldCountMap(drop.allItems.map((i) => i.id));
+  const editions = new Map(
+    drop.allItems.map((item) => [item.id, editionStateFor(item, sold.get(item.id) ?? 0, now)]),
+  );
+
   const groups = groupBySet(drop.allItems);
   const ownedCount = drop.allItems.filter((i) => owned.has(i.id)).length;
+  const soldOutCount = drop.allItems.filter((i) => editions.get(i.id)?.soldOut).length;
 
   return (
     <SabbathGuard label="The image store">
@@ -51,8 +62,11 @@ export default async function ImageStorePage() {
           </div>
           <h1 className="text-3xl sm:text-4xl font-black mb-2">🖼️ The Image Store</h1>
           <p className="text-purple-100 text-sm sm:text-base max-w-2xl">
-            Original artwork you can buy with your own MP and keep forever. New pieces land every
-            Monday — next drop {formatDay(nextDropStart(new Date()))}.
+            Original artwork you can buy with your own MP and keep forever. Every piece is a{' '}
+            <strong className="text-yellow-200">limited edition</strong> — once the copies are gone,
+            they&apos;re gone. The first buyer of a piece gets{' '}
+            <strong className="text-yellow-200">Edition #1</strong>. New pieces land every Monday —
+            next drop {formatDay(nextDropStart(new Date()))}.
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
             <Link
@@ -68,9 +82,13 @@ export default async function ImageStorePage() {
               💰 My MP Money
             </Link>
           </div>
-          {ownedCount > 0 && (
+          {(ownedCount > 0 || soldOutCount > 0) && (
             <p className="mt-4 text-xs text-yellow-200 font-bold">
-              You already own {ownedCount} of this week&apos;s {drop.allItems.length} pieces.
+              {ownedCount > 0 &&
+                `You already own ${ownedCount} of this week's ${drop.allItems.length} pieces.`}
+              {ownedCount > 0 && soldOutCount > 0 && ' '}
+              {soldOutCount > 0 &&
+                `${soldOutCount} ${soldOutCount === 1 ? 'piece is' : 'pieces are'} sold out.`}
             </p>
           )}
         </div>
@@ -121,7 +139,12 @@ export default async function ImageStorePage() {
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                   {group.items.map((item) => (
-                    <ImageCard key={item.id} item={item} owned={owned.has(item.id)} />
+                    <ImageCard
+                      key={item.id}
+                      item={item}
+                      owned={owned.has(item.id)}
+                      edition={editions.get(item.id)}
+                    />
                   ))}
                 </div>
               </section>

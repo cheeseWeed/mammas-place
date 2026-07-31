@@ -8,16 +8,29 @@
 import Link from 'next/link';
 import { centsToMP } from '@/lib/money/format';
 import type { ImageStoreEntry } from '@/lib/image-store/catalog';
+import type { EditionState } from '@/lib/image-store/editions';
 import MisprintBadge from './MisprintBadge';
+import { EditionStockBadge } from './EditionBadge';
 
 export default function ImageCard({
   item,
   owned = false,
+  edition,
 }: {
   item: ImageStoreEntry;
   owned?: boolean;
+  /**
+   * Server-computed scarcity state. Optional so any existing caller still
+   * renders; without it the card falls back to the plain list price, which is
+   * exactly what it showed before editions existed.
+   */
+  edition?: EditionState;
 }) {
   const misprint = item.tier === 'misprint';
+  // The DISPLAYED price is the same function the charge uses. Never item.priceCents
+  // when we have an edition state — that would show a price we would not honour.
+  const priceCents = edition?.priceCents ?? item.priceCents;
+  const soldOut = edition?.soldOut ?? false;
 
   return (
     <Link
@@ -47,6 +60,14 @@ export default function ImageCard({
             ✓ YOURS
           </div>
         )}
+        {/* Sold out and not owned: dim the art so the state reads at a glance. */}
+        {soldOut && !owned && (
+          <div className="absolute inset-0 bg-white/60 flex items-center justify-center">
+            <span className="bg-red-600 text-white text-xs font-black px-3 py-1.5 rounded-full shadow">
+              SOLD OUT
+            </span>
+          </div>
+        )}
       </div>
 
       <div className="p-3">
@@ -56,15 +77,36 @@ export default function ImageCard({
         <h3 className="font-bold text-gray-800 group-hover:text-purple-700 transition-colors leading-tight text-sm sm:text-base mt-0.5">
           {item.title}
         </h3>
+        {edition && (
+          <div className="mt-1.5">
+            <EditionStockBadge
+              remaining={edition.remaining}
+              size={edition.availableSize}
+              soldOut={edition.soldOut}
+              oneOfOne={edition.oneOfOne}
+            />
+          </div>
+        )}
+
         <div className="mt-2 flex items-center justify-between gap-2">
-          <span className="text-purple-900 font-black text-lg">{centsToMP(item.priceCents)}</span>
+          <span
+            className={
+              'font-black text-lg ' + (soldOut ? 'text-gray-400 line-through' : 'text-purple-900')
+            }
+          >
+            {centsToMP(priceCents)}
+          </span>
           <span
             className={
               'text-xs font-black px-3 py-1.5 rounded-full ' +
-              (owned ? 'bg-green-100 text-green-800' : 'bg-purple-700 text-white')
+              (owned
+                ? 'bg-green-100 text-green-800'
+                : soldOut
+                  ? 'bg-gray-200 text-gray-600'
+                  : 'bg-purple-700 text-white')
             }
           >
-            {owned ? 'Download' : 'Look'}
+            {owned ? 'Download' : soldOut ? 'Gone' : 'Look'}
           </span>
         </div>
       </div>

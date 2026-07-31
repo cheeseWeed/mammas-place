@@ -28,6 +28,9 @@ interface BuyResponse {
   alreadyOwned?: boolean;
   sabbath?: boolean;
   shortfallCents?: number;
+  soldOut?: boolean;
+  editionNumber?: number;
+  editionSize?: number;
 }
 
 export default function BuyButton({
@@ -47,6 +50,10 @@ export default function BuyButton({
   const [note, setNote] = useState<{ text: string; tone: Tone } | null>(null);
   const [needsLogin, setNeedsLogin] = useState(false);
   const [shortOfFunds, setShortOfFunds] = useState(false);
+  // Set when the server says the run sold out under us — the Buy button is
+  // retired, because pressing it again can only fail.
+  const [soldOut, setSoldOut] = useState(false);
+  const [rookie, setRookie] = useState(false);
 
   const downloadUrl = `/api/image-store/download/${encodeURIComponent(imageId)}`;
 
@@ -56,6 +63,7 @@ export default function BuyButton({
     setNote(null);
     setNeedsLogin(false);
     setShortOfFunds(false);
+    setSoldOut(false);
     try {
       const res = await fetch('/api/image-store/buy', {
         method: 'POST',
@@ -66,8 +74,17 @@ export default function BuyButton({
 
       if (res.ok && data.ok) {
         setOwned(true);
+        if (data.editionNumber === 1) setRookie(true);
         setNote({ text: data.message ?? `${title} is yours!`, tone: 'success' });
         void refresh(); // balance changed — update the header chip
+        return;
+      }
+      // 410 Gone — the last copy went while this page was open. Nothing was
+      // charged; the button must stop offering a purchase that cannot succeed.
+      if (res.status === 410 || data.soldOut) {
+        setSoldOut(true);
+        setNote({ text: data.message ?? `${title} is sold out.`, tone: 'error' });
+        void refresh();
         return;
       }
       if (res.status === 409 || data.alreadyOwned) {
@@ -101,6 +118,16 @@ export default function BuyButton({
     <div className="space-y-3">
       {owned ? (
         <>
+          {rookie && (
+            <div className="rounded-2xl border-2 border-yellow-300 bg-gradient-to-br from-yellow-50 to-amber-100 px-4 py-3">
+              <div className="text-amber-950 font-black text-base">
+                🏆 You got Edition #1!
+              </div>
+              <p className="text-amber-900 text-xs mt-0.5">
+                The very first copy ever sold. That number is yours forever.
+              </p>
+            </div>
+          )}
           <div className="inline-flex items-center gap-2 bg-green-100 text-green-900 font-black px-4 py-2 rounded-full text-sm">
             <span aria-hidden>✓</span> In your collection
           </div>
@@ -115,6 +142,19 @@ export default function BuyButton({
             again.
           </p>
         </>
+      ) : soldOut ? (
+        <div className="rounded-2xl border-2 border-red-200 bg-red-50 px-4 py-4">
+          <div className="font-black text-red-800 mb-1">Sold out</div>
+          <p className="text-sm text-red-900">
+            Somebody bought the last copy just now. You were not charged.
+          </p>
+          <Link
+            href="/image-store"
+            className="mt-3 inline-block bg-purple-700 hover:bg-purple-600 text-white font-black text-sm px-4 py-2.5 rounded-xl transition-colors"
+          >
+            See the rest of the drop
+          </Link>
+        </div>
       ) : (
         <>
           <button

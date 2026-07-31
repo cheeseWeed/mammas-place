@@ -15,6 +15,7 @@ import { getImageById, setProgressFor } from '@/lib/image-store/catalog';
 import { listPurchases } from '@/lib/image-store/purchase';
 import { centsToMP } from '@/lib/money/format';
 import MisprintBadge from '@/components/image-store/MisprintBadge';
+import { RookieBadge } from '@/components/image-store/EditionBadge';
 
 export const metadata = {
   title: "My Collection · Mamma's Place",
@@ -53,6 +54,8 @@ export default async function CollectionPage() {
   const progress = setProgressFor(purchases.map((p) => p.imageId));
   const totalSpentCents = purchases.reduce((sum, p) => sum + p.pricePaidCents, 0);
   const completedSets = progress.filter((s) => s.complete).length;
+  // Rookie cards — the copies where this kid was the FIRST buyer ever.
+  const rookies = purchases.filter((p) => p.editionNumber === 1).length;
 
   return (
     <div className="min-h-[calc(100vh-260px)] px-4 py-8 max-w-5xl mx-auto">
@@ -67,7 +70,9 @@ export default async function CollectionPage() {
             ? 'Nothing here yet — the store is the place to start.'
             : `${purchases.length} original${purchases.length === 1 ? '' : 's'} · ${centsToMP(
                 totalSpentCents,
-              )} invested${completedSets > 0 ? ` · ${completedSets} full set${completedSets === 1 ? '' : 's'} 🏆` : ''}`}
+              )} invested${completedSets > 0 ? ` · ${completedSets} full set${completedSets === 1 ? '' : 's'} 🏆` : ''}${
+                rookies > 0 ? ` · ${rookies} Edition #1${rookies === 1 ? '' : 's'} 🥇` : ''
+              }`}
         </p>
         <div className="mt-4 flex flex-wrap gap-2">
           <Link
@@ -84,6 +89,20 @@ export default async function CollectionPage() {
           </Link>
         </div>
       </div>
+
+      {rookies > 0 && (
+        <div className="mb-8 rounded-2xl border-2 border-yellow-300 bg-gradient-to-br from-yellow-50 to-amber-100 p-5">
+          <div className="text-amber-950 font-black text-lg mb-1">
+            🏆 You own {rookies} rookie card{rookies === 1 ? '' : 's'}
+          </div>
+          <p className="text-amber-900 text-sm">
+            {rookies === 1
+              ? 'One of your pieces is Edition #1 — you were the very first person ever to buy it.'
+              : `${rookies} of your pieces are Edition #1 — you were the very first person ever to buy them.`}{' '}
+            That number is yours forever.
+          </p>
+        </div>
+      )}
 
       {purchases.length === 0 ? (
         <div className="bg-white rounded-2xl border-2 border-dashed border-purple-200 p-8 text-center">
@@ -167,7 +186,11 @@ export default async function CollectionPage() {
                     key={p.imageId}
                     className={
                       'bg-white rounded-2xl shadow-md overflow-hidden border-2 flex flex-col ' +
-                      (misprint ? 'border-amber-300' : 'border-purple-100')
+                      (p.editionNumber === 1
+                        ? 'border-yellow-400 ring-2 ring-yellow-200'
+                        : misprint
+                          ? 'border-amber-300'
+                          : 'border-purple-100')
                     }
                   >
                     <div className="relative bg-gradient-to-br from-purple-50 to-purple-100 h-44 flex items-center justify-center p-3">
@@ -189,6 +212,12 @@ export default async function CollectionPage() {
                           <MisprintBadge />
                         </div>
                       )}
+                      <div className="absolute top-2 right-2">
+                        <RookieBadge
+                          editionNumber={p.editionNumber}
+                          editionSize={item?.editionSize}
+                        />
+                      </div>
                     </div>
                     <div className="p-3 flex flex-col gap-2 grow">
                       <div>
@@ -198,6 +227,16 @@ export default async function CollectionPage() {
                         <h3 className="font-bold text-gray-800 leading-tight text-sm sm:text-base">
                           {title}
                         </h3>
+                        {p.editionNumber === 1 ? (
+                          <div className="mt-1 text-xs font-black text-amber-800">
+                            🏆 Edition #1 — first ever sold
+                          </div>
+                        ) : (
+                          <div className="mt-1 text-xs font-bold text-purple-700">
+                            Edition #{p.editionNumber}
+                            {item?.editionSize ? ` of ${item.editionSize}` : ''}
+                          </div>
+                        )}
                         <div className="text-xs text-gray-500 mt-0.5">
                           Bought {formatDate(p.createdAt)} for {centsToMP(p.pricePaidCents)}
                         </div>

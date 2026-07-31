@@ -149,15 +149,34 @@ model MpOrder {
 // a table), so there is no FK here — but the catalog id is the server's source
 // of truth for price. `pricePaidCents` snapshots what was actually charged so
 // a later price change never rewrites history (same rule as MpOrder.items).
+// `editionNumber` is the ROOKIE NUMBER: 1 for the first copy of this image ever
+// sold, 2 for the second, and so on. It is derived from purchase ORDER, it is
+// permanent, and it cannot be forged — the client never sends it and the server
+// never trusts a count.
+//
+// `@@unique([imageId, editionNumber])` is what makes it RACE-SAFE, and it is
+// the only thing that does. Counting existing rows and writing `count + 1` is
+// a check-then-act race: two kids buying the same picture at the same instant
+// both read 0 and both write #1. Postgres READ COMMITTED gives that SELECT no
+// lock and no protection. Instead the INSERT itself is the arbiter — the loser
+// of the race violates this constraint, gets P2002, and retries with the next
+// number (lib/image-store/purchase.ts). Two rows can never share a number
+// because the database will not physically store them.
+//
+// This is the same principle as MpEarning.idempotencyKey and the
+// @@unique([userName, imageId]) below: the DB constraint is the gate, never a
+// prior read.
 model ImagePurchase {
   id             String   @id @default(cuid())
   userName       String
   user           DriveUser @relation(fields: [userName], references: [name], onDelete: Cascade)
   imageId        String   // catalog id from data/image-store.json, e.g. "arch-ball-001"
   pricePaidCents Int      // what the kid actually paid, snapshotted at purchase
+  editionNumber  Int      @default(1) // 1 = the rookie, the first ever sold
   createdAt      DateTime @default(now())
 
   @@unique([userName, imageId])
+  @@unique([imageId, editionNumber])
   @@index([userName, createdAt])
   @@index([imageId])
   @@map("image_purchases")

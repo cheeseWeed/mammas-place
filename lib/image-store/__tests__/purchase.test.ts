@@ -43,6 +43,10 @@ interface FakeState {
   users: Map<string, number>;
   /** "user|imageId" keys that already exist */
   purchases: Set<string>;
+  /** "imageId#editionNumber" keys — models @@unique([imageId, editionNumber]) */
+  editionKeys: Set<string>;
+  /** "user|imageId" -> the edition number that copy was given */
+  editionNumbers: Map<string, number>;
   /** every write the LAST call attempted, in order */
   writes: FakeWrite[];
   /** writes that survived (i.e. the transaction committed) */
@@ -68,6 +72,8 @@ interface FakeState {
 const state: FakeState = {
   users: new Map(),
   purchases: new Set(),
+  editionKeys: new Set(),
+  editionNumbers: new Map(),
   writes: [],
   committed: [],
   transactions: 0,
@@ -76,12 +82,21 @@ const state: FakeState = {
   afterFirstRead: null,
 };
 
-/** Prisma-shaped unique-constraint error, as the real client would throw it. */
+/**
+ * Prisma-shaped unique-constraint error, as the real client would throw it.
+ *
+ * `meta.target` matters: purchase.ts branches on WHICH unique was violated —
+ * [userName, imageId] means "already owned" (do not retry), while
+ * [imageId, editionNumber] means "lost the rookie-number race" (retry with the
+ * next number). A fake that omitted meta would let a bug in that branch pass.
+ */
 class FakeP2002 extends Error {
   code = 'P2002';
-  constructor() {
-    super('Unique constraint failed on the fields: (`userName`,`imageId`)');
+  meta: { target: string[] };
+  constructor(target: string[] = ['userName', 'imageId']) {
+    super(`Unique constraint failed on the fields: (${target.join(',')})`);
     this.name = 'PrismaClientKnownRequestError';
+    this.meta = { target };
   }
 }
 
@@ -94,6 +109,8 @@ class FakeP2002 extends Error {
 interface Journal {
   balanceDeltas: Array<{ user: string; delta: number }>;
   purchaseKeys: string[];
+  /** Edition keys THIS transaction claimed — released if it rolls back. */
+  editionKeys: string[];
   /** Writes THIS transaction made — `state.writes` is shared, so it cannot be sliced. */
   writes: FakeWrite[];
   /** Balance reads this transaction has taken; the interleave hook fires on #1. */
@@ -188,13 +205,43 @@ function makeTx(journal: Journal) {
       },
     },
     imagePurchase: {
+      /**
+       * Counting rows for one image. Deliberately reads the SHARED committed
+       * state, so a transaction parked in the read→write window sees the count
+       * as it was when it read — which is exactly the stale number that makes
+       * the rookie-number race real.
+       */
+      count: async ({ where }: { where: { imageId: string } }) => {
+        let n = 0;
+        for (const key of state.purchases) {
+          if (key.split('|')[1] === where.imageId) n += 1;
+        }
+        journal.reads += 1;
+        if (journal.reads === 1 && state.afterFirstRead) {
+          await state.afterFirstRead(where.imageId);
+        }
+        return n;
+      },
       create: async ({ data }: { data: Record<string, unknown> }) => {
         record(journal, { model: 'imagePurchase', op: 'create', data });
         const key = `${data.userName}|${data.imageId}`;
-        // The DB unique constraint IS the duplicate gate — mirror that here.
-        if (state.purchases.has(key)) throw new FakeP2002();
+        // The DB unique constraints ARE the gates — mirror BOTH here.
+        //
+        // 1. @@unique([userName, imageId]) — the duplicate-buy gate.
+        if (state.purchases.has(key)) throw new FakeP2002(['userName', 'imageId']);
+        // 2. @@unique([imageId, editionNumber]) — the rookie-number gate. This
+        //    is the one that makes two simultaneous buyers unable to both be
+        //    #1: the second INSERT of the same (image, number) pair simply
+        //    cannot be stored.
+        const editionKey = `${data.imageId}#${data.editionNumber}`;
+        if (state.editionKeys.has(editionKey)) {
+          throw new FakeP2002(['imageId', 'editionNumber']);
+        }
         state.purchases.add(key);
+        state.editionKeys.add(editionKey);
+        state.editionNumbers.set(key, Number(data.editionNumber));
         journal.purchaseKeys.push(key);
+        journal.editionKeys.push(editionKey);
         return { id: `ip-${state.writes.length}`, ...data };
       },
     },
@@ -208,7 +255,13 @@ vi.mock('@/lib/prisma', () => ({
     // Postgres transaction does.
     $transaction: async (fn: (tx: ReturnType<typeof makeTx>) => Promise<number>) => {
       state.transactions += 1;
-      const journal: Journal = { balanceDeltas: [], purchaseKeys: [], writes: [], reads: 0 };
+      const journal: Journal = {
+        balanceDeltas: [],
+        purchaseKeys: [],
+        editionKeys: [],
+        writes: [],
+        reads: 0,
+      };
       try {
         const out = await fn(makeTx(journal));
         state.committed.push(...journal.writes);
@@ -217,7 +270,14 @@ vi.mock('@/lib/prisma', () => ({
         for (const { user, delta } of journal.balanceDeltas.reverse()) {
           state.users.set(user, (state.users.get(user) ?? 0) - delta);
         }
-        for (const key of journal.purchaseKeys) state.purchases.delete(key);
+        for (const key of journal.purchaseKeys) {
+          state.purchases.delete(key);
+          state.editionNumbers.delete(key);
+        }
+        // A rolled-back transaction must RELEASE the edition number it tried to
+        // claim, or the retry would find its own abandoned number occupied and
+        // skip a slot.
+        for (const key of journal.editionKeys) state.editionKeys.delete(key);
         throw err;
       }
     },
@@ -243,7 +303,30 @@ vi.mock('@/lib/prisma', () => ({
             imageId: k.split('|')[1],
             pricePaidCents: 400,
             createdAt: new Date(2026, 0, i + 1),
+            editionNumber: state.editionNumbers.get(k) ?? 1,
           }));
+      },
+      count: async ({ where }: { where: { imageId: string } }) => {
+        let n = 0;
+        for (const key of state.purchases) {
+          if (key.split('|')[1] === where.imageId) n += 1;
+        }
+        return n;
+      },
+      groupBy: async ({ where }: { where: { imageId: { in: string[] } } }) => {
+        const wanted = new Set(where.imageId.in);
+        const counts = new Map<string, number>();
+        for (const key of state.purchases) {
+          const imageId = key.split('|')[1];
+          if (!wanted.has(imageId)) continue;
+          counts.set(imageId, (counts.get(imageId) ?? 0) + 1);
+        }
+        // Prisma omits groups with no rows — the shape soldCountMap must
+        // tolerate, and the shape an EMPTY image_purchases table produces.
+        return Array.from(counts, ([imageId, n]) => ({
+          imageId,
+          _count: { imageId: n },
+        }));
       },
     },
   },
@@ -251,7 +334,8 @@ vi.mock('@/lib/prisma', () => ({
 
 // Imported AFTER the mocks so the stubbed prisma is what they bind to.
 import { IMAGE_CATALOG, getImageById, priceCentsFor, setProgressFor } from '../catalog';
-import { ownsImage, purchaseImage, listPurchases } from '../purchase';
+import { ownsImage, purchaseImage, listPurchases, soldCountFor, soldCountMap } from '../purchase';
+import { currentPriceCents, editionSizeFor, resolvedEditionSize } from '../editions';
 import { downloadFileName, originalsDir, resolveOriginalPath } from '../originals';
 
 // A real, cheap catalog entry + a real expensive misprint — using the SHIPPED
@@ -259,9 +343,30 @@ import { downloadFileName, originalsDir, resolveOriginalPath } from '../original
 const CHEAP = IMAGE_CATALOG.find((e) => e.tier === 'archive')!;
 const MISPRINT = IMAGE_CATALOG.find((e) => e.tier === 'misprint')!;
 
+/**
+ * What a piece costs on its Nth sale, per the SERVER's own pricing function.
+ *
+ * Tests assert against this rather than against a hardcoded number: the point
+ * of the money rule is that the displayed price and the charged price are the
+ * SAME function of the same inputs, so pinning a literal here would only prove
+ * that a literal matches a literal. If pricing changes, these follow — but a
+ * charge that disagrees with `currentPriceCents` still fails, which is the bug
+ * worth catching.
+ */
+function priceOnSale(entry: { priceCents: number; tier: string; editionSize?: number }, sold: number): number {
+  return currentPriceCents(entry as never, sold);
+}
+
+/** The price of the FIRST copy — what an untouched run sells its rookie for. */
+function firstPrice(entry: { priceCents: number; tier: string; editionSize?: number }): number {
+  return priceOnSale(entry, 0);
+}
+
 function reset(balances: Record<string, number> = {}) {
   state.users = new Map(Object.entries(balances));
   state.purchases = new Set();
+  state.editionKeys = new Set();
+  state.editionNumbers = new Map();
   state.writes = [];
   state.committed = [];
   state.transactions = 0;
@@ -314,8 +419,14 @@ describe('purchaseImage', () => {
     expect(result.ok).toBe(true);
     expect(result.status).toBe('purchased');
     if (result.status !== 'purchased') throw new Error('unreachable');
-    expect(result.pricePaidCents).toBe(CHEAP.priceCents);
-    expect(result.balanceCents).toBe(10_000 - CHEAP.priceCents);
+    // The charge is the SCARCITY-ADJUSTED price from the shared server
+    // function — not the raw list price, and not anything the caller said.
+    const expected = firstPrice(CHEAP);
+    expect(result.pricePaidCents).toBe(expected);
+    expect(Number.isInteger(result.pricePaidCents)).toBe(true);
+    expect(result.balanceCents).toBe(10_000 - expected);
+    // Edition #1: this is the first copy ever sold.
+    expect(result.editionNumber).toBe(1);
 
     // Exactly one transaction, and all three writes landed inside it.
     expect(state.transactions).toBe(1);
@@ -326,7 +437,7 @@ describe('purchaseImage', () => {
 
     // The ledger row is a NEGATIVE integer of exactly the price, typed 'spend'.
     const ledger = state.committed.find((w) => w.model === 'mpTransaction')!;
-    expect(ledger.data.cents).toBe(-CHEAP.priceCents);
+    expect(ledger.data.cents).toBe(-firstPrice(CHEAP));
     expect(Number.isInteger(ledger.data.cents)).toBe(true);
     expect(ledger.data.type).toBe('spend');
     expect(ledger.data.userName).toBe('kid');
@@ -334,7 +445,8 @@ describe('purchaseImage', () => {
     // The entitlement snapshots what was actually paid.
     const entitlement = state.committed.find((w) => w.model === 'imagePurchase')!;
     expect(entitlement.data.imageId).toBe(CHEAP.id);
-    expect(entitlement.data.pricePaidCents).toBe(CHEAP.priceCents);
+    expect(entitlement.data.pricePaidCents).toBe(firstPrice(CHEAP));
+    expect(entitlement.data.editionNumber).toBe(1);
   });
 
   it('writes the entitlement LAST so a duplicate aborts before money sticks', async () => {
@@ -358,10 +470,10 @@ describe('purchaseImage', () => {
     expect(forged.status).toBe('unknown-image');
     expect(state.users.get('kid')).toBe(10_000); // untouched
 
-    // And buying it properly still costs the catalog price.
+    // And buying it properly still costs the SERVER's price for this piece.
     const real = await purchaseImage('kid', CHEAP.id);
     if (real.status !== 'purchased') throw new Error('unreachable');
-    expect(real.pricePaidCents).toBe(CHEAP.priceCents);
+    expect(real.pricePaidCents).toBe(firstPrice(CHEAP));
   });
 
   it('normalizes the username the same way the ledger does', async () => {
@@ -401,7 +513,7 @@ describe('purchaseImage', () => {
     const dupes = results.filter((r) => r.status === 'already-owned');
     expect(bought).toHaveLength(1);
     expect(dupes).toHaveLength(9);
-    expect(state.users.get('kid')).toBe(100_000 - CHEAP.priceCents);
+    expect(state.users.get('kid')).toBe(100_000 - firstPrice(CHEAP));
     expect(state.committed.filter((w) => w.model === 'imagePurchase')).toHaveLength(1);
   });
 
@@ -440,7 +552,7 @@ describe('purchaseImage', () => {
     // The funds check IS the write's WHERE clause. That is the whole guarantee:
     // if this ever regresses to a plain `update`, `guardGte` disappears and the
     // database stops enforcing sufficiency.
-    expect(debit.data.guardGte).toBe(CHEAP.priceCents);
+    expect(debit.data.guardGte).toBe(firstPrice(CHEAP));
     expect(debit.data.name).toBe('kid');
   });
 
@@ -533,7 +645,7 @@ describe('purchaseImage', () => {
     if (result.status !== 'insufficient-funds') throw new Error('unreachable');
     // 10, not the 100,000 the transaction originally read.
     expect(result.balanceCents).toBe(10);
-    expect(result.shortfallCents).toBe(CHEAP.priceCents - 10);
+    expect(result.shortfallCents).toBe(firstPrice(CHEAP) - 10);
     expect(state.users.get('kid')).toBe(10);
     expect(state.committed).toHaveLength(0);
   });
@@ -541,14 +653,17 @@ describe('purchaseImage', () => {
   // --- insufficient funds ---
 
   it('refuses when the kid is short, charges nothing, and reports the exact shortfall', async () => {
-    const balance = MISPRINT.priceCents - 250;
+    // Priced at what the MISPRINT actually costs — a 1-of-1 carries its full
+    // one-of-one premium, so its list price is NOT what a kid is asked for.
+    const misprintPrice = firstPrice(MISPRINT);
+    const balance = misprintPrice - 250;
     reset({ kid: balance });
     const result = await purchaseImage('kid', MISPRINT.id);
 
     expect(result.ok).toBe(false);
     expect(result.status).toBe('insufficient-funds');
     if (result.status !== 'insufficient-funds') throw new Error('unreachable');
-    expect(result.priceCents).toBe(MISPRINT.priceCents);
+    expect(result.priceCents).toBe(misprintPrice);
     expect(result.balanceCents).toBe(balance);
     expect(result.shortfallCents).toBe(250);
 
@@ -559,14 +674,14 @@ describe('purchaseImage', () => {
   });
 
   it('exact-change purchase is allowed and lands on zero', async () => {
-    reset({ kid: CHEAP.priceCents });
+    reset({ kid: firstPrice(CHEAP) });
     const result = await purchaseImage('kid', CHEAP.id);
     expect(result.status).toBe('purchased');
     expect(state.users.get('kid')).toBe(0);
   });
 
   it('one cent short is still short', async () => {
-    reset({ kid: CHEAP.priceCents - 1 });
+    reset({ kid: firstPrice(CHEAP) - 1 });
     const result = await purchaseImage('kid', CHEAP.id);
     expect(result.status).toBe('insufficient-funds');
     if (result.status !== 'insufficient-funds') throw new Error('unreachable');

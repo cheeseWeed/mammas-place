@@ -20,7 +20,9 @@ import {
   setSize,
   subjectProgressFor,
 } from '@/lib/image-store/catalog';
-import { ownedImageIds } from '@/lib/image-store/purchase';
+import { listPurchases, ownedImageIds, soldCountFor } from '@/lib/image-store/purchase';
+import { editionStateFor } from '@/lib/image-store/editions';
+import { EditionStockBadge, PriceMoveNote, RookieBadge } from '@/components/image-store/EditionBadge';
 import { centsToMP } from '@/lib/money/format';
 
 export default async function ImageDetailPage({
@@ -47,6 +49,16 @@ export default async function ImageDetailPage({
   // their subject, and then this whole block is skipped.
   const subject = subjectProgressFor([...owned], item.subjectId);
   const siblings = subject.variants.filter((v) => v.id !== item.id);
+
+  // Edition state — the SAME server function that will compute the charge, so
+  // the number on this page is the number the kid pays.
+  const sold = await soldCountFor(item.id);
+  const edition = editionStateFor(item, sold, new Date());
+
+  // If they own it, which copy is theirs? That is the rookie number.
+  const myCopy = isOwned && user
+    ? (await listPurchases(user)).find((p) => p.imageId === item.id) ?? null
+    : null;
 
   const body = (
     <div className="min-h-[calc(100vh-260px)] px-4 py-8 max-w-4xl mx-auto">
@@ -82,6 +94,20 @@ export default async function ImageDetailPage({
                 ✓ YOURS
               </span>
             )}
+            {myCopy && (
+              <RookieBadge
+                editionNumber={myCopy.editionNumber}
+                editionSize={edition.availableSize}
+              />
+            )}
+            {!isOwned && (
+              <EditionStockBadge
+                remaining={edition.remaining}
+                size={edition.availableSize}
+                soldOut={edition.soldOut}
+                oneOfOne={edition.oneOfOne}
+              />
+            )}
           </div>
 
           <div className="text-xs text-purple-500 uppercase font-bold tracking-wide">
@@ -105,16 +131,90 @@ export default async function ImageDetailPage({
             </p>
           )}
 
-          <div className="text-3xl font-black text-purple-900 mb-4">
-            {centsToMP(item.priceCents)}
+          {/* THE ROOKIE CARD. #1 gets its own banner — it is the whole point. */}
+          {myCopy && myCopy.editionNumber === 1 && (
+            <div className="mb-4 rounded-2xl border-2 border-yellow-300 bg-gradient-to-br from-yellow-50 to-amber-100 px-4 py-3">
+              <div className="text-amber-950 font-black text-base sm:text-lg">
+                🏆 Edition #1 — first ever sold
+              </div>
+              <p className="text-amber-900 text-xs sm:text-sm mt-0.5">
+                You were the very first person to buy this piece. Nobody can ever take that
+                number — it&apos;s yours forever.
+              </p>
+            </div>
+          )}
+          {myCopy && myCopy.editionNumber !== 1 && (
+            <div className="mb-4 rounded-xl border border-purple-200 bg-purple-50 px-4 py-2.5 text-purple-900 text-sm font-bold">
+              Your copy is Edition #{myCopy.editionNumber} of {edition.availableSize}.
+            </div>
+          )}
+
+          <div className="mb-4">
+            <div
+              className={
+                'text-3xl font-black ' +
+                (edition.soldOut ? 'text-gray-400 line-through' : 'text-purple-900')
+              }
+            >
+              {centsToMP(edition.priceCents)}
+            </div>
+            {!isOwned && (
+              <PriceMoveNote
+                listPriceCents={edition.listPriceCents}
+                priceCents={edition.priceCents}
+                oneOfOne={edition.oneOfOne}
+              />
+            )}
           </div>
 
-          <BuyButton
-            imageId={item.id}
-            title={item.title}
-            priceCents={item.priceCents}
-            initiallyOwned={isOwned}
-          />
+          {/* Sold out and not owned: no Buy button at all. */}
+          {edition.soldOut && !isOwned ? (
+            <div className="rounded-2xl border-2 border-red-200 bg-red-50 px-4 py-4">
+              <div className="font-black text-red-800 text-lg mb-1">
+                {edition.oneOfOne ? 'Gone forever' : 'Sold out'}
+              </div>
+              <p className="text-sm text-red-900">
+                {edition.oneOfOne
+                  ? 'Only one of this piece ever existed, and somebody else got it. There will never be another one.'
+                  : `All ${edition.availableSize} copies have been bought. Sometimes another copy turns up in the archive, but it takes a long while — check back in a few months.`}
+              </p>
+              <Link
+                href="/image-store"
+                className="mt-3 inline-block bg-purple-700 hover:bg-purple-600 text-white font-black text-sm px-4 py-2.5 rounded-xl transition-colors"
+              >
+                See what else is in the drop
+              </Link>
+            </div>
+          ) : (
+            <BuyButton
+              imageId={item.id}
+              title={item.title}
+              priceCents={edition.priceCents}
+              initiallyOwned={isOwned}
+            />
+          )}
+
+          {/* Edition explainer — always visible, so scarcity is never a surprise. */}
+          <div className="mt-6 rounded-xl border border-purple-100 bg-white px-4 py-3">
+            <div className="text-xs font-bold uppercase tracking-wide text-purple-700/70 mb-1">
+              Limited edition
+            </div>
+            {edition.oneOfOne ? (
+              <div className="text-sm text-gray-800">
+                This is a <strong>1 of 1</strong>. Exactly one copy will ever exist, and it never
+                comes back.
+              </div>
+            ) : (
+              <div className="text-sm text-gray-800">
+                Only <strong>{edition.availableSize}</strong> copies of this piece will ever be
+                sold — <strong>{edition.remaining}</strong> still available.
+              </div>
+            )}
+            <div className="mt-1 text-xs text-gray-600">
+              The first buyer gets Edition #1. Numbers are given out in the order pieces sell, and
+              they never change.
+            </div>
+          </div>
 
           {siblings.length > 0 && (
             <div className="mt-6 rounded-xl border border-purple-100 bg-white px-4 py-3">

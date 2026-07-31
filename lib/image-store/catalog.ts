@@ -16,6 +16,9 @@
 
 import rawCatalog from '@/data/image-store.json';
 import { isMisprint, type ImageStoreItem } from './rotation';
+// editions.ts imports only a TYPE from this file, which TypeScript erases, so
+// this is not a runtime cycle.
+import { editionSizeFor } from './editions';
 
 // ---------------------------------------------------------------------------
 // Types
@@ -30,6 +33,16 @@ export interface ImageStoreEntry extends ImageStoreItem {
   sourceFile: string;
   priceCents: number;
   tier: 'archive' | 'misprint';
+  /**
+   * How many copies of this piece will EVER exist — the limited print run.
+   *
+   * Derived from the price tier (lib/image-store/editions.ts EDITION_TIERS) and
+   * written into the JSON so the run size is visible in a diff. The tier rules
+   * stay the authority: a missing or nonsensical value here falls back to
+   * `editionSizeFor(entry)` rather than being trusted, so a bad hand-edit can
+   * never mint an unlimited run.
+   */
+  editionSize: number;
   /**
    * Which SUBJECT this piece depicts, e.g. "soccer-ball-study". Several entries
    * can draw the same thing (an archive plate and its restaurant re-plating, a
@@ -69,6 +82,16 @@ function coerceEntry(raw: unknown): ImageStoreEntry | null {
   if (!Number.isInteger(priceCents) || priceCents <= 0) return null;
 
   const tier = isMisprint({ id, tier: r.tier as string }) ? 'misprint' : 'archive';
+
+  // The JSON value is a CONVENIENCE, not the authority. A missing, float, or
+  // <= 0 editionSize falls back to the tier rules rather than being honoured,
+  // so a hand-edit can never mint an unlimited (or zero-copy) run.
+  const declaredSize = typeof r.editionSize === 'number' ? r.editionSize : NaN;
+  const editionSize =
+    Number.isInteger(declaredSize) && declaredSize >= 1
+      ? declaredSize
+      : editionSizeFor({ priceCents, tier });
+
   return {
     id,
     title: typeof r.title === 'string' && r.title.trim() ? r.title.trim() : id,
@@ -76,6 +99,7 @@ function coerceEntry(raw: unknown): ImageStoreEntry | null {
     sourceFile,
     priceCents,
     tier,
+    editionSize,
     // A row with no subjectId is its OWN subject (a group of one) rather than
     // an error: grouping is descriptive metadata, not a correctness gate, and
     // falling back to the id keeps every entry inside exactly one group.
