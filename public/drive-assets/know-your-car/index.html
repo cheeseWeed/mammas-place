@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Know Your Car — Driver Training</title>
+<style>
+:root {
+  --primary: #581c87;
+  --accent: #facc15;
+  --green: #16a34a;
+  --red: #dc2626;
+  --amber: #d97706;
+  --text: #18181b;
+  --gray: #71717a;
+  --border: #e4e4e7;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px;
+  color: var(--text);
+  background: #fafafa;
+  line-height: 1.45;
+}
+h1 { color: var(--primary); margin: 0; font-size: 1.55em; }
+.sub { color: var(--gray); font-size: 0.9em; margin: 4px 0 18px; }
+
+/* ---- section tabs ---- */
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.tab {
+  background: white; border: 2px solid var(--border); color: var(--text);
+  padding: 10px 16px; border-radius: 8px; cursor: pointer; font-family: inherit;
+  font-size: 0.92em; font-weight: 600; display: flex; align-items: center; gap: 7px;
+}
+.tab:hover { border-color: var(--primary); background: #faf5ff; }
+.tab.active { background: var(--primary); border-color: var(--primary); color: white; }
+.tab .tnum {
+  background: var(--accent); color: var(--text); border-radius: 50%;
+  width: 20px; height: 20px; font-size: 0.75em; display: grid; place-items: center; flex: none;
+}
+.tab.active .tnum { background: white; }
+
+.panel { display: none; }
+.panel.active { display: block; }
+
+.card { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 18px 20px; margin-bottom: 16px; }
+h2 { color: var(--primary); font-size: 1.12em; margin: 0 0 4px; }
+.card > p.hint { color: var(--gray); font-size: 0.88em; margin: 0 0 14px; }
+
+/* ---- diagram ---- */
+/* sub-tabs: only one diagram visible at a time */
+.subtabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 10px; }
+.subtab {
+  background: #f4f1f8; border: 1.5px solid var(--border); color: var(--text);
+  padding: 7px 13px; border-radius: 999px; cursor: pointer; font-family: inherit;
+  font-size: 0.84em; font-weight: 600;
+}
+.subtab:hover { border-color: var(--primary); background: #faf5ff; }
+.subtab.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+.viewbox { display: none; }
+.viewbox.active { display: block; }
+.viewhint { font-size: 0.85em; color: var(--gray); margin: 0 0 8px; }
+.diagram-wrap { position: relative; width: 100%; overflow-x: auto; }
+svg.diagram { display: block; width: 100%; height: auto; min-width: 300px; touch-action: manipulation; }
+svg.diagram .hotspot { cursor: pointer; }
+svg.diagram .hit { fill: transparent; stroke: transparent; stroke-width: 10; cursor: pointer; }
+svg.diagram .hotspot:hover .glow,
+svg.diagram .hotspot:focus-visible .glow { opacity: 1; }
+svg.diagram .glow { opacity: 0; transition: opacity .12s; pointer-events: none; }
+svg.diagram .hotspot.seen .dot { fill: var(--green); }
+svg.diagram .dot { fill: var(--accent); stroke: #1f1235; stroke-width: 1.5; pointer-events: none; }
+svg.diagram .leader { stroke: #1f1235; stroke-width: 1.6; opacity: .65; pointer-events: none; }
+svg.diagram .anchor { fill: none; stroke: #1f1235; stroke-width: 1.8; opacity: .8; pointer-events: none; }
+svg.diagram .hotspot.seen .leader,
+svg.diagram .hotspot.seen .anchor { stroke: var(--green); }
+svg.diagram .dotlabel { font: 700 10px -apple-system, "Segoe UI", Roboto, sans-serif; fill: #1f1235; pointer-events: none; }
+svg.diagram:focus { outline: none; }
+.hotspot:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+
+/* ---- info readout ---- */
+/* Sticky so the answer stays on screen no matter where you tap on the diagram. */
+.readout {
+  background: #faf5ff; border: 2px solid var(--primary); border-radius: 8px;
+  padding: 14px 16px; margin-top: 14px; min-height: 84px;
+  position: sticky; bottom: 10px; z-index: 30;
+  box-shadow: 0 6px 20px rgba(88,28,135,.16);
+}
+.readout .rname { font-weight: 700; color: var(--primary); font-size: 1.05em; margin: 0 0 4px; }
+.readout .rwhat { margin: 0 0 8px; font-size: 0.94em; }
+.readout .rtouch { font-size: 0.86em; margin: 0; padding: 7px 10px; border-radius: 5px; }
+.touch-yes { background: #dcfce7; border-left: 4px solid var(--green); }
+.touch-care { background: #fef3c7; border-left: 4px solid var(--amber); }
+.touch-no { background: #fee2e2; border-left: 4px solid var(--red); }
+.touch-read { background: #e0e7ff; border-left: 4px solid #4f46e5; }
+.readout .rempty { color: var(--gray); font-style: italic; margin: 0; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 0.8em; color: var(--gray); margin-top: 10px; }
+.legend span { display: flex; align-items: center; gap: 5px; }
+.swatch { width: 12px; height: 12px; border-radius: 50%; border: 1.5px solid #1f1235; display: inline-block; }
+
+/* ---- part list ---- */
+.partlist { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 7px; margin-top: 14px; }
+.partbtn {
+  text-align: left; background: white; border: 1px solid var(--border); border-radius: 6px;
+  padding: 8px 11px; cursor: pointer; font-family: inherit; font-size: 0.85em; color: var(--text);
+  display: flex; align-items: center; gap: 7px;
+}
+.partbtn:hover { border-color: var(--primary); background: #faf5ff; }
+.partbtn.seen { border-color: var(--green); background: #f0fdf4; }
+.partbtn .chk { color: var(--green); font-weight: 700; visibility: hidden; }
+.partbtn.seen .chk { visibility: visible; }
+
+.progress-line { font-size: 0.85em; color: var(--gray); margin-top: 12px; }
+.progress-line b { color: var(--primary); }
+
+/* ---- quiz ---- */
+.question { background: #fafafa; border-left: 4px solid var(--primary); padding: 14px 18px; margin: 14px 0; border-radius: 4px; }
+.question.correct { border-left-color: var(--green); }
+.question.wrong { border-left-color: var(--red); }
+.q-num { color: var(--primary); font-weight: 600; font-size: 0.82em; }
+.q-text { font-size: 1.02em; margin: 7px 0 13px; }
+.choices label { display: block; padding: 9px 13px; margin: 5px 0; background: white; border: 1px solid var(--border); border-radius: 4px; cursor: pointer; font-size: 0.93em; }
+.choices label:hover { background: #faf5ff; border-color: var(--primary); }
+.choices input[type=radio] { margin-right: 9px; }
+.explanation { margin-top: 11px; padding: 11px; background: #fef3c7; border-radius: 4px; display: none; font-size: 0.89em; }
+.show .explanation { display: block; }
+.submit-btn { background: var(--primary); color: white; border: none; padding: 13px 30px; font-size: 1.05em; border-radius: 6px; cursor: pointer; margin-top: 18px; font-family: inherit; }
+.submit-btn:hover { background: #6b21a8; }
+.submit-btn:disabled { background: #a1a1aa; cursor: not-allowed; }
+.score-card { background: linear-gradient(135deg, var(--primary), #6b21a8); color: white; padding: 22px; border-radius: 8px; margin: 20px 0; }
+.score-card h2 { margin-top: 0; color: white; }
+.score-pct { font-size: 2.8em; font-weight: 700; }
+.pass-badge { background: var(--accent); color: var(--text); padding: 5px 11px; border-radius: 4px; display: inline-block; font-weight: 600; }
+.fail-badge { background: var(--red); color: white; padding: 5px 11px; border-radius: 4px; display: inline-block; font-weight: 600; }
+
+.footer { color: var(--gray); font-size: 0.78em; margin-top: 22px; text-align: center; font-style: italic; }
+.disclaimer { background: #fef3c7; border-left: 4px solid var(--amber); padding: 11px 14px; border-radius: 5px; font-size: 0.85em; margin-bottom: 16px; }
+
+@media (max-width: 640px) {
+  body { padding: 14px; }
+  .tab { padding: 9px 12px; font-size: 0.85em; }
+  .partlist { grid-template-columns: 1fr 1fr; }
+}
+@media print {
+  .tabs, .submit-btn, .back-link { display: none; }
+  .panel { display: block !important; page-break-after: always; }
+}
+</style>
+<script src="/drive-assets/earn-toast.js"></script>
+</head>
+<body>
+
+<!-- HOME-BTN v1 -->
+<a href="../dashboard/index.html" class="back-link" style="position:fixed; top:12px; left:12px; z-index:9999; background:#581c87; color:white; text-decoration:none; padding:6px 14px; border-radius:6px; font-size:13px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; box-shadow:0 2px 6px rgba(0,0,0,0.15);">&larr; Home</a>
+
+<h1 style="margin-top:34px;">Know Your Car</h1>
+<p class="sub">Tap any numbered dot to learn the part. Goal: <b>know what it is, know what it does, and know whether you should touch it.</b></p>
+
+<div class="disclaimer">
+  <b>Every car is a little different.</b> These diagrams show the typical layout. Before you drive
+  a car for the first time, find these same parts on <em>that</em> car — and check the owner's manual
+  in the glovebox if something is not where you expect.
+</div>
+
+<div class="tabs" id="tabs"></div>
+
+<div id="panels"></div>
+
+<p class="footer">Know Your Car &middot; Mamma's Place Driver Training</p>
+
+<script>
+/* ============================================================
+   DATA — four sections, dash first (most important), then engine,
+   then walkaround, then emergency.
+   touch: 'yes'  = a driver should operate this
+          'care' = check/handle it, but with the engine off / cool
+          'no'   = identify it, do NOT touch — leave it to a mechanic
+   ============================================================ */
+const SECTIONS = [
+  {
+    id: 'dash',
+    name: "Driver's Seat",
+    icon: '🚗',
+    blurb: 'The controls and gauges you must be able to find without looking. Learn this section first.',
+    diagram: 'dash',
+    /* Three views: a wide shot for orientation, then two zoomed-in panels so the
+       gauges and the footwell are drawn big enough to actually recognize. */
+    views: [
+      { key:'dash',    label:'Wide view — the whole cockpit', hint:'How everything sits relative to you in the driver\'s seat.' },
+      { key:'cluster', label:'Zoom — instrument cluster',     hint:'The gauges directly behind the steering wheel.' },
+      { key:'pedals',  label:'Zoom — the footwell',           hint:'Looking down at the floor by your feet.' }
+    ],
+    parts: [
+      { n:1,  view:'pedals', x:250, y:250, dx:-52, dy:-52, name:'Brake pedal', what:'The wider left pedal. Press it with your RIGHT foot to slow down and stop. Always the pedal you use first when in doubt.', touch:'yes' },
+      { n:2,  view:'pedals', x:378, y:296, dx:46, dy:10, name:'Accelerator (gas) pedal', what:'The narrow right pedal. Press gently with your right foot to speed up. Same foot as the brake — never both feet at once in an automatic.', touch:'yes' },
+      { n:3,  view:'pedals', x:144, y:274, dx:-40, dy:34, name:'Dead pedal (footrest)', what:'A flat rest for your LEFT foot. Not a pedal — bracing your left foot here keeps you steady in a turn. In a manual car the clutch sits in this spot instead.', touch:'yes' },
+      { n:4,  view:'dash',   x:164, y:142, dx:0, dy:-46, name:'Steering wheel', what:'Steers the front wheels. Hold at 9 and 3 o\'clock. The horn is in the center pad; airbag is behind it — never rest your face or feet near it.', touch:'yes' },
+      { n:5,  view:'dash',   x:84,  y:177, dx:-46, dy:-26, name:'Turn signal stalk', what:'Left-hand stalk. Push DOWN to signal left, UP to signal right. Also pull toward you for high beams on most cars.', touch:'yes' },
+      { n:6,  view:'dash',   x:224, y:177, dx:26, dy:-42, name:'Wiper control stalk', what:'Right-hand stalk. Rotates for wiper speed; push it away or pull it to spray washer fluid on the windshield.', touch:'yes' },
+      { n:7,  view:'cluster',x:250, y:182, dx:88, dy:74, name:'Speedometer', what:'Shows how fast you are going right now, in miles per hour. The gauge you check most often.', touch:'read' },
+      { n:8,  view:'cluster',x:96,  y:182, dx:-62, dy:76, name:'Tachometer', what:'Shows engine speed in RPM (thousands of revolutions per minute). Mostly matters in a manual — you shift before the red zone.', touch:'read' },
+      { n:9,  view:'cluster',x:404, y:182, dx:60, dy:76, name:'Fuel gauge', what:'How much gas is left. F = full, E = empty. A small arrow next to the pump icon tells you which side of the car the fuel door is on.', touch:'read' },
+      { n:10, view:'cluster',x:120, y:44, dx:-70, dy:-6,  name:'Warning lights', what:'The symbols across the top of the cluster. RED = stop safely and deal with it now (oil pressure, battery, temperature, brake). AMBER/YELLOW = get it checked soon (check engine, tire pressure). Green or blue just means a system is switched on.', touch:'read' },
+      { n:11, view:'dash',   x:358, y:266, dx:-30, dy:20, name:'Gear selector', what:'Chooses P (park), R (reverse), N (neutral), D (drive). Come to a COMPLETE stop before shifting between D and R.', touch:'yes' },
+      { n:12, view:'dash',   x:456, y:281, dx:26, dy:-24, name:'Parking brake', what:'A lever, foot pedal, or electric switch marked with a (P) in a circle. Set it every time you park — especially on a hill.', touch:'yes' },
+      { n:13, view:'dash',   x:74,  y:214, dx:-46, dy:26, name:'Headlight switch', what:'Turns on headlights, tail lights, and running lights. AUTO is not always enough — turn them on in rain, fog, and snow so others can see you.', touch:'yes' },
+      { n:14, view:'dash',   x:297, y:239, dx:-30, dy:46, name:'Hazard light button', what:'The red triangle. Flashes all four turn signals at once. Use it when you are stopped somewhere unexpected or moving far slower than traffic.', touch:'yes' },
+      { n:15, view:'dash',   x:268, y:224, dx:-38, dy:30, name:'Climate & defroster', what:'Heat and A/C. The rear-window defogger and the front defroster clear fogged glass — that is a SAFETY control, not a comfort one.', touch:'yes' },
+      { n:16, view:'dash',   x:250, y:46, dx:0, dy:-26,  name:'Rearview mirror', what:'Shows the lane behind you. Adjust it so you frame the whole back window without moving your head.', touch:'yes' },
+      { n:17, view:'dash',   x:15,  y:75,  name:'Side mirror (left)', what:'Covers the lane beside you. Set it so you barely see the side of your own car. It still leaves a blind spot — turn your head before changing lanes.', touch:'yes' },
+      { n:18, view:'dash',   x:485, y:75, dx:0, dy:42,  name:'Side mirror (right)', what:'Same job on the passenger side. Objects in it are closer than they appear, because it is curved to show more.', touch:'yes' },
+      { n:19, view:'dash',   x:234, y:208, dx:-52, dy:62, name:'Ignition / start button', what:'Starts AND stops the engine. Press the brake before starting. To shut it off in an emergency — say the accelerator sticks — HOLD the button several seconds. If the car is still rolling, shift to N first; never to P at speed, and do not pull the key fully out while moving because that can lock the steering.', touch:'yes' },
+      { n:20, view:'pedals', x:74,  y:120, name:'Hood release', what:'A pull-lever low near the driver\'s left knee, marked with a hood icon. Pop it here first, then release the safety catch under the hood edge.', touch:'yes' },
+      { n:21, view:'pedals', x:74,  y:186, name:'Trunk release', what:'The second lever down by your left knee, marked with an open-trunk icon. Many cars also have a button on the key fob and one on the trunk lid itself.', touch:'yes' },
+      { n:22, view:'cluster',x:250, y:258, dx:-86, dy:48, name:'Odometer', what:'The running total of miles the car has driven, shown inside the speedometer. The trip meter next to it can be reset to zero to measure a single journey.', touch:'read' },
+      { n:23, view:'cluster',x:88, y:61, dx:0, dy:-42, name:'Check engine light', what:'An amber engine-block outline. Steady = get it checked soon. FLASHING = a serious misfire, so pull over and shut the engine off. A loose gas cap is a common harmless cause.', touch:'read' },
+      { n:24, view:'cluster',x:148, y:61, dx:0, dy:-42, name:'Oil pressure light', what:'A red oil can with a drip. This is NOT a "low oil" reminder — it means oil pressure has been lost. Stop safely and shut the engine off immediately, or the engine can destroy itself in minutes.', touch:'read' },
+      { n:25, view:'cluster',x:208, y:61, dx:0, dy:-42, name:'Battery / charging light', what:'A red battery symbol. The alternator has stopped charging, so the car is running on battery alone. Turn off the radio and A/C and drive straight to help — you have limited time before it dies.', touch:'read' },
+      { n:26, view:'cluster',x:268, y:61, dx:0, dy:-42, name:'Tire pressure light (TPMS)', what:'An amber horseshoe with an exclamation point. One or more tires is low. Check them cold and inflate to the door-jamb number. It often trips on the first cold morning of fall.', touch:'read' },
+      { n:27, view:'cluster',x:328, y:61, dx:0, dy:-42, name:'Coolant temperature light', what:'A red thermometer in waves. The engine is overheating. Pull over and shut it off — and do NOT open the radiator cap while it is hot.', touch:'read' },
+      { n:28, view:'cluster',x:388, y:61, dx:0, dy:-42, name:'Brake warning light', what:'A red circle in parentheses. Either the parking brake is still set, or brake fluid is low. If it stays on with the parking brake released, stop driving and get it checked.', touch:'read' },
+      { n:29, view:'dash',   x:208, y:140, dx:14, dy:-52, name:'Instrument panel (cluster)', what:'The whole panel of gauges and lights behind the steering wheel — speedometer, tachometer, fuel, odometer, and every warning symbol. Open the "instrument cluster" zoom above to learn each one.', touch:'read' },
+      { n:30, view:'dash',   x:296, y:145, dx:0, dy:-44, name:'Radio / infotainment', what:'Music, navigation, and phone. Set it BEFORE you drive — reaching for it at speed is one of the most common distractions in a crash report.', touch:'yes' },
+      { n:31, view:'dash',   x:408, y:222, dx:46, dy:20, name:'Glove box', what:'The passenger-side storage box. Three things should always be in it so you can hand them over without hunting: the OWNER’S MANUAL (it explains every warning light on your exact car), the current VEHICLE REGISTRATION, and your PROOF OF INSURANCE. Utah accepts insurance on your phone, but a paper card still works when the battery is dead. A tire gauge and a pen are worth adding.', touch:'yes' },
+      { n:32, view:'dash',   x:408, y:190, dx:-8, dy:-34, name:'Passenger airbag', what:'The word AIRBAG (or SRS) stamped in the dash marks where it deploys. Never put a rear-facing car seat in front of a live passenger airbag, and keep feet off the dash — a deploying airbag moves faster than 100 mph.', touch:'no' },
+      { n:37, view:'dash',   x:164, y:196, name:'Horn', what:'The center pad of the steering wheel. Press it firmly with your palm. Use it to warn someone who has not seen you — a short tap, not a long angry blast. Utah requires a horn audible from 200 feet.', touch:'yes' },
+      { n:34, view:'dash',   x:6,   y:258, dx:52, dy:22, name:'Window switches', what:'One rocker per window, on the door beside you. Your own switch usually has an AUTO one-touch mode. There is also a lock-out button that disables the back windows so kids cannot open them.', touch:'yes' },
+      { n:35, view:'dash',   x:6,   y:296, dx:56, dy:8, name:'Door locks', what:'The padlock rocker locks and unlocks every door at once. Lock the doors while driving — it keeps the doors from popping open in a crash, not just intruders out.', touch:'yes' },
+      { n:36, view:'dash',   x:0,   y:183, dx:58, dy:-14, name:'Mirror adjuster', what:'A little joystick with an L/R selector. Pick the mirror, then nudge the joystick. Set both mirrors BEFORE you start moving — never while driving.', touch:'yes' },
+      { n:33, view:'dash',   x:433, y:142, dx:26, dy:-38, name:'Air vents', what:'Round louvred vents blow heated or cooled air. Aim them at the glass to clear fog fast, or at yourself to stay comfortable. The slots at the base of the windshield are the defroster.', touch:'yes' }
+    ]
+  },
+  {
+    id: 'engine',
+    name: 'Under the Hood',
+    icon: '🔧',
+    blurb: 'You are not learning to repair anything here. You are learning what to check, what to top up, and what to leave alone.',
+    diagram: 'engine',
+    parts: [
+      { n:1,  x:250, y:186, dx:0, dy:-96, name:'Engine', what:'Burns fuel to move the car. It gets extremely hot and has moving belts. Look, do not reach in.', touch:'no' },
+      { n:2,  x:350, y:232, dx:56, dy:-18, name:'Oil dipstick', what:'A loop-handled rod that measures engine oil. Pull it out, wipe it, push fully back in, pull again and read the level between the two marks. Check with the engine OFF and cool, on level ground.', touch:'care' },
+      { n:3,  x:316, y:214, dx:40, dy:-18, name:'Oil filler cap', what:'Where new oil goes in, usually marked with an oil-can icon. Only add oil the manual specifies, and never overfill past the dipstick\'s upper mark.', touch:'care' },
+      { n:4,  x:342, y:264, dx:-44, dy:24, name:'Coolant reservoir', what:'Translucent tank with MIN/MAX lines holding coolant/antifreeze. Check the level when the engine is COLD.', touch:'care' },
+      { n:5,  x:104, y:290, dx:-56, dy:22, name:'Radiator cap', what:'Caps the pressurized cooling system. NEVER open it on a warm engine — it can release scalding steam and coolant. This is the classic way people get burned.', touch:'no' },
+      { n:6,  x:359, y:86, dx:44, dy:-16, name:'Brake fluid reservoir', what:'Small cap usually marked with a circle in braces. You may LOOK at the level — if it is low, that often means worn brake pads or a leak, so get it inspected rather than just topping it off.', touch:'care' },
+      { n:7,  x:163, y:98, dx:-50, dy:-14, name:'Washer fluid reservoir', what:'Cap with a windshield/water icon. The one fluid you can freely fill yourself. Use real washer fluid — plain water freezes and cracks the tank.', touch:'yes' },
+      { n:8,  x:426, y:290, dx:-4, dy:-52, name:'Battery', what:'Heavy box with a raised + (red) and − (black) terminal on top. It supplies the electricity to start the car. On a jump start it is red to the dead + post, and black to a bare metal bolt on the engine — NOT to the dead − post. Never let a tool bridge the two terminals.', touch:'care' },
+      { n:9,  x:74, y:189, dx:-46, dy:-24, name:'Fuse box', what:'Black box of plastic fuses; the lid has a map of what each one protects. A blown fuse is why one accessory quits while everything else works.', touch:'care' },
+      { n:10,  x:98, y:262, dx:-52, dy:-22, name:'Air filter housing', what:'Big plastic box feeding clean air to the engine. Clipped shut so the filter can be swapped at service time.', touch:'care' },
+      { n:11,  x:150, y:182, dx:-62, dy:0, name:'Serpentine belt', what:'One long ribbed belt driving the alternator, water pump, and A/C. Squealing often means it is worn or loose. Keep fingers, hair, and sleeves far away — it moves fast whenever the engine runs.', touch:'no' },
+      { n:12,  x:250, y:311, dx:0, dy:26, name:'Radiator', what:'Wide finned panel at the very front that cools the coolant. Bugs and road debris clog it over time.', touch:'no' },
+      { n:13,  x:360, y:276, dx:44, dy:12, name:'Transmission dipstick', what:'Present on some automatics (many newer cars are sealed and have none). Its fluid is usually red, unlike the darker engine oil.', touch:'care' },
+      { n:15, x:250, y:266, dx:-78, dy:14, name:'Cooling fan', what:'The big fan between the engine and the radiator. It can switch itself on even with the engine OFF, so never put fingers or a rag near it while the hood is up.', touch:'no' },
+      { n:14,  x:42, y:150, dx:52, dy:-10,  name:'Hood prop rod', what:'The thin metal rod that holds the hood open. Seat it firmly in its slot before putting your head under, and re-clip it before closing.', touch:'yes' }
+    ]
+  },
+  {
+    id: 'outside',
+    name: 'Around the Car',
+    icon: '🚘',
+    blurb: 'The walkaround you do before a long trip — and what a police officer or inspector looks at. Walk it in this order: front, then down the side, then the back.',
+    diagram: 'outFront',
+    /* One picture cannot honestly show the front, the side AND the back of a car —
+       the old single view drew headlights and brake lights as the same ellipse.
+       Split the way you actually walk it. */
+    views: [
+      { key:'outFront', label:'Front of the car', hint:'Standing in front of the hood: lights, glass, plate.' },
+      { key:'outSide',  label:'Side of the car',  hint:'The walk down the side: wheels, mirrors, fuel door.' },
+      { key:'outRear',  label:'Back of the car',  hint:'What the driver behind you sees.' }
+    ],
+    parts: [
+      { n:1, view:'outSide', x:138, y:226, dx:0, dy:-72, name:'Tires', what:'The only part of the car touching the road. Check for bulges, cuts, and uneven wear. Everything about stopping and steering depends on these four patches.', touch:'yes' },
+      { n:2, view:'outSide', x:366, y:226, dx:62, dy:10, name:'Tire pressure', what:'Correct PSI is on a sticker inside the driver\'s door jamb — NOT the number molded into the tire, which is the tire\'s maximum. Check when tires are cold.', touch:'yes' },
+      { n:3, view:'outSide', x:88, y:88, dx:62, dy:-34, name:'Tread depth', what:'Grooves that channel water away. Stick a penny in upside down: if you see all of Lincoln\'s head, the tread is too worn and the tire needs replacing.', touch:'yes' },
+      { n:4, view:'outSide', x:366, y:213, dx:46, dy:-40, name:'Lug nuts', what:'Bolts holding each wheel on. They should be tight and none missing. Loosen them slightly BEFORE jacking the car up, never while the wheel hangs in the air.', touch:'care' },
+      { n:5, view:'outFront', x:168, y:191, dx:-50, dy:-24, name:'Headlights', what:'Low beams for normal night driving; high beams for empty dark roads. Dim your high beams within 500 feet of an oncoming car and 200 feet behind one you are following.', touch:'yes' },
+      { n:6, view:'outRear', x:164, y:201, dx:-46, dy:-22, name:'Brake lights', what:'Light up when you press the brake, warning drivers behind you. Have someone stand behind the car and confirm all of them work — you cannot see them from the driver\'s seat.', touch:'yes' },
+      { n:7, view:'outFront', x:147, y:222, dx:-52, dy:20, name:'Turn signals', what:'Amber lights front and rear. A bulb that burned out makes the dashboard indicator blink much faster than normal — that fast blink is the clue.', touch:'yes' },
+      { n:8, view:'outRear', x:179, y:218, dx:-6, dy:46, name:'Reverse lights', what:'White lights that come on in R. They light your path backward and warn people behind you that you are about to move.', touch:'yes' },
+      { n:9, view:'outRear', x:306, y:264, dx:-6, dy:34, name:'Exhaust pipe', what:'Carries burned gases out the back. Rattles or a sudden roar mean a leak — dangerous, because exhaust contains carbon monoxide you cannot smell.', touch:'no' },
+      { n:10, view:'outSide', x:418, y:190, dx:44, dy:-30, name:'Fuel door', what:'Covers the gas cap. The small arrow by the fuel gauge shows which side it is on. Tighten the cap until it clicks — a loose cap can trigger the check-engine light.', touch:'yes' },
+      { n:11, view:'outFront', x:250, y:104, dx:0, dy:-46, name:'Windshield', what:'Keep it clean inside and out. Small chips spread into long cracks with temperature changes, and a crack in your line of sight can fail a safety inspection.', touch:'yes' },
+      { n:12, view:'outFront', x:248, y:92, dx:62, dy:-14, name:'Wiper blades', what:'Rubber blades that clear rain and snow. When they streak or chatter, the rubber is hardened and needs replacing — about a yearly job.', touch:'yes' },
+      { n:13, view:'outRear', x:250, y:219, dx:0, dy:50, name:'License plates', what:'Front and rear in Utah, both unobstructed, with current registration stickers. A covered or missing plate is an easy traffic stop.', touch:'yes' },
+      { n:14, view:'outSide', x:206, y:134, dx:-56, dy:-16, name:'Side mirrors', what:'Fold-out mirrors on both doors. Adjust them before you move, never while driving.', touch:'yes' },
+      { n:15, view:'outRear', x:250, y:172, dx:-70, dy:6, name:'Spare tire', what:'Usually under the trunk floor or beneath the rear of the car. Many are compact "donut" spares limited to about 50 mph and a short distance — check its pressure too, since it sits for years.', touch:'yes' },
+      { n:16, view:'outSide', x:196, y:196, dx:-70, dy:-22, name:'Door-jamb sticker (tire pressure)', what:'Open the driver’s door and look at the edge of the frame. The sticker there lists the correct PSI for the front tires, rear tires and the spare — that is the number to use, NOT the one moulded into the tire.', touch:'yes' },
+    ]
+  },
+];
+
+/* ============================================================
+   QUIZ — drawn from the part data above, same shape the other
+   Drive quizzes use so grading/earn behaves identically.
+   ============================================================ */
+const QUESTIONS = [
+  { question:"Which pedal is the brake, and which foot presses it?", choices:["The narrow right pedal, left foot","The wider left pedal, right foot","Either pedal, either foot","The wider left pedal, left foot"], correct_index:1, explanation:"The brake is the WIDER LEFT pedal and you press it with your RIGHT foot. In an automatic, one foot does both pedals so you can never press both at once.", section:"Driver's Seat" },
+  { question:"You are driving at night and an oncoming car appears. What must you do with your high beams?", choices:["Leave them on so you can see","Flash them twice as a courtesy","Turn off all headlights briefly","Dim them within 500 feet of the oncoming car"], correct_index:3, explanation:"Dim high beams within 500 feet of an oncoming vehicle, and within 200 feet of a vehicle you are following.", section:"Around the Car" },
+  { question:"A RED warning light appears on your dashboard. What does that mean?", choices:["Something is simply switched on","Get it checked in the next month","Stop safely and deal with it now","It is only a bulb test"], correct_index:2, explanation:"RED = stop safely and address it now. AMBER/YELLOW = get it checked soon. Green or blue lights just tell you a system is on.", section:"Driver's Seat" },
+  { question:"When is it safe to open the radiator cap?", choices:["Any time","Only when the engine is warm","Only when the engine is fully COLD — and better, not at all","Right after a long drive"], correct_index:2, explanation:"Never open a radiator cap on a warm engine — the system is pressurized and can spray scalding coolant and steam. Check the coolant level at the translucent reservoir instead.", section:"Under the Hood" },
+  { question:"Where do you find the correct tire pressure for your car?", choices:["Molded into the tire sidewall","On the fuel door","On the sticker in the driver's door jamb","On the dashboard"], correct_index:2, explanation:"The door-jamb sticker lists the correct PSI. The number on the tire sidewall is that tire's MAXIMUM pressure, not the right pressure for your car.", section:"Around the Car" },
+  { question:"You need to check the engine oil level. What is the correct method?", choices:["Read the dipstick right after driving","Pull the dipstick, wipe it, reinsert fully, then pull and read","Look in the coolant reservoir","Read it while the engine idles"], correct_index:1, explanation:"Pull it, wipe it, push it fully back in, then pull it again to read. Do this with the engine OFF and cool on level ground, or the reading is wrong.", section:"Under the Hood" },
+  { question:"Which fluid under the hood is the one you can most freely fill yourself?", choices:["Brake fluid","Engine oil","Coolant","Windshield washer fluid"], correct_index:3, explanation:"Washer fluid is the safe one to top up any time. Low brake fluid usually signals worn pads or a leak and should be inspected, not just refilled.", section:"Under the Hood" },
+  { question:"Your dashboard turn-signal indicator suddenly blinks much faster than normal. What does that usually mean?", choices:["You are going too fast","A turn-signal bulb has burned out","The battery is dying","The hazard lights are on"], correct_index:1, explanation:"A fast-blinking indicator is the standard signal that one of the turn-signal bulbs has burned out.", section:"Around the Car" },
+  { question:"Before putting your head under an open hood, what must you check?", choices:["That the radio is off","That the prop rod is firmly seated in its slot","That the fuel door is closed","That the mirrors are folded"], correct_index:1, explanation:"Seat the prop rod firmly before leaning in. A hood dropping on you is a serious, and completely avoidable, injury.", section:"Under the Hood" },
+  { question:"How should the lap portion of a seat belt sit?", choices:["Low and snug across the hips","Across the soft stomach","Behind your arm","Loose so you can move"], correct_index:0, explanation:"The lap belt goes LOW across the hips and hip bones, with the shoulder belt across the chest — never tucked behind your arm or back.", section:"Safety" },
+  { question:"You are stopped on the shoulder of a highway with a flat tire. What should you turn on?", choices:["High beams","Interior dome light","Cruise control","Hazard lights"], correct_index:3, explanation:"Hazard lights — the red triangle button — flash all four turn signals to warn traffic that you are stopped somewhere unexpected.", section:"Driver's Seat" },
+  { question:"Which part should a new driver identify but NOT touch while the engine is running?", choices:["Windshield washer cap","Owner's manual","Parking brake","Serpentine belt"], correct_index:3, explanation:"The serpentine belt spins fast whenever the engine runs and can catch fingers, hair, or sleeves. Identify it, keep clear of it.", section:"Under the Hood" },
+  { question:"You are about to change lanes. Your mirrors are properly adjusted. What else must you do?", choices:["Nothing — mirrors show everything","Honk first","Turn your head to check the blind spot","Speed up"], correct_index:2, explanation:"Even correctly adjusted mirrors leave a blind spot. Signal, check mirrors, then turn your head before moving over.", section:"Driver's Seat" },
+  { question:"How can you tell which side of the car the fuel door is on?", choices:["It is always on the driver's side","You cannot tell without getting out","It is always on the passenger side","A small arrow next to the fuel gauge points to it"], correct_index:3, explanation:"Nearly all modern fuel gauges have a small arrow beside the pump icon pointing to the side the fuel door is on.", section:"Around the Car" },
+  { question:"A compact 'donut' spare tire has what important limitation?", choices:["None — it is a normal tire","Limited to roughly 50 mph and a short distance","It only works in summer","It cannot be used on the rear"], correct_index:1, explanation:"Donut spares are temporary: usually about 50 mph max and only far enough to reach a tire shop. Check its pressure too — it sits unused for years.", section:"Around the Car" },
+  { question:"Why should you sit back from the steering wheel rather than right up against it?", choices:["To see the radio better","Airbags need roughly 10 inches of space to deploy safely","To reach the pedals more easily","It has no effect"], correct_index:1, explanation:"An airbag deploys explosively fast. About 10 inches between your chest and the wheel lets it protect you instead of injuring you.", section:"Safety" },
+  { question:"You must shift from Drive to Reverse. When is it safe?", choices:["While rolling slowly forward","Only at a complete stop","Any time under 5 mph","While the parking brake is on"], correct_index:1, explanation:"Always come to a COMPLETE stop before shifting between D and R — shifting while moving damages the transmission.", section:"Driver's Seat" },
+  { question:"Where would you find an explanation of a warning light specific to YOUR car?", choices:["The owner's manual in the glovebox","The fuel door","The door-jamb sticker","The trunk"], correct_index:0, explanation:"The owner's manual explains every light and control for your exact model. If it is missing, the manufacturer posts a free PDF online.", section:"Safety" },
+  { question:"The penny test with Lincoln's head visible tells you what?", choices:["Tire pressure is low","Tread is too worn and the tire needs replacing","The tire is new","Alignment is off"], correct_index:1, explanation:"Insert a penny upside down in the tread groove. If you can see all of Lincoln's head, the tread is too shallow and the tire should be replaced.", section:"Around the Car" },
+  { question:"You are locked in a trunk. What should you look for?", choices:["Nothing can be done","The spare tire","The fuel door release","A glow-in-the-dark release handle inside"], correct_index:3, explanation:"Every car built since 2002 has a glow-in-the-dark trunk release handle inside the trunk.", section:"Safety" },
+  { question:"You have a flat tire. Where do you look for the jack and the spare?", choices:["Under the hood","Behind the back seat only","Cars do not come with a jack","Under the trunk floor, or winched under the rear"], correct_index:3, explanation:"Both are usually under the trunk floor, or slung under the rear on trucks and SUVs. Check that they are actually there — they go missing on used cars.", section:"Safety" },
+  { question:"When jacking up a car to change a tire, when do you loosen the lug nuts?", choices:["After the wheel is off the ground","It does not matter","Slightly BEFORE you jack it up","Only after the spare is on"], correct_index:2, explanation:"Break them loose while the tire still holds the ground. A wheel hanging in the air just spins, and pushing hard on a raised car can knock it off the jack.", section:"Safety" },
+  { question:"How do you open the hood?", choices:["Pull the lever inside, then release the safety catch under the hood edge","One lever under the dash is enough","Pry it from the front","With the key in the grille"], correct_index:0, explanation:"Two steps: pull the release near the driver's left knee, then reach under the front hood edge and push the safety catch sideways.", section:"Safety" },
+  { question:"Your accelerator sticks and the car keeps speeding up. What should you do?", choices:["Shift straight to Park","Shift to Neutral, brake, then pull over","Switch the key fully off while moving","Pump the accelerator"], correct_index:1, explanation:"Neutral disconnects the engine from the wheels so you can brake normally. Never shift to Park at speed, and do not fully switch off the key while moving — that can lock the steering.", section:"Safety" },
+  { question:"Where is the parking brake, and when should you set it?", choices:["Only on hills","Only in winter","A lever, pedal or (P) switch — every single time you park","Only if the car is in Neutral"], correct_index:2, explanation:"It is a lever between the seats, a small pedal left of the brake, or an electric switch marked (P). Set it every time you park, especially on a hill.", section:"Safety" }
+];
+
+/* ============================================================
+   SVG DIAGRAMS — plain geometry, no external assets.
+   Each returns the artwork; hotspots are layered on separately
+   from the data so labels and art can never drift apart.
+   ============================================================ */
+const ART = {
+  dash: `
+    <defs>
+      <linearGradient id="dashG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#544c5e"/><stop offset="55%" stop-color="#3a3442"/><stop offset="100%" stop-color="#28232f"/>
+      </linearGradient>
+      <linearGradient id="glassG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#dbeef8"/><stop offset="100%" stop-color="#9dc6dd"/>
+      </linearGradient>
+      <linearGradient id="consoleG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#3d3746"/><stop offset="100%" stop-color="#241f2b"/>
+      </linearGradient>
+    </defs>
+    <rect x="-24" y="0" width="548" height="392" fill="#f4f1f8"/>
+
+    <!-- ===== windshield + A-pillars ===== -->
+    <path d="M60 26 L440 26 L462 96 L38 96 Z" fill="url(#glassG)" stroke="#7c8a99" stroke-width="2"/>
+    <path d="M60 26 L38 96 L52 96 L72 26 Z" fill="#4b4453" stroke="#2c2733" stroke-width="1.5"/>
+    <path d="M440 26 L462 96 L448 96 L428 26 Z" fill="#4b4453" stroke="#2c2733" stroke-width="1.5"/>
+    <!-- rearview mirror -->
+    <rect x="224" y="36" width="52" height="17" rx="6" fill="#3a3340" stroke="#1f1235" stroke-width="2"/>
+    <rect x="230" y="40" width="40" height="9" rx="3" fill="#6f6880"/>
+    <rect x="246" y="26" width="8" height="12" fill="#3a3340"/>
+    <!-- ===== side mirrors: OUTSIDE the car, past the A-pillars, seen through
+         the side windows the way you actually see them from the seat ===== -->
+    <!-- left side window -->
+    <path d="M52 40 L36 96 L14 96 L26 40 Z" fill="#bcd9e8" stroke="#7c8a99" stroke-width="1.5"/>
+    <!-- left mirror on its stalk, hanging outside the glass -->
+    <rect x="24" y="72" width="10" height="5" rx="2" fill="#2c2733"/>
+    <path d="M4 62 L26 58 L26 88 L4 92 Z" fill="#3a3340" stroke="#1f1235" stroke-width="2"/>
+    <rect x="8" y="65" width="15" height="21" rx="3" fill="#8fb8cf"/>
+    <!-- right side window -->
+    <path d="M448 40 L464 96 L486 96 L474 40 Z" fill="#bcd9e8" stroke="#7c8a99" stroke-width="1.5"/>
+    <rect x="466" y="72" width="10" height="5" rx="2" fill="#2c2733"/>
+    <path d="M496 62 L474 58 L474 88 L496 92 Z" fill="#3a3340" stroke="#1f1235" stroke-width="2"/>
+    <rect x="477" y="65" width="15" height="21" rx="3" fill="#8fb8cf"/>
+
+    <!-- ===== DRIVER'S DOOR PANEL (left edge) — window, lock and mirror controls ===== -->
+    <path d="M-22 150 L34 142 L34 320 L-22 330 Z" fill="#3a3340" stroke="#15121a" stroke-width="2"/>
+    <path d="M-18 156 L30 149 L30 200 L-18 206 Z" fill="#4b4453"/>
+    <!-- armrest -->
+    <rect x="-18" y="212" width="48" height="18" rx="6" fill="#2c2733" stroke="#15121a" stroke-width="1.5"/>
+    <!-- WINDOW SWITCHES: four rocker buttons -->
+    <rect x="-16" y="238" width="44" height="40" rx="5" fill="#241f2b" stroke="#15121a" stroke-width="1.8"/>
+    <rect x="-11" y="243" width="15" height="12" rx="2.5" fill="#5c5468" stroke="#15121a" stroke-width="1"/>
+    <rect x="8"  y="243" width="15" height="12" rx="2.5" fill="#5c5468" stroke="#15121a" stroke-width="1"/>
+    <rect x="-11" y="260" width="15" height="12" rx="2.5" fill="#5c5468" stroke="#15121a" stroke-width="1"/>
+    <rect x="8"  y="260" width="15" height="12" rx="2.5" fill="#5c5468" stroke="#15121a" stroke-width="1"/>
+    <!-- DOOR LOCK rocker with a padlock mark -->
+    <rect x="-16" y="286" width="44" height="20" rx="5" fill="#241f2b" stroke="#15121a" stroke-width="1.8"/>
+    <rect x="1" y="293" width="10" height="8" rx="1.5" fill="none" stroke="#facc15" stroke-width="1.6"/>
+    <path d="M3 293 v-3 a3 3 0 0 1 6 0 v3" fill="none" stroke="#facc15" stroke-width="1.6"/>
+    <!-- MIRROR ADJUSTER: joystick + L/R selector, up by the mirror -->
+    <rect x="-16" y="166" width="44" height="34" rx="6" fill="#241f2b" stroke="#15121a" stroke-width="1.8"/>
+    <circle cx="0" cy="183" r="9" fill="#3f394a" stroke="#15121a" stroke-width="1.5"/>
+    <circle cx="0" cy="183" r="3.4" fill="#8f86a0"/>
+    <g stroke="#8f86a0" stroke-width="1.3" stroke-linecap="round">
+      <path d="M0 171 v-3"/><path d="M0 195 v3"/><path d="M-12 183 h-3"/><path d="M12 183 h3"/>
+    </g>
+    <rect x="14" y="172" width="11" height="9" rx="2" fill="#3f394a"/>
+    <text x="19.5" y="179" font-size="6" fill="#d8d2e2" text-anchor="middle" font-family="sans-serif">L</text>
+    <rect x="14" y="186" width="11" height="9" rx="2" fill="#3f394a"/>
+    <text x="19.5" y="193" font-size="6" fill="#d8d2e2" text-anchor="middle" font-family="sans-serif">R</text>
+
+    <!-- ===== dash face ===== -->
+    <path d="M38 96 L462 96 L470 250 Q250 276 30 250 Z" fill="url(#dashG)"/>
+    <path d="M38 96 L462 96 L464 112 Q250 128 36 112 Z" fill="#6b6378" opacity="0.45"/>
+    <!-- defroster slots along the very top of the dash (aimed at the glass) -->
+    <g fill="#241f2b" opacity="0.8">
+      <rect x="96" y="100" width="46" height="6" rx="3"/>
+      <rect x="358" y="100" width="46" height="6" rx="3"/>
+    </g>
+
+    <!-- ===== AIR VENTS: round louvred vents left, center and right ===== -->
+    <g>
+      <!-- left vent, inboard of the dash edge -->
+      <rect x="48" y="126" width="46" height="32" rx="8" fill="#241f2b" stroke="#15121a" stroke-width="2"/>
+      <g stroke="#5c5468" stroke-width="2.4" stroke-linecap="round">
+        <line x1="55" y1="135" x2="87" y2="135"/><line x1="55" y1="142" x2="87" y2="142"/><line x1="55" y1="149" x2="87" y2="149"/>
+      </g>
+      <!-- right vent, inboard of the dash edge -->
+      <rect x="410" y="126" width="46" height="32" rx="8" fill="#241f2b" stroke="#15121a" stroke-width="2"/>
+      <g stroke="#5c5468" stroke-width="2.4" stroke-linecap="round">
+        <line x1="417" y1="135" x2="449" y2="135"/><line x1="417" y1="142" x2="449" y2="142"/><line x1="417" y1="149" x2="449" y2="149"/>
+      </g>
+    </g>
+
+    <!-- ===== instrument cluster: BEHIND the wheel, on the LEFT (US driver's side) ===== -->
+    <path d="M84 118 Q164 108 244 118 L250 192 Q164 202 78 192 Z" fill="#211d28" stroke="#15121a" stroke-width="2.5"/>
+    <rect x="90" y="126" width="148" height="60" rx="9" fill="#12101a" stroke="#0a090e" stroke-width="2"/>
+    <!-- three gauges -->
+    <circle cx="120" cy="152" r="18" fill="#1b1826" stroke="#8f86a0" stroke-width="2"/>
+    <circle cx="164" cy="152" r="23" fill="#1b1826" stroke="#e6e1ef" stroke-width="2.5"/>
+    <circle cx="208" cy="152" r="18" fill="#1b1826" stroke="#8f86a0" stroke-width="2"/>
+    <path d="M164 152 L176 140" stroke="#facc15" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M120 152 L110 143" stroke="#facc15" stroke-width="2" stroke-linecap="round"/>
+    <path d="M208 152 L200 144" stroke="#facc15" stroke-width="2" stroke-linecap="round"/>
+    <!-- ODOMETER readout inside the speedometer face -->
+    <rect x="146" y="160" width="36" height="9" rx="2" fill="#0f0d13"/>
+    <text x="164" y="167" font-size="6" fill="#4ade80" text-anchor="middle" font-family="sans-serif">062418</text>
+    <!-- warning-light row under the gauges -->
+    <g>
+      <circle cx="136" cy="180" r="3.4" fill="#dc2626"/>
+      <circle cx="150" cy="180" r="3.4" fill="#d97706"/>
+      <circle cx="164" cy="180" r="3.4" fill="#16a34a"/>
+      <circle cx="178" cy="180" r="3.4" fill="#2563eb"/>
+      <circle cx="192" cy="180" r="3.4" fill="#d97706"/>
+    </g>
+
+    <!-- ===== stalks: on the COLUMN, up beside the wheel hub where they really are.
+         Drawn BEFORE the wheel so the rim passes in front of them. ===== -->
+    <!-- left = turn signal -->
+    <rect x="54" y="172" width="70" height="11" rx="5.5" fill="#3f394a" stroke="#15121a" stroke-width="1.5"/>
+    <circle cx="58" cy="177" r="7.5" fill="#4b4453" stroke="#15121a" stroke-width="1.5"/>
+    <path d="M84 166 l0 -7 M84 188 l0 7" stroke="#facc15" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M80 162 l4 -5 l4 5" stroke="#facc15" stroke-width="1.8" fill="none"/>
+    <path d="M80 192 l4 5 l4 -5" stroke="#facc15" stroke-width="1.8" fill="none"/>
+    <!-- right = wipers / washer -->
+    <rect x="196" y="172" width="52" height="11" rx="5.5" fill="#3f394a" stroke="#15121a" stroke-width="1.5"/>
+    <circle cx="244" cy="177" r="7.5" fill="#4b4453" stroke="#15121a" stroke-width="1.5"/>
+    <path d="M236 162 q8 -6 16 0" stroke="#8fb8cf" stroke-width="2.2" fill="none"/>
+    <path d="M238 192 q7 5 14 0" stroke="#8fb8cf" stroke-width="2" fill="none"/>
+    <circle cx="245" cy="198" r="1.8" fill="#8fb8cf"/>
+
+    <!-- ===== steering wheel (in front of the cluster, on the LEFT) ===== -->
+    <circle cx="164" cy="196" r="54" fill="none" stroke="#100e15" stroke-width="15"/>
+    <circle cx="164" cy="196" r="54" fill="none" stroke="#2c2733" stroke-width="7"/>
+    <circle cx="164" cy="196" r="21" fill="#332d3c" stroke="#15121a" stroke-width="2.5"/>
+    <text x="164" y="200" font-size="8" fill="#8f86a0" text-anchor="middle" font-family="sans-serif">HORN</text>
+    <rect x="120" y="190" width="88" height="12" rx="6" fill="#332d3c" stroke="#15121a" stroke-width="1.5"/>
+    <path d="M164 217 L164 240" stroke="#332d3c" stroke-width="11"/>
+    <!-- thumb buttons -->
+    <rect x="130" y="192" width="14" height="8" rx="2" fill="#5c5468"/>
+    <rect x="184" y="192" width="14" height="8" rx="2" fill="#5c5468"/>
+
+    <!-- ===== headlight switch (left of the wheel) ===== -->
+    <circle cx="74" cy="214" r="19" fill="#241f2b" stroke="#15121a" stroke-width="2.5"/>
+    <circle cx="74" cy="214" r="9" fill="#5c5468" stroke="#15121a" stroke-width="1.5"/>
+    <g stroke="#facc15" stroke-width="1.8" stroke-linecap="round">
+      <path d="M74 199 v-5"/><path d="M87 206 l4 -3"/><path d="M61 206 l-4 -3"/>
+    </g>
+    <!-- hood release down by the knee -->
+    <rect x="56" y="250" width="36" height="16" rx="7" fill="#3a3340" stroke="#15121a" stroke-width="2"/>
+    <path d="M62 258 q12 -7 24 0" stroke="#8f86a0" stroke-width="2" fill="none"/>
+
+    <!-- ===== center stack: climate + hazard + start ===== -->
+    <rect x="252" y="188" width="90" height="58" rx="9" fill="#241f2b" stroke="#15121a" stroke-width="2.5"/>
+    <rect x="300" y="193" width="36" height="14" rx="3" fill="#12101a"/>
+    <text x="318" y="203" font-size="7" fill="#4ade80" text-anchor="middle" font-family="sans-serif">72° AUTO</text>
+    <!-- climate knobs -->
+    <circle cx="268" cy="224" r="9" fill="#3f394a" stroke="#15121a" stroke-width="2"/>
+    <path d="M268 224 l0 -6" stroke="#facc15" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="326" cy="224" r="9" fill="#3f394a" stroke="#15121a" stroke-width="2"/>
+    <path d="M326 224 l0 -6" stroke="#facc15" stroke-width="2" stroke-linecap="round"/>
+    <!-- defroster icons -->
+    <rect x="284" y="218" width="12" height="10" rx="2" fill="#3f394a" stroke="#8fb8cf" stroke-width="1.4"/>
+    <rect x="299" y="218" width="12" height="10" rx="2" fill="#3f394a" stroke="#8fb8cf" stroke-width="1.4"/>
+    <!-- hazard button, dead center and big -->
+    <rect x="286" y="230" width="22" height="18" rx="4" fill="#3a1414" stroke="#dc2626" stroke-width="2.5"/>
+    <path d="M297 235 l6 10 h-12 Z" fill="none" stroke="#dc2626" stroke-width="2"/>
+    <!-- ===== RADIO / infotainment, dead center of the dash ===== -->
+    <rect x="254" y="124" width="84" height="54" rx="8" fill="#1b1826" stroke="#15121a" stroke-width="2.5"/>
+    <rect x="260" y="130" width="72" height="30" rx="4" fill="#0f1a24" stroke="#0a090e" stroke-width="1.5"/>
+    <text x="266" y="143" font-size="7" fill="#4ade80" font-family="sans-serif">FM 101.9</text>
+    <g fill="#4ade80">
+      <rect x="306" y="146" width="3.4" height="9"/><rect x="312" y="142" width="3.4" height="13"/>
+      <rect x="318" y="148" width="3.4" height="7"/><rect x="324" y="144" width="3.4" height="11"/>
+    </g>
+    <circle cx="266" cy="169" r="5.5" fill="#3f394a" stroke="#15121a" stroke-width="1.5"/>
+    <circle cx="326" cy="169" r="5.5" fill="#3f394a" stroke="#15121a" stroke-width="1.5"/>
+    <g fill="#5c5468">
+      <rect x="278" y="166" width="10" height="7" rx="2"/><rect x="291" y="166" width="10" height="7" rx="2"/>
+      <rect x="304" y="166" width="10" height="7" rx="2"/>
+    </g>
+
+    <!-- start button — right up against the wheel rim -->
+    <circle cx="234" cy="208" r="15" fill="#241f2b" stroke="#16a34a" stroke-width="2.5"/>
+    <text x="234" y="206" font-size="6.5" fill="#16a34a" text-anchor="middle" font-family="sans-serif">START</text>
+    <text x="234" y="214" font-size="6.5" fill="#16a34a" text-anchor="middle" font-family="sans-serif">STOP</text>
+
+    <!-- ===== GLOVE BOX on the passenger side, with the airbag marking above it ===== -->
+    <rect x="356" y="200" width="104" height="38" rx="7" fill="#3f394a" stroke="#15121a" stroke-width="2.5"/>
+    <rect x="363" y="206" width="90" height="26" rx="4" fill="#332d3c"/>
+    <!-- latch -->
+    <rect x="392" y="213" width="32" height="9" rx="4" fill="#5c5468" stroke="#15121a" stroke-width="1.5"/>
+    <text x="408" y="230" font-size="7.5" fill="#8f86a0" text-anchor="middle" font-family="sans-serif">GLOVE BOX</text>
+    <!-- the SRS AIRBAG stamp on the dash panel just above it -->
+    <text x="408" y="194" font-size="10" fill="#d8d2e2" text-anchor="middle" font-weight="700"
+          font-family="sans-serif" letter-spacing="1.2">AIRBAG</text>
+
+
+    <!-- ===== CENTER CONSOLE between the seats (shifter lives HERE) ===== -->
+    <path d="M330 286 L440 286 L456 348 L318 348 Z" fill="url(#consoleG)" stroke="#15121a" stroke-width="2"/>
+    <!-- shifter gate -->
+    <rect x="336" y="252" width="76" height="58" rx="10" fill="#1b1826" stroke="#15121a" stroke-width="2.5"/>
+    <rect x="346" y="259" width="24" height="44" rx="6" fill="#0f0d13"/>
+    <text x="382" y="268" font-size="10" fill="#e6e1ef" font-family="sans-serif">P</text>
+    <text x="382" y="281" font-size="10" fill="#8f86a0" font-family="sans-serif">R</text>
+    <text x="382" y="294" font-size="10" fill="#8f86a0" font-family="sans-serif">N</text>
+    <text x="382" y="306" font-size="10" fill="#8f86a0" font-family="sans-serif">D</text>
+    <!-- shift knob sitting in the gate, at P -->
+    <circle cx="358" cy="266" r="13" fill="#5c5468" stroke="#15121a" stroke-width="2.5"/>
+    <ellipse cx="358" cy="262" rx="8" ry="4" fill="#7a7188"/>
+    <!-- ===== parking brake: a proper long hand lever alongside the console ===== -->
+    <!-- lever boot at the base -->
+    <path d="M418 336 L462 336 L456 316 L424 316 Z" fill="#241f2b" stroke="#15121a" stroke-width="2"/>
+    <!-- the long lever arm, angled up the way a handbrake sits -->
+    <path d="M428 320 L474 262" stroke="#15121a" stroke-width="13" stroke-linecap="round"/>
+    <path d="M428 320 L474 262" stroke="#5c5468" stroke-width="8" stroke-linecap="round"/>
+    <!-- ribbed grip at the top of the lever -->
+    <path d="M462 276 L482 252" stroke="#332d3c" stroke-width="13" stroke-linecap="round"/>
+    <g stroke="#5c5468" stroke-width="1.6">
+      <line x1="466" y1="274" x2="472" y2="267"/><line x1="470" y1="269" x2="476" y2="262"/>
+      <line x1="474" y1="264" x2="480" y2="257"/>
+    </g>
+    <!-- release button on the end -->
+    <circle cx="484" cy="249" r="4.5" fill="#dc2626" stroke="#15121a" stroke-width="1.5"/>
+    <!-- the (P) telltale on the console next to it -->
+    <circle cx="432" cy="304" r="9" fill="none" stroke="#dc2626" stroke-width="2"/>
+    <text x="432" y="308" font-size="10" fill="#dc2626" text-anchor="middle" font-family="sans-serif">P</text>
+  `,
+  cluster: `
+    <defs>
+      <radialGradient id="gaugeG" cx="50%" cy="45%" r="60%">
+        <stop offset="0%" stop-color="#2a2536"/><stop offset="100%" stop-color="#12101a"/>
+      </radialGradient>
+    </defs>
+    <rect x="0" y="-18" width="500" height="372" fill="#f4f1f8"/>
+    <!-- cluster housing -->
+    <rect x="18" y="22" width="464" height="312" rx="20" fill="#211d28" stroke="#15121a" stroke-width="3"/>
+    <rect x="30" y="32" width="440" height="292" rx="14" fill="url(#gaugeG)" stroke="#0a090e" stroke-width="2"/>
+
+    <!-- ===== REAL warning-light symbols, the shapes a driver actually sees ===== -->
+    <rect x="58" y="40" width="384" height="42" rx="9" fill="#0f0d13" stroke="#2c2733" stroke-width="1.5"/>
+
+    <!-- CHECK ENGINE (amber engine block outline) -->
+    <g transform="translate(88,61)">
+      <path d="M-11 3 v-6 h3 v-3 h4 l3 -3 h6 v3 h4 v3 h3 v6 h-3 v3 h-14 l-3 -3 Z"
+            fill="none" stroke="#d97706" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M-4 -3 h4 M-2 -5 v4" stroke="#d97706" stroke-width="1.4"/>
+    </g>
+    <!-- OIL PRESSURE (red oil can with a drip) -->
+    <g transform="translate(148,61)">
+      <path d="M-12 2 q0 -7 7 -7 h6 l5 -4 v4 q4 0 4 4 v3 h-22 Z" fill="none" stroke="#dc2626" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M-14 2 q3 4 6 0" stroke="#dc2626" stroke-width="1.6" fill="none"/>
+      <circle cx="2" cy="7" r="2" fill="#dc2626"/>
+    </g>
+    <!-- BATTERY / CHARGING (red battery with + and -) -->
+    <g transform="translate(208,61)">
+      <rect x="-13" y="-6" width="26" height="14" rx="2" fill="none" stroke="#dc2626" stroke-width="2"/>
+      <rect x="-8" y="-9" width="5" height="3" fill="#dc2626"/>
+      <rect x="4" y="-9" width="5" height="3" fill="#dc2626"/>
+      <path d="M-8 1 h6 M-5 -2 v6" stroke="#dc2626" stroke-width="1.8"/>
+      <path d="M2 1 h6" stroke="#dc2626" stroke-width="1.8"/>
+    </g>
+    <!-- TIRE PRESSURE / TPMS (amber horseshoe with !) -->
+    <g transform="translate(268,61)">
+      <path d="M-12 8 v-9 a12 12 0 0 1 24 0 v9 Z" fill="none" stroke="#d97706" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M-12 8 q12 4 24 0" stroke="#d97706" stroke-width="2" fill="none"/>
+      <path d="M0 -5 v7" stroke="#d97706" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="0" cy="5" r="1.4" fill="#d97706"/>
+    </g>
+    <!-- COOLANT TEMPERATURE (red thermometer in waves) -->
+    <g transform="translate(328,61)">
+      <path d="M0 -9 v12" stroke="#dc2626" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="0" cy="5" r="3.6" fill="none" stroke="#dc2626" stroke-width="2"/>
+      <path d="M-13 8 q3 -3 6 0 t6 0 t6 0" stroke="#dc2626" stroke-width="1.8" fill="none"/>
+      <path d="M-13 2 h5 M-13 -3 h5" stroke="#dc2626" stroke-width="1.6"/>
+    </g>
+    <!-- BRAKE (red circle-in-parens with !) -->
+    <g transform="translate(388,61)">
+      <circle cx="0" cy="0" r="8" fill="none" stroke="#dc2626" stroke-width="2"/>
+      <path d="M-13 -6 q-3 6 0 12 M13 -6 q3 6 0 12" stroke="#dc2626" stroke-width="1.8" fill="none"/>
+      <path d="M0 -4 v5" stroke="#dc2626" stroke-width="2.2" stroke-linecap="round"/>
+      <circle cx="0" cy="4" r="1.3" fill="#dc2626"/>
+    </g>
+
+    <!-- captions under each symbol -->
+    <g font-size="7.5" fill="#8f86a0" text-anchor="middle" font-family="sans-serif">
+      <text x="88"  y="94">Check engine</text>
+      <text x="148" y="94">Oil pressure</text>
+      <text x="208" y="94">Battery</text>
+      <text x="268" y="94">Tire pressure</text>
+      <text x="328" y="94">Temperature</text>
+      <text x="388" y="94">Brake</text>
+    </g>
+    <text x="250" y="112" font-size="10" fill="#6b5b85" text-anchor="middle" font-family="sans-serif">RED = stop safely now &#183; AMBER = get it checked soon &#183; GREEN/BLUE = just switched on</text>
+
+    <!-- TACHOMETER (left) -->
+    <circle cx="96" cy="200" r="72" fill="#1b1826" stroke="#8f86a0" stroke-width="3"/>
+    <circle cx="96" cy="200" r="62" fill="none" stroke="#3f394a" stroke-width="1.5"/>
+    <g stroke="#d8d2e2" stroke-width="2.5" stroke-linecap="round">
+      <path d="M96 138 v10"/><path d="M52 156 l7 7"/><path d="M34 200 h10"/>
+      <path d="M52 244 l7 -7"/><path d="M96 262 v-10"/><path d="M140 244 l-7 -7"/>
+      <path d="M158 200 h-10"/>
+    </g>
+    <path d="M138 152 a62 62 0 0 1 18 34" stroke="#dc2626" stroke-width="6" fill="none"/>
+    <path d="M96 200 L62 168" stroke="#facc15" stroke-width="4.5" stroke-linecap="round"/>
+    <circle cx="96" cy="200" r="7" fill="#d8d2e2"/>
+    <text x="96" y="232" font-size="11" fill="#8f86a0" text-anchor="middle" font-family="sans-serif">RPM x1000</text>
+    <text x="96" y="296" font-size="12" fill="#581c87" text-anchor="middle" font-weight="700" font-family="sans-serif">Tachometer</text>
+
+    <!-- SPEEDOMETER (center, biggest) -->
+    <circle cx="250" cy="200" r="86" fill="#1b1826" stroke="#e6e1ef" stroke-width="4"/>
+    <circle cx="250" cy="200" r="74" fill="none" stroke="#3f394a" stroke-width="1.5"/>
+    <g stroke="#e6e1ef" stroke-width="3" stroke-linecap="round">
+      <path d="M250 126 v12"/><path d="M198 140 l6 11"/><path d="M160 178 l11 6"/>
+      <path d="M160 222 l11 -6"/><path d="M198 260 l6 -11"/><path d="M250 274 v-12"/>
+      <path d="M302 260 l-6 -11"/><path d="M340 222 l-11 -6"/><path d="M340 178 l-11 6"/>
+      <path d="M302 140 l-6 11"/>
+    </g>
+    <text x="196" y="172" font-size="10" fill="#8f86a0" text-anchor="middle" font-family="sans-serif">20</text>
+    <text x="222" y="150" font-size="10" fill="#8f86a0" text-anchor="middle" font-family="sans-serif">40</text>
+    <text x="278" y="150" font-size="10" fill="#8f86a0" text-anchor="middle" font-family="sans-serif">60</text>
+    <text x="304" y="172" font-size="10" fill="#8f86a0" text-anchor="middle" font-family="sans-serif">80</text>
+    <path d="M250 200 L296 164" stroke="#facc15" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="250" cy="200" r="9" fill="#e6e1ef"/>
+    <text x="250" y="228" font-size="13" fill="#8f86a0" text-anchor="middle" font-family="sans-serif">MPH</text>
+    <!-- ODOMETER window inside the speedo face -->
+    <rect x="220" y="250" width="60" height="16" rx="3" fill="#0f0d13" stroke="#4ade80" stroke-width="1.4"/>
+    <text x="250" y="262" font-size="10" fill="#4ade80" text-anchor="middle" font-family="sans-serif">062418</text>
+    <text x="250" y="304" font-size="13" fill="#581c87" text-anchor="middle" font-weight="700" font-family="sans-serif">Speedometer</text>
+
+    <!-- FUEL GAUGE (right) -->
+    <circle cx="404" cy="200" r="72" fill="#1b1826" stroke="#8f86a0" stroke-width="3"/>
+    <circle cx="404" cy="200" r="62" fill="none" stroke="#3f394a" stroke-width="1.5"/>
+    <g stroke="#d8d2e2" stroke-width="2.5" stroke-linecap="round">
+      <path d="M360 156 l7 7"/><path d="M342 200 h10"/><path d="M360 244 l7 -7"/>
+      <path d="M404 138 v10"/><path d="M448 156 l-7 7"/>
+    </g>
+    <text x="366" y="166" font-size="13" fill="#e6e1ef" text-anchor="middle" font-family="sans-serif">F</text>
+    <text x="366" y="244" font-size="13" fill="#dc2626" text-anchor="middle" font-family="sans-serif">E</text>
+    <path d="M404 200 L372 172" stroke="#facc15" stroke-width="4.5" stroke-linecap="round"/>
+    <circle cx="404" cy="200" r="7" fill="#d8d2e2"/>
+    <!-- pump icon + the side arrow -->
+    <rect x="406" y="218" width="16" height="20" rx="2" fill="none" stroke="#8f86a0" stroke-width="1.8"/>
+    <path d="M424 223 l7 0 l0 11" stroke="#8f86a0" stroke-width="1.8" fill="none"/>
+    <path d="M402 228 l-9 0 M393 228 l4 -4 M393 228 l4 4" stroke="#facc15" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <text x="404" y="296" font-size="12" fill="#581c87" text-anchor="middle" font-weight="700" font-family="sans-serif">Fuel gauge</text>
+  `,
+  pedals: `
+    <rect x="0" y="0" width="500" height="360" fill="#f4f1f8"/>
+    <text x="250" y="26" font-size="13" fill="#581c87" text-anchor="middle" font-weight="700" font-family="sans-serif">Looking DOWN at the floor by your feet</text>
+    <!-- footwell tub -->
+    <path d="M60 54 L440 54 L470 320 L30 320 Z" fill="#3a3340" stroke="#15121a" stroke-width="2.5"/>
+    <path d="M74 66 L426 66 L450 306 L50 306 Z" fill="#2c2733"/>
+    <!-- firewall at the top -->
+    <path d="M74 66 L426 66 L432 96 Q250 112 68 96 Z" fill="#211d28"/>
+    <!-- carpet texture -->
+    <g stroke="#332d3c" stroke-width="1.4" opacity="0.8">
+      <line x1="70" y1="140" x2="434" y2="140"/><line x1="66" y1="180" x2="438" y2="180"/>
+      <line x1="62" y1="220" x2="442" y2="220"/><line x1="58" y1="260" x2="446" y2="260"/>
+    </g>
+
+    <!-- ===== kick panel on the driver's left: the two pull-releases =====
+         These live down by your left knee, which is why they belong in the
+         footwell view rather than up on the dash face. -->
+    <path d="M28 86 L96 80 L96 208 L32 224 Z" fill="#332d3c" stroke="#15121a" stroke-width="2"/>
+    <text x="62" y="72" font-size="10" fill="#6b5b85" text-anchor="middle" font-style="italic" font-family="sans-serif">by your left knee</text>
+    <!-- HOOD release -->
+    <rect x="36" y="100" width="52" height="26" rx="7" fill="#241f2b" stroke="#15121a" stroke-width="2"/>
+    <path d="M42 121 q19 -14 39 -2" stroke="#8f86a0" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M48 113 q16 -9 29 -1" stroke="#facc15" stroke-width="2" fill="none"/>
+    <text x="62" y="140" font-size="9" fill="#8f86a0" text-anchor="middle" font-family="sans-serif">HOOD</text>
+    <!-- TRUNK release -->
+    <rect x="36" y="158" width="52" height="26" rx="7" fill="#241f2b" stroke="#15121a" stroke-width="2"/>
+    <rect x="47" y="170" width="32" height="10" rx="2" fill="none" stroke="#8f86a0" stroke-width="2.4"/>
+    <path d="M48 170 q15 -12 29 -2" stroke="#facc15" stroke-width="2" fill="none"/>
+    <text x="62" y="198" font-size="9" fill="#8f86a0" text-anchor="middle" font-family="sans-serif">TRUNK</text>
+
+    <!-- DEAD PEDAL (angled footrest, right of the kick panel) -->
+    <path d="M112 240 L164 222 L176 308 L120 326 Z" fill="#5c5468" stroke="#15121a" stroke-width="2.5"/>
+    <g stroke="#3f394a" stroke-width="2.5">
+      <line x1="126" y1="256" x2="168" y2="244"/><line x1="130" y1="276" x2="172" y2="264"/>
+      <line x1="134" y1="296" x2="176" y2="284"/>
+    </g>
+    <text x="146" y="344" font-size="11" fill="#581c87" text-anchor="middle" font-weight="700" font-family="sans-serif">Dead pedal</text>
+
+    <!-- BRAKE (wide, higher, left of the accelerator) -->
+    <rect x="248" y="112" width="18" height="98" rx="6" fill="#4b4453" stroke="#15121a" stroke-width="2"/>
+    <rect x="200" y="206" width="100" height="76" rx="10" fill="#7a7188" stroke="#15121a" stroke-width="3"/>
+    <rect x="210" y="216" width="80" height="56" rx="6" fill="#5c5468"/>
+    <g stroke="#3f394a" stroke-width="3">
+      <line x1="218" y1="230" x2="282" y2="230"/><line x1="218" y1="246" x2="282" y2="246"/><line x1="218" y1="262" x2="282" y2="262"/>
+    </g>
+    <text x="250" y="300" font-size="12" fill="#581c87" text-anchor="middle" font-weight="700" font-family="sans-serif">BRAKE — wider</text>
+
+    <!-- ACCELERATOR (narrow, lower, right) -->
+    <rect x="370" y="176" width="14" height="82" rx="5" fill="#4b4453" stroke="#15121a" stroke-width="2"/>
+    <rect x="352" y="252" width="52" height="88" rx="9" fill="#6b6378" stroke="#15121a" stroke-width="3"/>
+    <rect x="360" y="262" width="36" height="68" rx="5" fill="#544c5e"/>
+    <g stroke="#3f394a" stroke-width="2.5">
+      <line x1="366" y1="278" x2="390" y2="278"/><line x1="366" y1="296" x2="390" y2="296"/><line x1="366" y1="314" x2="390" y2="314"/>
+    </g>
+    <text x="378" y="356" font-size="12" fill="#581c87" text-anchor="middle" font-weight="700" font-family="sans-serif">GAS — narrow</text>
+
+    <!-- right-foot hint arc between brake and gas -->
+    <path d="M300 250 q34 22 58 6" stroke="#facc15" stroke-width="3" fill="none" stroke-dasharray="6 5" stroke-linecap="round"/>
+    <text x="330" y="238" font-size="10" fill="#6b5b85" text-anchor="middle" font-style="italic" font-family="sans-serif">same right foot</text>
+  `,
+  engine: `
+    <defs>
+      <linearGradient id="bayG" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#3f3a46"/><stop offset="100%" stop-color="#252029"/>
+      </linearGradient>
+    </defs>
+    <rect x="0" y="0" width="500" height="360" fill="#f4f1f8"/>
+
+    <!-- ============================================================
+         TOP-DOWN view of the engine bay, hood raised.
+         ORIENTATION IS FIXED: front of the car = BOTTOM of the picture.
+         Windshield / firewall = TOP. Everything is seated on the
+         structure it really bolts to, because that is how you find it.
+         ============================================================ -->
+
+    <!-- raised hood edge across the top -->
+    <rect x="24" y="16" width="452" height="20" rx="6" fill="#4a4356" stroke="#15121a" stroke-width="2"/>
+    <text x="250" y="30" font-size="9" fill="#8f86a0" text-anchor="middle" font-family="sans-serif">hood (raised)</text>
+
+    <!-- bay floor -->
+    <path d="M34 44 L466 44 L474 330 L26 330 Z" fill="url(#bayG)" stroke="#15121a" stroke-width="2"/>
+
+    <!-- ===== FIREWALL / COWL at the TOP — base of the windshield ===== -->
+    <rect x="34" y="44" width="432" height="42" fill="#332e3a" stroke="#15121a" stroke-width="2"/>
+    <g stroke="#4b4453" stroke-width="2">
+      <line x1="60" y1="56" x2="440" y2="56"/><line x1="60" y1="65" x2="440" y2="65"/><line x1="60" y1="74" x2="440" y2="74"/>
+    </g>
+    <text x="250" y="40" font-size="8" fill="#6b5b85" text-anchor="middle" font-style="italic" font-family="sans-serif">firewall — windshield is just above this</text>
+
+    <!-- ===== INNER FENDER WALLS (left + right) ===== -->
+    <path d="M34 86 L34 300 L120 282 L120 100 Z" fill="#332e3a" stroke="#15121a" stroke-width="2"/>
+    <path d="M466 86 L466 300 L380 282 L380 100 Z" fill="#332e3a" stroke="#15121a" stroke-width="2"/>
+    <!-- strut towers: the domed circles with 3 nuts -->
+    <circle cx="76" cy="122" r="26" fill="#3f3a46" stroke="#15121a" stroke-width="2.5"/>
+    <circle cx="76" cy="122" r="14" fill="#2a2531"/>
+    <g fill="#8f86a0"><circle cx="76" cy="101" r="4"/><circle cx="58" cy="133" r="4"/><circle cx="94" cy="133" r="4"/></g>
+    <circle cx="424" cy="122" r="26" fill="#3f3a46" stroke="#15121a" stroke-width="2.5"/>
+    <circle cx="424" cy="122" r="14" fill="#2a2531"/>
+    <g fill="#8f86a0"><circle cx="424" cy="101" r="4"/><circle cx="406" cy="133" r="4"/><circle cx="442" cy="133" r="4"/></g>
+
+    <!-- ===== BRAKE MASTER CYLINDER — bolted to the FIREWALL, driver's side ===== -->
+    <rect x="330" y="88" width="58" height="30" rx="5" fill="#4b4453" stroke="#15121a" stroke-width="2"/>
+    <rect x="340" y="74" width="38" height="24" rx="4" fill="#e8dfa8" fill-opacity="0.85" stroke="#15121a" stroke-width="2"/>
+    <circle cx="359" cy="86" r="5.5" fill="none" stroke="#15121a" stroke-width="1.8"/>
+    <path d="M349 80 q-4 6 0 12 M369 80 q4 6 0 12" stroke="#15121a" stroke-width="1.6" fill="none"/>
+
+    <!-- ===== WASHER FLUID — rear corner against the firewall ===== -->
+    <rect x="140" y="76" width="46" height="44" rx="6" fill="#8fd4f0" fill-opacity="0.65" stroke="#15121a" stroke-width="2"/>
+    <rect x="154" y="66" width="18" height="12" rx="3" fill="#2563eb" stroke="#15121a" stroke-width="1.5"/>
+    <path d="M148 100 q14 -11 28 0" stroke="#2563eb" stroke-width="2.2" fill="none"/>
+
+    <!-- ===== ENGINE BLOCK — centre of the bay, transverse 4-cylinder ===== -->
+    <rect x="162" y="132" width="176" height="108" rx="10" fill="#575061" stroke="#15121a" stroke-width="2.5"/>
+    <rect x="178" y="146" width="144" height="54" rx="8" fill="#635b70" stroke="#15121a" stroke-width="2"/>
+    <!-- 4 coil packs in a row = the "this is a 4-cylinder" tell -->
+    <g fill="#2a2531" stroke="#15121a" stroke-width="1.2">
+      <rect x="192" y="156" width="16" height="30" rx="3"/><rect x="224" y="156" width="16" height="30" rx="3"/>
+      <rect x="256" y="156" width="16" height="30" rx="3"/><rect x="288" y="156" width="16" height="30" rx="3"/>
+    </g>
+    <!-- OIL FILLER CAP — screwed into the top of the valve cover -->
+    <circle cx="316" cy="214" r="13" fill="#4b4453" stroke="#facc15" stroke-width="2.5"/>
+    <circle cx="316" cy="214" r="5" fill="#facc15"/>
+
+    <!-- ===== SERPENTINE BELT — at the LEFT END of the engine, wrapping pulleys ===== -->
+    <circle cx="150" cy="152" r="15" fill="#6b6378" stroke="#15121a" stroke-width="2"/>
+    <circle cx="146" cy="216" r="21" fill="#6b6378" stroke="#15121a" stroke-width="2"/>
+    <circle cx="178" cy="182" r="10" fill="#6b6378" stroke="#15121a" stroke-width="2"/>
+    <circle cx="126" cy="182" r="8"  fill="#6b6378" stroke="#15121a" stroke-width="2"/>
+    <path d="M136 140 A15 15 0 0 1 164 148 Q178 164 188 182 Q178 200 164 210
+             A21 21 0 0 1 125 214 Q117 198 118 182 Q121 158 136 140 Z"
+          fill="none" stroke="#0c0a10" stroke-width="8"/>
+    <path d="M136 140 A15 15 0 0 1 164 148 Q178 164 188 182 Q178 200 164 210
+             A21 21 0 0 1 125 214 Q117 198 118 182 Q121 158 136 140 Z"
+          fill="none" stroke="#8f86a0" stroke-width="2" stroke-dasharray="2 5"/>
+
+    <!-- ===== DIPSTICKS — plugged into the side of the block ===== -->
+    <!-- oil: ROUND loop handle -->
+    <path d="M344 198 q6 14 6 28" stroke="#f59e0b" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <circle cx="350" cy="232" r="9" fill="none" stroke="#f59e0b" stroke-width="4"/>
+    <!-- transmission: SQUARED T-bar handle, lower -->
+    <path d="M342 232 q16 12 20 26" stroke="#dc2626" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <rect x="350" y="258" width="28" height="9" rx="4" fill="none" stroke="#dc2626" stroke-width="4"/>
+
+    <!-- ===== AIR FILTER BOX + corrugated duct running to the engine ===== -->
+    <rect x="60" y="238" width="76" height="48" rx="8" fill="#3f3a46" stroke="#15121a" stroke-width="2"/>
+    <g stroke="#2a2531" stroke-width="1.6">
+      <line x1="68" y1="250" x2="128" y2="250"/><line x1="68" y1="262" x2="128" y2="262"/><line x1="68" y1="274" x2="128" y2="274"/>
+    </g>
+    <path d="M136 258 Q176 258 190 240" stroke="#4b4453" stroke-width="14" fill="none" stroke-linecap="round"/>
+    <path d="M136 258 Q176 258 190 240" stroke="#332d3c" stroke-width="14" fill="none" stroke-dasharray="4 6"/>
+
+    <!-- ===== COOLANT RESERVOIR — front corner, beside the radiator ===== -->
+    <rect x="320" y="238" width="44" height="50" rx="6" fill="#7fb8d4" fill-opacity="0.7" stroke="#15121a" stroke-width="2"/>
+    <rect x="327" y="260" width="30" height="24" rx="3" fill="#2f9ed4" fill-opacity="0.8"/>
+    <line x1="325" y1="252" x2="359" y2="252" stroke="#fff" stroke-width="1.5"/>
+    <line x1="325" y1="266" x2="359" y2="266" stroke="#fff" stroke-width="1.5"/>
+    <rect x="332" y="230" width="20" height="10" rx="3" fill="#4b4453" stroke="#15121a" stroke-width="1.5"/>
+
+    <!-- ===== COOLING FAN between engine and radiator ===== -->
+    <circle cx="250" cy="266" r="36" fill="#2a2531" stroke="#15121a" stroke-width="2"/>
+    <g stroke="#4b4453" stroke-width="6" stroke-linecap="round">
+      <path d="M250 266 L250 236"/><path d="M250 266 L279 277"/><path d="M250 266 L262 294"/>
+      <path d="M250 266 L232 293"/><path d="M250 266 L220 275"/>
+    </g>
+    <circle cx="250" cy="266" r="7" fill="#5c5468"/>
+
+    <!-- upper radiator hose: block down to the radiator -->
+    <path d="M262 240 Q286 256 296 292" stroke="#2a2531" stroke-width="12" fill="none" stroke-linecap="round"/>
+
+    <!-- ===== RADIATOR — wide, spanning the bay, at the FRONT (bottom) ===== -->
+    <rect x="70" y="296" width="360" height="30" rx="5" fill="#4b4453" stroke="#15121a" stroke-width="2.5"/>
+    <g stroke="#6b6378" stroke-width="1.6">
+      <line x1="86" y1="302" x2="86" y2="320"/><line x1="106" y1="302" x2="106" y2="320"/>
+      <line x1="126" y1="302" x2="126" y2="320"/><line x1="146" y1="302" x2="146" y2="320"/>
+      <line x1="166" y1="302" x2="166" y2="320"/><line x1="186" y1="302" x2="186" y2="320"/>
+      <line x1="206" y1="302" x2="206" y2="320"/><line x1="226" y1="302" x2="226" y2="320"/>
+      <line x1="246" y1="302" x2="246" y2="320"/><line x1="266" y1="302" x2="266" y2="320"/>
+      <line x1="286" y1="302" x2="286" y2="320"/><line x1="306" y1="302" x2="306" y2="320"/>
+      <line x1="326" y1="302" x2="326" y2="320"/><line x1="346" y1="302" x2="346" y2="320"/>
+      <line x1="366" y1="302" x2="366" y2="320"/><line x1="386" y1="302" x2="386" y2="320"/>
+      <line x1="406" y1="302" x2="406" y2="320"/>
+    </g>
+    <!-- RADIATOR CAP on the top tank corner -->
+    <circle cx="104" cy="290" r="12" fill="#4b4453" stroke="#dc2626" stroke-width="3"/>
+    <path d="M98 290 h12 M104 284 v12" stroke="#dc2626" stroke-width="2"/>
+    <text x="250" y="342" font-size="9" fill="#6b5b85" text-anchor="middle" font-style="italic" font-family="sans-serif">front of the car / grille</text>
+
+    <!-- ===== BATTERY — front fender corner, on the inner fender ===== -->
+    <rect x="386" y="248" width="80" height="60" rx="5" fill="#2a2531" stroke="#15121a" stroke-width="2.5"/>
+    <!-- cell-cap strip along the top of the case -->
+    <rect x="392" y="272" width="68" height="16" rx="3" fill="#3a3340"/>
+    <g fill="#4b4453"><circle cx="404" cy="280" r="3"/><circle cx="418" cy="280" r="3"/>
+      <circle cx="432" cy="280" r="3"/><circle cx="446" cy="280" r="3"/></g>
+    <text x="426" y="302" font-size="8" fill="#6b6378" text-anchor="middle" font-family="sans-serif">12V</text>
+    <!-- POSITIVE terminal: raised post + red clamp + cable -->
+    <rect x="394" y="252" width="22" height="14" rx="3" fill="#3a3340" stroke="#15121a" stroke-width="1.5"/>
+    <circle cx="405" cy="252" r="9" fill="#dc2626" stroke="#15121a" stroke-width="2"/>
+    <text x="405" y="256" font-size="11" fill="#fff" text-anchor="middle" font-weight="700" font-family="sans-serif">+</text>
+    <path d="M405 243 q-10 -9 -20 -6" stroke="#dc2626" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <!-- NEGATIVE terminal: raised post + black clamp + cable -->
+    <rect x="436" y="252" width="22" height="14" rx="3" fill="#3a3340" stroke="#15121a" stroke-width="1.5"/>
+    <circle cx="447" cy="252" r="9" fill="#1f1235" stroke="#15121a" stroke-width="2"/>
+    <text x="447" y="257" font-size="12" fill="#d8d2e2" text-anchor="middle" font-weight="700" font-family="sans-serif">&#8722;</text>
+    <path d="M447 243 q14 -12 30 -8" stroke="#15121a" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+    <!-- ===== FUSE BOX ===== -->
+    <rect x="46" y="168" width="56" height="42" rx="5" fill="#2a2531" stroke="#15121a" stroke-width="2"/>
+    <g fill="#6b6378">
+      <rect x="52" y="176" width="8" height="11" rx="1.5"/><rect x="64" y="176" width="8" height="11" rx="1.5"/>
+      <rect x="76" y="176" width="8" height="11" rx="1.5"/><rect x="88" y="176" width="8" height="11" rx="1.5"/>
+      <rect x="52" y="192" width="8" height="11" rx="1.5"/><rect x="64" y="192" width="8" height="11" rx="1.5"/>
+      <rect x="76" y="192" width="8" height="11" rx="1.5"/><rect x="88" y="192" width="8" height="11" rx="1.5"/>
+    </g>
+
+    <!-- ===== HOOD PROP ROD ===== -->
+    <line x1="44" y1="36" x2="40" y2="232" stroke="#8f86a0" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="40" cy="232" r="5" fill="#8f86a0" stroke="#15121a" stroke-width="1.5"/>
+    <rect x="38" y="30" width="14" height="9" rx="3" fill="#5c5468" stroke="#15121a" stroke-width="1.5"/>
+  `,
+  outFront: `
+    <rect x="0" y="0" width="500" height="320" fill="#f4f1f8"/>
+    <text x="250" y="24" font-size="12" fill="#581c87" text-anchor="middle" font-weight="700" font-family="sans-serif">Standing in FRONT of the car</text>
+    <!-- ground -->
+    <line x1="30" y1="290" x2="470" y2="290" stroke="#c9c2d4" stroke-width="3"/>
+
+    <!-- roof + greenhouse: narrower at the top so it reads as a front elevation -->
+    <path d="M175 74 L325 74 L350 130 L150 130 Z" fill="#7b4bb0" stroke="#3b1466" stroke-width="2.5"/>
+    <!-- windshield glass, raked, with A-pillars -->
+    <path d="M186 82 L314 82 L336 126 L164 126 Z" fill="#cfe8f5" stroke="#3b1466" stroke-width="2"/>
+    <path d="M186 82 L164 126" stroke="#3b1466" stroke-width="5"/>
+    <path d="M314 82 L336 126" stroke="#3b1466" stroke-width="5"/>
+    <!-- glass highlight -->
+    <path d="M196 86 L246 86 L206 122 L172 122 Z" fill="#fff" fill-opacity="0.22"/>
+    <!-- wipers: pivot + arm + blade, parked low on the glass -->
+    <circle cx="200" cy="122" r="3.5" fill="#1f1235"/>
+    <path d="M200 122 L236 96" stroke="#1f1235" stroke-width="2"/>
+    <path d="M232 99 L262 92" stroke="#1f1235" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="300" cy="122" r="3.5" fill="#1f1235"/>
+    <path d="M300 122 L264 96" stroke="#1f1235" stroke-width="2"/>
+    <path d="M268 99 L238 92" stroke="#1f1235" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- body: wider at the bottom (track wider than roof) -->
+    <path d="M150 130 L350 130 L378 250 Q250 264 122 250 Z" fill="#6d28a8" stroke="#3b1466" stroke-width="2.5"/>
+    <!-- hood shutline + bulge -->
+    <path d="M158 152 Q250 144 342 152" stroke="#3b1466" stroke-width="2" fill="none"/>
+    <!-- side mirrors sticking out at the shoulders -->
+    <path d="M148 132 L120 128 L118 146 L146 150 Z" fill="#3a3340" stroke="#1f1235" stroke-width="2"/>
+    <path d="M352 132 L380 128 L382 146 L354 150 Z" fill="#3a3340" stroke="#1f1235" stroke-width="2"/>
+
+    <!-- HEADLIGHTS: horizontal cluster with an inner projector lens -->
+    <rect x="132" y="176" width="72" height="30" rx="11" fill="#fef9c3" stroke="#3b1466" stroke-width="2.5"/>
+    <circle cx="156" cy="191" r="9" fill="#fff" stroke="#8f86a0" stroke-width="2"/>
+    <circle cx="182" cy="191" r="6" fill="#fff" stroke="#8f86a0" stroke-width="1.5"/>
+    <rect x="296" y="176" width="72" height="30" rx="11" fill="#fef9c3" stroke="#3b1466" stroke-width="2.5"/>
+    <circle cx="344" cy="191" r="9" fill="#fff" stroke="#8f86a0" stroke-width="2"/>
+    <circle cx="318" cy="191" r="6" fill="#fff" stroke="#8f86a0" stroke-width="1.5"/>
+
+    <!-- FRONT TURN SIGNALS: amber, outboard and below the headlights -->
+    <rect x="126" y="214" width="42" height="16" rx="6" fill="#fdba74" stroke="#3b1466" stroke-width="2"/>
+    <rect x="332" y="214" width="42" height="16" rx="6" fill="#fdba74" stroke="#3b1466" stroke-width="2"/>
+
+    <!-- GRILLE between the lights = the strongest "this is the front" cue -->
+    <rect x="212" y="172" width="76" height="40" rx="7" fill="#241f2b" stroke="#3b1466" stroke-width="2.5"/>
+    <g stroke="#4b4453" stroke-width="3">
+      <line x1="220" y1="181" x2="280" y2="181"/><line x1="220" y1="190" x2="280" y2="190"/>
+      <line x1="220" y1="199" x2="280" y2="199"/>
+    </g>
+    <!-- lower air intake + front plate -->
+    <rect x="196" y="234" width="108" height="14" rx="5" fill="#241f2b" opacity="0.85"/>
+    <rect x="222" y="216" width="56" height="26" rx="3" fill="#fff" stroke="#1f1235" stroke-width="2"/>
+    <text x="250" y="234" font-size="11" fill="#1f1235" text-anchor="middle" font-family="sans-serif">UT</text>
+
+    <!-- front tires peeking out below the body -->
+    <rect x="118" y="248" width="42" height="42" rx="8" fill="#1b1720" stroke="#000" stroke-width="2"/>
+    <rect x="340" y="248" width="42" height="42" rx="8" fill="#1b1720" stroke="#000" stroke-width="2"/>
+  `,
+  outSide: `
+    <rect x="0" y="0" width="500" height="320" fill="#f4f1f8"/>
+    <text x="250" y="24" font-size="12" fill="#581c87" text-anchor="middle" font-weight="700" font-family="sans-serif">Walking down the SIDE (front of car on the left)</text>
+    <line x1="20" y1="268" x2="480" y2="268" stroke="#c9c2d4" stroke-width="3"/>
+
+    <!-- car profile: hood rising into a raked windshield, roof, sloping rear -->
+    <path d="M52 236 L52 200 Q60 176 112 170 L168 166 L216 122 Q248 112 300 114 L352 124 L404 170
+             Q444 176 450 202 L450 236 Z" fill="#6d28a8" stroke="#3b1466" stroke-width="2.5"/>
+    <!-- greenhouse: front + rear door glass split by a B-pillar -->
+    <path d="M224 128 L296 120 L344 128 L352 160 L206 160 Z" fill="#cfe8f5" stroke="#3b1466" stroke-width="2"/>
+    <line x1="288" y1="122" x2="288" y2="160" stroke="#3b1466" stroke-width="5"/>
+    <path d="M232 132 L272 128 L240 156 L212 156 Z" fill="#fff" fill-opacity="0.25"/>
+    <!-- door shutlines + handles: what makes the eye read "car" -->
+    <path d="M206 160 L204 232" stroke="#3b1466" stroke-width="2"/>
+    <path d="M288 160 L288 234" stroke="#3b1466" stroke-width="2"/>
+    <path d="M356 160 L360 232" stroke="#3b1466" stroke-width="2"/>
+    <rect x="238" y="176" width="28" height="8" rx="4" fill="#3a3340"/>
+    <rect x="318" y="176" width="28" height="8" rx="4" fill="#3a3340"/>
+    <!-- beltline crease -->
+    <path d="M60 196 Q250 188 444 198" stroke="#3b1466" stroke-width="1.6" fill="none" opacity="0.7"/>
+
+    <!-- SIDE MIRROR on the door at the base of the A-pillar -->
+    <path d="M218 130 L198 124 L194 140 L216 144 Z" fill="#3a3340" stroke="#1f1235" stroke-width="2"/>
+    <rect x="216" y="132" width="8" height="5" rx="2" fill="#2c2733"/>
+
+    <!-- FUEL DOOR on the rear quarter panel, behind the rear wheel arch -->
+    <circle cx="418" cy="190" r="13" fill="#8b5cc4" stroke="#1f1235" stroke-width="2"/>
+    <circle cx="418" cy="190" r="4" fill="#1f1235"/>
+
+    <!-- wheel arches cut into the body -->
+    <path d="M92 236 a46 46 0 0 1 92 0" fill="#4a1a80"/>
+    <path d="M320 236 a46 46 0 0 1 92 0" fill="#4a1a80"/>
+
+    <!-- ===== WHEELS: concentric tire / sidewall / rim / spokes / lugs ===== -->
+    <!-- front wheel -->
+    <circle cx="138" cy="226" r="42" fill="#1b1720" stroke="#000" stroke-width="2"/>
+    <circle cx="138" cy="226" r="34" fill="none" stroke="#2c2733" stroke-width="3"/>
+    <circle cx="138" cy="226" r="24" fill="#8f86a0" stroke="#15121a" stroke-width="2"/>
+    <g stroke="#5c5468" stroke-width="3.5" stroke-linecap="round">
+      <line x1="138" y1="226" x2="138" y2="204"/><line x1="138" y1="226" x2="159" y2="233"/>
+      <line x1="138" y1="226" x2="151" y2="245"/><line x1="138" y1="226" x2="125" y2="245"/>
+      <line x1="138" y1="226" x2="117" y2="233"/>
+    </g>
+    <circle cx="138" cy="226" r="7" fill="#3a3340"/>
+    <g fill="#3a3340">
+      <circle cx="138" cy="213" r="3"/><circle cx="150" cy="222" r="3"/>
+      <circle cx="145" cy="236" r="3"/><circle cx="131" cy="236" r="3"/><circle cx="126" cy="222" r="3"/>
+    </g>
+    <!-- tread blocks around the front tire -->
+    <g stroke="#4b4453" stroke-width="3">
+      <path d="M138 188 v-6"/><path d="M165 199 l5 -4"/><path d="M176 226 h6"/>
+      <path d="M165 253 l5 4"/><path d="M138 264 v6"/><path d="M111 253 l-5 4"/>
+      <path d="M100 226 h-6"/><path d="M111 199 l-5 -4"/>
+    </g>
+    <!-- rear wheel -->
+    <circle cx="366" cy="226" r="42" fill="#1b1720" stroke="#000" stroke-width="2"/>
+    <circle cx="366" cy="226" r="34" fill="none" stroke="#2c2733" stroke-width="3"/>
+    <circle cx="366" cy="226" r="24" fill="#8f86a0" stroke="#15121a" stroke-width="2"/>
+    <g stroke="#5c5468" stroke-width="3.5" stroke-linecap="round">
+      <line x1="366" y1="226" x2="366" y2="204"/><line x1="366" y1="226" x2="387" y2="233"/>
+      <line x1="366" y1="226" x2="379" y2="245"/><line x1="366" y1="226" x2="353" y2="245"/>
+      <line x1="366" y1="226" x2="345" y2="233"/>
+    </g>
+    <circle cx="366" cy="226" r="7" fill="#3a3340"/>
+    <g fill="#3a3340">
+      <circle cx="366" cy="213" r="3"/><circle cx="378" cy="222" r="3"/>
+      <circle cx="373" cy="236" r="3"/><circle cx="359" cy="236" r="3"/><circle cx="354" cy="222" r="3"/>
+    </g>
+
+    <!-- ===== DOOR-JAMB STICKER: open the door, the PSI is printed here ===== -->
+    <rect x="176" y="176" width="26" height="40" rx="3" fill="#fff" stroke="#1f1235" stroke-width="2"/>
+    <g stroke="#6b5b85" stroke-width="1.4">
+      <line x1="181" y1="186" x2="197" y2="186"/><line x1="181" y1="194" x2="197" y2="194"/>
+      <line x1="181" y1="202" x2="197" y2="202"/>
+    </g>
+    <text x="189" y="172" font-size="6.5" fill="#581c87" text-anchor="middle" font-weight="700" font-family="sans-serif">PSI</text>
+
+    <!-- ===== TREAD-DEPTH INSET: you cannot teach this at wheel scale ===== -->
+    <rect x="24" y="40" width="128" height="86" rx="9" fill="#2c2733" stroke="#581c87" stroke-width="2.5"/>
+    <text x="88" y="57" font-size="9" fill="#facc15" text-anchor="middle" font-weight="700" font-family="sans-serif">TREAD close-up</text>
+    <g fill="#4b4453">
+      <rect x="38" y="64" width="20" height="50" rx="3"/><rect x="66" y="64" width="20" height="50" rx="3"/>
+      <rect x="94" y="64" width="20" height="50" rx="3"/><rect x="122" y="64" width="18" height="50" rx="3"/>
+    </g>
+    <circle cx="62" cy="92" r="13" fill="#b87333" stroke="#8a5423" stroke-width="1.5"/>
+    <text x="62" y="96" font-size="7" fill="#5c3a18" text-anchor="middle" font-family="sans-serif">1¢</text>
+    <text x="88" y="124" font-size="7" fill="#8f86a0" text-anchor="middle" font-style="italic" font-family="sans-serif">see all of his head = too worn</text>
+    <line x1="86" y1="126" x2="120" y2="192" stroke="#581c87" stroke-width="1.5" stroke-dasharray="4 3"/>
+  `,
+  outRear: `
+    <rect x="0" y="0" width="500" height="320" fill="#f4f1f8"/>
+    <text x="250" y="24" font-size="12" fill="#581c87" text-anchor="middle" font-weight="700" font-family="sans-serif">What the driver BEHIND you sees</text>
+    <line x1="30" y1="290" x2="470" y2="290" stroke="#c9c2d4" stroke-width="3"/>
+
+    <!-- roof + rear glass (more upright than a windshield) -->
+    <path d="M176 78 L324 78 L340 128 L160 128 Z" fill="#7b4bb0" stroke="#3b1466" stroke-width="2.5"/>
+    <path d="M186 84 L314 84 L328 124 L172 124 Z" fill="#cfe8f5" stroke="#3b1466" stroke-width="2"/>
+    <!-- rear defogger lines -->
+    <g stroke="#a8cfe0" stroke-width="1.6">
+      <line x1="192" y1="96" x2="308" y2="96"/><line x1="186" y1="106" x2="314" y2="106"/>
+      <line x1="180" y1="116" x2="320" y2="116"/>
+    </g>
+    <!-- body -->
+    <path d="M160 128 L340 128 L384 248 Q250 262 116 248 Z" fill="#6d28a8" stroke="#3b1466" stroke-width="2.5"/>
+    <!-- FLAT TRUNK DECK: the instant "this is the back" cue -->
+    <path d="M150 152 L350 152" stroke="#3b1466" stroke-width="2.5"/>
+    <path d="M136 180 Q250 172 364 180" stroke="#3b1466" stroke-width="2" fill="none"/>
+    <!-- third brake light (CHMSL) on the deck -->
+    <rect x="228" y="138" width="44" height="8" rx="3" fill="#dc2626" stroke="#7f1d1d" stroke-width="1"/>
+
+    <!-- ===== TAIL LIGHT CLUSTERS: whole cluster red, segments inside ===== -->
+    <rect x="128" y="188" width="72" height="40" rx="9" fill="#dc2626" stroke="#3b1466" stroke-width="2.5"/>
+    <rect x="300" y="188" width="72" height="40" rx="9" fill="#dc2626" stroke="#3b1466" stroke-width="2.5"/>
+    <!-- BRAKE segment: brighter red, upper part of each cluster -->
+    <rect x="136" y="194" width="56" height="14" rx="4" fill="#ef4444" stroke="#7f1d1d" stroke-width="1.2"/>
+    <rect x="308" y="194" width="56" height="14" rx="4" fill="#ef4444" stroke="#7f1d1d" stroke-width="1.2"/>
+    <!-- REVERSE segment: WHITE, inboard bottom of each cluster -->
+    <rect x="166" y="212" width="26" height="12" rx="3" fill="#fff" stroke="#7f1d1d" stroke-width="1.4"/>
+    <rect x="308" y="212" width="26" height="12" rx="3" fill="#fff" stroke="#7f1d1d" stroke-width="1.4"/>
+    <!-- rear TURN segment: amber, outboard bottom -->
+    <rect x="136" y="212" width="26" height="12" rx="3" fill="#fdba74" stroke="#7f1d1d" stroke-width="1.4"/>
+    <rect x="338" y="212" width="26" height="12" rx="3" fill="#fdba74" stroke="#7f1d1d" stroke-width="1.4"/>
+
+    <!-- rear plate + plate light -->
+    <rect x="222" y="206" width="56" height="26" rx="3" fill="#fff" stroke="#1f1235" stroke-width="2"/>
+    <text x="250" y="224" font-size="11" fill="#1f1235" text-anchor="middle" font-family="sans-serif">UT</text>
+    <rect x="238" y="198" width="24" height="5" rx="2" fill="#fef9c3" stroke="#8f86a0" stroke-width="1"/>
+
+    <!-- bumper -->
+    <path d="M132 238 Q250 250 368 238 L372 252 Q250 264 128 252 Z" fill="#5b2190" stroke="#3b1466" stroke-width="2"/>
+
+    <!-- EXHAUST: offset to one side under the bumper, not centred -->
+    <ellipse cx="306" cy="264" rx="15" ry="8" fill="#3a3340" stroke="#15121a" stroke-width="2"/>
+    <ellipse cx="306" cy="264" rx="8" ry="4" fill="#1b1720"/>
+
+    <!-- SPARE TIRE: hidden under the trunk floor, dashed + labelled -->
+    <circle cx="250" cy="172" r="24" fill="none" stroke="#d8d2e2" stroke-width="2.5" stroke-dasharray="6 5"/>
+    <circle cx="250" cy="172" r="9" fill="none" stroke="#d8d2e2" stroke-width="2"/>
+    <text x="250" y="200" font-size="8" fill="#6b5b85" text-anchor="middle" font-style="italic" font-family="sans-serif">spare: under the trunk floor</text>
+
+    <!-- rear tires peeking below -->
+    <rect x="118" y="248" width="42" height="42" rx="8" fill="#1b1720" stroke="#000" stroke-width="2"/>
+    <rect x="340" y="248" width="42" height="42" rx="8" fill="#1b1720" stroke="#000" stroke-width="2"/>
+  `
+};
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+const VIEWBOX = {
+  dash:'-24 0 548 356', cluster:'0 -18 500 372', pedals:'0 0 500 360',
+  engine:'0 0 500 360', outFront:'0 0 500 320', outSide:'0 0 500 320', outRear:'0 0 500 320'
+};
+const TOUCH_COPY = {
+  yes:  { cls:'touch-yes',  label:'✋ You operate this' },
+  read: { cls:'touch-read', label:'👀 You READ this — it tells you something' },
+  care: { cls:'touch-care', label:'⚠️ Check or handle it — engine off and cool' },
+  no:   { cls:'touch-no',   label:'⛔ Know it, but do not touch — leave it to a mechanic' }
+};
+const seen = {};
+SECTIONS.forEach(s => seen[s.id] = new Set());
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function buildTabs() {
+  const t = document.getElementById('tabs');
+  SECTIONS.forEach((s, i) => {
+    const b = document.createElement('button');
+    b.className = 'tab' + (i === 0 ? ' active' : '');
+    b.dataset.target = s.id;
+    b.innerHTML = '<span class="tnum">' + (i+1) + '</span>' + s.icon + ' ' + esc(s.name);
+    b.addEventListener('click', () => activate(s.id));
+    t.appendChild(b);
+  });
+  const q = document.createElement('button');
+  q.className = 'tab';
+  q.dataset.target = 'quiz';
+  q.innerHTML = '<span class="tnum">?</span>📝 Quiz';
+  q.addEventListener('click', () => activate('quiz'));
+  t.appendChild(q);
+}
+
+function buildPanels() {
+  const wrap = document.getElementById('panels');
+  SECTIONS.forEach((s, i) => {
+    const p = document.createElement('div');
+    p.className = 'panel' + (i === 0 ? ' active' : '');
+    p.id = 'panel-' + s.id;
+
+    // A section may be drawn as several views (a wide shot plus zoomed panels).
+    // Sections without `views` behave exactly as before: one view, one diagram.
+    const views = s.views || [{ key: s.diagram, label: null, hint: null }];
+
+    // The dot is drawn OFFSET from the part so it never covers what it labels.
+    // A leader line + a small anchor ring point back at the exact spot.
+    const dotFor = (part) => {
+      const ax = part.x, ay = part.y;                 // the actual part
+      const bx = ax + (part.dx || 0), by = ay + (part.dy || 0);  // where the dot sits
+      const moved = (part.dx || part.dy);
+      return '<g class="hotspot" data-sec="' + s.id + '" data-n="' + part.n + '" tabindex="0" role="button" ' +
+        'aria-label="' + esc(part.name) + '">' +
+        (moved ? '<line class="leader" x1="' + ax + '" y1="' + ay + '" x2="' + bx + '" y2="' + by + '"/>' +
+                 '<circle class="anchor" cx="' + ax + '" cy="' + ay + '" r="3.2"/>' : '') +
+        '<circle class="glow" cx="' + bx + '" cy="' + by + '" r="17" fill="#facc15" fill-opacity="0.45"/>' +
+        '<circle class="dot" cx="' + bx + '" cy="' + by + '" r="10.5"/>' +
+        '<text class="dotlabel" x="' + bx + '" y="' + (by + 3.5) + '" text-anchor="middle">' + part.n + '</text>' +
+        '<circle class="hit" cx="' + bx + '" cy="' + by + '" r="16"/>' +
+      '</g>';
+    };
+
+    // Sub-tabs when a section has several views, so only ONE diagram shows at a
+    // time — no scrolling past pictures to reach the answer.
+    const subtabs = views.length > 1
+      ? '<div class="subtabs">' + views.map((v, vi) =>
+          '<button class="subtab' + (vi===0?' active':'') + '" data-sec="' + s.id + '" data-view="' + v.key + '">' +
+            esc(v.label.replace(/^(Wide view|Zoom) — /,'')) +
+          '</button>').join('') + '</div>'
+      : '';
+
+    const diagrams = views.map((v, vi) => {
+      const mine = s.parts.filter(part => (part.view || s.diagram) === v.key);
+      return '<div class="viewbox' + (vi===0?' active':'') + '" data-sec="' + s.id + '" data-view="' + v.key + '">' +
+        (v.hint ? '<p class="viewhint">' + esc(v.hint) + '</p>' : '') +
+        '<div class="diagram-wrap">' +
+          '<svg class="diagram" viewBox="' + VIEWBOX[v.key] + '" role="img" ' +
+               'aria-label="Labeled diagram: ' + esc(v.label || s.name) + '">' +
+            ART[v.key] + mine.map(dotFor).join('') +
+          '</svg>' +
+        '</div></div>';
+    }).join('');
+
+    const list = s.parts.map(part =>
+      '<button class="partbtn" data-sec="' + s.id + '" data-n="' + part.n + '">' +
+        '<span class="chk">✓</span><span>' + part.n + '. ' + esc(part.name) + '</span>' +
+      '</button>'
+    ).join('');
+
+    p.innerHTML =
+      '<div class="card">' +
+        '<h2>' + s.icon + ' ' + esc(s.name) + '</h2>' +
+        '<p class="hint">' + esc(s.blurb) + '</p>' +
+        subtabs +
+        diagrams +
+        '<div class="legend">' +
+          '<span><i class="swatch" style="background:#facc15"></i> not learned yet</span>' +
+          '<span><i class="swatch" style="background:#16a34a"></i> learned</span>' +
+        '</div>' +
+        '<div class="readout" id="readout-' + s.id + '">' +
+          '<p class="rempty">Tap a numbered dot on the diagram — or a part below — to learn what it is.</p>' +
+        '</div>' +
+        '<div class="partlist">' + list + '</div>' +
+        '<p class="progress-line" id="prog-' + s.id + '"><b>0</b> of ' + s.parts.length + ' learned in this section.</p>' +
+      '</div>';
+    wrap.appendChild(p);
+  });
+
+  // quiz panel
+  const qp = document.createElement('div');
+  qp.className = 'panel';
+  qp.id = 'panel-quiz';
+  qp.innerHTML =
+    '<div class="card">' +
+      '<h2>📝 Know Your Car — Quiz</h2>' +
+      '<p class="hint">' + QUESTIONS.length + ' questions &middot; Pass: 80% (' + Math.ceil(QUESTIONS.length * 0.8) + ' correct). Work through the four sections first.</p>' +
+      '<form id="quiz"></form>' +
+      '<button class="submit-btn" id="submit">Grade my quiz</button>' +
+      '<div id="result"></div>' +
+    '</div>';
+  wrap.appendChild(qp);
+}
+
+function activate(id) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.target === id));
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + id));
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showPart(secId, n) {
+  const sec = SECTIONS.find(s => s.id === secId);
+  const part = sec.parts.find(p => p.n === n);
+  if (!part) return;
+  revealView(secId, part);
+  const t = TOUCH_COPY[part.touch];
+  const ro = document.getElementById('readout-' + secId);
+  ro.innerHTML =
+    '<p class="rname">' + part.n + '. ' + esc(part.name) + '</p>' +
+    '<p class="rwhat">' + esc(part.what) + '</p>' +
+    '<p class="rtouch ' + t.cls + '">' + t.label + '</p>';
+
+  seen[secId].add(n);
+  document.querySelectorAll('.hotspot[data-sec="' + secId + '"][data-n="' + n + '"]').forEach(el => el.classList.add('seen'));
+  document.querySelectorAll('.partbtn[data-sec="' + secId + '"][data-n="' + n + '"]').forEach(el => el.classList.add('seen'));
+  const prog = document.getElementById('prog-' + secId);
+  prog.innerHTML = '<b>' + seen[secId].size + '</b> of ' + sec.parts.length + ' learned in this section.';
+  saveProgress();
+}
+
+function saveProgress() {
+  try {
+    const out = {};
+    Object.keys(seen).forEach(k => out[k] = Array.from(seen[k]));
+    localStorage.setItem('dl_kyc_seen', JSON.stringify(out));
+  } catch (e) {}
+}
+
+function loadProgress() {
+  try {
+    const raw = JSON.parse(localStorage.getItem('dl_kyc_seen') || '{}');
+    Object.keys(raw).forEach(k => {
+      if (!seen[k]) return;
+      (raw[k] || []).forEach(n => {
+        seen[k].add(n);
+        document.querySelectorAll('.hotspot[data-sec="' + k + '"][data-n="' + n + '"]').forEach(el => el.classList.add('seen'));
+        document.querySelectorAll('.partbtn[data-sec="' + k + '"][data-n="' + n + '"]').forEach(el => el.classList.add('seen'));
+      });
+      const sec = SECTIONS.find(s => s.id === k);
+      const prog = document.getElementById('prog-' + k);
+      if (sec && prog) prog.innerHTML = '<b>' + seen[k].size + '</b> of ' + sec.parts.length + ' learned in this section.';
+    });
+  } catch (e) {}
+}
+
+function wireSubtabs() {
+  document.querySelectorAll('.subtab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sec = btn.dataset.sec, view = btn.dataset.view;
+      document.querySelectorAll('.subtab[data-sec="' + sec + '"]').forEach(b =>
+        b.classList.toggle('active', b.dataset.view === view));
+      document.querySelectorAll('.viewbox[data-sec="' + sec + '"]').forEach(v =>
+        v.classList.toggle('active', v.dataset.view === view));
+    });
+  });
+}
+
+// Jump to whichever view holds a part, so clicking it in the list always
+// reveals the dot instead of leaving it on a hidden diagram.
+function revealView(secId, part) {
+  const sec = SECTIONS.find(s => s.id === secId);
+  if (!sec || !sec.views) return;
+  const key = part.view || sec.diagram;
+  const btn = document.querySelector('.subtab[data-sec="' + secId + '"][data-view="' + key + '"]');
+  if (btn && !btn.classList.contains('active')) btn.click();
+}
+
+function wireDiagrams() {
+  document.querySelectorAll('.hotspot').forEach(el => {
+    const go = () => showPart(el.dataset.sec, parseInt(el.dataset.n, 10));
+    el.addEventListener('click', go);
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
+    });
+  });
+  document.querySelectorAll('.partbtn').forEach(el => {
+    el.addEventListener('click', () => showPart(el.dataset.sec, parseInt(el.dataset.n, 10)));
+  });
+}
+
+/* ---------- quiz ---------- */
+function renderQuiz() {
+  const form = document.getElementById('quiz');
+  QUESTIONS.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'question';
+    div.id = 'kq' + i;
+    let html = "<div class='q-num'>Question " + (i+1) + " &middot; " + esc(q.section) + "</div>";
+    html += "<div class='q-text'>" + esc(q.question) + "</div><div class='choices'>";
+    q.choices.forEach((c, ci) => {
+      html += "<label><input type='radio' name='kq" + i + "' value='" + ci + "'> " + esc(c) + "</label>";
+    });
+    html += "</div><div class='explanation'><strong>Answer:</strong> " + esc(q.choices[q.correct_index]) +
+            "<br>" + esc(q.explanation) + "</div>";
+    div.innerHTML = html;
+    form.appendChild(div);
+  });
+}
+
+function gradeQuiz() {
+  let correct = 0;
+  const misses = [];
+  QUESTIONS.forEach((q, i) => {
+    const picked = document.querySelector('input[name="kq' + i + '"]:checked');
+    const div = document.getElementById('kq' + i);
+    div.classList.add('show');
+    if (picked && parseInt(picked.value, 10) === q.correct_index) {
+      correct++; div.classList.add('correct');
+    } else {
+      div.classList.add('wrong');
+      misses.push(q.question);
+    }
+  });
+  const total = QUESTIONS.length;
+  const pct = Math.round((correct / total) * 100);
+  const passed = pct >= 80;
+  document.getElementById('result').innerHTML =
+    '<div class="score-card"><h2>Your score</h2>' +
+    '<div class="score-pct">' + pct + '%</div>' +
+    '<p>' + correct + ' of ' + total + ' correct</p>' +
+    '<span class="' + (passed ? 'pass-badge' : 'fail-badge') + '">' +
+      (passed ? 'PASSED' : 'Keep studying — 80% to pass') + '</span></div>';
+
+  // Same progress/earn plumbing the other Drive quizzes use.
+  try {
+    const attempts = JSON.parse(localStorage.getItem('dl_attempts') || '[]');
+    attempts.push({ quiz: 'know-your-car', score: correct, total: total, pct: pct, at: new Date().toISOString() });
+    localStorage.setItem('dl_attempts', JSON.stringify(attempts));
+    const prevMisses = JSON.parse(localStorage.getItem('dl_misses') || '[]');
+    localStorage.setItem('dl_misses', JSON.stringify(prevMisses.concat(misses)));
+  } catch (e) {}
+  try { if (window.driveEarnToast) window.driveEarnToast.postProgressAndShow(); } catch (e) {}
+
+  document.getElementById('submit').disabled = true;
+  document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+/* ---------- boot ---------- */
+buildTabs();
+buildPanels();
+wireSubtabs();
+wireDiagrams();
+loadProgress();
+renderQuiz();
+document.getElementById('submit').addEventListener('click', gradeQuiz);
+</script>
+</body></html>
