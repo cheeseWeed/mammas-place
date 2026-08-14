@@ -144,3 +144,63 @@ export function computePerformReward(input: PerformRewardInput): PracticeReward 
     reason: `Polish — ${plays} play-through${plays === 1 ? '' : 's'} (×50 MP) + quality ${score}/10`,
   };
 }
+
+/* ============================================================
+   NOTE READER (sight-reading game)
+   ============================================================ */
+
+/** Per-note reward for reading a note correctly. */
+export const SIGHTREAD_PER_NOTE_CENTS = 0.05 * MP;
+/** Accuracy bonus, paid only from 80% up. Index = tier. */
+const SIGHTREAD_ACCURACY_BONUS_MP = [1, 2, 3, 5, 8]; // 80/85/90/95/100%
+/** Tempo mode is genuinely harder — playing in time is worth more. */
+export const SIGHTREAD_TEMPO_MULT = 1.5;
+/**
+ * One run cannot pay more than this, however long the song.
+ *
+ * Deliberately well under the 100 MP/day practice cap: reading notes in a game
+ * should NOT out-earn actually practising an instrument. A perfect scale pays
+ * ~3 MP; a full song at tempo tops out at 20.
+ */
+export const SIGHTREAD_RUN_CAP_CENTS = 15 * MP;
+
+export interface SightReadRewardInput {
+  hits: number;
+  total: number;
+  mode: 'wait' | 'tempo' | 'practice';
+}
+
+/**
+ * Reward for one finished run of the note reader.
+ *
+ * Same shape as every other section: a small per-correct-item base, plus a
+ * Fibonacci accuracy bonus that only kicks in at 80%. Practice mode pays
+ * nothing — it exists so a kid can noodle without farming MP.
+ */
+export function computeSightReadReward(input: SightReadRewardInput): PracticeReward {
+  const total = Math.max(0, Math.floor(input.total));
+  const hits = Math.min(Math.max(0, Math.floor(input.hits)), total);
+  if (input.mode === 'practice') {
+    return { cents: 0, reason: 'Practice mode — no MP, just play' };
+  }
+  if (total === 0) return { cents: 0, reason: 'No notes played' };
+
+  const accuracy = Math.round((hits / total) * 100);
+  const base = hits * SIGHTREAD_PER_NOTE_CENTS;
+
+  let bonus = 0;
+  if (accuracy >= 100) bonus = SIGHTREAD_ACCURACY_BONUS_MP[4] * MP;
+  else if (accuracy >= 95) bonus = SIGHTREAD_ACCURACY_BONUS_MP[3] * MP;
+  else if (accuracy >= 90) bonus = SIGHTREAD_ACCURACY_BONUS_MP[2] * MP;
+  else if (accuracy >= 85) bonus = SIGHTREAD_ACCURACY_BONUS_MP[1] * MP;
+  else if (accuracy >= 80) bonus = SIGHTREAD_ACCURACY_BONUS_MP[0] * MP;
+
+  const mult = input.mode === 'tempo' ? SIGHTREAD_TEMPO_MULT : 1;
+  const cents = Math.min(Math.round((base + bonus) * mult), SIGHTREAD_RUN_CAP_CENTS);
+
+  const modeLabel = input.mode === 'tempo' ? ' at tempo' : '';
+  return {
+    cents,
+    reason: `Note reader${modeLabel} — ${hits}/${total} notes (${accuracy}%)`,
+  };
+}

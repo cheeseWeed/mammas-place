@@ -158,6 +158,25 @@ function MusicInner() {
         <TunerPanel />
       </div>
 
+      {/* Note Reader — the sight-reading game. Its own earn path
+          (/api/music/sightread), idempotent per song+mode+day. */}
+      <div className="max-w-3xl mx-auto mb-6">
+        <Link
+          href="/music/read"
+          className="flex items-center justify-between gap-3 rounded-2xl border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-white p-4 hover:border-purple-400"
+        >
+          <span>
+            <span className="block font-bold text-purple-900">🎵 Note Reader</span>
+            <span className="block text-sm text-zinc-600">
+              Read the notes as they scroll by and play them on your instrument — the mic keeps score.
+            </span>
+          </span>
+          <span className="shrink-0 rounded-lg bg-purple-800 px-4 py-2 text-sm font-semibold text-white">
+            Play
+          </span>
+        </Link>
+      </div>
+
       {plan && pieces.length > 0 && (
         <DailyGoalBanner
           goal={plan.dailyLineGoal}

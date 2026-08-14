@@ -1,0 +1,329 @@
+'use client';
+
+// Note-reading game — the "Guitar Hero for sheet music" mode.
+//
+// The staff scrolls toward a hit line; the kid plays the notes on their real
+// instrument and the mic scores them. All the game rules live in
+// lib/music/sightread.ts (pure, unit-tested); this file is the canvas + the
+// Web Audio wiring, which reuses the tuner's chain:
+//   getUserMedia -> AudioContext -> AnalyserNode -> detectPitch -> frequencyToNote
+//
+// Mic settings mirror TunerPanel: echoCancellation / noiseSuppression /
+// autoGainControl are all OFF, because that voice-call processing eats
+// sustained instrument tones and wrecks pitch detection.
+
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { detectPitch, frequencyToNote } from '@/lib/music/pitch';
+import {
+  SONGS,
+  advanceGame,
+  initGame,
+  isSharp,
+  ledgerLines,
+  scoreRun,
+  staffPosition,
+  type GameMode,
+  type GameState,
+  type Song,
+} from '@/lib/music/sightread';
+
+type Status = 'idle' | 'starting' | 'listening' | 'denied' | 'no-mic' | 'error';
+
+// 40 ms: fast enough to feel responsive for rhythm, still ~2 analyser frames.
+const POLL_MS = 40;
+
+const STAFF_STEP = 9;      // px between a line and the next space
+const NOTE_SPACING = 74;   // px between successive notes
+const HIT_X = 150;         // where the hit line sits
+const STAFF_TOP = 70;      // y of the top staff line
+
+export default function SightReadGame() {
+  const [songId, setSongId] = useState(SONGS[0].id);
+  const [mode, setMode] = useState<GameMode>('wait');
+  const [status, setStatus] = useState<Status>('idle');
+  const [game, setGame] = useState<GameState | null>(null);
+  const [heard, setHeard] = useState<{ midi: number; name: string; octave: number; cents: number } | null>(null);
+  const [earned, setEarned] = useState<string | null>(null);
+
+  const song: Song = SONGS.find(s => s.id === songId) ?? SONGS[0];
+
+  const ctxRef = useRef<AudioContext | null>(null);
+  const streamRef = useRef<MediaStream | null>(null);
+  const analyserRef = useRef<AnalyserNode | null>(null);
+  const bufRef = useRef<Float32Array<ArrayBuffer> | null>(null);
+  const pollRef = useRef<number | null>(null);
+  const gameRef = useRef<GameState | null>(null);
+  const lastTickRef = useRef<number>(0);
+  const submittedRef = useRef(false);
+
+  useEffect(() => { gameRef.current = game; }, [game]);
+
+  const stop = useCallback(() => {
+    if (pollRef.current) { window.clearInterval(pollRef.current); pollRef.current = null; }
+    streamRef.current?.getTracks().forEach(t => t.stop());
+    streamRef.current = null;
+    ctxRef.current?.close().catch(() => {});
+    ctxRef.current = null;
+    analyserRef.current = null;
+    setStatus('idle');
+    setHeard(null);
+  }, []);
+
+  useEffect(() => stop, [stop]);
+
+  // Post the finished run through the same earn path every section uses. The
+  // SERVER decides the reward — the client never says how much MP to pay.
+  const submitRun = useCallback(async (finished: GameState) => {
+    if (submittedRef.current) return;
+    submittedRef.current = true;
+    const s = scoreRun(finished.results);
+    if (s.total === 0) return;
+    try {
+      const res = await fetch('/api/music/sightread', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          songId: finished.songId,
+          mode: finished.mode,
+          hits: s.hits,
+          total: s.total,
+        }),
+      });
+      if (res.status === 401 || res.status === 404) {
+        setEarned('Log in on the Music page to keep the MP you earn here.');
+        return;
+      }
+      const data = await res.json().catch(() => null);
+      if (data && typeof data.earnedCents === 'number' && data.earnedCents > 0) {
+        setEarned(`+${(data.earnedCents / 100).toFixed(2)} MP earned!`);
+      } else if (data?.reason === 'duplicate') {
+        setEarned('Already earned for this run today.');
+      } else if (data?.reason === 'sabbath') {
+        setEarned('The shop and most learning rest on Sunday — play for fun today.');
+      }
+    } catch {
+      /* offline — the run still counted on screen */
+    }
+  }, []);
+
+  const poll = useCallback(() => {
+    const analyser = analyserRef.current, buf = bufRef.current, ctx = ctxRef.current;
+    if (!analyser || !buf || !ctx) return;
+    analyser.getFloatTimeDomainData(buf);
+    const freq = detectPitch(buf, ctx.sampleRate);
+    const info = freq > 0 ? frequencyToNote(freq) : null;
+    setHeard(info ? { midi: info.midi, name: info.name, octave: info.octave, cents: info.cents } : null);
+
+    const now = performance.now();
+    const dtMs = lastTickRef.current ? now - lastTickRef.current : 0;
+    lastTickRef.current = now;
+
+    const cur = gameRef.current;
+    if (!cur || cur.done) return;
+    const beatsPerMs = song.bpm / 60 / 1000;
+    const next = advanceGame(cur, song, {
+      heardMidi: info ? info.midi : null,
+      cents: info ? info.cents : 0,
+      deltaBeats: cur.mode === 'tempo' ? dtMs * beatsPerMs : 0,
+    });
+    if (next !== cur) {
+      gameRef.current = next;
+      setGame(next);
+      if (next.done && next.mode !== 'practice') void submitRun(next);
+    }
+  }, [song, submitRun]);
+
+  const start = useCallback(async () => {
+    setStatus('starting');
+    setEarned(null);
+    submittedRef.current = false;
+    const fresh = initGame(song, mode);
+    gameRef.current = fresh;
+    setGame(fresh);
+    lastTickRef.current = 0;
+    try {
+      if (!navigator.mediaDevices?.getUserMedia) { setStatus('error'); return; }
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false },
+      });
+      streamRef.current = stream;
+      const ctx = new AudioContext();
+      ctxRef.current = ctx;
+      await ctx.resume();
+      const analyser = ctx.createAnalyser();
+      analyser.fftSize = 4096;
+      ctx.createMediaStreamSource(stream).connect(analyser);
+      analyserRef.current = analyser;
+      bufRef.current = new Float32Array(analyser.fftSize);
+      setStatus('listening');
+      pollRef.current = window.setInterval(poll, POLL_MS);
+    } catch (e) {
+      streamRef.current?.getTracks().forEach(t => t.stop());
+      streamRef.current = null;
+      const name = e instanceof DOMException ? e.name : '';
+      if (name === 'NotAllowedError' || name === 'SecurityError') setStatus('denied');
+      else if (name === 'NotFoundError' || name === 'OverconstrainedError' || name === 'NotReadableError') setStatus('no-mic');
+      else setStatus('error');
+    }
+  }, [song, mode, poll]);
+
+  const cursor = game?.cursor ?? 0;
+  const listening = status === 'listening';
+  const result = game?.done ? scoreRun(game.results) : null;
+
+  // y of a staff position: 0 = bottom line, 8 = top line
+  const yFor = (pos: number) => STAFF_TOP + (8 - pos) * STAFF_STEP;
+
+  return (
+    <div className="rounded-2xl border-2 border-purple-200 bg-white p-4 sm:p-6">
+      <h2 className="text-xl font-bold text-purple-900">Note Reader</h2>
+      <p className="mt-1 text-sm text-zinc-600">
+        Play the notes on your instrument — the microphone listens and keeps score.
+      </p>
+
+      {/* --- setup --- */}
+      <div className="mt-4 flex flex-wrap gap-3">
+        <label className="text-sm">
+          <span className="block font-semibold text-purple-900">Song</span>
+          <select
+            value={songId}
+            onChange={e => { stop(); setGame(null); setSongId(e.target.value); }}
+            disabled={listening}
+            className="mt-1 rounded-lg border border-zinc-300 px-3 py-2 disabled:opacity-50"
+          >
+            {SONGS.map(s => (
+              <option key={s.id} value={s.id}>{s.title} ({s.level})</option>
+            ))}
+          </select>
+        </label>
+
+        <label className="text-sm">
+          <span className="block font-semibold text-purple-900">Mode</span>
+          <select
+            value={mode}
+            onChange={e => { stop(); setGame(null); setMode(e.target.value as GameMode); }}
+            disabled={listening}
+            className="mt-1 rounded-lg border border-zinc-300 px-3 py-2 disabled:opacity-50"
+          >
+            <option value="wait">Easy — waits for you</option>
+            <option value="tempo">Hard — moves at {song.bpm} BPM</option>
+            <option value="practice">Practice — no score</option>
+          </select>
+        </label>
+
+        <div className="flex items-end">
+          {listening
+            ? <button onClick={stop} className="rounded-lg bg-zinc-700 px-5 py-2 font-semibold text-white">Stop</button>
+            : <button onClick={start} className="rounded-lg bg-purple-800 px-5 py-2 font-semibold text-white">
+                {game?.done ? 'Play again' : 'Start'}
+              </button>}
+        </div>
+      </div>
+
+      {/* --- mic trouble --- */}
+      {status === 'denied' && (
+        <p className="mt-3 rounded-lg bg-amber-50 p-3 text-sm text-amber-900">
+          The microphone is blocked. Allow it in your browser&rsquo;s address bar, then press Start again.
+        </p>
+      )}
+      {status === 'no-mic' && (
+        <p className="mt-3 rounded-lg bg-amber-50 p-3 text-sm text-amber-900">
+          No microphone found. Plug one in (or use a device with one) and press Start.
+        </p>
+      )}
+      {status === 'error' && (
+        <p className="mt-3 rounded-lg bg-red-50 p-3 text-sm text-red-800">
+          Could not start the microphone on this device.
+        </p>
+      )}
+
+      {/* --- the staff --- */}
+      <div className="mt-4 overflow-hidden rounded-xl border border-zinc-200 bg-[#fbfaff]">
+        <svg viewBox="0 0 700 200" className="block w-full" role="img" aria-label={`${song.title} — note reader`}>
+          {/* five staff lines */}
+          {[0, 2, 4, 6, 8].map(pos => (
+            <line key={pos} x1="0" y1={yFor(pos)} x2="700" y2={yFor(pos)} stroke="#c9c2d4" strokeWidth="1.5" />
+          ))}
+          {/* clef */}
+          <text x="14" y={yFor(2) + 8} fontSize="52" fill="#581c87" fontFamily="serif">
+            {song.clef === 'treble' ? '\u{1D11E}' : '\u{1D122}'}
+          </text>
+          {/* hit line */}
+          <line x1={HIT_X} y1={STAFF_TOP - 26} x2={HIT_X} y2={STAFF_TOP + 8 * STAFF_STEP + 26}
+                stroke="#facc15" strokeWidth="4" strokeLinecap="round" />
+
+          {/* notes, scrolled so the current one sits on the hit line */}
+          <g transform={`translate(${HIT_X - cursor * NOTE_SPACING}, 0)`}>
+            {song.notes.map((n, i) => {
+              const pos = staffPosition(n.midi, song.clef);
+              const x = i * NOTE_SPACING;
+              const y = yFor(pos);
+              const res = game?.results.find(r => r.index === i);
+              const fill = res ? (res.hit ? '#16a34a' : '#dc2626') : i === cursor ? '#581c87' : '#8f86a0';
+              const isCurrent = i === cursor && !game?.done;
+              return (
+                <g key={i} opacity={i < cursor && !res ? 0.35 : 1}>
+                  {ledgerLines(pos).map(lp => (
+                    <line key={lp} x1={x - 13} y1={yFor(lp)} x2={x + 13} y2={yFor(lp)} stroke="#8f86a0" strokeWidth="1.5" />
+                  ))}
+                  {isCurrent && <circle cx={x} cy={y} r="17" fill="#facc15" fillOpacity="0.35" />}
+                  <ellipse cx={x} cy={y} rx="8.5" ry="6.5" fill={fill} transform={`rotate(-18 ${x} ${y})`} />
+                  {/* stem: down for high notes, up for low, like real notation */}
+                  <line
+                    x1={pos >= 4 ? x - 8 : x + 8} y1={y}
+                    x2={pos >= 4 ? x - 8 : x + 8} y2={pos >= 4 ? y + 34 : y - 34}
+                    stroke={fill} strokeWidth="2"
+                  />
+                  {isSharp(n.midi) && (
+                    <text x={x - 26} y={y + 5} fontSize="17" fill={fill} fontFamily="serif">&#9839;</text>
+                  )}
+                  {/* half/whole notes read as hollow */}
+                  {n.beats >= 2 && <ellipse cx={x} cy={y} rx="4.5" ry="3" fill="#fbfaff" transform={`rotate(-18 ${x} ${y})`} />}
+                </g>
+              );
+            })}
+          </g>
+        </svg>
+      </div>
+
+      {/* --- live readout --- */}
+      <div className="mt-3 flex flex-wrap items-center gap-4 text-sm">
+        <span className="text-zinc-600">
+          Play: <b className="text-purple-900">
+            {game && !game.done && song.notes[cursor]
+              ? noteLabel(song.notes[cursor].midi)
+              : '—'}
+          </b>
+        </span>
+        <span className="text-zinc-600">
+          Hearing: <b className={heard ? 'text-green-700' : 'text-zinc-400'}>
+            {heard ? `${heard.name}${heard.octave}` : 'listening…'}
+          </b>
+          {heard && Math.abs(heard.cents) > 25 && (
+            <span className="ml-1 text-amber-700">({heard.cents > 0 ? 'sharp' : 'flat'})</span>
+          )}
+        </span>
+        {game && !game.done && (
+          <span className="text-zinc-600">Note <b>{cursor + 1}</b> of {song.notes.length}</span>
+        )}
+      </div>
+
+      {/* --- result --- */}
+      {result && (
+        <div className="mt-4 rounded-xl bg-gradient-to-br from-purple-800 to-purple-600 p-5 text-white">
+          <p className="text-3xl font-bold">{result.accuracy}%</p>
+          <p className="text-sm">{result.hits} of {result.total} notes hit</p>
+          <span className={`mt-2 inline-block rounded px-3 py-1 text-sm font-semibold ${result.passed ? 'bg-yellow-300 text-zinc-900' : 'bg-red-600'}`}>
+            {result.passed ? 'PASSED' : 'Keep practising — 80% to pass'}
+          </span>
+          {earned && <p className="mt-2 text-sm text-yellow-200">{earned}</p>}
+        </div>
+      )}
+    </div>
+  );
+}
+
+const NAMES = ['C', 'C♯', 'D', 'D♯', 'E', 'F', 'F♯', 'G', 'G♯', 'A', 'A♯', 'B'];
+function noteLabel(midi: number) {
+  return `${NAMES[((midi % 12) + 12) % 12]}${Math.floor(midi / 12) - 1}`;
+}
