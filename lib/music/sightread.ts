@@ -114,6 +114,71 @@ export const SONGS: Song[] = [
       { midi: 62, beats: 1.5 }, { midi: 60, beats: 0.5 }, { midi: 60, beats: 2 },
     ],
   },
+  /* ---- Transcribed by hand from Shepherd's actual sheet music.
+     Both are bass-clef cello parts in G major (one sharp: every F is F#).
+     Only the opening sections are here — enough to practise, short enough to
+     finish in a sitting. Double-stops, divisi and D.S. jumps are deliberately
+     NOT transcribed: the game listens for one pitch at a time. ---- */
+  {
+    id: 'dragon-dances-opening',
+    title: 'Dragon Dances (opening)',
+    source: 'transcribed',
+    bpm: 100,
+    clef: 'bass',
+    level: 'easy',
+    // Soon Hee Newbold — cut time, G major. Measures 5-20.
+    notes: [
+      // m5-8
+      { midi: 50, beats: 2 }, { midi: 47, beats: 2 },
+      { midi: 43, beats: 3 }, { midi: 47, beats: 1 },
+      { midi: 50, beats: 1 }, { midi: 52, beats: 1 }, { midi: 50, beats: 1 }, { midi: 47, beats: 1 },
+      { midi: 43, beats: 3 }, { midi: 47, beats: 1 },
+      // m9-12
+      { midi: 50, beats: 3 }, { midi: 47, beats: 1 },
+      { midi: 50, beats: 1 }, { midi: 52, beats: 1 }, { midi: 54, beats: 1 }, { midi: 52, beats: 1 },
+      { midi: 50, beats: 1 }, { midi: 47, beats: 1 }, { midi: 55, beats: 4 },
+      // m13-16
+      { midi: 54, beats: 2 }, { midi: 52, beats: 2 },
+      { midi: 50, beats: 3 }, { midi: 47, beats: 1 },
+      { midi: 50, beats: 1 }, { midi: 55, beats: 1 }, { midi: 54, beats: 1 }, { midi: 52, beats: 1 },
+      { midi: 50, beats: 3 }, { midi: 50, beats: 1 },
+      // m17-20
+      { midi: 57, beats: 4 },
+      { midi: 55, beats: 4 },
+      { midi: 54, beats: 4 },
+      { midi: 54, beats: 4 },
+    ],
+  },
+  {
+    id: 'one-bow-concerto-opening',
+    title: 'The One-Bow Concerto (opening)',
+    source: 'transcribed',
+    bpm: 88,
+    clef: 'bass',
+    level: 'easy',
+    // Richard Meyer — 4/4, G major, "Andante grazioso", sempre pizz.
+    // Measures 2-16 (m1 and the multi-bar rests are skipped).
+    notes: [
+      // m2-5
+      { midi: 43, beats: 1 }, { midi: 50, beats: 1 }, { midi: 50, beats: 2 },
+      { midi: 47, beats: 1 }, { midi: 50, beats: 1 }, { midi: 50, beats: 2 },
+      { midi: 47, beats: 1 }, { midi: 47, beats: 1 }, { midi: 43, beats: 2 },
+      { midi: 50, beats: 1 }, { midi: 50, beats: 1 }, { midi: 43, beats: 2 },
+      // m6-9
+      { midi: 43, beats: 1 }, { midi: 47, beats: 1 }, { midi: 52, beats: 2 },
+      { midi: 43, beats: 1 }, { midi: 47, beats: 1 }, { midi: 50, beats: 2 },
+      { midi: 47, beats: 1 }, { midi: 50, beats: 1 }, { midi: 52, beats: 1 }, { midi: 50, beats: 1 },
+      { midi: 47, beats: 1 }, { midi: 50, beats: 1 }, { midi: 52, beats: 2 },
+      // m11-14
+      { midi: 43, beats: 1 }, { midi: 47, beats: 1 }, { midi: 50, beats: 1 }, { midi: 52, beats: 1 },
+      { midi: 50, beats: 1 }, { midi: 47, beats: 1 }, { midi: 50, beats: 1 }, { midi: 43, beats: 1 },
+      { midi: 47, beats: 1 }, { midi: 50, beats: 1 }, { midi: 52, beats: 1 }, { midi: 50, beats: 1 },
+      { midi: 47, beats: 1 }, { midi: 50, beats: 1 }, { midi: 52, beats: 1 }, { midi: 54, beats: 1 },
+      // m15-16
+      { midi: 55, beats: 2 }, { midi: 52, beats: 2 },
+      { midi: 50, beats: 1 }, { midi: 47, beats: 1 }, { midi: 43, beats: 2 },
+    ],
+  },
   {
     id: 'cello-open-strings',
     title: 'Cello Open Strings',
