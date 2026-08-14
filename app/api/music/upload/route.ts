@@ -115,9 +115,20 @@ export async function POST(req: NextRequest) {
   // Storage is checked AFTER parsing, so a kid with an unreadable file is told
   // their file could not be read — not that the server is misconfigured, which
   // is true but useless to them.
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+  //
+  // Check the token's SHAPE, not just its presence. An empty-string token is
+  // the failure that actually happened here: Vercel accepted a blank value, the
+  // dashboard still displayed the variable as "Encrypted", and @vercel/blob
+  // silently fell back to OIDC auth — surfacing as an opaque "Could not store
+  // that file" with nothing pointing at the credential.
+  const blobToken = process.env.BLOB_READ_WRITE_TOKEN;
+  if (!blobToken || !blobToken.startsWith('vercel_blob_rw_')) {
     return NextResponse.json(
-      { error: 'File storage is not set up on this environment yet — tell a parent.' },
+      {
+        error: blobToken
+          ? 'File storage is misconfigured (the storage token is set but not valid) — tell a parent.'
+          : 'File storage is not set up on this environment yet — tell a parent.',
+      },
       { status: 503 },
     );
   }
@@ -130,8 +141,16 @@ export async function POST(req: NextRequest) {
       addRandomSuffix: false,
     });
     url = blob.url;
-  } catch {
-    return NextResponse.json({ error: 'Could not store that file' }, { status: 502 });
+  } catch (err) {
+    // Surface the real reason. Swallowing it left "Could not store that file"
+    // as the only clue, which is useless for diagnosing a token or config
+    // problem — the two most likely causes by far.
+    const detail = err instanceof Error ? err.message : String(err);
+    console.error('[music/upload] blob put failed:', detail);
+    return NextResponse.json(
+      { error: `Could not store that file: ${detail}` },
+      { status: 502 },
+    );
   }
 
   // Record the upload on the kid's music profile so it shows up in their list
