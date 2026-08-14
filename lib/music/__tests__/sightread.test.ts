@@ -8,6 +8,9 @@ import {
   initGame,
   advanceGame,
   scoreRun,
+  isStuck,
+  skipStuckNote,
+  STUCK_TICK_LIMIT,
   type Song,
 } from '../sightread';
 
@@ -227,5 +230,57 @@ describe('scoreRun', () => {
     expect(scoreRun(mk(7, 3)).accuracy).toBe(70);
     expect(scoreRun(mk(7, 3)).passed).toBe(false);
     expect(scoreRun(mk(10, 0)).accuracy).toBe(100);
+  });
+});
+
+describe('anti-fixation: the microphone is not always right', () => {
+  const scaleSong = SONGS.find(s => s.id === 'c-major-scale')!;
+
+  it('counts how long a note has been waiting in wait mode', () => {
+    let g = initGame(scaleSong, 'wait');
+    expect(g.stuckTicks).toBe(0);
+    for (let i = 0; i < 5; i++) {
+      g = advanceGame(g, scaleSong, { heardMidi: null, cents: 0, deltaBeats: 0 });
+    }
+    expect(g.stuckTicks).toBe(5);
+  });
+
+  it('a WRONG note still does not count as a miss, but does count as waiting', () => {
+    let g = initGame(scaleSong, 'wait');
+    g = advanceGame(g, scaleSong, { heardMidi: 71, cents: 0, deltaBeats: 0 });
+    expect(g.results).toHaveLength(0);   // never punished for hunting
+    expect(g.stuckTicks).toBe(1);        // but we notice they are stuck
+  });
+
+  it('resets the wait counter as soon as a note lands', () => {
+    let g = initGame(scaleSong, 'wait');
+    for (let i = 0; i < 20; i++) g = advanceGame(g, scaleSong, { heardMidi: null, cents: 0, deltaBeats: 0 });
+    expect(g.stuckTicks).toBe(20);
+    g = advanceGame(g, scaleSong, { heardMidi: 60, cents: 0, deltaBeats: 0 });
+    expect(g.stuckTicks).toBe(0);
+  });
+
+  it('flags stuck only after the limit, and only in wait mode', () => {
+    let g = initGame(scaleSong, 'wait');
+    expect(isStuck(g)).toBe(false);
+    g = { ...g, stuckTicks: STUCK_TICK_LIMIT };
+    expect(isStuck(g)).toBe(true);
+    // tempo mode advances on the clock, so it can never fixate
+    expect(isStuck({ ...g, mode: 'tempo' })).toBe(false);
+  });
+
+  it('skipping a stuck note does NOT record a miss against the child', () => {
+    let g = initGame(scaleSong, 'wait');
+    g = { ...g, stuckTicks: STUCK_TICK_LIMIT };
+    const after = skipStuckNote(g, scaleSong);
+    expect(after.cursor).toBe(1);
+    expect(after.results).toHaveLength(0); // we do not know they got it wrong
+    expect(after.stuckTicks).toBe(0);
+  });
+
+  it('skipping the last note finishes the song', () => {
+    let g = initGame(scaleSong, 'wait');
+    g = { ...g, cursor: scaleSong.notes.length - 1 };
+    expect(skipStuckNote(g, scaleSong).done).toBe(true);
   });
 });

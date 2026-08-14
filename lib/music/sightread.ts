@@ -289,10 +289,49 @@ export interface GameState {
   /** Beats elapsed — only advances in tempo mode. */
   beat: number;
   done: boolean;
+  /**
+   * Ticks spent waiting on the CURRENT note in wait mode.
+   *
+   * This exists to break the fixation loop: microphone pitch detection
+   * genuinely fails on some notes — low register, repeated notes, a quiet
+   * bow — and without an escape a kid who is playing correctly gets walled in
+   * forever. Across music-learning apps this is the number-one complaint and
+   * a documented reason children quit the instrument. So after a while we
+   * assume the DETECTOR is at fault, not the child, and offer a way on.
+   */
+  stuckTicks: number;
 }
 
+/**
+ * How many poll ticks on one note before we stop believing the microphone.
+ * At the 40 ms poll rate this is about twelve seconds — long enough that a kid
+ * genuinely hunting for the note is not rushed, short enough that a mis-heard
+ * note does not end the session.
+ */
+export const STUCK_TICK_LIMIT = 300;
+
 export function initGame(song: Song, mode: GameMode): GameState {
-  return { mode, songId: song.id, cursor: 0, results: [], beat: 0, done: song.notes.length === 0 };
+  return {
+    mode, songId: song.id, cursor: 0, results: [], beat: 0,
+    done: song.notes.length === 0, stuckTicks: 0,
+  };
+}
+
+/** Has this note been waiting long enough that the microphone is the likely problem? */
+export function isStuck(state: GameState): boolean {
+  return state.mode === 'wait' && state.stuckTicks >= STUCK_TICK_LIMIT;
+}
+
+/**
+ * Move past a note the detector will not hear.
+ *
+ * Deliberately does NOT record a miss: we do not know that the kid played it
+ * wrong, only that the microphone never confirmed it. Scoring it against them
+ * would be the app asserting something it cannot know.
+ */
+export function skipStuckNote(state: GameState, song: Song): GameState {
+  const cursor = state.cursor + 1;
+  return { ...state, cursor, beat: 0, stuckTicks: 0, done: cursor >= song.notes.length };
 }
 
 export interface AdvanceInput {
@@ -324,12 +363,19 @@ export function advanceGame(state: GameState, song: Song, input: AdvanceInput): 
   const heard = input.heardMidi != null && noteMatches(input.heardMidi, input.cents, note.midi, input.matchOpts);
 
   if (state.mode === 'wait' || state.mode === 'practice') {
-    if (!heard) return state;
+    // Count how long we have been waiting so the UI can offer a way past a
+    // note the microphone will not hear. A wrong note is still never a miss —
+    // a kid hunting for the note on their instrument is practising.
+    if (!heard) {
+      return state.mode === 'wait'
+        ? { ...state, stuckTicks: state.stuckTicks + 1 }
+        : state;
+    }
     const results = state.mode === 'practice'
       ? state.results
       : [...state.results, { index: state.cursor, hit: true }];
     const cursor = state.cursor + 1;
-    return { ...state, cursor, results, done: cursor >= song.notes.length };
+    return { ...state, cursor, results, beat: 0, stuckTicks: 0, done: cursor >= song.notes.length };
   }
 
   // tempo mode

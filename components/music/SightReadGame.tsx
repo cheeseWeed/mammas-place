@@ -21,7 +21,9 @@ import {
   initGame,
   isSharp,
   ledgerLines,
+  isStuck,
   scoreRun,
+  skipStuckNote,
   staffPosition,
   type GameMode,
   type GameState,
@@ -193,11 +195,20 @@ export default function SightReadGame() {
         audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false },
       });
       streamRef.current = stream;
-      const ctx = new AudioContext();
+      // latencyHint 'interactive' asks the browser for the smallest safe buffer.
+      // Combined with the three constraints above this is worth ~48 ms in
+      // Chrome — by far the biggest single latency win available, and it costs
+      // nothing. (Chrome's MediaTrackSettings.latency always reports 0.01
+      // regardless of reality, so this cannot be measured at runtime.)
+      const ctx = new AudioContext({ latencyHint: 'interactive' });
       ctxRef.current = ctx;
       await ctx.resume();
       const analyser = ctx.createAnalyser();
-      analyser.fftSize = 4096;
+      // 2048 = ~46 ms at 44.1 kHz and resolves down to ~43 Hz, which covers
+      // cello C2 (65.4 Hz) with margin. 4096 doubles the latency and buys
+      // nothing in this register — a note needs about two periods to detect,
+      // and two periods of C2 is only 30 ms.
+      analyser.fftSize = 2048;
       ctx.createMediaStreamSource(stream).connect(analyser);
       analyserRef.current = analyser;
       bufRef.current = new Float32Array(analyser.fftSize);
@@ -339,13 +350,17 @@ export default function SightReadGame() {
               stroke="#16a34a" strokeWidth="2" strokeLinecap="round" opacity="0.75"
             />
           )}
-          {/* hit flash: a ring at the hit line, green for a hit, red for a miss */}
-          {flash && (
+          {/* HIT BLOOM — only on a hit, never on a miss.
+              A miss is the ABSENCE of reward (the note simply stays hollow and
+              grey), not the presence of punishment. Across the music-learning
+              category, detection failure is the single most common complaint,
+              and a red X asserts the app was right and the child was wrong —
+              which, when the microphone mishears, is a lie that makes kids quit
+              the instrument. Where it is ambiguous, the app doubts itself. */}
+          {flash?.hit && (
             <circle
               cx={HIT_X} cy={STAFF_TOP + 4 * STAFF_STEP} r="30"
-              fill="none" strokeWidth="4"
-              stroke={flash.hit ? '#16a34a' : '#dc2626'}
-              opacity="0.55"
+              fill="none" strokeWidth="4" stroke="#16a34a" opacity="0.55"
             />
           )}
 
@@ -356,7 +371,10 @@ export default function SightReadGame() {
               const x = i * NOTE_SPACING;
               const y = yFor(pos);
               const res = game?.results.find(r => r.index === i);
-              const fill = res ? (res.hit ? '#16a34a' : '#dc2626') : i === cursor ? '#581c87' : '#8f86a0';
+              // Hit = filled green. Missed = left the same grey it started as,
+              // NOT red. See the hit-bloom comment above: a false negative from
+              // the microphone must never look like the child's failure.
+              const fill = res?.hit ? '#16a34a' : i === cursor ? '#581c87' : '#8f86a0';
               const isCurrent = i === cursor && !game?.done;
               return (
                 <g
@@ -415,6 +433,31 @@ export default function SightReadGame() {
           <span className="text-zinc-600">Note <b>{cursor + 1}</b> of {song.notes.length}</span>
         )}
       </div>
+
+      {/* The microphone genuinely mishears sometimes — low notes, repeated
+          notes, a quiet bow. When that happens the app doubts ITSELF rather
+          than telling a child who played correctly that they were wrong. */}
+      {game && !game.done && isStuck(game) && (
+        <div className="mt-3 flex flex-wrap items-center gap-3 rounded-lg bg-amber-50 p-3 text-sm text-amber-900">
+          <span>
+            I might not be hearing this one. That happens with low notes and quiet playing —
+            it doesn&rsquo;t mean you played it wrong.
+          </span>
+          <button
+            onClick={() => {
+              const cur = gameRef.current;
+              if (!cur) return;
+              const next = skipStuckNote(cur, song);
+              gameRef.current = next;
+              setGame(next);
+              if (next.done && next.mode !== 'practice') void submitRun(next);
+            }}
+            className="rounded-lg bg-amber-600 px-3 py-1.5 font-semibold text-white"
+          >
+            Skip this note →
+          </button>
+        </div>
+      )}
 
       {/* --- result --- */}
       {result && (

@@ -15,6 +15,7 @@
 import Link from 'next/link';
 import LoginGate from '@/components/LoginGate';
 import SectionGuard from '@/components/SectionGuard';
+import SheetUpload from '@/components/music/SheetUpload';
 import SightReadGame from '@/components/music/SightReadGame';
 
 export default function NoteReaderPage() {
@@ -36,6 +37,10 @@ export default function NoteReaderPage() {
 
           <div className="mt-5">
             <SightReadGame />
+          </div>
+
+          <div className="mt-6">
+            <SheetUpload />
           </div>
 
           <div className="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">

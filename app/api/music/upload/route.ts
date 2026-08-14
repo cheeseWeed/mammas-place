@@ -79,15 +79,6 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // Blob is only configured in production. Fail with a clear message rather
-  // than a stack trace when someone runs this locally without the token.
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
-    return NextResponse.json(
-      { error: 'File storage is not configured on this environment yet' },
-      { status: 503 },
-    );
-  }
-
   // PARSE FIRST, store second. If a MusicXML/MIDI file cannot be read there is
   // no point keeping it — better to tell the kid immediately than to store a
   // file that will never become playable.
@@ -119,6 +110,16 @@ export async function POST(req: NextRequest) {
   // have, so it is stored for transcription like a PDF rather than guessed at.
   if (kind === 'mxl') {
     parseWarnings = ['Compressed MusicXML (.mxl) needs unzipping first — export as uncompressed .musicxml for instant play.'];
+  }
+
+  // Storage is checked AFTER parsing, so a kid with an unreadable file is told
+  // their file could not be read — not that the server is misconfigured, which
+  // is true but useless to them.
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    return NextResponse.json(
+      { error: 'File storage is not set up on this environment yet — tell a parent.' },
+      { status: 503 },
+    );
   }
 
   const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '-').slice(0, 80);
