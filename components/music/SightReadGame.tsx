@@ -14,6 +14,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { detectPitch, frequencyToNote } from '@/lib/music/pitch';
+import { closeTone, playNote, playPhrase } from '@/lib/music/tone';
 import {
   SONGS,
   advanceGame,
@@ -44,6 +45,13 @@ export default function SightReadGame() {
   const [game, setGame] = useState<GameState | null>(null);
   const [heard, setHeard] = useState<{ midi: number; name: string; octave: number; cents: number } | null>(null);
   const [earned, setEarned] = useState<string | null>(null);
+  // Fractional progress through the CURRENT note, 0..1. Drives the smooth
+  // playhead so the beat is visible before it arrives, instead of the staff
+  // jumping a whole note at a time.
+  const [beatFrac, setBeatFrac] = useState(0);
+  // Which note just landed, and how it went — drives the hit flash.
+  const [flash, setFlash] = useState<{ index: number; hit: boolean; at: number } | null>(null);
+  const [soundOn, setSoundOn] = useState(true);
 
   const song: Song = SONGS.find(s => s.id === songId) ?? SONGS[0];
 
@@ -70,6 +78,15 @@ export default function SightReadGame() {
   }, []);
 
   useEffect(() => stop, [stop]);
+  useEffect(() => closeTone, []);
+
+  // The hit flash is a moment, not a state — clear it so the next note gets
+  // its own flash rather than inheriting the last one.
+  useEffect(() => {
+    if (!flash) return;
+    const t = window.setTimeout(() => setFlash(null), 280);
+    return () => window.clearTimeout(t);
+  }, [flash]);
 
   // Post the finished run through the same earn path every section uses. The
   // SERVER decides the reward — the client never says how much MP to pay.
@@ -126,12 +143,41 @@ export default function SightReadGame() {
       cents: info ? info.cents : 0,
       deltaBeats: cur.mode === 'tempo' ? dtMs * beatsPerMs : 0,
     });
+
+    // Smooth playhead: how far through the current note are we? In tempo mode
+    // this rides the clock; in wait mode it tracks whether the right pitch is
+    // currently sounding, so the line creeps forward as the kid holds the note.
+    const noteNow = song.notes[next.cursor];
+    if (noteNow) {
+      if (next.mode === 'tempo') {
+        setBeatFrac(Math.min(1, next.beat / noteNow.beats));
+      } else {
+        setBeatFrac(info && info.midi === noteNow.midi ? 1 : 0);
+      }
+    }
+
     if (next !== cur) {
+      // A note resolved — flash it green or red at the hit line.
+      const justScored = next.results.length > cur.results.length
+        ? next.results[next.results.length - 1]
+        : null;
+      if (justScored) setFlash({ index: justScored.index, hit: justScored.hit, at: performance.now() });
       gameRef.current = next;
       setGame(next);
       if (next.done && next.mode !== 'practice') void submitRun(next);
     }
   }, [song, submitRun]);
+
+  // Tap a note to HEAR it, without the game moving on. This is how a teacher
+  // actually works with a student: sound the pitch, let them find it on their
+  // instrument, no penalty for taking a few tries. Deliberately unavailable in
+  // tempo mode — a reference tone there would let a kid play by ear instead of
+  // reading, which is the whole skill being taught.
+  const canHearNotes = mode !== 'tempo';
+  const hearNote = useCallback((midi: number) => {
+    if (!canHearNotes || !soundOn) return;
+    playNote(midi);
+  }, [canHearNotes, soundOn]);
 
   const start = useCallback(async () => {
     setStatus('starting');
@@ -211,14 +257,47 @@ export default function SightReadGame() {
           </select>
         </label>
 
-        <div className="flex items-end">
+        <div className="flex items-end gap-2">
           {listening
             ? <button onClick={stop} className="rounded-lg bg-zinc-700 px-5 py-2 font-semibold text-white">Stop</button>
             : <button onClick={start} className="rounded-lg bg-purple-800 px-5 py-2 font-semibold text-white">
                 {game?.done ? 'Play again' : 'Start'}
               </button>}
+          <button
+            onClick={() => setSoundOn(v => !v)}
+            aria-pressed={soundOn}
+            title={soundOn ? 'Sound on — tap a note to hear it' : 'Sound off'}
+            className={`rounded-lg border-2 px-3 py-2 text-sm font-semibold ${
+              soundOn ? 'border-purple-300 bg-purple-50 text-purple-900' : 'border-zinc-300 text-zinc-500'
+            }`}
+          >
+            {soundOn ? '🔊' : '🔇'}
+          </button>
         </div>
       </div>
+
+      {/* Hearing the notes is a LEARNING aid, so it is offered in easy and
+          practice but withheld in tempo mode — otherwise a kid can play the
+          whole thing by ear and never read a note. */}
+      {soundOn && (
+        <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
+          {canHearNotes ? (
+            <>
+              <button
+                onClick={() => playPhrase(song.notes.slice(cursor, cursor + 8), 60000 / song.bpm)}
+                className="rounded-lg border border-purple-300 bg-white px-3 py-1.5 font-semibold text-purple-800 hover:bg-purple-50"
+              >
+                ▶ Hear the next few notes
+              </button>
+              <span className="text-zinc-500">or tap any note on the staff to hear just that one</span>
+            </>
+          ) : (
+            <span className="rounded-lg bg-zinc-100 px-3 py-1.5 text-zinc-600">
+              Reference tones are off in Hard mode — that mode is testing your <i>reading</i>.
+            </span>
+          )}
+        </div>
+      )}
 
       {/* --- mic trouble --- */}
       {status === 'denied' && (
@@ -248,9 +327,27 @@ export default function SightReadGame() {
           <text x="14" y={yFor(2) + 8} fontSize="52" fill="#581c87" fontFamily="serif">
             {song.clef === 'treble' ? '\u{1D11E}' : '\u{1D122}'}
           </text>
-          {/* hit line */}
+          {/* HIT LINE — where a note must be played. The PLAYHEAD (below) creeps
+              from here toward the next note so the beat is visible arriving. */}
           <line x1={HIT_X} y1={STAFF_TOP - 26} x2={HIT_X} y2={STAFF_TOP + 8 * STAFF_STEP + 26}
                 stroke="#facc15" strokeWidth="4" strokeLinecap="round" />
+          {/* playhead: advances across the gap to the next note as the beat elapses */}
+          {game && !game.done && (
+            <line
+              x1={HIT_X + beatFrac * NOTE_SPACING} y1={STAFF_TOP - 20}
+              x2={HIT_X + beatFrac * NOTE_SPACING} y2={STAFF_TOP + 8 * STAFF_STEP + 20}
+              stroke="#16a34a" strokeWidth="2" strokeLinecap="round" opacity="0.75"
+            />
+          )}
+          {/* hit flash: a ring at the hit line, green for a hit, red for a miss */}
+          {flash && (
+            <circle
+              cx={HIT_X} cy={STAFF_TOP + 4 * STAFF_STEP} r="30"
+              fill="none" strokeWidth="4"
+              stroke={flash.hit ? '#16a34a' : '#dc2626'}
+              opacity="0.55"
+            />
+          )}
 
           {/* notes, scrolled so the current one sits on the hit line */}
           <g transform={`translate(${HIT_X - cursor * NOTE_SPACING}, 0)`}>
@@ -262,7 +359,18 @@ export default function SightReadGame() {
               const fill = res ? (res.hit ? '#16a34a' : '#dc2626') : i === cursor ? '#581c87' : '#8f86a0';
               const isCurrent = i === cursor && !game?.done;
               return (
-                <g key={i} opacity={i < cursor && !res ? 0.35 : 1}>
+                <g
+                  key={i}
+                  opacity={i < cursor && !res ? 0.35 : 1}
+                  onClick={() => hearNote(n.midi)}
+                  style={{ cursor: canHearNotes && soundOn ? 'pointer' : 'default' }}
+                  role={canHearNotes && soundOn ? 'button' : undefined}
+                  aria-label={canHearNotes && soundOn ? `Hear ${noteLabel(n.midi)}` : undefined}
+                >
+                  {/* generous invisible tap target — small fingers, small notes */}
+                  {canHearNotes && soundOn && (
+                    <rect x={x - 18} y={y - 22} width="36" height="44" fill="transparent" />
+                  )}
                   {ledgerLines(pos).map(lp => (
                     <line key={lp} x1={x - 13} y1={yFor(lp)} x2={x + 13} y2={yFor(lp)} stroke="#8f86a0" strokeWidth="1.5" />
                   ))}
