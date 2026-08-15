@@ -275,9 +275,79 @@ export type GameMode =
   | 'tempo'    // harder: notes scroll at the song's BPM, keep up
   | 'practice'; // no scoring, play along freely
 
+/**
+ * How a single note turned out.
+ *
+ * `grade` is deliberately four-valued rather than hit/miss:
+ *
+ *   great   right note, in tune, on time      -> green
+ *   close   right note, but loose in pitch
+ *           or timing                          -> amber
+ *   wrong   a DIFFERENT note was clearly
+ *           played                             -> red
+ *   unheard the microphone never caught
+ *           anything                           -> grey, NOT red
+ *
+ * The split between `wrong` and `unheard` is the important one. Mic pitch
+ * detection genuinely fails on low notes, repeated notes and quiet bowing, and
+ * across music-learning apps that failure is the top complaint — a child gets
+ * marked wrong for a note they played correctly. So a note the mic never heard
+ * is greyed out and scores zero, but it is never coloured as a mistake: we do
+ * not claim to know something we cannot know.
+ */
+export type NoteGrade = 'great' | 'close' | 'wrong' | 'unheard';
+
 export interface NoteResult {
   index: number;
   hit: boolean;
+  grade?: NoteGrade;
+  /** Points earned for this note, 0..MAX_NOTE_POINTS. */
+  points?: number;
+  /** How far off the pitch was, in cents. Absent when nothing was heard. */
+  cents?: number;
+  /** How far off the beat, in beats. Negative = early. Tempo mode only. */
+  beatsOff?: number;
+}
+
+/** Best possible score for one note. */
+export const MAX_NOTE_POINTS = 100;
+
+/**
+ * Points for one note, scaled by how close the pitch and timing were.
+ *
+ * Pitch is worth 60 and timing 40 — reading the right note matters more than
+ * nailing the beat, and this game is teaching reading.
+ *
+ * The windows are wide on purpose. Children aged 5-8 have a beat-tapping
+ * spread of roughly 180ms, which is wider than the entire hit window of most
+ * rhythm games, and a bowed cello note has a soft attack that adds tens of
+ * milliseconds before anyone can even detect it. Tight windows would punish
+ * physics, not playing.
+ */
+export function gradeNote(input: {
+  centsOff: number | null;
+  beatsOff: number | null;
+  correctPitch: boolean;
+}): { grade: NoteGrade; points: number } {
+  if (input.centsOff === null) return { grade: 'unheard', points: 0 };
+  if (!input.correctPitch) return { grade: 'wrong', points: 0 };
+
+  // --- pitch, out of 60. Dead on = 60, a quarter-tone out = 0.
+  const cents = Math.abs(input.centsOff);
+  const pitchScore = Math.max(0, Math.round(60 * (1 - cents / 50)));
+
+  // --- timing, out of 40. Wait mode has no beat to be off, so it gets full
+  // marks: nothing is being tested there but the notes themselves.
+  let timeScore = 40;
+  if (input.beatsOff !== null) {
+    const off = Math.abs(input.beatsOff);
+    timeScore = Math.max(0, Math.round(40 * (1 - off / 1.0)));
+  }
+
+  const points = pitchScore + timeScore;
+  // "great" needs both close: within a sixth of a tone and a quarter beat.
+  const great = cents <= 17 && (input.beatsOff === null || Math.abs(input.beatsOff) <= 0.25);
+  return { grade: great ? 'great' : 'close', points };
 }
 
 export interface GameState {
@@ -371,9 +441,13 @@ export function advanceGame(state: GameState, song: Song, input: AdvanceInput): 
         ? { ...state, stuckTicks: state.stuckTicks + 1 }
         : state;
     }
+    const g = gradeNote({ centsOff: input.cents, beatsOff: null, correctPitch: true });
     const results = state.mode === 'practice'
       ? state.results
-      : [...state.results, { index: state.cursor, hit: true }];
+      : [...state.results, {
+          index: state.cursor, hit: true,
+          grade: g.grade, points: g.points, cents: input.cents,
+        }];
     const cursor = state.cursor + 1;
     return { ...state, cursor, results, beat: 0, stuckTicks: 0, done: cursor >= song.notes.length };
   }
@@ -382,15 +456,25 @@ export function advanceGame(state: GameState, song: Song, input: AdvanceInput): 
   const beat = state.beat + input.deltaBeats;
   const alreadyScored = state.results.some(r => r.index === state.cursor);
   if (heard && !alreadyScored) {
-    const results = [...state.results, { index: state.cursor, hit: true }];
+    // The note "should" land at the START of its slot, so however many beats
+    // have already elapsed is how LATE the kid was. Negative is impossible
+    // here — you cannot play a note before its slot opens.
+    const g = gradeNote({ centsOff: input.cents, beatsOff: beat, correctPitch: true });
+    const results = [...state.results, {
+      index: state.cursor, hit: true,
+      grade: g.grade, points: g.points, cents: input.cents, beatsOff: beat,
+    }];
     if (beat < note.beats) return { ...state, beat, results };
     const cursor = state.cursor + 1;
     return { ...state, cursor, results, beat: beat - note.beats, done: cursor >= song.notes.length };
   }
   if (beat < note.beats) return { ...state, beat };
 
-  // the note's time is up
-  const results = alreadyScored ? state.results : [...state.results, { index: state.cursor, hit: false }];
+  // The note's time is up with nothing heard. Graded 'unheard', not 'wrong':
+  // silence might be a kid who missed it, or a microphone that did.
+  const results = alreadyScored ? state.results : [...state.results, {
+    index: state.cursor, hit: false, grade: 'unheard' as NoteGrade, points: 0,
+  }];
   const cursor = state.cursor + 1;
   return { ...state, cursor, results, beat: beat - note.beats, done: cursor >= song.notes.length };
 }
@@ -406,6 +490,13 @@ export interface RunScore {
   /** 0-100, rounded. */
   accuracy: number;
   passed: boolean;
+  /** Sum of per-note points — rewards precision, not just correctness. */
+  points: number;
+  maxPoints: number;
+  great: number;
+  close: number;
+  wrong: number;
+  unheard: number;
 }
 
 /** Accuracy for a finished run. 80% to pass, matching the other sections. */
@@ -414,5 +505,14 @@ export function scoreRun(results: NoteResult[]): RunScore {
   const hits = results.filter(r => r.hit).length;
   const misses = total - hits;
   const accuracy = total === 0 ? 0 : Math.round((hits / total) * 100);
-  return { total, hits, misses, accuracy, passed: accuracy >= 80 };
+  const points = results.reduce((a, r) => a + (r.points ?? (r.hit ? MAX_NOTE_POINTS : 0)), 0);
+  const maxPoints = total * MAX_NOTE_POINTS;
+  const great = results.filter(r => r.grade === 'great').length;
+  const close = results.filter(r => r.grade === 'close').length;
+  const wrong = results.filter(r => r.grade === 'wrong').length;
+  const unheard = results.filter(r => r.grade === 'unheard').length;
+  return {
+    total, hits, misses, accuracy, passed: accuracy >= 80,
+    points, maxPoints, great, close, wrong, unheard,
+  };
 }

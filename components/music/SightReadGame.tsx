@@ -263,6 +263,32 @@ export default function SightReadGame() {
   const listening = status === 'listening';
   const result = game?.done ? scoreRun(game.results) : null;
 
+  // Best score per song, kept on this device. Deliberately local: it is a
+  // personal record to beat, not something to rank kids against each other.
+  const [bestPoints, setBestPoints] = useState<number | null>(null);
+  const BEST_KEY = 'dl_kyc_sightread_best';
+
+  useEffect(() => {
+    try {
+      const all = JSON.parse(localStorage.getItem(BEST_KEY) || '{}');
+      setBestPoints(typeof all[songId] === 'number' ? all[songId] : null);
+    } catch { setBestPoints(null); }
+  }, [songId]);
+
+  // Record a new personal best when a finished run beats the stored one.
+  useEffect(() => {
+    if (!result || !game?.done || game.mode === 'practice') return;
+    try {
+      const all = JSON.parse(localStorage.getItem(BEST_KEY) || '{}');
+      const prev = typeof all[game.songId] === 'number' ? all[game.songId] : -1;
+      if (result.points > prev) {
+        all[game.songId] = result.points;
+        localStorage.setItem(BEST_KEY, JSON.stringify(all));
+        setBestPoints(prev >= 0 ? prev : null);
+      }
+    } catch { /* storage unavailable — the run still showed on screen */ }
+  }, [result, game?.done, game?.songId, game?.mode]);
+
   // y of a staff position: 0 = bottom line, 8 = top line
   const yFor = (pos: number) => STAFF_TOP + (8 - pos) * STAFF_STEP;
 
@@ -456,9 +482,20 @@ export default function SightReadGame() {
               const y = yFor(pos);
               const res = game?.results.find(r => r.index === i);
               // Hit = filled green. Missed = left the same grey it started as,
-              // NOT red. See the hit-bloom comment above: a false negative from
-              // the microphone must never look like the child's failure.
-              const fill = res?.hit ? '#16a34a' : i === cursor ? '#581c87' : '#8f86a0';
+              // Colour by GRADE, not by hit/miss:
+              //   great   green   right note, in tune, on time
+              //   close   amber   right note, loose pitch or timing
+              //   wrong   red     a clearly different note was played
+              //   unheard grey    the mic caught nothing — NOT red, because a
+              //                   false negative must never look like the
+              //                   child's failure
+              const fill =
+                res?.grade === 'great' ? '#16a34a'
+                : res?.grade === 'close' ? '#d97706'
+                : res?.grade === 'wrong' ? '#dc2626'
+                : res?.hit ? '#16a34a'
+                : i === cursor ? '#581c87'
+                : '#8f86a0';
               const isCurrent = i === cursor && !game?.done;
               return (
                 <g
@@ -520,6 +557,12 @@ export default function SightReadGame() {
         {game && !game.done && (
           <span className="text-zinc-600">Note <b>{cursor + 1}</b> of {song.notes.length}</span>
         )}
+        {/* running points total, live while playing */}
+        {game && game.results.length > 0 && (
+          <span className="rounded-lg bg-purple-100 px-2.5 py-1 font-semibold text-purple-900 tabular-nums">
+            {scoreRun(game.results).points} pts
+          </span>
+        )}
       </div>
 
       {/* The microphone genuinely mishears sometimes — low notes, repeated
@@ -550,9 +593,42 @@ export default function SightReadGame() {
       {/* --- result --- */}
       {result && (
         <div className="mt-4 rounded-xl bg-gradient-to-br from-purple-800 to-purple-600 p-5 text-white">
-          <p className="text-3xl font-bold">{result.accuracy}%</p>
-          <p className="text-sm">{result.hits} of {result.total} notes hit</p>
-          <span className={`mt-2 inline-block rounded px-3 py-1 text-sm font-semibold ${result.passed ? 'bg-yellow-300 text-zinc-900' : 'bg-red-600'}`}>
+          <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+            <p className="text-4xl font-bold tabular-nums">{result.points}</p>
+            <p className="text-sm opacity-90">out of {result.maxPoints} points</p>
+            <p className="text-sm opacity-90">· {result.accuracy}% of notes</p>
+          </div>
+
+          {/* Grade breakdown — this is where the kid sees WHAT to fix, which is
+              more useful than a single pass/fail verdict. */}
+          <div className="mt-3 flex flex-wrap gap-2 text-sm">
+            <span className="rounded bg-green-500/90 px-2.5 py-1 font-semibold">
+              {result.great} spot on
+            </span>
+            <span className="rounded bg-amber-500/90 px-2.5 py-1 font-semibold">
+              {result.close} close
+            </span>
+            {result.wrong > 0 && (
+              <span className="rounded bg-red-600/90 px-2.5 py-1 font-semibold">
+                {result.wrong} wrong note
+              </span>
+            )}
+            {result.unheard > 0 && (
+              <span className="rounded bg-white/25 px-2.5 py-1 font-semibold">
+                {result.unheard} not heard
+              </span>
+            )}
+          </div>
+
+          {bestPoints !== null && (
+            <p className="mt-3 text-sm text-yellow-200">
+              {result.points >= bestPoints
+                ? `🏆 New best for ${song.title}!`
+                : `Your best on this song: ${bestPoints} points`}
+            </p>
+          )}
+
+          <span className={`mt-3 inline-block rounded px-3 py-1 text-sm font-semibold ${result.passed ? 'bg-yellow-300 text-zinc-900' : 'bg-white/25'}`}>
             {result.passed ? 'PASSED' : 'Keep practising — 80% to pass'}
           </span>
           {earned && <p className="mt-2 text-sm text-yellow-200">{earned}</p>}

@@ -11,6 +11,8 @@ import {
   isStuck,
   skipStuckNote,
   STUCK_TICK_LIMIT,
+  gradeNote,
+  MAX_NOTE_POINTS,
   type Song,
 } from '../sightread';
 
@@ -150,7 +152,8 @@ describe('advanceGame — wait mode', () => {
     const g = initGame(scale, 'wait');
     const next = advanceGame(g, scale, { heardMidi: 60, cents: 0, deltaBeats: 0 });
     expect(next.cursor).toBe(1);
-    expect(next.results).toEqual([{ index: 0, hit: true }]);
+    expect(next.results).toHaveLength(1);
+    expect(next.results[0]).toMatchObject({ index: 0, hit: true });
   });
 
   it('finishes the song and marks it done', () => {
@@ -190,13 +193,15 @@ describe('advanceGame — tempo mode', () => {
     const g = initGame(tiny, 'tempo');
     const next = advanceGame(g, tiny, { heardMidi: null, cents: 0, deltaBeats: 1 });
     expect(next.cursor).toBe(1);
-    expect(next.results).toEqual([{ index: 0, hit: false }]);
+    expect(next.results).toHaveLength(1);
+    expect(next.results[0]).toMatchObject({ index: 0, hit: false, grade: 'unheard' });
   });
 
   it('counts a hit when the note is played in time', () => {
     const g = initGame(tiny, 'tempo');
     const next = advanceGame(g, tiny, { heardMidi: 60, cents: 0, deltaBeats: 0.5 });
-    expect(next.results).toEqual([{ index: 0, hit: true }]);
+    expect(next.results).toHaveLength(1);
+    expect(next.results[0]).toMatchObject({ index: 0, hit: true });
     expect(next.cursor).toBe(0); // still on this note until its beats elapse
   });
 
@@ -217,7 +222,7 @@ describe('advanceGame — tempo mode', () => {
 
 describe('scoreRun', () => {
   it('is zero for an empty run rather than NaN', () => {
-    expect(scoreRun([])).toEqual({ total: 0, hits: 0, misses: 0, accuracy: 0, passed: false });
+    expect(scoreRun([])).toMatchObject({ total: 0, hits: 0, misses: 0, accuracy: 0, passed: false, points: 0, maxPoints: 0 });
   });
 
   it('computes accuracy and the 80% pass mark', () => {
@@ -282,5 +287,85 @@ describe('anti-fixation: the microphone is not always right', () => {
     let g = initGame(scaleSong, 'wait');
     g = { ...g, cursor: scaleSong.notes.length - 1 };
     expect(skipStuckNote(g, scaleSong).done).toBe(true);
+  });
+});
+
+describe('gradeNote — points scale with how close you were', () => {
+  it('a dead-on note scores the maximum', () => {
+    const r = gradeNote({ centsOff: 0, beatsOff: 0, correctPitch: true });
+    expect(r.grade).toBe('great');
+    expect(r.points).toBe(MAX_NOTE_POINTS);
+  });
+
+  it('pays LESS the further the pitch drifts', () => {
+    const dead = gradeNote({ centsOff: 0, beatsOff: 0, correctPitch: true }).points;
+    const near = gradeNote({ centsOff: 15, beatsOff: 0, correctPitch: true }).points;
+    const far  = gradeNote({ centsOff: 40, beatsOff: 0, correctPitch: true }).points;
+    expect(dead).toBeGreaterThan(near);
+    expect(near).toBeGreaterThan(far);
+  });
+
+  it('pays LESS the further the timing drifts', () => {
+    const onTime = gradeNote({ centsOff: 0, beatsOff: 0, correctPitch: true }).points;
+    const late   = gradeNote({ centsOff: 0, beatsOff: 0.5, correctPitch: true }).points;
+    const later  = gradeNote({ centsOff: 0, beatsOff: 0.9, correctPitch: true }).points;
+    expect(onTime).toBeGreaterThan(late);
+    expect(late).toBeGreaterThan(later);
+  });
+
+  it('drops from great to close when pitch OR timing slips', () => {
+    expect(gradeNote({ centsOff: 30, beatsOff: 0, correctPitch: true }).grade).toBe('close');
+    expect(gradeNote({ centsOff: 0, beatsOff: 0.6, correctPitch: true }).grade).toBe('close');
+  });
+
+  it('a clearly different note is wrong and scores zero', () => {
+    const r = gradeNote({ centsOff: 5, beatsOff: 0, correctPitch: false });
+    expect(r.grade).toBe('wrong');
+    expect(r.points).toBe(0);
+  });
+
+  it('silence is UNHEARD, never wrong — the mic may be at fault, not the child', () => {
+    const r = gradeNote({ centsOff: null, beatsOff: null, correctPitch: false });
+    expect(r.grade).toBe('unheard');
+    expect(r.points).toBe(0);
+  });
+
+  it('gives full timing marks in wait mode, where there is no beat to miss', () => {
+    const r = gradeNote({ centsOff: 0, beatsOff: null, correctPitch: true });
+    expect(r.points).toBe(MAX_NOTE_POINTS);
+  });
+
+  it('never returns negative points however far off the note is', () => {
+    for (const c of [0, 25, 49, 60, 500]) {
+      for (const b of [0, 1, 5, 50]) {
+        const r = gradeNote({ centsOff: c, beatsOff: b, correctPitch: true });
+        expect(r.points, `cents ${c} beats ${b}`).toBeGreaterThanOrEqual(0);
+        expect(r.points).toBeLessThanOrEqual(MAX_NOTE_POINTS);
+      }
+    }
+  });
+
+  it('treats being early and late the same', () => {
+    const early = gradeNote({ centsOff: 0, beatsOff: -0.4, correctPitch: true }).points;
+    const late  = gradeNote({ centsOff: 0, beatsOff: 0.4, correctPitch: true }).points;
+    expect(early).toBe(late);
+  });
+});
+
+describe('scoreRun — totals for the page', () => {
+  it('adds up points and counts each grade', () => {
+    const results = [
+      { index: 0, hit: true,  grade: 'great' as const,   points: 100 },
+      { index: 1, hit: true,  grade: 'close' as const,   points: 62 },
+      { index: 2, hit: false, grade: 'wrong' as const,   points: 0 },
+      { index: 3, hit: false, grade: 'unheard' as const, points: 0 },
+    ];
+    const s = scoreRun(results);
+    expect(s.points).toBe(162);
+    expect(s.maxPoints).toBe(400);
+    expect(s.great).toBe(1);
+    expect(s.close).toBe(1);
+    expect(s.wrong).toBe(1);
+    expect(s.unheard).toBe(1);
   });
 });
