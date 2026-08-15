@@ -64,7 +64,75 @@ export default function SightReadGame() {
   const [alongPlaying, setAlongPlaying] = useState(false);
   const alongRef = useRef<PlayAlongHandle | null>(null);
 
-  const song: Song = SONGS.find(s => s.id === songId) ?? SONGS[0];
+  // Songs this kid uploaded that parsed cleanly (MusicXML / MIDI). They join
+  // the built-in library so an upload that says "ready to play" actually is.
+  const [uploaded, setUploaded] = useState<Song[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch('/api/music/uploads');
+        if (!res.ok) return;
+        const body = await res.json().catch(() => null);
+        if (cancelled || !Array.isArray(body?.uploads)) return;
+        const songs = body.uploads
+          .filter((u: { song?: { notes?: unknown[] } }) => Array.isArray(u.song?.notes) && u.song!.notes!.length > 0)
+          .map((u: { id: string; title: string; song: Song }) => ({ ...u.song, id: u.id, title: u.title }));
+        setUploaded(songs);
+      } catch { /* offline — the built-in songs still work */ }
+    })();
+    return () => { cancelled = true; };
+  }, []);
+
+  const allSongs: Song[] = [...SONGS, ...uploaded];
+  const song: Song = allSongs.find(s => s.id === songId) ?? SONGS[0];
+
+  // Starred songs, like Azure Pipelines favourites: star the ones you are
+  // working on, they float to the top, click again to unstar. Everything else
+  // stays alphabetical so a song is always findable in the same place.
+  const STAR_KEY = 'dl_sightread_starred';
+  const [starred, setStarred] = useState<string[]>([]);
+  const [songFilter, setSongFilter] = useState('');
+
+  useEffect(() => {
+    try {
+      const raw = JSON.parse(localStorage.getItem(STAR_KEY) || '[]');
+      if (Array.isArray(raw)) setStarred(raw.filter(x => typeof x === 'string'));
+    } catch { /* storage unavailable — stars just do not persist */ }
+  }, []);
+
+  const toggleStar = useCallback((id: string) => {
+    setStarred(prev => {
+      const next = prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id];
+      try { localStorage.setItem(STAR_KEY, JSON.stringify(next)); } catch { /* ignore */ }
+      return next;
+    });
+  }, []);
+
+  const [sortBy, setSortBy] = useState<'title' | 'easiest' | 'hardest'>('title');
+
+  const visibleSongs = (() => {
+    const q = songFilter.trim().toLowerCase();
+    const matches = q
+      ? allSongs.filter(s => s.title.toLowerCase().includes(q) || s.level.toLowerCase().includes(q))
+      : allSongs.slice();
+
+    const rank: Record<Song['level'], number> = { starter: 0, easy: 1, medium: 2 };
+    const byTitle = (a: Song, b: Song) => a.title.localeCompare(b.title);
+    const cmp = (a: Song, b: Song) => {
+      if (sortBy === 'easiest') return (rank[a.level] - rank[b.level]) || byTitle(a, b);
+      if (sortBy === 'hardest') return (rank[b.level] - rank[a.level]) || byTitle(a, b);
+      return byTitle(a, b);
+    };
+
+    // Starred ALWAYS float to the top, whichever sort is chosen — they are the
+    // songs being worked on right now, and they should never move.
+    return [
+      ...matches.filter(s => starred.includes(s.id)).sort(cmp),
+      ...matches.filter(s => !starred.includes(s.id)).sort(cmp),
+    ];
+  })();
 
   const ctxRef = useRef<AudioContext | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
@@ -333,8 +401,51 @@ export default function SightReadGame() {
         Play the notes on your instrument — the microphone listens and keeps score.
       </p>
 
+      {/* --- find a song: search + sort. Starred songs pin to the top of the
+              list whichever sort is chosen, because those are the ones being
+              worked on right now and they should never move. --- */}
+      <div className="mt-4 flex flex-wrap items-end gap-3">
+        <label className="text-sm">
+          <span className="block font-semibold text-purple-900">Find a song</span>
+          <input
+            type="search"
+            value={songFilter}
+            onChange={e => setSongFilter(e.target.value)}
+            placeholder="type to filter…"
+            disabled={listening}
+            className="mt-1 w-44 rounded-lg border border-zinc-300 px-3 py-2 disabled:opacity-50"
+          />
+        </label>
+        <label className="text-sm">
+          <span className="block font-semibold text-purple-900">Sort</span>
+          <select
+            value={sortBy}
+            onChange={e => setSortBy(e.target.value as 'title' | 'easiest' | 'hardest')}
+            disabled={listening}
+            className="mt-1 rounded-lg border border-zinc-300 px-3 py-2 disabled:opacity-50"
+          >
+            <option value="title">A–Z</option>
+            <option value="easiest">Easiest first</option>
+            <option value="hardest">Hardest first</option>
+          </select>
+        </label>
+        <button
+          onClick={() => toggleStar(songId)}
+          disabled={listening}
+          aria-pressed={starred.includes(songId)}
+          title={starred.includes(songId) ? 'Remove star' : 'Star this song so it stays at the top'}
+          className={`rounded-lg border-2 px-3 py-2 text-sm font-semibold disabled:opacity-50 ${
+            starred.includes(songId)
+              ? 'border-amber-400 bg-amber-50 text-amber-700'
+              : 'border-zinc-300 text-zinc-500'
+          }`}
+        >
+          {starred.includes(songId) ? '★ Starred' : '☆ Star'}
+        </button>
+      </div>
+
       {/* --- setup --- */}
-      <div className="mt-4 flex flex-wrap gap-3">
+      <div className="mt-3 flex flex-wrap gap-3">
         <label className="text-sm">
           <span className="block font-semibold text-purple-900">Song</span>
           <select
@@ -343,9 +454,12 @@ export default function SightReadGame() {
             disabled={listening}
             className="mt-1 rounded-lg border border-zinc-300 px-3 py-2 disabled:opacity-50"
           >
-            {SONGS.map(s => (
-              <option key={s.id} value={s.id}>{s.title} ({s.level})</option>
+            {visibleSongs.map(s => (
+              <option key={s.id} value={s.id}>
+                {starred.includes(s.id) ? '★ ' : ''}{s.title} ({s.level})
+              </option>
             ))}
+            {visibleSongs.length === 0 && <option value="">no songs match that</option>}
           </select>
         </label>
 

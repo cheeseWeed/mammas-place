@@ -31,7 +31,21 @@ export async function GET() {
     if (!user) return NextResponse.json({ error: 'User not found' }, { status: 404 });
 
     const music = (user.music ?? {}) as Record<string, unknown>;
-    const raw = Array.isArray(music.sheetUploads) ? music.sheetUploads : [];
+    const rawAll = Array.isArray(music.sheetUploads) ? music.sheetUploads : [];
+
+    // DEDUPE by filename, newest wins. Uploads were invisible until now, so
+    // kids re-uploaded the same file repeatedly assuming it had failed —
+    // Shepherd sent the same PDF six times and one MIDI three times. Showing
+    // every copy is just noise now that the list is visible.
+    const seen = new Set<string>();
+    const raw: unknown[] = [];
+    for (let i = rawAll.length - 1; i >= 0; i--) {
+      const u = rawAll[i] as Record<string, unknown>;
+      const key = String(u.fileName ?? u.title ?? i).toLowerCase();
+      if (seen.has(key)) continue;
+      seen.add(key);
+      raw.unshift(u);
+    }
 
     // The blob URL is deliberately NOT returned: the store is private, so the
     // URL is useless to the browser anyway, and there is no reason to hand a
@@ -49,6 +63,10 @@ export async function GET() {
           ? ((u.song as { notes: unknown[] }).notes.length)
           : null,
         warnings: Array.isArray(u.warnings) ? (u.warnings as string[]) : [],
+        // The parsed melody itself, so an uploaded song is actually PLAYABLE.
+        // Without this the file said "ready to play" and then could not be
+        // chosen anywhere — the parse was stored and never used.
+        song: (u.song as unknown) ?? null,
       }))
       .reverse(); // newest first
 

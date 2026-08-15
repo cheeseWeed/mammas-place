@@ -47,14 +47,35 @@ export async function POST(req: NextRequest) {
   const hits = Number(body.hits);
   const total = Number(body.total);
 
-  const song = SONGS.find((s) => s.id === songId);
-  if (!song) return NextResponse.json({ error: 'Unknown song' }, { status: 400 });
   if (rawMode !== 'wait' && rawMode !== 'tempo' && rawMode !== 'practice') {
     return NextResponse.json({ error: 'Unknown mode' }, { status: 400 });
   }
   if (!Number.isFinite(hits) || !Number.isFinite(total) || total < 0 || hits < 0) {
     return NextResponse.json({ error: 'hits and total must be numbers ≥ 0' }, { status: 400 });
   }
+
+  // The song is either built in, or one this kid uploaded and we parsed. Look
+  // the uploaded one up SERVER-SIDE rather than trusting a note count from the
+  // client: the note count is the anti-cheat clamp, so it has to come from a
+  // source the client cannot edit.
+  let song = SONGS.find((s) => s.id === songId) as { id: string; title: string; notes: { midi: number }[] } | undefined;
+  if (!song) {
+    const owner = await prisma.driveUser.findUnique({
+      where: { name: userKey },
+      select: { music: true },
+    });
+    const ups = ((owner?.music ?? {}) as { sheetUploads?: unknown[] }).sheetUploads;
+    if (Array.isArray(ups)) {
+      const hit = ups.find((u) => (u as { id?: string }).id === songId) as
+        | { id: string; title?: string; song?: { notes?: { midi: number }[] } }
+        | undefined;
+      if (hit?.song?.notes?.length) {
+        song = { id: hit.id, title: hit.title ?? 'Your song', notes: hit.song.notes };
+      }
+    }
+  }
+  if (!song) return NextResponse.json({ error: 'Unknown song' }, { status: 400 });
+
   // The client cannot claim more hits than the song actually has, nor more
   // hits than notes attempted. Clamp rather than trust.
   const safeTotal = Math.min(Math.floor(total), song.notes.length);
