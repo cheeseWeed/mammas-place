@@ -74,6 +74,9 @@ export default function SightReadGame() {
   const gameRef = useRef<GameState | null>(null);
   const lastTickRef = useRef<number>(0);
   const submittedRef = useRef(false);
+  // The pitch that just credited a note. A repeated note must not credit twice
+  // off one sustained sound — see the note in poll().
+  const lastCreditedMidiRef = useRef<number | null>(null);
 
   useEffect(() => { gameRef.current = game; }, [game]);
 
@@ -148,9 +151,34 @@ export default function SightReadGame() {
 
     const cur = gameRef.current;
     if (!cur || cur.done) return;
+
+    // REPEATED NOTES need a fresh attack.
+    //
+    // Reported by Shepherd: "if there is two notes in a row it just counts it
+    // as one". A held or re-bowed note reads as one continuous pitch to the
+    // detector, so the second note fired instantly off the first note's sound
+    // instead of waiting to actually be played.
+    //
+    // The fix: once a note is credited, the SAME pitch cannot credit the next
+    // note until the mic has either heard silence or heard something else —
+    // i.e. until there is a real new attack. A different pitch is unaffected,
+    // so ordinary melodies feel identical.
+    const nextTarget = song.notes[cur.cursor];
+    const sameAsJustPlayed =
+      lastCreditedMidiRef.current !== null &&
+      info !== null &&
+      info.midi === lastCreditedMidiRef.current &&
+      nextTarget?.midi === lastCreditedMidiRef.current;
+
+    if (info === null || (info.midi !== lastCreditedMidiRef.current)) {
+      // silence, or a different pitch — the note has genuinely been released
+      lastCreditedMidiRef.current = null;
+    }
+
     const beatsPerMs = song.bpm / 60 / 1000;
     const next = advanceGame(cur, song, {
-      heardMidi: info ? info.midi : null,
+      // Withhold the pitch only while it is the SAME note still ringing.
+      heardMidi: sameAsJustPlayed ? null : (info ? info.midi : null),
       cents: info ? info.cents : 0,
       deltaBeats: cur.mode === 'tempo' ? dtMs * beatsPerMs : 0,
     });
@@ -172,7 +200,12 @@ export default function SightReadGame() {
       const justScored = next.results.length > cur.results.length
         ? next.results[next.results.length - 1]
         : null;
-      if (justScored) setFlash({ index: justScored.index, hit: justScored.hit, at: performance.now() });
+      if (justScored) {
+        setFlash({ index: justScored.index, hit: justScored.hit, at: performance.now() });
+        // Remember what sound credited this note, so the NEXT note cannot be
+        // credited by the same ringing pitch without a fresh attack.
+        if (justScored.hit && info) lastCreditedMidiRef.current = info.midi;
+      }
       gameRef.current = next;
       setGame(next);
       if (next.done && next.mode !== 'practice') void submitRun(next);
@@ -224,6 +257,7 @@ export default function SightReadGame() {
     gameRef.current = fresh;
     setGame(fresh);
     lastTickRef.current = 0;
+    lastCreditedMidiRef.current = null;
     try {
       if (!navigator.mediaDevices?.getUserMedia) { setStatus('error'); return; }
       const stream = await navigator.mediaDevices.getUserMedia({
@@ -629,7 +663,7 @@ export default function SightReadGame() {
           )}
 
           <span className={`mt-3 inline-block rounded px-3 py-1 text-sm font-semibold ${result.passed ? 'bg-yellow-300 text-zinc-900' : 'bg-white/25'}`}>
-            {result.passed ? 'PASSED' : 'Keep practising — 80% to pass'}
+            {result.passed ? 'PASSED' : 'Keep practicing — 80% to pass'}
           </span>
           {earned && <p className="mt-2 text-sm text-yellow-200">{earned}</p>}
         </div>

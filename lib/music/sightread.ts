@@ -435,7 +435,7 @@ export function advanceGame(state: GameState, song: Song, input: AdvanceInput): 
   if (state.mode === 'wait' || state.mode === 'practice') {
     // Count how long we have been waiting so the UI can offer a way past a
     // note the microphone will not hear. A wrong note is still never a miss —
-    // a kid hunting for the note on their instrument is practising.
+    // a kid hunting for the note on their instrument is practicing.
     if (!heard) {
       return state.mode === 'wait'
         ? { ...state, stuckTicks: state.stuckTicks + 1 }
