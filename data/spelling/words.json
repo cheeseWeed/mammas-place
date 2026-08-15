@@ -16770,5 +16770,689 @@
     "syllables": 2,
     "sentence": "You should always be proud of yourself for trying.",
     "homophones": []
+  },
+  {
+    "word": "difference",
+    "level": 8,
+    "patterns": [
+      "suffix-ence"
+    ],
+    "syllables": 3,
+    "sentence": "Can you tell the difference between them?"
+  },
+  {
+    "word": "independence",
+    "level": 8,
+    "patterns": [
+      "suffix-ence"
+    ],
+    "syllables": 4,
+    "sentence": "They celebrated their independence."
+  },
+  {
+    "word": "confidence",
+    "level": 8,
+    "patterns": [
+      "suffix-ence"
+    ],
+    "syllables": 3,
+    "sentence": "She spoke with confidence."
+  },
+  {
+    "word": "assistance",
+    "level": 8,
+    "patterns": [
+      "suffix-ance"
+    ],
+    "syllables": 3,
+    "sentence": "He asked for assistance with the box."
+  },
+  {
+    "word": "preferred",
+    "level": 8,
+    "patterns": [
+      "double-consonant"
+    ],
+    "syllables": 2,
+    "sentence": "He preferred the blue one."
+  },
+  {
+    "word": "embarrassed",
+    "level": 8,
+    "patterns": [
+      "double-consonant"
+    ],
+    "syllables": 3,
+    "sentence": "He felt embarrassed by the mistake."
+  },
+  {
+    "word": "subtle",
+    "level": 8,
+    "patterns": [
+      "silent-letter"
+    ],
+    "syllables": 2,
+    "sentence": "There was a subtle change in the light."
+  },
+  {
+    "word": "proceed",
+    "level": 8,
+    "patterns": [
+      "cede-ceed"
+    ],
+    "syllables": 2,
+    "sentence": "Please proceed to the next room."
+  },
+  {
+    "word": "succeed",
+    "level": 8,
+    "patterns": [
+      "cede-ceed"
+    ],
+    "syllables": 2,
+    "sentence": "You will succeed if you keep trying."
+  },
+  {
+    "word": "telescope",
+    "level": 8,
+    "patterns": [
+      "root-scope"
+    ],
+    "syllables": 3,
+    "sentence": "He looked through the telescope."
+  },
+  {
+    "word": "microscope",
+    "level": 8,
+    "patterns": [
+      "root-scope"
+    ],
+    "syllables": 3,
+    "sentence": "The cell was clear under the microscope."
+  },
+  {
+    "word": "photograph",
+    "level": 8,
+    "patterns": [
+      "root-graph"
+    ],
+    "syllables": 3,
+    "sentence": "She framed the photograph."
+  },
+  {
+    "word": "autograph",
+    "level": 8,
+    "patterns": [
+      "root-graph"
+    ],
+    "syllables": 3,
+    "sentence": "He asked for an autograph."
+  },
+  {
+    "word": "biography",
+    "level": 8,
+    "patterns": [
+      "root-bio"
+    ],
+    "syllables": 4,
+    "sentence": "I read a biography of Bach."
+  },
+  {
+    "word": "geography",
+    "level": 8,
+    "patterns": [
+      "root-geo"
+    ],
+    "syllables": 4,
+    "sentence": "Geography is her favorite subject."
+  },
+  {
+    "word": "thermometer",
+    "level": 8,
+    "patterns": [
+      "root-therm"
+    ],
+    "syllables": 4,
+    "sentence": "The thermometer read ninety degrees."
+  },
+  {
+    "word": "transport",
+    "level": 8,
+    "patterns": [
+      "root-trans"
+    ],
+    "syllables": 2,
+    "sentence": "They transport goods by train."
+  },
+  {
+    "word": "construct",
+    "level": 8,
+    "patterns": [
+      "root-struct"
+    ],
+    "syllables": 2,
+    "sentence": "They will construct a bridge."
+  },
+  {
+    "word": "dictionary",
+    "level": 8,
+    "patterns": [
+      "root-dict"
+    ],
+    "syllables": 4,
+    "sentence": "Look it up in the dictionary."
+  },
+  {
+    "word": "audience",
+    "level": 8,
+    "patterns": [
+      "root-aud"
+    ],
+    "syllables": 3,
+    "sentence": "The audience applauded."
+  },
+  {
+    "word": "visible",
+    "level": 8,
+    "patterns": [
+      "root-vis"
+    ],
+    "syllables": 3,
+    "sentence": "The stars were visible tonight."
+  },
+  {
+    "word": "familiar",
+    "level": 8,
+    "patterns": [
+      "tricky"
+    ],
+    "syllables": 4,
+    "sentence": "That tune sounds familiar."
+  },
+  {
+    "word": "February",
+    "level": 8,
+    "patterns": [
+      "tricky"
+    ],
+    "syllables": 3,
+    "sentence": "His birthday is in February."
+  },
+  {
+    "word": "character",
+    "level": 8,
+    "patterns": [
+      "root-chr"
+    ],
+    "syllables": 3,
+    "sentence": "My favorite character is the cellist."
+  },
+  {
+    "word": "environment",
+    "level": 8,
+    "patterns": [
+      "tricky"
+    ],
+    "syllables": 4,
+    "sentence": "We should protect the environment."
+  },
+  {
+    "word": "temperature",
+    "level": 9,
+    "patterns": [
+      "root-therm"
+    ],
+    "syllables": 4,
+    "sentence": "Take the patient's temperature."
+  },
+  {
+    "word": "perseverance",
+    "level": 9,
+    "patterns": [
+      "suffix-ance"
+    ],
+    "syllables": 4,
+    "sentence": "Her perseverance paid off."
+  },
+  {
+    "word": "consequence",
+    "level": 9,
+    "patterns": [
+      "suffix-ence"
+    ],
+    "syllables": 3,
+    "sentence": "Every choice has a consequence."
+  },
+  {
+    "word": "occasionally",
+    "level": 9,
+    "patterns": [
+      "double-consonant"
+    ],
+    "syllables": 5,
+    "sentence": "We occasionally visit the lake."
+  },
+  {
+    "word": "exaggerate",
+    "level": 9,
+    "patterns": [
+      "double-consonant"
+    ],
+    "syllables": 4,
+    "sentence": "Do not exaggerate the story."
+  },
+  {
+    "word": "silhouette",
+    "level": 9,
+    "patterns": [
+      "silent-letter"
+    ],
+    "syllables": 3,
+    "sentence": "A silhouette appeared in the window."
+  },
+  {
+    "word": "psychology",
+    "level": 9,
+    "patterns": [
+      "silent-letter"
+    ],
+    "syllables": 4,
+    "sentence": "She studies psychology."
+  },
+  {
+    "word": "pneumonia",
+    "level": 9,
+    "patterns": [
+      "silent-letter"
+    ],
+    "syllables": 3,
+    "sentence": "He recovered from pneumonia."
+  },
+  {
+    "word": "rendezvous",
+    "level": 9,
+    "patterns": [
+      "silent-letter"
+    ],
+    "syllables": 3,
+    "sentence": "They planned a rendezvous at noon."
+  },
+  {
+    "word": "chandelier",
+    "level": 9,
+    "patterns": [
+      "silent-letter"
+    ],
+    "syllables": 3,
+    "sentence": "The chandelier sparkled."
+  },
+  {
+    "word": "counterfeit",
+    "level": 9,
+    "patterns": [
+      "ie-ei"
+    ],
+    "syllables": 3,
+    "sentence": "The bill turned out to be counterfeit."
+  },
+  {
+    "word": "chronological",
+    "level": 9,
+    "patterns": [
+      "root-chron"
+    ],
+    "syllables": 5,
+    "sentence": "List the events in chronological order."
+  },
+  {
+    "word": "democracy",
+    "level": 9,
+    "patterns": [
+      "root-cracy"
+    ],
+    "syllables": 4,
+    "sentence": "A democracy depends on voting."
+  },
+  {
+    "word": "philosophy",
+    "level": 9,
+    "patterns": [
+      "root-phil"
+    ],
+    "syllables": 4,
+    "sentence": "He studied ancient philosophy."
+  },
+  {
+    "word": "astronomy",
+    "level": 9,
+    "patterns": [
+      "root-astro"
+    ],
+    "syllables": 4,
+    "sentence": "Astronomy explains the stars."
+  },
+  {
+    "word": "hydraulic",
+    "level": 9,
+    "patterns": [
+      "root-hydro"
+    ],
+    "syllables": 3,
+    "sentence": "The lift uses hydraulic power."
+  },
+  {
+    "word": "manuscript",
+    "level": 9,
+    "patterns": [
+      "root-script"
+    ],
+    "syllables": 3,
+    "sentence": "The manuscript was handwritten."
+  },
+  {
+    "word": "benevolent",
+    "level": 9,
+    "patterns": [
+      "root-bene"
+    ],
+    "syllables": 4,
+    "sentence": "A benevolent king helped the poor."
+  },
+  {
+    "word": "credible",
+    "level": 9,
+    "patterns": [
+      "root-cred"
+    ],
+    "syllables": 3,
+    "sentence": "The witness seemed credible."
+  },
+  {
+    "word": "spectacle",
+    "level": 9,
+    "patterns": [
+      "root-spect"
+    ],
+    "syllables": 3,
+    "sentence": "The parade was quite a spectacle."
+  },
+  {
+    "word": "fragment",
+    "level": 9,
+    "patterns": [
+      "root-frag"
+    ],
+    "syllables": 2,
+    "sentence": "She found a fragment of pottery."
+  },
+  {
+    "word": "conscious",
+    "level": 9,
+    "patterns": [
+      "tricky"
+    ],
+    "syllables": 2,
+    "sentence": "He was conscious of the noise."
+  },
+  {
+    "word": "miscellaneous",
+    "level": 9,
+    "patterns": [
+      "tricky"
+    ],
+    "syllables": 5,
+    "sentence": "Put the miscellaneous items in the bin."
+  },
+  {
+    "word": "bureaucracy",
+    "level": 9,
+    "patterns": [
+      "root-cracy"
+    ],
+    "syllables": 4,
+    "sentence": "The bureaucracy moved slowly."
+  },
+  {
+    "word": "conscientious",
+    "level": 10,
+    "patterns": [
+      "tricky"
+    ],
+    "syllables": 4,
+    "sentence": "She is a conscientious student."
+  },
+  {
+    "word": "entrepreneur",
+    "level": 10,
+    "patterns": [
+      "tricky"
+    ],
+    "syllables": 4,
+    "sentence": "The entrepreneur started two companies."
+  },
+  {
+    "word": "connoisseur",
+    "level": 10,
+    "patterns": [
+      "tricky"
+    ],
+    "syllables": 3,
+    "sentence": "She is a connoisseur of fine music."
+  },
+  {
+    "word": "bourgeois",
+    "level": 10,
+    "patterns": [
+      "silent-letter"
+    ],
+    "syllables": 2,
+    "sentence": "The painting depicted bourgeois life."
+  },
+  {
+    "word": "camaraderie",
+    "level": 10,
+    "patterns": [
+      "tricky"
+    ],
+    "syllables": 4,
+    "sentence": "The team had great camaraderie."
+  },
+  {
+    "word": "juxtapose",
+    "level": 10,
+    "patterns": [
+      "root-juxta"
+    ],
+    "syllables": 3,
+    "sentence": "The artist juxtaposed light and dark."
+  },
+  {
+    "word": "idiosyncrasy",
+    "level": 10,
+    "patterns": [
+      "tricky"
+    ],
+    "syllables": 5,
+    "sentence": "Humming while reading is his idiosyncrasy."
+  },
+  {
+    "word": "onomatopoeia",
+    "level": 10,
+    "patterns": [
+      "tricky"
+    ],
+    "syllables": 6,
+    "sentence": "Buzz is an example of onomatopoeia."
+  },
+  {
+    "word": "surveillance",
+    "level": 10,
+    "patterns": [
+      "suffix-ance"
+    ],
+    "syllables": 3,
+    "sentence": "The store uses surveillance cameras."
+  },
+  {
+    "word": "reminiscence",
+    "level": 10,
+    "patterns": [
+      "suffix-ence"
+    ],
+    "syllables": 4,
+    "sentence": "His reminiscence of camp made us laugh."
+  },
+  {
+    "word": "acquiesce",
+    "level": 10,
+    "patterns": [
+      "cede-ceed"
+    ],
+    "syllables": 3,
+    "sentence": "She would not acquiesce to the demand."
+  },
+  {
+    "word": "chrysanthemum",
+    "level": 10,
+    "patterns": [
+      "root-chr"
+    ],
+    "syllables": 4,
+    "sentence": "A chrysanthemum bloomed in the pot."
+  },
+  {
+    "word": "hemorrhage",
+    "level": 10,
+    "patterns": [
+      "silent-letter"
+    ],
+    "syllables": 3,
+    "sentence": "The doctor stopped the hemorrhage."
+  },
+  {
+    "word": "labyrinth",
+    "level": 10,
+    "patterns": [
+      "root-lab"
+    ],
+    "syllables": 3,
+    "sentence": "The hedges formed a labyrinth."
+  },
+  {
+    "word": "mnemonic",
+    "level": 10,
+    "patterns": [
+      "silent-letter"
+    ],
+    "syllables": 3,
+    "sentence": "A mnemonic helps you remember."
+  },
+  {
+    "word": "paradigm",
+    "level": 10,
+    "patterns": [
+      "silent-letter"
+    ],
+    "syllables": 3,
+    "sentence": "That discovery changed the paradigm."
+  },
+  {
+    "word": "plagiarism",
+    "level": 10,
+    "patterns": [
+      "tricky"
+    ],
+    "syllables": 4,
+    "sentence": "Copying without credit is plagiarism."
+  },
+  {
+    "word": "renaissance",
+    "level": 10,
+    "patterns": [
+      "suffix-ance"
+    ],
+    "syllables": 3,
+    "sentence": "The Renaissance changed European art."
+  },
+  {
+    "word": "sovereignty",
+    "level": 10,
+    "patterns": [
+      "ie-ei"
+    ],
+    "syllables": 4,
+    "sentence": "The nation guarded its sovereignty."
+  },
+  {
+    "word": "vengeance",
+    "level": 10,
+    "patterns": [
+      "suffix-ance"
+    ],
+    "syllables": 2,
+    "sentence": "He sought vengeance for the insult."
+  },
+  {
+    "word": "colonel",
+    "level": 10,
+    "patterns": [
+      "silent-letter"
+    ],
+    "syllables": 2,
+    "sentence": "The colonel addressed the troops."
+  },
+  {
+    "word": "indict",
+    "level": 10,
+    "patterns": [
+      "silent-letter"
+    ],
+    "syllables": 2,
+    "sentence": "The jury voted to indict."
+  },
+  {
+    "word": "facsimile",
+    "level": 10,
+    "patterns": [
+      "tricky"
+    ],
+    "syllables": 4,
+    "sentence": "The museum displayed a facsimile."
+  },
+  {
+    "word": "hyperbole",
+    "level": 10,
+    "patterns": [
+      "root-hyper"
+    ],
+    "syllables": 4,
+    "sentence": "Saying it took forever is hyperbole."
+  },
+  {
+    "word": "obsequious",
+    "level": 10,
+    "patterns": [
+      "tricky"
+    ],
+    "syllables": 4,
+    "sentence": "His obsequious manner annoyed everyone."
+  },
+  {
+    "word": "phenomenon",
+    "level": 10,
+    "patterns": [
+      "root-phen"
+    ],
+    "syllables": 4,
+    "sentence": "The aurora is a natural phenomenon."
+  },
+  {
+    "word": "pseudonym",
+    "level": 10,
+    "patterns": [
+      "root-pseudo"
+    ],
+    "syllables": 3,
+    "sentence": "She writes under a pseudonym."
   }
 ]

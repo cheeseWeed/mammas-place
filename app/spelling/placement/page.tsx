@@ -56,6 +56,9 @@ const LEVEL_DESCRIPTIONS: Record<SpellingLevel, string> = {
   5: 'Two-syllable words like happy, rabbit, and dinner.',
   6: 'Suffixes and prefixes — playing, unhappy, jumped.',
   7: 'Tricky words! You’re a spelling pro.',
+  8: 'Spelling rules and traps — the ones that catch good spellers.',
+  9: 'Roots and big words. Learn a root, unlock a whole family.',
+  10: 'Spelling-bee words. This is the top of the ladder.',
 };
 
 function normalize(s: string): string {

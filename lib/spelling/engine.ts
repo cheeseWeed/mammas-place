@@ -3,7 +3,7 @@
  * and weighted word picker. Pure functions only — no React, no I/O.
  */
 
-export type SpellingLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
+export type SpellingLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
 export type Word = {
   word: string;
@@ -21,7 +21,7 @@ export type AttemptOutcome = {
 };
 
 const MIN_LEVEL: SpellingLevel = 1;
-const MAX_LEVEL: SpellingLevel = 7;
+const MAX_LEVEL: SpellingLevel = 10;
 const RECENT_WINDOW = 6;
 const SHIFT_THRESHOLD = 3;
 
@@ -36,6 +36,9 @@ const LEVEL_LABELS: Record<SpellingLevel, string> = {
   5: 'Level 5 — Two-Syllable Words',
   6: 'Level 6 — Suffixes & Prefixes',
   7: 'Level 7 — Tricky Words',
+  8: 'Level 8 — Spelling Rules & Traps',
+  9: 'Level 9 — Roots & Big Words',
+  10: 'Level 10 — Spelling Bee',
 };
 
 export function levelLabel(level: SpellingLevel): string {
