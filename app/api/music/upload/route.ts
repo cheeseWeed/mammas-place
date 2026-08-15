@@ -136,9 +136,13 @@ export async function POST(req: NextRequest) {
   const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '-').slice(0, 80);
   let url: string;
   try {
+    // PRIVATE, deliberately: this is a child's own sheet music, and a public
+    // blob is readable by anyone who has (or guesses) the URL. It also has to
+    // match the store's configured access — a public put against a private
+    // store is rejected outright.
     const blob = await put(`sheet-music/${userKey}/${Date.now()}-${safeName}`, file, {
-      access: 'public',
-      addRandomSuffix: false,
+      access: 'private',
+      addRandomSuffix: true,
     });
     url = blob.url;
   } catch (err) {
