@@ -14,7 +14,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { detectPitch, frequencyToNote } from '@/lib/music/pitch';
-import { closeTone, playNote, playPhrase } from '@/lib/music/tone';
+import { closeTone, playAlong, playNote, playPhrase, type PlayAlongHandle } from '@/lib/music/tone';
 import {
   SONGS,
   advanceGame,
@@ -54,6 +54,15 @@ export default function SightReadGame() {
   // Which note just landed, and how it went — drives the hit flash.
   const [flash, setFlash] = useState<{ index: number; hit: boolean; at: number } | null>(null);
   const [soundOn, setSoundOn] = useState(true);
+  // Play-along: the song sounds out loud and the kid plays with it. The speed
+  // dial is the whole point — a beginner needs to start well under the marked
+  // tempo and work up, which is how a teacher actually runs this.
+  const [alongPct, setAlongPct] = useState(100);
+  const [alongIndex, setAlongIndex] = useState<number | null>(null);
+  // Playing state must be STATE, not just the ref: a ref mutation does not
+  // re-render, so the button never flipped to "Stop".
+  const [alongPlaying, setAlongPlaying] = useState(false);
+  const alongRef = useRef<PlayAlongHandle | null>(null);
 
   const song: Song = SONGS.find(s => s.id === songId) ?? SONGS[0];
 
@@ -175,6 +184,32 @@ export default function SightReadGame() {
   // instrument, no penalty for taking a few tries. Deliberately unavailable in
   // tempo mode — a reference tone there would let a kid play by ear instead of
   // reading, which is the whole skill being taught.
+  const stopAlong = useCallback(() => {
+    alongRef.current?.stop();
+    alongRef.current = null;
+    setAlongIndex(null);
+    setAlongPlaying(false);
+  }, []);
+
+  const startAlong = useCallback(() => {
+    alongRef.current?.stop();
+    alongRef.current = null;
+    const bpm = Math.round((song.bpm * alongPct) / 100);
+    const h = playAlong(song.notes, {
+      bpm,
+      onNote: i => setAlongIndex(i),
+      onDone: () => { alongRef.current = null; setAlongIndex(null); setAlongPlaying(false); },
+    });
+    alongRef.current = h;
+    setAlongPlaying(!!h);
+    if (!h) setAlongIndex(null);
+  }, [song, alongPct]);
+
+  useEffect(() => stopAlong, [stopAlong]);
+  // Changing song or speed mid-playback would desync the highlight from the
+  // audio, so stop rather than let them drift apart.
+  useEffect(() => { stopAlong(); }, [songId, alongPct, stopAlong]);
+
   const canHearNotes = mode !== 'tempo';
   const hearNote = useCallback((midi: number) => {
     if (!canHearNotes || !soundOn) return;
@@ -287,6 +322,52 @@ export default function SightReadGame() {
         </div>
       </div>
 
+      {/* PLAY ALONG — the song plays out loud and the kid plays with it.
+          The speed dial is the point: a beginner starts well under the marked
+          tempo and works up, which is how a teacher runs this. Available in
+          every mode, because playing along with a recording is practice, not
+          a way to cheat a reading test. */}
+      {soundOn && (
+        <div className="mt-3 flex flex-wrap items-center gap-3 rounded-lg border border-purple-200 bg-purple-50/60 p-3">
+          {alongPlaying ? (
+            <button
+              onClick={stopAlong}
+              className="rounded-lg bg-zinc-700 px-4 py-2 text-sm font-semibold text-white"
+            >
+              ■ Stop
+            </button>
+          ) : (
+            <button
+              onClick={startAlong}
+              className="rounded-lg bg-purple-800 px-4 py-2 text-sm font-semibold text-white"
+            >
+              ▶ Play along
+            </button>
+          )}
+
+          <label className="flex items-center gap-2 text-sm">
+            <span className="font-semibold text-purple-900">Speed</span>
+            <input
+              type="range"
+              min={40}
+              max={120}
+              step={5}
+              value={alongPct}
+              onChange={e => setAlongPct(Number(e.target.value))}
+              className="w-32 sm:w-44"
+              aria-label="Play-along speed"
+            />
+            <span className="w-24 tabular-nums text-zinc-700">
+              {alongPct}% · {Math.round((song.bpm * alongPct) / 100)} BPM
+            </span>
+          </label>
+
+          <span className="text-xs text-zinc-500">
+            Four clicks count you in. Start slow and speed up as it gets easy.
+          </span>
+        </div>
+      )}
+
       {/* Hearing the notes is a LEARNING aid, so it is offered in easy and
           practice but withheld in tempo mode — otherwise a kid can play the
           whole thing by ear and never read a note. */}
@@ -365,7 +446,10 @@ export default function SightReadGame() {
           )}
 
           {/* notes, scrolled so the current one sits on the hit line */}
-          <g transform={`translate(${HIT_X - cursor * NOTE_SPACING}, 0)`}>
+          {/* The staff follows the play-along note when one is sounding, and
+              the game cursor otherwise — without this the highlighted note
+              scrolls off screen during play-along. */}
+          <g transform={`translate(${HIT_X - (alongIndex ?? cursor) * NOTE_SPACING}, 0)`}>
             {song.notes.map((n, i) => {
               const pos = staffPosition(n.midi, song.clef);
               const x = i * NOTE_SPACING;
@@ -393,6 +477,10 @@ export default function SightReadGame() {
                     <line key={lp} x1={x - 13} y1={yFor(lp)} x2={x + 13} y2={yFor(lp)} stroke="#8f86a0" strokeWidth="1.5" />
                   ))}
                   {isCurrent && <circle cx={x} cy={y} r="17" fill="#facc15" fillOpacity="0.35" />}
+                  {/* the note sounding right now during play-along */}
+                  {alongIndex === i && (
+                    <circle cx={x} cy={y} r="15" fill="none" stroke="#7c3aed" strokeWidth="3" />
+                  )}
                   <ellipse cx={x} cy={y} rx="8.5" ry="6.5" fill={fill} transform={`rotate(-18 ${x} ${y})`} />
                   {/* stem: down for high notes, up for low, like real notation */}
                   <line

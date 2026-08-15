@@ -126,6 +126,109 @@ export function playPhrase(
   }
 }
 
+/* ============================================================
+   PLAY-ALONG
+   ============================================================ */
+
+export interface PlayAlongHandle {
+  /** Stop immediately and silence anything still ringing. */
+  stop: () => void;
+}
+
+export interface PlayAlongOptions extends PlayNoteOptions {
+  /** Beats per minute to play at — this is the speed dial. */
+  bpm: number;
+  /** Count-in clicks before the melody starts. Default 4 (one bar of 4/4). */
+  countIn?: number;
+  /** Fires as each note begins, so the staff can follow along. */
+  onNote?: (index: number) => void;
+  /** Fires once the last note has finished. */
+  onDone?: () => void;
+}
+
+/**
+ * Play a whole melody so the kid can play ALONG with it.
+ *
+ * Unlike playPhrase this is stoppable and reports progress, which is what a
+ * play-along needs: the tempo is the kid's dial, they need to be able to bail
+ * out mid-song, and the staff has to follow the sound.
+ *
+ * A count-in matters more than it looks — starting cold gives a beginner no
+ * chance to find the pulse, and the first note gets missed every time.
+ */
+export function playAlong(
+  notes: { midi: number; beats: number }[],
+  opts: PlayAlongOptions,
+): PlayAlongHandle | null {
+  const ac = audioContext();
+  if (!ac) return null;
+
+  const beatMs = 60000 / Math.max(20, opts.bpm);
+  const volume = opts.volume ?? 0.22;
+  const countIn = opts.countIn ?? 4;
+  const oscs: OscillatorNode[] = [];
+  const timers: number[] = [];
+  let stopped = false;
+
+  let t = ac.currentTime + 0.12; // small lead-in so the first click is not clipped
+
+  // Count-in: a short wood-block-ish click, deliberately not a pitch from the
+  // melody so it cannot be mistaken for a note to play.
+  for (let i = 0; i < countIn; i++) {
+    const osc = ac.createOscillator();
+    const gain = ac.createGain();
+    osc.type = 'square';
+    osc.frequency.value = i === 0 ? 1200 : 900;
+    gain.gain.setValueAtTime(0.0001, t);
+    gain.gain.exponentialRampToValueAtTime(volume * 0.5, t + 0.005);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + 0.07);
+    osc.connect(gain);
+    gain.connect(ac.destination);
+    osc.start(t);
+    osc.stop(t + 0.1);
+    oscs.push(osc);
+    t += beatMs / 1000;
+  }
+
+  const startAt = t;
+  notes.forEach((n, i) => {
+    const dur = (n.beats * beatMs) / 1000;
+    const osc = ac.createOscillator();
+    const gain = ac.createGain();
+    osc.type = 'triangle';
+    osc.frequency.value = midiToFrequency(n.midi);
+    gain.gain.setValueAtTime(0.0001, t);
+    gain.gain.exponentialRampToValueAtTime(volume, t + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + dur * 0.92);
+    osc.connect(gain);
+    gain.connect(ac.destination);
+    osc.start(t);
+    osc.stop(t + dur);
+    oscs.push(osc);
+
+    if (opts.onNote) {
+      const delayMs = (t - ac.currentTime) * 1000;
+      timers.push(window.setTimeout(() => { if (!stopped) opts.onNote?.(i); }, Math.max(0, delayMs)));
+    }
+    t += dur;
+  });
+
+  if (opts.onDone) {
+    const endMs = (t - ac.currentTime) * 1000;
+    timers.push(window.setTimeout(() => { if (!stopped) opts.onDone?.(); }, Math.max(0, endMs)));
+  }
+
+  void startAt;
+
+  return {
+    stop() {
+      stopped = true;
+      timers.forEach(id => window.clearTimeout(id));
+      oscs.forEach(o => { try { o.stop(); } catch { /* already stopped */ } });
+    },
+  };
+}
+
 /** Release the shared context — call on unmount so the tab does not hold audio open. */
 export function closeTone(): void {
   if (ctx) {
