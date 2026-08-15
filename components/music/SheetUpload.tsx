@@ -14,7 +14,7 @@
 //                       person to write out, and we say so plainly rather than
 //                       pretending it will "just work".
 
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 interface UploadResult {
   ok: true;
@@ -26,11 +26,37 @@ interface UploadResult {
   song?: { notes: unknown[] };
 }
 
+interface PastUpload {
+  id: string;
+  title: string;
+  fileName: string;
+  kind: string;
+  status: string;
+  uploadedAt: string;
+  noteCount: number | null;
+  warnings: string[];
+}
+
 export default function SheetUpload({ onImported }: { onImported?: () => void }) {
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<UploadResult | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [past, setPast] = useState<PastUpload[]>([]);
   const inputRef = useRef<HTMLInputElement | null>(null);
+
+  // Show what has already been uploaded. Without this the list was write-only:
+  // a kid uploaded a file, saw nothing, and uploaded it again — which is
+  // exactly what happened (the same PDF three times in nine minutes).
+  const loadPast = useCallback(async () => {
+    try {
+      const res = await fetch('/api/music/uploads');
+      if (!res.ok) return;
+      const body = await res.json().catch(() => null);
+      if (Array.isArray(body?.uploads)) setPast(body.uploads);
+    } catch { /* offline — the upload form still works */ }
+  }, []);
+
+  useEffect(() => { void loadPast(); }, [loadPast]);
 
   const send = useCallback(async (file: File) => {
     setBusy(true);
@@ -46,13 +72,14 @@ export default function SheetUpload({ onImported }: { onImported?: () => void })
         return;
       }
       setResult(body as UploadResult);
+      void loadPast();
       onImported?.();
     } catch {
       setError('Could not reach the server. Check your connection and try again.');
     } finally {
       setBusy(false);
     }
-  }, [onImported]);
+  }, [onImported, loadPast]);
 
   return (
     <div className="rounded-2xl border-2 border-purple-200 bg-white p-4 sm:p-6">
@@ -92,6 +119,39 @@ export default function SheetUpload({ onImported }: { onImported?: () => void })
 
       {error && (
         <p className="mt-3 rounded-lg bg-red-50 p-3 text-sm text-red-800">{error}</p>
+      )}
+
+      {past.length > 0 && (
+        <div className="mt-4">
+          <p className="text-sm font-semibold text-purple-900">Your uploads</p>
+          <ul className="mt-2 space-y-1.5">
+            {past.map(u => (
+              <li
+                key={u.id}
+                className="flex flex-wrap items-center gap-x-2 gap-y-1 rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-2 text-sm"
+              >
+                <span className="font-semibold text-zinc-800">{u.title}</span>
+                <span className="text-xs uppercase tracking-wide text-zinc-500">{u.kind}</span>
+                {u.status === 'playable' ? (
+                  <span className="rounded bg-green-100 px-2 py-0.5 text-xs font-semibold text-green-800">
+                    ✓ ready to play{u.noteCount ? ` — ${u.noteCount} notes` : ''}
+                  </span>
+                ) : (
+                  <span className="rounded bg-amber-100 px-2 py-0.5 text-xs font-semibold text-amber-900">
+                    ⏳ saved — waiting for the notes to be written out
+                  </span>
+                )}
+                <span className="ml-auto text-xs text-zinc-400">
+                  {u.uploadedAt ? u.uploadedAt.slice(0, 10) : ''}
+                </span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-2 text-xs text-zinc-500">
+            A PDF has to be written out by a person before you can play it — it is a picture of
+            the music, not the notes themselves. Uploading it again will not speed that up.
+          </p>
+        </div>
       )}
 
       {result && (
