@@ -68,22 +68,29 @@ export default function SightReadGame() {
   // the built-in library so an upload that says "ready to play" actually is.
   const [uploaded, setUploaded] = useState<Song[]>([]);
 
-  useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      try {
-        const res = await fetch('/api/music/uploads');
-        if (!res.ok) return;
-        const body = await res.json().catch(() => null);
-        if (cancelled || !Array.isArray(body?.uploads)) return;
-        const songs = body.uploads
-          .filter((u: { song?: { notes?: unknown[] } }) => Array.isArray(u.song?.notes) && u.song!.notes!.length > 0)
-          .map((u: { id: string; title: string; song: Song }) => ({ ...u.song, id: u.id, title: u.title }));
-        setUploaded(songs);
-      } catch { /* offline — the built-in songs still work */ }
-    })();
-    return () => { cancelled = true; };
+  const loadUploaded = useCallback(async () => {
+    try {
+      const res = await fetch('/api/music/uploads');
+      if (!res.ok) return;
+      const body = await res.json().catch(() => null);
+      if (!Array.isArray(body?.uploads)) return;
+      const songs = body.uploads
+        .filter((u: { song?: { notes?: unknown[] } }) => Array.isArray(u.song?.notes) && u.song!.notes!.length > 0)
+        .map((u: { id: string; title: string; song: Song }) => ({ ...u.song, id: u.id, title: u.title }));
+      setUploaded(songs);
+    } catch { /* offline — the built-in songs still work */ }
   }, []);
+
+  useEffect(() => { void loadUploaded(); }, [loadUploaded]);
+
+  // A song uploaded a second ago should be playable a second ago. The upload
+  // form fires this the moment a file parses, so the picker refreshes without
+  // a page reload.
+  useEffect(() => {
+    const h = () => { void loadUploaded(); };
+    window.addEventListener('music:uploads-changed', h);
+    return () => window.removeEventListener('music:uploads-changed', h);
+  }, [loadUploaded]);
 
   const allSongs: Song[] = [...SONGS, ...uploaded];
   const song: Song = allSongs.find(s => s.id === songId) ?? SONGS[0];
@@ -585,6 +592,36 @@ export default function SightReadGame() {
       {/* --- the staff --- */}
       <div className="mt-4 overflow-hidden rounded-xl border border-zinc-200 bg-[#fbfaff]">
         <svg viewBox="0 0 700 200" className="block w-full" role="img" aria-label={`${song.title} — note reader`}>
+          {/* GUIDE TRACK — a dim horizontal lane under the staff showing WHERE
+              and WHEN each note lands. It scrolls with the music, so a kid can
+              see the next note approaching and how much time is left before it
+              reaches the hit line. Deliberately low-contrast: it is a guide,
+              not the notation, and it must not compete with the notes. */}
+          <rect x="0" y={STAFF_TOP + 8 * STAFF_STEP + 22} width="700" height="16" fill="#efeaf7" />
+          <g transform={`translate(${HIT_X - (alongIndex ?? cursor) * NOTE_SPACING}, 0)`}>
+            {song.notes.map((n, i) => {
+              const res = game?.results.find(r => r.index === i);
+              const w = Math.max(10, n.beats * (NOTE_SPACING * 0.42));
+              return (
+                <rect
+                  key={`g${i}`}
+                  x={i * NOTE_SPACING - w / 2}
+                  y={STAFF_TOP + 8 * STAFF_STEP + 24}
+                  width={w}
+                  height={12}
+                  rx={3}
+                  fill={
+                    res?.grade === 'great' ? '#86efac'
+                    : res?.grade === 'close' ? '#fcd34d'
+                    : res?.grade === 'wrong' ? '#fca5a5'
+                    : i === cursor ? '#c4b5fd'
+                    : '#ddd6e8'
+                  }
+                />
+              );
+            })}
+          </g>
+
           {/* five staff lines */}
           {[0, 2, 4, 6, 8].map(pos => (
             <line key={pos} x1="0" y1={yFor(pos)} x2="700" y2={yFor(pos)} stroke="#c9c2d4" strokeWidth="1.5" />

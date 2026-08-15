@@ -73,6 +73,9 @@ export default function SheetUpload({ onImported }: { onImported?: () => void })
       }
       setResult(body as UploadResult);
       void loadPast();
+      // Tell the game to reload its song list right now, so a file that just
+      // parsed is immediately playable instead of needing a page refresh.
+      try { window.dispatchEvent(new CustomEvent('music:uploads-changed')); } catch { /* ignore */ }
       onImported?.();
     } catch {
       setError('Could not reach the server. Check your connection and try again.');

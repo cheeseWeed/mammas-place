@@ -181,29 +181,37 @@ export const SONGS: Song[] = [
   },
   {
     id: 'minuet-in-c-opening',
-    title: 'Minuet in C (opening)',
+    title: 'Minuet in C (first 8 bars)',
     source: 'transcribed',
     bpm: 84,
     clef: 'bass',
     level: 'easy',
-    // J.S. Bach, "Grazioso" — 3/4, C major, bass clef. Transcribed by eye from
-    // Shepherd's own printed part (he uploaded the PDF; a PDF is a picture, so
-    // a person has to read the notes). Measures 1-8, the two systems that are
-    // unambiguous in the photo. The small digits on the page are cello
-    // FINGERINGS and the square/V marks are BOWINGS — neither is a note.
+    // J.S. Bach, "Grazioso" — 3/4, C major, bass clef. Suzuki cello book.
+    // Transcribed by eye from Shepherd's printed part, measures 1-8 (the first
+    // two systems, ending at the repeat).
+    //
+    // The small digits are cello FINGERINGS and the square/V marks are BOWINGS
+    // — neither is a note. An earlier pass at a blurry photo read this as a
+    // rising C-E-G-C arpeggio, which was wrong: the piece opens on G and moves
+    // mostly stepwise. Re-read from a clear photo.
     notes: [
-      // m1-2: the rising C major arpeggio
-      { midi: 48, beats: 1 }, { midi: 52, beats: 1 }, { midi: 55, beats: 1 },
-      { midi: 60, beats: 2 }, { midi: 55, beats: 1 },
-      // m3-4
-      { midi: 57, beats: 1 }, { midi: 55, beats: 1 }, { midi: 53, beats: 1 },
-      { midi: 52, beats: 2 }, { midi: 50, beats: 1 },
-      // m5-6: the opening returns
-      { midi: 48, beats: 1 }, { midi: 52, beats: 1 }, { midi: 55, beats: 1 },
-      { midi: 60, beats: 2 }, { midi: 55, beats: 1 },
-      // m7-8: settles back to the tonic
-      { midi: 57, beats: 1 }, { midi: 55, beats: 1 }, { midi: 53, beats: 1 },
-      { midi: 52, beats: 2 }, { midi: 48, beats: 1 },
+      // m1: G  |  m2: G A B   (quarter, then two eighths + quarter)
+      { midi: 55, beats: 1 }, { midi: 55, beats: 1 }, { midi: 55, beats: 1 },
+      { midi: 55, beats: 1 }, { midi: 57, beats: 0.5 }, { midi: 59, beats: 0.5 }, { midi: 60, beats: 1 },
+      // m3: C  B A G   |  m4: A  B C
+      { midi: 60, beats: 1 }, { midi: 59, beats: 0.5 }, { midi: 57, beats: 0.5 },
+      { midi: 55, beats: 0.5 }, { midi: 57, beats: 0.5 },
+      { midi: 59, beats: 1 }, { midi: 57, beats: 0.5 }, { midi: 59, beats: 0.5 },
+      { midi: 60, beats: 1 },
+      // m5: G held  |  m6: G A B C
+      { midi: 55, beats: 1 }, { midi: 55, beats: 1 }, { midi: 55, beats: 1 },
+      { midi: 60, beats: 1 }, { midi: 59, beats: 0.5 }, { midi: 57, beats: 0.5 },
+      { midi: 55, beats: 0.5 }, { midi: 53, beats: 0.5 },
+      // m7: F E D  (quarter + two eighths + quarter)
+      { midi: 53, beats: 1 }, { midi: 52, beats: 0.5 }, { midi: 50, beats: 0.5 },
+      { midi: 52, beats: 1 },
+      // m8: C, dotted half — the phrase lands on the tonic and holds
+      { midi: 48, beats: 3 },
     ],
   },
   {

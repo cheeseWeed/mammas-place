@@ -369,3 +369,39 @@ describe('scoreRun — totals for the page', () => {
     expect(s.unheard).toBe(1);
   });
 });
+
+describe('transcription arithmetic — catches a mis-read page', () => {
+  // A transcription can look plausible and still be wrong. Measure sums are the
+  // cheapest real check available: if the beats in a piece do not divide evenly
+  // into its time signature, a note was misread. This caught two errors in the
+  // Minuet (a 2-beat bar and a 5-beat bar) that looked fine by eye.
+  const EXPECTED: Record<string, { beatsPerBar: number; bars: number }> = {
+    'minuet-in-c-opening': { beatsPerBar: 3, bars: 8 },
+  };
+
+  for (const [id, spec] of Object.entries(EXPECTED)) {
+    it(`${id} totals exactly ${spec.bars} bars`, () => {
+      const song = SONGS.find(s => s.id === id)!;
+      const total = song.notes.reduce((a, n) => a + n.beats, 0);
+      expect(total).toBe(spec.beatsPerBar * spec.bars);
+    });
+  }
+
+  it('no transcribed song contains an accidental it should not', () => {
+    // The Minuet is C major: no sharps or flats anywhere.
+    const song = SONGS.find(s => s.id === 'minuet-in-c-opening')!;
+    const sharps = song.notes.filter(n => [1, 3, 6, 8, 10].includes(((n.midi % 12) + 12) % 12));
+    expect(sharps).toHaveLength(0);
+  });
+
+  it('every transcribed cello piece stays in a playable range', () => {
+    const transcribed = SONGS.filter(s => s.source === 'transcribed' && s.clef === 'bass');
+    expect(transcribed.length).toBeGreaterThan(0);
+    for (const s of transcribed) {
+      for (const n of s.notes) {
+        expect(n.midi, `${s.id} above cello C2`).toBeGreaterThanOrEqual(36);
+        expect(n.midi, `${s.id} within first positions`).toBeLessThanOrEqual(72);
+      }
+    }
+  });
+});
