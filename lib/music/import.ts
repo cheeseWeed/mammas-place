@@ -706,7 +706,15 @@ export function parseMidi(bytes: Uint8Array): ImportResult {
       return { ok: false, error: 'No playable notes were found in that MIDI file.' };
     }
 
-    const { notes: mono, overlaps } = monophonize(best);
+    const { notes: monoRaw, overlaps } = monophonize(best);
+    // An ensemble export can hand us the same tune in four octaves; fold it
+    // back into one so the result is actually playable on one instrument.
+    const { notes: mono, folded } = foldToPlayableOctave(monoRaw);
+    if (folded > 0) {
+      warnings.push(
+        `${folded} note${folded === 1 ? '' : 's'} came from a part written in a different octave (this looks like a full-ensemble file). They were moved into one octave so the tune can be played on a single instrument.`,
+      );
+    }
     if (overlaps > 0) {
       warnings.push(
         `${overlaps} note${overlaps === 1 ? '' : 's'} ${overlaps === 1 ? 'was' : 'were'} played at the same time as another. The game plays one note at a time, so the highest note was kept.`,
@@ -870,6 +878,49 @@ function readTrack(bytes: Uint8Array, start: number, end: number): TrackResult {
  * in front of a kid. Highest-wins is the standard melody convention and it is
  * predictable, which matters more than being occasionally smarter.
  */
+/**
+ * Fold a melody into ONE playable octave.
+ *
+ * A full-ensemble MIDI export often carries the same tune in several registers
+ * — flute doubling an octave above, cello an octave below — and those parts do
+ * not necessarily overlap in time, so monophonize() keeps every one of them.
+ * The result is a "melody" that leaps across four octaves and no human can
+ * play. (Real example: an ensemble file imported as D4 up to D7, the same
+ * phrase repeated four times in different octaves.)
+ *
+ * So: find the octave the melody actually lives in — the one holding the most
+ * notes — and transpose strays into it. That preserves the tune exactly, since
+ * moving a note by whole octaves does not change which note it is, and leaves
+ * something a kid can play on one instrument.
+ */
+function foldToPlayableOctave(notes: MidiNote[]): { notes: MidiNote[]; folded: number } {
+  if (notes.length < 4) return { notes, folded: 0 };
+
+  const span = Math.max(...notes.map(n => n.midi)) - Math.min(...notes.map(n => n.midi));
+  // Under two octaves is a normal melodic range — leave it alone.
+  if (span <= 24) return { notes, folded: 0 };
+
+  // Which octave band holds the most notes? That is the melody's real home.
+  const counts = new Map<number, number>();
+  for (const n of notes) {
+    const band = Math.floor(n.midi / 12);
+    counts.set(band, (counts.get(band) ?? 0) + 1);
+  }
+  let home = 0, most = -1;
+  for (const [band, c] of counts) if (c > most) { home = band; most = c; }
+
+  const centre = home * 12 + 6;
+  let folded = 0;
+  const out = notes.map(n => {
+    let midi = n.midi;
+    while (midi - centre > 6) { midi -= 12; }
+    while (centre - midi > 6) { midi += 12; }
+    if (midi !== n.midi) folded++;
+    return { ...n, midi };
+  });
+  return { notes: out, folded };
+}
+
 function monophonize(input: MidiNote[]): { notes: MidiNote[]; overlaps: number } {
   const sorted = [...input].sort((a, b) => a.startTick - b.startTick || b.midi - a.midi);
   const out: MidiNote[] = [];

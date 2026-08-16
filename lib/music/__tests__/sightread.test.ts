@@ -375,8 +375,18 @@ describe('transcription arithmetic — catches a mis-read page', () => {
   // cheapest real check available: if the beats in a piece do not divide evenly
   // into its time signature, a note was misread. This caught two errors in the
   // Minuet (a 2-beat bar and a 5-beat bar) that looked fine by eye.
+  // EVERY song, not just the one that was wrong at the time. An audit found two
+  // more bad bars (a 17-beat "4-bar" scale and a 62-beat "16-bar" piece) that
+  // this guard missed purely because those songs were not listed here.
   const EXPECTED: Record<string, { beatsPerBar: number; bars: number }> = {
+    'c-major-scale': { beatsPerBar: 4, bars: 4 },
+    'mary-had-a-little-lamb': { beatsPerBar: 4, bars: 8 },
+    'twinkle-twinkle': { beatsPerBar: 4, bars: 8 },
+    'ode-to-joy': { beatsPerBar: 4, bars: 8 },
+    'dragon-dances-opening': { beatsPerBar: 4, bars: 16 },
+    'one-bow-concerto-opening': { beatsPerBar: 4, bars: 14 },
     'minuet-in-c-opening': { beatsPerBar: 3, bars: 8 },
+    'cello-open-strings': { beatsPerBar: 4, bars: 4 },
   };
 
   for (const [id, spec] of Object.entries(EXPECTED)) {
@@ -386,6 +396,13 @@ describe('transcription arithmetic — catches a mis-read page', () => {
       expect(total).toBe(spec.beatsPerBar * spec.bars);
     });
   }
+
+  it('every song in the library is covered by this guard', () => {
+    // Without this, adding a song silently opts it out of the bar check.
+    for (const s of SONGS) {
+      expect(EXPECTED[s.id], `${s.id} has no expected bar count`).toBeDefined();
+    }
+  });
 
   it('no transcribed song contains an accidental it should not', () => {
     // The Minuet is C major: no sharps or flats anywhere.

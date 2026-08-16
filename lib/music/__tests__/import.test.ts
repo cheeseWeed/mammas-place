@@ -717,3 +717,56 @@ describe('parseMidi — safety', () => {
     expect(ok(parseMidi(bytes)).song.notes).toEqual([{ midi: 60, beats: 1 }]);
   });
 });
+
+describe('ensemble files fold into one playable octave', () => {
+  const vlq = (n: number): number[] => {
+    const out = [n & 0x7f]; n >>= 7;
+    while (n > 0) { out.unshift((n & 0x7f) | 0x80); n >>= 7; }
+    return out;
+  };
+  const chunk = (id: string, d: number[]): number[] => {
+    const L = d.length;
+    return [...id.split('').map(c => c.charCodeAt(0)), (L>>>24)&255,(L>>>16)&255,(L>>>8)&255,L&255, ...d];
+  };
+
+  it('collapses the same tune written in three octaves', () => {
+    // A real ensemble export carries the melody doubled across instruments.
+    // Those parts do not overlap in time, so they survive monophonize() and
+    // produce a "melody" spanning four octaves that nobody can play.
+    const div = 480;
+    const hdr = chunk('MThd', [0,0, 0,1, (div>>8)&255, div&255]);
+    const ev: number[] = [];
+    for (const base of [62, 74, 86]) {
+      for (const off of [0, 5, 7, 9]) {
+        ev.push(...vlq(0), 0x90, base + off, 0x64);
+        ev.push(...vlq(div), 0x80, base + off, 0x00);
+      }
+    }
+    ev.push(...vlq(0), 0xFF, 0x2F, 0x00);
+
+    const r = parseMidi(new Uint8Array([...hdr, ...chunk('MTrk', ev)]));
+    expect(r.ok).toBe(true);
+    if (!r.ok) return;
+    const lo = Math.min(...r.song.notes.map(n => n.midi));
+    const hi = Math.max(...r.song.notes.map(n => n.midi));
+    expect(r.song.notes).toHaveLength(12);        // no note is lost
+    expect(hi - lo).toBeLessThanOrEqual(12);      // and it fits in one octave
+    expect(r.warnings.some(w => /octave/i.test(w))).toBe(true);
+  });
+
+  it('leaves an ordinary melody alone', () => {
+    const div = 480;
+    const hdr = chunk('MThd', [0,0, 0,1, (div>>8)&255, div&255]);
+    const ev: number[] = [];
+    for (const m of [60, 62, 64, 65, 67]) {
+      ev.push(...vlq(0), 0x90, m, 0x64);
+      ev.push(...vlq(div), 0x80, m, 0x00);
+    }
+    ev.push(...vlq(0), 0xFF, 0x2F, 0x00);
+    const r = parseMidi(new Uint8Array([...hdr, ...chunk('MTrk', ev)]));
+    expect(r.ok).toBe(true);
+    if (!r.ok) return;
+    expect(r.song.notes.map(n => n.midi)).toEqual([60, 62, 64, 65, 67]);
+    expect(r.warnings.some(w => /octave/i.test(w))).toBe(false);
+  });
+});

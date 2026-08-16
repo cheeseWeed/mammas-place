@@ -55,7 +55,7 @@ export const SONGS: Song[] = [
     level: 'starter',
     notes: [
       { midi: 60, beats: 1 }, { midi: 62, beats: 1 }, { midi: 64, beats: 1 }, { midi: 65, beats: 1 },
-      { midi: 67, beats: 1 }, { midi: 69, beats: 1 }, { midi: 71, beats: 1 }, { midi: 72, beats: 2 },
+      { midi: 67, beats: 1 }, { midi: 69, beats: 1 }, { midi: 71, beats: 1 }, { midi: 72, beats: 1 },
       { midi: 71, beats: 1 }, { midi: 69, beats: 1 }, { midi: 67, beats: 1 }, { midi: 65, beats: 1 },
       { midi: 64, beats: 1 }, { midi: 62, beats: 1 }, { midi: 60, beats: 2 },
     ],
@@ -136,7 +136,8 @@ export const SONGS: Song[] = [
       // m9-12
       { midi: 50, beats: 3 }, { midi: 47, beats: 1 },
       { midi: 50, beats: 1 }, { midi: 52, beats: 1 }, { midi: 54, beats: 1 }, { midi: 52, beats: 1 },
-      { midi: 50, beats: 1 }, { midi: 47, beats: 1 }, { midi: 55, beats: 4 },
+      { midi: 50, beats: 1 }, { midi: 47, beats: 1 }, { midi: 50, beats: 1 }, { midi: 47, beats: 1 },
+      { midi: 55, beats: 4 },
       // m13-16
       { midi: 54, beats: 2 }, { midi: 52, beats: 2 },
       { midi: 50, beats: 3 }, { midi: 47, beats: 1 },
