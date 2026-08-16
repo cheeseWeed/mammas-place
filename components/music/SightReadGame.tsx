@@ -21,6 +21,7 @@ import {
   initGame,
   isSharp,
   ledgerLines,
+  staveFor,
   isStuck,
   scoreRun,
   skipStuckNote,
@@ -700,7 +701,9 @@ export default function SightReadGame() {
               scrolls off screen during play-along. */}
           <g transform={`translate(${HIT_X - (alongIndex ?? (game ? cursor : browseAt)) * NOTE_SPACING}, 0)`}>
             {song.notes.map((n, i) => {
-              const pos = staffPosition(n.midi, song.clef);
+              // On a grand staff each note sits on whichever stave its pitch
+              // belongs to, split at middle C.
+              const pos = staffPosition(n.midi, staveFor(n.midi, song.clef));
               const x = i * NOTE_SPACING;
               const y = yFor(pos);
               const res = game?.results.find(r => r.index === i);

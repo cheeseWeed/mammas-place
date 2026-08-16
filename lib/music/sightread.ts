@@ -68,8 +68,12 @@ export interface Song {
   source: 'built-in' | 'transcribed';
   /** Suggested tempo for the timed mode. */
   bpm: number;
-  /** Treble or bass staff. Drives clef drawing and staff positions. */
-  clef: 'treble' | 'bass';
+  /**
+   * Which staff to draw. 'grand' shows BOTH — treble above, bass below —
+   * which is how piano and harp music is written. On a grand staff each note
+   * is placed on whichever stave its pitch belongs to, split at middle C.
+   */
+  clef: 'treble' | 'bass' | 'grand';
   /** Rough ordering for the song picker. */
   level: 'starter' | 'easy' | 'medium';
   notes: SongNote[];
@@ -302,6 +306,18 @@ export function staffPosition(midi: number, clef: 'treble' | 'bass'): number {
   //              G2 -> diatonic index of G(4) + octave 2*7 = 18
   const bottom = clef === 'treble' ? 30 : 18;
   return diatonic - bottom;
+}
+
+/**
+ * On a grand staff, which stave does this note belong on?
+ *
+ * Split at middle C (60): middle C and above go on the treble stave, below it
+ * on the bass. That is the convention a beginner is taught, and it keeps
+ * ledger lines to a minimum for the range a child actually plays.
+ */
+export function staveFor(midi: number, clef: 'treble' | 'bass' | 'grand'): 'treble' | 'bass' {
+  if (clef !== 'grand') return clef;
+  return midi >= 60 ? 'treble' : 'bass';
 }
 
 /** Does this note need a sharp sign drawn in front of it? */

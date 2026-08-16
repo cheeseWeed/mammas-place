@@ -13,6 +13,7 @@ import {
   STUCK_TICK_LIMIT,
   gradeNote,
   MAX_NOTE_POINTS,
+  staveFor,
   type Song,
 } from '../sightread';
 
@@ -419,6 +420,30 @@ describe('transcription arithmetic — catches a mis-read page', () => {
         expect(n.midi, `${s.id} above cello C2`).toBeGreaterThanOrEqual(36);
         expect(n.midi, `${s.id} within first positions`).toBeLessThanOrEqual(72);
       }
+    }
+  });
+});
+
+describe('grand staff — piano and harp music uses two staves', () => {
+  it('a single-stave song always resolves to itself', () => {
+    expect(staveFor(60, 'treble')).toBe('treble');
+    expect(staveFor(40, 'treble')).toBe('treble');
+    expect(staveFor(80, 'bass')).toBe('bass');
+  });
+
+  it('splits a grand staff at middle C', () => {
+    expect(staveFor(60, 'grand')).toBe('treble');   // middle C sits on treble
+    expect(staveFor(72, 'grand')).toBe('treble');
+    expect(staveFor(59, 'grand')).toBe('bass');     // one below goes to bass
+    expect(staveFor(36, 'grand')).toBe('bass');
+  });
+
+  it('keeps ledger lines reasonable across the split', () => {
+    // The point of splitting at middle C is that neither stave needs many
+    // ledger lines for the range a child actually plays.
+    for (const midi of [48, 55, 60, 64, 72]) {
+      const pos = staffPosition(midi, staveFor(midi, 'grand'));
+      expect(Math.abs(pos), `midi ${midi} sits near its stave`).toBeLessThanOrEqual(10);
     }
   });
 });
