@@ -191,6 +191,22 @@ function MusicInner() {
             Write
           </span>
         </Link>
+
+        <Link
+          href="/music/symphony"
+          className="mt-3 flex items-center justify-between gap-3 rounded-2xl border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-white p-4 hover:border-purple-400"
+        >
+          <span>
+            <span className="block font-bold text-purple-900">🎺 Symphony</span>
+            <span className="block text-sm text-zinc-600">
+              Write for a whole group — add instruments, give each one a line, and hear them play
+              together. Learn how a conductor&rsquo;s score and a player&rsquo;s part fit together.
+            </span>
+          </span>
+          <span className="shrink-0 rounded-lg bg-purple-800 px-4 py-2 text-sm font-semibold text-white">
+            Compose
+          </span>
+        </Link>
       </div>
 
       {plan && pieces.length > 0 && (
