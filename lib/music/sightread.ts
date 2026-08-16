@@ -25,7 +25,41 @@ export interface SongNote {
   midi: number;
   /** Length in beats. 1 = quarter note at 4/4. */
   beats: number;
+
+  /* ---- Optional markings. All display-and-playback only. ----
+     These are drawn on the staff and shaped into the play-along, but they are
+     NOT scored. A microphone measures loudness where the MIC is, not at the
+     instrument — a kid sitting closer, turning slightly, or a laptop with
+     auto-gain would swamp the difference between forte and piano. Grading it
+     would tell a child who played correctly that they were wrong, which is the
+     failure this whole feature exists to avoid. Show it, sound it, coach it;
+     do not judge it. */
+
+  /** A rest occupies its beats but sounds nothing and is never scored. */
+  rest?: boolean;
+  /** Played short and detached. */
+  staccato?: boolean;
+  /** Attacked harder than its neighbours. */
+  accent?: boolean;
+  /** Held longer than written. */
+  fermata?: boolean;
+  /** Slurred into the following note (one bow / one breath). */
+  slurToNext?: boolean;
+  /** Dynamic mark that STARTS at this note and holds until the next one. */
+  dynamic?: Dynamic;
+  /** Gradual change beginning at this note. */
+  hairpin?: 'cresc' | 'dim';
+  /** Fingering digit printed above the note, as on a cello part. */
+  finger?: number;
 }
+
+/** Standard dynamic marks, quietest to loudest. */
+export type Dynamic = 'pp' | 'p' | 'mp' | 'mf' | 'f' | 'ff';
+
+/** Relative playback volume for each dynamic. Used by the play-along only. */
+export const DYNAMIC_GAIN: Record<Dynamic, number> = {
+  pp: 0.35, p: 0.5, mp: 0.7, mf: 0.85, f: 1.0, ff: 1.2,
+};
 
 export interface Song {
   id: string;
