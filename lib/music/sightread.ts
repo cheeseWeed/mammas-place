@@ -187,32 +187,47 @@ export const SONGS: Song[] = [
     bpm: 84,
     clef: 'bass',
     level: 'easy',
-    // J.S. Bach, "Grazioso" — 3/4, C major, bass clef. Suzuki cello book.
-    // Transcribed by eye from Shepherd's printed part, measures 1-8 (the first
-    // two systems, ending at the repeat).
+    // J.S. Bach, Minuet BWV 841 — Suzuki Cello School Book 1, piece #16,
+    // "Grazioso". Originally G major, transposed down a fifth to C major for
+    // cello. 3/4, bass clef, first position.
     //
-    // The small digits are cello FINGERINGS and the square/V marks are BOWINGS
-    // — neither is a note. An earlier pass at a blurry photo read this as a
-    // rising C-E-G-C arpeggio, which was wrong: the piece opens on G and moves
-    // mostly stepwise. Re-read from a clear photo.
+    // These notes were verified against the Neue Bach-Ausgabe urtext, NOT read
+    // off a photo. Two earlier attempts to eyeball the printed page produced
+    // a plausible-sounding stepwise line that was simply not Bach — the second
+    // attempt got only measure 1 right. Reading engraved notation from a phone
+    // photo is where this keeps going wrong; the source edition is the check.
+    //
+    // NOTE the m8 cadence is E3, not C3. This is a HALF cadence — the A section
+    // ends on the third of the dominant, which is why there is a repeat and a
+    // second section. An earlier version "landed on the tonic and held", which
+    // would make the repeat musically pointless.
+    //
+    // Suzuki strips Bach's mordents and grace notes for beginners, so none are
+    // expected here.
     notes: [
-      // m1: G  |  m2: G A B   (quarter, then two eighths + quarter)
+      // m1: G G G
       { midi: 55, beats: 1 }, { midi: 55, beats: 1 }, { midi: 55, beats: 1 },
-      { midi: 55, beats: 1 }, { midi: 57, beats: 0.5 }, { midi: 59, beats: 0.5 }, { midi: 60, beats: 1 },
-      // m3: C  B A G   |  m4: A  B C
-      { midi: 60, beats: 1 }, { midi: 59, beats: 0.5 }, { midi: 57, beats: 0.5 },
-      { midi: 55, beats: 0.5 }, { midi: 57, beats: 0.5 },
-      { midi: 59, beats: 1 }, { midi: 57, beats: 0.5 }, { midi: 59, beats: 0.5 },
+      // m2: G | C-B eighths | C     (the leading-tone figure)
+      { midi: 55, beats: 1 }, { midi: 60, beats: 0.5 }, { midi: 59, beats: 0.5 },
       { midi: 60, beats: 1 },
-      // m5: G held  |  m6: G A B C
-      { midi: 55, beats: 1 }, { midi: 55, beats: 1 }, { midi: 55, beats: 1 },
-      { midi: 60, beats: 1 }, { midi: 59, beats: 0.5 }, { midi: 57, beats: 0.5 },
-      { midi: 55, beats: 0.5 }, { midi: 53, beats: 0.5 },
-      // m7: F E D  (quarter + two eighths + quarter)
-      { midi: 53, beats: 1 }, { midi: 52, beats: 0.5 }, { midi: 50, beats: 0.5 },
+      // m3: E | E-F-G-F sixteenths | E   (the piece's characteristic run)
       { midi: 52, beats: 1 },
-      // m8: C, dotted half — the phrase lands on the tonic and holds
-      { midi: 48, beats: 3 },
+      { midi: 52, beats: 0.25 }, { midi: 53, beats: 0.25 },
+      { midi: 55, beats: 0.25 }, { midi: 53, beats: 0.25 },
+      { midi: 52, beats: 1 },
+      // m4: E | E-F eighths | D
+      { midi: 52, beats: 1 }, { midi: 52, beats: 0.5 }, { midi: 53, beats: 0.5 },
+      { midi: 50, beats: 1 },
+      // m5: A A A   (the phrase's high point — not a repeat of m1)
+      { midi: 57, beats: 1 }, { midi: 57, beats: 1 }, { midi: 57, beats: 1 },
+      // m6: A | A-G eighths | F-E eighths
+      { midi: 57, beats: 1 }, { midi: 57, beats: 0.5 }, { midi: 55, beats: 0.5 },
+      { midi: 53, beats: 0.5 }, { midi: 52, beats: 0.5 },
+      // m7: A | G-F eighths | E-F eighths
+      { midi: 57, beats: 1 }, { midi: 55, beats: 0.5 }, { midi: 53, beats: 0.5 },
+      { midi: 52, beats: 0.5 }, { midi: 53, beats: 0.5 },
+      // m8: E, dotted half — HALF cadence, the section is unfinished on purpose
+      { midi: 52, beats: 3 },
     ],
   },
   {
