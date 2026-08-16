@@ -119,6 +119,12 @@ export default function SightReadGame() {
 
   const [sortBy, setSortBy] = useState<'title' | 'easiest' | 'hardest'>('title');
 
+  // Look through the whole piece BEFORE playing it. Sight-reading pedagogy is
+  // unanimous that you read a piece through before you play it, and the game
+  // only ever showed the few notes around the cursor. Browsing shifts which
+  // note sits on the hit line; starting a run resets it.
+  const [browseAt, setBrowseAt] = useState(0);
+
   const visibleSongs = (() => {
     const q = songFilter.trim().toLowerCase();
     const matches = q
@@ -248,6 +254,7 @@ export default function SightReadGame() {
     if (info === null || (info.midi !== lastCreditedMidiRef.current)) {
       // silence, or a different pitch — the note has genuinely been released
       lastCreditedMidiRef.current = null;
+    setBrowseAt(0);
     }
 
     const beatsPerMs = song.bpm / 60 / 1000;
@@ -317,6 +324,7 @@ export default function SightReadGame() {
   // Changing song or speed mid-playback would desync the highlight from the
   // audio, so stop rather than let them drift apart.
   useEffect(() => { stopAlong(); }, [songId, alongPct, stopAlong]);
+  useEffect(() => { setBrowseAt(0); }, [songId]);
 
   const canHearNotes = mode !== 'tempo';
   const hearNote = useCallback((midi: number) => {
@@ -420,7 +428,7 @@ export default function SightReadGame() {
             onChange={e => setSongFilter(e.target.value)}
             placeholder="type to filter…"
             disabled={listening}
-            className="mt-1 w-44 rounded-lg border border-zinc-300 px-3 py-2 disabled:opacity-50"
+            className="mt-1 w-44 rounded-lg border border-zinc-300 bg-white px-3 py-2 text-zinc-900 disabled:opacity-50"
           />
         </label>
         <label className="text-sm">
@@ -429,7 +437,7 @@ export default function SightReadGame() {
             value={sortBy}
             onChange={e => setSortBy(e.target.value as 'title' | 'easiest' | 'hardest')}
             disabled={listening}
-            className="mt-1 rounded-lg border border-zinc-300 px-3 py-2 disabled:opacity-50"
+            className="mt-1 rounded-lg border border-zinc-300 bg-white px-3 py-2 text-zinc-900 disabled:opacity-50"
           >
             <option value="title">A–Z</option>
             <option value="easiest">Easiest first</option>
@@ -459,7 +467,7 @@ export default function SightReadGame() {
             value={songId}
             onChange={e => { stop(); setGame(null); setSongId(e.target.value); }}
             disabled={listening}
-            className="mt-1 rounded-lg border border-zinc-300 px-3 py-2 disabled:opacity-50"
+            className="mt-1 rounded-lg border border-zinc-300 bg-white px-3 py-2 text-zinc-900 disabled:opacity-50"
           >
             {visibleSongs.map(s => (
               <option key={s.id} value={s.id}>
@@ -476,7 +484,7 @@ export default function SightReadGame() {
             value={mode}
             onChange={e => { stop(); setGame(null); setMode(e.target.value as GameMode); }}
             disabled={listening}
-            className="mt-1 rounded-lg border border-zinc-300 px-3 py-2 disabled:opacity-50"
+            className="mt-1 rounded-lg border border-zinc-300 bg-white px-3 py-2 text-zinc-900 disabled:opacity-50"
           >
             <option value="wait">Easy — waits for you</option>
             <option value="tempo">Hard — moves at {song.bpm} BPM</option>
@@ -590,6 +598,36 @@ export default function SightReadGame() {
       )}
 
       {/* --- the staff --- */}
+      {/* LOOK THROUGH THE PIECE FIRST. Every sight-reading method says to read a
+          piece before playing it, and until now the game only ever showed the
+          few notes around the cursor. Hidden once a run starts — mid-run this
+          would just fight the playhead. */}
+      {!game && song.notes.length > 6 && (
+        <div className="mt-4 flex flex-wrap items-center gap-3 rounded-lg bg-zinc-50 px-3 py-2 text-sm">
+          <span className="font-semibold text-purple-900">Look through it first</span>
+          <input
+            type="range"
+            min={0}
+            max={Math.max(0, song.notes.length - 1)}
+            value={browseAt}
+            onChange={e => setBrowseAt(Number(e.target.value))}
+            className="min-w-40 flex-1"
+            aria-label="Scroll through the music"
+          />
+          <span className="tabular-nums text-zinc-600">
+            note {browseAt + 1} of {song.notes.length}
+          </span>
+          {browseAt > 0 && (
+            <button
+              onClick={() => setBrowseAt(0)}
+              className="rounded border border-zinc-300 bg-white px-2 py-1 text-xs font-semibold text-zinc-700"
+            >
+              back to start
+            </button>
+          )}
+        </div>
+      )}
+
       <div className="mt-4 overflow-hidden rounded-xl border border-zinc-200 bg-[#fbfaff]">
         <svg viewBox="0 0 700 200" className="block w-full" role="img" aria-label={`${song.title} — note reader`}>
           {/* GUIDE TRACK — a dim horizontal lane under the staff showing WHERE
@@ -598,7 +636,7 @@ export default function SightReadGame() {
               reaches the hit line. Deliberately low-contrast: it is a guide,
               not the notation, and it must not compete with the notes. */}
           <rect x="0" y={STAFF_TOP + 8 * STAFF_STEP + 22} width="700" height="16" fill="#efeaf7" />
-          <g transform={`translate(${HIT_X - (alongIndex ?? cursor) * NOTE_SPACING}, 0)`}>
+          <g transform={`translate(${HIT_X - (alongIndex ?? (game ? cursor : browseAt)) * NOTE_SPACING}, 0)`}>
             {song.notes.map((n, i) => {
               const res = game?.results.find(r => r.index === i);
               const w = Math.max(10, n.beats * (NOTE_SPACING * 0.42));
@@ -660,7 +698,7 @@ export default function SightReadGame() {
           {/* The staff follows the play-along note when one is sounding, and
               the game cursor otherwise — without this the highlighted note
               scrolls off screen during play-along. */}
-          <g transform={`translate(${HIT_X - (alongIndex ?? cursor) * NOTE_SPACING}, 0)`}>
+          <g transform={`translate(${HIT_X - (alongIndex ?? (game ? cursor : browseAt)) * NOTE_SPACING}, 0)`}>
             {song.notes.map((n, i) => {
               const pos = staffPosition(n.midi, song.clef);
               const x = i * NOTE_SPACING;
