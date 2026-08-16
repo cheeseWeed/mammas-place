@@ -1,4 +1,20 @@
-# Practice Studio — Music section
+# Music section
+
+Three tools that share one section:
+
+| Tool | Route | What it is |
+|---|---|---|
+| **Practice Studio** | `/music` | Daily practice tracker — assigned pieces, daily plan, quality score → MP |
+| **Note Reader** | `/music/read` | Sight-reading game — notes scroll, the mic scores what you play |
+| **Music Writer** | `/music/write` | Write your own song note by note; saved songs play in the Note Reader |
+
+The Practice Studio came first and the rest of this document describes it.
+Note Reader and Music Writer are documented at the bottom under
+**"Note Reader & Music Writer"**.
+
+---
+
+## Practice Studio
 
 A daily practice tracker for any instrument. The kid picks (or is assigned)
 pieces, follows a generated daily plan to learn them line-by-line, and logs a
@@ -90,3 +106,168 @@ scripts/seed-shepherd-music.mjs # Shepherd's 4 cello pieces + July challenge
 The `music` column is a new JSON field on `drive_users`. Run
 **`npx prisma db push`** against Neon before deploying, or every `/api/music/*`
 call 500s (same gotcha as every other schema change here).
+
+---
+
+# Note Reader & Music Writer
+
+Added Aug 2026. The Note Reader is a sight-reading game; the Music Writer is a
+score editor that feeds it. Both are separate from the Practice Studio above —
+the Studio is for daily practice on assigned pieces, these are for learning to
+READ and WRITE notation.
+
+## Note Reader (`/music/read`)
+
+Notes scroll toward a hit line; the kid plays them on a real instrument and the
+microphone scores it. Reuses the tuner's Web Audio chain:
+`getUserMedia -> AudioContext -> AnalyserNode -> detectPitch -> frequencyToNote`.
+Mic processing (echoCancellation / noiseSuppression / autoGainControl) is OFF —
+voice-call processing eats sustained instrument tones and wrecks pitch detection.
+
+**Three modes.** `wait` waits for the right note and never punishes a wrong one
+(a kid hunting for a note is practicing). `tempo` runs at the song's speed and
+counts a passed note as missed. `practice` keeps no score and earns no MP.
+
+**Graded scoring** (`gradeNote`): points scale with how close the pitch and
+timing were, not pass/fail. Grades are `great` / `close` / `wrong` / `unheard`.
+
+### THE DESIGN RULE — where it is ambiguous, the app doubts ITSELF, not the child
+
+Detection failure is the top complaint across music-learning apps (~28% of
+negative reviews), including a documented case of a child quitting the
+instrument over it. Consequences throughout this feature:
+
+- `unheard` is a **distinct grade from `wrong`** and is drawn GREY, never red.
+  A false negative must never look like the child's failure.
+- A wrong note in wait mode records **nothing** — it is not a miss.
+- **Skip-stuck-note escape hatch**: after `STUCK_TICK_LIMIT` silent ticks the
+  kid can skip, and skipping records NO miss, because we do not know they got
+  it wrong — the mic may be at fault.
+- Dynamics and markings are **displayed but never scored**.
+
+### Uploads and import
+
+Kids upload their own sheet music (`/api/music/upload`, Vercel Blob).
+MusicXML and MIDI parse instantly (`lib/music/import.ts`, no dependencies —
+a regex tag scanner and a byte reader). PDFs queue for human transcription.
+
+- Blob store is **private**; `access: 'private'` is required or the upload
+  fails with "Cannot use public access on a private store."
+- `foldToPlayableOctave()` exists because ensemble MIDI exports double the tune
+  across instruments; parts do not overlap in time so monophonize keeps all of
+  them, producing a melody spanning four octaves that no child can play.
+- Uploads are **displayed back to the kid**. They were being written and never
+  read, so Shepherd uploaded the same PDF six times assuming it had failed.
+
+### Memorize modes (`lib/music/memorize.ts`)
+
+Three ways to practice from memory, in teaching order:
+
+| Mode | What is hidden | Trains |
+|---|---|---|
+| `fade` | a percentage of noteheads, 0-90% | which notes you do not really know |
+| `cover` | every note | chunking a whole phrase |
+| `grow` | bars 1..N, growing | building a piece for performance |
+
+**Fade is the default.** Covering a whole line is pass/fail — a kid either has
+it or crashes on bar 1 and learns nothing about WHERE the memory is thin.
+Blanking individual notes shows exactly that. Both are retrieval practice,
+which is why either beats re-reading the page.
+
+Non-obvious implementation rules:
+- A hidden note is drawn at a **fixed staff position (the middle line)**, not
+  its real height — drawing it in place would give the pitch away. Its
+  accidental and hollow centre are suppressed for the same reason.
+- The mask is **deterministic per seed** (`hashUnit`). A replay hides the SAME
+  notes, or "did I get better?" is unanswerable. Never `Math.random()`.
+- **Hold-to-peek** so a stuck kid can look without switching the mode off and
+  losing their place.
+- Difficulty changes are **offered after a run, never applied silently**.
+- Rests are never hidden — nothing to remember, and it looks like a bug.
+
+> `hashUnit` must re-coerce to unsigned (`>>> 0`) after EVERY step. `Math.imul`
+> and `^=` both return signed 32-bit ints; one missing coercion made `h` go
+> negative, every note compared below the fade fraction, and the whole piece
+> was hidden at any setting. A test caught this.
+
+## Music Writer (`/music/write`)
+
+Start from a blank page ("Start a new song") or open any existing song to edit
+it. Click the staff to add a note, click a note to rename / sharpen / delete,
+drag to move it with the pitch name magnified while dragging, or type
+`"A#4 whole"`. Bar lines turn **red** when a bar does not add up.
+
+**Why this exists:** transcription is the weak link in this whole feature.
+Reading engraved notation off a phone photo failed twice on the same Bach
+minuet, and reading it automatically (OMR) is worse. A kid holding the printed
+page enters it correctly faster than anyone can argue about a blurry image —
+and they KNOW it is right, because they put it there.
+
+- All editing rules are pure functions in `lib/music/editor.ts`, unit-tested
+  away from React. The component is only the staff, pointer handling, panels.
+- Saved songs go into the **same** `music.sheetUploads` array that imports use,
+  so they appear in the Note Reader picker with no second code path.
+- **`/api/music/songs` validates every note server-side.** The Note Reader
+  clamps earned MP against the song it looks up on the server, so an
+  unvalidated 50,000-note song posted here would be a way to mint MP.
+  `MAX_NOTES = 2000`; MIDI must be 21-108; beats must be 0 < b <= 16.
+
+## Clefs
+
+`Song.clef` is `'treble' | 'bass' | 'grand'`. `staveFor(midi, clef)` decides
+which stave a note belongs on, split at middle C — the convention a beginner is
+taught, and the split that minimises ledger lines for a child's range.
+
+## Transcription accuracy — the bar-sum guard
+
+`sightread.test.ts` asserts every song's beats divide evenly into its time
+signature. This is the cheapest real check on a hand transcription and it has
+caught actual shipped errors (a 17-beat "4-bar" scale, a 62-beat "16-bar"
+piece, a 2-beat and a 5-beat bar in 3/4).
+
+**The map must list EVERY song** — a test enforces that too. The guard
+originally listed only one song, which is precisely why the other two errors
+shipped. Adding a song without adding it to `EXPECTED` silently opts it out.
+
+> Reading notation off a photograph is where this repeatedly fails. The source
+> edition (urtext) is the only real check.
+
+## File map (these two tools)
+
+```
+lib/music/
+  sightread.ts   # SONGS, staffPosition, staveFor, advanceGame, gradeNote, scoreRun
+  editor.ts      # PURE editing: noteName/parseNoteName, NOTE_VALUES, insert/
+                 #   delete/update/move/transpose, parseSpokenNote, measureLayout
+  memorize.ts    # PURE: hashUnit, fadeMask, barsOf, memorizePlan, suggestNextStep
+  import.ts      # MusicXML + MIDI parsing, foldToPlayableOctave
+  tone.ts        # Web Audio synthesis: playNote, playPhrase, playAlong
+  pitch.ts       # McLeod/autocorrelation pitch detection (shared with the tuner)
+
+app/api/music/
+  upload/route.ts     # POST sheet music -> Blob (private), parse if it can
+  uploads/route.ts    # GET the kid's uploads + parsed songs, deduped
+  songs/route.ts      # POST a hand-written song (validates every note)
+  sightread/route.ts  # POST a finished run -> MP (clamped server-side)
+
+app/music/read/page.tsx     # Note Reader
+app/music/write/page.tsx    # Music Writer
+components/music/SightReadGame.tsx
+components/music/ScoreEditor.tsx
+components/music/SheetUpload.tsx
+```
+
+## Still open
+
+- **Multi-part / symphony**: a song holds ONE `notes[]`. Real orchestral music
+  is written as a full score AND separate parts (same data, two views) — that
+  needs `parts[]`, plus transposing instruments (a B-flat trumpet written C
+  sounds B-flat) and the standard woodwind/brass/percussion/string order.
+- **Instrument selection** affecting playback timbre.
+- **Chords**: display and playback only. They cannot be scored — the pitch
+  detector is monophonic.
+- **Grand staff rendering in the Note Reader**: `staveFor` computes correct
+  positions and the Writer draws both staves, but the game's SVG still draws
+  one. Needs the second stave plus adjusted guide-track geometry.
+- Three PDFs pending transcription: Minuet No. 2 (BWV Anh. 116, 40 bars),
+  Long Long Ago, Long Long Ago Variation.
