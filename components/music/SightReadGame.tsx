@@ -15,6 +15,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { detectPitch, frequencyToNote } from '@/lib/music/pitch';
 import { closeTone, playAlong, playNote, playPhrase, type PlayAlongHandle } from '@/lib/music/tone';
+import { memorizePlan, suggestNextStep, type MemorizeMode } from '@/lib/music/memorize';
 import {
   SONGS,
   advanceGame,
@@ -125,6 +126,16 @@ export default function SightReadGame() {
   // only ever showed the few notes around the cursor. Browsing shifts which
   // note sits on the hit line; starting a run resets it.
   const [browseAt, setBrowseAt] = useState(0);
+
+  // Playing from memory. See lib/music/memorize.ts for why FADE is the default
+  // rather than covering a whole line: hiding everything is pass/fail and
+  // teaches a kid nothing about WHICH notes they do not really know.
+  const [memMode, setMemMode] = useState<MemorizeMode>('off');
+  const [memStep, setMemStep] = useState(30);
+  const [memPeek, setMemPeek] = useState(false);   // hold to look, then play blind
+
+  // Peeking reveals everything; releasing hides it again.
+  const memPlan = memorizePlan(song.notes, memPeek ? 'off' : memMode, memStep, 4, 1);
 
   const visibleSongs = (() => {
     const q = songFilter.trim().toLowerCase();
@@ -407,6 +418,16 @@ export default function SightReadGame() {
     } catch { /* storage unavailable — the run still showed on screen */ }
   }, [result, game?.done, game?.songId, game?.mode]);
 
+  // After a memory run, work out whether to make it harder or easier.
+  // OFFERED, not applied: a tool that silently ratchets difficulty after one
+  // good run is how a kid ends up at 80% hidden wondering why it got hard.
+  const memSuggestion = (() => {
+    if (!result || memMode === 'off' || memMode === 'cover' || !game?.done) return null;
+    const totalBars = Math.ceil(song.notes.reduce((a, n) => a + n.beats, 0) / 4);
+    const next = suggestNextStep(memMode, memStep, result.accuracy, totalBars);
+    return next === memStep ? null : next;
+  })();
+
   // y of a staff position: 0 = bottom line, 8 = top line
   const yFor = (pos: number) => STAFF_TOP + (8 - pos) * STAFF_STEP;
 
@@ -629,6 +650,84 @@ export default function SightReadGame() {
         </div>
       )}
 
+      {/* --- PLAY FROM MEMORY --- */}
+      {/* Retrieval practice: pulling a note out of memory strengthens it far
+          more than looking at it again. Fade is first and is the default,
+          because covering a whole line is pass/fail — a kid either has it or
+          crashes on bar 1, learning nothing about which notes are actually
+          shaky. Blanking individual notes shows exactly that. */}
+      <div className="mt-3 rounded-lg border border-purple-200 bg-purple-50 px-3 py-2 text-sm">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="font-semibold text-purple-900">Play from memory</span>
+          {([
+            ['off', 'Off'],
+            ['fade', 'Hide some notes'],
+            ['cover', 'Cover it all'],
+            ['grow', 'One more bar'],
+          ] as [MemorizeMode, string][]).map(([m, label]) => (
+            <button
+              key={m}
+              onClick={() => { setMemMode(m); if (m === 'fade') setMemStep(30); if (m === 'grow') setMemStep(1); }}
+              className={`rounded-lg px-2.5 py-1 text-xs font-semibold ${
+                memMode === m ? 'bg-purple-800 text-white' : 'border border-purple-300 bg-white text-purple-900'
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+
+          {memMode === 'fade' && (
+            <>
+              <input
+                type="range" min={0} max={90} step={10} value={memStep}
+                onChange={e => setMemStep(Number(e.target.value))}
+                className="min-w-32 flex-1"
+                aria-label="How many notes to hide"
+              />
+              <span className="tabular-nums text-purple-900">{memStep}% hidden</span>
+            </>
+          )}
+
+          {memMode === 'grow' && (
+            <>
+              <button onClick={() => setMemStep(s => Math.max(0, s - 1))}
+                      className="rounded border border-purple-300 bg-white px-2 py-1 text-xs font-semibold text-purple-900">−</button>
+              <span className="tabular-nums text-purple-900">{memStep} bar{memStep === 1 ? '' : 's'}</span>
+              <button onClick={() => setMemStep(s => s + 1)}
+                      className="rounded border border-purple-300 bg-white px-2 py-1 text-xs font-semibold text-purple-900">+</button>
+            </>
+          )}
+
+          {memMode !== 'off' && (
+            // Hold to peek. A kid who is stuck needs a way to look WITHOUT
+            // turning the whole exercise off and losing their place.
+            <button
+              onPointerDown={() => setMemPeek(true)}
+              onPointerUp={() => setMemPeek(false)}
+              onPointerLeave={() => setMemPeek(false)}
+              className="rounded-lg border border-purple-400 bg-white px-2.5 py-1 text-xs font-semibold text-purple-900"
+            >
+              👁 hold to peek
+            </button>
+          )}
+        </div>
+        {memMode !== 'off' && (
+          <p className="mt-1 text-xs text-purple-800">
+            {memPeek ? 'Peeking — let go to hide it again' : memPlan.label}
+          </p>
+        )}
+        {memSuggestion !== null && (
+          <button
+            onClick={() => setMemStep(memSuggestion)}
+            className="mt-2 rounded-lg bg-purple-800 px-3 py-1.5 text-xs font-semibold text-white"
+          >
+            {memSuggestion > memStep
+              ? memMode === 'fade' ? `Nice — try ${memSuggestion}% hidden` : `Nice — try ${memSuggestion} bars from memory`
+              : memMode === 'fade' ? `Ease off to ${memSuggestion}% hidden` : `Ease back to ${memSuggestion} bar${memSuggestion === 1 ? '' : 's'}`}
+          </button>
+        )}
+      </div>
+
       <div className="mt-4 overflow-hidden rounded-xl border border-zinc-200 bg-[#fbfaff]">
         <svg viewBox="0 0 700 200" className="block w-full" role="img" aria-label={`${song.title} — note reader`}>
           {/* GUIDE TRACK — a dim horizontal lane under the staff showing WHERE
@@ -703,7 +802,13 @@ export default function SightReadGame() {
             {song.notes.map((n, i) => {
               // On a grand staff each note sits on whichever stave its pitch
               // belongs to, split at middle C.
-              const pos = staffPosition(n.midi, staveFor(n.midi, song.clef));
+              // MEMORIZE: a hidden note is parked on the middle line, NOT at
+              // its real height — drawing it in place would give the pitch away
+              // and defeat the whole exercise. The rhythm (its width in the
+              // line, its stem, its bar) still shows, so you know WHEN to play.
+              const hidden = memPlan.hiddenNotes.has(i);
+              const truePos = staffPosition(n.midi, staveFor(n.midi, song.clef));
+              const pos = hidden ? 4 : truePos;
               const x = i * NOTE_SPACING;
               const y = yFor(pos);
               const res = game?.results.find(r => r.index === i);
@@ -744,18 +849,26 @@ export default function SightReadGame() {
                   {alongIndex === i && (
                     <circle cx={x} cy={y} r="15" fill="none" stroke="#7c3aed" strokeWidth="3" />
                   )}
-                  <ellipse cx={x} cy={y} rx="8.5" ry="6.5" fill={fill} transform={`rotate(-18 ${x} ${y})`} />
+                  {hidden ? (
+                    <ellipse
+                      cx={x} cy={y} rx="8.5" ry="6.5"
+                      fill="none" stroke="#a78bfa" strokeWidth="2" strokeDasharray="3 2"
+                      transform={`rotate(-18 ${x} ${y})`}
+                    />
+                  ) : (
+                    <ellipse cx={x} cy={y} rx="8.5" ry="6.5" fill={fill} transform={`rotate(-18 ${x} ${y})`} />
+                  )}
                   {/* stem: down for high notes, up for low, like real notation */}
                   <line
                     x1={pos >= 4 ? x - 8 : x + 8} y1={y}
                     x2={pos >= 4 ? x - 8 : x + 8} y2={pos >= 4 ? y + 34 : y - 34}
                     stroke={fill} strokeWidth="2"
                   />
-                  {isSharp(n.midi) && (
+                  {isSharp(n.midi) && !hidden && (
                     <text x={x - 26} y={y + 5} fontSize="17" fill={fill} fontFamily="serif">&#9839;</text>
                   )}
                   {/* half/whole notes read as hollow */}
-                  {n.beats >= 2 && <ellipse cx={x} cy={y} rx="4.5" ry="3" fill="#fbfaff" transform={`rotate(-18 ${x} ${y})`} />}
+                  {n.beats >= 2 && !hidden && <ellipse cx={x} cy={y} rx="4.5" ry="3" fill="#fbfaff" transform={`rotate(-18 ${x} ${y})`} />}
                 </g>
               );
             })}

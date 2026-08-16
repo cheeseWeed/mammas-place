@@ -27,6 +27,9 @@ export default function NoteReaderPage() {
             <Link href="/music" className="text-sm font-semibold text-purple-800 hover:underline">
               &larr; Back to Practice Studio
             </Link>
+            <Link href="/music/write" className="ml-4 text-sm font-semibold text-purple-800 hover:underline">
+              Music Writer &rarr;
+            </Link>
           </div>
 
           <h1 className="text-2xl font-bold text-purple-900">Note Reader</h1>

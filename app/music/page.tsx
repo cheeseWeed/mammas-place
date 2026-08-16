@@ -175,6 +175,22 @@ function MusicInner() {
             Play
           </span>
         </Link>
+
+        <Link
+          href="/music/write"
+          className="mt-3 flex items-center justify-between gap-3 rounded-2xl border-2 border-purple-200 bg-gradient-to-br from-purple-50 to-white p-4 hover:border-purple-400"
+        >
+          <span>
+            <span className="block font-bold text-purple-900">✏️ Music Writer</span>
+            <span className="block text-sm text-zinc-600">
+              Write your own song — click the staff to add notes, drag them to move them, then play
+              what you wrote in the Note Reader.
+            </span>
+          </span>
+          <span className="shrink-0 rounded-lg bg-purple-800 px-4 py-2 text-sm font-semibold text-white">
+            Write
+          </span>
+        </Link>
       </div>
 
       {plan && pieces.length > 0 && (
