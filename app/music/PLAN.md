@@ -7,6 +7,7 @@ Three tools that share one section:
 | **Practice Studio** | `/music` | Daily practice tracker — assigned pieces, daily plan, quality score → MP |
 | **Note Reader** | `/music/read` | Sight-reading game — notes scroll, the mic scores what you play |
 | **Music Writer** | `/music/write` | Write your own song note by note; saved songs play in the Note Reader |
+| **Symphony** | `/music/symphony` | Write for several instruments; full score and player parts |
 
 The Practice Studio came first and the rest of this document describes it.
 Note Reader and Music Writer are documented at the bottom under
@@ -240,6 +241,8 @@ lib/music/
   editor.ts      # PURE editing: noteName/parseNoteName, NOTE_VALUES, insert/
                  #   delete/update/move/transpose, parseSpokenNote, measureLayout
   memorize.ts    # PURE: hashUnit, fadeMask, barsOf, memorizePlan, suggestNextStep
+  score.ts       # PURE multi-part: INSTRUMENTS, scoreOrder, soundingMidi/
+                 #   writtenMidi, alignmentReport, padToAlign, extractPart
   import.ts      # MusicXML + MIDI parsing, foldToPlayableOctave
   tone.ts        # Web Audio synthesis: playNote, playPhrase, playAlong
   pitch.ts       # McLeod/autocorrelation pitch detection (shared with the tuner)
@@ -252,18 +255,46 @@ app/api/music/
 
 app/music/read/page.tsx     # Note Reader
 app/music/write/page.tsx    # Music Writer
+app/music/symphony/page.tsx # Symphony (multi-instrument)
 components/music/SightReadGame.tsx
 components/music/ScoreEditor.tsx
+components/music/ScoreView.tsx
 components/music/SheetUpload.tsx
 ```
 
+## Symphony (`/music/symphony`) — writing for a group
+
+`lib/music/score.ts` + `components/music/ScoreView.tsx`. A `MultiScore` holds
+`parts[]`; **"full score" vs "one part" is a rendering choice, not a second
+file**, which is how real notation software works and means the two views can
+never drift apart. The toggle on the page is the lesson.
+
+- **Score order is fixed**: woodwind, brass, percussion, keyboard, voice,
+  string, top to bottom (`FAMILY_ORDER`). `scoreOrder()` sorts, stable within a
+  family, so a kid can add instruments in any order.
+- **Transposing instruments**: `Instrument.transpose` is how many semitones the
+  SOUND sits from the WRITING (B-flat trumpet `-2`, E-flat alto sax `-9`, F
+  horn `-7`, double bass `-12`). `soundingMidi`/`writtenMidi` are exact
+  inverses — a test asserts it across every instrument, because inverting this
+  makes playback sound merely out of tune rather than obviously broken. Apply
+  before PLAYBACK, never before display.
+- **`alignmentReport()`** is the multi-part bar-sum guard: every part must span
+  the same bars, so a short part has lost a rest. `padToAlign()` fills with
+  RESTS — real notation, since a player counts those bars.
+- Note x-positions come from **accumulated beats, not note index**, or a half
+  note in one part sits against two quarters in another and looks aligned while
+  being wrong.
+- Out-of-range notes draw red as a **warning, never a block**.
+
 ## Still open
 
-- **Multi-part / symphony**: a song holds ONE `notes[]`. Real orchestral music
-  is written as a full score AND separate parts (same data, two views) — that
-  needs `parts[]`, plus transposing instruments (a B-flat trumpet written C
-  sounds B-flat) and the standard woodwind/brass/percussion/string order.
-- **Instrument selection** affecting playback timbre.
+- **Instrument selection** affecting playback timbre. The Symphony page plays
+  every part with the same synth voice; `Instrument` already carries the
+  metadata a timbre table would key off.
+- **Saving a symphony.** `/api/music/songs` stores a single-part song; a
+  MultiScore has no persistence yet, so the page is currently a workspace that
+  resets on reload. `extractPart()` already produces something the existing
+  save route could take.
 - **Chords**: display and playback only. They cannot be scored — the pitch
   detector is monophonic.
 - **Grand staff rendering in the Note Reader**: `staveFor` computes correct
